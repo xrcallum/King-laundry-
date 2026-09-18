@@ -40,7 +40,7 @@
   --on-navy:#FFFFFF;        /* primary text on any navy surface */
   --on-navy-2:#C9D2F2;      /* secondary text on navy — 7.57:1 at worst */
   --paper:#F6F3EE;
-  --ink:#141826; --body:#454C60; --mute:#6B7386; --line:#D3D9E6; --line2:#BFC7D8;
+  --ink:#141826; --body:#454C60; --mute:#666D80; --line:#D3D9E6; --line2:#BFC7D8;
   --bg:#FFFFFF; --bg2:#F6F3EE; --white:#FFF;   /* bg2 is the warm paper surface */
   --ok:#0F7B4F; --ok-bg:#E6F6EE; --warn:#8A5A00; --warn-bg:#FFF6E0;
 
@@ -132,7 +132,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .hero-g{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1}
 .eyebrow{display:inline-block;font-family:var(--fd);font-size:var(--fs-badge);font-weight:700;letter-spacing:var(--track-caps);color:var(--red);margin-bottom:1rem}
 .hero-h{font-size:var(--fs-hero);font-weight:900;margin-bottom:1.1rem;line-height:1.28;letter-spacing:var(--track-display)}
-.hero-v4 .eyebrow,.hero .eyebrow,#p-home .eyebrow{color:var(--on-navy-2)}
+#hero .eyebrow{color:var(--on-navy-2)}
 .hero-h span{color:var(--white);background:var(--red);padding:.05em .24em .1em;border-radius:6px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .hero-p{font-size:var(--fs-5);color:var(--on-navy-2);max-width:44ch;margin-bottom:1.75rem}
 .hero-acts{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.5rem}
@@ -752,7 +752,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 /* ── early adopter red band (replaces empty reviews) ─────── */
 #adopt{background:var(--red);color:#fff;padding:var(--spy) 0}
 .adopt-in{text-align:center;max-width:640px;margin:0 auto}
-.adopt-in .eyebrow{color:var(--on-navy-2)}
+.adopt-in .eyebrow{color:var(--white)}
 .adopt-in h2{color:#fff;font-size:var(--fs-h2);margin:.6rem auto 1rem;max-width:26ch;letter-spacing:var(--track-h2);line-height:1.15}
 .adopt-in p{color:var(--on-navy);max-width:52ch;margin:0 auto 1.9rem;font-size:var(--fs-body);line-height:1.65}
 .btn-white{background:#fff;color:var(--red-d);padding:.9rem 2.2rem;font-size:var(--fs-body);font-weight:800}
@@ -1426,21 +1426,21 @@ svg.ic{width:24px;height:24px}
         <h3>Request a commercial quote</h3>
         <p class="fsub">Tell us your volume and we will come back with a written quote and a proposed collection schedule.</p>
         <div class="g2">
-          <div class="fld"><label class="lbl">Business name</label><input class="inp" id="bName"></div>
-          <div class="fld"><label class="lbl">Contact name</label><input class="inp" id="bContact"></div>
+          <div class="fld"><label class="lbl" for="bName">Business name</label><input class="inp" id="bName"></div>
+          <div class="fld"><label class="lbl" for="bContact">Contact name</label><input class="inp" id="bContact"></div>
         </div>
         <div class="g2">
-          <div class="fld"><label class="lbl">Email</label><input class="inp" id="bEmail" type="email"></div>
-          <div class="fld"><label class="lbl">Phone</label><input class="inp" id="bPhone" type="tel"></div>
+          <div class="fld"><label class="lbl" for="bEmail">Email</label><input class="inp" id="bEmail" type="email"></div>
+          <div class="fld"><label class="lbl" for="bPhone">Phone</label><input class="inp" id="bPhone" type="tel"></div>
         </div>
         <div class="g2">
-          <div class="fld"><label class="lbl">Suburb</label><input class="inp" id="bSuburb"></div>
-          <div class="fld"><label class="lbl">Business type</label><div class="selw"><select class="sel" id="bType">
+          <div class="fld"><label class="lbl" for="bSuburb">Suburb</label><input class="inp" id="bSuburb"></div>
+          <div class="fld"><label class="lbl">Business type</label><div class="selw"><select class="sel" id="bType" aria-label="Business type">
             <option>Short-stay / holiday property</option><option>Salon / gym / studio</option><option>Café / restaurant / club</option>
             <option>Trades / industrial</option><option>Aged care / disability support provider</option><option>Other</option>
           </select></div></div>
         </div>
-        <div class="fld"><label class="lbl">Estimated volume &amp; frequency</label><textarea class="ta" id="bVol" placeholder="e.g. 4 properties, approx. 6 changeovers per week, bedding and towels"></textarea></div>
+        <div class="fld"><label class="lbl" for="bVol">Estimated volume &amp; frequency</label><textarea class="ta" id="bVol" placeholder="e.g. 4 properties, approx. 6 changeovers per week, bedding and towels"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="bGo">Send commercial enquiry</button>
         <div class="fmsg" id="bMsg"></div>
       </div>
@@ -1477,22 +1477,22 @@ svg.ic{width:24px;height:24px}
         <h3>Enquire about supported living service</h3>
         <p class="fsub">For participants, families, coordinators and providers. We will come back to you with what we can offer and what we cannot.</p>
         <div class="g2">
-          <div class="fld"><label class="lbl">Your name</label><input class="inp" id="sName"></div>
-          <div class="fld"><label class="lbl">Organisation (if any)</label><input class="inp" id="sOrg"></div>
+          <div class="fld"><label class="lbl" for="sName">Your name</label><input class="inp" id="sName"></div>
+          <div class="fld"><label class="lbl" for="sOrg">Organisation (if any)</label><input class="inp" id="sOrg"></div>
         </div>
         <div class="g2">
-          <div class="fld"><label class="lbl">Email</label><input class="inp" id="sEmail" type="email"></div>
-          <div class="fld"><label class="lbl">Phone</label><input class="inp" id="sPhone" type="tel"></div>
+          <div class="fld"><label class="lbl" for="sEmail">Email</label><input class="inp" id="sEmail" type="email"></div>
+          <div class="fld"><label class="lbl" for="sPhone">Phone</label><input class="inp" id="sPhone" type="tel"></div>
         </div>
         <div class="g2">
-          <div class="fld"><label class="lbl">Suburb</label><input class="inp" id="sSuburb"></div>
-          <div class="fld"><label class="lbl">Enquiring as</label><div class="selw"><select class="sel" id="sRole">
+          <div class="fld"><label class="lbl" for="sSuburb">Suburb</label><input class="inp" id="sSuburb"></div>
+          <div class="fld"><label class="lbl">Enquiring as</label><div class="selw"><select class="sel" id="sRole" aria-label="Enquiring as">
             <option>Participant (self-managed)</option><option>Participant (plan-managed)</option>
             <option>Family member or carer</option><option>Support coordinator</option>
             <option>Aged care provider</option><option>Disability support provider</option><option>Other</option>
           </select></div></div>
         </div>
-        <div class="fld"><label class="lbl">What support is needed?</label><textarea class="ta" id="sNeed" placeholder="Frequency, volume, and anything we should know about handling requirements"></textarea></div>
+        <div class="fld"><label class="lbl" for="sNeed">What support is needed?</label><textarea class="ta" id="sNeed" placeholder="Frequency, volume, and anything we should know about handling requirements"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="sGo">Send enquiry</button>
         <div class="fmsg" id="sMsg"></div>
       </div>
@@ -1577,23 +1577,23 @@ svg.ic{width:24px;height:24px}
         <h3>Register your interest</h3>
         <p class="fsub">We will be in touch to talk through the arrangement, answer your questions, and send you the agreement to review.</p>
         <div class="g2">
-          <div class="fld"><label class="lbl">First name</label><input class="inp" id="oFirst"></div>
-          <div class="fld"><label class="lbl">Last name</label><input class="inp" id="oLast"></div>
+          <div class="fld"><label class="lbl" for="oFirst">First name</label><input class="inp" id="oFirst"></div>
+          <div class="fld"><label class="lbl" for="oLast">Last name</label><input class="inp" id="oLast"></div>
         </div>
-        <div class="fld"><label class="lbl">Email</label><input class="inp" id="oEmail" type="email"></div>
-        <div class="fld"><label class="lbl">Phone</label><input class="inp" id="oPhone" type="tel"></div>
-        <div class="fld"><label class="lbl">Suburb you would operate from</label><input class="inp" id="oSuburb"></div>
-        <div class="fld"><label class="lbl">Equipment available</label><div class="selw"><select class="sel" id="oEquip">
+        <div class="fld"><label class="lbl" for="oEmail">Email</label><input class="inp" id="oEmail" type="email"></div>
+        <div class="fld"><label class="lbl" for="oPhone">Phone</label><input class="inp" id="oPhone" type="tel"></div>
+        <div class="fld"><label class="lbl" for="oSuburb">Suburb you would operate from</label><input class="inp" id="oSuburb"></div>
+        <div class="fld"><label class="lbl">Equipment available</label><div class="selw"><select class="sel" id="oEquip" aria-label="Equipment available">
           <option>Washing machine and dryer</option><option>Washing machine only</option>
           <option>Commercial-grade equipment</option><option>None yet — enquiring first</option>
         </select></div></div>
-        <div class="fld"><label class="lbl">Do you have an ABN?</label><div class="selw"><select class="sel" id="oAbn">
+        <div class="fld"><label class="lbl">Do you have an ABN?</label><div class="selw"><select class="sel" id="oAbn" aria-label="Do you have an ABN?">
           <option>Yes, active ABN</option><option>No, but willing to register</option><option>Not sure</option>
         </select></div></div>
-        <div class="fld"><label class="lbl">Hours per week you would like</label><div class="selw"><select class="sel" id="oHours">
+        <div class="fld"><label class="lbl">Hours per week you would like</label><div class="selw"><select class="sel" id="oHours" aria-label="Hours per week you would like">
           <option>Under 10</option><option>10–20</option><option>20–35</option><option>35+</option>
         </select></div></div>
-        <div class="fld"><label class="lbl">Anything else?</label><textarea class="ta" id="oNotes" placeholder="Optional"></textarea></div>
+        <div class="fld"><label class="lbl" for="oNotes">Anything else?</label><textarea class="ta" id="oNotes" placeholder="Optional"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="oGo">Submit application</button>
         <div class="fmsg" id="oMsg"></div>
         <p class="fine">Submitting this form is an expression of interest only. It does not create any contract or obligation on either side.</p>
@@ -1734,18 +1734,18 @@ svg.ic{width:24px;height:24px}
         <h3>Send us a message</h3>
         <p class="fsub">We aim to respond the same business day.</p>
         <div class="g2">
-          <div class="fld"><label class="lbl">Name</label><input class="inp" id="cName"></div>
-          <div class="fld"><label class="lbl">Phone</label><input class="inp" id="cPhone" type="tel"></div>
+          <div class="fld"><label class="lbl" for="cName">Name</label><input class="inp" id="cName"></div>
+          <div class="fld"><label class="lbl" for="cPhone">Phone</label><input class="inp" id="cPhone" type="tel"></div>
         </div>
-        <div class="fld"><label class="lbl">Email</label><input class="inp" id="cEmail" type="email"></div>
-        <div class="fld"><label class="lbl">Suburb</label><input class="inp" id="cSuburb"></div>
-        <div class="fld"><label class="lbl">What is this about?</label><div class="selw"><select class="sel" id="cTopic">
+        <div class="fld"><label class="lbl" for="cEmail">Email</label><input class="inp" id="cEmail" type="email"></div>
+        <div class="fld"><label class="lbl" for="cSuburb">Suburb</label><input class="inp" id="cSuburb"></div>
+        <div class="fld"><label class="lbl">What is this about?</label><div class="selw"><select class="sel" id="cTopic" aria-label="What is this about?">
           <option>General enquiry</option><option>Quote request</option><option>Existing booking</option>
           <option>Kings Club membership</option><option>Business / commercial</option>
           <option>Supported living / aged care</option><option>Operator enquiry</option>
           <option>Complaint</option><option>Media or partnership</option>
         </select></div></div>
-        <div class="fld"><label class="lbl">Message</label><textarea class="ta" id="cMsgTxt"></textarea></div>
+        <div class="fld"><label class="lbl" for="cMsgTxt">Message</label><textarea class="ta" id="cMsgTxt"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="cGo">Send message</button>
         <div class="fmsg" id="cMsg"></div>
       </div>
@@ -3442,7 +3442,7 @@ function renderOpsBook(){
     return `<div class="stnode"><div class="stnode-ic ${done?'done':active?'cur':''}">${done?'<svg class="ic ic-inl" aria-hidden="true"><use href="#ic-check"/></svg>':i+1}</div><div class="stnode-lbl ${done?'done':active?'cur':''}">${OPS_LABELS[st]}</div></div>`+(i<STAGES.length-1?`<div class="stline ${i<cur?'done':''}"></div>`:'');
   }).join('');
   const opSel=OPS.operators.length
-    ?`<div class="fld"><label class="lbl">Assign / change operator</label><div class="selw"><select class="sel" id="ojOpSel"><option value="">Select operator…</option>${OPS.operators.map(o=>`<option value="${o.id}"${job.operatorId===o.id?' selected':''}>${esc(o.first+' '+o.last)} · ${esc(o.suburb||'')}</option>`).join('')}</select></div></div><button class="btn btn-nv btn-full" id="ojAssign" style="margin-top:.55rem">Assign selected</button>`
+    ?`<div class="fld"><label class="lbl">Assign / change operator</label><div class="selw"><select class="sel" id="ojOpSel" aria-label="Assign / change operator"><option value="">Select operator…</option>${OPS.operators.map(o=>`<option value="${o.id}"${job.operatorId===o.id?' selected':''}>${esc(o.first+' '+o.last)} · ${esc(o.suburb||'')}</option>`).join('')}</select></div></div><button class="btn btn-nv btn-full" id="ojAssign" style="margin-top:.55rem">Assign selected</button>`
     :`<p class="ap-fine">No operators registered. <a href="#/opsops" style="color:var(--navy)">Add operators <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a></p>`;
   const acts=[];
   if(job.status==='requested')  acts.push(['btn-red','confirm','<svg class="ic ic-inl" aria-hidden="true"><use href="#ic-check"/></svg> Confirm booking']);
