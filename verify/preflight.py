@@ -117,7 +117,9 @@ def main(path, strict_tokens=False):
     notes = []
 
     # 1. script parses
-    scripts = re.findall(r"<script\b[^>]*>(.*?)</script>", src, re.S)
+    # Only executable blocks count; application/ld+json is data, not code.
+    scripts = [m.group(2) for m in re.finditer(r"<script\b([^>]*)>(.*?)</script>", src, re.S)
+               if not re.search(r'type\s*=\s*["\']application/ld\+json["\']', m.group(1))]
     if len(scripts) != 1:
         fails.append(f"expected 1 <script> block, found {len(scripts)}")
     for i, s in enumerate(scripts):
