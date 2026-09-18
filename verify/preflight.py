@@ -58,7 +58,11 @@ COMPLIANCE_SENTINELS = [
 def strip_js(js):
     """Blank out comments, string/template literals and regex literals, so a name
     that appears inside prose, CSS text or a character class is never mistaken
-    for a function call."""
+    for a function call.
+
+    Template literals are handled with a depth counter so that nested templates
+    (backtick inside ${...} inside backtick) are correctly consumed.
+    """
     out, i, n, prev = [], 0, len(js), ""
     while i < n:
         c = js[i]
@@ -71,7 +75,31 @@ def strip_js(js):
             j = js.find("\n", i)
             i = n if j < 0 else j
             continue
-        if c in "'\"`":
+        if c == "`":
+            # Template literal — scan with brace depth tracking so nested
+            # ${`...`} structures are consumed rather than breaking the scan.
+            j, depth = i + 1, 0
+            while j < n:
+                ch = js[j]
+                if ch == "\\":
+                    j += 2
+                    continue
+                if ch == "$" and j + 1 < n and js[j + 1] == "{":
+                    depth += 1
+                    j += 2
+                    continue
+                if ch == "}" and depth > 0:
+                    depth -= 1
+                    j += 1
+                    continue
+                if ch == "`" and depth == 0:
+                    break
+                j += 1
+            out.append(' "" ')
+            i = j + 1
+            prev = ")"
+            continue
+        if c in "'\"":
             q, j = c, i + 1
             while j < n:
                 if js[j] == "\\":
