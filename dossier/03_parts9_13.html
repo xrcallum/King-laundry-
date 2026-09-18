@@ -1,0 +1,202 @@
+<!-- ===================== PART 9 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 9</p>
+<h1>Feature recommendations: Now, Next, Later</h1>
+<p class="lede">Three things a customer expects from a pickup service in 2026 that the site does not yet do: install without an app store, see where the job is, and see proof of the work. Everything below is sequenced after Phase A to C and inside the existing single-file architecture wherever possible. Each item names the outcome it moves, the owner and the milestone.</p>
+
+<h3>Now: inside Phase B and C, before M1 (by 15 Oct 2026)</h3>
+<table>
+<thead><tr><th style="width:20%">Feature</th><th>What and how</th><th style="width:22%">Outcome moved</th><th style="width:10%">Owner</th></tr></thead>
+<tbody>
+<tr><td class="k">Installable web app (PWA)</td><td>Add a web manifest (name, crown icons at 192 and 512 px, theme colour navy-d, display standalone, start_url #/app) and a minimal service worker that caches the shell. Show an "Add LaundryKings to your home screen" sheet after the first booking, once, dismissible. This is the "no app download" promise made literal.</td><td>Repeat-booking rate; return visits to #/app</td><td>Callum · Phase C</td></tr>
+<tr><td class="k">Job status timeline</td><td>Replace the status word on the booking card with a five-dot timeline: Booked, Assigned, Collected, Washing, Returned. Two new states ("in_progress", "returned") added to the lifecycle; ops taps them in #/opsbook. Each dot carries its timestamp.</td><td>Support messages per booking (down); NPS</td><td>Callum · Phase C</td></tr>
+<tr><td class="k">Photo proof at collection and return</td><td>Operator attaches one photo of the bag at the door on collection and one of the folded return. Stored against the booking; shown on the timeline. Doubles as the evidence record the guarantee's damage and loss process needs.</td><td>Damage disputes resolved within 5 business days; refund rate</td><td>Callum · Phase C (upload via the artefact store now, object storage at M2)</td></tr>
+<tr><td class="k">Weight estimator, visual</td><td>The estimator exists. Add a "what a load looks like" strip: about 5 kg equals a full kitchen-size basket, roughly 25 tees or 8 towels. Sets expectation before weighing, reduces invoice surprise.</td><td>Invoice queries per booking</td><td>Callum · Phase B</td></tr>
+<tr><td class="k">Kings Club claim qualifier</td><td>"Save around $28 a week compared with two ad-hoc loads" everywhere the claim appears (Part 3).</td><td>ACL exposure removed</td><td>Callum · Phase B</td></tr>
+<tr><td class="k">Open Graph and structured data in file</td><td>og:title, og:description, og:image (Gamma OG card), LocalBusiness with areaServed listing the 16 suburbs, Service, FAQPage from the FAQ page, per-route title swap in the router. This half of KEA-17 does not need the domain.</td><td>Share previews; eligibility for rich results once the domain is live</td><td>Callum · Phase B</td></tr>
+<tr><td class="k">Pre-flight script</td><td>Appendix A's checks run before every publish: script parses, no duplicate IDs, 34 sections, every getElementById target exists, zero emoji, no font-size or letter-spacing outside tokens.</td><td>Zero regressions per publish</td><td>Callum · Phase A</td></tr>
+</tbody></table>
+
+<h3>Next: M2 Public Launch (by 30 Nov 2026)</h3>
+<table>
+<thead><tr><th style="width:20%">Feature</th><th>What and how</th><th style="width:22%">Outcome moved</th><th style="width:10%">Owner</th></tr></thead>
+<tbody>
+<tr><td class="k">Stripe Checkout with Apple Pay and Google Pay</td><td>Booking creates a Checkout Session for the minimum ($73.50) as a hold or as a deposit; final invoice captures the difference after weighing, or refunds. Webhook marks paid. Card fields never on our page. The wizard already promises Visa, Mastercard, Amex, Google Pay and Apple Pay, so this is closing a gap the copy has opened.</td><td>Paid-on-time rate; ops time per invoice</td><td>Callum · KEA-13</td></tr>
+<tr><td class="k">Kings Club as Stripe Billing subscriptions</td><td>Weekly or fortnightly, pause and skip from #/account, proration handled by Stripe. Fixed collection day stored on the subscription metadata.</td><td>Subscribers; churn</td><td>Callum · M2/M3</td></tr>
+<tr><td class="k">Transactional email and two SMS moments</td><td>Six emails (booked, assigned, collected, invoice ready, paid, returned) from Resend templates in brand type; two SMS only: "your operator is about 15 minutes away" and "invoice ready, pay here". Consent captured at booking; STOP handling.</td><td>Support load; on-time payment</td><td>Callum · KEA-12</td></tr>
+<tr><td class="k">Slot capacity per round</td><td>Each operator round has a cap per window (start at 4 collections). The wizard greys full windows. Stops overbooking a single operator before it happens rather than after.</td><td>Late collections; operator overload</td><td>Callum · M2</td></tr>
+<tr><td class="k">Google Business Profile and review capture</td><td>Profile per service area, "leave a review" link in the returned email, reviews shown on the home trust band once five exist. M2 already asks for 5+ reviews.</td><td>Organic enquiries</td><td>Callum · M2</td></tr>
+<tr><td class="k">Analytics with a consent banner</td><td>Vercel Web Analytics or Plausible (no cookies, no banner required under current AU law; a banner is still good practice if any marketing tag is added). Events: estimator used, wizard step reached, booking submitted, club viewed, club started.</td><td>Funnel visibility for Part 15</td><td>Callum · M2</td></tr>
+<tr><td class="k">Accessibility pass to WCAG 2.2 AA</td><td>Names on icon buttons, focus order in the wizard, visible focus ring, target size 24 px minimum, contrast fixed by the token work. One assistive-tech run-through on iOS VoiceOver and Android TalkBack.</td><td>Complaints avoided; broader customer base (aged care, NDIS self-managed)</td><td>Callum · M2</td></tr>
+<tr><td class="k">Performance budget</td><td>Single file at 236 KB is fine; images are the risk. Budget: hero image under 120 KB (AVIF/WebP), total above-the-fold under 400 KB, Largest Contentful Paint under 2.5 s on a mid-range Android over 4G.</td><td>Mobile conversion</td><td>Callum · M2</td></tr>
+</tbody></table>
+
+<h3>Later: M3 Growth Platform (by 31 Dec 2026)</h3>
+<table>
+<thead><tr><th style="width:20%">Feature</th><th>What and how</th><th style="width:22%">Outcome moved</th><th style="width:10%">Owner</th></tr></thead>
+<tbody>
+<tr><td class="k">Operator field view (PWA)</td><td>#/operator, authenticated. Today's round in collection order, tap to call or message, mark collected with photo, enter weight at the machine, mark returned with photo. Route order by a simple nearest-next sort within the suburb; a routing API is not needed under 20 stops.</td><td>Ops time per job to near zero</td><td>Callum · KEA-16</td></tr>
+<tr><td class="k">QR bag tags</td><td>Printed tag per customer with a QR to the booking; scan on collection and return. Chain of custody for the guarantee and the insurer.</td><td>Loss incidents</td><td>Max (print), Callum (scan)</td></tr>
+<tr><td class="k">Referral programme</td><td>Give $13.50 (one delivery) to both sides after the referred customer's first paid booking. Funded from contribution, not from operator payout.</td><td>Customer acquisition cost</td><td>Both</td></tr>
+<tr><td class="k">Post-return NPS</td><td>One question 24 hours after "returned", in the email and the app. Detractors route to a support thread automatically.</td><td>NPS trend; re-wash requests caught early</td><td>Callum</td></tr>
+<tr><td class="k">Business accounts</td><td>Monthly invoicing, multiple addresses, purchase-order field. The Business page already sells scheduled collections; give it an account type.</td><td>B2B revenue share</td><td>Both</td></tr>
+<tr><td class="k">HubSpot CRM sync</td><td>Only when there is a sales motion to run (business accounts, operator recruitment). Not before.</td><td>Pipeline visibility</td><td>Callum · M3</td></tr>
+</tbody></table>
+<div class="box"><h4>What is deliberately not recommended</h4><p>A native app (the web-first promise is the differentiator). Live map tracking of the van (cost and privacy for operators; the 15-minute SMS is the moment that matters). Same-day service messaging until a round can actually do it. A chatbot on the marketing site. Dark mode on the marketing site (paper is the brand). Any second build platform.</p></div>
+</div>
+
+<!-- ===================== PART 10 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 10</p>
+<h1>Operator model, onboarding, WHS and insurance</h1>
+<p class="lede">Operators are independent businesses with their own ABN, equipment, premises and vehicle, working an assigned suburb under the brand. That model is stated clearly on the site. What is not yet written down is how an operator is engaged, paid, protected and kept safe. This part supplies the options and the brief for the adviser. It is not legal, tax or structuring advice.</p>
+
+<h3>Engagement model: what the adviser must confirm before KEA-7</h3>
+<table>
+<thead><tr><th style="width:24%">Test</th><th>Why it bites here</th><th style="width:30%">What we put in the brief</th></tr></thead>
+<tbody>
+<tr><td class="k">Contractor versus employee (common law, multi-factor)</td><td>Brand sets the price, allocates the customer, routes and schedules the work, handles invoicing and support. Operators supply equipment and premises and can decline jobs. The control indicators pull both ways.</td><td>The draft operator agreement, the ops workflow (Part 4), a description of who sets price, hours and territory, whether operators may work for others and subcontract.</td></tr>
+<tr><td class="k">Superannuation guarantee for contractors</td><td>A contract that is wholly or principally for labour attracts Super even with an ABN. Payment per load for washing done by the operator with their own machines mixes labour with plant.</td><td>Ask: is a per-load fee "principally for labour"? Does a fee structure that separates equipment use from labour change the answer?</td></tr>
+<tr><td class="k">Fair Work "employee-like worker" (Fair Work Act s15P, in force from 26 Aug 2024)</td><td>Applies to individuals performing digital platform work through a digital labour platform who have two or more of: low bargaining power, pay at or below comparable employee rates, low authority over how work is done. A web platform that allocates jobs and processes payment can be a digital labour platform. The first minimum standards order (17 Aug 2026, $31.30 to $32.00 an hour) covers on-demand delivery of food, drinks, alcohol and groceries only, so laundry is not inside it today; the deactivation code (26 Feb 2025) and unfair-deactivation remedies are not limited to that order.</td><td>Ask: is LaundryKings a digital labour platform as defined? If yes, which obligations apply now (deactivation process, record-keeping) and what changes if a laundry or general last-mile order is made? Sources in Appendix B.</td></tr>
+<tr><td class="k">Payroll tax grouping, Queensland</td><td>Threshold $1.3 million of Australian taxable wages for 2026-27, rate 4.75% up to $6.5 million. Contractor payments can be deemed wages under the relevant-contract provisions; grouping with a principal's other entities can be triggered by common control. Not an issue at launch volumes; a design issue for the structure.</td><td>Ask: are the venture entity and any related entities grouped, and would operator payments be deemed wages?</td></tr>
+</tbody></table>
+<div class="box red"><h4>Legal and tax boundary</h4><p>This dossier produces options and a brief. The decision on engagement form is the adviser's to advise and the principals' to make. Owner Max, brief sent by 26 Sep 2026, answer needed before KEA-7 (3 Oct). Draft brief text is in Part 18.</p></div>
+
+<h3>Payout model options (D-12)</h3>
+<table>
+<thead><tr><th style="width:22%">Option</th><th>Mechanics</th><th>For</th><th>Against</th></tr></thead>
+<tbody>
+<tr><td class="k">A. Per-load fee + per-collection fee <span class="tag t-asm">Recommended</span></td><td>Fixed AUD per 5 kg load washed plus fixed AUD per collection round-trip. Both figures set by Max in the Ops Sheet; the ops portal calculates payout beside the invoice.</td><td>Transparent, easy to model, separates plant-and-utilities cost from travel; supports the Super analysis by separating components.</td><td>Needs two numbers set well; under-priced collections punish spread-out suburbs.</td></tr>
+<tr><td class="k">B. Revenue share</td><td>Fixed percentage of ex-GST revenue per booking.</td><td>Simplest to explain; scales with ironing and bulk items automatically.</td><td>Looks most like wages; hides the cost structure; the +5% pricing debate becomes an operator-pay debate.</td></tr>
+<tr><td class="k">C. Hybrid with Kings Club retainer</td><td>Option A for ad-hoc, plus a weekly fixed amount per active Kings Club customer on the round.</td><td>Rewards operators for retention, which is the business model.</td><td>More moving parts than the first three months need.</td></tr>
+</tbody></table>
+<p class="small">No payout figure is proposed here because none can be sourced. The variable P in Part 3 is where it lands. Settlement: weekly, by batch payment (PayID or ABA file) against a recipient-created tax invoice if the operator is GST-registered; the ops portal exports the batch.</p>
+
+<h3>Onboarding checklist, per operator, before the first job</h3>
+<table>
+<thead><tr><th style="width:6%">#</th><th style="width:30%">Item</th><th>Evidence held</th><th style="width:14%">Filed</th></tr></thead>
+<tbody>
+<tr><td>1</td><td class="k">ABN active, GST status recorded</td><td>ABN Lookup screenshot dated; GST registered yes or no drives invoicing.</td><td>PPL08</td></tr>
+<tr><td>2</td><td class="k">Identity and background screening</td><td>100-point ID; National Police Check certificate less than 12 months old. The site already promises screening; hold the evidence.</td><td>PPL08</td></tr>
+<tr><td>3</td><td class="k">Signed operator agreement</td><td>The version cleared by the adviser, with the payout schedule attached.</td><td>LEG02</td></tr>
+<tr><td>4</td><td class="k">Insurance certificates of currency</td><td>Public and products liability in the operator's name at a minimum $10 million (industry norm for domestic service contractors, confirm with broker); comprehensive motor with business use noted.</td><td>PPL08</td></tr>
+<tr><td>5</td><td class="k">Vehicle and licence</td><td>Licence sighted; registration current; vehicle suitable for bagged laundry kept clean and dry.</td><td>PPL08</td></tr>
+<tr><td>6</td><td class="k">Equipment declaration</td><td>Washer and dryer make, model, capacity, age; dedicated clean storage; no smoking or pets in the laundry area declared.</td><td>OPS03</td></tr>
+<tr><td>7</td><td class="k">WHS induction</td><td>Manual handling (bags under 15 kg, two-bag rule), chemical handling, heat and dryer lint fire risk, driving and fatigue, working alone at doors. Fifteen-minute video plus signed acknowledgement.</td><td>OPS03</td></tr>
+<tr><td>8</td><td class="k">Quality standard</td><td>Wash by care label, cold default, fragrance-free option, folding standard photos, bag and tag standard, hand-over script.</td><td>OPS03</td></tr>
+<tr><td>9</td><td class="k">Registered in #/opsops</td><td>Name, email, mobile, suburb round, ABN, active flag (fields exist today).</td><td>System</td></tr>
+</tbody></table>
+
+<h3>WHS including chemicals <span class="tag t-new">New in v2</span></h3>
+<p>An operator's home laundry is a workplace while work is done there, and LaundryKings, as the business that engages them and directs the work, holds a primary duty of care alongside the operator under the Work Health and Safety Act 2011 (Qld). Detergents, stain removers and sanitisers are hazardous chemicals under the WHS Regulation 2011 (Qld) where the Safety Data Sheet says so.</p>
+<ul>
+<li><strong>Chemical register:</strong> a one-page list of approved products with the SDS for each, in OPS03; operators use only listed products. Fragrance-free and eco options are specified here, not chosen ad hoc.</li>
+<li><strong>Storage and handling:</strong> original containers, closed, off the floor, away from children; gloves for stain treatment; never mix chlorine bleach with ammonia-based products; eye-wash access.</li>
+<li><strong>Fire:</strong> dryer lint cleared every load; no overnight unattended dryer runs; smoke alarm in or near the laundry.</li>
+<li><strong>Manual handling and driving:</strong> bag weight limit, trolley for multi-bag collections, no collections after 7 pm, fatigue rule for operators running more than one round.</li>
+<li><strong>Incident reporting:</strong> in-app "report an incident" on the operator view (M3); until then, a form in OPS03 and a phone call to Callum the same day. Notifiable incidents go to Workplace Health and Safety Queensland.</li>
+</ul>
+
+<h3>Insurance: name the policy <span class="tag t-new">New in v2</span></h3>
+<table>
+<thead><tr><th style="width:26%">Policy</th><th style="width:14%">Held by</th><th>Covers</th><th style="width:22%">Note</th></tr></thead>
+<tbody>
+<tr><td class="k">Public and products liability</td><td>Brand and each operator</td><td>Injury or property damage to third parties at the door or from the service. Brand cover should include contractors' vicarious liability.</td><td>Market norm $10 million to $20 million; broker to advise.</td></tr>
+<tr><td class="k">Goods in care, custody and control (bailee's cover)</td><td>Brand</td><td>Customer laundry lost, damaged, stolen or destroyed while collected, in process or in transit. Standard liability policies exclude property in your care, so this is the one that matches the written guarantee.</td><td>Limit per event and per item; align with the $250 undeclared-item exclusion.</td></tr>
+<tr><td class="k">Motor vehicle, comprehensive, business use</td><td>Each operator</td><td>Their vehicle while collecting and returning. Private-use policies can decline business-use claims.</td><td>Certificate of currency at onboarding and renewal.</td></tr>
+<tr><td class="k">Personal accident and illness</td><td>Each operator (recommended), or a brand group policy</td><td>Income if the operator is injured; contractors are outside workers' compensation unless deemed workers.</td><td>Ask the adviser whether operators would be deemed workers under WorkCover Queensland.</td></tr>
+<tr><td class="k">Cyber and privacy liability</td><td>Brand</td><td>Data breach response, notification costs, third-party claims. Relevant from M2 when customer data leaves the artefact.</td><td>Small-business policy; check exclusions for unpatched systems.</td></tr>
+<tr><td class="k">Management liability</td><td>Brand entity</td><td>Directors and officers, employment practices, statutory fines where insurable.</td><td>Optional at launch; review at M3.</td></tr>
+</tbody></table>
+<p class="owner">Owner Max: three broker quotes for the brand policies by 17 Oct 2026 (before the first paid job is booked under M1). Owner Callum: certificate-of-currency fields added to #/opsops in Phase C.</p>
+</div>
+
+<!-- ===================== PART 11 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 11</p>
+<h1>AU compliance register</h1>
+<p class="lede">Each row names the obligation, what the site does today (verified in the live file), the gap, the owner and the date. Regulated channels are flagged first. Nothing here is legal advice; rows marked "adviser" go to the adviser or solicitor with the brief in Part 18.</p>
+<table>
+<thead><tr><th style="width:18%">Obligation</th><th style="width:26%">Today, in the live file</th><th>Gap and action</th><th style="width:12%">Owner · date</th></tr></thead>
+<tbody>
+<tr><td class="k">NDIS (regulated channel)</td><td>Support page: "not a registered NDIS provider"; accepts self-managed and plan-managed participants; cannot invoice the NDIA for agency-managed plans. <span class="tag t-ver">Verified</span></td><td>Correct posture. Add: invoices for plan-managed participants must carry the participant's NDIS number and the support item description the plan manager asks for. Never advertise as "NDIS laundry".</td><td>Callum · Phase C</td></tr>
+<tr><td class="k">Aged care (regulated channel)</td><td>No claim made.</td><td>Home Care Package recipients can buy domestic assistance; the same invoicing posture as plan-managed NDIS. No registration claim, ever.</td><td>Max · M3</td></tr>
+<tr><td class="k">Healthcare linen</td><td>Business page states no AS/NZS 4146 accreditation and no clinical linen. <span class="tag t-ver">Verified</span></td><td>None. Keep the statement; add it to the operator quality standard so operators decline it at the door.</td><td>Callum · Phase B</td></tr>
+<tr><td class="k">GST-inclusive pricing (ACL s48 single price)</td><td>Every displayed price GST-inclusive; 49 "inc" statements in file. <span class="tag t-ver">Verified</span></td><td>Keep. Any future surcharge or fee must be inside the displayed total.</td><td>Callum · standing</td></tr>
+<tr><td class="k">ACL consumer guarantees and representations</td><td>Written guarantee sits on top of ACL rights and says so. <span class="tag t-ver">Verified</span></td><td>Qualify the Kings Club saving (Part 3). Turnaround statements must be achievable on every live round. Operator page publishes no income claims; keep.</td><td>Callum · Phase B</td></tr>
+<tr><td class="k">Privacy Act 1988 and APPs</td><td>Privacy Policy drafted, marked not in force, covers collection, use, disclosure, retention (5 years; applications 12 months). <span class="tag t-ver">Verified</span></td><td>Solicitor review before M2. The $3 million small-business exemption may apply at launch, but reform to remove it is progressing and secondary sources conflict on timing; design to comply regardless (Appendix B). Notifiable data breach plan in OPS03.</td><td>Max · solicitor · 14 Nov</td></tr>
+<tr><td class="k">Spam Act 2003 (email and SMS)</td><td>Comms preferences page exists. <span class="tag t-ver">Verified</span></td><td>Consent checkbox for marketing separate from service messages; sender identification and unsubscribe on every marketing message; STOP handling on SMS.</td><td>Callum · KEA-12</td></tr>
+<tr><td class="k">Contractor engagement (see Part 10)</td><td>Operators page states independent contracting and advises independent advice. Ops portal carries a Super and employee-like note. <span class="tag t-ver">Verified</span></td><td>Adviser brief before the first engagement. Agreement cleared. Super position documented.</td><td>Max · 26 Sep brief · 3 Oct answer</td></tr>
+<tr><td class="k">Fair Work employee-like worker</td><td>Flag present in ops docs.</td><td>Adviser to determine whether LaundryKings is a digital labour platform under the Act; if so, adopt a written deactivation process now.</td><td>Max · adviser · 3 Oct</td></tr>
+<tr><td class="k">Payroll tax (Qld)</td><td>Not applicable at launch volumes.</td><td>Structure question for the adviser at entity setup: grouping and deemed wages.</td><td>Max · adviser · with D-03</td></tr>
+<tr><td class="k">WHS incl. chemicals</td><td>WHS mentioned on operators page.</td><td>Chemical register with SDS, induction, incident process (Part 10).</td><td>Max · 17 Oct</td></tr>
+<tr><td class="k">Insurance</td><td>"Appropriate insurance" required of operators.</td><td>Name the policies and limits in the agreement and the onboarding checklist (Part 10).</td><td>Max · 17 Oct</td></tr>
+<tr><td class="k">Business identity on site</td><td>Footer placeholder is live. <span class="tag t-cor">Defect D13</span></td><td>Entity name, ABN and address from Max. Required to trade honestly, to open Stripe, and to hold a .com.au.</td><td>Max · 25 Sep</td></tr>
+<tr><td class="k">Domain eligibility (auDA)</td><td>No domain.</td><td>.com.au requires an active ABN/ACN with a connection to the name; registrars enforce at registration and renewal since 20 May 2026. .au direct requires Australian presence only.</td><td>Callum · D-09</td></tr>
+<tr><td class="k">Card surcharging</td><td>None.</td><td>From 1 Oct 2026 Stripe merchants in Australia cannot surcharge card payments; price the fee in, do not add it.</td><td>Callum · KEA-13</td></tr>
+<tr><td class="k">Dry cleaning supplier claim</td><td>"Via partner cleaners, PERC-free." <span class="tag t-ver">Verified</span></td><td>Hold the partner's written confirmation on file (SUP07) before M2, or soften the claim.</td><td>Max · 14 Nov</td></tr>
+<tr><td class="k">Terms of Service</td><td>Drafted, not in force. <span class="tag t-ver">Verified</span></td><td>Solicitor review with the privacy policy; cancellation and rescheduling terms must match the wizard behaviour.</td><td>Max · solicitor · 14 Nov</td></tr>
+</tbody></table>
+<div class="box"><h4>Never strip</h4><p>GST-inclusive AUD on every displayed price · "Not a registered NDIS provider" on the support page · contractor, ABN and WHS statements on the operators page · Super and employee-like note in the ops portal · no clinical linen and no AS/NZS 4146 on the business page · ACL not-limited statement in the guarantee · draft markers on privacy and terms until a solicitor clears them.</p></div>
+</div>
+
+<!-- ===================== PART 12 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 12</p>
+<h1>Competitor context</h1>
+<table>
+<thead><tr><th style="width:18%">Competitor</th><th>What they do well</th><th>Where we differ</th></tr></thead>
+<tbody>
+<tr><td class="k">The Laundry Lady (AU, direct)</td><td>Photo-led, named operators, app-first, nationwide coverage claims, published minimum $70 (27 Jul 2026), next-day return norm. Pink brand is instantly recognisable.</td><td>Bold not soft. Web-first, no app. Delivery included in the minimum and no service fee, if confirmed (Part 3). Published guarantee with a claims process. Explicit regulatory honesty on NDIS and clinical linen.</td></tr>
+<tr><td class="k">Rinse (US)</td><td>Polish benchmark: big type, social proof adjacent to every CTA, status timeline, photo proof, subscription pause and skip.</td><td>We adopt the timeline, proof and subscription mechanics (Part 9) and the typographic confidence (Part 8).</td></tr>
+<tr><td class="k">Laundryheap (global)</td><td>Price in the hero, one-input estimator, slot picker with capacity, transparent per-kg model.</td><td>We keep the estimator and price teaser; we add slot capacity at M2.</td></tr>
+<tr><td class="k">Local Brisbane and Logan operators</td><td>Weak sites, phone bookings, no published pricing, no booking system.</td><td>Not a benchmark. The gap they leave is our first sixteen suburbs.</td></tr>
+<tr><td class="k">Fresh Folds (QLD, indexed 2026)</td><td>$5.50 per kg, $60 minimum, $12.50 delivery flat. <span class="tag t-unv">Unverified</span> from search snippet.</td><td>Per-kg pricing looks cheaper at small weights; our per-load model is simpler to estimate. Watch, do not chase.</td></tr>
+</tbody></table>
+<p>Every strong competitor shows a human and a price within three seconds. We show a price. The human arrives with Phase B imagery and stays with M2 photography. The second thing they all do is tell the customer where the job is; that is the timeline in Part 9.</p>
+</div>
+
+<!-- ===================== PART 13 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 13</p>
+<h1>Risk register</h1>
+<div class="fig">
+<svg viewBox="0 0 720 230" width="720" height="230" font-family="Inter, Liberation Sans, Arial" font-size="9">
+  <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">Likelihood versus impact, next 90 days</text>
+  <g fill="#6B7386" font-size="8.5">
+    <text x="90" y="222">Low impact</text><text x="330" y="222" text-anchor="middle">Medium</text><text x="600" y="222" text-anchor="middle">High impact</text>
+    <text x="8" y="60" transform="rotate(-90 8,60)" text-anchor="middle">Likely</text>
+    <text x="8" y="130" transform="rotate(-90 8,130)" text-anchor="middle">Possible</text>
+    <text x="8" y="195" transform="rotate(-90 8,195)" text-anchor="middle">Unlikely</text>
+  </g>
+  <g stroke="#D5DAE6"><rect x="20" y="22" width="700" height="186" fill="#F7F8FC"/><line x1="253" y1="22" x2="253" y2="208"/><line x1="486" y1="22" x2="486" y2="208"/><line x1="20" y1="84" x2="720" y2="84"/><line x1="20" y1="146" x2="720" y2="146"/></g>
+  <g font-size="8.5" fill="#141826">
+    <rect x="500" y="30" width="210" height="18" rx="9" fill="#FFF1F1" stroke="#A81B20"/><text x="605" y="43" text-anchor="middle">R1 Entity/ABN late: blocks domain, Stripe, footer</text>
+    <rect x="500" y="54" width="210" height="18" rx="9" fill="#FFF1F1" stroke="#A81B20"/><text x="605" y="67" text-anchor="middle">R2 Operator classification challenged</text>
+    <rect x="266" y="30" width="210" height="18" rx="9" fill="#FFF6E0" stroke="#8A5A00"/><text x="371" y="43" text-anchor="middle">R3 laundrykings.com.au unavailable</text>
+    <rect x="266" y="54" width="210" height="18" rx="9" fill="#FFF6E0" stroke="#8A5A00"/><text x="371" y="67" text-anchor="middle">R4 Design phase slips past M1</text>
+    <rect x="500" y="94" width="210" height="18" rx="9" fill="#FFF6E0" stroke="#8A5A00"/><text x="605" y="107" text-anchor="middle">R5 Lost or damaged laundry, uninsured</text>
+    <rect x="266" y="94" width="210" height="18" rx="9" fill="#FFF6E0" stroke="#8A5A00"/><text x="371" y="107" text-anchor="middle">R6 Single operator overbooked</text>
+    <rect x="266" y="118" width="210" height="18" rx="9" fill="#E6F6EE" stroke="#0F7B4F"/><text x="371" y="131" text-anchor="middle">R7 Competitor undercuts on load price</text>
+    <rect x="500" y="156" width="210" height="18" rx="9" fill="#FFF6E0" stroke="#8A5A00"/><text x="605" y="169" text-anchor="middle">R8 Data breach of booking inbox</text>
+    <rect x="34" y="94" width="210" height="18" rx="9" fill="#E6F6EE" stroke="#0F7B4F"/><text x="139" y="107" text-anchor="middle">R9 Artefact platform limits at scale</text>
+    <rect x="34" y="156" width="210" height="18" rx="9" fill="#E6F6EE" stroke="#0F7B4F"/><text x="139" y="169" text-anchor="middle">R10 Gamma imagery looks generated</text>
+  </g>
+</svg>
+<p class="figcap">Figure 13.1. Position is judgement, not measurement. Red outline: act this week. Amber: owner and date assigned. Green: monitor.</p>
+</div>
+<table>
+<thead><tr><th style="width:5%">#</th><th style="width:24%">Risk</th><th>Mitigation</th><th style="width:16%">Owner · date</th></tr></thead>
+<tbody>
+<tr><td>R1</td><td class="k">Entity, ABN, address not confirmed</td><td>D-03 decided by 25 Sep. Everything in M2 hangs off it: .com.au, Stripe account, footer, insurance proposal form.</td><td>Max · 25 Sep</td></tr>
+<tr><td>R2</td><td class="k">Operator classification (employee, deemed worker, employee-like)</td><td>Adviser brief before the first engagement; agreement cleared; payout model A keeps components separable; deactivation process written.</td><td>Max · 3 Oct</td></tr>
+<tr><td>R3</td><td class="k">Preferred domain unavailable</td><td>WHOIS check today; fallback ladder in D-09; brand copy never hard-codes the domain.</td><td>Callum · 19 Sep</td></tr>
+<tr><td>R4</td><td class="k">Design phases slip</td><td>Three publishes, one per phase, each with the pre-flight script; KEA-18 due 30 Sep with M1 two weeks later.</td><td>Callum · 30 Sep</td></tr>
+<tr><td>R5</td><td class="k">Lost or damaged laundry with no bailee's cover</td><td>Bailee's policy bound before the first paid job; photo proof and bag tags; the guarantee's claims process followed to the letter.</td><td>Max · 17 Oct</td></tr>
+<tr><td>R6</td><td class="k">Overbooking one operator</td><td>Manual cap of four collections per window until slot capacity ships at M2; ops watches the inbox daily.</td><td>Callum · M2</td></tr>
+<tr><td>R7</td><td class="k">Price undercut</td><td>Compete on all-in floor, guarantee and no fees, not on load price. Review quarterly.</td><td>Max · quarterly</td></tr>
+<tr><td>R8</td><td class="k">Personal information exposure</td><td>Editor list kept to two principals until a backend with row-level rules exists; breach plan in OPS03; cyber policy at M2.</td><td>Callum · M2</td></tr>
+<tr><td>R9</td><td class="k">Artefact platform not fit for public scale</td><td>Known and planned: Vercel + Supabase at M2. Artefact remains the build and preview surface.</td><td>Callum · M2</td></tr>
+<tr><td>R10</td><td class="k">Generated imagery undermines trust</td><td>Placeholders only in Phase B; a real operator photographed for M2 (KEA-15); never depict a real customer.</td><td>Callum · M2</td></tr>
+</tbody></table>
+</div>

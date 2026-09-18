@@ -1,0 +1,266 @@
+<!-- ===================== PART 0 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 0</p>
+<h1>Executive summary</h1>
+<p class="lede">The site works end to end and the plan in v1 was right in direction. Re-verifying every number against the live file and the live systems changed seven things, and each of them changes what happens next. This part is the whole dossier in two pages.</p>
+
+<div class="kpi">
+  <div class="card"><div class="v">34</div><div class="l">hash-routed pages in one 236 KB file <span class="tag t-ver">Verified</span></div></div>
+  <div class="card"><div class="v">75</div><div class="l">emoji inside &lt;i&gt; tags, not 47 <span class="tag t-cor">Corrected</span></div></div>
+  <div class="card"><div class="v">21</div><div class="l">design defects (15 confirmed + 6 new)</div></div>
+  <div class="card"><div class="v">4 / 14</div><div class="l">Linear issues done / total, M1 due 15 Oct 2026 <span class="tag t-ver">Verified</span></div></div>
+</div>
+
+<h3>The seven findings that change the plan</h3>
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:30%">Finding</th><th>Evidence</th><th style="width:26%">What changes</th></tr></thead>
+<tbody>
+<tr><td class="k">1</td><td class="k">The v1 PDF is not a usable copy of the source. <span class="tag t-cor">Corrected</span></td><td>351 of 3,586 lines in Part 11 of v1 were cut at the page edge with a " &gt;&gt;" marker. Only 218,696 of 236,498 bytes are recoverable from the PDF. The live artefact was read in full and hashed instead (Appendix A).</td><td>The Git repository xrcallum/King-laundry- becomes the copy of record. Appendix C now wraps lines instead of truncating them. Every future publish is committed first.</td></tr>
+<tr><td class="k">2</td><td class="k">The emoji census was under-counted.</td><td>A Unicode scan of the live file finds 83 &lt;i&gt; tags, 75 of which contain an emoji (29 distinct), plus 49 loose symbol glyphs in prose (16 distinct; 23 are the "→" arrow). v1 said 47 and 19.</td><td>Phase A acceptance test becomes "Unicode scan returns zero", never a count. The icon sprite needs about 30 symbols, not 27 (Part 8).</td></tr>
+<tr><td class="k">3</td><td class="k">laundrykings.com.au cannot be bought through Vercel today, and laundrykings.com is taken.</td><td>Vercel reports .com.au and .com "not available for purchase". DNS: laundrykings.com resolves to a third-party host; laundrykings.com.au has no record, which is consistent with either an unregistered name that Vercel does not sell, or a registered but unused name. <span class="tag t-unv">Unverified</span> until an auDA WHOIS lookup.</td><td>M2's headline outcome "site live at laundrykings.com.au" now depends on KEA-14 (an active ABN is required for any .com.au) and on a registrar that sells .com.au. Options in Part 16, decision D-09.</td></tr>
+<tr><td class="k">4</td><td class="k">Laundry Lady's rate card is partly public, and it changes the +5% decision.</td><td>Search-indexed content of thelaundrylady.com.au/pricing (effective 27 July 2026): minimum $70.00, pickup and delivery $14.50, service fee $2.20 recurring or $5.50 one-off. Their 2024 price list: $27.50 per 5 kg load, ironing from $2.75 per item. Direct fetch of the page is blocked from this environment, so the per-load 2026 figure is <span class="tag t-unv">Unverified</span>.</td><td>Our $32 load is already about 16% above their 2024 load price; a further +5% on line items is not needed to be "premium". The stronger position is the all-in floor: a one-off Laundry Lady booking appears to cost $70 + $14.50 + $5.50 = $90.00 versus our $73.50 with delivery included, if their minimum excludes those fees. Part 3 and decision D-04.</td></tr>
+<tr><td class="k">5</td><td class="k">The Kings Club "save around $28 every week" claim is true only at two loads.</td><td>2 loads ($64.00) + delivery ($13.50) = $77.50 versus Solo $49.00: saving $28.50 (36.8%) <span class="tag t-ver">Verified</span>. At one load, ad-hoc costs $45.50, so a Solo member pays $3.50 more.</td><td>Add the qualifier "based on two loads a week" wherever the claim appears. Australian Consumer Law treats an unqualified comparison as a representation; this is a one-line fix in Phase B.</td></tr>
+<tr><td class="k">6</td><td class="k">Red on navy fails contrast at 2.07:1.</td><td>Computed from the brand tokens (#CC2228 on #1A3480). The Bold Editorial direction puts red CTAs, crown and price figures on navy surfaces.</td><td>Red never sits directly on navy. Red on paper or white only; on navy, the CTA is white-filled with red text, or a white outline. Written into the design system (Part 8).</td></tr>
+<tr><td class="k">7</td><td class="k">Linear is behind the dossier.</td><td>KEA-11 still reads "deploy laundrykings.com.au to Cloudflare Pages" while v1 says Vercel. No issue carries a due date. Every issue is assigned to Callum, including the four decisions v1 gives to Max. Milestone dates exist only in Linear: M1 15 Oct, M2 30 Nov, M3 31 Dec 2026.</td><td>Ten-minute hygiene pass (Part 6): retitle KEA-11, add due dates, add Max as a Linear member and reassign D-01, D-03, D-04 and D-07.</td></tr>
+</tbody></table>
+
+<h3>Everything else in one paragraph</h3>
+<p>Pricing, coverage and the data model are unchanged and were re-verified. The five root causes and fifteen defects from v1 are confirmed in the live file and six are added, mostly about scale discipline (57 distinct font sizes, 17 distinct radii) and about what the marketing site is missing for launch (no Open Graph tags, no structured data, nine aria-labels across 34 pages). The design direction stands; Part 8 turns it into a token-level specification a builder can execute without taste calls. Part 9 adds a Now/Next/Later feature roadmap built around three modern expectations a customer has of a pickup service in 2026: install it without an app store, see where the job is, and see proof of the work. Part 10 and Part 11 replace "get insurance" and "check Fair Work" with named policies, named tests and named owners. Part 16 closes with fourteen decisions, each with options and a recommendation.</p>
+
+<div class="rec">
+  <div class="lbl">Recommended sequence, next ten working days</div>
+  <ol>
+    <li><strong>Today, Callum (19 Sep):</strong> commit the v4.2 file to Git, run the pre-flight script in Appendix A, then execute Phase A exactly as the resume block in Part 17 states. One publish.</li>
+    <li><strong>Today, Callum (19 Sep):</strong> Linear hygiene pass (Part 6) and run the auDA WHOIS check on laundrykings.com.au (Part 16, D-09).</li>
+    <li><strong>By 25 Sep, Max:</strong> pricing decision D-04 with the competitor card in Part 3; company name, ABN and address for the footer (D-03); confirm the three Kings Club price points (D-07).</li>
+    <li><strong>By 26 Sep, both:</strong> seed config/contact and config/payment (D-01) so the phone placeholder disappears and an invoice can be paid.</li>
+    <li><strong>By 30 Sep, Callum:</strong> Phase B and Phase C publishes, imagery via Gamma, then close KEA-18.</li>
+    <li><strong>By 3 Oct, Max with adviser:</strong> operator engagement brief (Part 10) covering contractor test, employee-like exposure and Super, before KEA-7 registers the first operator.</li>
+  </ol>
+</div>
+
+<h3>What changed from v1 to v2</h3>
+<table>
+<thead><tr><th style="width:22%">Area</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td class="k">Verification</td><td>Every quantitative claim in Parts 3, 4, 6 and 7 was re-run against the live artefact (3,586 lines, 236,498 bytes, SHA-256 in Appendix A), Linear and Vercel. Two figures corrected, three refined, all others confirmed.</td></tr>
+<tr><td class="k">Structure</td><td>Eleven parts became eighteen plus three appendices. New: executive summary, design system spec, feature roadmap, operator model, compliance register, competitor context expanded, risk register, launch checklist, KPI tree, decision log, information capture, verification report, sources.</td></tr>
+<tr><td class="k">Visuals</td><td>Architecture map, job state machine, defect-to-root-cause matrix, type and tracking specimen, colour contrast grid, competitor price ladder, unit-economics waterfall, roadmap Gantt, risk heat map, KPI tree, coverage cloud, ops swimlane. All static, all labelled in text, no reliance on colour alone.</td></tr>
+<tr><td class="k">Source code</td><td>Appendix C is verbatim and unabridged from the live artefact, wrapped not truncated, with a hash to prove it. The Git repository is now the copy of record.</td></tr>
+<tr><td class="k">Compliance</td><td>Named policies, named legislation, named thresholds, named owners. Fair Work "employee-like" exposure is now specific: the s15P criteria and the 17 Aug 2026 on-demand delivery order, with what does and does not apply.</td></tr>
+</tbody></table>
+</div>
+
+<!-- ===================== PART 1 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 1</p>
+<h1>Where we left off</h1>
+<p class="lede">Nothing has been published since v1. The live artefact is v4.2. Step 0 (census) is complete and is now independently re-verified. Step A (Foundation) has not started.</p>
+
+<div class="grid2">
+  <div class="card"><h4>Exact stopping point <span class="tag t-ver">Verified</span></h4>
+  <p>Live artefact at v4.2, contract 0.2.52, capabilities <code>{"db":{},"user":{}}</code>, 3,586 lines, 236,498 bytes. The artefact service confirms the stored declaration matches. Script block parses cleanly (<code>node --check</code>), 281 element IDs with no duplicates, all 120 <code>getElementById</code> targets exist.</p></div>
+  <div class="card"><h4>Next action</h4>
+  <p>Open a fresh chat, paste the resume block from Part 17 (it has changed since v1), say "go". Phase A begins. Before the first publish, commit the current file to Git so there is a copy of record that is not a PDF.</p></div>
+</div>
+
+<h3>The one thing to know</h3>
+<p>The product is functionally complete for a first paid job (book, assign, collect, weigh, invoice, mark paid) but it is not yet launchable in public: the footer carries a placeholder ABN, the phone number is a placeholder, payments are a pre-filled email rather than a checkout, and the design reads as a template. The next phase is craft and launch readiness, not features. The features in Part 9 are sequenced after that, deliberately.</p>
+
+<h3>Key links</h3>
+<table>
+<thead><tr><th style="width:22%">Asset</th><th>Location</th><th style="width:22%">Status</th></tr></thead>
+<tbody>
+<tr><td class="k">Live artefact</td><td>claude.ai/artifact/SJihvya38JukdcAUL7JiFx</td><td><span class="tag t-ver">Verified</span> readable, v4.2</td></tr>
+<tr><td class="k">Copy of record</td><td>github.com/xrcallum/King-laundry- · branch claude/document-review-expand-u6pv21 · <code>site/laundrykings-site.html</code></td><td><span class="tag t-new">New in v2</span> committed with this dossier</td></tr>
+<tr><td class="k">Working file (session container)</td><td>/mnt/user-data/outputs/laundrykings-site.html</td><td>Ephemeral. If missing, read the artefact or clone the repo.</td></tr>
+<tr><td class="k">Linear</td><td>linear.app/keatonmills/project/laundrykings-full-platform-build-9848085bf693</td><td><span class="tag t-ver">Verified</span> 14 issues, 3 milestones</td></tr>
+<tr><td class="k">Google Drive</td><td>MAXCAL | LaundryKings (Max owns the account)</td><td><span class="tag t-unv">Unverified</span> not visible from Callum's Drive; confirm the folder is shared to callum@maxcalprojects.com</td></tr>
+<tr><td class="k">Gamma deck</td><td>gamma.app/generations/7P0KIACPOrpdTTjegwCEu</td><td><span class="tag t-unv">Unverified</span> not re-opened in v2</td></tr>
+</tbody></table>
+
+<div class="box red"><h4>Publish settings, never change</h4>
+<p>URL claude.ai/artifact/SJihvya38JukdcAUL7JiFx · capabilities <code>{"db":{},"user":{}}</code> · favicon crown · contract 0.2.52. Do not add <code>mcp</code>; it blocks public sharing. Do not strip any AU compliance text. Keep every existing element ID; the script depends on them.</p></div>
+</div>
+
+<!-- ===================== PART 2 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 2</p>
+<h1>The project, principals and brand</h1>
+<p class="lede">LaundryKings is laundry pickup and delivery across Brisbane, Logan and South East Queensland. Independent operators run collection rounds in their own suburb under the LaundryKings brand. Web-first, no app download. Tagline: "We Wash It Well."</p>
+
+<h3>Principals</h3>
+<table>
+<thead><tr><th style="width:18%">Principal</th><th>Strengths and role on this venture</th><th style="width:26%">Owns</th></tr></thead>
+<tbody>
+<tr><td class="k">Callum Page</td><td>Build, go-to-market, AI, web design, speed to market, sales. Linear team lead and the only assignee on the board today.</td><td>Artefact, Git repository, Linear, Vercel, design and build decisions.</td></tr>
+<tr><td class="k">Max Jones</td><td>Structure, finance, long-range planning. Prior multi-site hospitality and laundry group operator.</td><td>Google Drive, pricing, entity and ABN, operator engagement model, adviser relationships.</td></tr>
+</tbody></table>
+<p class="small">Contact detail held in v1 (callumpageinfo@gmail.com) is personal; the working address for this venture is callum@maxcalprojects.com. Max's address is not recorded in any project document; see Part 18.</p>
+
+<h3>Brand tokens as shipped, with measured contrast <span class="tag t-ver">Verified</span></h3>
+<p>Ratios are WCAG 2.x relative luminance, computed from the hex values in the live file. The floor is 4.5:1 for body text, 3:1 for large text (18 pt regular or 14 pt bold and above) and for UI borders and icons.</p>
+<table>
+<thead><tr><th style="width:18%">Token</th><th style="width:12%">Hex</th><th>Role today</th><th style="width:30%">Contrast, measured</th><th style="width:12%">Verdict</th></tr></thead>
+<tbody>
+<tr><td class="k"><span class="sw" style="background:#1A3480"></span>navy</td><td class="mono">#1A3480</td><td>Structure, headings, primary surfaces</td><td>11.37:1 on white</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#12245C"></span>navy-d</td><td class="mono">#12245C</td><td>Hero and footer surface</td><td>White text on it 14.9:1 (derived)</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#2B4BAA"></span>navy-l</td><td class="mono">#2B4BAA</td><td>Links, hover</td><td>7.3:1 on white (derived)</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#CC2228"></span>red</td><td class="mono">#CC2228</td><td>CTAs, crown, price figures</td><td>5.49:1 on white · white on red 5.49:1 · <strong>2.07:1 on navy</strong></td><td><span class="tag t-cor">Fail on navy</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#141826"></span>ink</td><td class="mono">#141826</td><td>Primary text</td><td>17.4:1 on white (derived)</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#4A5266"></span>body</td><td class="mono">#4A5266</td><td>Body copy</td><td>7.81:1 on white</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#7C8598"></span>mute</td><td class="mono">#7C8598</td><td>Captions, helper text</td><td>3.71:1 on white</td><td><span class="tag t-unv">Large text only</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#E1E5EE"></span>line</td><td class="mono">#E1E5EE</td><td>Card borders, dividers</td><td>1.26:1 on white · 1.19:1 on bg2 (v1 said 1.05)</td><td><span class="tag t-cor">Fail</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#0F7B4F"></span>ok / ok-bg</td><td class="mono">#0F7B4F / #E6F6EE</td><td>Status: good</td><td>4.74:1</td><td><span class="tag t-ver">Pass</span></td></tr>
+<tr><td class="k"><span class="sw" style="background:#8A5A00"></span>warn / warn-bg</td><td class="mono">#8A5A00 / #FFF6E0</td><td>Status: warning</td><td>5.51:1</td><td><span class="tag t-ver">Pass</span></td></tr>
+</tbody></table>
+<p>Fonts: Archivo for headings (500 to 900), Inter for body (400 to 600), from Google Fonts. Australian English throughout. Every displayed price is AUD and GST-inclusive.</p>
+
+<h3>Voice and tone <span class="tag t-new">New in v2</span></h3>
+<div class="grid3">
+  <div class="card"><h4>Say</h4><p>Short declaratives. Price before adjective. "Booked. Collected Tuesday 9 to 12. Back Wednesday." Use "your operator", never "our driver". Use "we" for the brand promise and "your operator" for the person at the door.</p></div>
+  <div class="card"><h4>Do not say</h4><p>"Premium", "hassle-free", "best in Brisbane", any income claim for operators, any turnaround we cannot guarantee, any comparison without its basis. No exclamation marks. No emoji.</p></div>
+  <div class="card"><h4>Compliance voice</h4><p>State the limit plainly and once: "We are not a registered NDIS provider." "We do not hold AS/NZS 4146 accreditation, so we do not take clinical linen." The site already does this well; keep it.</p></div>
+</div>
+
+<h3>Naming, filing and the artefact register <span class="tag t-new">New in v2</span></h3>
+<p>Convergence over proliferation: this venture has exactly six artefacts. Anything not on this list needs a principal's approval before it is created.</p>
+<table>
+<thead><tr><th style="width:26%">Artefact</th><th>System</th><th style="width:30%">Proposed filing name</th><th style="width:12%">Owner</th></tr></thead>
+<tbody>
+<tr><td class="k">Website (marketing, app, ops)</td><td>Claude artefact + Git copy of record</td><td class="mono">LKG-SYS09-01_Website_v4.2</td><td>Callum</td></tr>
+<tr><td class="k">This dossier</td><td>PDF in Drive GOV00 + Git</td><td class="mono">LKG-GOV00-01_Complete Dossier_v2</td><td>Callum</td></tr>
+<tr><td class="k">Master Blueprint</td><td>Google Doc, Drive GOV00</td><td class="mono">LKG-GOV00-02_Master Blueprint_v1</td><td>Max</td></tr>
+<tr><td class="k">Ops Runbook</td><td>Google Doc, Drive OPS03</td><td class="mono">LKG-OPS03-01_Ops Runbook_v1</td><td>Max</td></tr>
+<tr><td class="k">Build Log</td><td>Google Doc, Drive SYS09</td><td class="mono">LKG-SYS09-02_Build Log_v1</td><td>Callum</td></tr>
+<tr><td class="k">Work tracker</td><td>Linear project + 3 milestones</td><td>n/a (system of record for tasks)</td><td>Callum</td></tr>
+</tbody></table>
+<p class="small">The prefix LKG is an <span class="tag t-asm">Assumption</span>; the venture prefix is set in the Maxcal artefact register, which was not available in this session. Codes follow the Maxcal filing standard: GOV00, FIN01, LEG02, OPS03, PRD04, CUS05, MKT06, SUP07, PPL08, SYS09, Archive99. One live version; superseded versions move to Archive99. This v2 supersedes v1; move v1 to Archive99 on filing.</p>
+</div>
+
+<!-- ===================== PART 3 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 3</p>
+<h1>Pricing, competitor rate card, unit economics, coverage and booking</h1>
+<p class="lede">Source of truth for price is the database document <code>config/pricing</code>. These figures were re-read from the live file and are unchanged from v1. What is new is the competitor card with dates and sources, a parametric unit-economics model, and a qualifier on the Kings Club savings claim.</p>
+
+<h3>Rate card, AUD, GST-inclusive <span class="tag t-ver">Verified</span></h3>
+<div class="grid2">
+<table>
+<thead><tr><th>Item</th><th class="n">Price</th></tr></thead>
+<tbody>
+<tr><td>Wash and fold, per load (about 5 kg)</td><td class="n">$32.00</td></tr>
+<tr><td>Iron, per item</td><td class="n">$3.50</td></tr>
+<tr><td>Trouser press</td><td class="n">$4.50</td></tr>
+<tr><td>Collection and return</td><td class="n">$13.50</td></tr>
+<tr><td class="k">Minimum per collection (one-off bookings)</td><td class="n k">$73.50</td></tr>
+<tr><td>Eco or sensitive-skin add-on, per load</td><td class="n">$3.50</td></tr>
+</tbody></table>
+<table>
+<thead><tr><th>Item</th><th class="n">Price</th></tr></thead>
+<tbody>
+<tr><td>Dry clean: jacket / dress / suit</td><td class="n">$18.50 / $16.50 / $32.00</td></tr>
+<tr><td>Bulk: doona / king / curtain</td><td class="n">$45.00 / $75.00 / $38.00</td></tr>
+<tr><td>Kings Club Solo (about 1 to 2 loads), per week</td><td class="n">$49.00</td></tr>
+<tr><td>Kings Club Household (about 2 to 4 loads), per week</td><td class="n">$69.00</td></tr>
+<tr><td>Kings Club Full House (about 4 to 6 loads + ironing), per week</td><td class="n">$89.00</td></tr>
+<tr><td>Kings Club members</td><td class="n">exempt from minimum</td></tr>
+</tbody></table>
+</div>
+<p>Invoice maths in the ops portal: loads = ceil(kg ÷ 5) × $32.00; ironing = items × $3.50; plus $13.50 delivery; floor at $73.50; a manual adjustment field. The minimum was set at Laundry Lady's $70 plus 5% on 18 September 2026.</p>
+
+<div class="box warn"><h4>Kings Club savings claim: add the basis <span class="tag t-new">New in v2</span></h4>
+<p>Two ad-hoc loads a week cost $64.00 + $13.50 = $77.50; Solo is $49.00; the saving is $28.50 a week, 36.8%. The claim "save around $28 every week" is correct at two loads. At one load the ad-hoc price is $45.50, so Solo costs $3.50 more. Under the Australian Consumer Law an unqualified comparison is a representation the customer can rely on. Change the copy to "save around $28 a week compared with two ad-hoc loads" wherever it appears (home savings box, club page, wizard). Owner Callum, Phase B, by 30 Sep 2026.</p></div>
+
+<h3>Competitor rate card: The Laundry Lady <span class="tag t-new">New in v2</span></h3>
+<p>Direct fetch of thelaundrylady.com.au is blocked from this build environment. The figures below come from search-indexed text of their pricing page and their published 2024 customer price list; each is dated. Max to confirm against the live page before D-04 is decided.</p>
+<table>
+<thead><tr><th style="width:26%">Component</th><th class="n" style="width:16%">Laundry Lady</th><th style="width:20%">As at</th><th class="n" style="width:14%">LaundryKings</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td class="k">Wash, dry and fold, per 5 kg load</td><td class="n">$27.50</td><td>2024 price list <span class="tag t-unv">2026 figure unverified</span></td><td class="n">$32.00</td><td>We are about 16% above their 2024 load price already.</td></tr>
+<tr><td class="k">Minimum per service</td><td class="n">$70.00</td><td>Pricing page, effective 27 Jul 2026</td><td class="n">$73.50</td><td>Our minimum is their minimum plus 5%.</td></tr>
+<tr><td class="k">Pickup and delivery</td><td class="n">$14.50</td><td>Pricing page, effective 27 Jul 2026 ($12.50 in 2024)</td><td class="n">$13.50</td><td>We are $1.00 cheaper on delivery.</td></tr>
+<tr><td class="k">Service fee, recurring / one-off</td><td class="n">$2.20 / $5.50</td><td>Pricing page, effective 27 Jul 2026 ($2.00 in 2024)</td><td class="n">none</td><td>We charge no booking or service fee. Say so.</td></tr>
+<tr><td class="k">Ironing, per item</td><td class="n">from $2.75</td><td>2024 price list (range to $14.74 for complex items)</td><td class="n">$3.50 flat</td><td>Flat price is simpler; theirs is cheaper on shirts.</td></tr>
+<tr><td class="k">Eco liquid, per load</td><td class="n">+$3.00</td><td>2024 price list</td><td class="n">+$3.50</td><td>Parity.</td></tr>
+<tr><td class="k">Card fee</td><td class="n">2.3% "included"</td><td>2024 price list note</td><td class="n">none stated</td><td>From 1 Oct 2026 Stripe merchants in Australia cannot surcharge cards in any case (Appendix B).</td></tr>
+</tbody></table>
+
+<div class="fig">
+<svg viewBox="0 0 720 150" width="720" height="150" font-family="Inter, Liberation Sans, Arial" font-size="10">
+  <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">One-off booking floor, all-in, AUD inc. GST</text>
+  <text x="0" y="26" fill="#6B7386" font-size="9">Laundry Lady figure assumes the $70 minimum excludes delivery and the one-off service fee (unverified). LaundryKings minimum includes delivery.</text>
+  <!-- legend -->
+  <rect x="520" y="6" width="9" height="9" rx="2" fill="#2B4BAA"/><text x="533" y="14" fill="#3C4356">LaundryKings</text>
+  <rect x="612" y="6" width="9" height="9" rx="2" fill="#B5651D"/><text x="625" y="14" fill="#3C4356">Laundry Lady</text>
+  <!-- bars: scale 0..100 -> 0..560 px starting x=120 -->
+  <line x1="120" y1="40" x2="120" y2="130" stroke="#D5DAE6"/>
+  <text x="0" y="62" fill="#3C4356">LaundryKings</text>
+  <rect x="120" y="50" width="411.6" height="20" fill="#2B4BAA" rx="0"/><rect x="527.6" y="50" width="4" height="20" fill="#2B4BAA" rx="4"/>
+  <text x="538" y="64" fill="#141826" font-weight="600">$73.50</text>
+  <text x="0" y="104" fill="#3C4356">Laundry Lady</text>
+  <rect x="120" y="92" width="392" height="20" fill="#B5651D"/><text x="126" y="106" fill="#fff" font-size="9" font-weight="600">$70.00 minimum</text>
+  <rect x="514" y="92" width="81.2" height="20" fill="#B5651D" opacity=".75"/><text x="519" y="106" fill="#fff" font-size="9">+$14.50 delivery</text>
+  <rect x="597" y="92" width="30.8" height="20" fill="#B5651D" opacity=".5"/><rect x="627.8" y="92" width="4" height="20" fill="#B5651D" opacity=".5" rx="4"/>
+  <text x="612" y="86" fill="#3C4356" font-size="8.5" text-anchor="middle">+$5.50 fee</text>
+  <text x="638" y="106" fill="#141826" font-weight="600">$90.00</text>
+  <text x="120" y="142" fill="#6B7386" font-size="8.5">$0</text><text x="400" y="142" fill="#6B7386" font-size="8.5">$50</text><text x="670" y="142" fill="#6B7386" font-size="8.5">$100</text>
+</svg>
+<p class="figcap">Figure 3.1. The comparison that matters to a first-time customer is the all-in floor, not the per-load rate. Segment widths are to scale; the Laundry Lady structure is read from their pricing page and needs Max's confirmation.</p>
+</div>
+
+<div class="rec"><div class="lbl">Recommendation on the +5% decision (D-04)</div>
+<p><strong>Keep line-item prices where they are. Do not apply +5% across the card.</strong> Reposition the comparison from "minimum" to "all-in floor with delivery included and no service fee". Confirm two facts first: Laundry Lady's 2026 per-load price, and whether their $70 minimum includes the delivery fee. Owner Max, due 25 Sep 2026. Options with reasoning are in Part 16.</p></div>
+
+<h3>Unit economics per booking: parametric model <span class="tag t-asm">Assumption</span> <span class="tag t-new">New in v2</span></h3>
+<p>No operator payout has been set, so no margin figure exists. The model below is a formula with its variables named; the illustrative column uses a two-load, no-ironing, card-paid, one-off booking. Change the variables in the Ops Sheet and the row values follow. None of the illustrative figures is a forecast.</p>
+<table>
+<thead><tr><th style="width:26%">Line</th><th>Formula or basis</th><th class="n" style="width:16%">Illustrative, 2 loads</th><th style="width:14%">Status</th></tr></thead>
+<tbody>
+<tr><td class="k">Revenue, inc. GST</td><td>2 × $32.00 + $13.50</td><td class="n">$77.50</td><td><span class="tag t-ver">Rate card</span></td></tr>
+<tr><td class="k">GST remitted</td><td>Revenue ÷ 11</td><td class="n">$7.05</td><td><span class="tag t-ver">Statutory</span></td></tr>
+<tr><td class="k">Revenue, ex GST</td><td>Revenue − GST</td><td class="n">$70.45</td><td></td></tr>
+<tr><td class="k">Card processing</td><td>Stripe AU domestic online 1.7% + $0.30 (1.65% + $0.30 from 1 Oct 2026); GST on the fee is an input credit</td><td class="n">$1.62 (then $1.58)</td><td><span class="tag t-ver">Stripe pricing page</span></td></tr>
+<tr><td class="k">Operator payout</td><td>Variable P = share of ex-GST revenue, or a fixed fee per load plus a per-collection fee. Not set. Options in Part 10.</td><td class="n">P</td><td><span class="tag t-asm">Variable</span></td></tr>
+<tr><td class="k">Consumables and utilities</td><td>Variable C per load (detergent, water, power, bags, tags). Borne by the operator under the current model, so C sits inside P unless the brand supplies consumables.</td><td class="n">C × 2</td><td><span class="tag t-asm">Variable</span></td></tr>
+<tr><td class="k">Platform cost per booking</td><td>Variable T = (hosting + SMS + email + payments tooling monthly) ÷ bookings per month. Small at volume; material under 50 bookings a month.</td><td class="n">T</td><td><span class="tag t-asm">Variable</span></td></tr>
+<tr><td class="k">Contribution to brand</td><td>$70.45 − $1.62 − P − T</td><td class="n">$68.83 − P − T</td><td></td></tr>
+</tbody></table>
+<div class="fig">
+<svg viewBox="0 0 720 120" width="720" height="120" font-family="Inter, Liberation Sans, Arial" font-size="9.5">
+  <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">Where $77.50 goes, before operator payout (illustrative, two loads)</text>
+  <line x1="40" y1="90" x2="700" y2="90" stroke="#D5DAE6"/>
+  <!-- scale: 77.5 -> 640px => 8.258px per $ ; x0=40 -->
+  <rect x="40" y="40" width="640" height="26" fill="#2B4BAA"/><text x="46" y="57" fill="#fff" font-weight="600">Revenue inc. GST $77.50</text>
+  <rect x="621.8" y="40" width="58.2" height="26" fill="#12245C"/><text x="626" y="57" fill="#fff" font-size="8.5">GST $7.05</text>
+  <rect x="608.4" y="40" width="13.4" height="26" fill="#B5651D"/>
+  <text x="560" y="34" fill="#3C4356" font-size="8.5">Stripe $1.62</text><line x1="600" y1="36" x2="614" y2="40" stroke="#6B7386" stroke-width="1"/>
+  <text x="40" y="106" fill="#3C4356">Remaining for operator payout P, platform cost T and brand contribution: <tspan font-weight="600" fill="#141826">$68.83</tspan></text>
+  <rect x="40" y="70" width="568.4" height="4" fill="#B9C1D2"/>
+</svg>
+<p class="figcap">Figure 3.2. The only two deductions that are fixed today are GST and card processing. Everything else is a decision (Part 10, Part 16 D-12).</p>
+</div>
+
+<h3>Coverage <span class="tag t-ver">Verified</span></h3>
+<p>Sixteen live suburbs and fourteen opening next, held in code as <code>LIVE_PC</code> and <code>SOON_PC</code>, grouped by <code>PC_REGION</code>. Postcode 4131 was corrected from Loganholme to Meadowbrook on 19 Sep (KEA-10, done).</p>
+<div class="grid2">
+<div class="card"><h4>Live (16)</h4>
+<p><strong>Logan</strong> <span class="chip live">4131 Meadowbrook</span><span class="chip live">4127 Springwood</span><span class="chip live">4128 Shailer Park</span><span class="chip live">4129 Loganholme</span><span class="chip live">4130 Cornubia</span><span class="chip live">4132 Marsden</span><span class="chip live">4133 Waterford</span><span class="chip live">4207 Beenleigh</span><span class="chip live">4118 Browns Plains</span></p>
+<p><strong>Brisbane south</strong> <span class="chip live">4119 Kuraby</span><span class="chip live">4109 Sunnybank</span><span class="chip live">4122 Mansfield</span><span class="chip live">4121 Holland Park</span><span class="chip live">4120 Greenslopes</span><span class="chip live">4151 Coorparoo</span><span class="chip live">4152 Camp Hill</span></p></div>
+<div class="card"><h4>Opening next (14)</h4>
+<p><strong>Inner city</strong> <span class="chip soon">4000 Brisbane CBD</span><span class="chip soon">4101 South Brisbane</span><span class="chip soon">4102 Woolloongabba</span><span class="chip soon">4169 Kangaroo Point</span><span class="chip soon">4170 Morningside</span><span class="chip soon">4171 Balmoral</span></p>
+<p><strong>North</strong> <span class="chip soon">4030 Windsor</span><span class="chip soon">4031 Kedron</span><span class="chip soon">4032 Chermside</span><span class="chip soon">4034 Aspley</span><span class="chip soon">4508 North Lakes</span><span class="chip soon">4509 Mango Hill</span></p>
+<p><strong>West</strong> <span class="chip soon">4066 Toowong</span><span class="chip soon">4068 Indooroopilly</span></p></div>
+</div>
+<p class="small">Region assignment above is editorial for this dossier; the code's <code>PC_REGION</code> grouping is the source of truth for the coverage page. Phase B renders coverage as this grouped cloud instead of sixteen identical chips (defect D9).</p>
+
+<h3>Booking configuration <span class="tag t-ver">Verified</span></h3>
+<table>
+<thead><tr><th>Setting</th><th>Value</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td class="k">Lead time</td><td>1 day</td><td rowspan="3"><code>config/booking</code>, live-editable; the wizard re-renders on change via a snapshot listener</td></tr>
+<tr><td class="k">Horizon</td><td>42 days</td></tr>
+<tr><td class="k">Windows</td><td>9 am to 12 pm · 12 pm to 3 pm · 4 pm to 7 pm</td></tr>
+<tr><td class="k">Capacity per window</td><td>none (unlimited)</td><td>Not modelled. Part 9 proposes a per-round cap.</td></tr>
+</tbody></table>
+</div>

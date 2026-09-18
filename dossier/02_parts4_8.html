@@ -1,0 +1,350 @@
+<!-- ===================== PART 4 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 4</p>
+<h1>Architecture, data model and the production target</h1>
+<p class="lede">One HTML file, 34 hash-routed sections, one script block of 77,542 characters, no build step, no server. That is a strength for speed and a constraint for launch. This part records both, and names the production shape the roadmap moves toward.</p>
+
+<div class="fig">
+<svg viewBox="0 0 720 264" width="720" height="264" font-family="Inter, Liberation Sans, Arial" font-size="9.5">
+  <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6B7386"/></marker></defs>
+  <rect x="10" y="10" width="700" height="244" rx="6" fill="#F7F8FC" stroke="#D5DAE6"/>
+  <text x="22" y="28" font-weight="700" fill="#12245C" font-size="11">laundrykings-site.html · v4.2 · single file, hash router (#/page)</text>
+  <!-- three columns -->
+  <rect x="22" y="40" width="210" height="120" rx="4" fill="#fff" stroke="#1A3480"/>
+  <text x="32" y="56" font-weight="700" fill="#1A3480">Marketing · 15 pages</text>
+  <text x="32" y="72" fill="#3C4356">home services pricing club business</text>
+  <text x="32" y="85" fill="#3C4356">support coverage operators about</text>
+  <text x="32" y="98" fill="#3C4356">guarantee faq contact privacy terms</text>
+  <text x="32" y="111" fill="#3C4356">dash</text>
+  <text x="32" y="140" fill="#6B7386" font-size="8.5">Public. Reads config/pricing,</text><text x="32" y="151" fill="#6B7386" font-size="8.5">config/contact, coverage.</text>
+
+  <rect x="255" y="40" width="210" height="120" rx="4" fill="#fff" stroke="#1A3480"/>
+  <text x="265" y="56" font-weight="700" fill="#1A3480">Customer app · 15 pages</text>
+  <text x="265" y="72" fill="#3C4356">app book(3-step) bookings messages</text>
+  <text x="265" y="85" fill="#3C4356">thread account profile pdetails prefs</text>
+  <text x="265" y="98" fill="#3C4356">address comms invoices userdet</text>
+  <text x="265" y="111" fill="#3C4356">feedback help</text>
+  <text x="265" y="140" fill="#6B7386" font-size="8.5">Bottom tab bar. Writes bookings_inbox;</text><text x="265" y="151" fill="#6B7386" font-size="8.5">private store per uid.</text>
+
+  <rect x="488" y="40" width="210" height="120" rx="4" fill="#fff" stroke="#CC2228"/>
+  <text x="498" y="56" font-weight="700" fill="#A81B20">Ops backend · 4 pages · CAN_EDIT</text>
+  <text x="498" y="72" fill="#3C4356">ops (dashboard) · opsbook (job)</text>
+  <text x="498" y="85" fill="#3C4356">opsops (operators) · opsinv (invoice)</text>
+  <text x="498" y="140" fill="#6B7386" font-size="8.5">Skeleton loading. Pre-filled Gmail and</text><text x="498" y="151" fill="#6B7386" font-size="8.5">Google Calendar links; no server calls.</text>
+
+  <!-- data layer -->
+  <rect x="22" y="178" width="676" height="66" rx="4" fill="#12245C"/>
+  <text x="32" y="196" font-weight="700" fill="#fff">Artefact database (capabilities db + user)</text>
+  <text x="32" y="211" fill="#C9D2F2" font-size="9">SHARED  bookings_inbox · operators · invoices · feedback · quotes · contact · business · support · coverage · operators_apply</text>
+  <text x="32" y="224" fill="#C9D2F2" font-size="9">SHARED  config/pricing · config/booking · config/contact · config/payment</text>
+  <text x="32" y="237" fill="#C9D2F2" font-size="9">PRIVATE  data/users/&lt;uid&gt;/account  +  profiles/  bookings/  messages/</text>
+  <line x1="127" y1="160" x2="127" y2="176" stroke="#6B7386" marker-end="url(#ar)"/>
+  <line x1="360" y1="160" x2="360" y2="176" stroke="#6B7386" marker-end="url(#ar)"/>
+  <line x1="593" y1="160" x2="593" y2="176" stroke="#6B7386" marker-end="url(#ar)"/>
+</svg>
+<p class="figcap">Figure 4.1. Three surfaces, one file, one database. Every page is a <code>&lt;section class="page"&gt;</code>; 34 counted in the live file.</p>
+</div>
+
+<h3>Job lifecycle <span class="tag t-ver">Verified</span></h3>
+<div class="fig">
+<svg viewBox="0 0 720 112" width="720" height="112" font-family="Inter, Liberation Sans, Arial" font-size="9.5">
+  <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1A3480"/></marker></defs>
+  <g font-weight="600" fill="#fff" text-anchor="middle">
+    <rect x="10" y="20" width="110" height="30" rx="15" fill="#1A3480"/><text x="65" y="39">requested</text>
+    <rect x="160" y="20" width="110" height="30" rx="15" fill="#1A3480"/><text x="215" y="39">assigned</text>
+    <rect x="310" y="20" width="110" height="30" rx="15" fill="#1A3480"/><text x="365" y="39">collected</text>
+    <rect x="460" y="20" width="110" height="30" rx="15" fill="#1A3480"/><text x="515" y="39">invoiced</text>
+    <rect x="610" y="20" width="100" height="30" rx="15" fill="#0F7B4F"/><text x="660" y="39">complete</text>
+  </g>
+  <g stroke="#1A3480" stroke-width="1.5" marker-end="url(#ar2)"><line x1="120" y1="35" x2="156" y2="35"/><line x1="270" y1="35" x2="306" y2="35"/><line x1="420" y1="35" x2="456" y2="35"/><line x1="570" y1="35" x2="606" y2="35"/></g>
+  <rect x="310" y="62" width="110" height="24" rx="12" fill="#fff" stroke="#A81B20"/><text x="365" y="78" text-anchor="middle" fill="#A81B20" font-weight="600">cancelled</text>
+  <path d="M65,50 C65,74 200,74 306,74" fill="none" stroke="#A81B20" stroke-dasharray="3 3"/>
+  <path d="M215,50 C215,74 280,74 306,74" fill="none" stroke="#A81B20" stroke-dasharray="3 3"/>
+  <text x="10" y="106" fill="#6B7386" font-size="8.5">Cancellation is reachable from requested and assigned. Proposed additions (Part 9): "in_progress" between collected and invoiced, "returned" before complete.</text>
+</svg>
+<p class="figcap">Figure 4.2. Five live states and one terminal exception. Two proposed states give the customer the two moments they most want to see: "your laundry is being washed" and "it is back at your door".</p>
+</div>
+
+<h3>Ops workflow today, no server <span class="tag t-ver">Verified</span></h3>
+<ol>
+<li>Customer books in the wizard; a document is written to <code>bookings_inbox</code>.</li>
+<li>Ops opens #/ops, assigns an operator from <code>operators</code>. "Email customer" opens a pre-filled Gmail draft; "Add to Calendar" opens a pre-filled Google Calendar event.</li>
+<li>Operator collects; ops marks collected.</li>
+<li>Ops opens #/opsinv, enters weight and ironed items; the invoice calculates with the minimum and any manual adjustment; a pre-filled invoice email opens; ops confirms and later marks paid.</li>
+</ol>
+<p>Payment today is whatever <code>config/payment</code> says: PayID or BSB text and a Stripe payment link pasted into the email. That is workable for the first jobs and is not a checkout. KEA-13 replaces it.</p>
+
+<h3>Security and access model <span class="tag t-ver">Verified</span></h3>
+<table>
+<thead><tr><th style="width:24%">Concern</th><th>Today</th><th style="width:30%">Before public launch</th></tr></thead>
+<tbody>
+<tr><td class="k">Ops gating</td><td>Ops pages render only when <code>CAN_EDIT</code> is true, derived from the artefact's editor status.</td><td>Adequate while ops is the two principals. Not adequate once operators need their own view (KEA-16).</td></tr>
+<tr><td class="k">Customer identity</td><td>Artefact <code>user</code> capability; a signed-in viewer gets a persisted private store, an anonymous viewer gets a session-only store with a visible notice.</td><td>Public visitors are anonymous, so bookings from the public site land in the shared inbox without an authenticated owner. Fine for M1, not for M2.</td></tr>
+<tr><td class="k">Personal information</td><td>Names, addresses, phone, email and care notes in the shared inbox are readable by any editor.</td><td>Least-privilege rules on a real backend; retention rule already written in the privacy draft (five years, applications twelve months).</td></tr>
+<tr><td class="k">Payment data</td><td>None stored. Correct.</td><td>Keep it that way: Stripe Checkout hosted page, never card fields on our page.</td></tr>
+</tbody></table>
+
+<h3>Production target for M2 <span class="tag t-new">New in v2</span></h3>
+<p>The dossier v1 recorded the choice of Vercel over Cloudflare Pages; Linear still says Cloudflare (Part 6). The shape below is the smallest production system that keeps the single-file front end intact, which protects the convergence rule and the build velocity.</p>
+<table>
+<thead><tr><th style="width:20%">Layer</th><th style="width:26%">Choice</th><th>Why this, why not the alternative</th><th style="width:14%">Linear</th></tr></thead>
+<tbody>
+<tr><td class="k">Hosting and functions</td><td>Vercel (static file + serverless functions)</td><td>Already connected. Functions give us a place for Stripe webhooks and email sends without a server to run. Cloudflare Pages would work equally; the decision is made, so Linear should follow it.</td><td>KEA-11</td></tr>
+<tr><td class="k">Database and auth</td><td>Supabase (Postgres + Auth + Row Level Security) <span class="tag t-asm">Recommended</span></td><td>Firebase is the closer match to the current document model, so migration is easier there. Supabase wins on SQL for finance reporting, on row-level rules for operators, and on Australian region hosting (Sydney). Either replaces the artefact db and user capabilities. Decision D-10.</td><td>KEA-11, KEA-16</td></tr>
+<tr><td class="k">Payments</td><td>Stripe Checkout + Stripe Billing for Kings Club</td><td>Hosted checkout, Apple Pay and Google Pay without extra integration, subscriptions with pause and skip built in. 1.7% + $0.30 domestic, dropping to 1.65% from 1 Oct 2026.</td><td>KEA-13</td></tr>
+<tr><td class="k">Email</td><td>Resend (transactional)</td><td>Templates for booked, assigned, collected, invoiced, paid, returned. Postmark is the equivalent; pick one and stop.</td><td>KEA-12</td></tr>
+<tr><td class="k">SMS</td><td>Twilio or MessageMedia (AU sender ID)</td><td>Only for the two moments customers act on: "operator is 15 minutes away" and "invoice ready". Spam Act consent captured at booking (Part 11).</td><td>new</td></tr>
+<tr><td class="k">Domain and DNS</td><td>See D-09</td><td>.com.au requires an active ABN under auDA rules; .au direct requires Australian presence only.</td><td>KEA-11, KEA-14</td></tr>
+</tbody></table>
+</div>
+
+<!-- ===================== PART 5 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 5</p>
+<h1>What has been shipped (all live in v4.2)</h1>
+<table>
+<thead><tr><th style="width:18%">Session</th><th>Delivered</th></tr></thead>
+<tbody>
+<tr><td class="k">1 · 18 Sep · Customer app</td><td>Full app layer on top of the original marketing artefact (owned by another org member; republished as a new artefact owned by Callum). Tab bar, 3-step wizard, bookings, messages, threads, settings tree of eight sub-pages, profile switcher, per-user private store.</td></tr>
+<tr><td class="k">2 · 18 Sep · Ops backend, v2</td><td>Ops dashboard, job detail, operator management, invoice generator. Wizard step 1 rebuilt to the Laundry Lady reference (screenshot 9). Bookings page: filter chips and rich cards with Support and Rebook.</td></tr>
+<tr><td class="k">3 · 18 Sep · Pricing and first UX pass</td><td>Minimum $73.50. Hero simplified. Phone placeholder hidden until <code>config/contact.phone</code> exists. Coverage legend and region grouping. Nav de-duplicated.</td></tr>
+<tr><td class="k">4 · 18 to 19 Sep · Connectors and Home v4</td><td>Linear project, three milestones, issues KEA-5 to KEA-17. Drive filing and three Google Docs. Gamma 10-slide deck. Home v4 in eight bands: two-column hero with SVG illustration and live price teaser, trust band second, navy step circles, navy middle service card with per-card CTAs, Kings Club savings box, two-column coverage with live chips, estimator, red early-adopter band, segment doors. Skeleton shimmer on ops. Postcode 4131 fixed. Services CTAs. Mobile fixes. Closed KEA-5, 8, 9, 10. Status update posted, On Track.</td></tr>
+<tr><td class="k">5 · 19 Sep · This revision</td><td>No publish. Live file read in full and hashed, census re-run, Linear and Vercel cross-checked, competitor and compliance research, Git repository initialised as copy of record, dossier v2.</td></tr>
+</tbody></table>
+<h3>What the live file contains that v1 did not list <span class="tag t-ver">Verified</span></h3>
+<ul>
+<li>A written customer guarantee: re-wash within 48 hours, delivery fee refunded on late return, damage and loss claims within 7 days with a 5-business-day investigation, settlement at current item value, declared exclusions (missing labels, pre-existing damage, undeclared colour-bleed risk, pocket contents, undeclared items over $250), and an explicit statement that ACL rights are not limited.</li>
+<li>Privacy Policy and Terms of Service marked "Draft for legal review, not yet in force" with a blank date of effect. Both must be reviewed by a solicitor before M2 (Part 11).</li>
+<li>Operator page states plainly that no income figures are published because there is no genuine earnings data yet. Keep this; it is the right posture under the ACL and the right posture for recruiting.</li>
+<li>Dry cleaning is described as via partner cleaners, PERC-free. This is a supplier claim; hold the partner's confirmation on file (Part 11).</li>
+</ul>
+</div>
+
+<!-- ===================== PART 6 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 6</p>
+<h1>Linear state, cross-checked live</h1>
+<p class="lede">Read from Linear on 19 Sep 2026 (AEST). Project "LaundryKings — Full Platform Build", lead Callum, target 31 Dec 2026, status Backlog. Fourteen issues, four done. Three milestones with dates that v1 did not record.</p>
+
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Title in Linear</th><th style="width:10%">Status</th><th style="width:8%">Priority</th><th style="width:10%">Milestone</th><th style="width:30%">Blocker or note (v2)</th></tr></thead>
+<tbody>
+<tr><td class="k">KEA-5</td><td>Home page redesign, full 8-band rebuild</td><td><span class="tag t-done">Done</span></td><td>Urgent</td><td>M1</td><td>Completed 18 Sep.</td></tr>
+<tr><td class="k">KEA-6</td><td>Seed config docs: contact, payment, pricing</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M1</td><td>Both principals. Phone, email, PayID or BSB, Stripe link. Blocks the first invoice being payable. No due date set; propose 26 Sep.</td></tr>
+<tr><td class="k">KEA-7</td><td>Register first operator in ops portal</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M1</td><td>Needs a real ABN and the engagement brief from Part 10 first. Propose 3 Oct.</td></tr>
+<tr><td class="k">KEA-8</td><td>App loading states, skeleton screens</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Ops only; customer lists still render without skeletons. Acceptable.</td></tr>
+<tr><td class="k">KEA-9</td><td>Mobile audit 390/393 px</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Done by CSS analysis; the real-device screenshots that followed produced KEA-18.</td></tr>
+<tr><td class="k">KEA-10</td><td>Postcode data, 4131 label</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Verified in the live file.</td></tr>
+<tr><td class="k">KEA-11</td><td>Domain: deploy laundrykings.com.au to Cloudflare Pages</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M2</td><td><span class="tag t-cor">Stale</span> v1 chose Vercel. Also depends on KEA-14 (ABN for .com.au) and on the domain finding (D-09). Retitle.</td></tr>
+<tr><td class="k">KEA-12</td><td>Email automation, Resend or Postmark via Vercel function</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Needs KEA-11.</td></tr>
+<tr><td class="k">KEA-13</td><td>Stripe Checkout, payment intent endpoint and webhook</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Needs a Stripe account in the trading entity's name, so needs D-03.</td></tr>
+<tr><td class="k">KEA-14</td><td>Footer: publish ABN, company name, address</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Placeholder text is live and public today. Owner should be Max. Also gates .com.au and Stripe.</td></tr>
+<tr><td class="k">KEA-15</td><td>Photography: hero, operator portrait, how-it-works set</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Gamma generate_image can placeholder in Phase B; real photography of a real operator for M2.</td></tr>
+<tr><td class="k">KEA-16</td><td>Operator mobile portal, #/operator field view</td><td><span class="tag t-open">Backlog</span></td><td>Medium</td><td>M3</td><td>Needs an auth provider (D-10).</td></tr>
+<tr><td class="k">KEA-17</td><td>SEO: per-page meta, structured data, sitemap</td><td><span class="tag t-open">Backlog</span></td><td>Medium</td><td>M3</td><td>Live file has zero Open Graph tags and zero JSON-LD (verified). Part of this can ship before the domain: the tags are in the file, not the DNS.</td></tr>
+<tr><td class="k">KEA-18</td><td>Design overhaul: device audit fixes + Bold Editorial (Phase A/B/C)</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M1</td><td>This dossier is its specification. Propose due 30 Sep.</td></tr>
+</tbody></table>
+
+<h3>Milestones <span class="tag t-ver">Verified</span></h3>
+<table>
+<thead><tr><th style="width:22%">Milestone</th><th style="width:12%">Target</th><th style="width:10%">Progress</th><th>Definition of done, as written in Linear</th></tr></thead>
+<tbody>
+<tr><td class="k">M1 First Job Operational</td><td>15 Oct 2026</td><td>57%</td><td>Home redesigned, ops portal working, config seeded with real contact and payment details, first operator registered, first booking confirmed and invoiced.</td></tr>
+<tr><td class="k">M2 Public Launch</td><td>30 Nov 2026</td><td>0%</td><td>Site live at laundrykings.com.au. Automated email confirmations. Stripe. SMS notifications. Real photography. Google Business Profile live. ABN published. 5+ operator reviews collected.</td></tr>
+<tr><td class="k">M3 Growth Platform</td><td>31 Dec 2026</td><td>0%</td><td>Operator mobile portal. Kings Club subscription management. SEO. Analytics. HubSpot CRM. 3+ rounds operational. 50+ bookings a month.</td></tr>
+</tbody></table>
+
+<div class="rec"><div class="lbl">Linear hygiene pass, Callum, 19 Sep 2026, ten minutes</div>
+<ol>
+<li>Retitle KEA-11 to "Domain and hosting: Vercel deploy + domain decision (D-09)". Add a dependency on KEA-14.</li>
+<li>Add due dates: KEA-18 30 Sep · KEA-6 26 Sep · KEA-7 3 Oct · KEA-14 25 Sep · KEA-11, 12, 13, 15 14 Nov · KEA-16, 17 12 Dec.</li>
+<li>Invite Max to the Linear workspace and assign KEA-14 and the decisions D-03, D-04, D-07 and D-12 to Max.</li>
+<li>Create KEA-19 "Pre-flight script in CI: node --check, dup-ID, 34 sections, getElementById, zero emoji" (Appendix A supplies the script). KEA-20 "Kings Club claim qualifier". KEA-21 "Open Graph + JSON-LD in file (pre-domain half of KEA-17)". KEA-22 "Operator engagement brief to adviser" (owner Max). KEA-23 "Insurance quotes: the four policies in Part 10" (owner Max).</li>
+<li>Post a status update: On Track for M1 only if D-01 and D-03 land by 26 Sep; otherwise At Risk. Say which.</li>
+</ol></div>
+</div>
+
+<!-- ===================== PART 7 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 7</p>
+<h1>Design audit, re-verified against the live file</h1>
+<p class="lede">v1's fifteen defects came from real-device screenshots on 19 Sep. v2 re-ran the census by script on the live artefact file rather than on the PDF, confirmed the five root causes, corrected two counts, and added six defects. Appendix A has the method.</p>
+
+<h3>Census: v1 versus v2</h3>
+<table>
+<thead><tr><th style="width:30%">Measure</th><th class="n" style="width:14%">v1</th><th class="n" style="width:14%">v2 (live file)</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td class="k">File size</td><td class="n">3,586 lines · 236,498 B</td><td class="n">3,586 · 236,498</td><td><span class="tag t-ver">Verified</span> byte-exact</td></tr>
+<tr><td class="k">Page sections</td><td class="n">34</td><td class="n">34</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td class="k">Emoji inside &lt;i&gt; tags</td><td class="n">27 distinct · 47 total</td><td class="n">29 distinct · 75 total (of 83 &lt;i&gt;)</td><td><span class="tag t-cor">Corrected</span> Most frequent: truck 6, basket 5, shirt 5, receipt 5, person 4, chat 4, pin 4, lock 4, envelope 4, calendar 4 + 3.</td></tr>
+<tr><td class="k">Loose symbol glyphs in prose</td><td class="n">19 distinct</td><td class="n">16 distinct · 49 total</td><td><span class="tag t-cor">Refined</span> 23 are "→", 6 are "✓". Regex boundaries differ; the acceptance test is zero, not a count.</td></tr>
+<tr><td class="k">letter-spacing values</td><td class="n">13</td><td class="n">13</td><td><span class="tag t-ver">Verified</span> −.035 −.03 −.025 −.02 −.01 · .01 .02 .03 .06 .07 .09 .1 .14 em</td></tr>
+<tr><td class="k">Kings Club selected state</td><td class="n">rgba(204,34,40,.13) over navy</td><td class="n">same</td><td><span class="tag t-ver">Verified</span> renders indigo</td></tr>
+<tr><td class="k">money()</td><td class="n">always .00</td><td class="n">same</td><td><span class="tag t-ver">Verified</span> <code>'$' + Number(n).toFixed(2)</code></td></tr>
+<tr><td class="k">Footer links</td><td class="n">26</td><td class="n">26</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td class="k">Mobile menu items</td><td class="n">15</td><td class="n">not located by selector</td><td><span class="tag t-unv">Unverified</span> by script; v1 screenshot stands</td></tr>
+<tr><td class="k">Card border contrast (line on bg2)</td><td class="n">1.05:1</td><td class="n">1.19:1 (1.26:1 on white)</td><td><span class="tag t-cor">Corrected</span> same verdict: invisible</td></tr>
+<tr><td class="k">Distinct font-size values</td><td class="n">—</td><td class="n">57 (all rem)</td><td><span class="tag t-new">New</span> confirms R1</td></tr>
+<tr><td class="k">Distinct border-radius values</td><td class="n">—</td><td class="n">17 (incl. 3 tokens)</td><td><span class="tag t-new">New</span> confirms R1</td></tr>
+<tr><td class="k">Open Graph tags · JSON-LD</td><td class="n">—</td><td class="n">0 · 0</td><td><span class="tag t-new">New</span> KEA-17</td></tr>
+<tr><td class="k">aria-label · &lt;img&gt; · inline &lt;svg&gt;</td><td class="n">—</td><td class="n">9 · 0 · 16</td><td><span class="tag t-new">New</span> icon-only buttons lack names</td></tr>
+<tr><td class="k">prefers-reduced-motion · :focus-visible</td><td class="n">—</td><td class="n">1 · 1</td><td>Present once each; extend in Phase C</td></tr>
+<tr><td class="k">Script syntax · duplicate IDs · missing getElementById targets</td><td class="n">—</td><td class="n">clean · 0 · 0</td><td><span class="tag t-ver">Verified</span></td></tr>
+</tbody></table>
+
+<h3>Five root causes, confirmed</h3>
+<table>
+<thead><tr><th style="width:6%">Root</th><th style="width:30%">Cause</th><th>Evidence in live file</th></tr></thead>
+<tbody>
+<tr><td class="k">R1</td><td class="k">No optical scale</td><td>13 tracking values, 57 font sizes, 17 radii, one border weight everywhere. Nothing changes with size, so large type looks cramped and small type looks loose.</td></tr>
+<tr><td class="k">R2</td><td class="k">Transparency used for state</td><td><code>.plan.on</code> lays 13% red over navy and produces indigo. Any rgba over a coloured surface will drift off-brand.</td></tr>
+<tr><td class="k">R3</td><td class="k">Borders below 1.3:1</td><td>Cards float without edges; the eye reads the shadow instead, which is why the page feels like a template.</td></tr>
+<tr><td class="k">R4</td><td class="k">Flat lists where hierarchy is needed</td><td>Footer 26 equal links, 15-item mobile menu, 16 identical suburb chips, filter chips all the same weight.</td></tr>
+<tr><td class="k">R5</td><td class="k">Emoji as icon system</td><td>75 in tags, 49 loose. Renders as iOS or Android colour emoji, different on each device, wrong optical size, no stroke consistency.</td></tr>
+</tbody></table>
+
+<h3>Defects, 21 in total</h3>
+<table>
+<thead><tr><th style="width:6%">ID</th><th>Defect</th><th style="width:8%">Root</th><th style="width:9%">Phase</th><th style="width:26%">Acceptance test</th></tr></thead>
+<tbody>
+<tr><td class="k">D1</td><td>Tab bar mixes glyph and colour emoji; renders as iOS emoji. Worst single defect.</td><td>R5</td><td>C</td><td>Tab bar uses 5 sprite icons; zero emoji in file.</td></tr>
+<tr><td class="k">D2</td><td>Box emoji in wizard "Approximate quantity" header.</td><td>R5</td><td>A</td><td>Sprite icon at 24 px.</td></tr>
+<tr><td class="k">D3</td><td>Selected Kings Club plan renders purple.</td><td>R2</td><td>A</td><td>Computed background equals #2A2F6B exactly.</td></tr>
+<tr><td class="k">D4</td><td>Fixed tracking: "Get your exact number." jams at 24 px.</td><td>R1</td><td>A</td><td>Tracking tokens by size; no ad-hoc letter-spacing remains.</td></tr>
+<tr><td class="k">D5</td><td>Stepper: minus and plus at opposite edges, value floating.</td><td>R4</td><td>C</td><td>Stepper max-width 140 px, three elements touching.</td></tr>
+<tr><td class="k">D6</td><td>"→ Continue": arrow before verb.</td><td>R4</td><td>C</td><td>Verb first, arrow icon after, on every primary button.</td></tr>
+<tr><td class="k">D7</td><td>"$49.00": strip .00 on whole dollars; keep $73.50.</td><td>R1</td><td>A</td><td><code>money(49)</code> returns "$49"; <code>money(73.5)</code> returns "$73.50"; tabular numerals on all prices.</td></tr>
+<tr><td class="k">D8</td><td>Coverage "Check" button full-width; reads as page CTA.</td><td>R4</td><td>B</td><td>Inline with the input, secondary style.</td></tr>
+<tr><td class="k">D9</td><td>16 identical suburb chips, about 600 px tall, no scan order.</td><td>R4</td><td>B</td><td>Grouped by region, two columns, under 320 px on a 390 px viewport.</td></tr>
+<tr><td class="k">D10</td><td>Wizard card header two-column wraps badly on mobile.</td><td>R1</td><td>C</td><td>Stacks below 480 px.</td></tr>
+<tr><td class="k">D11</td><td>Mobile menu: 15 flat items, no groups, no CTA.</td><td>R4</td><td>B</td><td>5 primary + "More" + one red CTA.</td></tr>
+<tr><td class="k">D12</td><td>Footer: 26 links, grey on navy 3.2:1, about 1,400 px tall.</td><td>R4</td><td>B</td><td>10 to 12 links, two columns, text at 4.5:1 or better.</td></tr>
+<tr><td class="k">D13</td><td>Placeholder ABN text is live and public.</td><td>—</td><td>B</td><td>Real entity name, ABN and address from Max (D-03); never invented.</td></tr>
+<tr><td class="k">D14</td><td>Nav red CTA outweighs the logo.</td><td>R1</td><td>B</td><td>CTA weight down on mobile; logo is the heaviest element in the bar.</td></tr>
+<tr><td class="k">D15</td><td>Card borders at about 1.2:1, invisible.</td><td>R3</td><td>A</td><td>Borders tonal or 1 px rgba(20,24,38,.08) with drop shadow removed; or a surface step of at least 1.3:1.</td></tr>
+<tr><td class="k">D16</td><td><span class="tag t-new">New</span> Red on navy fails at 2.07:1 (CTA, crown, price figures on navy hero and footer).</td><td>R2</td><td>A</td><td>No red text or red fill directly on navy. On navy, CTAs are white-filled with red text or white-outlined.</td></tr>
+<tr><td class="k">D17</td><td><span class="tag t-new">New</span> 57 distinct font sizes.</td><td>R1</td><td>A</td><td>Eight-step scale only; a scan finds no font-size outside the tokens.</td></tr>
+<tr><td class="k">D18</td><td><span class="tag t-new">New</span> 17 distinct radii.</td><td>R1</td><td>A</td><td>Three tokens (6, 12, 18 px) plus 999 px for pills and 50% for avatars.</td></tr>
+<tr><td class="k">D19</td><td><span class="tag t-new">New</span> Icon-only controls without accessible names (9 aria-labels across 34 pages).</td><td>R5</td><td>C</td><td>Every icon-only button has an aria-label; every sprite use has role="img" or aria-hidden with adjacent text.</td></tr>
+<tr><td class="k">D20</td><td><span class="tag t-new">New</span> Muted text (#7C8598) at 3.71:1 used for helper copy under 14 px.</td><td>R3</td><td>A</td><td>Muted darkened to at least 4.5:1 (#6B7386 passes at 4.7:1) or restricted to 14 px bold and above.</td></tr>
+<tr><td class="k">D21</td><td><span class="tag t-new">New</span> No Open Graph tags, no JSON-LD, one generic title for 34 pages.</td><td>—</td><td>B</td><td>og:title, og:description, og:image (1200 × 630 from Gamma), LocalBusiness + Service + FAQPage JSON-LD; per-route title swap in the router.</td></tr>
+</tbody></table>
+
+<div class="fig">
+<svg viewBox="0 0 720 200" width="720" height="200" font-family="Inter, Liberation Sans, Arial" font-size="9">
+  <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">Defects by root cause and phase</text>
+  <g fill="#3C4356">
+    <text x="0" y="46">R1 Optical scale</text><text x="0" y="76">R2 Transparency</text><text x="0" y="106">R3 Borders</text><text x="0" y="136">R4 Hierarchy</text><text x="0" y="166">R5 Emoji</text>
+    <text x="230" y="30" text-anchor="middle" font-weight="600">Phase A · Foundation</text><text x="430" y="30" text-anchor="middle" font-weight="600">Phase B · Marketing</text><text x="630" y="30" text-anchor="middle" font-weight="600">Phase C · App</text>
+  </g>
+  <g font-size="8.5" fill="#fff" font-weight="600" text-anchor="middle">
+    <!-- R1 -->
+    <rect x="140" y="36" width="180" height="20" rx="3" fill="#1A3480"/><text x="230" y="50">D4 · D7 · D17 · D18</text>
+    <rect x="340" y="36" width="180" height="20" rx="3" fill="#2B4BAA"/><text x="430" y="50">D14</text>
+    <rect x="540" y="36" width="180" height="20" rx="3" fill="#2B4BAA"/><text x="630" y="50">D10</text>
+    <!-- R2 -->
+    <rect x="140" y="66" width="180" height="20" rx="3" fill="#1A3480"/><text x="230" y="80">D3 · D16</text>
+    <!-- R3 -->
+    <rect x="140" y="96" width="180" height="20" rx="3" fill="#1A3480"/><text x="230" y="110">D15 · D20</text>
+    <!-- R4 -->
+    <rect x="340" y="126" width="180" height="20" rx="3" fill="#1A3480"/><text x="430" y="140">D8 · D9 · D11 · D12</text>
+    <rect x="540" y="126" width="180" height="20" rx="3" fill="#2B4BAA"/><text x="630" y="140">D5 · D6</text>
+    <!-- R5 -->
+    <rect x="140" y="156" width="180" height="20" rx="3" fill="#2B4BAA"/><text x="230" y="170">D2</text>
+    <rect x="540" y="156" width="180" height="20" rx="3" fill="#1A3480"/><text x="630" y="170">D1 · D19</text>
+  </g>
+  <text x="0" y="192" fill="#6B7386" font-size="8.5">Not in matrix: D13 (footer text, Max) and D21 (SEO, Phase B). Darker cells hold two or more defects.</text>
+</svg>
+<p class="figcap">Figure 7.1. Phase A fixes the tokens, so nine defects fall out of four root causes at once. Phase B is hierarchy. Phase C is the app shell.</p>
+</div>
+</div>
+
+<!-- ===================== PART 8 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 8</p>
+<h1>Design system specification: Bold Editorial</h1>
+<p class="lede">Confident, graphic, unapologetically LaundryKings. Own the crown, own the red. Differentiate hard from Laundry Lady's soft pink domestic look. Polish benchmark is Rinse (US). v1 gave the direction; this part gives the tokens, so a build session makes no taste calls.</p>
+
+<h3>Type scale, 1.25 major third, 8 steps</h3>
+<table>
+<thead><tr><th style="width:14%">Token</th><th class="n" style="width:10%">Size</th><th style="width:12%">Tracking</th><th style="width:10%">Weight</th><th style="width:10%">Leading</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td class="mono">--fs-display</td><td class="n">61 px · clamp(2.8rem, 6.5vw, 5.4rem) for H1</td><td class="mono">−0.04em</td><td>900</td><td>1.0</td><td>Home hero only</td></tr>
+<tr><td class="mono">--fs-1</td><td class="n">49 px</td><td class="mono">−0.03em</td><td>900</td><td>1.05</td><td>Page H1</td></tr>
+<tr><td class="mono">--fs-2</td><td class="n">39 px</td><td class="mono">−0.03em</td><td>800</td><td>1.1</td><td>Section heads, how-it-works numerals at 4rem</td></tr>
+<tr><td class="mono">--fs-3</td><td class="n">31 px</td><td class="mono">−0.02em</td><td>800</td><td>1.15</td><td>Card titles on home, price figures</td></tr>
+<tr><td class="mono">--fs-4</td><td class="n">25 px</td><td class="mono">−0.02em</td><td>700</td><td>1.2</td><td>H2 in app, wizard step title</td></tr>
+<tr><td class="mono">--fs-5</td><td class="n">20 px</td><td class="mono">−0.01em</td><td>700</td><td>1.3</td><td>H3, tab labels on tablet</td></tr>
+<tr><td class="mono">--fs-body</td><td class="n">16 px</td><td class="mono">0</td><td>400/500</td><td>1.55</td><td>All body copy; never below 16 px in inputs (iOS zoom)</td></tr>
+<tr><td class="mono">--fs-micro</td><td class="n">13 px</td><td class="mono">+0.01em · caps +0.08em</td><td>500/600</td><td>1.4</td><td>Captions, eyebrows, chips, tab labels</td></tr>
+</tbody></table>
+<div class="fig">
+  <div class="spec-row"><div class="m">display 61 · −0.04em · 900</div><div class="t" style="font-size:44pt;letter-spacing:-.04em;font-weight:900">We wash it well.</div></div>
+  <div class="spec-row"><div class="m">fs-1 49 · −0.03em · 900</div><div class="t" style="font-size:35pt;letter-spacing:-.03em">Get your exact number.</div></div>
+  <div class="spec-row"><div class="m">fs-2 39 · −0.03em · 800</div><div class="t" style="font-size:28pt;letter-spacing:-.03em">Book. We collect. It comes back.</div></div>
+  <div class="spec-row"><div class="m">fs-3 31 · −0.02em · 800</div><div class="t" style="font-size:22pt;letter-spacing:-.02em;font-variant-numeric:tabular-nums">$32 a load · $13.50 delivery · $73.50 min</div></div>
+  <div class="spec-row"><div class="m">fs-4 25 · −0.02em · 700</div><div class="t" style="font-size:18pt;letter-spacing:-.02em;font-weight:700">Step 2 of 3: choose your window</div></div>
+  <div class="spec-row"><div class="m">fs-5 20 · −0.01em · 700</div><div class="t" style="font-size:14.5pt;letter-spacing:-.01em;font-weight:700">Kings Club · Solo · Household · Full House</div></div>
+  <div class="spec-row"><div class="m">body 16 · 0 · 400</div><div class="t" style="font-size:11.5pt;font-family:var(--fb);font-weight:400;color:var(--body)">Your operator messages you before arrival. Price confirmed after weighing.</div></div>
+  <div class="spec-row"><div class="m">micro 13 · caps +0.08em · 600</div><div class="t" style="font-size:9.5pt;font-family:var(--fb);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--red)">Live in 16 suburbs · GST inclusive</div></div>
+  <p class="figcap">Figure 8.1. Tracking loosens as size drops. Rendered here at 72% of screen size to fit the page; ratios are true. Weight 900 is Archivo Black-equivalent and is reserved for the two largest steps.</p>
+</div>
+
+<h3>Colour roles and state colours</h3>
+<table>
+<thead><tr><th style="width:22%">Role</th><th style="width:16%">Token</th><th>Rule</th></tr></thead>
+<tbody>
+<tr><td class="k">Paper surface (60%+ of any page)</td><td class="mono">--paper #F6F3EE</td><td>Replaces #EEF0F8 and most of bg2. Warm, not blue-grey. Cards on paper are white; cards on white are paper. No hairline needed when the surface steps.</td></tr>
+<tr><td class="k">Navy structure</td><td class="mono">--navy-d #12245C page · --navy #1A3480 raised · --navy-sel #22409A selected</td><td>Three solid tints, never rgba. Hero and footer sit on navy-d. Selected plan card is <code>#2A2F6B</code> solid (D3).</td></tr>
+<tr><td class="k">Red accent (under 5% of surface)</td><td class="mono">--red #CC2228 · --red-d #A81B20 hover</td><td>CTAs on paper or white, the crown, price figures on paper or white, one full-bleed slab per page at most. <strong>Never directly on navy</strong> (D16, 2.07:1).</td></tr>
+<tr><td class="k">CTA on navy</td><td class="mono">white fill, red text</td><td>White #FFFFFF button with red text gives 5.49:1; or white outline with white text at 14.9:1. Hover: paper fill.</td></tr>
+<tr><td class="k">Hover and selected on navy</td><td class="mono">--navy-hov #23407A · --navy-sel #2A2F6B</td><td>Solid. Focus ring is 2 px #FFFFFF offset 2 px on navy, 2 px #1A3480 on light surfaces.</td></tr>
+<tr><td class="k">Text</td><td class="mono">--ink #141826 · --body #4A5266 · --mute #6B7386</td><td>Mute darkened from #7C8598 to pass 4.5:1 (D20). On navy: white, or #C9D2F2 for secondary at 10.5:1.</td></tr>
+<tr><td class="k">Borders</td><td class="mono">1px rgba(20,24,38,.08) on white · none on paper</td><td>Or a surface step. Drop shadows removed except the sticky tab bar and open sheets.</td></tr>
+<tr><td class="k">Status</td><td class="mono">ok #0F7B4F/#E6F6EE · warn #8A5A00/#FFF6E0 · bad #A81B20/#FFF1F1</td><td>Always with an icon and a word. Never colour alone. Never reused as decoration.</td></tr>
+</tbody></table>
+<div class="box warn"><h4>Colour ratio warning, restated</h4><p>Navy + red + paper reads "sporting club" the moment red exceeds about 5% of the visible surface or sits on navy. Paper carries the page. Navy gives structure. Red is a signal. If a screen has more than one red element above the fold besides the crown, one of them is wrong.</p></div>
+
+<h3>Spacing, radius, elevation, motion</h3>
+<div class="grid2">
+<div class="card"><h4>Spacing, 4 px base</h4><p class="spec">--sp-1 4 · --sp-2 8 · --sp-3 12 · --sp-4 16 · --sp-5 24 · --sp-6 32 · --sp-7 48 · --sp-8 64 · --sp-9 96</p><p>Section rhythm <code>clamp(3.5rem, 7vw, 5.5rem)</code> stays. Card padding is sp-5 on desktop, sp-4 on mobile. Nothing uses a value outside this list.</p>
+<h4>Radius, three tokens</h4><p class="spec">--r 6 (inputs, chips) · --r2 12 (cards) · --r3 18 (sheets, hero panels) · 999 px pills · 50% avatars</p></div>
+<div class="card"><h4>Elevation</h4><p>Level 0 surface step only. Level 1 sticky bars: <code>0 1px 0 rgba(20,24,38,.08)</code>. Level 2 sheets and menus: <code>0 18px 50px rgba(20,24,38,.16)</code>. No shadow on cards.</p>
+<h4>Motion</h4><p>Fade-up 12 px over 320 ms ease-out on scroll entry, once per element. Tab switch 180 ms. Everything inside <code>@media (prefers-reduced-motion: no-preference)</code>; the reduced-motion branch shows the final state instantly.</p></div>
+</div>
+
+<h3>Icon sprite, one set, 24 px grid, 1.75 stroke</h3>
+<p>One inline <code>&lt;svg&gt;</code> with <code>&lt;symbol&gt;</code> elements at the top of the body; each use is <code>&lt;svg class="ic"&gt;&lt;use href="#ic-truck"/&gt;&lt;/svg&gt;</code>. Stroke uses <code>currentColor</code> so icons inherit text colour and pass wherever the text passes. The list below is derived from the emoji census and covers every current use plus the tab bar.</p>
+<table>
+<thead><tr><th style="width:24%">Replaces</th><th>Symbol IDs (30)</th></tr></thead>
+<tbody>
+<tr><td class="k">Tab bar (5)</td><td class="mono">ic-home · ic-bookings (list) · ic-book (plus in circle) · ic-messages (chat) · ic-settings (sliders)</td></tr>
+<tr><td class="k">Service and flow (10)</td><td class="mono">ic-truck · ic-basket · ic-shirt · ic-iron · ic-hanger · ic-scale · ic-box · ic-calendar · ic-clock · ic-pin</td></tr>
+<tr><td class="k">Account and money (8)</td><td class="mono">ic-user · ic-users · ic-receipt · ic-card · ic-bank · ic-doc · ic-lock · ic-shield</td></tr>
+<tr><td class="k">System (7)</td><td class="mono">ic-check · ic-x · ic-arrow-right · ic-refresh · ic-info · ic-alert · ic-help</td></tr>
+</tbody></table>
+<p class="small">Add <code>ic-crown</code> as the one brand mark, drawn at 24 and 48 px. Icons are always accompanied by a text label or an aria-label (D19). Optical sizes: 20 px in chips and inputs, 24 px default, 28 px in the tab bar.</p>
+
+<h3>Layout patterns for Phase B</h3>
+<table>
+<thead><tr><th style="width:22%">Band</th><th>Pattern</th></tr></thead>
+<tbody>
+<tr><td class="k">Hero</td><td>Asymmetric 7/5 on navy-d. Left: display H1, one sentence, one white CTA, price teaser in tabular numerals. Right: photo slot 4:5 with the crown as a small white mark, not red. One eyebrow on the whole page, here.</td></tr>
+<tr><td class="k">Trust masthead</td><td>One navy strip under the hero: GST-inclusive pricing, written guarantee, screened operators, live in 16 suburbs. Four items, icons, no cards.</td></tr>
+<tr><td class="k">How it works</td><td>Horizontal timeline on paper, three steps, 4rem numerals in navy, one line each, one photo slot per step (Gamma placeholders now, real photos for M2).</td></tr>
+<tr><td class="k">Services</td><td>The one card grid on the page. Three cards, middle card navy with white CTA. Six services become three doors plus a "see all services" link.</td></tr>
+<tr><td class="k">Kings Club</td><td>Full-bleed red slab, white type, the one red slab on the page. Savings box carries the two-load basis (Part 3).</td></tr>
+<tr><td class="k">Coverage</td><td>Typographic suburb cloud grouped by region on paper; postcode input with an inline secondary Check button (D8, D9).</td></tr>
+<tr><td class="k">Segment doors</td><td>Households · Businesses · Become an operator. Three paper tiles, navy type, arrow icons.</td></tr>
+<tr><td class="k">Footer</td><td>Navy-d. Column 1 crown and one line; column 2 ten to twelve links in two groups; row 3 entity name, ABN, address (D13), compliance line, GST statement. Text #C9D2F2 or white only.</td></tr>
+</tbody></table>
+
+<h3>Imagery brief <span class="tag t-new">New in v2</span></h3>
+<p>Every strong competitor shows a human and a price in three seconds. We show a price. Phase B adds the human with generated placeholders; M2 replaces them with a real operator, photographed once, half a day, in their own suburb. Brief for both:</p>
+<ul>
+<li><strong>Subject:</strong> one operator, mid-thirties to fifties, in a plain navy tee, at a real Logan or Brisbane-south front door, handing over a folded stack in a LaundryKings bag. Daylight, overcast preferred. No studio, no stock smile.</li>
+<li><strong>Crop and ratio:</strong> hero 4:5 portrait and 16:9 landscape variants; how-it-works three squares (book on phone, collection at door, folded return); OG card 1200 × 630 with paper background, crown, and the line "Laundry collected, washed and returned. From $32 a load."</li>
+<li><strong>Colour grade:</strong> warm neutral to sit on paper; no pink, no teal. Red appears only as the bag tag.</li>
+<li><strong>Consent:</strong> model release signed by the operator, filed PPL08, before publication.</li>
+</ul>
+</div>

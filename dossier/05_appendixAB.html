@@ -1,0 +1,90 @@
+<!-- ===================== APPENDIX A ===================== -->
+<div class="part">
+<p class="part-kicker">Appendix A</p>
+<h1>Verification report</h1>
+<p class="lede">What was checked, how, and what came back. Every figure in Parts 3, 4, 6 and 7 that carries a Verified tag traces to a row here.</p>
+
+<h3>Inputs</h3>
+<table>
+<thead><tr><th style="width:24%">Input</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td class="k">Dossier v1</td><td>LaundryKings_Complete_Dossier.pdf, 50 pages, 19 Sep 2026. Text extracted with pypdf. Part 11 (pages 15 to 50) parsed by line number; 3,587 numbered lines recovered, 351 carrying the " &gt;&gt;" truncation marker; reconstructed size 218,696 bytes against the stated 236,498.</td></tr>
+<tr><td class="k">Live artefact</td><td>claude.ai/artifact/SJihvya38JukdcAUL7JiFx read in full through the Artifact connector. 3,586 lines, 236,498 bytes. SHA-256 <span class="mono">b1bda883095b3cbedf64dcdc57876edd67a8005e222b34f2e6f423f49ceac589</span>. Stored declaration <code>{"db":{},"user":{}}</code>, contract 0.2.52.</td></tr>
+<tr><td class="k">Linear</td><td>Project and issues listed through the Linear connector, 19 Sep 2026 AEST.</td></tr>
+<tr><td class="k">Vercel</td><td>Domain availability checked read-only for six names. No purchase.</td></tr>
+<tr><td class="k">Google Drive</td><td>Two searches from callum@maxcalprojects.com (full text "LaundryKings"; titles containing Maxcal, Blueprint, Laundry). Both empty.</td></tr>
+<tr><td class="k">Public web</td><td>Search-indexed content only; direct fetch of thelaundrylady.com.au and fairwork.gov.au is blocked by the build environment's egress policy. Sources in Appendix B.</td></tr>
+</tbody></table>
+
+<h3>Results</h3>
+<table>
+<thead><tr><th style="width:30%">Check</th><th style="width:16%">Method</th><th class="n" style="width:16%">v1 said</th><th class="n" style="width:16%">Live file</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>Lines · bytes</td><td>wc</td><td class="n">3,586 · 236,498</td><td class="n">3,586 · 236,498</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>&lt;section class="page"&gt; count</td><td>regex</td><td class="n">34</td><td class="n">34</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>&lt;i&gt; tags containing emoji</td><td>Unicode class scan</td><td class="n">47 (27 distinct)</td><td class="n">75 of 83 (29 distinct)</td><td><span class="tag t-cor">Corrected</span></td></tr>
+<tr><td>Loose symbol glyphs outside &lt;i&gt;</td><td>Unicode class scan</td><td class="n">19 distinct</td><td class="n">49 (16 distinct)</td><td><span class="tag t-cor">Refined</span></td></tr>
+<tr><td>Distinct letter-spacing values</td><td>regex</td><td class="n">13</td><td class="n">13</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>.plan.on background</td><td>regex</td><td class="n">rgba(204,34,40,.13)</td><td class="n">same</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>money() implementation</td><td>regex</td><td class="n">toFixed(2)</td><td class="n">same</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>Footer &lt;a&gt; count</td><td>regex in &lt;footer&gt;</td><td class="n">26</td><td class="n">26</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>--line on --bg2 contrast</td><td>WCAG luminance</td><td class="n">1.05:1</td><td class="n">1.19:1</td><td><span class="tag t-cor">Corrected</span></td></tr>
+<tr><td>Red on navy contrast</td><td>WCAG luminance</td><td class="n">—</td><td class="n">2.07:1</td><td><span class="tag t-new">New</span></td></tr>
+<tr><td>Mute on white contrast</td><td>WCAG luminance</td><td class="n">—</td><td class="n">3.71:1</td><td><span class="tag t-new">New</span></td></tr>
+<tr><td>Distinct font-size · border-radius</td><td>regex</td><td class="n">—</td><td class="n">57 · 17</td><td><span class="tag t-new">New</span></td></tr>
+<tr><td>og: meta · JSON-LD · aria-label · &lt;img&gt; · &lt;svg&gt;</td><td>regex</td><td class="n">—</td><td class="n">0 · 0 · 9 · 0 · 16</td><td><span class="tag t-new">New</span></td></tr>
+<tr><td>Script parses · duplicate ids · missing targets</td><td>node --check · regex</td><td class="n">—</td><td class="n">yes · 0 of 281 · 0 of 120</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>Kings Club saving at two loads</td><td>arithmetic</td><td class="n">≈$28 (37%)</td><td class="n">$28.50 (36.8%)</td><td><span class="tag t-ver">Verified</span>, qualifier needed</td></tr>
+<tr><td>Linear issue states</td><td>connector</td><td class="n">4 done, 10 open</td><td class="n">4 done, 10 backlog</td><td><span class="tag t-ver">Verified</span>; KEA-11 title stale</td></tr>
+<tr><td>Milestone dates</td><td>connector</td><td class="n">—</td><td class="n">15 Oct · 30 Nov · 31 Dec</td><td><span class="tag t-new">New</span></td></tr>
+<tr><td>laundrykings.com.au purchasable via Vercel</td><td>connector + DNS</td><td class="n">assumed yes</td><td class="n">no; no DNS record</td><td><span class="tag t-unv">WHOIS needed</span></td></tr>
+<tr><td>laundrykings.com</td><td>connector + DNS</td><td class="n">—</td><td class="n">taken; resolves 13.248.169.48</td><td><span class="tag t-ver">Verified</span></td></tr>
+<tr><td>laundrykings.au · laundrykings.co</td><td>connector</td><td class="n">—</td><td class="n">available USD 23.99 · 29.99</td><td><span class="tag t-ver">Verified</span> 19 Sep</td></tr>
+<tr><td>Mobile menu item count</td><td>regex</td><td class="n">15</td><td class="n">selector not matched</td><td><span class="tag t-unv">Unverified</span></td></tr>
+</tbody></table>
+
+<h3>Method notes</h3>
+<ul>
+<li><strong>Emoji scan class:</strong> U+1F000 to U+1FAFF, U+2600 to U+27BF, U+2B00 to U+2BFF, U+2190 to U+21FF, with optional U+FE0F. v1's lower count likely came from a narrower class or from text extracted from the PDF, where the 6 pt code font drops emoji glyphs (the PDF-derived reconstruction finds only 16). The acceptance test in the pre-flight script is zero glyphs in the whole file, so the class is deliberately wide.</li>
+<li><strong>Contrast:</strong> WCAG 2.x relative luminance, sRGB, ratio (L1 + 0.05) ÷ (L2 + 0.05). "Derived" values in Part 2 use the same formula on token pairs not directly in v1.</li>
+<li><strong>DNS:</strong> getent ahosts from the build container; HTTP probing to the candidate domains is blocked by the egress proxy, so hosting could not be inspected.</li>
+<li><strong>What could not be verified:</strong> the Gamma deck contents, the Drive documents, Laundry Lady's 2026 per-load price and whether their minimum includes delivery, the mobile menu count, and the v1 real-device screenshots (accepted as stated).</li>
+</ul>
+
+<h3>Pre-flight script (also at verify/preflight.py in the repository)</h3>
+<p>Run before every publish. Pass <code>--strict-tokens</code> after Phase A lands so the token rules are enforced too.</p>
+<pre>python3 verify/preflight.py site/laundrykings-site.html --strict-tokens
+# expected on v4.2 today (verified 19 Sep): FAIL on emoji (139 glyphs, 39 distinct, incl. 15 variation selectors),
+# FAIL on 235 font-size and 19 letter-spacing literals; PASS on script, ids, sections, targets, sentinels
+# expected after Phase A: PASS on all seven checks</pre>
+<!--PREFLIGHT_LISTING-->
+</div>
+
+<!-- ===================== APPENDIX B ===================== -->
+<div class="part">
+<p class="part-kicker">Appendix B</p>
+<h1>Sources</h1>
+<p class="lede">Public sources are listed with the date the fact applies to and how it was reached. Where a page could not be fetched directly, the fact came from the search engine's indexed text of that page and is marked accordingly.</p>
+<table>
+<thead><tr><th style="width:26%">Fact used</th><th>Source</th><th style="width:18%">Reached</th></tr></thead>
+<tbody>
+<tr><td class="k">Laundry Lady minimum $70.00, pickup and delivery $14.50, service fee $2.20 / $5.50, prices effective 27 Jul 2026</td><td>thelaundrylady.com.au/pricing</td><td>Indexed text, 19 Sep 2026</td></tr>
+<tr><td class="k">Laundry Lady $27.50 per 5 kg load, fold-only $14.85, ironing from $2.75, delivery $12.50, service fee $2.00, eco +$3, 2.3% merchant fee included</td><td>thelaundrylady.com.au/wp-content/uploads/2024/01/Price-List-AU-2024_CUSTOMERS.pdf</td><td>Indexed text; 2024 list</td></tr>
+<tr><td class="k">Fresh Folds $5.50/kg, $60 minimum, $12.50 delivery</td><td>freshfolds.com.au/blog/laundry-service-cost-queensland</td><td>Indexed text, unverified</td></tr>
+<tr><td class="k">Fair Work Act s15P employee-like worker criteria</td><td>Fair Work Act 2009 (Cth) s15P via austlii.edu.au</td><td>Indexed text</td></tr>
+<tr><td class="k">Employee-like framework in force 26 Aug 2024; deactivation code 26 Feb 2025</td><td>Fair Work Ombudsman, "Employee-like workers"; fairwork.gov.au</td><td>Indexed text (direct fetch blocked)</td></tr>
+<tr><td class="k">On-demand delivery minimum standards order commenced 17 Aug 2026; $31.30 to $32.00 an hour; scope food, drinks, alcohol, groceries; excludes vehicles over 1 tonne</td><td>Fair Work Ombudsman media release 17 Aug 2026; Fair Work Commission "Minimum standards order and decision made"; DLA Piper and Peninsula summaries</td><td>Indexed text</td></tr>
+<tr><td class="k">Queensland payroll tax threshold $1.3 million, rate 4.75% to $6.5 million, 4.95% above; mental health levy above $10 million</td><td>Queensland Revenue Office, payroll tax rates and thresholds 2026-27</td><td>Indexed text</td></tr>
+<tr><td class="k">Privacy Act small business exemption: reform progressing, sources conflict on commencement</td><td>Attorney-General's Department reform pages; secondary legal and IT commentary (Schiller Legal, ComplianceKit, others)</td><td>Indexed text; treat as unsettled</td></tr>
+<tr><td class="k">Stripe Australia domestic card pricing 1.7% + $0.30; 1.65% + $0.30 from 1 Oct 2026; card surcharging not permitted from 1 Oct 2026</td><td>stripe.com/au/pricing; Stripe support pricing updates</td><td>Indexed text</td></tr>
+<tr><td class="k">.com.au requires active ABN/ACN, enforced at registration and renewal from 20 May 2026; .au direct requires Australian presence only</td><td>auDA licensing rules; registrar notices (Instra, TPP Wholesale, VentraIP)</td><td>Indexed text</td></tr>
+<tr><td class="k">Bailee's (care, custody and control) cover is excluded from standard liability and sold separately</td><td>Trident Insurance (AU) and general insurer glossaries</td><td>Indexed text; broker to confirm</td></tr>
+<tr><td class="k">Work Health and Safety Act 2011 (Qld) and WHS Regulation 2011 (Qld), hazardous chemicals and SDS</td><td>Queensland legislation, general knowledge; not re-fetched</td><td>Unverified in session</td></tr>
+<tr><td class="k">Australian Consumer Law s48 single price; consumer guarantees</td><td>Competition and Consumer Act 2010 (Cth) Sch 2; general knowledge</td><td>Unverified in session</td></tr>
+<tr><td class="k">Spam Act 2003 (Cth) consent, identification, unsubscribe</td><td>General knowledge</td><td>Unverified in session</td></tr>
+<tr><td class="k">Linear issues, milestones, dates</td><td>linear.app/keatonmills, project laundrykings-full-platform-build</td><td>Connector, live</td></tr>
+<tr><td class="k">Domain availability and prices</td><td>Vercel domains API</td><td>Connector, live, 19 Sep 2026</td></tr>
+<tr><td class="k">Live site content and code</td><td>claude.ai/artifact/SJihvya38JukdcAUL7JiFx</td><td>Connector, full read</td></tr>
+</tbody></table>
+<p class="small">Figures marked "general knowledge" or "unverified in session" are stable legislative facts that were not re-fetched in this environment; confirm with the adviser as part of the Part 18 brief.</p>
+</div>

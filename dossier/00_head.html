@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<title>LaundryKings Complete Project Dossier v2</title>
+<style>
+/* local copies of Archivo, Inter, JetBrains Mono (Google Fonts, OFL) */
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<style>
+:root{
+  --navy:#1A3480; --navy-d:#12245C; --navy-l:#2B4BAA; --navy-w:#F0F3FC;
+  --red:#CC2228; --red-d:#A81B20; --red-w:#FFF1F1;
+  --ink:#141826; --body:#3C4356; --mute:#6B7386; --line:#D5DAE6; --line2:#B9C1D2;
+  --paper:#F6F3EE; --bg2:#F7F8FC; --white:#fff;
+  --ok:#0F7B4F; --ok-bg:#E6F6EE; --warn:#8A5A00; --warn-bg:#FFF6E0; --bad:#A81B20; --bad-bg:#FFF1F1; --info:#1F4E9A; --info-bg:#EAF1FD;
+  --fd:'Archivo','Liberation Sans',Arial,sans-serif; --fb:'Inter','Liberation Sans',Arial,sans-serif; --fm:'JetBrains Mono','DejaVu Sans Mono',monospace;
+  --s1:#2B4BAA; --s2:#B5651D; --s3:#7A8FB8;
+}
+@page{ size:A4; margin:16mm 15mm 18mm 15mm; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--ink);font-family:var(--fb);font-size:9.6pt;line-height:1.42}
+p{margin:0 0 5pt}
+h1,h2,h3,h4{font-family:var(--fd);color:var(--navy-d);line-height:1.12}
+h1{font-size:24pt;font-weight:900;letter-spacing:-.02em;margin:0 0 4pt}
+h2{font-size:14pt;font-weight:800;letter-spacing:-.015em;margin:12pt 0 5pt;padding-top:6pt;border-top:2px solid var(--navy);break-after:avoid}
+h3{font-size:11pt;font-weight:700;margin:9pt 0 3pt;break-after:avoid}
+h4{font-size:9.8pt;font-weight:700;margin:6pt 0 2pt;color:var(--ink);break-after:avoid}
+strong{font-weight:600;color:var(--ink)}
+small{font-size:8.2pt;color:var(--mute)}
+a{color:var(--navy-l);text-decoration:none}
+code,.mono{font-family:var(--fm);font-size:8.4pt;background:var(--bg2);padding:0 2px;border-radius:2px}
+pre{font-family:var(--fm);font-size:7.6pt;line-height:1.3;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:6pt 8pt;white-space:pre-wrap;word-break:break-word;margin:4pt 0 7pt}
+ul,ol{margin:2pt 0 6pt 14pt}
+li{margin:0 0 2pt}
+.part{break-before:page}
+.part-kicker{font-family:var(--fd);font-weight:700;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin:0 0 3pt}
+.lede{font-size:10.6pt;color:var(--body);margin:0 0 8pt;max-width:92%}
+table{width:100%;border-collapse:collapse;margin:4pt 0 8pt;font-size:8.6pt;break-inside:auto}
+thead{display:table-header-group}
+tr{break-inside:avoid}
+th{font-family:var(--fd);font-weight:700;font-size:8pt;text-align:left;color:#fff;background:var(--navy);padding:4pt 5pt;border:1px solid var(--navy)}
+td{padding:3.5pt 5pt;border:1px solid var(--line);vertical-align:top;color:var(--body)}
+tbody tr:nth-child(even) td{background:#FAFBFE}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.k{font-weight:600;color:var(--ink)}
+.tag{display:inline-block;font-family:var(--fd);font-weight:700;font-size:6.8pt;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;border-radius:3px;vertical-align:middle;white-space:nowrap}
+.t-ver{background:var(--ok-bg);color:var(--ok)}
+.t-unv{background:var(--warn-bg);color:var(--warn)}
+.t-asm{background:var(--info-bg);color:var(--info)}
+.t-cor{background:var(--bad-bg);color:var(--bad)}
+.t-new{background:var(--navy-w);color:var(--navy)}
+.t-done{background:var(--ok-bg);color:var(--ok)} .t-open{background:var(--warn-bg);color:var(--warn)} .t-blk{background:var(--bad-bg);color:var(--bad)}
+.box{border:1px solid var(--line);border-left:4px solid var(--navy);background:var(--bg2);padding:6pt 9pt;margin:6pt 0 8pt;border-radius:0 4px 4px 0;break-inside:avoid}
+.box.red{border-left-color:var(--red);background:var(--red-w)}
+.box.ok{border-left-color:var(--ok);background:var(--ok-bg)}
+.box.warn{border-left-color:var(--warn);background:var(--warn-bg)}
+.box.paper{border-left-color:var(--navy-d);background:var(--paper)}
+.box h4{margin-top:0}
+.rec{border:2px solid var(--navy);padding:7pt 10pt;margin:6pt 0 8pt;border-radius:4px;background:#fff;break-inside:avoid}
+.rec .lbl{font-family:var(--fd);font-weight:800;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8pt}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt}
+.card{border:1px solid var(--line);border-radius:4px;padding:6pt 8pt;background:#fff;break-inside:avoid}
+.card h4{margin-top:0}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:6pt;margin:6pt 0 8pt}
+.kpi .card{background:var(--navy-w);border-color:transparent}
+.kpi .v{font-family:var(--fd);font-weight:900;font-size:18pt;color:var(--navy-d);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.kpi .l{font-size:7.8pt;color:var(--mute);margin-top:3pt}
+.fig{margin:6pt 0 9pt;break-inside:avoid}
+.fig svg{display:block;max-width:100%}
+.figcap{font-size:7.9pt;color:var(--mute);margin-top:3pt}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:4px;border:1px solid rgba(0,0,0,.08)}
+.owner{font-size:7.9pt;color:var(--mute);font-style:italic}
+.ask{border:1.5px dashed var(--red);background:#fff;padding:7pt 9pt;margin:6pt 0 8pt;border-radius:4px;break-inside:avoid}
+.ask .lbl{font-family:var(--fd);font-weight:800;font-size:8pt;letter-spacing:.06em;color:var(--red);text-transform:uppercase}
+.ask .fill{border-bottom:1px solid var(--line2);height:14pt;margin:4pt 0}
+.small{font-size:8.2pt}
+.two{columns:2;column-gap:14pt}
+.nb{break-inside:avoid}
+.chip{display:inline-block;border:1px solid var(--line2);border-radius:999px;padding:1px 7px;font-size:7.9pt;margin:0 3px 3px 0;color:var(--ink);background:#fff;font-variant-numeric:tabular-nums}
+.chip.live{border-color:var(--ok);background:var(--ok-bg)}
+.chip.soon{border-color:var(--line2);background:var(--bg2);color:var(--body)}
+.toc li{margin:0 0 3pt;display:flex;justify-content:space-between;border-bottom:1px dotted var(--line2);padding-bottom:2pt}
+.toc{list-style:none;margin:0}
+.toc .r{color:var(--mute);font-size:8.2pt}
+.spec{font-family:var(--fm);font-size:7.9pt}
+/* type specimen */
+.spec-row{display:flex;align-items:baseline;gap:10pt;border-bottom:1px solid var(--line);padding:3pt 0}
+.spec-row .m{width:120pt;font-family:var(--fm);font-size:7.6pt;color:var(--mute)}
+.spec-row .t{font-family:var(--fd);font-weight:800;color:var(--navy-d);line-height:1;white-space:nowrap;overflow:hidden}
+/* cover */
+.cover{height:257mm;position:relative;background:var(--navy-d);color:#fff;padding:22mm 18mm;border-radius:6px;break-after:page}
+.cover .crown{font-family:var(--fd);font-weight:900;font-size:34pt;letter-spacing:-.03em;line-height:.95}
+.cover .crown span{color:#fff;display:block}
+.cover .tag{background:var(--red);color:#fff;font-size:8pt;padding:3px 8px;margin-top:8pt}
+.cover h1{color:#fff;font-size:30pt;margin-top:34mm;letter-spacing:-.025em;line-height:1.02}
+.cover .sub{font-size:12pt;color:#C9D2F2;margin-top:6pt;max-width:120mm}
+.cover .meta{position:absolute;left:18mm;right:18mm;bottom:18mm;display:grid;grid-template-columns:1fr 1fr;gap:6pt 18pt;font-size:8.6pt;color:#C9D2F2;border-top:1px solid rgba(255,255,255,.25);padding-top:8pt}
+.cover .meta b{color:#fff;font-weight:600;display:block;font-size:8pt;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1pt}
+.cover .stripe{position:absolute;right:0;top:0;bottom:0;width:14mm;background:var(--red);border-radius:0 6px 6px 0}
+.codehead{font-family:var(--fd);font-weight:700;font-size:8pt;color:var(--mute);margin:6pt 0 2pt;border-bottom:1px solid var(--line)}
+pre.code{font-family:"DejaVu Sans Mono","Liberation Mono",monospace;font-style:normal;font-size:5.6pt;line-height:1.28;padding:3pt 4pt;background:#fff;border:none;margin:0}
+pre.code .ln{display:inline-block;width:22pt;text-align:right;color:#9AA3B5;margin-right:5pt;user-select:none}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="stripe"></div>
+  <div class="crown"><span>LAUNDRY</span><span>KINGS</span></div>
+  <div class="tag">WE WASH IT WELL</div>
+  <h1>Complete Project Dossier<br>Revision 2 · Final</h1>
+  <p class="sub">Session handover, verified audit, design system, feature roadmap, AU compliance register, decision log and the complete website source of record. Laundry pickup &amp; delivery across Brisbane, Logan and South East Queensland.</p>
+  <div class="meta">
+    <div><b>Prepared for</b>Max Jones and Callum Page, principals</div>
+    <div><b>Date</b>19 September 2026 (AEST) · supersedes v1 of 19 Sep 2026</div>
+    <div><b>Live artefact</b>claude.ai/artifact/SJihvya38JukdcAUL7JiFx (v4.2, unchanged)</div>
+    <div><b>Source of record</b>GitHub xrcallum/King-laundry- · SHA-256 b1bda883…eac589</div>
+    <div><b>Proposed filing</b>MAXCAL | LaundryKings › GOV00 › LKG-GOV00-01_Complete Dossier_v2 <span style="opacity:.75">(prefix LKG is an assumption; confirm against artefact register)</span></div>
+    <div><b>Status legend</b>VERIFIED = re-checked against live file or live system · UNVERIFIED = stated, not yet confirmed · ASSUMPTION = modelled, variable named · CORRECTED = v1 figure changed</div>
+  </div>
+</div>
+
+<h1>Contents</h1>
+<p class="lede">Parts 0 to 18 are the working dossier. Appendices A to C carry the verification evidence, sources and the complete source code. Read Part 0 first; it is the two-page version of everything else.</p>
+<ul class="toc">
+  <li><span>Part 0 — Executive summary, what changed in v2, and the seven findings that change the plan</span><span class="r">p. 3</span></li>
+  <li><span>Part 1 — Where we left off and the exact next action</span><span class="r"></span></li>
+  <li><span>Part 2 — The project, principals, brand system and voice</span><span class="r"></span></li>
+  <li><span>Part 3 — Pricing, competitor rate card, unit economics, coverage and booking config</span><span class="r"></span></li>
+  <li><span>Part 4 — Architecture, data model, job lifecycle and the production target</span><span class="r"></span></li>
+  <li><span>Part 5 — What has been shipped (v4.2)</span><span class="r"></span></li>
+  <li><span>Part 6 — Linear state, cross-checked live, with hygiene actions</span><span class="r"></span></li>
+  <li><span>Part 7 — Design audit, re-verified against the live file (15 defects confirmed, 6 added)</span><span class="r"></span></li>
+  <li><span>Part 8 — Design system specification: Bold Editorial</span><span class="r"></span></li>
+  <li><span>Part 9 — Feature recommendations: Now / Next / Later</span><span class="r"></span></li>
+  <li><span>Part 10 — Operator model, onboarding, WHS and insurance</span><span class="r"></span></li>
+  <li><span>Part 11 — AU compliance register</span><span class="r"></span></li>
+  <li><span>Part 12 — Competitor context</span><span class="r"></span></li>
+  <li><span>Part 13 — Risk register</span><span class="r"></span></li>
+  <li><span>Part 14 — Roadmap, milestones and launch checklist</span><span class="r"></span></li>
+  <li><span>Part 15 — Measurement: KPI tree and instrumentation</span><span class="r"></span></li>
+  <li><span>Part 16 — Decision log (options, recommended first, owner and date)</span><span class="r"></span></li>
+  <li><span>Part 17 — Connectors, filing, publish rules and the revised resume block</span><span class="r"></span></li>
+  <li><span>Part 18 — Information capture: what we need from whom</span><span class="r"></span></li>
+  <li><span>Appendix A — Verification report (methods, commands, results)</span><span class="r"></span></li>
+  <li><span>Appendix B — Sources</span><span class="r"></span></li>
+  <li><span>Appendix C — Complete website source code, v4.2, verbatim and unabridged</span><span class="r"></span></li>
+</ul>
+<div class="box paper">
+  <h4>How to read the tags</h4>
+  <p><span class="tag t-ver">Verified</span> re-checked in this revision against the live artefact file, Linear, Vercel or a cited public source. <span class="tag t-cor">Corrected</span> a v1 figure that was wrong or imprecise; the new figure follows. <span class="tag t-unv">Unverified</span> stated by a principal or a source we could not reach; the confirming step is named. <span class="tag t-asm">Assumption</span> a modelled figure; the basis and the variable that drives it are named. <span class="tag t-new">New in v2</span> content that did not exist in v1.</p>
+</div>

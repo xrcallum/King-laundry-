@@ -1,0 +1,286 @@
+<!-- ===================== PART 14 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 14</p>
+<h1>Roadmap, milestones and launch checklist</h1>
+<div class="fig">
+<svg viewBox="0 0 720 260" width="720" height="260" font-family="Inter, Liberation Sans, Arial" font-size="9">
+  <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">19 September to 31 December 2026</text>
+  <!-- timeline: x=150..710 covers 19 Sep (day 0) .. 31 Dec (day 103) => 5.437 px/day -->
+  <g fill="#6B7386" font-size="8.5" text-anchor="middle">
+    <text x="150" y="30">19 Sep</text><text x="215" y="30">1 Oct</text><text x="291" y="30">15 Oct</text><text x="378" y="30">1 Nov</text><text x="536" y="30">30 Nov</text><text x="705" y="30">31 Dec</text>
+  </g>
+  <g stroke="#D5DAE6"><line x1="150" y1="36" x2="150" y2="250"/><line x1="215" y1="36" x2="215" y2="250"/><line x1="291" y1="36" x2="291" y2="250" stroke="#CC2228" stroke-dasharray="3 3"/><line x1="378" y1="36" x2="378" y2="250"/><line x1="536" y1="36" x2="536" y2="250" stroke="#CC2228" stroke-dasharray="3 3"/><line x1="705" y1="36" x2="705" y2="250" stroke="#CC2228" stroke-dasharray="3 3"/></g>
+  <g fill="#3C4356">
+    <text x="0" y="52">Phase A Foundation</text><rect x="150" y="43" width="22" height="12" rx="2" fill="#1A3480"/>
+    <text x="0" y="72">Phase B Marketing</text><rect x="172" y="63" width="33" height="12" rx="2" fill="#1A3480"/>
+    <text x="0" y="92">Phase C App</text><rect x="183" y="83" width="27" height="12" rx="2" fill="#1A3480"/>
+    <text x="0" y="112">Decisions D-01, D-03, D-04, D-07</text><rect x="150" y="103" width="38" height="12" rx="2" fill="#CC2228"/>
+    <text x="0" y="132">Adviser brief and answer</text><rect x="188" y="123" width="38" height="12" rx="2" fill="#B5651D"/>
+    <text x="0" y="152">Insurance quotes and bind</text><rect x="215" y="143" width="87" height="12" rx="2" fill="#B5651D"/>
+    <text x="0" y="172">First operator, first paid job</text><rect x="226" y="163" width="65" height="12" rx="2" fill="#0F7B4F"/>
+    <text x="0" y="192">Vercel + Supabase + Stripe + Resend</text><rect x="291" y="183" width="190" height="12" rx="2" fill="#2B4BAA"/>
+    <text x="0" y="212">Photography, GBP, reviews, domain live</text><rect x="378" y="203" width="158" height="12" rx="2" fill="#2B4BAA"/>
+    <text x="0" y="232">Operator PWA, Club billing, SEO, analytics</text><rect x="536" y="223" width="169" height="12" rx="2" fill="#2B4BAA"/>
+  </g>
+  <g fill="#A81B20" font-weight="600" font-size="8.5" text-anchor="middle"><text x="291" y="248">M1</text><text x="536" y="248">M2</text><text x="705" y="248">M3</text></g>
+</svg>
+<p class="figcap">Figure 14.1. Navy bars are Callum's build work; red is decisions owed by principals; tan is adviser and broker; green is the first paid job. Dates are Linear milestone targets.</p>
+</div>
+
+<h3>Phase plan for KEA-18, three publishes</h3>
+<table>
+<thead><tr><th style="width:14%">Phase</th><th>Scope (defect IDs)</th><th style="width:26%">Exit test</th><th style="width:12%">Target</th></tr></thead>
+<tbody>
+<tr><td class="k">A Foundation</td><td>D2, D3, D4, D7, D15, D16, D17, D18, D20. Tokens for tracking, type scale, radius, spacing; solid state colours; navy tints; money() and tabular numerals; icon sprite replacing every emoji; borders tonal; mute darkened; no red on navy.</td><td>Pre-flight script green: zero emoji, no font-size or letter-spacing outside tokens, 34 sections, no duplicate IDs, all targets present, script parses. Phone check on iOS and Android.</td><td>23 Sep</td></tr>
+<tr><td class="k">B Marketing</td><td>D8, D9, D11, D12, D13 (with Max's text), D14, D21. Home to Bold Editorial bands; paper surface; footer and mobile menu restructured; coverage cloud; nav weight; Gamma placeholders in photo slots; OG and JSON-LD; Kings Club qualifier; estimator visual.</td><td>Lighthouse accessibility 95+; share preview renders; 390 px walkthrough of all 15 marketing pages.</td><td>27 Sep</td></tr>
+<tr><td class="k">C App</td><td>D1, D5, D6, D10, D19. Tab bar sprite icons with red pill active; stepper; verb-first buttons; wizard header stacks; aria-labels; PWA manifest and install sheet; status timeline; photo proof fields; scroll fade-up with reduced-motion branch.</td><td>Book a test job end to end on a phone from the installed PWA; VoiceOver pass of the wizard.</td><td>30 Sep</td></tr>
+</tbody></table>
+
+<h3>Launch checklist for M2 Public Launch (go / no-go on 24 Nov 2026)</h3>
+<table>
+<thead><tr><th style="width:5%">#</th><th>Item</th><th style="width:12%">Owner</th><th style="width:12%">Evidence</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Entity name, ABN, address in footer, terms and privacy; placeholder gone.</td><td>Max</td><td>Live page</td></tr>
+<tr><td>2</td><td>Domain live with HTTPS; the fallback from D-09 if .com.au is not obtainable.</td><td>Callum</td><td>DNS + certificate</td></tr>
+<tr><td>3</td><td>Privacy Policy and Terms cleared by solicitor; date of effect inserted; draft markers removed.</td><td>Max</td><td>Solicitor email filed LEG02</td></tr>
+<tr><td>4</td><td>Stripe live mode; a real $73.50 test booking paid and refunded.</td><td>Callum</td><td>Stripe dashboard</td></tr>
+<tr><td>5</td><td>Six transactional emails and two SMS tested on Gmail, Outlook, iOS Mail; STOP works.</td><td>Callum</td><td>Test log</td></tr>
+<tr><td>6</td><td>Bailee's, public liability and cyber policies bound; operator certificates on file.</td><td>Max</td><td>Certificates PPL08</td></tr>
+<tr><td>7</td><td>At least two active operators covering all 16 live suburbs, or the live list reduced to match.</td><td>Both</td><td>#/opsops</td></tr>
+<tr><td>8</td><td>Real photography in hero and how-it-works; model release filed.</td><td>Callum</td><td>PPL08</td></tr>
+<tr><td>9</td><td>Google Business Profile verified; five reviews.</td><td>Callum</td><td>GBP</td></tr>
+<tr><td>10</td><td>Analytics events firing; Part 15 dashboard reading real numbers.</td><td>Callum</td><td>Dashboard</td></tr>
+<tr><td>11</td><td>Pre-flight script and Lighthouse (performance 85+, accessibility 95+) green on the launch build.</td><td>Callum</td><td>CI log</td></tr>
+<tr><td>12</td><td>Incident, breach and complaint processes written in OPS03 with a named first responder.</td><td>Max</td><td>Runbook</td></tr>
+</tbody></table>
+</div>
+
+<!-- ===================== PART 15 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 15</p>
+<h1>Measurement: KPI tree and instrumentation</h1>
+<p class="lede">M3 sets one number: 50+ bookings a month by 31 December 2026. Everything else is a driver of that number or a guard on it. No targets below are forecasts; they are the thresholds at which a principal acts.</p>
+<div class="fig">
+<svg viewBox="0 0 720 210" width="720" height="210" font-family="Inter, Liberation Sans, Arial" font-size="9">
+  <g stroke="#B9C1D2" stroke-width="1"><line x1="360" y1="52" x2="140" y2="90"/><line x1="360" y1="52" x2="360" y2="90"/><line x1="360" y1="52" x2="580" y2="90"/>
+  <line x1="140" y1="122" x2="64" y2="160"/><line x1="140" y1="122" x2="182" y2="160"/><line x1="360" y1="122" x2="300" y2="160"/><line x1="360" y1="122" x2="418" y2="160"/><line x1="580" y1="122" x2="536" y2="160"/><line x1="580" y1="122" x2="654" y2="160"/></g>
+  <rect x="250" y="20" width="220" height="32" rx="4" fill="#12245C"/><text x="360" y="40" text-anchor="middle" fill="#fff" font-weight="700" font-size="10">Paid bookings per month · M3 target 50+</text>
+  <g font-weight="600" fill="#fff" text-anchor="middle">
+    <rect x="50" y="90" width="180" height="32" rx="4" fill="#1A3480"/><text x="140" y="110">Demand: visits × booking rate</text>
+    <rect x="270" y="90" width="180" height="32" rx="4" fill="#1A3480"/><text x="360" y="110">Retention: Club members × weeks</text>
+    <rect x="490" y="90" width="180" height="32" rx="4" fill="#1A3480"/><text x="580" y="110">Capacity: rounds × slots × fill</text>
+  </g>
+  <g fill="#141826" text-anchor="middle" font-size="8.5">
+    <rect x="10" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="64" y="176">Estimator to wizard</text><text x="64" y="190" fill="#6B7386">act under 25%</text>
+    <rect x="128" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="182" y="176">Wizard completion</text><text x="182" y="190" fill="#6B7386">act under 40%</text>
+    <rect x="246" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="300" y="176">2nd booking in 30 d</text><text x="300" y="190" fill="#6B7386">act under 30%</text>
+    <rect x="364" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="418" y="176">Club pause or cancel</text><text x="418" y="190" fill="#6B7386">act over 15% a month</text>
+    <rect x="482" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="536" y="176">On-time collection</text><text x="536" y="190" fill="#6B7386">act under 95%</text>
+    <rect x="600" y="160" width="108" height="40" rx="4" fill="#F7F8FC" stroke="#D5DAE6"/><text x="654" y="176">Slot fill per round</text><text x="654" y="190" fill="#6B7386">open a round over 80%</text>
+  </g>
+</svg>
+<p class="figcap">Figure 15.1. Three drivers, six leading indicators. Thresholds are action triggers, set by judgement for launch scale; revisit at M3 with real data.</p>
+</div>
+<table>
+<thead><tr><th style="width:24%">Indicator</th><th>Definition</th><th style="width:22%">Instrument</th><th style="width:14%">Cadence · owner</th></tr></thead>
+<tbody>
+<tr><td class="k">Visits to booking</td><td>Unique visitors to any marketing page ÷ bookings submitted.</td><td>Analytics events (M2); before that, inbox count ÷ artefact views.</td><td>Weekly · Callum</td></tr>
+<tr><td class="k">Wizard completion</td><td>Step 3 confirmations ÷ step 1 starts.</td><td>Events wizard_step_1, wizard_submit.</td><td>Weekly · Callum</td></tr>
+<tr><td class="k">On-time collection and return</td><td>Collected inside the booked window; returned by the promised time.</td><td>Timestamps on the status timeline.</td><td>Weekly · Callum, ops</td></tr>
+<tr><td class="k">Average order value and loads per booking</td><td>Invoice total ÷ bookings; loads ÷ bookings.</td><td>Invoices collection; Ops Sheet.</td><td>Monthly · Max</td></tr>
+<tr><td class="k">Contribution per booking</td><td>Part 3 formula with real P, T.</td><td>Ops Sheet.</td><td>Monthly · Max</td></tr>
+<tr><td class="k">Re-wash and damage claims</td><td>Claims ÷ bookings; time to settle.</td><td>Feedback collection; claims log OPS03.</td><td>Monthly · Max</td></tr>
+<tr><td class="k">Operator utilisation</td><td>Collections per round per week; loads per operator per week.</td><td>Bookings by operator.</td><td>Weekly · Callum</td></tr>
+<tr><td class="k">NPS</td><td>Post-return single question (M3).</td><td>In-app and email.</td><td>Monthly · both</td></tr>
+</tbody></table>
+<p class="small">Ops Runner rule: the monthly roll-up is a deterministic job, so it belongs in the single Apps Script on the Ops Sheet as a menu item, run by a principal, preview first. Expected dry-run result on first run: a new tab "KPI 2026-10" with eight rows and zero writes elsewhere.</p>
+</div>
+
+<!-- ===================== PART 16 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 16</p>
+<h1>Decision log</h1>
+<p class="lede">Fourteen decisions. Each has options with the recommended option first, an owner and a date. Decisions marked adviser produce a brief, not a conclusion.</p>
+
+<div class="card nb"><h4>D-01 · Seed config: phone, email, PayID or BSB, Stripe link · Both · 26 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> A business mobile on a brand SIM forwarded to Callum, hello@ on the chosen domain (or a Google Workspace alias now), PayID on the entity's account, Stripe payment link in test until KEA-13. Removes the placeholder and makes the first invoice payable.</li><li>Personal numbers and addresses now, swap later. Faster; leaks personal details into public pages and into customer phones.</li></ol></div>
+
+<div class="card nb"><h4>D-02 · First operator · Callum · 3 Oct 2026</h4>
+<ol><li><strong>(Recommended)</strong> One operator in Meadowbrook or Springwood (highest live density), engaged under the adviser-cleared agreement, onboarding checklist complete, live suburbs trimmed to what that operator can reach inside the windows.</li><li>Principal runs the first jobs personally under the brand. Fastest learning; blurs the operator model and delays the classification test.</li></ol></div>
+
+<div class="card nb"><h4>D-03 · Entity name, ABN, address for footer, terms, Stripe, domain · Max · 25 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> Confirm the trading entity and provide the three strings. The dossier never invents them. Everything in M2 depends on this.</li><li>Trade under a principal's existing ABN as a business name in the interim. Adviser question: does that create grouping or liability exposure? Options only; route to adviser.</li></ol></div>
+
+<div class="card nb"><h4>D-04 · +5% on minimum only, or on every line · Max · 25 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> Keep line items as they are. Reposition on all-in floor with delivery included and no service fee. Confirm Laundry Lady's 2026 per-load price and whether their minimum includes delivery, then publish the comparison with its date.</li><li>+5% on every line. Simple rule; pushes the load price to $33.60 against a competitor load price that already appears lower; no evidence customers value the premium yet.</li><li>Match Laundry Lady's minimum at $70 and compete on fees. Loses the "priced above, delivers more" story the guarantee supports.</li></ol></div>
+
+<div class="card nb"><h4>D-05 · Hero imagery: Gamma, shoot, or illustration · Callum · before Phase B (23 Sep)</h4>
+<ol><li><strong>(Recommended)</strong> Gamma-generated placeholders in Phase B against the brief in Part 8, replaced by a half-day shoot of the first operator for M2 (KEA-15).</li><li>Illustration throughout. Distinctive; lands closer to "template" than "trusted", and every competitor with traction shows a person.</li><li>Shoot first. Best result; blocks Phase B on scheduling.</li></ol></div>
+
+<div class="card nb"><h4>D-06 · Same-day messaging · Both · when true</h4>
+<ol><li><strong>(Recommended)</strong> No same-day claim until a live round has delivered same-day for four consecutive weeks. Next-day is the promise.</li><li>"Same-day where available." Vague claims invite ACL scrutiny and support load.</li></ol></div>
+
+<div class="card nb"><h4>D-07 · Kings Club $49 / $69 / $89 final, or modelled · Max · 25 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> Hold the three points for launch with the two-load qualifier and a "launch pricing under review" note (already in the file). Model against real loads per member after eight weeks.</li><li>Re-model now. No data yet; the model would be assumptions on assumptions.</li></ol></div>
+
+<div class="card nb"><h4>D-08 · Nav from 6 items to 4 · Callum · Phase B</h4>
+<ol><li><strong>(Recommended)</strong> Services · Pricing · Kings Club · For business, plus the crown home link and one CTA "Book a collection". Everything else lives in the footer and the mobile "More".</li><li>Keep six. The bar competes with the logo on mobile (D14).</li></ol></div>
+
+<div class="card nb"><h4>D-09 · Domain · Callum · 19 Sep check, 25 Sep decision</h4>
+<p class="small">Findings: Vercel cannot sell laundrykings.com.au and laundrykings.com is registered to a third party (resolves to a hosting IP). laundrykings.au is available at USD 23.99 a year and laundrykings.co at USD 29.99 through Vercel. laundrykings.com.au has no DNS record. Any .com.au needs an active ABN with a connection to the name (D-03).</p>
+<ol><li><strong>(Recommended)</strong> Run an auDA WHOIS lookup today. If laundrykings.com.au is unregistered, register it through an Australian registrar in the entity's name once D-03 lands, and point it at Vercel. Also register laundrykings.au (the .au direct is cheap, defensive and needs only Australian presence) and redirect it to .com.au.</li><li>If .com.au is taken: launch on laundrykings.au as the primary. Australians increasingly recognise .au direct; it needs no ABN and can be bought today. Keep the brand copy domain-free.</li><li>Approach the .com holder to buy. Slow and uncertain; only if the .com.au is also gone.</li></ol>
+<p class="small">Do not buy anything without Callum's explicit approval in a chat; the Vercel connector can purchase.</p></div>
+
+<div class="card nb"><h4>D-10 · Production backend: Supabase or Firebase · Callum · 14 Oct 2026 (before M2 build)</h4>
+<ol><li><strong>(Recommended)</strong> Supabase, Sydney region: Postgres for finance reporting, row-level security for operators, auth with magic links. One-time migration of the document model into tables.</li><li>Firebase: nearest to the current document model, quickest migration; weaker reporting, rules harder to audit, data region choice narrower.</li></ol></div>
+
+<div class="card nb"><h4>D-11 · Copy of record · Callum · 19 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> Git repository xrcallum/King-laundry-. Every publish is committed first with the artefact version in the message. The dossier PDF references the commit hash. Appendix C remains for a paper reader.</li><li>PDF as record. Proven unrecoverable (351 truncated lines).</li></ol></div>
+
+<div class="card nb"><h4>D-12 · Operator payout model · Max · 3 Oct 2026, with adviser answer</h4>
+<ol><li><strong>(Recommended)</strong> Option A in Part 10: per-load fee plus per-collection fee, figures set in the Ops Sheet, weekly settlement by batch. Keeps plant and labour components visible for the Super analysis.</li><li>Revenue share. Simpler; looks most like wages.</li><li>Hybrid with Kings Club retainer. Revisit at M3.</li></ol></div>
+
+<div class="card nb"><h4>D-13 · Linear membership and ownership · Callum · 19 Sep 2026</h4>
+<ol><li><strong>(Recommended)</strong> Add Max to the workspace; assign D-03, D-04, D-07, D-12, KEA-14 and the new KEA-22 and KEA-23 to Max; add due dates to every open issue.</li><li>Keep Callum as sole assignee and track Max's items in this dossier. Two sources of truth.</li></ol></div>
+
+<div class="card nb"><h4>D-14 · Dossier cadence · Both · standing</h4>
+<ol><li><strong>(Recommended)</strong> Revise at each milestone (M1, M2, M3) and after any decision here changes. Parts 0, 1, 6, 16 and 17 update; the rest only when facts change. Superseded versions to Archive99.</li><li>Revise per session. Too frequent; the Build Log covers session detail.</li></ol></div>
+</div>
+
+<!-- ===================== PART 17 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 17</p>
+<h1>Connectors, filing, publish rules and the revised resume block</h1>
+<h3>Connectors</h3>
+<table>
+<thead><tr><th style="width:20%">Connector</th><th>State and use</th></tr></thead>
+<tbody>
+<tr><td class="k">Linear</td><td>Working; read live in v2. Board, issues, milestones, status updates.</td></tr>
+<tr><td class="k">Google Drive</td><td>Working for Max's account. Empty from Callum's account in v2; confirm sharing of MAXCAL | LaundryKings to callum@maxcalprojects.com.</td></tr>
+<tr><td class="k">Gmail</td><td>Draft only, never send.</td></tr>
+<tr><td class="k">Gamma</td><td>Deck exists; generate_image not yet used. Phase B uses it for hero, three how-it-works squares and the OG card.</td></tr>
+<tr><td class="k">Vercel</td><td>Connected. Used read-only in v2 for the domain check. Deploy at M2. Do not buy a domain without Callum's approval in chat.</td></tr>
+<tr><td class="k">Semrush</td><td>Approved, zero API units. Top up before the M2 copy pass; not before.</td></tr>
+<tr><td class="k">Mobbin, Figma, Webflow, Lovable</td><td>Skip. Rebuilding elsewhere breaks convergence.</td></tr>
+<tr><td class="k">HubSpot, Cloudflare, Slack, Canva</td><td>Connected, unconfigured. M3 at the earliest, HubSpot only with a sales motion.</td></tr>
+<tr><td class="k">GitHub</td><td><span class="tag t-new">New in v2</span> xrcallum/King-laundry-, copy of record for site and dossier.</td></tr>
+</tbody></table>
+
+<h3>Repository layout</h3>
+<pre>King-laundry-/
+  README.md                         what this is, how to publish, how to verify
+  site/laundrykings-site.html       v4.2 copy of record (SHA-256 b1bda883…eac589)
+  verify/preflight.py               the pre-publish checks from Appendix A
+  dossier/                          this document's HTML source, build script and PDF
+</pre>
+
+<div class="box red"><h4>Publish rules, unchanged and non-negotiable</h4>
+<p>Same URL. capabilities <code>{"db":{},"user":{}}</code>. favicon crown. contract 0.2.52. Never add mcp. Keep every element ID. Never strip AU compliance text. Commit before publish. Pre-flight green before publish. Confirm on a phone after publish.</p></div>
+
+<h3>Resume block, paste into a fresh chat, then say "go"</h3>
+<pre>LAUNDRYKINGS - RESUME FROM PHASE A (FOUNDATION) - DOSSIER v2
+Live artifact: claude.ai/artifact/SJihvya38JukdcAUL7JiFx (v4.2)
+Copy of record: github.com/xrcallum/King-laundry- site/laundrykings-site.html
+Working file: /mnt/user-data/outputs/laundrykings-site.html
+If missing: clone the repo, or Artifact action "read" on the URL above.
+Linear: KEA-18 (spec = dossier v2 Parts 7 and 8). Census done and re-verified. Do not re-audit.
+Execute Phase A -> preflight -> publish -> phone check -> Phase B -> Phase C. Three publishes.
+
+RULES
+- Keep every existing element ID. JS depends on them.
+- Before every publish run verify/preflight.py: script parses, no dup IDs,
+  34 sections, every getElementById target exists, ZERO emoji (Unicode scan,
+  not a count), no font-size or letter-spacing outside tokens.
+- Commit to Git before publish; commit message carries the artifact version.
+- Publish url=claude.ai/artifact/SJihvya38JukdcAUL7JiFx
+  capabilities {"db":{},"user":{}} favicon crown contract 0.2.52. Never add mcp.
+- Never strip AU compliance text. Never invent footer entity text (D13 -> Max).
+- Red never sits directly on navy (2.07:1). On navy, CTA = white fill, red text.
+
+PHASE A - FOUNDATION (D2 D3 D4 D7 D15 D16 D17 D18 D20)
+1. Tracking tokens: display -.04em, h1 -.03, h2 -.02, h3 -.01, body 0, micro .01, caps .08.
+   Remove all 13 ad-hoc letter-spacing values.
+2. Type scale 13/16/20/25/31/39/49/61 px. H1 clamp(2.8rem,6.5vw,5.4rem) weight 900.
+   Replace all 57 font-size values with the 8 tokens.
+3. Radius tokens 6/12/18 + 999px pills + 50% avatars. Replace 17 values.
+4. .plan.on rgba -> solid #2A2F6B. Add --navy-sel #22409A, --navy-hov #23407A.
+   Navy tints #12245C page / #1A3480 raised / #22409A selected. No rgba over colour.
+5. money(): strip .00 on whole dollars ($49, $32; keep $73.50, $13.50).
+   font-variant-numeric: tabular-nums on every price.
+6. SVG symbol sprite (30 symbols, Part 8 list), 24px grid, 1.75 stroke, currentColor.
+   Replace ALL emoji: 75 inside <i> and 49 loose glyphs incl. 23 arrows. Scan = 0.
+7. Card borders -> tonal or 1px rgba(20,24,38,.08); remove card shadows.
+8. --mute #7C8598 -> #6B7386. No red text/fill on navy surfaces.
+
+PHASE B - MARKETING (D8 D9 D11 D12 D13 D14 D21)
+1. Gamma generate_image per Part 8 brief: hero 4:5, three how-it-works squares, OG 1200x630.
+2. Home to Bold Editorial bands (Part 8 layout table). --paper #F6F3EE replaces #EEF0F8.
+3. Footer 26 -> 10-12 links, two groups, text #C9D2F2 or white. Entity line = Max's text only.
+4. Mobile menu: 5 primary + More + one red CTA. Nav to 4 items (D-08).
+5. Coverage: grouped suburb cloud, two columns; Check button inline secondary.
+6. Nav CTA weight down on mobile. 3 page-header variants across 14 pages.
+7. og:* meta, LocalBusiness + Service + FAQPage JSON-LD, per-route title swap.
+8. Kings Club copy: "save around $28 a week compared with two ad-hoc loads".
+9. Estimator: add "what a load looks like" strip.
+
+PHASE C - APP (D1 D5 D6 D10 D19)
+1. Tab bar: 5 sprite icons, red pill active. Wizard tiles navy-fill selected.
+2. Stepper max-width 140px, elements touching. "Continue" then arrow icon, all buttons.
+3. Wizard card header stacks below 480px.
+4. aria-label on every icon-only control.
+5. PWA: manifest (crown 192/512, theme #12245C, standalone, start_url #/app),
+   minimal service worker, one-time install sheet after first booking.
+6. Status timeline Booked/Assigned/Collected/Washing/Returned; states in_progress, returned.
+7. Photo proof fields on collected and returned (ops sets them for now).
+8. Scroll fade-up 12px/320ms inside prefers-reduced-motion: no-preference.
+
+THEN: report Lighthouse a11y and perf, close KEA-18, post Linear status update.
+PRICING (do not change): load $32, iron $3.50, delivery $13.50, MINIMUM $73.50,
+Kings Club $49/$69/$89. Live in config/pricing.
+</pre>
+</div>
+
+<!-- ===================== PART 18 ===================== -->
+<div class="part">
+<p class="part-kicker">Part 18</p>
+<h1>Information capture: what we need from whom</h1>
+<p class="lede">One box per named person. Fill in the name; the email is looked up in the Ops Sheet Directory (Max's is not recorded in any project document, so it is asked for here). Requests are drafted, never sent.</p>
+
+<div class="ask"><div class="lbl">Ask this person: Max Jones</div>
+<p class="small">Email: <span class="fill" style="display:inline-block;width:220pt;height:10pt"></span> (not in project docs; add to Ops Sheet Directory)</p>
+<p><strong>Subject:</strong> LaundryKings: five inputs needed by 25 Sep for the design and launch phases</p>
+<p>Max, dossier v2 is attached. Five things only you can supply, with the parts that explain why:</p>
+<ol>
+<li>Trading entity name, ABN and registered address for the footer, terms, Stripe and domain (D-03, Part 16). The placeholder is public today.</li>
+<li>Your call on the +5% question with the competitor card in Part 3 in front of you (D-04). Recommended: keep line items, reposition on the all-in floor. Please also check thelaundrylady.com.au/pricing for their current per-load price and whether the $70 minimum includes delivery; the page is blocked from my build environment.</li>
+<li>Confirm Kings Club at $49 / $69 / $89 for launch with the two-load qualifier (D-07).</li>
+<li>Whether the MAXCAL | LaundryKings Drive folder is shared to callum@maxcalprojects.com; it is empty from this side.</li>
+<li>Your preferred adviser for the operator engagement brief below, and whether you want to send it or have me draft it into a Gmail draft for you.</li>
+</ol>
+<p>The adviser brief (Part 10) needs to go before the first operator is registered on 3 Oct.</p></div>
+
+<div class="ask"><div class="lbl">Ask this person: Callum Page</div>
+<p class="small">Email: callum@maxcalprojects.com</p>
+<p><strong>Subject:</strong> LaundryKings: approvals needed from you before Phase A publishes</p>
+<ol>
+<li>Approve Git as the copy of record (D-11) and confirm the repository and branch.</li>
+<li>Approve the domain fallback ladder (D-09) and confirm whether I may register laundrykings.au once D-03 lands. Nothing is bought without your written yes in chat.</li>
+<li>Confirm the Gamma placeholder route for Phase B imagery (D-05) and the half-day shoot for M2.</li>
+<li>Confirm the nav reduction to four items (D-08).</li>
+<li>Confirm whether the Gmail and Linear connectors should be used from callum@maxcalprojects.com rather than the personal address recorded in v1.</li>
+</ol></div>
+
+<div class="ask"><div class="lbl">Ask this person: adviser or solicitor (name to be supplied by Max)</div>
+<p class="small">Email: <span class="fill" style="display:inline-block;width:220pt;height:10pt"></span></p>
+<p><strong>Subject:</strong> LaundryKings: engagement model for independent laundry operators, advice requested</p>
+<p>LaundryKings is a web platform under which independent operators with their own ABN, equipment, premises and vehicle collect, wash, fold and return domestic laundry in an assigned suburb. The platform sets published prices, allocates bookings, schedules collection windows, invoices the customer and handles support. Operators may decline jobs. Payout model under consideration is a fixed fee per load plus a fixed fee per collection, settled weekly. Draft operator agreement, workflow description and website text attached. We ask for advice, with options where the answer is not clear-cut, on:</p>
+<ol>
+<li>Contractor versus employee characterisation on these facts, and which contract terms and operating practices most affect it.</li>
+<li>Whether payments under the proposed payout model are wholly or principally for labour for superannuation guarantee purposes, and whether separating plant and labour components changes the position.</li>
+<li>Whether LaundryKings is a digital labour platform and its operators employee-like workers under the Fair Work Act (s15P and related provisions); what obligations apply now, including the deactivation code; and the effect of any future minimum standards order covering last-mile or general delivery work.</li>
+<li>Whether operators would be deemed workers for WorkCover Queensland purposes.</li>
+<li>Payroll tax (Queensland): relevant-contract deeming and grouping with related entities of the principals.</li>
+<li>Review of the draft Privacy Policy and Terms of Service, including the cancellation and guarantee terms.</li>
+</ol>
+<p>Decision needed by 3 October 2026 to register the first operator.</p></div>
+</div>
