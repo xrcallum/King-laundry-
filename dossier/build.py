@@ -51,6 +51,7 @@ def assemble():
     body += "".join(appc)
 
     body += open(os.path.join(here, "06_appendixD.html"), encoding="utf-8").read()
+    body += open(os.path.join(here, "07_appendixE.html"), encoding="utf-8").read()
     body += "\n</body></html>\n"
     return body
 
@@ -96,7 +97,7 @@ def page_map(pdf_path):
         text = page.extract_text() or ""
         for m in re.finditer(r"\bPART (\d+)\b", text):
             found.setdefault(f"Part {m.group(1)}", i)
-        for m in re.finditer(r"\bAPPENDIX ([A-D])\b", text):
+        for m in re.finditer(r"\bAPPENDIX ([A-E])\b", text):
             found.setdefault(f"Appendix {m.group(1)}", i)
     return found
 
@@ -107,7 +108,7 @@ def fill_toc(body, pages):
         if n is None:
             return m.group(0)
         return re.sub(r'<span class="r">[^<]*</span>', f'<span class="r">p. {n}</span>', m.group(0))
-    return re.sub(r'<li><span>(Part \d+|Appendix [A-D]) —.*?</li>', repl, body)
+    return re.sub(r'<li><span>(Part \d+|Appendix [A-E]) —.*?</li>', repl, body)
 
 
 body = assemble()
@@ -116,7 +117,7 @@ print(f"pass 1: html {len(body.encode()):,} bytes")
 render(out_html, out_pdf)
 
 pages = page_map(out_pdf)
-missing = [k for k in ([f"Part {i}" for i in range(19)] + [f"Appendix {c}" for c in "ABCD"])
+missing = [k for k in ([f"Part {i}" for i in range(19)] + [f"Appendix {c}" for c in "ABCDE"])
            if k not in pages]
 if missing:
     print("WARNING: no page number found for", missing)
