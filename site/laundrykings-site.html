@@ -6,6 +6,11 @@
 <title>LaundryKings — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>
 <meta name="description" content="LaundryKings — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, ironing, dry cleaning, commercial linen. We Wash It Well.">
 <meta name="theme-color" content="#12245C">
+<link rel="icon" href="data:image/svg%2Bxml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%2312245C'/%3E%3Cpath d='M7 25h22l-2.8-10.5L22 20l-4-9-4 9-4.2-5.5z' fill='%23CC2228' stroke='%23fff' stroke-width='1.1' stroke-linejoin='round'/%3E%3Ccircle cx='7' cy='14.5' r='1.9' fill='%23fff'/%3E%3Ccircle cx='18' cy='11' r='1.9' fill='%23fff'/%3E%3Ccircle cx='29' cy='14.5' r='1.9' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg%2Bxml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%2312245C'/%3E%3Cpath d='M7 25h22l-2.8-10.5L22 20l-4-9-4 9-4.2-5.5z' fill='%23CC2228' stroke='%23fff' stroke-width='1.1' stroke-linejoin='round'/%3E%3Ccircle cx='7' cy='14.5' r='1.9' fill='%23fff'/%3E%3Ccircle cx='18' cy='11' r='1.9' fill='%23fff'/%3E%3Ccircle cx='29' cy='14.5' r='1.9' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LaundryKings">
+<link rel="manifest" href="data:application/manifest+json,{"name":"LaundryKings","short_name":"LaundryKings","start_url":"#/app","scope":"./","display":"standalone","background_color":"%23FFFFFF","theme_color":"%2312245C","description":"Laundry collected, washed and returned across Brisbane, Logan and South East Queensland.","icons":[{"src":"data:image/svg%2Bxml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' fill='%2312245C'/%3E%3Cpath d='M7 25h22l-2.8-10.5L22 20l-4-9-4 9-4.2-5.5z' fill='%23CC2228' stroke='%23fff' stroke-width='1.1' stroke-linejoin='round'/%3E%3Ccircle cx='7' cy='14.5' r='1.9' fill='%23fff'/%3E%3Ccircle cx='18' cy='11' r='1.9' fill='%23fff'/%3E%3Ccircle cx='29' cy='14.5' r='1.9' fill='%23fff'/%3E%3C/svg%3E","sizes":"192x192","type":"image/svg%2Bxml","purpose":"any maskable"}]}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LaundryKings">
 <meta property="og:locale" content="en_AU">
@@ -849,10 +854,70 @@ svg.ic{width:24px;height:24px}
   .nav-cta .btn-red{padding:.5rem .8rem;font-size:var(--fs-micro);font-weight:700}
   .nav-cta .btn-ghost{display:none}
 }
+
+/* ---------- PHASE C ---------- */
+/* D5 — the stepper is one control, not three things at opposite edges. */
+.stepper{max-width:150px;justify-content:space-between}
+.stepper span{min-width:2.4ch;flex:0 1 auto;font-size:var(--fs-body);font-variant-numeric:tabular-nums}
+.stepper button{padding:.5rem .7rem;display:flex;align-items:center;justify-content:center}
+.stepper button .ic{width:18px;height:18px}
+
+/* D1 — the active tab wears a pill, not just red text. */
+.tab{position:relative}
+.tab i{filter:none;color:var(--mute);width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+.tab i .ic,.tab .ic{width:24px;height:24px}
+.tab.on i{color:var(--red)}
+.tab.on i::before{content:'';position:absolute;top:.38rem;left:50%;transform:translateX(-50%);
+  width:46px;height:28px;border-radius:var(--r-pill);background:var(--red-w);z-index:-1}
+.tab.on s{color:var(--red)}
+
+/* D10 — the wizard card header stacks rather than squeezing. */
+@media(max-width:480px){
+  .ap-card-h{flex-wrap:wrap;row-gap:.2rem}
+  .ap-card-h span{flex-basis:100%}
+}
+
+/* Status timeline. */
+.bk-tl{list-style:none;display:flex;margin:.9rem 0 .2rem;padding:0;counter-reset:none}
+.bk-tl li{flex:1;position:relative;text-align:center;font-size:var(--fs-badge);
+  font-family:var(--fd);font-weight:700;color:var(--mute);letter-spacing:var(--track-micro)}
+.bk-tl li::before{content:'';position:absolute;top:5px;left:-50%;width:100%;height:2px;background:var(--line)}
+.bk-tl li:first-child::before{display:none}
+.bk-tl li.done::before,.bk-tl li.now::before{background:var(--navy)}
+.bk-tl-d{display:block;width:12px;height:12px;margin:0 auto .34rem;border-radius:50%;
+  background:var(--white);border:2px solid var(--line);position:relative;z-index:1}
+.bk-tl li.done .bk-tl-d{background:var(--navy);border-color:var(--navy)}
+.bk-tl li.now .bk-tl-d{background:var(--red);border-color:var(--red);box-shadow:0 0 0 3px var(--red-w)}
+.bk-tl li.done,.bk-tl li.now{color:var(--navy)}
+.bk-tl-l{display:block}
+
+/* Install offer. */
+#lkInstall{position:fixed;left:0;right:0;bottom:0;z-index:180;display:none;gap:1rem;
+  align-items:center;justify-content:space-between;flex-wrap:wrap;
+  background:var(--white);border-top:1px solid var(--line);box-shadow:var(--sh2);
+  padding:1rem 1.15rem calc(1rem + env(safe-area-inset-bottom))}
+#lkInstall.show{display:flex}
+#lkInstall strong{display:block;font-family:var(--fd);font-size:var(--fs-body);color:var(--ink)}
+#lkInstall small{display:block;font-size:var(--fs-micro);color:var(--mute);margin-top:.15rem}
+.lk-inst-acts{display:flex;gap:.55rem;flex:none}
+
+/* Screen-reader-only text. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* A visible focus ring everywhere, not only where someone remembered. */
+:focus-visible{outline:2px solid var(--navy);outline-offset:2px;border-radius:2px}
+.sec-navy :focus-visible,#foot :focus-visible,#mob :focus-visible,#nav :focus-visible{outline-color:var(--white)}
+
+/* Entry motion, off by default for anyone who asks for less. */
+@media (prefers-reduced-motion: no-preference){
+  .reveal{opacity:0;transform:translateY(12px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity .32s ease-out,transform .32s ease-out}
+}
 </style>
 </head>
 <body>
-<svg class="ic-sprite" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden"><defs><symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.9 12 4.2l8 6.7V19.2a1.4 1.4 0 0 1-1.4 1.4h-3.7v-6h-5.8v6H5.4A1.4 1.4 0 0 1 4 19.2z"/></symbol><symbol id="ic-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 6.2h10.6M9.2 12h10.6M9.2 17.8h10.6"/><path d="M4.6 6.2h.01M4.6 12h.01M4.6 17.8h.01"/></symbol><symbol id="ic-plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 8.2v7.6M8.2 12h7.6"/></symbol><symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 12a7.3 7.3 0 0 1-7.3 7.3H8.4l-4.6 3v-4.9A7.3 7.3 0 0 1 3.8 12a7.3 7.3 0 0 1 7.3-7.3h1.8A7.3 7.3 0 0 1 20.2 12z"/></symbol><symbol id="ic-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 20.8v-6.4M4.4 10.6V3.2M12 20.8v-8.4M12 8.6V3.2M19.6 20.8v-4.4M19.6 12.6V3.2"/><path d="M1.8 14.4h5.2M9.4 8.6h5.2M17 16.4h5.2"/></symbol><symbol id="ic-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 16.8V7.2a1.2 1.2 0 0 1 1.2-1.2h8.8a1.2 1.2 0 0 1 1.2 1.2v9.6"/><path d="M14.4 9.6h3.4l2.8 3.4v3.8"/><path d="M3.2 16.8h1.6M9.2 16.8h3.2M18.4 16.8h2.2"/><circle cx="6.6" cy="18.2" r="1.6"/><circle cx="16.4" cy="18.2" r="1.6"/></symbol><symbol id="ic-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 9.2h14.8l-1.3 9.4a1.8 1.8 0 0 1-1.8 1.6H7.7a1.8 1.8 0 0 1-1.8-1.6z"/><path d="M9 9.2 12 3.6l3 5.6"/><path d="M9.8 13v3.4M14.2 13v3.4"/></symbol><symbol id="ic-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 3.4 4 6l2 4.3 2.2-1.1v11.4h7.6V9.2l2.2 1.1L20 6l-4.6-2.6a3.4 3.4 0 0 1-6.8 0z"/></symbol><symbol id="ic-hanger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9.8v-.9a2.1 2.1 0 1 1 2.1-2.1"/><path d="M12 9.8 3.4 17.9a1.1 1.1 0 0 0 .7 1.9h15.8a1.1 1.1 0 0 0 .7-1.9z"/></symbol><symbol id="ic-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.4"/><path d="M12 5.6v14.2M8.4 19.8h7.2M4.6 8.2h14.8"/><path d="M4.6 8.2 2.2 14a2.9 2.9 0 0 0 4.8 0z"/><path d="M19.4 8.2 21.8 14a2.9 2.9 0 0 1-4.8 0z"/></symbol><symbol id="ic-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4 12 4.2l8.6 4.2v7.2L12 19.8l-8.6-4.2z"/><path d="M3.4 8.4 12 12.6l8.6-4.2M12 12.6v7.2"/></symbol><symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="5.6" width="16.8" height="14.8" rx="1.6"/><path d="M3.6 10.4h16.8M8.4 3.4v4.2M15.6 3.4v4.2"/></symbol><symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 1.9"/></symbol><symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.8c3.7-3.9 5.6-7.1 5.6-9.6a5.6 5.6 0 1 0-11.2 0c0 2.5 1.9 5.7 5.6 9.6z"/><circle cx="12" cy="10.9" r="2.2"/></symbol><symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.2" r="3.6"/><path d="M4.8 20.4a7.2 7.2 0 0 1 14.4 0"/></symbol><symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.6" cy="8.4" r="3.2"/><path d="M3.4 20.4a6.2 6.2 0 0 1 12.4 0"/><path d="M16.4 5.6a3.2 3.2 0 0 1 0 6.2M18 14.8a5 5 0 0 1 3.4 4.6"/></symbol><symbol id="ic-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.4h11.6a1 1 0 0 1 1 1v16.2l-2.7-1.6-2.5 1.6-2.4-1.6-2.4 1.6-2.6-1.6V4.4a1 1 0 0 1 1-1z"/><path d="M8.6 8.4h6.8M8.6 12h6.8M8.6 15.4h4"/></symbol><symbol id="ic-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="1.8"/><path d="M2.8 10.2h18.4M6.6 14.8h3.4"/></symbol><symbol id="ic-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.8 12 4.2l9 5.6"/><path d="M5.4 9.8v8.4M9.8 9.8v8.4M14.2 9.8v8.4M18.6 9.8v8.4M3 20.2h18"/></symbol><symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13.8 3.4H7.4a1.2 1.2 0 0 0-1.2 1.2v14.8a1.2 1.2 0 0 0 1.2 1.2h9.2a1.2 1.2 0 0 0 1.2-1.2V7.6z"/><path d="M13.8 3.4v4.2h4M9 12.4h6M9 16h6"/></symbol><symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="10.4" rx="1.8"/><path d="M8 10.2V7.4a4 4 0 0 1 8 0v2.8"/></symbol><symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 5.2 6.2v5.4c0 4.2 2.8 7.9 6.8 9.1 4-1.2 6.8-4.9 6.8-9.1V6.2z"/><path d="M9.3 11.9l2 2 3.5-3.6"/></symbol><symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 12.4 9.6 17.4 19.4 6.8"/></symbol><symbol id="ic-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.2 12.2 10.9 15 16 9.6"/></symbol><symbol id="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 6.2 17.8 17.8M17.8 6.2 6.2 17.8"/></symbol><symbol id="ic-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 12h14.4M13.2 6.4 18.8 12l-5.6 5.6"/></symbol><symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 5.6 15.8 12l-6.4 6.4"/></symbol><symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12a8.4 8.4 0 1 1-2.5-6"/><path d="M20.6 3.8v5.4h-5.4"/></symbol><symbol id="ic-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 11.2v5.4M12 7.8h.01"/></symbol><symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 21.4 20.4H2.6z"/><path d="M12 10v4.6M12 17.6h.01"/></symbol><symbol id="ic-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M9.5 9.5a2.6 2.6 0 0 1 5.1.8c0 1.7-2.6 2.2-2.6 4"/><path d="M12 17.6h.01"/></symbol><symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2v13.6M5.2 12h13.6"/></symbol><symbol id="ic-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 19.8 5 16l10.6-10.6a2 2 0 0 1 2.9 2.9L7.9 18.9z"/><path d="M14.2 6.9l2.9 2.9"/></symbol><symbol id="ic-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.6 13.4a3.8 3.8 0 0 0 5.4 0l2.8-2.8a3.8 3.8 0 0 0-5.4-5.4l-1.6 1.6"/><path d="M13.4 10.6a3.8 3.8 0 0 0-5.4 0l-2.8 2.8a3.8 3.8 0 0 0 5.4 5.4l1.6-1.6"/></symbol><symbol id="ic-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 14.6 9l5.8.9-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.9 9.4 9z"/></symbol><symbol id="ic-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 8.2 7 11.4 12 4.4l5 7 3.8-3.2-1.7 10.6a1.1 1.1 0 0 1-1.1.9H6a1.1 1.1 0 0 1-1.1-.9z"/></symbol><symbol id="ic-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.4 3.6 12 8.2l4.6 1.6L12 11.4l-1.6 4.6-1.6-4.6L4.2 9.8l4.6-1.6z"/><path d="M17.6 14.6l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></symbol><symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 4.8H7.4a1.2 1.2 0 0 0-1.2 1.2v13.4a1.2 1.2 0 0 0 1.2 1.2h9.2a1.2 1.2 0 0 0 1.2-1.2V6a1.2 1.2 0 0 0-1.2-1.2h-1.8"/><path d="M9.2 4.8a1.2 1.2 0 0 1 1.2-1.2h3.2a1.2 1.2 0 0 1 1.2 1.2v1.4H9.2z"/></symbol><symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.2" y="3.4" width="11.6" height="17.2" rx="1.8"/><path d="M10.4 17.6h3.2"/></symbol><symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="1.6"/><path d="M3.4 6.6 12 13l8.6-6.4"/></symbol><symbol id="ic-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 14.6v-2.4a7.4 7.4 0 0 1 14.8 0v2.4"/><path d="M4.6 13.2a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0v-2a2 2 0 0 1 2-2zM19.4 13.2a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0v-2a2 2 0 0 1 2-2z"/><path d="M19.4 17.4v.8a2.6 2.6 0 0 1-2.6 2.6h-2.2"/></symbol><symbol id="ic-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 10.4v3.2a1.2 1.2 0 0 0 1.2 1.2h2.8l7.6 4.4V4.8L8.2 9.2H5.4a1.2 1.2 0 0 0-1.2 1.2z"/><path d="M18.4 9.4a3.8 3.8 0 0 1 0 5.2M8.2 14.8v4.4h2.6"/></symbol><symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 20V10.4M10.1 20V4.6M15.8 20v-6.8M21.5 20H2.5"/></symbol><symbol id="ic-worker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 17.8h15.2"/><path d="M6.2 17.8v-3a5.8 5.8 0 0 1 11.6 0v3"/><path d="M9.8 9.2V5.4a1.1 1.1 0 0 1 1.1-1.1h2.2a1.1 1.1 0 0 1 1.1 1.1v3.8"/></symbol><symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 9.4 12 15.8l6.4-6.4"/></symbol><symbol id="ic-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.6 5.6 8.2 12l6.4 6.4"/></symbol><symbol id="ic-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 12h13.6"/></symbol><symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="3.6" width="7.2" height="7.2" rx="1.4"/><rect x="13.2" y="3.6" width="7.2" height="7.2" rx="1.4"/><rect x="3.6" y="13.2" width="7.2" height="7.2" rx="1.4"/><rect x="13.2" y="13.2" width="7.2" height="7.2" rx="1.4"/></symbol><symbol id="ic-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 12H2.1M21.9 12h-2.4M6.7 6.7 5 5M19 19l-1.7-1.7M6.7 17.3 5 19M19 5l-1.7 1.7"/></symbol></defs></svg>
+<svg class="ic-sprite" aria-hidden="true" focusable="false" role="presentation" style="position:absolute;width:0;height:0;overflow:hidden"><defs><symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.9 12 4.2l8 6.7V19.2a1.4 1.4 0 0 1-1.4 1.4h-3.7v-6h-5.8v6H5.4A1.4 1.4 0 0 1 4 19.2z"/></symbol><symbol id="ic-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 6.2h10.6M9.2 12h10.6M9.2 17.8h10.6"/><path d="M4.6 6.2h.01M4.6 12h.01M4.6 17.8h.01"/></symbol><symbol id="ic-plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 8.2v7.6M8.2 12h7.6"/></symbol><symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 12a7.3 7.3 0 0 1-7.3 7.3H8.4l-4.6 3v-4.9A7.3 7.3 0 0 1 3.8 12a7.3 7.3 0 0 1 7.3-7.3h1.8A7.3 7.3 0 0 1 20.2 12z"/></symbol><symbol id="ic-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 20.8v-6.4M4.4 10.6V3.2M12 20.8v-8.4M12 8.6V3.2M19.6 20.8v-4.4M19.6 12.6V3.2"/><path d="M1.8 14.4h5.2M9.4 8.6h5.2M17 16.4h5.2"/></symbol><symbol id="ic-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 16.8V7.2a1.2 1.2 0 0 1 1.2-1.2h8.8a1.2 1.2 0 0 1 1.2 1.2v9.6"/><path d="M14.4 9.6h3.4l2.8 3.4v3.8"/><path d="M3.2 16.8h1.6M9.2 16.8h3.2M18.4 16.8h2.2"/><circle cx="6.6" cy="18.2" r="1.6"/><circle cx="16.4" cy="18.2" r="1.6"/></symbol><symbol id="ic-basket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 9.2h14.8l-1.3 9.4a1.8 1.8 0 0 1-1.8 1.6H7.7a1.8 1.8 0 0 1-1.8-1.6z"/><path d="M9 9.2 12 3.6l3 5.6"/><path d="M9.8 13v3.4M14.2 13v3.4"/></symbol><symbol id="ic-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 3.4 4 6l2 4.3 2.2-1.1v11.4h7.6V9.2l2.2 1.1L20 6l-4.6-2.6a3.4 3.4 0 0 1-6.8 0z"/></symbol><symbol id="ic-hanger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9.8v-.9a2.1 2.1 0 1 1 2.1-2.1"/><path d="M12 9.8 3.4 17.9a1.1 1.1 0 0 0 .7 1.9h15.8a1.1 1.1 0 0 0 .7-1.9z"/></symbol><symbol id="ic-scale" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.2" r="1.4"/><path d="M12 5.6v14.2M8.4 19.8h7.2M4.6 8.2h14.8"/><path d="M4.6 8.2 2.2 14a2.9 2.9 0 0 0 4.8 0z"/><path d="M19.4 8.2 21.8 14a2.9 2.9 0 0 1-4.8 0z"/></symbol><symbol id="ic-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 8.4 12 4.2l8.6 4.2v7.2L12 19.8l-8.6-4.2z"/><path d="M3.4 8.4 12 12.6l8.6-4.2M12 12.6v7.2"/></symbol><symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="5.6" width="16.8" height="14.8" rx="1.6"/><path d="M3.6 10.4h16.8M8.4 3.4v4.2M15.6 3.4v4.2"/></symbol><symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 1.9"/></symbol><symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.8c3.7-3.9 5.6-7.1 5.6-9.6a5.6 5.6 0 1 0-11.2 0c0 2.5 1.9 5.7 5.6 9.6z"/><circle cx="12" cy="10.9" r="2.2"/></symbol><symbol id="ic-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.2" r="3.6"/><path d="M4.8 20.4a7.2 7.2 0 0 1 14.4 0"/></symbol><symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.6" cy="8.4" r="3.2"/><path d="M3.4 20.4a6.2 6.2 0 0 1 12.4 0"/><path d="M16.4 5.6a3.2 3.2 0 0 1 0 6.2M18 14.8a5 5 0 0 1 3.4 4.6"/></symbol><symbol id="ic-receipt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.4h11.6a1 1 0 0 1 1 1v16.2l-2.7-1.6-2.5 1.6-2.4-1.6-2.4 1.6-2.6-1.6V4.4a1 1 0 0 1 1-1z"/><path d="M8.6 8.4h6.8M8.6 12h6.8M8.6 15.4h4"/></symbol><symbol id="ic-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="1.8"/><path d="M2.8 10.2h18.4M6.6 14.8h3.4"/></symbol><symbol id="ic-bank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.8 12 4.2l9 5.6"/><path d="M5.4 9.8v8.4M9.8 9.8v8.4M14.2 9.8v8.4M18.6 9.8v8.4M3 20.2h18"/></symbol><symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M13.8 3.4H7.4a1.2 1.2 0 0 0-1.2 1.2v14.8a1.2 1.2 0 0 0 1.2 1.2h9.2a1.2 1.2 0 0 0 1.2-1.2V7.6z"/><path d="M13.8 3.4v4.2h4M9 12.4h6M9 16h6"/></symbol><symbol id="ic-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="10.2" width="15.2" height="10.4" rx="1.8"/><path d="M8 10.2V7.4a4 4 0 0 1 8 0v2.8"/></symbol><symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 5.2 6.2v5.4c0 4.2 2.8 7.9 6.8 9.1 4-1.2 6.8-4.9 6.8-9.1V6.2z"/><path d="M9.3 11.9l2 2 3.5-3.6"/></symbol><symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 12.4 9.6 17.4 19.4 6.8"/></symbol><symbol id="ic-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.2 12.2 10.9 15 16 9.6"/></symbol><symbol id="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 6.2 17.8 17.8M17.8 6.2 6.2 17.8"/></symbol><symbol id="ic-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 12h14.4M13.2 6.4 18.8 12l-5.6 5.6"/></symbol><symbol id="ic-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 5.6 15.8 12l-6.4 6.4"/></symbol><symbol id="ic-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 12a8.4 8.4 0 1 1-2.5-6"/><path d="M20.6 3.8v5.4h-5.4"/></symbol><symbol id="ic-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 11.2v5.4M12 7.8h.01"/></symbol><symbol id="ic-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2 21.4 20.4H2.6z"/><path d="M12 10v4.6M12 17.6h.01"/></symbol><symbol id="ic-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M9.5 9.5a2.6 2.6 0 0 1 5.1.8c0 1.7-2.6 2.2-2.6 4"/><path d="M12 17.6h.01"/></symbol><symbol id="ic-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.2v13.6M5.2 12h13.6"/></symbol><symbol id="ic-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 19.8 5 16l10.6-10.6a2 2 0 0 1 2.9 2.9L7.9 18.9z"/><path d="M14.2 6.9l2.9 2.9"/></symbol><symbol id="ic-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.6 13.4a3.8 3.8 0 0 0 5.4 0l2.8-2.8a3.8 3.8 0 0 0-5.4-5.4l-1.6 1.6"/><path d="M13.4 10.6a3.8 3.8 0 0 0-5.4 0l-2.8 2.8a3.8 3.8 0 0 0 5.4 5.4l1.6-1.6"/></symbol><symbol id="ic-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 14.6 9l5.8.9-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.6 9.9 9.4 9z"/></symbol><symbol id="ic-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 8.2 7 11.4 12 4.4l5 7 3.8-3.2-1.7 10.6a1.1 1.1 0 0 1-1.1.9H6a1.1 1.1 0 0 1-1.1-.9z"/></symbol><symbol id="ic-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.4 3.6 12 8.2l4.6 1.6L12 11.4l-1.6 4.6-1.6-4.6L4.2 9.8l4.6-1.6z"/><path d="M17.6 14.6l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></symbol><symbol id="ic-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 4.8H7.4a1.2 1.2 0 0 0-1.2 1.2v13.4a1.2 1.2 0 0 0 1.2 1.2h9.2a1.2 1.2 0 0 0 1.2-1.2V6a1.2 1.2 0 0 0-1.2-1.2h-1.8"/><path d="M9.2 4.8a1.2 1.2 0 0 1 1.2-1.2h3.2a1.2 1.2 0 0 1 1.2 1.2v1.4H9.2z"/></symbol><symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6.2" y="3.4" width="11.6" height="17.2" rx="1.8"/><path d="M10.4 17.6h3.2"/></symbol><symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="1.6"/><path d="M3.4 6.6 12 13l8.6-6.4"/></symbol><symbol id="ic-headset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 14.6v-2.4a7.4 7.4 0 0 1 14.8 0v2.4"/><path d="M4.6 13.2a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0v-2a2 2 0 0 1 2-2zM19.4 13.2a2 2 0 0 1 2 2v2a2 2 0 0 1-4 0v-2a2 2 0 0 1 2-2z"/><path d="M19.4 17.4v.8a2.6 2.6 0 0 1-2.6 2.6h-2.2"/></symbol><symbol id="ic-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 10.4v3.2a1.2 1.2 0 0 0 1.2 1.2h2.8l7.6 4.4V4.8L8.2 9.2H5.4a1.2 1.2 0 0 0-1.2 1.2z"/><path d="M18.4 9.4a3.8 3.8 0 0 1 0 5.2M8.2 14.8v4.4h2.6"/></symbol><symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 20V10.4M10.1 20V4.6M15.8 20v-6.8M21.5 20H2.5"/></symbol><symbol id="ic-worker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 17.8h15.2"/><path d="M6.2 17.8v-3a5.8 5.8 0 0 1 11.6 0v3"/><path d="M9.8 9.2V5.4a1.1 1.1 0 0 1 1.1-1.1h2.2a1.1 1.1 0 0 1 1.1 1.1v3.8"/></symbol><symbol id="ic-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 9.4 12 15.8l6.4-6.4"/></symbol><symbol id="ic-chevron-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.6 5.6 8.2 12l6.4 6.4"/></symbol><symbol id="ic-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 12h13.6"/></symbol><symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.6" y="3.6" width="7.2" height="7.2" rx="1.4"/><rect x="13.2" y="3.6" width="7.2" height="7.2" rx="1.4"/><rect x="3.6" y="13.2" width="7.2" height="7.2" rx="1.4"/><rect x="13.2" y="13.2" width="7.2" height="7.2" rx="1.4"/></symbol><symbol id="ic-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 12H2.1M21.9 12h-2.4M6.7 6.7 5 5M19 19l-1.7-1.7M6.7 17.3 5 19M19 5l-1.7 1.7"/></symbol></defs></svg>
 
 <!-- ============ TOP STRIP ============ -->
 <div id="strip"><div class="wrap"><div class="strip-in">
@@ -1139,7 +1204,7 @@ svg.ic{width:24px;height:24px}
 
         <div class="g2">
           <div class="fld"><label class="lbl" id="lblA">Loads (approx. 5&nbsp;kg each)</label>
-            <div class="stepper"><button type="button" data-step="a,-1" aria-label="Decrease"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="numA">2</span><button type="button" data-step="a,1" aria-label="Increase">+</button></div>
+            <div class="stepper"><button type="button" data-step="a,-1" aria-label="Decrease"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="numA">2</span><button type="button" data-step="a,1" aria-label="Increase"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
           </div>
 <div class="load-look" aria-label="What one load looks like">
 <span><svg class="ic" aria-hidden="true"><use href="#ic-basket"/></svg>One load ≈ a full kitchen basket</span>
@@ -1147,7 +1212,7 @@ svg.ic{width:24px;height:24px}
 <span><svg class="ic" aria-hidden="true"><use href="#ic-scale"/></svg>≈ 5 kg dry</span>
 </div>
           <div class="fld" id="fldB"><label class="lbl" id="lblB">Items to iron</label>
-            <div class="stepper"><button type="button" data-step="b,-1" aria-label="Decrease"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="numB">0</span><button type="button" data-step="b,1" aria-label="Increase">+</button></div>
+            <div class="stepper"><button type="button" data-step="b,-1" aria-label="Decrease"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="numB">0</span><button type="button" data-step="b,1" aria-label="Increase"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
           </div>
         </div>
 
@@ -1875,7 +1940,7 @@ svg.ic{width:24px;height:24px}
   <div class="ap"><div class="ap-in">
 
     <div class="ap-h">
-      <button class="ap-back" id="bkBack"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
+      <button class="ap-back" id="bkBack" aria-label="Back a step"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
       <div><h2 id="bkTitle">Choose your service</h2><p id="bkSub">Select what you need washed.</p></div>
     </div>
     <div class="ap-prog"><span class="on" id="pg1"></span><span id="pg2"></span><span id="pg3"></span></div>
@@ -1903,17 +1968,17 @@ svg.ic{width:24px;height:24px}
         <div class="ap-card-b">
           <div class="ap-g2">
             <div class="fld"><label class="lbl" id="bkLblA">Loads (approx. 5&nbsp;kg each)</label>
-              <div class="stepper"><button type="button" data-bstep="a,-1"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumA">2</span><button type="button" data-bstep="a,1">+</button></div>
+              <div class="stepper"><button type="button" data-bstep="a,-1" aria-label="Decrease loads"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumA">2</span><button type="button" data-bstep="a,1" aria-label="Increase loads"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
             </div>
             <div class="fld" id="bkFldB"><label class="lbl" id="bkLblB">Items to iron</label>
-              <div class="stepper"><button type="button" data-bstep="b,-1"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumB">0</span><button type="button" data-bstep="b,1">+</button></div>
+              <div class="stepper"><button type="button" data-bstep="b,-1" aria-label="Decrease ironed items"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumB">0</span><button type="button" data-bstep="b,1" aria-label="Increase ironed items"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
             </div>
           </div>
           <p class="ap-fine">Final price is set after your operator weighs and counts on collection — the estimate is for their planning only.</p>
         </div>
       </div>
 
-      <div class="ap-bar"><a href="#/app" class="btn btn-out btn-lg">Cancel</a><button class="btn btn-nv btn-lg" id="bkN1"><svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg> Continue</button></div>
+      <div class="ap-bar"><a href="#/app" class="btn btn-out btn-lg">Cancel</a><button class="btn btn-nv btn-lg" id="bkN1">Continue<svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></button></div>
     </div>
 
     <!-- STEP 2 — AVAILABILITY -->
@@ -2020,7 +2085,7 @@ svg.ic{width:24px;height:24px}
 
 <section class="page" id="p-thread">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/messages'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2 id="thrT">Message</h2><p id="thrS"></p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to messages" onclick="location.hash='#/messages'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2 id="thrT">Message</h2><p id="thrS"></p></div></div>
     <div id="thrBody"></div>
     <div class="ap-note"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-info"/></svg></i><span>Replies in this thread go to LaundryKings support and to the operator assigned to the booking.</span></div>
     <div class="ap-card"><div class="ap-card-b">
@@ -2058,7 +2123,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- MANAGE PROFILE ---------------- -->
 <section class="page" id="p-profile">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Manage profile</h2><p>Details for the active profile.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to settings" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Manage profile</h2><p>Details for the active profile.</p></div></div>
     <div class="ap-card"><div class="ap-card-b"><div id="prIdc"></div></div></div>
     <div class="ap-note"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-truck"/></svg></i><span>Online payment is due after weighing and before return delivery.</span></div>
     <a href="#/pdetails" class="ap-row"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-pencil"/></svg></i><div><strong>Profile &amp; contact details</strong><small>Update name, email and mobile for this profile</small></div><em class="ic"><svg class="ic ic-sm" aria-hidden="true"><use href="#ic-chevron-right"/></svg></em></a>
@@ -2072,7 +2137,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- PROFILE & CONTACT DETAILS ---------------- -->
 <section class="page" id="p-pdetails">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Profile &amp; contact details</h2><p>Who we contact about this profile's collections.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to profile" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Profile &amp; contact details</h2><p>Who we contact about this profile's collections.</p></div></div>
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="pdName">Profile name</label><input class="inp" id="pdName" placeholder="e.g. Home, Mum's place, Shop 3"></div>
       <div class="fld"><label class="lbl" for="pdContact">Contact person</label><input class="inp" id="pdContact" placeholder="Full name"></div>
@@ -2095,7 +2160,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- SERVICE PREFERENCES ---------------- -->
 <section class="page" id="p-prefs">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Service preferences</h2><p>Applied automatically to every new booking on this profile.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to profile" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Service preferences</h2><p>Applied automatically to every new booking on this profile.</p></div></div>
     <div class="ap-card">
       <div class="ap-card-h"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-shirt"/></svg></i>Default laundry care instructions</div>
       <div class="ap-card-b"><textarea class="ta" id="pfCare" placeholder="Cold wash only, no fabric softener, hang dry delicates…"></textarea></div>
@@ -2120,7 +2185,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- PICK UP ADDRESS ---------------- -->
 <section class="page" id="p-address">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Pick up address</h2><p>Where we collect from and return to.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to profile" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Pick up address</h2><p>Where we collect from and return to.</p></div></div>
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="adLine1">Unit / street address</label><input class="inp" id="adLine1" placeholder="Unit 48, 66 University Drive"></div>
       <div class="ap-g2">
@@ -2141,7 +2206,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- COMMUNICATION SETTINGS ---------------- -->
 <section class="page" id="p-comms">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Communication settings</h2><p>Choose what we contact you about.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to profile" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Communication settings</h2><p>Choose what we contact you about.</p></div></div>
     <div class="ap-card" id="cmList"></div>
     <div class="ap-note"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-info"/></svg></i><span>Booking confirmations, collection reminders and invoices are operational messages and are always sent.</span></div>
     <button class="btn btn-nv btn-full btn-lg" id="cmGo">Save settings</button>
@@ -2152,7 +2217,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- INVOICES ---------------- -->
 <section class="page" id="p-invoices">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Invoices</h2><p>Issued after each completed collection.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to profile" onclick="location.hash='#/profile'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Invoices</h2><p>Issued after each completed collection.</p></div></div>
     <div id="inList"></div>
   </div></div>
 </section>
@@ -2160,7 +2225,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- USER DETAILS ---------------- -->
 <section class="page" id="p-userdet">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>User details</h2><p>Your sign-in and account details, across every profile.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to settings" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>User details</h2><p>Your sign-in and account details, across every profile.</p></div></div>
     <div class="ap-card"><div class="ap-card-b">
       <div class="ap-g2">
         <div class="fld"><label class="lbl" for="udFirst">First name</label><input class="inp" id="udFirst"></div>
@@ -2178,7 +2243,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- FEEDBACK ---------------- -->
 <section class="page" id="p-feedback">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>We'd love to hear from you</h2><p>Tell us what's working, what isn't, or share an idea.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to settings" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>We'd love to hear from you</h2><p>Tell us what's working, what isn't, or share an idea.</p></div></div>
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="fbTx">Your feedback</label>
         <textarea class="ta" id="fbTx" maxlength="1000" placeholder="Share what's on your mind…" style="min-height:150px"></textarea>
@@ -2200,7 +2265,7 @@ svg.ic{width:24px;height:24px}
 <!-- ---------------- HELP & SUPPORT ---------------- -->
 <section class="page" id="p-help">
   <div class="ap"><div class="ap-in">
-    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Help &amp; support</h2><p>Answers, policies and how to reach us.</p></div></div>
+    <div class="ap-h"><button class="ap-back" aria-label="Back to settings" onclick="location.hash='#/account'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button><div><h2>Help &amp; support</h2><p>Answers, policies and how to reach us.</p></div></div>
     <div class="ap-card"><div class="ap-card-b" style="text-align:center;padding:1.6rem 1.15rem">
       <div style="font-size:var(--fs-3);margin-bottom:.5rem"><svg class="ic ic-inl" aria-hidden="true"><use href="#ic-headset"/></svg></div>
       <h3 style="font-size:var(--fs-5);color:var(--navy);margin-bottom:.3rem">Contact support</h3>
@@ -2242,7 +2307,7 @@ svg.ic{width:24px;height:24px}
 <section class="page" id="p-opsbook">
   <div class="ap"><div class="ap-in">
     <div class="ap-h">
-      <button class="ap-back" onclick="location.hash='#/ops'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
+      <button class="ap-back" aria-label="Back to ops" onclick="location.hash='#/ops'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
       <div><h2 id="ojRef">Job</h2><p id="ojStatus"></p></div>
     </div>
     <div id="ojBody"></div>
@@ -2253,7 +2318,7 @@ svg.ic{width:24px;height:24px}
 <section class="page" id="p-opsops">
   <div class="ap"><div class="ap-in">
     <div class="ap-h">
-      <button class="ap-back" onclick="location.hash='#/ops'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
+      <button class="ap-back" aria-label="Back to ops" onclick="location.hash='#/ops'"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-left"/></svg></button>
       <div><h2>Operators</h2><p>LaundryKings registered field operators.</p></div>
     </div>
     <div id="opsList"></div>
@@ -2367,6 +2432,13 @@ svg.ic{width:24px;height:24px}
 
 
 <!-- ============ PROFILE SWITCHER SHEET ============ -->
+<div id="lkInstall" role="dialog" aria-live="polite" aria-label="Add LaundryKings to your home screen">
+  <div><strong>Add LaundryKings to your home screen</strong><small>One tap to your bookings. No app store, no download.</small></div>
+  <div class="lk-inst-acts">
+    <button class="btn btn-out" data-install-no>Not now</button>
+    <button class="btn btn-nv" data-install>Add</button>
+  </div>
+</div>
 <div id="sheet">
   <div class="sheet-c">
     <div class="sheet-h"><strong>Customer profiles</strong><button id="sheetX" aria-label="Close"><svg class="ic ic-inl" aria-hidden="true"><use href="#ic-x"/></svg> Close</button></div>
@@ -2464,6 +2536,23 @@ function setTitle(id){
   document.title = (t ? t + ' | LaundryKings' : 'LaundryKings — Laundry Pickup & Delivery | Brisbane, Logan & SEQ');
 }
 
+/* ---------- SCROLL REVEAL ----------
+   Runs only where the viewer has not asked for reduced motion, and only once
+   per element. Everything is visible without it. */
+(() => {
+  if (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+})();
+function wireReveal(){
+  if (!window.IntersectionObserver) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll('.page.live .sec > .wrap > *, .page.live .trust-c, .page.live .card');
+  if (!targets.length) return;
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  targets.forEach(t => { t.classList.add('reveal'); io.observe(t); });
+}
+
 function route(){
   const h = (location.hash || '#/').replace('#/','').split('?')[0] || 'home';
   const id = PAGES.includes(h) ? h : 'home';
@@ -2474,6 +2563,7 @@ function route(){
   window.scrollTo(0,0);
   document.getElementById('mob').classList.remove('open');
   setTitle(id);
+  try { wireReveal(); } catch(e){}
   if (id === 'dash') loadDash();
   try { appRoute(id); } catch(e){}
 }
@@ -3583,6 +3673,23 @@ function renderBookings(){
   });
 }
 
+/* A booking is a promise with stages. Show where it is, not just a word. */
+const BK_STAGES = [
+  ['requested','Booked'], ['assigned','Assigned'], ['collected','Collected'],
+  ['invoiced','Washed'], ['complete','Returned']
+];
+function bkTimeline(b){
+  if (b.status === 'cancelled') return '';
+  const at = BK_STAGES.findIndex(s => s[0] === b.status);
+  const done = at < 0 ? 0 : at;
+  return '<ol class="bk-tl" aria-label="Progress of this collection">' + BK_STAGES.map(([k,label],i) =>
+    '<li class="' + (i < done ? 'done' : i === done ? 'now' : '') + '">'
+    + '<span class="bk-tl-d" aria-hidden="true"></span>'
+    + '<span class="bk-tl-l">' + label + '</span>'
+    + (i === done ? '<span class="sr-only"> — current stage</span>' : '')
+    + '</li>').join('') + '</ol>';
+}
+
 function richBookingCard(b){
   const d=fromIso(b.date||isoDate(new Date()));
   const stMap={requested:'pd',confirmed:'up',assigned:'up',complete:'ok',cancelled:'cx',invoiced:'pd'};
@@ -3596,7 +3703,7 @@ function richBookingCard(b){
   acts.push(`<button class="btn btn-out" data-bksupport="${b.id}"><svg class="ic ic-inl" aria-hidden="true"><use href="#ic-headset"/></svg> Support</button>`);
   return `<div class="bkc ${borderCls}">
     <div class="bkc-h"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-basket"/></svg></i><strong>${esc(SVCNAME(b.svc))}</strong>${pill}</div>
-    <div class="bkc-b">
+    <div class="bkc-b">${bkTimeline(b)}
       <div class="bkc-r"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-calendar"/></svg></i><span>${d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})} · ${esc(b.window||'')}</span></div>
       <div class="bkc-r"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg></i><span>${esc(b.address||b.suburb||'')}</span></div>
       ${b.recurring?`<div class="bkc-r"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-refresh"/></svg></i><span>Repeats ${esc(b.recurring)}</span></div>`:''}
@@ -3649,6 +3756,29 @@ function appRoute(id){
 /* ================================================================
    WIRING — the two functions appBoot has always called
    ================================================================ */
+
+/* ---------- INSTALL PROMPT ----------
+   Web-first is the promise, so the app is installable without an app store.
+   Offered once, after a booking, and never again if dismissed. */
+let LK_INSTALL = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); LK_INSTALL = e; });
+function offerInstall(){
+  try {
+    if (!LK_INSTALL || localStorage.getItem('lk-install') === 'done') return;
+  } catch(e){ if (!LK_INSTALL) return; }
+  const bar = document.getElementById('lkInstall');
+  if (!bar) return;
+  bar.classList.add('show');
+  bar.querySelector('[data-install]').onclick = async () => {
+    bar.classList.remove('show');
+    try { localStorage.setItem('lk-install','done'); } catch(e){}
+    LK_INSTALL.prompt(); LK_INSTALL = null;
+  };
+  bar.querySelector('[data-install-no]').onclick = () => {
+    bar.classList.remove('show');
+    try { localStorage.setItem('lk-install','done'); } catch(e){}
+  };
+}
 
 function wireWizard(){
   const $ = id => document.getElementById(id);
@@ -3759,6 +3889,7 @@ function wireWizard(){
         + ', ' + b.window + '. You will get a message here once an operator is assigned.';
 
       renderBookings(); renderMessages(); renderHome(); renderTabs('book');
+      offerInstall();
       say('bkMsg', true, 'Booking ' + b.ref + ' requested.');
       wizStep(4);
     } catch(e){
