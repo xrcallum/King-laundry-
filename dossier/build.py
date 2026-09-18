@@ -40,8 +40,8 @@ def assemble():
     appc = [f'''
 <div class="part">
 <p class="part-kicker">Appendix C</p>
-<h1>Complete website source code, v4.2</h1>
-<p class="lede">The entire LaundryKings site: marketing, customer app and ops backend, one self-contained HTML file. Reproduced verbatim from the live artefact. {len(lines):,} lines, {size:,} bytes. SHA-256 <span class="mono">{sha}</span>.</p>
+<h1>Complete website source code, v4.4 (repository copy of record)</h1>
+<p class="lede">The entire LaundryKings site: marketing, customer app and ops backend, one self-contained HTML file. Reproduced verbatim from <code>site/laundrykings-site.html</code> on the working branch; the live artefact still carries v4.2 until a principal publishes. {len(lines):,} lines, {size:,} bytes. SHA-256 <span class="mono">{sha}</span>.</p>
 <div class="box"><h4>Read this before using the listing</h4><p>Long lines wrap to the next line here rather than being cut, so the listing is complete. Line numbers are the source line numbers. For editing, use <code>site/laundrykings-site.html</code> in the Git repository, which is the copy of record; this appendix is for a paper reader and for disaster recovery only. The v1 dossier truncated 351 lines; this one truncates none.</p></div>
 <div class="codehead">laundrykings-site.html</div>
 <pre class="code">''']

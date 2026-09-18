@@ -19,7 +19,7 @@
 <tr><td class="k">2</td><td class="k">The emoji census was under-counted.</td><td>A Unicode scan of the live file finds 83 &lt;i&gt; tags, 75 of which contain an emoji (29 distinct), plus 49 loose symbol glyphs in prose (16 distinct; 23 are the "→" arrow). v1 said 47 and 19.</td><td>Phase A acceptance test becomes "Unicode scan returns zero", never a count. The icon sprite needs about 30 symbols, not 27 (Part 8).</td></tr>
 <tr><td class="k">3</td><td class="k">laundrykings.com.au cannot be bought through Vercel today, and laundrykings.com is taken.</td><td>Vercel reports .com.au and .com "not available for purchase". DNS: laundrykings.com resolves to a third-party host; laundrykings.com.au has no record, which is consistent with either an unregistered name that Vercel does not sell, or a registered but unused name. <span class="tag t-unv">Unverified</span> until an auDA WHOIS lookup.</td><td>M2's headline outcome "site live at laundrykings.com.au" now depends on KEA-14 (an active ABN is required for any .com.au) and on a registrar that sells .com.au. Options in Part 16, decision D-09.</td></tr>
 <tr><td class="k">4</td><td class="k">Laundry Lady's rate card is partly public, and it changes the +5% decision.</td><td>Search-indexed content of thelaundrylady.com.au/pricing (effective 27 July 2026): minimum $70.00, pickup and delivery $14.50, service fee $2.20 recurring or $5.50 one-off. Their 2024 price list: $27.50 per 5 kg load, ironing from $2.75 per item. Direct fetch of the page is blocked from this environment, so the per-load 2026 figure is <span class="tag t-unv">Unverified</span>.</td><td>Our $32 load is already about 16% above their 2024 load price; a further +5% on line items is not needed to be "premium". The stronger position is the all-in floor: a one-off Laundry Lady booking appears to cost $70 + $14.50 + $5.50 = $90.00 versus our $73.50 with delivery included, if their minimum excludes those fees. Part 3 and decision D-04.</td></tr>
-<tr><td class="k">5</td><td class="k">The Kings Club "save around $28 every week" claim is true only at two loads.</td><td>2 loads ($64.00) + delivery ($13.50) = $77.50 versus Solo $49.00: saving $28.50 (36.8%) <span class="tag t-ver">Verified</span>. At one load, ad-hoc costs $45.50, so a Solo member pays $3.50 more.</td><td>Add the qualifier "based on two loads a week" wherever the claim appears. Australian Consumer Law treats an unqualified comparison as a representation; this is a one-line fix in Phase B.</td></tr>
+<tr><td class="k">5</td><td class="k">The Kings Club "save around $28 every week" claim is true only at two loads.</td><td>At the v4.2 price: 2 loads ($64.00) + delivery ($13.50) = $77.50 versus Solo $49.00, saving $28.50 (36.8%) <span class="tag t-ver">Verified</span>. After the 19 September re-price (Solo $63.70) the same comparison saves $13.80 (17.8%), and at one load ($45.50 ad hoc) a Solo member pays $18.20 more.</td><td>Qualify the claim with its basis wherever it appears. Australian Consumer Law treats an unqualified comparison as a representation. Done: the home page now computes the figure from live pricing and reads "save around $14 a week compared with two ad-hoc loads".</td></tr>
 <tr><td class="k">6</td><td class="k">Red on navy fails contrast at 2.07:1.</td><td>Computed from the brand tokens (#CC2228 on #1A3480). The Bold Editorial direction puts red CTAs, crown and price figures on navy surfaces.</td><td>Red never sits directly on navy. Red on paper or white only; on navy, the CTA is white-filled with red text, or a white outline. Written into the design system (Part 8).</td></tr>
 <tr><td class="k">7</td><td class="k">Linear is behind the dossier.</td><td>KEA-11 still reads "deploy laundrykings.com.au to Cloudflare Pages" while v1 says Vercel. No issue carries a due date. Every issue is assigned to Callum, including the four decisions v1 gives to Max. Milestone dates exist only in Linear: M1 15 Oct, M2 30 Nov, M3 31 Dec 2026.</td><td>Ten-minute hygiene pass (Part 6): retitle KEA-11, add due dates, add Max as a Linear member and reassign D-01, D-03, D-04 and D-07.</td></tr>
 </tbody></table>
@@ -114,6 +114,8 @@
 <tr><td class="k"><span class="sw" style="background:#0F7B4F"></span>ok / ok-bg</td><td class="mono">#0F7B4F / #E6F6EE</td><td>Status: good</td><td>4.74:1</td><td><span class="tag t-ver">Pass</span></td></tr>
 <tr><td class="k"><span class="sw" style="background:#8A5A00"></span>warn / warn-bg</td><td class="mono">#8A5A00 / #FFF6E0</td><td>Status: warning</td><td>5.51:1</td><td><span class="tag t-ver">Pass</span></td></tr>
 </tbody></table>
+<div class="box"><h4>Superseded on 19 September 2026: tokens now follow the logo artwork <span class="tag t-cor">Corrected</span></h4>
+<p>The table above is the record of what v4.2 shipped. Sampling the supplied logo gives red <span class="mono">#D84330</span> and navy <span class="mono">#0C265F</span>, and the repository copy now uses them: <span class="mono">--navy #0C265F</span>, <span class="mono">--navy-d #071A45</span>, <span class="mono">--red-brand #D84330</span> (logo, hero slab, non-text marks; 4.41:1 on white so never small text) and <span class="mono">--red #C43828</span> (the same hue deepened for buttons and small text; 5.33:1 on white, 4.81:1 on paper, 14.4:1 white on navy). Part 8 and Appendix E carry the detail.</p></div>
 <p>Fonts: Archivo for headings (500 to 900), Inter for body (400 to 600), from Google Fonts. Australian English throughout. Every displayed price is AUD and GST-inclusive.</p>
 
 <h3>Voice and tone <span class="tag t-new">New in v2</span></h3>
@@ -161,16 +163,17 @@
 <tbody>
 <tr><td>Dry clean: jacket / dress / suit</td><td class="n">$18.50 / $16.50 / $32.00</td></tr>
 <tr><td>Bulk: doona / king / curtain</td><td class="n">$45.00 / $75.00 / $38.00</td></tr>
-<tr><td>Kings Club Solo (about 1 to 2 loads), per week</td><td class="n">$49.00</td></tr>
-<tr><td>Kings Club Household (about 2 to 4 loads), per week</td><td class="n">$69.00</td></tr>
-<tr><td>Kings Club Full House (about 4 to 6 loads + ironing), per week</td><td class="n">$89.00</td></tr>
+<tr><td>Large linen: sheet set / blanket or quilt cover / rug, per item (replaces ironing, 19 Sep 2026)</td><td class="n">$24.00 / $32.00 / $42.00</td></tr>
+<tr><td>Kings Club Solo (about 1 to 2 loads), per week — $49.00 + 30%, 19 Sep 2026</td><td class="n">$63.70</td></tr>
+<tr><td>Kings Club Household (about 2 to 4 loads), per week — $69.00 + 30%</td><td class="n">$89.70</td></tr>
+<tr><td>Kings Club Full House (about 4 to 6 loads), per week — $89.00 + 30%</td><td class="n">$115.70</td></tr>
 <tr><td>Kings Club members</td><td class="n">exempt from minimum</td></tr>
 </tbody></table>
 </div>
-<p>Invoice maths in the ops portal: loads = ceil(kg ÷ 5) × $32.00; ironing = items × $3.50; plus $13.50 delivery; floor at $73.50; a manual adjustment field. The minimum was set at Laundry Lady's $70 plus 5% on 18 September 2026.</p>
+<p>Invoice maths in the ops portal: loads = ceil(kg ÷ 5) × $32.00; large linen = items × $24.00 at the sheet-set rate, with blankets (+$8) and rugs (+$18) entered through the adjustment field until the wizard takes separate counts; plus $13.50 delivery; floor at $73.50; a manual adjustment field. The minimum was set at Laundry Lady's $70 plus 5% on 18 September 2026.</p>
 
 <div class="box warn"><h4>Kings Club savings claim: add the basis <span class="tag t-new">New in v2</span></h4>
-<p>Two ad-hoc loads a week cost $64.00 + $13.50 = $77.50; Solo is $49.00; the saving is $28.50 a week, 36.8%. The claim "save around $28 every week" is correct at two loads. At one load the ad-hoc price is $45.50, so Solo costs $3.50 more. Under the Australian Consumer Law an unqualified comparison is a representation the customer can rely on. Change the copy to "save around $28 a week compared with two ad-hoc loads" wherever it appears (home savings box, club page, wizard). Owner Callum, Phase B, by 30 Sep 2026.</p></div>
+<p>Two ad-hoc loads a week cost $64.00 + $13.50 = $77.50. At the current Solo price of $63.70 the saving is $13.80 a week, 17.8%; at one load the ad-hoc price is $45.50, so Solo costs $18.20 more. Under the Australian Consumer Law an unqualified comparison is a representation the customer can rely on, so the copy carries its basis: "save around $14 a week compared with two ad-hoc loads". The figure is computed from <code>config/pricing</code> at render time and rounded to whole dollars, so a future re-price cannot leave a stale number in the sentence. Done 19 Sep 2026 (Appendix E).</p></div>
 
 <h3>Competitor rate card: The Laundry Lady <span class="tag t-new">New in v2</span></h3>
 <p>Direct fetch of thelaundrylady.com.au is blocked from this build environment. The figures below come from search-indexed text of their pricing page and their published 2024 customer price list; each is dated. Max to confirm against the live page before D-04 is decided.</p>
@@ -181,7 +184,7 @@
 <tr><td class="k">Minimum per service</td><td class="n">$70.00</td><td>Pricing page, effective 27 Jul 2026</td><td class="n">$73.50</td><td>Our minimum is their minimum plus 5%.</td></tr>
 <tr><td class="k">Pickup and delivery</td><td class="n">$14.50</td><td>Pricing page, effective 27 Jul 2026 ($12.50 in 2024)</td><td class="n">$13.50</td><td>We are $1.00 cheaper on delivery.</td></tr>
 <tr><td class="k">Service fee, recurring / one-off</td><td class="n">$2.20 / $5.50</td><td>Pricing page, effective 27 Jul 2026 ($2.00 in 2024)</td><td class="n">none</td><td>We charge no booking or service fee. Say so.</td></tr>
-<tr><td class="k">Ironing, per item</td><td class="n">from $2.75</td><td>2024 price list (range to $14.74 for complex items)</td><td class="n">$3.50 flat</td><td>Flat price is simpler; theirs is cheaper on shirts.</td></tr>
+<tr><td class="k">Ironing, per item</td><td class="n">from $2.75</td><td>2024 price list (range to $14.74 for complex items)</td><td class="n">not offered</td><td>Ironing was withdrawn on 19 Sep 2026; LaundryKings offers large linen per item instead (sheet set $24, blanket $32, rug $42). No comparable Laundry Lady figure found.</td></tr>
 <tr><td class="k">Eco liquid, per load</td><td class="n">+$3.00</td><td>2024 price list</td><td class="n">+$3.50</td><td>Parity.</td></tr>
 <tr><td class="k">Card fee</td><td class="n">2.3% "included"</td><td>2024 price list note</td><td class="n">none stated</td><td>From 1 Oct 2026 the Reserve Bank's reforms remove card surcharges on eftpos, Visa and Mastercard for all Australian merchants, so no one can pass this fee on (Appendix B).</td></tr>
 </tbody></table>
@@ -232,7 +235,7 @@
   <line x1="40" y1="90" x2="700" y2="90" stroke="#D5DAE6"/>
   <!-- scale: 77.5 -> 640px => 8.258px per $ ; x0=40 -->
   <rect x="40" y="40" width="640" height="26" fill="#2B4BAA"/><text x="46" y="57" fill="#fff" font-weight="600">Revenue inc. GST $77.50</text>
-  <rect x="621.8" y="40" width="58.2" height="26" fill="#12245C"/><text x="626" y="57" fill="#fff" font-size="8.5">GST $7.05</text>
+  <rect x="621.8" y="40" width="58.2" height="26" fill="#071A45"/><text x="626" y="57" fill="#fff" font-size="8.5">GST $7.05</text>
   <rect x="608.4" y="40" width="13.4" height="26" fill="#B5651D"/>
   <text x="560" y="34" fill="#3C4356" font-size="8.5">Stripe $1.62</text><line x1="600" y1="36" x2="614" y2="40" stroke="#6B7386" stroke-width="1"/>
   <text x="40" y="106" fill="#3C4356">Remaining for operator payout P, platform cost T and brand contribution: <tspan font-weight="600" fill="#141826">$68.83</tspan></text>
