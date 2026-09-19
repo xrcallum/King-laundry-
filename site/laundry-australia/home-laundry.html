@@ -624,6 +624,58 @@
     .hero .script-sub{font-size:16px}
     .life-busy h2{font-size:38px}
   }
+
+  /* ---- SCROLL PROGRESS BAR ---- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; z-index:200;
+    height:3px; width:0; background:var(--orange);
+    pointer-events:none;
+  }
+
+  /* ---- HEADER SHRINK ON SCROLL ---- */
+  .site-header{transition:padding .22s ease}
+  .site-header.scrolled{padding-top:8px; padding-bottom:8px}
+
+  /* ---- HERO ENTRY ---- */
+  @keyframes heroSlideUp{
+    from{opacity:0;transform:translateY(24px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes heroCTAFade{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+    .scroll-progress{transition:width .1s linear}
+
+    .hero h1{animation:heroSlideUp .7s cubic-bezier(.22,1,.36,1) both}
+    .hero .cta-row{animation:heroCTAFade .5s cubic-bezier(.22,1,.36,1) .32s both}
+
+    /* ---- REVEAL ON SCROLL ---- */
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .6s cubic-bezier(.22,1,.36,1),
+                 transform .6s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+
+    /* ---- STAGGER GROUPS ---- */
+    .reveal-stagger > *{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .52s cubic-bezier(.22,1,.36,1),
+                 transform .52s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-stagger.is-visible > *:nth-child(1){transition-delay:0s}
+    .reveal-stagger.is-visible > *:nth-child(2){transition-delay:.08s}
+    .reveal-stagger.is-visible > *:nth-child(3){transition-delay:.16s}
+    .reveal-stagger.is-visible > *:nth-child(4){transition-delay:.24s}
+    .reveal-stagger.is-visible > *:nth-child(5){transition-delay:.32s}
+    .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0)}
+  }
 </style>
 </head>
 <body>
@@ -702,11 +754,12 @@
   <section class="section life-busy" aria-labelledby="life-busy-h">
     <div class="container">
       <svg class="sparkle-abs sp-1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/><circle cx="34" cy="10" r="2" stroke="#EE6E1F" stroke-width="1.5" fill="none"/></svg>
-      <h2 id="life-busy-h" class="display">Life&rsquo;s too short to spend it folding washing.</h2>
-      <p class="subline">Hand it over — we&rsquo;ve got it covered.</p>
+      <h2 id="life-busy-h" class="display reveal">Life&rsquo;s too short to spend it folding washing.</h2>
+      <p class="subline reveal">Hand it over — we&rsquo;ve got it covered.</p>
       <p class="body">Our Home Laundry service takes the grunt work off your plate in just a few taps.</p>
       <svg class="sparkle-abs sp-2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/></svg>
 
+      <div class="reveal-stagger">
       <!-- SIMPLIFY YOUR LIFE card -->
       <div class="simplify">
         <h3>Take it off your list</h3>
@@ -719,14 +772,16 @@
         <p>More time with your kids, your partner, your mates&hellip; less time dealing with household chores that eat up your weekend.</p>
         <p>We genuinely love doing this stuff. Seriously — it&rsquo;s our thing.</p>
       </div>
+      </div><!-- /.reveal-stagger -->
     </div>
   </section>
 
   <!-- =============== OUR PROCESS =============== -->
   <section class="section process" aria-labelledby="process-h">
     <div class="container">
-      <h2 id="process-h">Our Process</h2>
+      <h2 id="process-h" class="reveal">Our Process</h2>
 
+      <div class="steps reveal-stagger">
       <!-- ORDER -->
       <article class="step-card">
         <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
@@ -799,17 +854,18 @@
         <h3>Drop off</h3>
         <p>Clean, fresh and ready to go — we bring it straight back to your door. All you have to do is put it away.</p>
       </article>
+      </div><!-- /.steps.reveal-stagger -->
     </div>
   </section>
 
   <!-- =============== PRICING =============== -->
   <section class="section pricing" aria-labelledby="pricing-h">
     <div class="container">
-      <h2 id="pricing-h" class="pricing-title">Pricing</h2>
+      <h2 id="pricing-h" class="pricing-title reveal">Pricing</h2>
       <hr class="pricing-rule" />
 
       <!-- bags illustration: clean line art, 4 bags — back brand bag drawn first (z-order behind) -->
-      <svg class="bags-illo" viewBox="0 0 560 350" aria-hidden="true" role="img" aria-label="Laundrylegends bags — washed, dried, ironed, folded, ready for pickup">
+      <svg class="bags-illo reveal" viewBox="0 0 560 350" aria-hidden="true" role="img" aria-label="Laundrylegends bags — washed, dried, ironed, folded, ready for pickup">
 
         <!-- === BACK BRAND BAG (drawn first, sits behind bags 1–3) === -->
         <path d="M 449 36 C 449 12 543 12 543 36" fill="none" stroke="#111" stroke-width="2.3" stroke-linecap="round"/>
@@ -858,7 +914,7 @@
       </svg>
 
       <!-- Personal bag wash -->
-      <div class="price-card">
+      <div class="price-card reveal">
         <p class="script">Personal<br/>bag wash</p>
         <p class="headline">Once a week pick up<span aria-hidden="true">*</span> <span class="price">$59.95</span></p>
         <ul>
@@ -870,7 +926,7 @@
       </div>
 
       <!-- Ironing -->
-      <div class="ironing-block">
+      <div class="ironing-block reveal">
         <h3>Ironing</h3>
         <div class="ironing-row">
           <span class="label">Ironing per piece</span>
@@ -882,7 +938,7 @@
       <a class="price-list-btn" href="#" data-open-prices>View full price list</a>
 
       <!-- T&Cs -->
-      <div class="tc-block">
+      <div class="tc-block reveal">
         <h3>T&amp;C&rsquo;s</h3>
         <ul>
           <li class="strong">* Advise us of items valued at over $250. Extra delicate &amp; large items may incur higher charges</li>
@@ -894,7 +950,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="cta-banner" id="pickup">
+      <div class="cta-banner reveal" id="pickup">
         <h2>Request pickup<br/>online now</h2>
         <a class="btn-pill-outline" href="contact.html" aria-label="Order pickup">Order pickup</a>
         <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#fff" stroke-width="2" fill="none"/><circle cx="32" cy="12" r="2" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
@@ -906,9 +962,9 @@
   <section class="wash" aria-labelledby="wash-h">
     <div class="container">
       <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" fill="#EE6E1F"/></svg>
-      <h2 id="wash-h">We wash for<br/>the best around</h2>
-      <p class="lead">A few of our valued clients — you might recognise a name or two.</p>
-      <div class="clients" aria-label="Valued clients">
+      <h2 id="wash-h" class="reveal">We wash for<br/>the best around</h2>
+      <p class="lead reveal">A few of our valued clients — you might recognise a name or two.</p>
+      <div class="clients reveal-stagger" aria-label="Valued clients">
         <!--
           Horizontal carousel. Tiles are neutral placeholders: no client may be
           named here until they have confirmed in writing (HANDOFF.md Blocker #1).
@@ -1130,6 +1186,48 @@
         markActive(current);
       }, {passive:true});
     })();
+  </script>
+
+  <!-- =============== SCROLL & REVEAL =============== -->
+  <script>
+  (function(){
+    'use strict';
+
+    // --- Scroll progress bar ---
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    var header = document.querySelector('.site-header');
+    var docEl  = document.documentElement;
+
+    window.addEventListener('scroll', function(){
+      var scrolled = window.scrollY || docEl.scrollTop;
+      var total    = docEl.scrollHeight - docEl.clientHeight;
+      bar.style.width = (total > 0 ? Math.min(scrolled / total * 100, 100) : 0) + '%';
+      if(header) header.classList.toggle('scrolled', scrolled > 40);
+    }, {passive:true});
+
+    // --- Reveal on scroll via IntersectionObserver ---
+    var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if(!targets.length) return;
+
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+
+    targets.forEach(function(el){ io.observe(el); });
+  })();
   </script>
 </body>
 </html>
