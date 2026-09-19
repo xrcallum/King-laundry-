@@ -197,7 +197,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .chkw{position:relative}
 .chk2{list-style:none;display:flex;flex-direction:column;gap:.55rem}
 .chk2 li{position:relative;padding-left:1.6rem;font-size:.87rem;color:var(--body)}
-.chk2 li::before{content:'✓';position:absolute;left:0;top:0;width:18px;height:18px;background:var(--red);color:#fff;border-radius:50%;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.chk2 li::before{content:'';position:absolute;left:0;top:0;width:18px;height:18px;background:var(--red);border-radius:50%}.chk2 li::after{content:'';position:absolute;left:5.5px;top:6px;width:7px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
 .sec-navy .chk2 li{color:rgba(255,255,255,.78)}
 
 /* ---------- SUBURB GRID ---------- */
@@ -839,7 +839,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <a href="#/contact">Contact</a>
   <a href="#/app">My Account &amp; Bookings</a>
   <a href="#/book">Book a Collection</a>
-  <a href="#/ops" id="mobOps" style="display:none">⚙ Operations (admin)</a>
+  <a href="#/ops" id="mobOps" style="display:none"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg> Operations (admin)</a>
 </div>
 
 <main id="app">
@@ -937,7 +937,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <div class="hero-pc-row"><span>2 × wash &amp; fold loads</span><span id="hpLoads">$64.00</span></div>
           <div class="hero-pc-row"><span>Collection &amp; return</span><span id="hpDel">$13.50</span></div>
           <div class="hero-pc-tot"><span class="hero-pc-tot-l">FROM</span><span class="hero-pc-tot-v" id="hpTot">$77.50</span></div>
-          <a href="#quote" class="btn btn-nv btn-full">Get my exact price →</a>
+          <a href="#quote" class="btn btn-nv btn-full">Get my exact price ›</a>
           <p class="hero-pc-note">Indicative only. Final price set when your operator weighs and counts.</p>
         </div>
       </div>
@@ -947,10 +947,10 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <!-- ── 2. TRUST ────────────────────────────────────────── -->
   <div id="trustband"><div class="wrap">
     <div class="trust-g">
-      <a href="#/operators" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div class="trust-h">Screened operators</div><p class="trust-p">Identity and background checks before the first job. Every operator, every time.</p><span class="trust-l">How we vet →</span></a>
-      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div class="trust-h">Your wash, only yours</div><p class="trust-p">Processed on its own cycle. Never mixed with another household's items.</p><span class="trust-l">Our guarantee →</span></a>
-      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h6"/></svg><div class="trust-h">Written guarantee</div><p class="trust-p">If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p><span class="trust-l">Read the terms →</span></a>
-      <a href="#/pricing" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2 0 0 1 5 0c0 1.5-1 2-2.5 2.5s-2.5 1-2.5 2.5a2.5 2 0 0 0 5 0"/></svg><div class="trust-h">GST included, always</div><p class="trust-p">Every price on this site includes GST. No checkout surprises, no call-out fees.</p><span class="trust-l">See pricing →</span></a>
+      <a href="#/operators" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div class="trust-h">Screened operators</div><p class="trust-p">Identity and background checks before the first job. Every operator, every time.</p><span class="trust-l">How we vet ›</span></a>
+      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div class="trust-h">Your wash, only yours</div><p class="trust-p">Processed on its own cycle. Never mixed with another household's items.</p><span class="trust-l">Our guarantee ›</span></a>
+      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h6"/></svg><div class="trust-h">Written guarantee</div><p class="trust-p">If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p><span class="trust-l">Read the terms ›</span></a>
+      <a href="#/pricing" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2 0 0 1 5 0c0 1.5-1 2-2.5 2.5s-2.5 1-2.5 2.5a2.5 2 0 0 0 5 0"/></svg><div class="trust-h">GST included, always</div><p class="trust-p">Every price on this site includes GST. No checkout surprises, no call-out fees.</p><span class="trust-l">See pricing ›</span></a>
     </div>
   </div></div>
 
@@ -976,23 +976,23 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         <h3>Wash &amp; Fold</h3>
         <p>Everyday washing, collected and washed on its own cycle. Lights and darks separated as standard. Dried and folded.</p>
         <span class="price" data-px="wf"></span>
-        <a href="#/book" class="btn btn-out svc-cta">Book Wash &amp; Fold →</a>
+        <a href="#/book" class="btn btn-out svc-cta">Book Wash &amp; Fold ›</a>
       </div>
       <div class="svc-c hl">
         <span class="svc-c-tag">MOST BOOKED</span>
         <h3>Wash, Fold &amp; Premium</h3>
         <p>Everything in Wash &amp; Fold, plus Premium Clean on the loads you choose. Delicates, fine knits, anything that needs care.</p>
         <span class="price" data-px="wfi"></span>
-        <a href="#/book" class="btn svc-cta">Book Wash, Fold &amp; Premium →</a>
+        <a href="#/book" class="btn svc-cta">Book Wash, Fold &amp; Premium ›</a>
       </div>
       <div class="svc-c">
         <h3>Premium Clean</h3>
         <p>Our finishing service. Stains hand-treated, gentle cycle, knits reshaped and air-dried, shirts returned on hangers.</p>
         <span class="price" data-px="iron"></span>
-        <a href="#/book" class="btn btn-out svc-cta">Book Premium Clean →</a>
+        <a href="#/book" class="btn btn-out svc-cta">Book Premium Clean ›</a>
       </div>
     </div>
-    <p class="enq-line">Dry cleaning, commercial linen and supported living are quoted per job — <a href="#/services">see all services →</a></p>
+    <p class="enq-line">Dry cleaning, commercial linen and supported living are quoted per job — <a href="#/services">see all services ›</a></p>
   </div></div>
 
   <!-- ── 5. KINGS CLUB ───────────────────────────────────── -->
@@ -1038,7 +1038,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <div class="cov2-r">
         <div class="cov2-h">COLLECTING NOW</div>
         <div class="cov-live" id="covLiveChips"></div>
-        <p style="margin-top:1rem;font-size:.82rem;color:var(--mute)"><a href="#/coverage" style="color:var(--navy);text-decoration:underline;font-weight:600">See every suburb, including opening soon →</a></p>
+        <p style="margin-top:1rem;font-size:.82rem;color:var(--mute)"><a href="#/coverage" style="color:var(--navy);text-decoration:underline;font-weight:600">See every suburb, including opening soon ›</a></p>
       </div>
     </div>
   </div></div>
@@ -1097,16 +1097,16 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <span class="eyebrow">NEW IN BRISBANE</span>
     <h2>Be one of our first customers and shape how we grow.</h2>
     <p>We're a new business. Rather than claim thousands of orders we don't have, we're being honest: we're starting with great systems, screened operators, and a written service guarantee. Your feedback makes us better.</p>
-    <a href="#/book" class="btn btn-white">Book your first collection →</a>
+    <a href="#/book" class="btn btn-white">Book your first collection ›</a>
   </div></div></div>
 
   <!-- ── 8. SEGMENT DOORS ────────────────────────────────── -->
   <div class="sec sec-alt"><div class="wrap">
     <p class="doors-lead">Not booking for a household?</p>
     <div class="doors">
-      <a href="#/business" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h.01M15 16h.01"/></svg><h3>Business &amp; commercial</h3><p>Short-stay properties, salons, gyms, cafés and clubs. Scheduled collections, account billing, volume rates.</p><span class="go">Request a quote →</span></a>
-      <a href="#/support" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5-8-10a3 3 0 0 1 6 0 3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 5-4 8-8 10z"/></svg><h3>Supported living &amp; aged care</h3><p>Regular laundry assistance for people living independently, and for the providers who support them.</p><span class="go">See how it works →</span></a>
-      <a href="#/operators" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg><h3>Become an operator</h3><p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p><span class="go">Operator information →</span></a>
+      <a href="#/business" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h.01M15 16h.01"/></svg><h3>Business &amp; commercial</h3><p>Short-stay properties, salons, gyms, cafés and clubs. Scheduled collections, account billing, volume rates.</p><span class="go">Request a quote ›</span></a>
+      <a href="#/support" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5-8-10a3 3 0 0 1 6 0 3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 5-4 8-8 10z"/></svg><h3>Supported living &amp; aged care</h3><p>Regular laundry assistance for people living independently, and for the providers who support them.</p><span class="go">See how it works ›</span></a>
+      <a href="#/operators" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg><h3>Become an operator</h3><p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p><span class="go">Operator information ›</span></a>
     </div>
   </div></div>
 
@@ -1133,7 +1133,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <li>Folded and returned in your bag</li>
         </ul>
         <span class="price" data-px="wf"></span>
-        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Wash &amp; Fold →</a>
+        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Wash &amp; Fold ›</a>
       </div>
       <div class="card"><h3>Wash, Fold &amp; Premium</h3>
         <p>Washing plus our Premium Clean finish, priced per load.</p>
@@ -1144,7 +1144,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <li>You choose which loads get Premium Clean — not all of them</li>
         </ul>
         <span class="price" data-px="wfi"></span>
-        <a href="#/book" class="btn btn-red btn-full" style="margin-top:1rem">Book Wash, Fold &amp; Premium →</a>
+        <a href="#/book" class="btn btn-red btn-full" style="margin-top:1rem">Book Wash, Fold &amp; Premium ›</a>
       </div>
       <div class="card"><h3>Premium Clean</h3>
         <p>Our finishing service for the things you care about most.</p>
@@ -1155,7 +1155,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <li>We do not offer ironing — this is our finishing service instead</li>
         </ul>
         <span class="price" data-px="iron"></span>
-        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Premium Clean →</a>
+        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Premium Clean ›</a>
       </div>
       <div class="card"><h3>Dry Cleaning</h3>
         <p>Handled through vetted specialist partner cleaners.</p>
@@ -1858,9 +1858,9 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 
     <div class="ap-sec-t">HOW IT WORKS</div>
     <div class="ap-card"><div class="ap-card-b">
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i>🧺</i><div><strong>Prepare for collection</strong><small>Leave your laundry at the door ready for pickup by your LaundryKings operator.</small></div></div>
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i>⚖️</i><div><strong>Weighed &amp; invoiced</strong><small>Items are counted and weighed, then your final price is confirmed before any work starts.</small></div></div>
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i>🚚</i><div><strong>Returned to your door</strong><small>We launder your items and deliver them back, washed, folded or pressed.</small></div></div>
+      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></i><div><strong>Prepare for collection</strong><small>Leave your laundry at the door ready for pickup by your LaundryKings operator.</small></div></div>
+      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 4v16M7 20h10M5 8h14M5 8 2 14h6L5 8zM19 8l-3 6h6l-3-6z"/></svg></i><div><strong>Weighed &amp; invoiced</strong><small>Items are counted and weighed, then your final price is confirmed before any work starts.</small></div></div>
+      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i><div><strong>Returned to your door</strong><small>We launder your items and deliver them back, washed, folded or pressed.</small></div></div>
     </div></div>
 
     <div class="ap-tiles" style="margin-top:1rem">
@@ -1896,11 +1896,11 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <!-- service icon grid -->
       <div class="ap-sec-t">SELECT REQUIRED SERVICE</div>
       <div class="svc-grid" id="bkSvcGrid"></div>
-      <a href="#/services" class="svc-more">Dry cleaning &amp; commercial enquiries →</a>
+      <a href="#/services" class="svc-more">Dry cleaning &amp; commercial enquiries ›</a>
 
       <!-- optional volume (show for wf/wfi/premium) -->
       <div class="ap-card" id="bkVolCard" style="display:none;margin-top:.6rem">
-        <div class="ap-card-h"><i>📦</i>Approximate quantity <span style="font-weight:400;font-size:.78rem;color:var(--mute)">(helps your operator prepare)</span></div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M3 8 12 3l9 5v8l-9 5-9-5V8z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></i>Approximate quantity <span style="font-weight:400;font-size:.78rem;color:var(--mute)">(helps your operator prepare)</span></div>
         <div class="ap-card-b">
           <div class="ap-g2">
             <div class="fld"><label class="lbl" id="bkLblA">Loads (approx. 5&nbsp;kg each)</label>
@@ -1934,7 +1934,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         </div>
       </div>
 
-      <div class="ap-bar"><a href="#/app" class="btn btn-out btn-lg">Cancel</a><button class="btn btn-nv btn-lg" id="bkN1">→ Continue</button></div>
+      <div class="ap-bar"><a href="#/app" class="btn btn-out btn-lg">Cancel</a><button class="btn btn-nv btn-lg" id="bkN1">› Continue</button></div>
     </div>
 
     <!-- STEP 2 — AVAILABILITY -->
@@ -1952,14 +1952,14 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         </div>
       </div></div>
       <div id="bkSlots"></div>
-      <div class="ap-note"><i>ℹ️</i><span>Collection windows are three hours wide. Your operator is assigned when the booking is confirmed and will message you in the app before arriving.</span></div>
+      <div class="ap-note"><i>ℹ</i><span>Collection windows are three hours wide. Your operator is assigned when the booking is confirmed and will message you in the app before arriving.</span></div>
       <div class="ap-bar"><button class="btn btn-out btn-lg" id="bkP2">Previous</button><button class="btn btn-nv btn-lg" id="bkN2">Continue</button></div>
     </div>
 
     <!-- STEP 3 — REVIEW -->
     <div class="ap-step" id="st3">
       <div class="ap-card">
-        <div class="ap-card-h"><i>🧺</i><span id="bkRevSvc">Wash &amp; Fold</span></div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></i><span id="bkRevSvc">Wash &amp; Fold</span></div>
         <div class="ap-card-b"><div id="bkRevSlot"></div></div>
         <div class="tgl">
           <div class="tgl-t">Make this a recurring collection<small id="bkRecSub">Repeat on the same day and window each week.</small></div>
@@ -1979,7 +1979,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <div class="ap-card"><div class="ap-card-b"><div id="bkRevAddr"></div></div></div>
 
       <div class="ap-card">
-        <div class="ap-card-h"><i>👕</i>Laundry care instructions</div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M16 3 12 6 8 3 2 6l2 5 2-1v11h12V10l2 1 2-5-6-3z"/></svg></i>Laundry care instructions</div>
         <div class="ap-card-b">
           <textarea class="ta" id="bkCare" placeholder="Cold wash only, hang dry, fragrance-free detergent, fold shirts flat…"></textarea>
           <label class="cbx"><input type="checkbox" id="bkCareSave"><span>Save these care instructions to this profile for future bookings.</span></label>
@@ -1987,7 +1987,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       </div>
 
       <div class="ap-card">
-        <div class="ap-card-h"><i>🚚</i>Delivery instructions</div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i>Delivery instructions</div>
         <div class="ap-card-b">
           <p class="ap-fine" style="margin:0 0 .6rem">If no instructions are given, clean laundry is left in a safe place at the collection address.</p>
           <textarea class="ta" id="bkDel" placeholder="Leave under the carport, ring the bell, gate code…"></textarea>
@@ -1996,10 +1996,10 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       </div>
 
       <div class="ap-card">
-        <div class="ap-card-h"><i>📄</i>Terms &amp; payment</div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><path d="M9 13h6M9 17h6"/></svg></i>Terms &amp; payment</div>
         <div class="ap-card-b">
           <div id="bkSum"></div>
-          <div class="ap-note" style="margin:.9rem 0 0"><i>💳</i><span id="bkMinNote"></span></div>
+          <div class="ap-note" style="margin:.9rem 0 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></i><span id="bkMinNote"></span></div>
           <p class="ap-fine" style="margin-top:.7rem">Payment is processed online after your items are weighed and counted, and before your completed laundry is returned.</p>
           <div class="paym"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>GOOGLE&nbsp;PAY</span><span>APPLE&nbsp;PAY</span></div>
           <label class="cbx"><input type="checkbox" id="bkTos"><span>I agree to the <a href="#/terms">Terms of Service</a> and the <a href="#/guarantee">Service Guarantee</a>.</span></label>
@@ -2007,13 +2007,13 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         </div>
       </div>
 
-      <div class="ap-bar"><button class="btn btn-out btn-lg" id="bkP3">Previous</button><button class="btn btn-red btn-lg" id="bkGo">✓ Confirm booking</button></div>
+      <div class="ap-bar"><button class="btn btn-out btn-lg" id="bkP3">Previous</button><button class="btn btn-red btn-lg" id="bkGo"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m5 13 4 4L19 7"/></svg> Confirm booking</button></div>
     </div>
 
     <!-- DONE -->
     <div class="ap-step" id="st4">
       <div class="ap-card"><div class="ap-card-b ap-empty">
-        <i>✅</i><h3>Booking requested</h3>
+        <i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></i><h3>Booking requested</h3>
         <p id="bkDoneTx">We have your request. You will get a message in the app once an operator is assigned to your window.</p>
         <a href="#/bookings" class="btn btn-nv btn-lg">View my bookings</a>
       </div></div>
@@ -2043,7 +2043,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <div class="ap"><div class="ap-in">
     <div class="ap-h"><button class="ap-back" onclick="location.hash='#/messages'">‹</button><div><h2 id="thrT">Message</h2><p id="thrS"></p></div></div>
     <div id="thrBody"></div>
-    <div class="ap-note"><i>ℹ️</i><span>Replies in this thread go to LaundryKings support and to the operator assigned to the booking.</span></div>
+    <div class="ap-note"><i>ℹ</i><span>Replies in this thread go to LaundryKings support and to the operator assigned to the booking.</span></div>
     <div class="ap-card"><div class="ap-card-b">
       <textarea class="ta" id="thrTx" placeholder="Write a reply…"></textarea>
       <button class="btn btn-nv btn-full" id="thrGo" style="margin-top:.6rem">Send reply</button>
@@ -2064,14 +2064,14 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <div class="ap-card"><div class="ap-card-b">
       <div id="acIdc"></div>
     </div>
-      <a href="#/profile" class="ap-row" style="border:none;border-top:1px solid var(--line);border-radius:0;margin:0"><i>⚙️</i><div><strong>Manage profile</strong><small>Contact person, pickup address, service preferences and invoices.</small></div><em>›</em></a>
+      <a href="#/profile" class="ap-row" style="border:none;border-top:1px solid var(--line);border-radius:0;margin:0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></i><div><strong>Manage profile</strong><small>Contact person, pickup address, service preferences and invoices.</small></div><em>›</em></a>
     </div>
 
     <div class="ap-sec-t">USER SETTINGS — ACROSS ALL PROFILES</div>
-    <a href="#/rewards" class="ap-row"><i>♔</i><div><strong>King Rewards</strong><small id="acRwSub">Crowns balance, tier benefits and your referral code</small></div><em>›</em></a>
-    <a href="#/userdet" class="ap-row"><i>👤</i><div><strong>User details</strong><small>Name, email, phone, password</small></div><em>›</em></a>
-    <a href="#/feedback" class="ap-row"><i>💬</i><div><strong>Feedback</strong><small>Share feedback or report an issue</small></div><em>›</em></a>
-    <a href="#/help" class="ap-row"><i>❓</i><div><strong>Help &amp; support</strong><small>FAQs, contact support, policies</small></div><em>›</em></a>
+    <a href="#/rewards" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 18h14l1-9-5 3-3-6-3 6-5-3 1 9z"/><path d="M5 21h14"/></svg></i><div><strong>King Rewards</strong><small id="acRwSub">Crowns balance, tier benefits and your referral code</small></div><em>›</em></a>
+    <a href="#/userdet" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></i><div><strong>User details</strong><small>Name, email, phone, password</small></div><em>›</em></a>
+    <a href="#/feedback" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg></i><div><strong>Feedback</strong><small>Share feedback or report an issue</small></div><em>›</em></a>
+    <a href="#/help" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><div><strong>Help &amp; support</strong><small>FAQs, contact support, policies</small></div><em>›</em></a>
 
     <div class="ap-ver">LaundryKings customer portal · <span id="apVer">v1.0</span></div>
   </div></div>
@@ -2116,12 +2116,12 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <div class="ap"><div class="ap-in">
     <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'">‹</button><div><h2>Manage profile</h2><p>Details for the active profile.</p></div></div>
     <div class="ap-card"><div class="ap-card-b"><div id="prIdc"></div></div></div>
-    <div class="ap-note"><i>🚚</i><span>Online payment is due after weighing and before return delivery.</span></div>
-    <a href="#/pdetails" class="ap-row"><i>✏️</i><div><strong>Profile &amp; contact details</strong><small>Update name, email and mobile for this profile</small></div><em>›</em></a>
-    <a href="#/prefs" class="ap-row"><i>👕</i><div><strong>Service preferences</strong><small>Default care and delivery instructions</small></div><em>›</em></a>
-    <a href="#/address" class="ap-row"><i>📍</i><div><strong>Pick up address</strong><small>Collection address and access notes</small></div><em>›</em></a>
-    <a href="#/comms" class="ap-row"><i>📣</i><div><strong>Communication settings</strong><small>Manage notification options</small></div><em>›</em></a>
-    <a href="#/invoices" class="ap-row"><i>🧾</i><div><strong>Invoices</strong><small>View invoice history for this profile</small></div><em>›</em></a>
+    <div class="ap-note"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i><span>Online payment is due after weighing and before return delivery.</span></div>
+    <a href="#/pdetails" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 20h4L20 8l-4-4L4 16v4z"/><path d="m14 6 4 4"/></svg></i><div><strong>Profile &amp; contact details</strong><small>Update name, email and mobile for this profile</small></div><em>›</em></a>
+    <a href="#/prefs" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M16 3 12 6 8 3 2 6l2 5 2-1v11h12V10l2 1 2-5-6-3z"/></svg></i><div><strong>Service preferences</strong><small>Default care and delivery instructions</small></div><em>›</em></a>
+    <a href="#/address" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></i><div><strong>Pick up address</strong><small>Collection address and access notes</small></div><em>›</em></a>
+    <a href="#/comms" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M3 11v2a1 1 0 0 0 1 1h3l7 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M18 9a4 4 0 0 1 0 6"/></svg></i><div><strong>Communication settings</strong><small>Manage notification options</small></div><em>›</em></a>
+    <a href="#/invoices" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></i><div><strong>Invoices</strong><small>View invoice history for this profile</small></div><em>›</em></a>
   </div></div>
 </section>
 
@@ -2153,11 +2153,11 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <div class="ap"><div class="ap-in">
     <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'">‹</button><div><h2>Service preferences</h2><p>Applied automatically to every new booking on this profile.</p></div></div>
     <div class="ap-card">
-      <div class="ap-card-h"><i>👕</i>Default laundry care instructions</div>
+      <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M16 3 12 6 8 3 2 6l2 5 2-1v11h12V10l2 1 2-5-6-3z"/></svg></i>Default laundry care instructions</div>
       <div class="ap-card-b"><textarea class="ta" id="pfCare" placeholder="Cold wash only, no fabric softener, hang dry delicates…"></textarea></div>
     </div>
     <div class="ap-card">
-      <div class="ap-card-h"><i>🚚</i>Default delivery instructions</div>
+      <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i>Default delivery instructions</div>
       <div class="ap-card-b"><textarea class="ta" id="pfDel" placeholder="Leave under the carport, do not ring the bell…"></textarea></div>
     </div>
     <div class="ap-card"><div class="ap-card-b">
@@ -2199,7 +2199,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <div class="ap"><div class="ap-in">
     <div class="ap-h"><button class="ap-back" onclick="location.hash='#/profile'">‹</button><div><h2>Communication settings</h2><p>Choose what we contact you about.</p></div></div>
     <div class="ap-card" id="cmList"></div>
-    <div class="ap-note"><i>ℹ️</i><span>Booking confirmations, collection reminders and invoices are operational messages and are always sent.</span></div>
+    <div class="ap-note"><i>ℹ</i><span>Booking confirmations, collection reminders and invoices are operational messages and are always sent.</span></div>
     <button class="btn btn-nv btn-full btn-lg" id="cmGo">Save settings</button>
     <div class="fmsg" id="cmMsg"></div>
   </div></div>
@@ -2227,7 +2227,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <button class="btn btn-nv btn-full btn-lg" id="udGo">Save user details</button>
       <div class="fmsg" id="udMsg"></div>
     </div></div>
-    <div class="ap-note"><i>🔒</i><span id="udSec">Your details are stored privately against your own sign-in and are not visible to other people in this workspace.</span></div>
+    <div class="ap-note"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg></i><span id="udSec">Your details are stored privately against your own sign-in and are not visible to other people in this workspace.</span></div>
   </div></div>
 </section>
 
@@ -2258,17 +2258,17 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <div class="ap"><div class="ap-in">
     <div class="ap-h"><button class="ap-back" onclick="location.hash='#/account'">‹</button><div><h2>Help &amp; support</h2><p>Answers, policies and how to reach us.</p></div></div>
     <div class="ap-card"><div class="ap-card-b" style="text-align:center;padding:1.6rem 1.15rem">
-      <div style="font-size:2rem;margin-bottom:.5rem">🎧</div>
+      <div style="font-size:2rem;margin-bottom:.5rem"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg></div>
       <h3 style="font-size:1.15rem;color:var(--navy);margin-bottom:.3rem">Contact support</h3>
       <p style="font-size:.86rem;color:var(--body);margin-bottom:.3rem">Get in touch with our support team</p>
       <p style="font-family:var(--fd);font-weight:800;font-size:.95rem;color:var(--ink)" id="helpEmail">Support address to be published</p>
       <p style="font-size:.86rem;color:var(--body);margin-top:.2rem" id="helpPhone">Phone line being connected</p>
     </div></div>
-    <a href="#/faq" class="ap-row"><i>❓</i><div><strong>FAQs</strong><small>Preparing for your first pickup, pricing, turnaround</small></div><em>›</em></a>
-    <a href="#/guarantee" class="ap-row"><i>🛡️</i><div><strong>Service guarantee</strong><small>What happens if we get it wrong</small></div><em>›</em></a>
-    <a href="#/terms" class="ap-row"><i>📄</i><div><strong>Terms of service</strong><small>The agreement that covers your bookings</small></div><em>›</em></a>
-    <a href="#/privacy" class="ap-row"><i>🔒</i><div><strong>Privacy policy</strong><small>What we collect and how it is handled</small></div><em>›</em></a>
-    <a href="#/contact" class="ap-row"><i>✉️</i><div><strong>Send us a message</strong><small>General enquiries and complaints</small></div><em>›</em></a>
+    <a href="#/faq" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><div><strong>FAQs</strong><small>Preparing for your first pickup, pricing, turnaround</small></div><em>›</em></a>
+    <a href="#/guarantee" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3z"/></svg></i><div><strong>Service guarantee</strong><small>What happens if we get it wrong</small></div><em>›</em></a>
+    <a href="#/terms" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><path d="M9 13h6M9 17h6"/></svg></i><div><strong>Terms of service</strong><small>The agreement that covers your bookings</small></div><em>›</em></a>
+    <a href="#/privacy" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg></i><div><strong>Privacy policy</strong><small>What we collect and how it is handled</small></div><em>›</em></a>
+    <a href="#/contact" class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></i><div><strong>Send us a message</strong><small>General enquiries and complaints</small></div><em>›</em></a>
     <div class="ap-ver">LaundryKings customer portal · <span id="apVer2">v1.0</span></div>
   </div></div>
 </section>
@@ -2284,13 +2284,13 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <div class="ops-topr">
       <div class="ap-hi" style="color:#fff">Operations<small style="color:rgba(255,255,255,.65)">LaundryKings job management</small></div>
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.25rem">
-        <a href="#/opsops" class="chip nv" style="font-size:.72rem;padding:.28rem .65rem">👷 Operators</a>
-        <a href="#/dash" class="chip nv" style="font-size:.72rem;padding:.28rem .65rem">📊 Full data</a>
+        <a href="#/opsops" class="chip nv" style="font-size:.72rem;padding:.28rem .65rem"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 11a8 8 0 0 1 16 0"/><path d="M2 11h20"/><circle cx="12" cy="16" r="3"/><path d="M12 3v3"/></svg> Operators</a>
+        <a href="#/dash" class="chip nv" style="font-size:.72rem;padding:.28rem .65rem"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg> Full data</a>
       </div>
     </div>
   </div></div>
   <div class="ap"><div class="ap-in" id="opsRoot">
-    <div class="ap-card"><div class="ap-card-b ap-empty"><i>🔒</i><h3>Ops access only</h3><p>This section is restricted to LaundryKings team members with edit access.</p></div></div>
+    <div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg></i><h3>Ops access only</h3><p>This section is restricted to LaundryKings team members with edit access.</p></div></div>
   </div></div>
 </section>
 
@@ -2332,7 +2332,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <button class="btn btn-nv btn-full btn-lg" id="opGo" style="margin-top:.75rem">Save operator</button>
       <div class="fmsg" id="opMsg"></div>
     </div></div>
-    <div class="ap-note"><i>⚖️</i><span>AU compliance: each operator engages as an independent contractor (ABN required) — confirm Super guarantee obligations apply from first payment if earnings exceed the quarterly threshold. Fair Work "employee-like worker" exposure may apply — route to adviser before engaging if in doubt.</span></div>
+    <div class="ap-note"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 4v16M7 20h10M5 8h14M5 8 2 14h6L5 8zM19 8l-3 6h6l-3-6z"/></svg></i><span>AU compliance: each operator engages as an independent contractor (ABN required) — confirm Super guarantee obligations apply from first payment if earnings exceed the quarterly threshold. Fair Work "employee-like worker" exposure may apply — route to adviser before engaging if in doubt.</span></div>
   </div></div>
 </section>
 
@@ -2356,7 +2356,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 
     <div id="invPreview" style="display:none">
       <div class="ap-card">
-        <div class="ap-card-h"><i>🧾</i>Invoice — <span id="invNum"></span></div>
+        <div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></i>Invoice — <span id="invNum"></span></div>
         <div class="ap-card-b">
           <div id="invLines"></div>
           <div class="sumr tot"><span>Total due (GST incl.)</span><span id="invTotAmt" style="color:var(--navy)">$0.00</span></div>
@@ -2364,24 +2364,24 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         </div>
       </div>
 
-      <div class="ap-card"><div class="ap-card-h"><i>💳</i>Payment options</div>
+      <div class="ap-card"><div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></i>Payment options</div>
         <div class="ap-card-b">
           <div class="paym"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>GOOGLE PAY</span><span>APPLE PAY</span></div>
-          <div class="ap-note" style="margin:.5rem 0 0"><i>🏦</i><span id="invPayId">Bank transfer / PayID details — add these to <code>config/payment</code> in the dashboard.</span></div>
-          <div class="ap-note" style="margin:.5rem 0 0"><i>🔗</i><span id="invStripe">Stripe payment link — store your Stripe Payment Link URL in <code>config/payment.stripeLink</code>.</span></div>
+          <div class="ap-note" style="margin:.5rem 0 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M19 10v9M9 10v9M15 10v9M3 21h18"/></svg></i><span id="invPayId">Bank transfer / PayID details — add these to <code>config/payment</code> in the dashboard.</span></div>
+          <div class="ap-note" style="margin:.5rem 0 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M10 14a4 4 0 0 0 6 .5l3-3a4 4 0 0 0-5.7-5.7L11.6 7.5"/><path d="M14 10a4 4 0 0 0-6-.5l-3 3A4 4 0 0 0 10.7 18l1.6-1.6"/></svg></i><span id="invStripe">Stripe payment link — store your Stripe Payment Link URL in <code>config/payment.stripeLink</code>.</span></div>
         </div>
       </div>
 
-      <div class="ap-card"><div class="ap-card-h"><i>✉️</i>Send invoice to customer</div>
+      <div class="ap-card"><div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></i>Send invoice to customer</div>
         <div class="ap-card-b">
           <div class="inv-preview" id="invEmailBox"></div>
           <p class="ap-fine" style="margin:.5rem 0 .7rem">Click to open in your email client with the invoice pre-filled. Review and send.</p>
-          <a class="btn btn-red btn-full btn-lg" id="invMailto" href="#">✉ Open in Gmail / Mail app</a>
+          <a class="btn btn-red btn-full btn-lg" id="invMailto" href="#"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg> Open in Gmail / Mail app</a>
           <p class="ap-fine" style="margin-top:.5rem">The subject line includes the invoice total. Add the Stripe payment link inside before sending.</p>
         </div>
       </div>
 
-      <button class="btn btn-nv btn-full btn-lg" id="invConfirm">✓ Confirm — mark as invoiced</button>
+      <button class="btn btn-nv btn-full btn-lg" id="invConfirm"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m5 13 4 4L19 7"/></svg> Confirm — mark as invoiced</button>
       <div class="fmsg" id="invMsg"></div>
     </div>
   </div></div>
@@ -2435,13 +2435,13 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 <!-- ============ PROFILE SWITCHER SHEET ============ -->
 <div id="sheet">
   <div class="sheet-c">
-    <div class="sheet-h"><strong>Customer profiles</strong><button id="sheetX" aria-label="Close">✕ Close</button></div>
+    <div class="sheet-h"><strong>Customer profiles</strong><button id="sheetX" aria-label="Close">× Close</button></div>
     <div class="sheet-b">
       <div id="sheetList"></div>
       <button class="ap-row" id="sheetNew" style="margin-top:.2rem"><i>＋</i><div><strong>New customer profile</strong><small>Add another address or account you book for</small></div></button>
       <div class="ap-sec-t">MANAGE ACCOUNT</div>
-      <a href="#/userdet" class="ap-row" id="sheetUser"><i>👤</i><div><strong>User details</strong><small>Name, email, phone</small></div><em>›</em></a>
-      <a href="#/help" class="ap-row" id="sheetHelp"><i>❓</i><div><strong>Help &amp; support</strong><small>FAQs and contact</small></div><em>›</em></a>
+      <a href="#/userdet" class="ap-row" id="sheetUser"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></i><div><strong>User details</strong><small>Name, email, phone</small></div><em>›</em></a>
+      <a href="#/help" class="ap-row" id="sheetHelp"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.7"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><div><strong>Help &amp; support</strong><small>FAQs and contact</small></div><em>›</em></a>
     </div>
   </div>
 </div>
@@ -2449,10 +2449,10 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 <!-- ============ BOTTOM TAB BAR ============ -->
 <nav id="tabs"><div class="tabs-in">
   <a class="tab" href="#/app" data-tab="app"><i>▦</i><s>Home</s></a>
-  <a class="tab" href="#/bookings" data-tab="bookings"><i>🗓</i><s>Bookings</s></a>
-  <a class="tab" href="#/book" data-tab="book"><i>➕</i><s>Book</s></a>
-  <a class="tab" href="#/messages" data-tab="messages"><i>💬</i><s>Messages</s><span class="tb" id="tabBadge" style="display:none">0</span></a>
-  <a class="tab" href="#/account" data-tab="account"><i>⚙</i><s>Settings</s></a>
+  <a class="tab" href="#/bookings" data-tab="bookings"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><s>Bookings</s></a>
+  <a class="tab" href="#/book" data-tab="book"><i>+</i><s>Book</s></a>
+  <a class="tab" href="#/messages" data-tab="messages"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg></i><s>Messages</s><span class="tb" id="tabBadge" style="display:none">0</span></a>
+  <a class="tab" href="#/account" data-tab="account"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></i><s>Settings</s></a>
 </div></nav>
 
 <script>
@@ -3182,7 +3182,7 @@ function renderHome(){
   document.getElementById('apFutT').textContent = 'UPCOMING COLLECTIONS (' + up.length + ')';
   document.getElementById('apNext').innerHTML = up.length
     ? up.slice(0,3).map(bookingCard).join('')
-    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i>🗓</i><h3>No collections scheduled</h3>'
+    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><h3>No collections scheduled</h3>'
       + '<p>Book ahead to secure your preferred collection window.</p>'
       + '<a href="#/book" class="btn btn-red btn-lg">Book a collection</a></div></div>';
   [['apSwName',1],['apSwName2',1]].forEach(([id]) => { const e = document.getElementById(id); if (e) e.textContent = p ? p.name : 'My profile'; });
@@ -3194,7 +3194,7 @@ function bookingCard(b){
              : b.status === 'complete'  ? '<span class="pill ok">COMPLETE</span>'
              : b.status === 'confirmed' ? '<span class="pill up">CONFIRMED</span>'
              : '<span class="pill pd">AWAITING OPERATOR</span>';
-  return '<div class="ap-card"><div class="ap-card-h"><i>🧺</i>'+esc(SVCNAME(b.svc))+'<span style="margin-left:auto">'+pill+'</span></div>'
+  return '<div class="ap-card"><div class="ap-card-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></i>'+esc(SVCNAME(b.svc))+'<span style="margin-left:auto">'+pill+'</span></div>'
    + '<div class="ap-card-b"><div class="opt" style="margin:0;border:none;padding:0;background:none">'
    + '<div class="opt-d"><s>'+dayName(d)+'</s><b>'+d.getDate()+'</b><s>'+monName(d)+'</s></div>'
    + '<div class="opt-m"><strong>'+esc(b.window)+'</strong><small>'+esc(b.ref)+(b.recurring?' · repeats '+esc(b.recurring):'')+'</small></div>'
@@ -3210,7 +3210,7 @@ function renderBookings(){
   let h = '';
   h += '<div class="ap-sec-t">UPCOMING ('+up.length+')</div>';
   h += up.length ? up.map(bookingCard).join('')
-    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i>🗓</i><h3>Nothing booked yet</h3><p>Your upcoming collections will appear here.</p></div></div>';
+    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><h3>Nothing booked yet</h3><p>Your upcoming collections will appear here.</p></div></div>';
   if (past.length){ h += '<div class="ap-sec-t">PAST &amp; CANCELLED ('+past.length+')</div>' + past.map(bookingCard).join(''); }
   document.getElementById('bkList').innerHTML = h;
   document.querySelectorAll('[data-cancel]').forEach(b => b.onclick = () => cancelBooking(b.dataset.cancel));
@@ -3228,7 +3228,7 @@ async function cancelBooking(id){
 function renderMessages(){
   const l = document.getElementById('msgList');
   if (!S.messages.length){
-    l.innerHTML = '<div class="ap-card"><div class="ap-card-b ap-empty"><i>💬</i><h3>No messages</h3>'
+    l.innerHTML = '<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg></i><h3>No messages</h3>'
       + '<p>Updates about your collections and messages from your operator appear here.</p></div></div>';
   } else {
     l.innerHTML = S.messages.map(m => {
@@ -3247,7 +3247,7 @@ function renderMessages(){
 function renderThread(){
   const id = (location.hash.split('?')[1] || '');
   const m = S.messages.find(x => x.id === id);
-  if (!m){ document.getElementById('thrBody').innerHTML = '<div class="ap-card"><div class="ap-card-b ap-empty"><i>💬</i><h3>Message not found</h3></div></div>'; return; }
+  if (!m){ document.getElementById('thrBody').innerHTML = '<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg></i><h3>Message not found</h3></div></div>'; return; }
   if (m.unread){ m.unread = false; pushDoc('messages', m); }
   document.getElementById('thrT').textContent = m.title;
   document.getElementById('thrS').textContent = m.ref ? 'Booking ' + m.ref : '';
@@ -3270,8 +3270,8 @@ function renderThread(){
 function renderAccount(){
   const p = activeP(); if (!p) return;
   const chips = '<div class="chips"><span class="chip nv">'+esc(p.type||'Household')+'</span>'
-    + '<span class="chip">👑 Account owner</span>'
-    + (p.preferred ? '<span class="chip on">★ Preferred</span>' : '') + '</div>';
+    + '<span class="chip"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 18h14l1-9-5 3-3-6-3 6-5-3 1 9z"/><path d="M5 21h14"/></svg> Account owner</span>'
+    + (p.preferred ? '<span class="chip on"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m12 3 2.6 5.6 6 .7-4.4 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.4 9.3l6-.7L12 3z"/></svg> Preferred</span>' : '') + '</div>';
   const card = '<div class="ap-idc"><div class="ap-av">'+esc(initials(p.name))+'</div>'
     + '<div><h3>'+esc(p.name)+'</h3><p>'+(addrLine(p) ? esc(addrLine(p)) : '<em style="color:var(--mute)">No collection address saved yet</em>')+'</p>'+chips+'</div></div>';
   ['acIdc','prIdc'].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = card; });
@@ -3288,7 +3288,7 @@ function renderSheet(){
   document.getElementById('sheetList').innerHTML = S.profiles.map(p =>
     '<button class="pchip'+(p.id===S.acct.activeId?' on':'')+'" data-pick="'+p.id+'">'
     + '<i>▦</i><div><strong>'+esc(p.name)+'</strong><small>'+(addrLine(p)||'No address saved')+'</small></div>'
-    + (p.preferred?'<em>★</em>':'') + '</button>').join('');
+    + (p.preferred?'<em><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m12 3 2.6 5.6 6 .7-4.4 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.4 9.3l6-.7L12 3z"/></svg></em>':'') + '</button>').join('');
   document.querySelectorAll('[data-pick]').forEach(b => b.onclick = async () => {
     S.acct.activeId = b.dataset.pick; await saveAcct();
     closeSheet(); renderHome(); renderAccount(); renderForms();
@@ -3319,10 +3319,10 @@ function renderForms(){
 function renderInvoices(){
   const done = S.bookings.filter(b => b.status === 'complete' && b.invoice);
   document.getElementById('inList').innerHTML = done.length
-    ? done.map(b => '<div class="ap-row"><i>🧾</i><div><strong>'+esc(b.invoice)+'</strong>'
+    ? done.map(b => '<div class="ap-row"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></i><div><strong>'+esc(b.invoice)+'</strong>'
         + '<small>'+longDate(b.date)+' · '+esc(SVCNAME(b.svc))+'</small></div>'
         + '<span class="opt-p">'+money(b.charged || b.estimate)+'</span></div>').join('')
-    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i>🧾</i><h3>No invoices yet</h3>'
+    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></i><h3>No invoices yet</h3>'
       + '<p>An invoice is issued after each collection is weighed and completed. Paid invoices stay here for your records.</p></div></div>';
 }
 
@@ -3419,15 +3419,15 @@ async function saveJob(job){
 /* ---- ops renderers ---- */
 function renderOps(){
   const root = document.getElementById('opsRoot');
-  if (!CAN_EDIT){ root.innerHTML='<div class="ap-card"><div class="ap-card-b ap-empty"><i>🔒</i><h3>Ops access only</h3><p>Sign in as an editor to view operations.</p></div></div>'; return; }
+  if (!CAN_EDIT){ root.innerHTML='<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></svg></i><h3>Ops access only</h3><p>Sign in as an editor to view operations.</p></div></div>'; return; }
   const all = OPS.jobs;
   const n = k => all.filter(b=>b.status===k).length;
   root.innerHTML =
     `<div class="ops-kpi">
-      <div class="kpi-c red"><h4>${n('requested')}</h4><p>🆕 New — need assignment</p></div>
-      <div class="kpi-c"><h4>${n('assigned')}</h4><p>📋 Assigned to operator</p></div>
-      <div class="kpi-c"><h4>${n('collected')}</h4><p>🧺 Collected — invoice pending</p></div>
-      <div class="kpi-c ok"><h4>${n('complete')}</h4><p>✅ Complete (all time)</p></div>
+      <div class="kpi-c red"><h4>${n('requested')}</h4><p><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg> New — need assignment</p></div>
+      <div class="kpi-c"><h4>${n('assigned')}</h4><p><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 12h6M9 16h4"/></svg> Assigned to operator</p></div>
+      <div class="kpi-c"><h4>${n('collected')}</h4><p><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg> Collected — invoice pending</p></div>
+      <div class="kpi-c ok"><h4>${n('complete')}</h4><p><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Complete (all time)</p></div>
     </div>
     <div class="ops-otabs" id="opsTabs"></div>
     <div id="opsQueue"></div>`;
@@ -3441,7 +3441,7 @@ function renderOps(){
   const filtered = all.filter(cur.filter);
   document.getElementById('opsQueue').innerHTML = filtered.length
     ? filtered.map(opsCard).join('')
-    : `<div class="ap-card"><div class="ap-card-b ap-empty"><i>✅</i><h3>Nothing in "${cur.label}"</h3></div></div>`;
+    : `<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></i><h3>Nothing in "${cur.label}"</h3></div></div>`;
 
   wireOpsActions();
 }
@@ -3454,24 +3454,24 @@ function opsCard(b){
     ? `<div class="bkc-op"><div class="bkc-av">${esc(initials(b.operatorName))}</div>${esc(b.operatorName)}</div>`
     : OPS.operators.length
       ? `<div class="selw" style="min-width:150px"><select class="sel" style="font-size:.76rem;padding:.34rem .6rem" data-opassign="${b.id}"><option value="">Assign operator…</option>${OPS.operators.map(o=>`<option value="${o.id}">${esc(o.first+' '+o.last)}</option>`).join('')}</select></div>`
-      : `<a href="#/opsops" style="font-size:.75rem;color:var(--navy);text-decoration:underline">Add operators →</a>`;
+      : `<a href="#/opsops" style="font-size:.75rem;color:var(--navy);text-decoration:underline">Add operators ›</a>`;
 
   const acts = [];
-  if (b.status==='requested')  acts.push(['btn-red','confirm|'+b.id,'✓ Confirm']);
+  if (b.status==='requested')  acts.push(['btn-red','confirm|'+b.id,'<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m5 13 4 4L19 7"/></svg> Confirm']);
   if (b.status==='assigned')   acts.push(['btn-nv','collect|'+b.id,'Mark collected']);
-  if (b.status==='collected')  acts.push(['btn-red','invoice|'+b.id,'🧾 Invoice']);
-  if (b.status==='invoiced')   acts.push(['btn-ok','paid|'+b.id,'✅ Mark paid']);
+  if (b.status==='collected')  acts.push(['btn-red','invoice|'+b.id,'<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg> Invoice']);
+  if (b.status==='invoiced')   acts.push(['btn-ok','paid|'+b.id,'<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Mark paid']);
   acts.push(['btn-out','detail|'+b.id,'Detail ›']);
 
   return `<div class="ops-c ${stCls}">
     <div class="ops-ch"><div><div class="ops-ref">${esc(b.ref||b.id)}</div><div class="ops-sub">${esc(b.service||'')}${b.recurring?' · recurring':''}${b.estimate?' · est. '+money(b.estimate):''}</div></div>${pill}</div>
     <div class="ops-b">
-      <div class="ops-ln"><i>👤</i><span><strong>${esc(b.contact||b.profile||'Customer')}</strong>${b.email?` · ${esc(b.email)}`:''}${b.phone?` · ${esc(b.phone)}`:''}</span></div>
-      <div class="ops-ln"><i>📅</i><span>${esc(b.date||'')} · ${esc(b.window||'')}${cal?' · <a href="'+cal+'" target="_blank">+ Calendar</a>':''}</span></div>
-      <div class="ops-ln"><i>📍</i><span>${esc(b.address||b.suburb||'')}</span></div>
-      ${b.care?`<div class="ops-ln"><i>👕</i><span style="color:var(--mute)">${esc(b.care)}</span></div>`:''}
-      ${b.delivery?`<div class="ops-ln"><i>🚚</i><span style="color:var(--mute)">${esc(b.delivery)}</span></div>`:''}
-      <div class="ops-obar">${opEl}<a href="${mailtoConfirm(b)}" style="font-size:.75rem;color:var(--navy);text-decoration:underline">✉ Email customer</a></div>
+      <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></i><span><strong>${esc(b.contact||b.profile||'Customer')}</strong>${b.email?` · ${esc(b.email)}`:''}${b.phone?` · ${esc(b.phone)}`:''}</span></div>
+      <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span>${esc(b.date||'')} · ${esc(b.window||'')}${cal?' · <a href="'+cal+'" target="_blank">+ Calendar</a>':''}</span></div>
+      <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span>${esc(b.address||b.suburb||'')}</span></div>
+      ${b.care?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M16 3 12 6 8 3 2 6l2 5 2-1v11h12V10l2 1 2-5-6-3z"/></svg></i><span style="color:var(--mute)">${esc(b.care)}</span></div>`:''}
+      ${b.delivery?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i><span style="color:var(--mute)">${esc(b.delivery)}</span></div>`:''}
+      <div class="ops-obar">${opEl}<a href="${mailtoConfirm(b)}" style="font-size:.75rem;color:var(--navy);text-decoration:underline"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg> Email customer</a></div>
     </div>
     <div class="ops-acts2">${acts.map(([cls,act,lbl])=>`<button class="btn ${cls}" data-opact="${act}">${lbl}</button>`).join('')}</div>
   </div>`;
@@ -3511,7 +3511,7 @@ async function assignOpsOperator(job,op){
 /* ---- job detail ---- */
 function renderOpsBook(){
   const job=opsCurJob;
-  if(!job){ document.getElementById('ojBody').innerHTML='<div class="ap-note warn"><i>⚠️</i><span>Job not found.</span></div>'; return; }
+  if(!job){ document.getElementById('ojBody').innerHTML='<div class="ap-note warn"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><span>Job not found.</span></div>'; return; }
   document.getElementById('ojRef').textContent=job.ref||job.id;
   document.getElementById('ojStatus').textContent=OPS_LABELS[job.status]||job.status;
   const cal=gcalUrl(job);
@@ -3519,32 +3519,32 @@ function renderOpsBook(){
   const cur=STAGES.indexOf(job.status);
   const timeline=STAGES.map((st,i)=>{
     const done=i<cur, active=i===cur;
-    return `<div class="stnode"><div class="stnode-ic ${done?'done':active?'cur':''}">${done?'✓':i+1}</div><div class="stnode-lbl ${done?'done':active?'cur':''}">${OPS_LABELS[st]}</div></div>`+(i<STAGES.length-1?`<div class="stline ${i<cur?'done':''}"></div>`:'');
+    return `<div class="stnode"><div class="stnode-ic ${done?'done':active?'cur':''}">${done?'<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m5 13 4 4L19 7"/></svg>':i+1}</div><div class="stnode-lbl ${done?'done':active?'cur':''}">${OPS_LABELS[st]}</div></div>`+(i<STAGES.length-1?`<div class="stline ${i<cur?'done':''}"></div>`:'');
   }).join('');
   const opSel=OPS.operators.length
     ?`<div class="fld"><label class="lbl">Assign / change operator</label><div class="selw"><select class="sel" id="ojOpSel"><option value="">Select operator…</option>${OPS.operators.map(o=>`<option value="${o.id}"${job.operatorId===o.id?' selected':''}>${esc(o.first+' '+o.last)} · ${esc(o.suburb||'')}</option>`).join('')}</select></div></div><button class="btn btn-nv btn-full" id="ojAssign" style="margin-top:.55rem">Assign selected</button>`
-    :`<p class="ap-fine">No operators registered. <a href="#/opsops" style="color:var(--navy)">Add operators →</a></p>`;
+    :`<p class="ap-fine">No operators registered. <a href="#/opsops" style="color:var(--navy)">Add operators ›</a></p>`;
   const acts=[];
-  if(job.status==='requested')  acts.push(['btn-red','confirm','✓ Confirm booking']);
+  if(job.status==='requested')  acts.push(['btn-red','confirm','<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="m5 13 4 4L19 7"/></svg> Confirm booking']);
   if(job.status==='assigned')   acts.push(['btn-nv','collect','Mark collected']);
-  if(job.status==='collected')  acts.push(['btn-red','invoice','🧾 Generate invoice']);
-  if(job.status==='invoiced')   acts.push(['btn-ok','paid','✅ Mark paid']);
+  if(job.status==='collected')  acts.push(['btn-red','invoice','<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg> Generate invoice']);
+  if(job.status==='invoiced')   acts.push(['btn-ok','paid','<svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg> Mark paid']);
   if(['requested','assigned'].includes(job.status)) acts.push(['btn-out','cancel','Cancel job']);
 
   document.getElementById('ojBody').innerHTML=`
     <div class="ap-card"><div class="status-line">${timeline}</div>
       <div class="ops-b">
-        <div class="ops-ln"><i>👤</i><span><strong>${esc(job.contact||job.profile||'Customer')}</strong></span></div>
-        <div class="ops-ln"><i>✉️</i><span>${esc(job.email||'—')}</span></div>
-        <div class="ops-ln"><i>📞</i><span>${esc(job.phone||'—')}</span></div>
-        <div class="ops-ln"><i>🧺</i><span>${esc(job.service||'')}${job.recurring?' (recurring '+job.recurring+')':''}</span></div>
-        <div class="ops-ln"><i>📅</i><span>${esc(job.date||'')} · ${esc(job.window||'')}${cal?' <a href="'+cal+'" target="_blank">Open in Calendar</a>':''}</span></div>
-        <div class="ops-ln"><i>📍</i><span>${esc(job.address||job.suburb||'')}</span></div>
-        ${job.care?`<div class="ops-ln"><i>👕</i><span>${esc(job.care)}</span></div>`:''}
-        ${job.delivery?`<div class="ops-ln"><i>🚚</i><span>${esc(job.delivery)}</span></div>`:''}
-        ${job.operatorName?`<div class="ops-ln"><i>👷</i><span>${esc(job.operatorName)} · ${esc(job.operatorEmail||'')} · ${esc(job.operatorPhone||'')}</span></div>`:''}
-        ${job.invoiceRef?`<div class="ops-ln"><i>🧾</i><span>Invoice: ${esc(job.invoiceRef)} · ${job.invoiceTotal?money(job.invoiceTotal):''}</span></div>`:''}
-        <div class="ops-ln" style="margin-top:.4rem"><i>✉️</i><a href="${mailtoConfirm(job)}">Send confirmation email</a></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></i><span><strong>${esc(job.contact||job.profile||'Customer')}</strong></span></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></i><span>${esc(job.email||'—')}</span></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg></i><span>${esc(job.phone||'—')}</span></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></i><span>${esc(job.service||'')}${job.recurring?' (recurring '+job.recurring+')':''}</span></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span>${esc(job.date||'')} · ${esc(job.window||'')}${cal?' <a href="'+cal+'" target="_blank">Open in Calendar</a>':''}</span></div>
+        <div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span>${esc(job.address||job.suburb||'')}</span></div>
+        ${job.care?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M16 3 12 6 8 3 2 6l2 5 2-1v11h12V10l2 1 2-5-6-3z"/></svg></i><span>${esc(job.care)}</span></div>`:''}
+        ${job.delivery?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M1 5h14v11H1z"/><path d="M15 9h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></i><span>${esc(job.delivery)}</span></div>`:''}
+        ${job.operatorName?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 11a8 8 0 0 1 16 0"/><path d="M2 11h20"/><circle cx="12" cy="16" r="3"/><path d="M12 3v3"/></svg></i><span>${esc(job.operatorName)} · ${esc(job.operatorEmail||'')} · ${esc(job.operatorPhone||'')}</span></div>`:''}
+        ${job.invoiceRef?`<div class="ops-ln"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M5 3h14v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg></i><span>Invoice: ${esc(job.invoiceRef)} · ${job.invoiceTotal?money(job.invoiceTotal):''}</span></div>`:''}
+        <div class="ops-ln" style="margin-top:.4rem"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></i><a href="${mailtoConfirm(job)}">Send confirmation email</a></div>
       </div>
     </div>
     <div class="ap-card"><div class="ap-card-b">${opSel}<div class="fmsg" id="ojMsg"></div></div></div>
@@ -3573,7 +3573,7 @@ function renderOpsBook(){
 function renderOpsOps(){
   document.getElementById('opsList').innerHTML=OPS.operators.length
     ?OPS.operators.map(o=>`<div class="op-row"><div class="op-av2">${esc(initials(o.first+' '+o.last))}</div><div><strong>${esc(o.first+' '+o.last)}</strong><small>${esc(o.email||'')}${o.phone?' · '+esc(o.phone):''}${o.suburb?' · '+esc(o.suburb):''}${o.abn?' · ABN '+esc(o.abn):''}</small></div><span class="pill ${o.active!==false?'ok':'cx'}">${o.active!==false?'ACTIVE':'INACTIVE'}</span></div>`).join('')
-    :'<div class="ap-card"><div class="ap-card-b ap-empty"><i>👷</i><h3>No operators yet</h3><p>Add your first operator below.</p></div></div>';
+    :'<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 11a8 8 0 0 1 16 0"/><path d="M2 11h20"/><circle cx="12" cy="16" r="3"/><path d="M12 3v3"/></svg></i><h3>No operators yet</h3><p>Add your first operator below.</p></div></div>';
 
   document.getElementById('opGo').onclick=async()=>{
     if(!val('opFirst')){ say('opMsg',false,'First name is required.'); return; }
@@ -3659,7 +3659,7 @@ function renderWizard(){
           <div class="ap-av" style="background:var(--red-w);border-color:var(--red-l);color:var(--red-d)">${esc(initials(p.name))}</div>
           <div><h3>${esc(p.name)}</h3><p>${esc(addrLine(p))}</p></div>
         </div>`
-      :`<div class="ap-note warn" style="margin:0"><i>⚠️</i><span>No collection address on this profile — <a href="#/address" style="color:var(--red-d);text-decoration:underline">add one</a> before booking.</span></div>`;
+      :`<div class="ap-note warn" style="margin:0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><span>No collection address on this profile — <a href="#/address" style="color:var(--red-d);text-decoration:underline">add one</a> before booking.</span></div>`;
   }
 
   /* step 1 — service grid */
@@ -3705,12 +3705,12 @@ function renderWizard(){
   if(bagWrap) bagWrap.style.display=W.bag?'':'none';
   if(document.getElementById('bkBagQty')) document.getElementById('bkBagQty').textContent=W.bagQty;
 
-  document.getElementById('bkN1').textContent=W.svc==='comm'?'→ Commercial enquiry':'→ Continue';
+  document.getElementById('bkN1').textContent=W.svc==='comm'?'› Commercial enquiry':'› Continue';
 
   /* step 3 address */
   const ad=p && addrLine(p)
     ?`<div class="ap-idc"><div class="ap-av" style="background:var(--red-w);color:var(--red-d);border-color:var(--red-l)">${esc(initials(p.name))}</div><div><h3>${esc(p.name)}</h3><p>${esc(addrLine(p))}</p></div></div>`
-    :`<div class="ap-note warn" style="margin:0"><i>⚠️</i><span>No collection address saved — add one in your profile.</span></div>`;
+    :`<div class="ap-note warn" style="margin:0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg></i><span>No collection address saved — add one in your profile.</span></div>`;
   if(document.getElementById('bkRevAddr')) document.getElementById('bkRevAddr').innerHTML=ad;
 
   /* step 2 — date + slots */
@@ -3768,7 +3768,7 @@ function renderBookings(){
   const cur=BK_FILTERS.find(f=>f.id===bkFilter);
   const filtered=all.filter(cur.fn);
   container.innerHTML=chips+(filtered.length?filtered.map(richBookingCard).join('')
-    :`<div class="ap-card"><div class="ap-card-b ap-empty"><i>🗓</i><h3>Nothing here</h3><p>Bookings in this category appear here.</p></div></div>`);
+    :`<div class="ap-card"><div class="ap-card-b ap-empty"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><h3>Nothing here</h3><p>Bookings in this category appear here.</p></div></div>`);
   document.querySelectorAll('[data-bkf]').forEach(b=>b.onclick=()=>{ bkFilter=b.dataset.bkf; renderBookings(); });
   document.querySelectorAll('[data-bkcancel]').forEach(b=>b.onclick=()=>cancelBooking(b.dataset.bkcancel));
   document.querySelectorAll('[data-bkrebook]').forEach(b=>b.onclick=()=>{
@@ -3790,14 +3790,14 @@ function richBookingCard(b){
   const opName=b.operatorName||'Operator TBC';
   const acts=[];
   if(['requested','assigned'].includes(b.status)) acts.push(`<button class="btn btn-out" data-bkcancel="${b.id}">Cancel</button>`);
-  if(b.status==='cancelled') acts.push(`<button class="btn btn-out" data-bkrebook="${b.id}">↺ Rebook</button>`);
-  acts.push(`<button class="btn btn-out" data-bksupport="${b.id}">🎧 Support</button>`);
+  if(b.status==='cancelled') acts.push(`<button class="btn btn-out" data-bkrebook="${b.id}"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M3 12a9 9 0 1 1 3 6.7"/><path d="M3 18v-5h5"/></svg> Rebook</button>`);
+  acts.push(`<button class="btn btn-out" data-bksupport="${b.id}"><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg> Support</button>`);
   return `<div class="bkc ${borderCls}">
-    <div class="bkc-h"><i>🧺</i><strong>${esc(SVCNAME(b.svc))}</strong>${pill}</div>
+    <div class="bkc-h"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M4 8h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8L4 8z"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg></i><strong>${esc(SVCNAME(b.svc))}</strong>${pill}</div>
     <div class="bkc-b">
-      <div class="bkc-r"><i>📅</i><span>${d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})} · ${esc(b.window||'')}</span></div>
-      <div class="bkc-r"><i>📍</i><span>${esc(b.address||b.suburb||'')}</span></div>
-      ${b.recurring?`<div class="bkc-r"><i>🔄</i><span>Repeats ${esc(b.recurring)}</span></div>`:''}
+      <div class="bkc-r"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span>${d.toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})} · ${esc(b.window||'')}</span></div>
+      <div class="bkc-r"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></i><span>${esc(b.address||b.suburb||'')}</span></div>
+      ${b.recurring?`<div class="bkc-r"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></i><span>Repeats ${esc(b.recurring)}</span></div>`:''}
       <div class="bkc-footer">
         <div class="bkc-op"><div class="bkc-av">LK</div>${esc(opName)}</div>
         <span class="opt-p" style="font-size:.82rem">${b.invoiceTotal?money(b.invoiceTotal):b.estimate?'~'+money(b.estimate):'—'}</span>
