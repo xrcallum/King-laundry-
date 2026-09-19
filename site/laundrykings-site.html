@@ -1880,7 +1880,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
     </div>
 
     <!-- live activity strip -->
-    <div class="h5-metrics" aria-label="Recent activity">
+    <div class="h5-metrics" id="h5Metrics" aria-label="Recent activity" hidden>
       <div class="h5-met"><span class="h5-met-v" id="mCol">—</span><span class="h5-met-l">loads collected this week</span></div>
       <div class="h5-met"><span class="h5-met-v" id="mRet">—</span><span class="h5-met-l">avg return time</span></div>
       <div class="h5-met"><span class="h5-met-v" id="mSub">—</span><span class="h5-met-l">Kings Club subscribers</span></div>
@@ -1928,7 +1928,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
       </svg>
       <div class="map-legend">
         <span class="ml-i"><span class="ml-d ml-live"></span>Collecting now</span>
-        <span class="ml-i"><span class="ml-d ml-soon"></span>Opening this quarter</span>
+        <span class="ml-i"><span class="ml-d ml-soon"></span>Opening next</span>
         <span class="ml-i"><span class="ml-d ml-you" id="mlYouWrap" hidden></span><span id="mlYouTxt"></span></span>
       </div>
       <a href="#/coverage" class="map-all">See every suburb, including opening soon <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
@@ -2180,7 +2180,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
           <span class="jn-n">05</span>
           <h3>Back on your doormat</h3>
           <p>Warm, folded, tagged with your reference — dropped exactly where the bag was left. Standard turnaround is next day.</p>
-          <small>~24 hours typical</small>
+          <small>Next day as standard · confirmed at booking</small>
         </div>
       </article>
     </div>
@@ -2221,8 +2221,8 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
       </article>
       <article class="bn bn-5">
         <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8v8l5 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-        <h3 class="bn-h-s">Standard next-day return</h3>
-        <p class="bn-p">Most jobs come back within 24 hours. Long items say so at booking, no surprises.</p>
+        <h3 class="bn-h-s">Return date confirmed at booking</h3>
+        <p class="bn-p">Standard loads are planned for next-day return. Longer items say so at booking, no surprises.</p>
       </article>
       <article class="bn bn-6">
         <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 14h8M12 18h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -2669,7 +2669,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
           <input class="inp" type="number" id="htConv" min="1" max="100" value="10"></div>
         <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htProps">Number of properties</label>
           <input class="inp" type="number" id="htProps" min="1" max="200" value="1"></div>
-        <p class="ap-fine">Industry uptake for hotel laundry runs about 5 to 15 per cent of occupied rooms.</p>
+        <p class="ap-fine">Planning assumption: 5 to 15 per cent of occupied rooms order laundry. Unverified until our first partner properties report actuals.</p>
       </div>
       <div class="card" id="htResult"></div>
     </div>
@@ -2895,7 +2895,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
     <div class="op5-hd">
       <span class="op5-eb">INSIDE THE OPERATOR PORTAL</span>
       <h2 class="op5-h">This is your day, in one screen.</h2>
-      <p class="op5-sub">Every operator gets the same tool we use ourselves: your round, your at-the-door quote, your machines, your money — all live, on your phone.</p>
+      <p class="op5-sub">Every operator gets the same tool we use ourselves: your round, your at-the-door quote, your machines, your money — all live, on your phone. The figures shown here are sample data, not a real operator’s results.</p>
     </div>
 
     <div class="op5-frame">
@@ -2905,8 +2905,8 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
           <div class="op5-dot op5-dot-y"></div>
           <div class="op5-dot op5-dot-g"></div>
         </div>
-        <div class="op5-frame-t">LaundryKings · Operator · <span id="op5User">Alex M · Sunnybank round</span></div>
-        <div class="op5-frame-r"><span class="op5-live"><span class="op5-live-d"></span>LIVE</span></div>
+        <div class="op5-frame-t">LaundryKings · Operator · <span id="op5User">Sample operator · Sunnybank round</span></div>
+        <div class="op5-frame-r"><span class="op5-live"><span class="op5-live-d"></span>SAMPLE DATA</span></div>
       </div>
 
       <div class="op5-tabs" role="tablist" aria-label="Operator portal sections">
@@ -3099,7 +3099,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
             </div>
             <div class="op5-money-perks">
               <div class="op5-perk"><strong>98%</strong><span>quality-check pass rate</span></div>
-              <div class="op5-perk"><strong>4.9<svg class="op5-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 6 6.6.5-5.1 4.4 1.6 6.5L12 17l-5.8 3.4 1.6-6.5L2.7 9.5l6.6-.5z" fill="currentColor"/></svg></strong><span>customer rating (34)</span></div>
+              <div class="op5-perk"><strong>4.9<svg class="op5-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 6 6.6.5-5.1 4.4 1.6 6.5L12 17l-5.8 3.4 1.6-6.5L2.7 9.5l6.6-.5z" fill="currentColor"/></svg></strong><span>customer rating (sample)</span></div>
               <div class="op5-perk"><strong>12 wk</strong><span>with LaundryKings</span></div>
             </div>
           </div>
@@ -3439,7 +3439,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
     </div>
     <div class="ap-hs-row">
       <div class="ap-hs"><span class="ap-hs-v" id="apStLoads">—</span><span class="ap-hs-l">loads processed</span></div>
-      <div class="ap-hs"><span class="ap-hs-v" id="apStSaved">—</span><span class="ap-hs-l">saved with us</span></div>
+      <div class="ap-hs"><span class="ap-hs-v" id="apStSaved">—</span><span class="ap-hs-l">est. saved vs ad-hoc</span></div>
       <div class="ap-hs"><span class="ap-hs-v" id="apStStreak">—</span><span class="ap-hs-l">week streak</span></div>
       <div class="ap-hs"><span class="ap-hs-v" id="apStPlan">Free</span><span class="ap-hs-l">current plan</span></div>
     </div>
@@ -3472,7 +3472,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
       <button type="button" class="ap-qa-b" onclick="apShareOpen()">
         <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
         <strong>Invite a friend</strong>
-        <span>Give $10, get $10</span>
+        <span>Give $15, get $15</span>
       </button>
       <a href="#/invoices" class="ap-qa-b">
         <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -3506,7 +3506,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
         <strong>Invite a friend</strong>
         <button type="button" class="ap-sheet-x" onclick="apShareClose()" aria-label="Close">×</button>
       </div>
-      <p class="ap-sheet-p">Send them your referral link. They get $10 off their first collection, you get $10 off your next one when they book.</p>
+      <p class="ap-sheet-p">Send them your referral link. They get $15 off their first collection. You get $15 in credit once it is completed and paid.</p>
       <div class="ap-sheet-code">
         <label for="apShareLink">Your referral link</label>
         <div class="ap-sheet-code-row">
@@ -6612,17 +6612,16 @@ const HOME_SUBURBS = [
   { name:'Marsden',      pc:'4132', x:130, y:345, live:true,  region:'LOG' },
   { name:'Waterford',    pc:'4133', x:180, y:365, live:true,  region:'LOG' },
   { name:'Beenleigh',    pc:'4207', x:285, y:410, live:true,  region:'LOG' },
-  // opening soon (mock, keeps the "growing" story alive)
-  { name:'Wynnum',       pc:'4178', x:260, y:35,  live:false, region:'BNE' },
-  { name:'Carindale',    pc:'4152', x:230, y:105, live:false, region:'BNE' },
-  { name:'Regents Park', pc:'4118', x:90,  y:390, live:false, region:'LOG' },
-  { name:'Ormeau',       pc:'4208', x:320, y:445, live:false, region:'LOG' }
+  // opening next — drawn from SOON_PC so the map never shows a suburb the
+  // postcode checker does not also know about
+  { name:'Morningside',  pc:'4170', x:260, y:35,  live:false, region:'BNE' },
+  { name:'Balmoral',     pc:'4171', x:230, y:105, live:false, region:'BNE' }
 ];
 
 function paintMap(){
   const g = document.querySelector('.map-pins'); if(!g) return;
   g.innerHTML = HOME_SUBURBS.map((s,i) => `
-    <g class="map-pin ${s.live?'live':'soon'}" data-i="${i}" tabindex="0" role="button" aria-label="${s.name}${s.live?' — collecting now':' — opening this quarter'}" transform="translate(${s.x} ${s.y})">
+    <g class="map-pin ${s.live?'live':'soon'}" data-i="${i}" tabindex="0" role="button" aria-label="${s.name}${s.live?' — collecting now':' — opening next'}" transform="translate(${s.x} ${s.y})">
       <circle class="map-pin-c" r="7"/>
       <circle r="12" fill="transparent"/>
     </g>
@@ -6665,7 +6664,7 @@ function covCheckHome(e){
     you.hidden=false; youT.textContent=`${hit.name} — you`;
     g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
   } else if(hit){
-    msg.textContent = `${hit.name} — opening this quarter. Leave your email on the coverage page.`; msg.className='pc-msg no';
+    msg.textContent = `${hit.name} — opening next. Register your interest on the coverage page.`; msg.className='pc-msg no';
     you.hidden=false; youT.textContent=`${hit.name} — opening soon`;
     g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
   } else {
@@ -6789,29 +6788,11 @@ function kcWire(){
   kcRecalc();
 }
 
-// ── live metrics (fed from db when available, seeded otherwise) ──
-function paintMetrics(){
-  const seed = { col: 47, ret: '26 hrs', sub: 12, sat: '98%' };
-  const $ = id => document.getElementById(id);
-  if($('mCol')) $('mCol').textContent = seed.col;
-  if($('mRet')) $('mRet').textContent = seed.ret;
-  if($('mSub')) $('mSub').textContent = seed.sub;
-  if($('mSat')) $('mSat').textContent = seed.sat;
-  // if db has real metrics, prefer them
-  try {
-    if (window.db && typeof window.db.collection==='function') {
-      window.db.collection('config').doc('metrics').get().then(s => {
-        if (s.exists){
-          const d = s.data();
-          if (d.col!=null && $('mCol')) $('mCol').textContent = d.col;
-          if (d.ret     && $('mRet')) $('mRet').textContent = d.ret;
-          if (d.sub!=null && $('mSub')) $('mSub').textContent = d.sub;
-          if (d.sat     && $('mSat')) $('mSat').textContent = d.sat;
-        }
-      }).catch(()=>{});
-    }
-  } catch(_){}
-}
+// ── live metrics ──
+// Nothing is seeded. The strip stays hidden until config/metrics carries real
+// figures (wired in the boot block below), so the page never shows a number
+// the business cannot stand behind.
+function paintMetrics(){}
 
 // ── section reveals ──
 function revealOn(){
@@ -7182,9 +7163,9 @@ function renderKcPortal(){
         <div class="kc5-ref">
           <div class="kc5-ref-l">
             <strong>Referral credit</strong>
-            <span>Every friend who books gives you $10 off your next collection.</span>
+            <span>Every friend whose first collection completes gives you $15 in credit.</span>
           </div>
-          <span class="kc5-ref-pill"><b>${acct.referralCredit || 0}</b> friends signed · <b>${money(((acct.referralCredit || 0) * 10))}</b> credit</span>
+          <span class="kc5-ref-pill"><b>${acct.referralCredit || 0}</b> friends signed · <b>${money(((acct.referralCredit || 0) * 15))}</b> credit</span>
         </div>
       </div>`;
   } else {
@@ -7213,7 +7194,7 @@ function renderKcPortal(){
         <div class="kc5-stats">
           <div class="kc5-st"><span class="kc5-st-v">${money(saving)}</span><span class="kc5-st-l">saved / week vs ad-hoc</span></div>
           <div class="kc5-st"><span class="kc5-st-v">${money(yearly)}</span><span class="kc5-st-l">saved / year (est.)</span></div>
-          <div class="kc5-st"><span class="kc5-st-v">24 hrs</span><span class="kc5-st-l">standard turnaround</span></div>
+          <div class="kc5-st"><span class="kc5-st-v">Next day</span><span class="kc5-st-l">standard turnaround</span></div>
         </div>
         <div class="kc5-prefs">
           <div class="kc5-pref"><span class="kc5-pref-l">Same operator</span><span class="kc5-pref-v">Learns your washing over time</span></div>
@@ -7247,6 +7228,19 @@ paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels
     try {
       DB.doc('config/pricing').onSnapshot(s => {
         if (s.exists){ PX = Object.assign({}, DEFAULT_PRICING, s.data()); paintPrices(); paintHomeV4(); }
+      }, () => {});
+    } catch(e){}
+    // Real activity figures, when the owner publishes them
+    try {
+      DB.doc('config/metrics').onSnapshot(s => {
+        if (!s.exists) return;
+        const d = s.data(), $ = id => document.getElementById(id);
+        if (!(d.col != null || d.ret || d.sub != null || d.sat)) return;
+        if (d.col != null && $('mCol')) $('mCol').textContent = d.col;
+        if (d.ret && $('mRet')) $('mRet').textContent = d.ret;
+        if (d.sub != null && $('mSub')) $('mSub').textContent = d.sub;
+        if (d.sat && $('mSat')) $('mSat').textContent = d.sat;
+        const strip = $('h5Metrics'); if (strip) strip.hidden = false;
       }, () => {});
     } catch(e){}
     // Contact details, published once real
