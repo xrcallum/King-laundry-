@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LaundryKings — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>
-<meta name="description" content="LaundryKings — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, ironing, dry cleaning, commercial linen. We Wash It Well.">
+<meta name="description" content="LaundryKings — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, premium clean, dry cleaning, commercial linen. We Wash It Well.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -447,6 +447,11 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .ap-cnt{text-align:right;font-size:.72rem;color:var(--mute);margin-top:.25rem}
 .ap-g2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 @media(max-width:560px){.ap-g2{grid-template-columns:1fr}}
+.bagopt{display:flex;flex-direction:column;gap:.2rem;text-align:left;padding:.8rem .9rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer;transition:border-color .15s,background .15s}
+.bagopt strong{font-family:var(--fd);font-weight:800;font-size:.9rem;color:var(--navy)}
+.bagopt span{font-size:.76rem;color:var(--mute);line-height:1.45}
+.bagopt:hover{border-color:var(--navy)}
+.bagopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
 .ap-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .ap-tile{border-radius:var(--r2);padding:1.1rem;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none}
 .ap-tile.a{background:var(--red-w)}
@@ -957,16 +962,16 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       </div>
       <div class="svc-c hl">
         <span class="svc-c-tag">MOST BOOKED</span>
-        <h3>Wash, Fold &amp; Iron</h3>
-        <p>Everything in Wash &amp; Fold, plus pressing. Work shirts, school uniforms, anything that needs to look sharp.</p>
+        <h3>Wash, Fold &amp; Premium</h3>
+        <p>Everything in Wash &amp; Fold, plus Premium Clean on the loads you choose. Delicates, fine knits, anything that needs care.</p>
         <span class="price" data-px="wfi"></span>
-        <a href="#/book" class="btn svc-cta">Book Wash, Fold &amp; Iron →</a>
+        <a href="#/book" class="btn svc-cta">Book Wash, Fold &amp; Premium →</a>
       </div>
       <div class="svc-c">
-        <h3>Ironing Only</h3>
-        <p>Already washed and just needs pressing. Collected and returned on hangers, ready to wear.</p>
+        <h3>Premium Clean</h3>
+        <p>Our finishing service. Stains hand-treated, gentle cycle, knits reshaped and air-dried, shirts returned on hangers.</p>
         <span class="price" data-px="iron"></span>
-        <a href="#/book" class="btn btn-out svc-cta">Book Ironing →</a>
+        <a href="#/book" class="btn btn-out svc-cta">Book Premium Clean →</a>
       </div>
     </div>
     <p class="enq-line">Dry cleaning, commercial linen and supported living are quoted per job — <a href="#/services">see all services →</a></p>
@@ -980,14 +985,14 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <p class="lede" style="margin-bottom:0">A recurring collection on a fixed day, weekly or fortnightly. Same operator, same preferences, flat weekly rate.</p>
       <div class="kc-save">
         <div class="kc-save-t">COMPARE</div>
-        <div class="kc-save-m">Individual bookings ≈ $77.50/week · Kings Club Solo = $49/week.<br><b>Save around $28 every week</b> — no lock-in, pause any time.</div>
+        <div class="kc-save-m">Individual bookings ≈ $77.50/week · Kings Club Fresh = $49/week.<br><b>Save around $28 every week</b> — no lock-in, pause any time.</div>
       </div>
       <a href="#/club" class="btn btn-red btn-lg">See Kings Club plans</a>
     </div>
     <div class="plans" style="grid-template-columns:1fr">
-      <div class="plan on"><h4>Solo</h4><div class="amt" data-px="p1"></div><p>One to two people. One standard bag each week.</p><div class="plan-cap">≈ 1–2 loads per week</div></div>
-      <div class="plan"><h4>Household</h4><div class="amt" data-px="p2"></div><p>Families of three to four. Two bags each week.</p><div class="plan-cap">≈ 2–4 loads per week</div></div>
-      <div class="plan"><h4>Full House</h4><div class="amt" data-px="p3"></div><p>Larger households. Three bags plus an ironing allowance.</p><div class="plan-cap">≈ 4–6 loads per week + ironing</div></div>
+      <div class="plan on"><h4>Fresh</h4><div class="amt" data-px="p1"></div><p>Wash &amp; fold on a fixed weekly day. One to two people.</p><div class="plan-cap">≈ 1–2 loads per week</div></div>
+      <div class="plan"><h4>Fresh+</h4><div class="amt" data-px="p2"></div><p>Wash &amp; fold plus Premium Clean on delicates. Families of three to four.</p><div class="plan-cap">≈ 2–4 loads per week + Premium Clean</div></div>
+      <div class="plan"><h4>King</h4><div class="amt" data-px="p3"></div><p>Everything in Fresh+, plus priority 24-hour turnaround.</p><div class="plan-cap">≈ 4–6 loads per week + priority</div></div>
     </div>
   </div></div></div>
 
@@ -1040,8 +1045,8 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         <div class="fld"><label class="lbl" for="qSvc">Service</label>
           <div class="selw"><select class="sel" id="qSvc">
             <option value="wf">Wash &amp; Fold</option>
-            <option value="wfi">Wash, Fold &amp; Iron</option>
-            <option value="iron">Ironing only</option>
+            <option value="wfi">Wash, Fold &amp; Premium</option>
+            <option value="iron">Premium Clean</option>
             <option value="dc">Dry Cleaning</option>
             <option value="comm">Commercial / Linen (quoted separately)</option>
           </select></div>
@@ -1051,7 +1056,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <div class="fld"><label class="lbl" id="lblA">Loads (approx. 5&nbsp;kg each)</label>
             <div class="stepper"><button type="button" data-step="a,-1" aria-label="Decrease">−</button><span id="numA">2</span><button type="button" data-step="a,1" aria-label="Increase">+</button></div>
           </div>
-          <div class="fld" id="fldB"><label class="lbl" id="lblB">Items to iron</label>
+          <div class="fld" id="fldB"><label class="lbl" id="lblB">Loads needing Premium Clean</label>
             <div class="stepper"><button type="button" data-step="b,-1" aria-label="Decrease">−</button><span id="numB">0</span><button type="button" data-step="b,1" aria-label="Increase">+</button></div>
           </div>
         </div>
@@ -1112,26 +1117,27 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         <span class="price" data-px="wf"></span>
         <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Wash &amp; Fold →</a>
       </div>
-      <div class="card"><h3>Wash, Fold &amp; Iron</h3>
-        <p>Washing plus pressing, priced per item ironed.</p>
+      <div class="card"><h3>Wash, Fold &amp; Premium</h3>
+        <p>Washing plus our Premium Clean finish, priced per load.</p>
         <ul class="chk2" style="margin-top:.9rem">
           <li>Everything included in Wash &amp; Fold</li>
-          <li>Shirts, blouses, trousers and uniforms pressed</li>
-          <li>Returned on hangers where you ask for it</li>
-          <li>You choose which items are ironed — not the whole load</li>
+          <li>Stains hand-treated before washing</li>
+          <li>Shirts and dresses returned on hangers</li>
+          <li>You choose which loads get Premium Clean — not all of them</li>
         </ul>
         <span class="price" data-px="wfi"></span>
-        <a href="#/book" class="btn btn-red btn-full" style="margin-top:1rem">Book Wash, Fold &amp; Iron →</a>
+        <a href="#/book" class="btn btn-red btn-full" style="margin-top:1rem">Book Wash, Fold &amp; Premium →</a>
       </div>
-      <div class="card"><h3>Ironing Only</h3>
-        <p>For washing you have already done yourself.</p>
+      <div class="card"><h3>Premium Clean</h3>
+        <p>Our finishing service for the things you care about most.</p>
         <ul class="chk2" style="margin-top:.9rem">
-          <li>Priced per item, no load charge</li>
-          <li>Collected and returned on hangers</li>
-          <li>Suitable for work shirts and uniform runs</li>
+          <li>Gentle cycle and cool wash for delicates and fine knits</li>
+          <li>Stains spot-treated by hand before washing</li>
+          <li>Knits reshaped and air-dried flat, never tumbled</li>
+          <li>We do not offer ironing — this is our finishing service instead</li>
         </ul>
         <span class="price" data-px="iron"></span>
-        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Ironing →</a>
+        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Premium Clean →</a>
       </div>
       <div class="card"><h3>Dry Cleaning</h3>
         <p>Handled through vetted specialist partner cleaners.</p>
@@ -1163,7 +1169,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         <span class="price">Quoted per site — <a href="#/business" style="text-decoration:underline">enquire</a></span>
       </div>
     </div>
-    <div class="pnote" style="margin-top:2rem"><strong>What affects your final price:</strong> weight, number of separated loads, items selected for ironing, bulky items, and your distance from the nearest active operator. Your operator confirms the final figure after weighing and before any work begins.</div>
+    <div class="pnote" style="margin-top:2rem"><strong>What affects your final price:</strong> weight, number of separated loads, loads selected for Premium Clean, bulky items, and your distance from the nearest active operator. Your operator confirms the final figure after weighing and before any work begins.</div>
   </div></div>
 
   <div class="sec sec-alt"><div class="wrap" style="text-align:center">
@@ -1189,7 +1195,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         <div id="pxWash"></div>
       </div>
       <div class="ptab">
-        <div class="ptab-h"><h3>Ironing &amp; Pressing</h3><span>Per item</span></div>
+        <div class="ptab-h"><h3>Premium Clean</h3><span>Per load</span></div>
         <div id="pxIron"></div>
       </div>
       <div class="ptab">
@@ -1206,7 +1212,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <h2 class="h2" style="font-size:1.3rem">How your price is calculated</h2>
       <ol style="margin:1rem 0 0 1.2rem">
         <li style="font-size:.9rem;color:var(--body);margin-bottom:.5rem"><strong>Loads.</strong> One load is approximately 5&nbsp;kg. Lights and darks are washed separately and count as two loads.</li>
-        <li style="font-size:.9rem;color:var(--body);margin-bottom:.5rem"><strong>Ironing.</strong> Charged per item you select, not per load.</li>
+        <li style="font-size:.9rem;color:var(--body);margin-bottom:.5rem"><strong>Premium Clean.</strong> Charged per load you select, not per item. We do not offer ironing.</li>
         <li style="font-size:.9rem;color:var(--body);margin-bottom:.5rem"><strong>Delivery.</strong> One flat fee covering both collection and return.</li>
         <li style="font-size:.9rem;color:var(--body);margin-bottom:.5rem"><strong>Minimum order.</strong> Applies to one-off bookings. Kings Club members are not subject to it.</li>
         <li style="font-size:.9rem;color:var(--body)"><strong>Confirmation.</strong> Your operator weighs and counts at collection and confirms the final price before starting.</li>
@@ -1226,7 +1232,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   </div></div>
   <div class="sec sec-navy"><div class="wrap">
     <div class="hd"><span class="eyebrow">PLANS</span><h2 class="h2">Pick the size that matches your household.</h2>
-    <p class="lede">All plans include collection and return. Ironing can be added to any plan at the standard per-item rate.</p></div>
+    <p class="lede">All plans include collection and return. Premium Clean can be added to any plan at the standard per-load rate.</p></div>
     <div class="plans" id="clubPlans"></div>
     <p style="margin-top:1.8rem;font-size:.82rem;color:rgba(255,255,255,.5)">Bag sizes are confirmed at your first collection. If you consistently exceed your plan size, we will contact you to move you up rather than silently charging extra.</p>
   </div></div>
@@ -1802,7 +1808,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <div class="svc-grid" id="bkSvcGrid"></div>
       <a href="#/services" class="svc-more">Dry cleaning &amp; commercial enquiries →</a>
 
-      <!-- optional volume (show for wf/wfi/iron) -->
+      <!-- optional volume (show for wf/wfi/premium) -->
       <div class="ap-card" id="bkVolCard" style="display:none;margin-top:.6rem">
         <div class="ap-card-h"><i>📦</i>Approximate quantity <span style="font-weight:400;font-size:.78rem;color:var(--mute)">(helps your operator prepare)</span></div>
         <div class="ap-card-b">
@@ -1810,11 +1816,31 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
             <div class="fld"><label class="lbl" id="bkLblA">Loads (approx. 5&nbsp;kg each)</label>
               <div class="stepper"><button type="button" data-bstep="a,-1">−</button><span id="bkNumA">2</span><button type="button" data-bstep="a,1">+</button></div>
             </div>
-            <div class="fld" id="bkFldB"><label class="lbl" id="bkLblB">Items to iron</label>
+            <div class="fld" id="bkFldB"><label class="lbl" id="bkLblB">Loads needing Premium Clean</label>
               <div class="stepper"><button type="button" data-bstep="b,-1">−</button><span id="bkNumB">0</span><button type="button" data-bstep="b,1">+</button></div>
             </div>
           </div>
           <p class="ap-fine">Final price is set after your operator weighs and counts on collection — the estimate is for their planning only.</p>
+        </div>
+      </div>
+
+      <!-- bag choice — optional, chargeable -->
+      <div class="ap-card" id="bkBagCard" style="margin-top:.6rem">
+        <div class="ap-card-h"><i>◱</i>Do you need a bag?</div>
+        <div class="ap-card-b">
+          <div class="ap-g2">
+            <button type="button" class="bagopt on" id="bkBagNo" data-bag="0">
+              <strong>I have my own</strong><span>Use any bag or basket. No charge.</span>
+            </button>
+            <button type="button" class="bagopt" id="bkBagYes" data-bag="1">
+              <strong>Send me a bag</strong><span id="bkBagPx">Reusable LaundryKings bag</span>
+            </button>
+          </div>
+          <div class="fld" id="bkBagQtyWrap" style="display:none;margin-top:.7rem">
+            <label class="lbl" id="bkBagQtyLbl">How many bags</label>
+            <div class="stepper"><button type="button" data-bstep="bag,-1">−</button><span id="bkBagQty">1</span><button type="button" data-bstep="bag,1">+</button></div>
+          </div>
+          <p class="ap-fine">Bags are yours to keep and reuse every week — you only pay for them once.</p>
         </div>
       </div>
 
@@ -2012,7 +2038,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="pfSvc">Usual service</label>
         <div class="selw"><select class="sel" id="pfSvc">
-          <option value="wf">Wash &amp; Fold</option><option value="wfi">Wash, Fold &amp; Iron</option><option value="iron">Ironing only</option><option value="dc">Dry cleaning</option>
+          <option value="wf">Wash &amp; Fold</option><option value="wfi">Wash, Fold &amp; Premium</option><option value="iron">Premium Clean</option><option value="dc">Dry cleaning</option>
         </select></div>
       </div>
       <label class="cbx"><input type="checkbox" id="pfEco"><span>Use fragrance-free / sensitive-skin detergent by default<span id="pfEcoPx"></span></span></label>
@@ -2196,7 +2222,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <div class="ap-card"><div class="ap-card-b">
       <div class="ap-g2">
         <div class="fld"><label class="lbl" for="invWt">Actual weight (kg)</label><input class="inp" type="number" min="0.1" step="0.1" id="invWt" placeholder="e.g. 4.2"></div>
-        <div class="fld"><label class="lbl" for="invIron">Items ironed</label><input class="inp" type="number" min="0" id="invIron" placeholder="0"></div>
+        <div class="fld"><label class="lbl" for="invIron">Premium Clean loads</label><input class="inp" type="number" min="0" id="invIron" placeholder="0"></div>
       </div>
       <div class="fld"><label class="lbl" for="invNotes">Notes for customer (optional)</label><textarea class="ta" id="invNotes" placeholder="Item count, anything unusual, care notes…" style="min-height:56px"></textarea></div>
       <div class="fld"><label class="lbl" for="invAdj">Manual adjustment ($, + or −)</label><input class="inp" type="number" step="0.01" id="invAdj" placeholder="0.00"></div>
@@ -2254,8 +2280,8 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
       <div class="foot-ph" id="footPhone">Phone to be connected</div>
     </div>
     <div><h4>SERVICES</h4><ul>
-      <li><a href="#/services">Wash &amp; Fold</a></li><li><a href="#/services">Wash, Fold &amp; Iron</a></li>
-      <li><a href="#/services">Ironing Only</a></li><li><a href="#/services">Dry Cleaning</a></li>
+      <li><a href="#/services">Wash &amp; Fold</a></li><li><a href="#/services">Wash, Fold &amp; Premium</a></li>
+      <li><a href="#/services">Premium Clean</a></li><li><a href="#/services">Dry Cleaning</a></li>
       <li><a href="#/services">Bulky Items</a></li><li><a href="#/club">Kings Club</a></li>
     </ul></div>
     <div><h4>FOR BUSINESS</h4><ul>
@@ -2320,8 +2346,8 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
    Owner can overwrite these in db at config/pricing.        */
 const DEFAULT_PRICING = {
   load: 32.00,          // per ~5kg load, wash & fold
-  iron: 3.50,           // per item, press only
-  ironTrouser: 4.50,
+  premium: 15.00,       // Premium Clean add-on, per load (replaces ironing)
+  bag: 12.00,           // branded bag, optional paid line item
   delivery: 13.50,      // collection + return, one flat fee
   minimum: 73.50,   // Laundry Lady $70 min +5% — decision 18 Sep 2026
   dcJacket: 18.50,
@@ -2403,15 +2429,11 @@ function calc(){
     sub = C.a * PX.load;
     lines = row(C.a + ' × wash & fold load' + (C.a>1?'s':''), sub);
   } else if (svc === 'wfi'){
-    lA.textContent = 'Loads (approx. 5 kg each)'; lB.textContent = 'Items to iron'; showB = true;
-    const w = C.a * PX.load, i = C.b * PX.iron;
+    lA.textContent = 'Loads (approx. 5 kg each)'; lB.textContent = 'Loads needing Premium Clean'; showB = true;
+    const w = C.a * PX.load, i = Math.min(C.b, C.a) * PX.premium;
     sub = w + i;
     lines = row(C.a + ' × wash & fold load' + (C.a>1?'s':''), w);
-    if (C.b) lines += row(C.b + ' × item' + (C.b>1?'s':'') + ' ironed', i);
-  } else if (svc === 'iron'){
-    lA.textContent = 'Items to iron';
-    sub = C.a * PX.iron;
-    lines = row(C.a + ' × item' + (C.a>1?'s':'') + ' ironed', sub);
+    if (C.b) lines += row(Math.min(C.b, C.a) + ' × Premium Clean load' + (Math.min(C.b,C.a)>1?'s':''), i);
   } else if (svc === 'dc'){
     lA.textContent = 'Garments (mixed average)';
     sub = C.a * PX.dcDress;
@@ -2466,8 +2488,8 @@ function paintHomeV4(){
 function paintPrices(){
   const map = {
     wf: 'From ' + money(PX.load) + ' per load',
-    wfi: money(PX.load) + ' per load + ' + money(PX.iron) + ' per item',
-    iron: 'From ' + money(PX.iron) + ' per item',
+    wfi: money(PX.load) + ' per load + ' + money(PX.premium) + ' Premium Clean',
+    iron: money(PX.premium) + ' per load',
     dc: 'From ' + money(PX.dcDress) + ' per item',
     bulk: 'From ' + money(PX.bulkDoona) + ' per item',
     p1: money(PX.plan1) + '<small>/week</small>',
@@ -2482,12 +2504,14 @@ function paintPrices(){
     R('Lights & darks separated', 'Washed separately — charged as two loads', money(PX.load * 2)) +
     R('Collection & return', 'One flat fee, both directions', money(PX.delivery)) +
     R('Eco / fragrance-free detergent', 'Optional add-on per load', money(PX.ecoAddon)) +
+    R('LaundryKings bag', 'Optional. Reusable; buy once, use every week', money(PX.bag)) +
     R('Minimum order', 'One-off bookings only', money(PX.minimum));
   document.getElementById('pxIron').innerHTML =
-    R('Shirt or blouse', 'Pressed and returned on a hanger', money(PX.iron)) +
-    R('Trousers or jeans', '', money(PX.ironTrouser)) +
-    R('School or work uniform item', '', money(PX.iron)) +
-    R('Ironing-only service', 'No load charge applies', 'Per item');
+    R('Premium Clean — per load', 'Added to any wash & fold load', money(PX.premium)) +
+    R('Delicates and fine knits', 'Gentle cycle, cool wash, reshaped and air-dried flat', 'Included') +
+    R('Stain hand-treatment', 'Spot-treated before washing', 'Included') +
+    R('Hanger finish', 'Shirts and dresses returned on hangers, not folded', 'Included') +
+    R('We do not offer ironing', 'Premium Clean is our finishing service instead', '—');
   document.getElementById('pxDry').innerHTML =
     R('Dress or skirt', 'From — final price depends on fabric', money(PX.dcDress)) +
     R('Suit jacket or blazer', '', money(PX.dcJacket)) +
@@ -2501,9 +2525,9 @@ function paintPrices(){
     R('Pet bedding', 'Processed separately from household loads', 'Quoted on inspection');
 
   document.getElementById('clubPlans').innerHTML =
-    plan('Solo', PX.plan1, 'One to two people. One standard bag each week, collected and returned. Ironing can be added per item.') +
-    plan('Household', PX.plan2, 'Families of three to four. Two standard bags each week, collected and returned.') +
-    plan('Full House', PX.plan3, 'Larger households. Three bags each week plus an allowance of ironed items included.');
+    plan('Fresh', PX.plan1, 'Wash &amp; fold on a fixed weekly day. One to two people. Premium Clean can be added per load.') +
+    plan('Fresh+', PX.plan2, 'Families of three to four. Wash &amp; fold plus Premium Clean included on delicate loads.') +
+    plan('King', PX.plan3, 'Everything in Fresh+, plus priority 24-hour turnaround and first pick of collection windows.');
   document.querySelectorAll('#clubPlans .plan').forEach(p => p.onclick = () => {
     document.querySelectorAll('#clubPlans .plan').forEach(x => x.classList.remove('on')); p.classList.add('on');
   });
@@ -2656,9 +2680,9 @@ document.getElementById('qGo').onclick = async () => {
   if (!sub){ say('qMsg', false, 'Select your suburb first.'); return; }
   await save('quotes', {
     suburb: sub, service: val('qSvc'),
-    loads: C.a, ironItems: C.b,
+    loads: C.a, premiumLoads: C.b,
     estimate: document.getElementById('qTotal').textContent,
-    pricingSnapshot: { load: PX.load, iron: PX.iron, delivery: PX.delivery, minimum: PX.minimum }
+    pricingSnapshot: { load: PX.load, premium: PX.premium, bag: PX.bag, delivery: PX.delivery, minimum: PX.minimum }
   }, 'qMsg', 'Request received. We will contact you to confirm a collection window and your final price.');
 };
 document.getElementById('covSave').onclick = async () => {
@@ -2756,8 +2780,8 @@ let BK = Object.assign({}, DEFAULT_BOOKING);
 
 const SVCS = [
   { id:'wf',   name:'Wash & Fold',          desc:'Washed on its own cycle, dried and folded.',          px:()=>'From '+money(PX.load)+' per load' },
-  { id:'wfi',  name:'Wash, Fold & Iron',    desc:'Everything in Wash & Fold, plus pressing.',            px:()=>money(PX.load)+' + '+money(PX.iron)+'/item' },
-  { id:'iron', name:'Ironing only',         desc:'Already washed — returned pressed and on hangers.',    px:()=>'From '+money(PX.iron)+' per item' },
+  { id:'wfi',  name:'Wash, Fold & Premium', desc:'Wash & Fold plus Premium Clean on the loads you pick.', px:()=>money(PX.load)+' + '+money(PX.premium)+'/load' },
+  { id:'iron', name:'Premium Clean',        desc:'Delicates, hand-treated stains, air-dried, hanger finish.', px:()=>money(PX.premium)+' per load' },
   { id:'dc',   name:'Dry cleaning',         desc:'Suits, formal wear and delicates. PERC-free.',         px:()=>'From '+money(PX.dcDress)+' per item' },
   { id:'comm', name:'Commercial / linen',   desc:'Quoted per site — sends an enquiry, not a booking.',   px:()=>'By quote' }
 ];
@@ -2849,18 +2873,21 @@ function addMessage(ref, title, body){
   S.messages.unshift(m); pushDoc('messages', m); return m;
 }
 
-/* ---- pricing estimate ---- */
-function estimate(svc, a, b){
+/* ---- pricing estimate ----
+   bagQty is optional; when supplied each bag is added as a one-off line item. */
+function estimate(svc, a, b, bagQty){
   if (svc === 'comm') return null;
   let lines = [], subtot = 0;
   if (svc === 'wf'   ){ const v=a*PX.load; subtot+=v; lines.push([a+' × wash & fold load'+(a>1?'s':''), v]); }
-  if (svc === 'wfi'  ){ const w=a*PX.load, i=b*PX.iron; subtot+=w+i;
+  if (svc === 'wfi'  ){ const pc=Math.min(b,a), w=a*PX.load, i=pc*PX.premium; subtot+=w+i;
                         lines.push([a+' × wash & fold load'+(a>1?'s':''), w]);
-                        if (b) lines.push([b+' × item'+(b>1?'s':'')+' ironed', i]); }
-  if (svc === 'iron' ){ const v=a*PX.iron; subtot+=v; lines.push([a+' × item'+(a>1?'s':'')+' ironed', v]); }
+                        if (pc) lines.push([pc+' × Premium Clean load'+(pc>1?'s':''), i]); }
+  if (svc === 'iron' ){ const v=a*PX.premium; subtot+=v; lines.push([a+' × Premium Clean load'+(a>1?'s':''), v]); }
   if (svc === 'dc'   ){ const v=a*PX.dcDress; subtot+=v; lines.push([a+' × garment'+(a>1?'s':'')+' (indicative average)', v]); }
   const p = activeP();
   if (p && p.eco){ const v = PX.ecoAddon; subtot += v; lines.push(['Fragrance-free / sensitive detergent', v]); }
+  const nb = Number(bagQty) || 0;
+  if (nb > 0){ const v = nb * PX.bag; subtot += v; lines.push([nb + ' × LaundryKings bag' + (nb>1?'s':'') + ' (yours to keep)', v]); }
   lines.push(['Collection & return', PX.delivery]); subtot += PX.delivery;
   const total = Math.max(PX.minimum, subtot);
   if (total > subtot + 0.001) lines.push(['Minimum order adjustment', total - subtot]);
@@ -3039,7 +3066,7 @@ function renderInvoices(){
 /* ============================================================
    BOOKING WIZARD
    ============================================================ */
-const W = { step:1, svc:'wf', a:2, b:0, date:'', win:'', rec:false, freq:'weekly' };
+const W = { step:1, svc:'wf', a:2, b:0, bag:0, bagQty:1, date:'', win:'', rec:false, freq:'weekly' };
 
 function wizStep(n){
   W.step = n;
@@ -3062,12 +3089,12 @@ function wizStep(n){
 
 /* ---- service grid config ---- */
 const SVC_GRID = [
-  { id:'wfi',  name:'Washing', sub:'& Ironing',
+  { id:'wfi',  name:'Washing', sub:'& Premium',
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 6H4L6 2z"/><rect x="3" y="8" width="18" height="14" rx="3"/><path d="M9 8V6M15 8V6"/><line x1="9" y1="15" x2="15" y2="15"/></svg>' },
   { id:'wf',   name:'Wash, Dry', sub:'& Fold',
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><line x1="5" y1="6" x2="8" y2="6"/><circle cx="11" cy="6" r="1" fill="currentColor"/></svg>' },
-  { id:'iron', name:'Ironing', sub:'only',
-    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18l-3-9H3l2 9z"/><path d="M18 9V5h4"/><line x1="7" y1="14" x2="13" y2="14"/></svg>' }
+  { id:'iron', name:'Premium', sub:'Clean',
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6L12 3z"/><path d="M5 20h14"/></svg>' }
 ];
 
 /* ---- ops state ---- */
@@ -3325,7 +3352,7 @@ function calcInvoice(job){
     const items=Math.max(1,Math.round(kg/0.5)), v=items*PX.dcDress; sub+=v;
     lines.push([`${items} × garment${items>1?'s':''} (dry cleaned)`,v]);
   }
-  if((svc==='wfi'||svc==='iron')&&iron){ const v=iron*PX.iron; sub+=v; lines.push([`${iron} × item${iron>1?'s':''} ironed`,v]); }
+  if((svc==='wfi'||svc==='iron')&&iron){ const v=iron*PX.premium; sub+=v; lines.push([`${iron} × Premium Clean load${iron>1?'s':''}`,v]); }
   lines.push(['Collection & return',PX.delivery]); sub+=PX.delivery;
   if(adj){ lines.push([adj>=0?'Adjustment (surcharge)':'Adjustment (discount)',adj]); sub+=adj; }
   const total=Math.max(PX.minimum,sub);
@@ -3384,9 +3411,37 @@ function renderWizard(){
   const volEl=document.getElementById('bkVolCard');
   if(volEl) volEl.style.display=['dc','comm'].includes(W.svc)?'none':'';
   if(document.getElementById('bkFldB')) document.getElementById('bkFldB').style.display=W.svc==='wfi'?'':'none';
-  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='iron'?'Items to iron':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
+  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='iron'?'Loads for Premium Clean':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
   if(document.getElementById('bkNumA')) document.getElementById('bkNumA').textContent=W.a;
   if(document.getElementById('bkNumB')) document.getElementById('bkNumB').textContent=W.b;
+
+  /* quantity steppers */
+  document.querySelectorAll('[data-bstep]').forEach(btn=>{
+    btn.onclick=()=>{
+      const [k,d]=btn.dataset.bstep.split(',');
+      const key = k==='bag' ? 'bagQty' : k;
+      const floor = (k==='a'||k==='bag') ? 1 : 0;
+      W[key]=Math.max(floor, Math.min(40, (W[key]||0) + Number(d)));
+      if(k==='a' && W.b>W.a) W.b=W.a;
+      renderWizard();
+    };
+  });
+
+  /* bag choice: hide for commercial enquiries */
+  const bagCard=document.getElementById('bkBagCard');
+  if(bagCard) bagCard.style.display=W.svc==='comm'?'none':'';
+  const bagPx=document.getElementById('bkBagPx');
+  if(bagPx) bagPx.textContent=money(PX.bag)+' each, yours to keep';
+  const bagYes=document.getElementById('bkBagYes'), bagNo=document.getElementById('bkBagNo');
+  if(bagYes&&bagNo){
+    bagYes.classList.toggle('on',!!W.bag); bagNo.classList.toggle('on',!W.bag);
+    bagYes.onclick=()=>{ W.bag=1; renderWizard(); };
+    bagNo.onclick=()=>{ W.bag=0; renderWizard(); };
+  }
+  const bagWrap=document.getElementById('bkBagQtyWrap');
+  if(bagWrap) bagWrap.style.display=W.bag?'':'none';
+  if(document.getElementById('bkBagQty')) document.getElementById('bkBagQty').textContent=W.bagQty;
+
   document.getElementById('bkN1').textContent=W.svc==='comm'?'→ Commercial enquiry':'→ Continue';
 
   /* step 3 address */
@@ -3420,7 +3475,7 @@ function renderWizard(){
         <div class="opt-d"><s>${dayName(d)}</s><b>${d.getDate()}</b><s>${monName(d)}</s></div>
         <div class="opt-m"><strong>${win.label}</strong><small>${longDate(W.date)}</small></div>
       </div>`:'' ;
-  const est=estimate(W.svc,W.a,W.b);
+  const est=estimate(W.svc,W.a,W.b,W.bag?W.bagQty:0);
   document.getElementById('bkSum').innerHTML=est?sumRows(est):'';
   document.getElementById('bkMinNote').textContent=`Minimum service charge of ${money(PX.minimum)} (incl GST) applies per collection, including pickup and return delivery.`;
   document.getElementById('bkRecSub').textContent=win
