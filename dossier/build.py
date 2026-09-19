@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the LaundryKings dossier.
+"""Build the Laundrylegends dossier.
 
 Concatenates the part files, embeds the pre-flight script into Appendix A,
 generates Appendix C verbatim from the site source of record, renders to PDF
@@ -41,9 +41,9 @@ def assemble():
 <div class="part">
 <p class="part-kicker">Appendix C</p>
 <h1>Complete website source code, v4.4 (repository copy of record)</h1>
-<p class="lede">The entire LaundryKings site: marketing, customer app and ops backend, one self-contained HTML file. Reproduced verbatim from <code>site/laundrykings-site.html</code> on the working branch; the live artefact still carries v4.2 until a principal publishes. {len(lines):,} lines, {size:,} bytes. SHA-256 <span class="mono">{sha}</span>.</p>
-<div class="box"><h4>Read this before using the listing</h4><p>Long lines wrap to the next line here rather than being cut, so the listing is complete. Line numbers are the source line numbers. For editing, use <code>site/laundrykings-site.html</code> in the Git repository, which is the copy of record; this appendix is for a paper reader and for disaster recovery only. The v1 dossier truncated 351 lines; this one truncates none.</p></div>
-<div class="codehead">laundrykings-site.html</div>
+<p class="lede">The entire Laundrylegends site: marketing, customer app and ops backend, one self-contained HTML file. Reproduced verbatim from <code>site/laundrylegends-site.html</code> on the working branch; the live artefact still carries v4.2 until a principal publishes. {len(lines):,} lines, {size:,} bytes. SHA-256 <span class="mono">{sha}</span>.</p>
+<div class="box"><h4>Read this before using the listing</h4><p>Long lines wrap to the next line here rather than being cut, so the listing is complete. Line numbers are the source line numbers. For editing, use <code>site/laundrylegends-site.html</code> in the Git repository, which is the copy of record; this appendix is for a paper reader and for disaster recovery only. The v1 dossier truncated 351 lines; this one truncates none.</p></div>
+<div class="codehead">laundrylegends-site.html</div>
 <pre class="code">''']
     for i, l in enumerate(lines, 1):
         appc.append(f'<span class="ln">{i}</span>{html.escape(l)}\n')
@@ -65,8 +65,8 @@ const {chromium}=require('playwright');
   await p.waitForTimeout(800);
   await p.pdf({path:process.argv[3],format:'A4',printBackground:true,preferCSSPageSize:true,
     displayHeaderFooter:true,
-    headerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>LaundryKings &#8212; Complete Project Dossier v2</span><span>19 September 2026</span></div>',
-    footerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Prepared for Max Jones and Callum Page &#183; MAXCAL | LaundryKings</span><span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>',
+    headerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Laundrylegends &#8212; Complete Project Dossier v2</span><span>19 September 2026</span></div>',
+    footerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Prepared for Max Jones and Callum Page &#183; MAXCAL | Laundrylegends</span><span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>',
     margin:{top:'16mm',bottom:'18mm',left:'15mm',right:'15mm'}});
   await b.close();
   console.log('pdf ok');

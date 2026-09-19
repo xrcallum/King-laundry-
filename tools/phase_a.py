@@ -11,7 +11,7 @@ Fixes D2, D3, D4, D7, D15, D16, D17, D18, D20:
   7. card borders that can be seen; card shadows removed
   8. muted text darkened to pass 4.5:1; red never sits on navy
 
-Run:  python3 tools/phase_a.py site/laundrykings-site.html
+Run:  python3 tools/phase_a.py site/laundrylegends-site.html
 It rewrites the file in place and prints a change report.
 """
 import re
