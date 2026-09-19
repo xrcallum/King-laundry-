@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Laundrylegends Change Record v1</title>
+<style>
+@page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+:root { --navy:#1A3480; --navy-d:#141826; --ink:#141826; --mute:#6B7386; --rule:#D9DCE3; --paper:#FFFFFF; --wash:#F3F5F9; --red:#A81B20; --amber:#8A5A00; --green:#1E6B3A; }
+* { box-sizing:border-box; }
+html, body { margin:0; padding:0; background:var(--paper); color:var(--ink); font:10.5pt/1.45 Arial, Helvetica, sans-serif; }
+h1 { font-size:22pt; line-height:1.15; margin:0 0 4pt; color:var(--navy-d); }
+h2 { font-size:14pt; margin:18pt 0 6pt; color:var(--navy); border-bottom:1.5pt solid var(--navy); padding-bottom:3pt; page-break-after:avoid; }
+h3 { font-size:11.5pt; margin:12pt 0 4pt; color:var(--navy-d); page-break-after:avoid; }
+p { margin:0 0 6pt; }
+.kicker { font-size:8.5pt; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:6pt; }
+.meta { display:grid; grid-template-columns:120pt 1fr; gap:3pt 10pt; font-size:9.5pt; margin:10pt 0 14pt; padding:8pt 10pt; background:var(--wash); border-left:3pt solid var(--navy); }
+.meta b { color:var(--mute); font-weight:600; }
+table { width:100%; border-collapse:collapse; font-size:9.5pt; margin:4pt 0 10pt; page-break-inside:auto; }
+th { text-align:left; background:var(--navy); color:#fff; padding:4pt 6pt; font-weight:600; }
+td { padding:4pt 6pt; border-bottom:.6pt solid var(--rule); vertical-align:top; }
+tr { page-break-inside:avoid; }
+td.k { font-weight:600; width:24%; }
+.tag { display:inline-block; font-size:7.5pt; padding:1pt 5pt; border-radius:8pt; font-weight:600; letter-spacing:.03em; white-space:nowrap; }
+.t-done { background:#E6F4EA; color:var(--green); }
+.t-open { background:#FFF6E0; color:var(--amber); }
+.t-dec { background:#FFF1F1; color:var(--red); }
+.mono { font-family:"Courier New", Courier, monospace; font-size:8.8pt; word-break:break-all; }
+.box { border:1pt solid var(--rule); padding:8pt 10pt; margin:8pt 0 10pt; background:var(--wash); page-break-inside:avoid; }
+.box h4 { margin:0 0 4pt; font-size:10pt; color:var(--navy-d); }
+.paste { border:1.2pt dashed var(--navy); background:#fff; padding:9pt 11pt; font-family:"Courier New", Courier, monospace; font-size:8.8pt; white-space:pre-wrap; line-height:1.4; page-break-inside:avoid; }
+ol, ul { margin:0 0 8pt 16pt; padding:0; }
+li { margin-bottom:3pt; }
+.small { font-size:9pt; color:var(--mute); }
+.pb { page-break-before:always; }
+</style>
+</head>
+<body>
+
+<p class="kicker">MAXCAL | Laundrylegends · GOV00 · Change Record</p>
+<h1>Rebrand and republish, 19 September 2026<br>Change Record v1</h1>
+<div class="meta">
+  <b>Prepared for</b><span>Callum Page and Max Jones</span>
+  <b>Prepared by</b><span>Claude, in the Claude Code session for repository xrcallum/King-laundry-</span>
+  <b>Date</b><span>19 September 2026 (AEST)</span>
+  <b>Scope</b><span>Everything changed in this session: the live site, the Git repository, the Complete Project Dossier, the domain check, and what remains open.</span>
+  <b>Companion</b><span>LLG-GOV00-01_Complete Dossier_v3 (136 pages). This record says what changed; the dossier is the full picture.</span>
+  <b>Proposed filing</b><span>MAXCAL | Laundrylegends › GOV00 › LLG-GOV00-02_Change Record_v1 <span class="small">(code is an assumption; confirm against the artefact register)</span></span>
+</div>
+
+<h2>1. What is live right now</h2>
+<table>
+<thead><tr><th>Thing</th><th>Where</th><th>State</th></tr></thead>
+<tbody>
+<tr><td class="k">Laundrylegends site (marketing, customer app, ops backend, operator portal)</td><td class="mono">https://claude.ai/artifact/5QptppvdarNfZyVYBFpyy3</td><td><span class="tag t-done">Live</span> Published with capabilities <span class="mono">{"db":{},"user":{}}</span>, contract 0.2.52, icon crown. Bookings, pricing and ops screens work because the database capability is declared.</td></tr>
+<tr><td class="k">Source of record</td><td class="mono">github.com/xrcallum/King-laundry- · branch claude/push-latest-chats-live-xnijoo</td><td><span class="tag t-done">Pushed</span> PR #3 merged. Commit ac4595a (site rebrand) and bd72d69 (dossier, tooling, README). This record and the domain corrections are the commit after bd72d69.</td></tr>
+<tr><td class="k">Site file</td><td class="mono">site/laundrylegends-site.html</td><td>SHA-256 <span class="mono">63a2957c0d717fadab3faa7475aa8db78ffd25eb5ec397e65bd5aec2f01a5afa</span> (unchanged in this follow-up; the live artefact matches it).</td></tr>
+<tr><td class="k">Complete Project Dossier</td><td class="mono">dossier/LLG-GOV00-01_Complete Dossier_v3.pdf</td><td><span class="tag t-done">Rebuilt</span> 136 pages. Cover, header and footer read Laundrylegends. D-09 now carries the verified post-rebrand domain findings.</td></tr>
+<tr><td class="k">Older artefacts titled "LaundryKings"</td><td>Two in the shared artefact list</td><td><span class="tag t-dec">Your call</span> Left untouched. They are older, less complete snapshots; deleting them needs your explicit yes.</td></tr>
+</tbody></table>
+
+<h2>2. Every change, by file</h2>
+<table>
+<thead><tr><th>File</th><th>Change</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td class="k mono">site/laundrylegends-site.html</td><td>Renamed from laundrykings-site.html. LaundryKings → Laundrylegends, LAUNDRYKINGS → LAUNDRYLEGENDS, Kings Club → Legends Club, KING REWARDS → LEGENDS REWARDS, LK- prefixes (monograms, referral codes, console tags) → LL-, default fallback 'KING' → 'GUEST'. Two gaps found on a second pass: the nav link <span class="mono">Kings&amp;nbsp;Club</span> (the entity broke the literal match) and the third subscription tier <span class="mono">plan('King', …)</span> → <span class="mono">plan('Legend', …)</span>.</td><td>Your instruction: rid the site of "Kings" completely. Verified by verify/preflight.py and verify/collide.js, both PASS, before publish.</td></tr>
+<tr><td class="k mono">site/brand/laundrylegends-hero-clean.jpg<br>site/brand/laundrylegends-hero-original.jpg</td><td>Renamed from laundrykings-hero-*.jpg. Not referenced by the live site; referenced by tools/clean_hero.py and Appendix E, both updated.</td><td>No file in the repo should carry the old name.</td></tr>
+<tr><td class="k mono">dossier/00_head.html</td><td>Title and cover to Laundrylegends and Revision 3. Cover crown was split across two spans (<span class="mono">&lt;span&gt;KINGS&lt;/span&gt;</span>) and missed the first pass; fixed. Live artefact URL and SHA-256 corrected (v2 pointed at an unrelated marketing-site link).</td><td>The cover must identify the document it is.</td></tr>
+<tr><td class="k mono">dossier/01_parts0_3.html … 07_appendixE.html</td><td>Brand words and file paths renamed. Filing codes LKG → LLG. D-09, Part 0 finding 3, the risk register R3, the M2 milestone text, Appendix A's verification table and Appendix D's fact-check table now state the <strong>post-rebrand</strong> domain findings (section 3 below). The quoted Linear issue title for KEA-11 keeps "laundrykings.com.au" because that is what the issue actually says.</td><td>A rename must not turn a verified fact about one name into an unverified claim about another. The first pass did that in four rows; this pass replaced them with a real check.</td></tr>
+<tr><td class="k mono">dossier/build.py</td><td>pypdf → pymupdf for page-number extraction; header, footer and title to Laundrylegends v3.</td><td>pypdf's cryptography binding panics in the build container; the README's rebuild command now works.</td></tr>
+<tr><td class="k mono">dossier/LLG-GOV00-01_Complete Dossier_v3.{html,pdf}</td><td>New build output. The v2 (LKG) files are removed from the repo; Git history keeps them.</td><td>One live version; superseded goes to history.</td></tr>
+<tr><td class="k mono">tools/*.py</td><td>Historical embedded HTML/JS snippets in clean_hero, content_update, fix_boot, icons, phase_b, phase_c rebranded.</td><td>Repo-wide consistency; a grep for the old name should return only the repository's own name.</td></tr>
+<tr><td class="k mono">README.md</td><td>Live artefact URL, v3 filenames, filing note, domain result, and this record.</td><td>The README is where the next session starts.</td></tr>
+</tbody></table>
+
+<h2 class="pb">3. Domain check, verified 19 September 2026 after the rebrand</h2>
+<table>
+<thead><tr><th>Domain</th><th>Vercel</th><th>DNS</th><th>Price (USD, per year)</th><th>Read</th></tr></thead>
+<tbody>
+<tr><td class="k">laundrylegends.com.au</td><td>Not available</td><td>Resolves: 15.197.148.33, 3.33.130.190</td><td>—</td><td>Registered to a third party. What it serves is unverified (HTTP 403 through the build proxy).</td></tr>
+<tr><td class="k">laundrylegends.com</td><td>Not available</td><td>Resolves: 103.224.182.245</td><td>—</td><td>Registered to a third party. Same caveat.</td></tr>
+<tr><td class="k">laundrylegends.au</td><td>Available</td><td>No record</td><td>23.99, renews 23.99</td><td>Buyable today. Needs Australian presence only, no ABN.</td></tr>
+<tr><td class="k">laundrylegends.co</td><td>Available</td><td>No record</td><td>29.99, renews 24.80</td><td>Defensive redirect only.</td></tr>
+</tbody></table>
+<div class="box"><h4>Decision D-09 · Owner Max with Callum · by 25 September 2026</h4>
+<ol>
+<li><strong>(Recommended)</strong> Launch on <strong>laundrylegends.au</strong>. Available now, cheapest, no wait on the ABN (D-03). Register in the entity's name once D-03 lands; point at Vercel; update the site's <span class="mono">og:image</span>, <span class="mono">twitter:image</span> and the referral share link (<span class="mono">#apShareLink</span>), which still hard-code laundrylegends.com.au.</li>
+<li>Also take laundrylegends.co as a redirect. Low value; skip if budget matters.</li>
+<li>Approach the .com.au holder. Slow, uncertain, holder unknown; only if a .com.au becomes essential for a channel.</li>
+</ol>
+<p class="small">Nothing is bought without a principal's written yes in chat. The Vercel connector can purchase, so the instruction must be explicit.</p></div>
+
+<h2>4. Still open, with owners</h2>
+<table>
+<thead><tr><th>Item</th><th>Owner · date</th><th>What unblocks it</th></tr></thead>
+<tbody>
+<tr><td class="k">Retire the two old "LaundryKings" artefacts</td><td>Callum · when convenient</td><td>Say "delete the two LaundryKings artefacts" in a chat. They will be listed back to you first, then removed.</td></tr>
+<tr><td class="k">D-09 domain</td><td>Max with Callum · 25 Sep</td><td>Pick option 1, 2 or 3 above. Then the OG/share URLs in the site get changed and republished in the same session.</td></tr>
+<tr><td class="k">Filing prefix LLG</td><td>Max · 25 Sep</td><td>Confirm LLG (or another prefix) against the Maxcal artefact register. If it changes, the two dossier files are renamed and rebuilt; nothing else moves.</td></tr>
+<tr><td class="k">"Linen Legends" artefact</td><td>Callum · when convenient</td><td>Unopened. Say whether it belongs to this venture or another; if another, it stays out of this repo by the cross-venture rule.</td></tr>
+<tr><td class="k">Standalone operator portal</td><td>Callum · scope first</td><td>The site already carries the operator/ops screens (routes #/ops, #/opsbook, the operator portal added in commit d755893). If you want a separately published portal, say so and it becomes its own scoped piece of work with its own preflight.</td></tr>
+<tr><td class="k">Everything in the dossier's Part 16 decisions (D-01 to D-14)</td><td>As listed there</td><td>Unchanged by this session. D-09 is the only one this record touches.</td></tr>
+</tbody></table>
+
+<h2>5. How to continue this in any new chat</h2>
+<p>Paste the block below as the first message of a new chat. It gives the session the repository, the live URL, the rules that travel with the code, and what is open, so nothing is re-derived and the old name never comes back.</p>
+<div class="paste">Venture: Laundrylegends (MAXCAL | Laundrylegends). The name is Laundrylegends. Never LaundryKings, Kings Club or King anything; the repo name xrcallum/King-laundry- is the only place the old word remains.
+
+Source of record: GitHub xrcallum/King-laundry-, branch claude/push-latest-chats-live-xnijoo. Site file: site/laundrylegends-site.html (one self-contained HTML file: marketing, customer app, ops backend, operator portal). Read README.md first; it holds the publish workflow.
+
+Live site: https://claude.ai/artifact/5QptppvdarNfZyVYBFpyy3 — republish only to this URL, with capabilities {"db":{},"user":{}}, contract 0.2.52, icon crown, never mcp. Before any publish: python3 verify/preflight.py and node verify/collide.js must both print RESULT: PASS, and the change must be committed first.
+
+Documents: dossier/LLG-GOV00-01_Complete Dossier_v3.pdf (full picture, 136 pages) and dossier/LLG-GOV00-02_Change Record_v1.pdf (what changed on 19 Sep 2026 and what is open). Rebuild command is in README.md.
+
+Open decisions: D-09 domain (laundrylegends.au recommended; .com.au and .com are taken), filing prefix LLG to confirm, two old "LaundryKings" artefacts to retire on explicit instruction, "Linen Legends" artefact unidentified. Pricing lives in the database document config/pricing; never hard-code it. Every price shown is GST-inclusive AUD.
+
+Task for this chat: [write it here]</div>
+
+<h2>6. Verification performed this session</h2>
+<ul>
+<li>verify/preflight.py on the site file: RESULT: PASS (IDs, script parse, emoji census, undefined functions).</li>
+<li>verify/collide.js at phone widths: RESULT: PASS (sticky pill, chat button, tab bar, assistant panel).</li>
+<li>Residual-name scan across every touched file and the full text of the rebuilt PDF: zero genuine hits. The scan was rewritten mid-session after a fixed-width context pattern missed three real occurrences near line ends; the corrected scan extracts variable-length context.</li>
+<li>Cover page of the v3 PDF rendered to an image and checked by eye: title, revision, live URL and SHA-256 correct.</li>
+<li>Domain check: Vercel bulk availability plus DNS resolution from the build container, both on 19 September 2026; TLD prices from Vercel. Recorded in section 3 with the one thing that could not be verified named as such.</li>
+</ul>
+<p class="small">Legal, tax and structuring points in the dossier remain options for the adviser, not advice. This record adds none.</p>
+
+</body>
+</html>

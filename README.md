@@ -33,7 +33,9 @@ Requires Python 3, Node with Playwright and a Chromium build (the build script u
 
 **Filing note:** the dossier now files as `LLG-GOV00-01` (prefix `LLG` for Laundrylegends, replacing `LKG`) — an assumption pending confirmation against the real Maxcal artefact register, flagged as such on the cover page.
 
-**Domain facts not yet re-verified:** the domain-availability/WHOIS findings in Parts 9–18 (D-09) were checked against `laundrykings.*` before the 19 September rebrand and are left under that name — restating them under `laundrylegends.*` without re-running the check would assert an unverified fact. Re-run the same Vercel/WHOIS check against `laundrylegends.com.au`, `.com`, `.au` and `.co` before D-09 is decided.
+**Domain (D-09), checked 19 September 2026 after the rebrand:** `laundrylegends.com.au` and `laundrylegends.com` are registered to third parties (Vercel: not available; both resolve in DNS). `laundrylegends.au` (USD 23.99/yr) and `laundrylegends.co` (USD 29.99/yr) are available through Vercel. Recommended primary: `laundrylegends.au`. Nothing is bought without a principal's written yes. The site file still hard-codes `laundrylegends.com.au` in its `og:image`/`twitter:image` URLs and the referral share link (`#apShareLink`); change those to the D-09 domain once decided.
+
+`dossier/LLG-GOV00-02_Change Record_v1.pdf` is the one-page-per-topic record of the 19 September rebrand session (what changed, where it lives, what is still open) and carries a paste-in handover block for starting any new chat on this venture.
 
 ## Rules that travel with the code
 
