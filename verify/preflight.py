@@ -16,6 +16,7 @@ Checks (Dossier v2, Appendix A):
   7. every function called in the script is defined
   8. AU compliance sentinels present
   9. every var(--token) without a fallback resolves to a declared custom property
+ 10. every <img> carries non-empty alt text
 """
 import re
 import subprocess
@@ -234,6 +235,21 @@ def main(path, strict_tokens=False):
         fails.append(f"{sum(undefined.values())} var() references to undeclared tokens: {detail}")
     else:
         notes.append(f"{len(used)} distinct var() tokens, all declared")
+
+    # 10. every <img> has alt text
+    # Photographs are embedded by tools/embed_photos.py, which requires alt text
+    # — this is the backstop for an <img> added by hand.
+    # Comments are prose, not markup: a CSS or HTML comment that mentions an
+    # <img> tag is not a missing alt attribute.
+    uncommented = re.sub(r"<!--.*?-->", " ", src, flags=re.S)
+    uncommented = re.sub(r"/\*.*?\*/", " ", uncommented, flags=re.S)
+    imgs = re.findall(r"<img\b[^>]*>", uncommented)
+    bad = [t for t in imgs if not re.search(r'\balt\s*=\s*"[^"]+"', t)]
+    if bad:
+        fails.append(f"{len(bad)} of {len(imgs)} <img> without alt text: "
+                     + "; ".join(t[:90] for t in bad[:4]))
+    elif imgs:
+        notes.append(f"{len(imgs)} <img>, all with alt text")
 
     # 8. compliance sentinels
     for s in COMPLIANCE_SENTINELS:

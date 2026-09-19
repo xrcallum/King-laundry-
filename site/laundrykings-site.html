@@ -1355,8 +1355,17 @@ svg.ic{width:24px;height:24px}
 .reveal.in .jn-v[data-jn="4"]{transition-delay:.44s}
 .reveal.in .jn-v[data-jn="5"]{transition-delay:.57s}
 .jn-v:hover{transform:translateY(-4px);box-shadow:var(--e-hov);border-color:rgba(12,38,95,.2)}
-.jn-art{width:100%;aspect-ratio:1/1;max-width:150px;margin:0 auto .7rem}
-.jn-art svg{width:100%;height:100%;display:block}
+/* One 4:3 box whether the step is drawn or photographed, so a row that is part
+   drawn and part photographed still lines its numbers and headings up. The
+   drawing is square, so it sits centred at full height rather than stretching. */
+.jn-art{width:100%;aspect-ratio:4/3;max-width:200px;margin:0 auto .7rem}
+.jn-art svg{width:auto;height:100%;display:block;margin:0 auto}
+/* A real photograph replaces the drawing for that step. tools/embed_photos.py
+   adds .has-photo and the <img>; the drawing stays in the file as the fallback
+   for any step not yet photographed, so the row never renders half-empty. */
+.jn-art.has-photo{max-width:100%}
+.jn-art.has-photo svg{display:none}
+.jn-art img{width:100%;height:100%;display:block;object-fit:cover;border-radius:var(--r2);background:var(--paper)}
 /* subtle drum tumble */
 .jn-drum{animation:jnTumble 8s linear infinite;transform-origin:80px 82px;transform-box:fill-box}
 @keyframes jnTumble{from{transform:rotate(0)}to{transform:rotate(360deg)}}
@@ -1835,7 +1844,7 @@ svg.ic{width:24px;height:24px}
 
       <!-- Vignette 1 — door, bag out -->
       <article class="jn-v" role="listitem" data-jn="1">
-        <div class="jn-art">
+        <div class="jn-art" data-photo="jn-1">
           <svg viewBox="0 0 160 160" role="img" aria-labelledby="jnA1">
             <title id="jnA1">Bag left on the doormat</title>
             <!-- ground -->
@@ -1881,7 +1890,7 @@ svg.ic{width:24px;height:24px}
 
       <!-- Vignette 2 — weighed at door -->
       <article class="jn-v" role="listitem" data-jn="2">
-        <div class="jn-art">
+        <div class="jn-art" data-photo="jn-2">
           <svg viewBox="0 0 160 160" role="img" aria-labelledby="jnA2">
             <title id="jnA2">Operator weighs the bag with a digital scale</title>
             <rect x="10" y="132" width="140" height="6" rx="2" fill="var(--paper)"/>
@@ -1918,7 +1927,7 @@ svg.ic{width:24px;height:24px}
 
       <!-- Vignette 3 — van/round -->
       <article class="jn-v" role="listitem" data-jn="3">
-        <div class="jn-art">
+        <div class="jn-art" data-photo="jn-3">
           <svg viewBox="0 0 160 160" role="img" aria-labelledby="jnA3">
             <title id="jnA3">Into the operator's round</title>
             <rect x="10" y="132" width="140" height="6" rx="2" fill="var(--paper)"/>
@@ -1969,7 +1978,7 @@ svg.ic{width:24px;height:24px}
 
       <!-- Vignette 4 — washing -->
       <article class="jn-v" role="listitem" data-jn="4">
-        <div class="jn-art">
+        <div class="jn-art" data-photo="jn-4">
           <svg viewBox="0 0 160 160" role="img" aria-labelledby="jnA4">
             <title id="jnA4">Washed on its own cycle</title>
             <rect x="10" y="132" width="140" height="6" rx="2" fill="var(--paper)"/>
@@ -2017,7 +2026,7 @@ svg.ic{width:24px;height:24px}
 
       <!-- Vignette 5 — folded stack -->
       <article class="jn-v" role="listitem" data-jn="5">
-        <div class="jn-art">
+        <div class="jn-art" data-photo="jn-5">
           <svg viewBox="0 0 160 160" role="img" aria-labelledby="jnA5">
             <title id="jnA5">Folded and tagged</title>
             <rect x="10" y="132" width="140" height="6" rx="2" fill="var(--paper)"/>
