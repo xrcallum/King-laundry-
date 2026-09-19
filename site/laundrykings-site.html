@@ -452,6 +452,22 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .bagopt span{font-size:.76rem;color:var(--mute);line-height:1.45}
 .bagopt:hover{border-color:var(--navy)}
 .bagopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
+.rw-hero{background:var(--navy);border-color:var(--navy)}
+.rw-hero .ap-card-b{color:#fff}
+.rw-bal{font-family:var(--fd);font-weight:800;font-size:2.6rem;line-height:1;color:#fff;display:flex;align-items:baseline;gap:.4rem}
+.rw-bal small{font-size:.9rem;font-weight:600;opacity:.75;letter-spacing:.08em}
+.rw-worth{font-size:.8rem;opacity:.75;margin-top:.2rem}
+.rw-tierline{display:flex;align-items:center;gap:.6rem;margin-top:.9rem;flex-wrap:wrap;font-size:.8rem;opacity:.9}
+.rw-badge{display:inline-block;padding:.2rem .6rem;border-radius:999px;background:rgba(255,255,255,.16);font-weight:700;letter-spacing:.06em;font-size:.72rem;text-transform:uppercase}
+.rw-prog{height:6px;border-radius:999px;background:rgba(255,255,255,.2);margin-top:.9rem;overflow:hidden}
+.rw-prog-b{height:100%;background:#fff;border-radius:999px;width:0;transition:width .4s}
+.rw-hero .ap-fine{color:rgba(255,255,255,.75)}
+.rw-row{display:flex;align-items:center;gap:.9rem;padding:.8rem .95rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);margin-bottom:.5rem}
+.rw-row.off{opacity:.55}
+.rw-row .rw-c{font-family:var(--fd);font-weight:800;font-size:.95rem;color:var(--navy);min-width:62px}
+.rw-row .rw-l{flex:1}
+.rw-row .rw-l strong{display:block;font-size:.86rem;color:var(--navy)}
+.rw-row .rw-l small{font-size:.72rem;color:var(--mute)}
 .ap-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .ap-tile{border-radius:var(--r2);padding:1.1rem;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none}
 .ap-tile.a{background:var(--red-w)}
@@ -1978,11 +1994,46 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     </div>
 
     <div class="ap-sec-t">USER SETTINGS — ACROSS ALL PROFILES</div>
+    <a href="#/rewards" class="ap-row"><i>♔</i><div><strong>King Rewards</strong><small id="acRwSub">Crowns balance, tier benefits and your referral code</small></div><em>›</em></a>
     <a href="#/userdet" class="ap-row"><i>👤</i><div><strong>User details</strong><small>Name, email, phone, password</small></div><em>›</em></a>
     <a href="#/feedback" class="ap-row"><i>💬</i><div><strong>Feedback</strong><small>Share feedback or report an issue</small></div><em>›</em></a>
     <a href="#/help" class="ap-row"><i>❓</i><div><strong>Help &amp; support</strong><small>FAQs, contact support, policies</small></div><em>›</em></a>
 
     <div class="ap-ver">LaundryKings customer portal · <span id="apVer">v1.0</span></div>
+  </div></div>
+</section>
+
+<!-- ---------------- KING REWARDS ---------------- -->
+<section class="page" id="p-rewards">
+  <div class="ap"><div class="ap-in">
+    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/app'">‹</button><div><h2>King Rewards</h2><p>Your Crowns, tier and referral link.</p></div></div>
+
+    <div class="ap-card rw-hero">
+      <div class="ap-card-b">
+        <div class="rw-bal"><span id="rwCrowns">0</span><small>Crowns</small></div>
+        <div class="rw-worth" id="rwWorth">worth $0.00</div>
+        <div class="rw-tierline"><span class="rw-badge" id="rwTier">Member</span><span id="rwMult">earning 1 Crown per $1</span></div>
+        <div class="rw-prog"><div class="rw-prog-b" id="rwProgBar"></div></div>
+        <p class="ap-fine" id="rwProgTx">Spend to reach your next tier.</p>
+      </div>
+    </div>
+
+    <div class="ap-sec-t">SPEND YOUR CROWNS</div>
+    <div id="rwRewards"></div>
+
+    <div class="ap-sec-t">YOUR TIER BENEFITS</div>
+    <div class="ap-card"><div class="ap-card-b"><ul class="chk2" id="rwPerks"></ul></div></div>
+
+    <div class="ap-sec-t">REFER A FRIEND</div>
+    <div class="ap-card"><div class="ap-card-b">
+      <p style="margin:0 0 .7rem">Give a friend <strong id="rwRefGive">$15</strong> off their first collection. When it is completed you get <strong id="rwRefGet">$15</strong> in credit.</p>
+      <div class="fld"><label class="lbl" for="rwRefCode">Your referral code</label>
+        <input class="inp" id="rwRefCode" readonly></div>
+      <button class="btn btn-nv btn-full" style="margin-top:.7rem" id="rwRefCopy">Copy referral link</button>
+      <p class="ap-fine" id="rwRefMsg">Credit is released once your friend's first collection is completed and paid.</p>
+    </div></div>
+
+    <p class="ap-fine" id="rwLapse"></p>
   </div></div>
 </section>
 
@@ -2379,7 +2430,7 @@ const SOON_PC = {
 
 /* ---------- ROUTER ---------- */
 const PAGES = ['home','services','pricing','club','business','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
-  'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help',
+  'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards',
   'ops','opsbook','opsops','opsinv'];
 function route(){
   const h = (location.hash || '#/').replace('#/','').split('?')[0] || 'home';
@@ -2797,7 +2848,7 @@ const COMMS = [
 
 /* ---- state ---- */
 const APP_ROUTES = ['app','book','bookings','messages','thread','account','profile',
-                    'pdetails','prefs','address','comms','invoices','userdet','feedback','help'];
+                    'pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards'];
 let UID = null, ACCT_REF = null, APP_READY = false;
 const S = {
   acct: { first:'', last:'', email:'', phone:'', activeId:'', comms:{ ops:true, msg:true, inv:true, svc:true, promo:false } },
@@ -2805,6 +2856,82 @@ const S = {
 };
 const MEM = { acct:null, profiles:[], bookings:[], messages:[] };
 let PERSISTED = false;
+
+/* ============================================================
+   KING REWARDS — Crowns loyalty engine
+   Design basis (see KLG-MKT06-01):
+     - 1 Crown per $1, worth $0.02 (Sephora parity, ~2% return)
+     - Tier multipliers so only the heaviest users earn the top rate
+       (Starbucks model) — protects margin at the base
+     - Every redemption is dollar-capped (Starbucks margin shield)
+     - New accounts open with SIGNUP_CROWNS already banked: the
+       endowed-progress effect (Nunes & Dreze 2006) roughly doubled
+       completion, 34% vs 19%, when a card started part-filled
+     - Crowns lapse 12 months after the last completed order, so
+       dormant balances do not sit on the books forever
+   Thresholds are LAUNCH ASSUMPTIONS pending Max's Ops Sheet sign-off.
+   ============================================================ */
+const CROWN_VALUE  = 0.02;   // AUD per Crown
+const SIGNUP_CROWNS = 100;   // endowed progress
+const CROWN_EXPIRY_DAYS = 365;
+const REFERRAL_CREDIT = 15.00;  // give $15 / get $15, ~37% of a first order
+
+const TIERS = [
+  { id:'member',   name:'Member',   min:0,    mult:1,    perks:['App access and Crowns balance','Referral code','Birthday-month Premium Clean, free'] },
+  { id:'silver',   name:'Silver',   min:400,  mult:1.25, perks:['Priority collection windows','48-hour price lock on quotes','Early access to new services'] },
+  { id:'gold',     name:'Gold',     min:900,  mult:1.5,  perks:['Same-day service where available','One free Premium Clean load each month','Priority support queue'] },
+  { id:'platinum', name:'Platinum', min:1800, mult:2,    perks:['Guaranteed 4-hour collection window','Direct line to your operator','Free bag replacement each year','First access to seasonal capacity'] }
+];
+
+/* Redemption menu. Weighted toward high-margin add-ons so perceived
+   value runs ahead of marginal cost; every row carries a hard cap. */
+const REWARDS = [
+  { id:'pc1',   crowns:250,  label:'Premium Clean upgrade on one load', cap:15 },
+  { id:'bag1',  crowns:400,  label:'One LaundryKings bag',              cap:12 },
+  { id:'cr10',  crowns:500,  label:'$10 credit toward any collection',  cap:10 },
+  { id:'wash1', crowns:750,  label:'One standard load washed free',     cap:32 },
+  { id:'cr25',  crowns:1000, label:'$25 credit toward any collection',  cap:25 },
+  { id:'mth1',  crowns:2000, label:'One month of Kings Club, free',     cap:89 }
+];
+
+const tierFor = spend => TIERS.reduce((t,x)=> spend >= x.min ? x : t, TIERS[0]);
+const nextTier = spend => TIERS.find(t => t.min > spend) || null;
+const crownsToAud = c => Math.round(c * CROWN_VALUE * 100) / 100;
+
+/* Crowns earned by one order, at the tier the customer held when it ran. */
+function crownsFor(amount, tierId){
+  const t = TIERS.find(x=>x.id===tierId) || TIERS[0];
+  return Math.floor(Number(amount||0) * t.mult);
+}
+
+/* Rolling 12-month spend drives tier; lifetime spend sets a floor so a
+   long-standing customer never drops back to Member after a quiet patch. */
+const LIFETIME_FLOOR_SPEND = 3000;
+const LIFETIME_FLOOR_TIER  = 'silver';
+
+function rewardsState(){
+  const r = S.acct.rewards || {};
+  const now = Date.now();
+  const yearAgo = now - CROWN_EXPIRY_DAYS*864e5;
+  const orders = (S.bookings||[]).filter(b => b.status==='complete' && b.paidAmount);
+  const rolling = orders.filter(b => (b.completedAt||0) >= yearAgo)
+                        .reduce((s,b)=> s + Number(b.paidAmount||0), 0);
+  const lifetime = orders.reduce((s,b)=> s + Number(b.paidAmount||0), 0);
+  let tier = tierFor(rolling);
+  if (lifetime >= LIFETIME_FLOOR_SPEND){
+    const floor = TIERS.find(t=>t.id===LIFETIME_FLOOR_TIER);
+    if (floor && floor.min > tier.min) tier = floor;
+  }
+  const balance = Math.max(0, Number(r.balance || SIGNUP_CROWNS));
+  const lastOrder = orders.reduce((m,b)=> Math.max(m, b.completedAt||0), 0);
+  return {
+    balance, tier, rolling, lifetime,
+    next: nextTier(rolling),
+    lapsesAt: lastOrder ? lastOrder + CROWN_EXPIRY_DAYS*864e5 : null,
+    referralCode: r.referralCode || '',
+    redeemed: r.redeemed || []
+  };
+}
 
 const uid4 = () => Math.random().toString(36).slice(2,8);
 const REF = () => 'LK-' + Date.now().toString(36).slice(-4).toUpperCase() + Math.random().toString(36).slice(2,4).toUpperCase();
@@ -3019,6 +3146,12 @@ function renderAccount(){
     + '<div><h3>'+esc(p.name)+'</h3><p>'+(addrLine(p) ? esc(addrLine(p)) : '<em style="color:var(--mute)">No collection address saved yet</em>')+'</p>'+chips+'</div></div>';
   ['acIdc','prIdc'].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = card; });
   const sw = document.getElementById('apSwName2'); if (sw) sw.textContent = p.name;
+  const rwSub = document.getElementById('acRwSub');
+  if (rwSub){
+    const r = rewardsState();
+    rwSub.textContent = r.balance.toLocaleString('en-AU') + ' Crowns · ' + r.tier.name
+      + ' · worth ' + money(crownsToAud(r.balance));
+  }
 }
 
 function renderSheet(){
@@ -3544,6 +3677,97 @@ function richBookingCard(b){
   </div>`;
 }
 
+/* ---------------- KING REWARDS RENDER ---------------- */
+function renderRewards(){
+  const r = rewardsState();
+  const set = (id,v)=>{ const e=document.getElementById(id); if(e) e.textContent=v; };
+
+  set('rwCrowns', r.balance.toLocaleString('en-AU'));
+  set('rwWorth', 'worth ' + money(crownsToAud(r.balance)));
+  set('rwTier', r.tier.name);
+  set('rwMult', 'earning ' + r.tier.mult + ' Crown' + (r.tier.mult===1?'':'s') + ' per $1');
+
+  /* progress toward the next tier, measured on rolling 12-month spend */
+  const bar = document.getElementById('rwProgBar');
+  if (r.next){
+    const span = r.next.min - r.tier.min;
+    const pct = span > 0 ? Math.max(0, Math.min(100, ((r.rolling - r.tier.min) / span) * 100)) : 0;
+    if (bar) bar.style.width = pct.toFixed(1) + '%';
+    set('rwProgTx', money(Math.max(0, r.next.min - r.rolling)) + ' more in the next 12 months to reach ' + r.next.name + '.');
+  } else {
+    if (bar) bar.style.width = '100%';
+    set('rwProgTx', 'You are at our highest tier. Thank you.');
+  }
+
+  /* redemption menu — a row dims until the balance covers it */
+  const host = document.getElementById('rwRewards');
+  if (host){
+    host.innerHTML = REWARDS.map(x => {
+      const ok = r.balance >= x.crowns;
+      return '<div class="rw-row' + (ok?'':' off') + '">'
+        + '<div class="rw-c">' + x.crowns.toLocaleString('en-AU') + '</div>'
+        + '<div class="rw-l"><strong>' + esc(x.label) + '</strong>'
+        + '<small>Value capped at ' + money(x.cap) + '</small></div>'
+        + '<button class="btn btn-out" data-redeem="' + x.id + '"' + (ok?'':' disabled') + '>'
+        + (ok ? 'Redeem' : 'Locked') + '</button></div>';
+    }).join('');
+    host.querySelectorAll('[data-redeem]').forEach(b => b.onclick = () => redeemCrowns(b.dataset.redeem));
+  }
+
+  const perks = document.getElementById('rwPerks');
+  if (perks) perks.innerHTML = r.tier.perks.map(p => '<li>' + esc(p) + '</li>').join('');
+
+  set('rwRefGive', money(REFERRAL_CREDIT));
+  set('rwRefGet', money(REFERRAL_CREDIT));
+  const code = document.getElementById('rwRefCode');
+  if (code) code.value = r.referralCode || referralCode();
+
+  const lapse = document.getElementById('rwLapse');
+  if (lapse){
+    lapse.textContent = r.lapsesAt
+      ? 'Crowns lapse on ' + longDate(isoDate(new Date(r.lapsesAt))) + ' unless you book again before then. Any collection resets the clock.'
+      : 'Crowns lapse 12 months after your last completed collection.';
+  }
+}
+
+function wireRewards(){
+  const btn = document.getElementById('rwRefCopy');
+  if (!btn) return;
+  btn.onclick = async () => {
+    const code = referralCode();
+    const link = location.origin + location.pathname + '#/book?ref=' + encodeURIComponent(code);
+    let copied = false;
+    try { await navigator.clipboard.writeText(link); copied = true; } catch(e){}
+    say('rwRefMsg', true, copied ? 'Referral link copied. Send it to anyone.' : 'Copy this link: ' + link);
+    await saveAcct();
+  };
+}
+
+/* A stable per-account code. Derived from the account ref so it survives
+   a reload without needing another round trip to the database. */
+function referralCode(){
+  S.acct.rewards = S.acct.rewards || {};
+  if (!S.acct.rewards.referralCode){
+    const seed = (S.acct.first || 'KING').replace(/[^a-z]/gi,'').slice(0,5).toUpperCase() || 'KING';
+    S.acct.rewards.referralCode = seed + '-' + uid4().toUpperCase();
+  }
+  return S.acct.rewards.referralCode;
+}
+
+async function redeemCrowns(id){
+  const x = REWARDS.find(w => w.id === id); if (!x) return;
+  const r = rewardsState();
+  if (r.balance < x.crowns){ say('rwRefMsg', false, 'Not enough Crowns for that reward yet.'); return; }
+  S.acct.rewards = S.acct.rewards || {};
+  S.acct.rewards.balance = r.balance - x.crowns;
+  S.acct.rewards.redeemed = (S.acct.rewards.redeemed || []).concat([{ id:x.id, crowns:x.crowns, at:Date.now() }]);
+  await saveAcct();
+  addMessage('REWARDS', 'Reward applied: ' + x.label,
+    x.label + ' has been added to your account and will be applied to your next collection. '
+    + x.crowns.toLocaleString('en-AU') + ' Crowns were deducted. Value capped at ' + money(x.cap) + '.');
+  renderRewards(); renderMessages();
+}
+
 /* ================================================================
    UPDATED appRoute + appBoot — add ops routing
    ================================================================ */
@@ -3574,6 +3798,7 @@ function appRoute(id){
   if(id==='messages')  renderMessages();
   if(id==='thread')    renderThread();
   if(['account','profile'].includes(id)) renderAccount();
+  if(id==='rewards')   renderRewards();
   if(['pdetails','prefs','address','comms','userdet','invoices'].includes(id)) renderForms();
   if(id==='ops')     { if(CAN_EDIT) opsSkeleton('opsRoot'); opsLoad().then(renderOps); }
   if(id==='opsbook') renderOpsBook();
@@ -3583,7 +3808,7 @@ function appRoute(id){
 
 async function appBoot(){
   await appLoad();
-  wireWizard(); wireSettings();
+  wireWizard(); wireSettings(); wireRewards();
   ['apVer','apVer2'].forEach(i=>{ const e=document.getElementById(i); if(e) e.textContent='v1.0 · '+(PERSISTED?'signed in':'session only'); });
   renderHome(); renderAccount(); renderForms(); renderWizard(); renderBookings(); renderMessages();
   appRoute(curId);
