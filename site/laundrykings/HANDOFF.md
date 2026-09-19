@@ -1,7 +1,11 @@
-# LaundryKings — Home Laundry Landing Page
+# Laundrylegends — Home Laundry Landing Page
 ## Complete Handoff Document
 
-> **STATUS 19 Sep 2026 — personalised to LaundryKings.** Both pages were rebuilt from the venture's own sources and the "Laundrylegends" placeholder brand is gone. Everything below this box that says Laundrylegends, 1800 PICKUP, orange/blue tokens or competitor pricing is **historical** and superseded by the current files.
+> **STATUS 19 Sep 2026 (later) — brand is Laundrylegends; model is the venture's.** Principal decision (Callum Page, 19 Sep 2026): the trading brand is **Laundrylegends**. Both pages now carry the Laundrylegends identity (LAUNDRY★LEGENDS lockup, "Always Fresh", "Fresh & Effortless", orange `#EE6E1F` accent on deep navy `#0D2052`, iron hero, bags illustration, cloud strip) over the business model documented under the working name LaundryKings in the dossier and `site/laundrykings-site.html`. "Kings Club" is presented as **Legends Club**. Builder: one-shot script (scratch, not in repo); the HTML files are the record.
+>
+> **Follow-ups this creates:** (a) the booking, club, services and legal links point to the live site at `…/SJihvya38JukdcAUL7JiFx`, which is still LaundryKings-branded — rebrand that site or the customer sees two names (owner Callum Page); (b) dossier Part 2 brand section and README still say LaundryKings — record the rename decision there (owner Callum Page); (c) if "Legends Club" is not the chosen product name, tell me and I rebuild in one pass.
+>
+> Everything below this box that says 1800 PICKUP, blue `#194B9E`, black header, or competitor pricing is **historical** and superseded by the current files.
 >
 > **Sources used (cite by section):** dossier Part 2 (brand, principals, "Do not say"), Part 3 (rate card, coverage, booking windows), Part 5 (guarantee, live site URL), Part 11 (mandatory compliance text); `site/laundrykings-site.html` `DEFAULT_PRICING` + `HOME_SUBURBS` + `content_update_2.py` (19 Sep 2026 Kings Club names Solo / Pair / Family and +30%).
 >
