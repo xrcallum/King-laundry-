@@ -1,9 +1,10 @@
 # Journey photographs
 
-The five steps in "How a collection actually goes" ship as hand-drawn SVG. The
-drawings are honest, but they are drawings. Drop a photo in here and it replaces
-that step's drawing; steps without a photo keep theirs, so this can be done one
-at a time.
+The five steps in "How a collection actually goes" ship text-only: a numeral, a
+heading, a line of copy. The hand-drawn illustrations that used to sit above
+that text were removed — they read as clip art, not craft, and a placeholder
+picture was worse than none. Drop a photo in here and it fills that step's slot;
+a step with no photo yet just stays text-only, so this can be done one at a time.
 
 Decision of 19 September 2026: **licensed stock first**, own photographs when a
 round can be shot. Both routes use the same slots and the same command.
@@ -105,7 +106,7 @@ that's happening anyway.
 4. Commit, publish, confirm on a phone — the workflow in the root README.
 
 To pull them all back out: `python3 tools/embed_photos.py
-site/laundrykings-site.html --strip`. That restores the drawings exactly.
+site/laundrykings-site.html --strip`. That returns every step to text-only.
 
 ## Why the photos live inside the HTML
 

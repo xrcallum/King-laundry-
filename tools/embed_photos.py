@@ -27,8 +27,9 @@ The alt text is not generated: it describes a photograph this script has never
 seen, so only the person who chose it can write it.
 
 Every run rewrites site/photos/CREDITS.md from these entries. A step with no
-photo keeps its drawing. Re-running replaces what an earlier run embedded, so
-this is safe to run as often as you like.
+photo stays text-only — numeral, heading, copy, no illustration. Re-running
+replaces what an earlier run embedded, so this is safe to run as often as
+you like.
 
 Requires Node with Playwright and a Chromium build — the same dependency
 dossier/build.py already has. No Python image library is needed.
@@ -196,7 +197,7 @@ def main(path, photo_dir, strip_only=False):
     photos = find_photos(photo_dir)
     if not photos:
         open(path, "w", encoding="utf-8").write(src)
-        print(f"no photos in {photo_dir} — every step keeps its drawing")
+        print(f"no photos in {photo_dir} — every step stays text-only")
         print("  expected: " + ", ".join(s + "{" + "|".join(e[1:] for e in EXTS) + "}" for s in SLOTS[:1]) + " … jn-5")
         return 0
 

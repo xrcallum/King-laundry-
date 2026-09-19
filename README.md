@@ -25,16 +25,17 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 
 ## Add or change the journey photographs
 
-The five steps in "How a collection actually goes" ship as drawings and are
-replaced one at a time by real photographs. `site/photos/README.md` has the shot
-list and the rules. Once the files and their alt text are in `site/photos`:
+The five steps in "How a collection actually goes" ship text-only — numeral,
+heading, copy, no illustration — and are filled in one at a time by real
+photographs. `site/photos/README.md` has the shot list and the rules. Once the
+files and their alt text are in `site/photos`:
 
 ```
 python3 tools/embed_photos.py site/laundrykings-site.html
 python3 verify/preflight.py site/laundrykings-site.html
 ```
 
-Then follow the publish workflow above. Steps without a photo keep their drawing.
+Then follow the publish workflow above. A step with no photo yet stays text-only.
 
 ## Rebuild the dossier
 
