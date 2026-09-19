@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<title>LaundryKings Build Session Brief v1</title>
+<style>
+/* local copies of Archivo, Inter, JetBrains Mono (Google Fonts, OFL) */
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLySOxK-vA.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLyTOxK-vA.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/k3kPo8UDI-1M0wlSV9XAw6lQkqWY8Q82sLydOxI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<style>
+:root{
+  --navy:#0C265F; --navy-d:#071A45; --navy-l:#2B4BAA; --navy-w:#F0F3FC;
+  --red:#D84330; --red-d:#A81B20; --red-w:#FFF1F1;
+  --ink:#141826; --body:#3C4356; --mute:#6B7386; --line:#D5DAE6; --line2:#B9C1D2;
+  --paper:#F6F3EE; --bg2:#F7F8FC; --white:#fff;
+  --ok:#0F7B4F; --ok-bg:#E6F6EE; --warn:#8A5A00; --warn-bg:#FFF6E0; --bad:#A81B20; --bad-bg:#FFF1F1; --info:#1F4E9A; --info-bg:#EAF1FD;
+  --fd:'Archivo','Liberation Sans',Arial,sans-serif; --fb:'Inter','Liberation Sans',Arial,sans-serif; --fm:'JetBrains Mono','DejaVu Sans Mono',monospace;
+  --s1:#2B4BAA; --s2:#B5651D; --s3:#7A8FB8;
+}
+@page{ size:A4; margin:16mm 15mm 18mm 15mm; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff;color:var(--ink);font-family:var(--fb);font-size:9.6pt;line-height:1.42}
+p{margin:0 0 5pt}
+h1,h2,h3,h4{font-family:var(--fd);color:var(--navy-d);line-height:1.12}
+h1{font-size:24pt;font-weight:900;letter-spacing:-.02em;margin:0 0 4pt}
+h2{font-size:14pt;font-weight:800;letter-spacing:-.015em;margin:12pt 0 5pt;padding-top:6pt;border-top:2px solid var(--navy);break-after:avoid}
+h3{font-size:11pt;font-weight:700;margin:9pt 0 3pt;break-after:avoid}
+h4{font-size:9.8pt;font-weight:700;margin:6pt 0 2pt;color:var(--ink);break-after:avoid}
+strong{font-weight:600;color:var(--ink)}
+small{font-size:8.2pt;color:var(--mute)}
+a{color:var(--navy-l);text-decoration:none}
+code,.mono{font-family:var(--fm);font-size:8.4pt;background:var(--bg2);padding:0 2px;border-radius:2px}
+pre{font-family:var(--fm);font-size:7.6pt;line-height:1.3;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:6pt 8pt;white-space:pre-wrap;word-break:break-word;margin:4pt 0 7pt}
+ul,ol{margin:2pt 0 6pt 14pt}
+li{margin:0 0 2pt}
+.part{break-before:page}
+.part-kicker{font-family:var(--fd);font-weight:700;font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin:0 0 3pt}
+.lede{font-size:10.6pt;color:var(--body);margin:0 0 8pt;max-width:92%}
+table{width:100%;border-collapse:collapse;margin:4pt 0 8pt;font-size:8.6pt;break-inside:auto}
+thead{display:table-header-group}
+tr{break-inside:avoid}
+th{font-family:var(--fd);font-weight:700;font-size:8pt;text-align:left;color:#fff;background:var(--navy);padding:4pt 5pt;border:1px solid var(--navy)}
+td{padding:3.5pt 5pt;border:1px solid var(--line);vertical-align:top;color:var(--body)}
+tbody tr:nth-child(even) td{background:#FAFBFE}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.k{font-weight:600;color:var(--ink)}
+.tag{display:inline-block;font-family:var(--fd);font-weight:700;font-size:6.8pt;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;border-radius:3px;vertical-align:middle;white-space:nowrap}
+.t-ver{background:var(--ok-bg);color:var(--ok)}
+.t-unv{background:var(--warn-bg);color:var(--warn)}
+.t-asm{background:var(--info-bg);color:var(--info)}
+.t-cor{background:var(--bad-bg);color:var(--bad)}
+.t-new{background:var(--navy-w);color:var(--navy)}
+.t-done{background:var(--ok-bg);color:var(--ok)} .t-open{background:var(--warn-bg);color:var(--warn)} .t-blk{background:var(--bad-bg);color:var(--bad)}
+.box{border:1px solid var(--line);border-left:4px solid var(--navy);background:var(--bg2);padding:6pt 9pt;margin:6pt 0 8pt;border-radius:0 4px 4px 0;break-inside:avoid}
+.box.red{border-left-color:var(--red);background:var(--red-w)}
+.box.ok{border-left-color:var(--ok);background:var(--ok-bg)}
+.box.warn{border-left-color:var(--warn);background:var(--warn-bg)}
+.box.paper{border-left-color:var(--navy-d);background:var(--paper)}
+.box h4{margin-top:0}
+.rec{border:2px solid var(--navy);padding:7pt 10pt;margin:6pt 0 8pt;border-radius:4px;background:#fff;break-inside:avoid}
+.rec .lbl{font-family:var(--fd);font-weight:800;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8pt}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt}
+.card{border:1px solid var(--line);border-radius:4px;padding:6pt 8pt;background:#fff;break-inside:avoid}
+.card h4{margin-top:0}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:6pt;margin:6pt 0 8pt}
+.kpi .card{background:var(--navy-w);border-color:transparent}
+.kpi .v{font-family:var(--fd);font-weight:900;font-size:18pt;color:var(--navy-d);letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.kpi .l{font-size:7.8pt;color:var(--mute);margin-top:3pt}
+.fig{margin:6pt 0 9pt;break-inside:avoid}
+.fig svg{display:block;max-width:100%}
+.figcap{font-size:7.9pt;color:var(--mute);margin-top:3pt}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:4px;border:1px solid rgba(0,0,0,.08)}
+.owner{font-size:7.9pt;color:var(--mute);font-style:italic}
+.ask{border:1.5px dashed var(--red);background:#fff;padding:7pt 9pt;margin:6pt 0 8pt;border-radius:4px;break-inside:avoid}
+.ask .lbl{font-family:var(--fd);font-weight:800;font-size:8pt;letter-spacing:.06em;color:var(--red);text-transform:uppercase}
+.ask .fill{border-bottom:1px solid var(--line2);height:14pt;margin:4pt 0}
+.small{font-size:8.2pt}
+.two{columns:2;column-gap:14pt}
+.nb{break-inside:avoid}
+.chip{display:inline-block;border:1px solid var(--line2);border-radius:999px;padding:1px 7px;font-size:7.9pt;margin:0 3px 3px 0;color:var(--ink);background:#fff;font-variant-numeric:tabular-nums}
+.chip.live{border-color:var(--ok);background:var(--ok-bg)}
+.chip.soon{border-color:var(--line2);background:var(--bg2);color:var(--body)}
+.toc li{margin:0 0 3pt;display:flex;justify-content:space-between;border-bottom:1px dotted var(--line2);padding-bottom:2pt}
+.toc{list-style:none;margin:0}
+.toc .r{color:var(--mute);font-size:8.2pt}
+.spec{font-family:var(--fm);font-size:7.9pt}
+/* type specimen */
+.spec-row{display:flex;align-items:baseline;gap:10pt;border-bottom:1px solid var(--line);padding:3pt 0}
+.spec-row .m{width:120pt;font-family:var(--fm);font-size:7.6pt;color:var(--mute)}
+.spec-row .t{font-family:var(--fd);font-weight:800;color:var(--navy-d);line-height:1;white-space:nowrap;overflow:hidden}
+/* cover */
+.cover{height:257mm;position:relative;background:var(--navy-d);color:#fff;padding:22mm 18mm;border-radius:6px;break-after:page}
+.cover .crown{font-family:var(--fd);font-weight:900;font-size:34pt;letter-spacing:-.03em;line-height:.95}
+.cover .crown span{color:#fff;display:block}
+.cover .tag{background:var(--red);color:#fff;font-size:8pt;padding:3px 8px;margin-top:8pt}
+.cover h1{color:#fff;font-size:30pt;margin-top:34mm;letter-spacing:-.025em;line-height:1.02}
+.cover .sub{font-size:12pt;color:#C9D2F2;margin-top:6pt;max-width:120mm}
+.cover .meta{position:absolute;left:18mm;right:18mm;bottom:18mm;display:grid;grid-template-columns:1fr 1fr;gap:6pt 18pt;font-size:8.6pt;color:#C9D2F2;border-top:1px solid rgba(255,255,255,.25);padding-top:8pt}
+.cover .meta b{color:#fff;font-weight:600;display:block;font-size:8pt;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1pt}
+.cover .stripe{position:absolute;right:0;top:0;bottom:0;width:14mm;background:var(--red);border-radius:0 6px 6px 0}
+.codehead{font-family:var(--fd);font-weight:700;font-size:8pt;color:var(--mute);margin:6pt 0 2pt;border-bottom:1px solid var(--line)}
+pre.code{font-family:"DejaVu Sans Mono","Liberation Mono",monospace;font-style:normal;font-size:5.6pt;line-height:1.28;padding:3pt 4pt;background:#fff;border:none;margin:0}
+pre.code .ln{display:inline-block;width:22pt;text-align:right;color:#9AA3B5;margin-right:5pt;user-select:none}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="stripe"></div>
+  <div class="crown"><span>LAUNDRY</span><span>KINGS</span></div>
+  <div class="tag">WE WASH IT WELL</div>
+  <h1>Build Session Brief<br>Revision 1</h1>
+  <p class="sub">Website defect fixes, an honesty pass on coverage and proof claims, and a visual-quality removal — v4.3 through v4.7, all live. What changed, what it replaced, what still needs a principal decision, and a drafted brief for the solicitor.</p>
+  <div class="meta">
+    <div><b>Prepared for</b>Callum Page and Max Jones, principals</div>
+    <div><b>Date</b>19 September 2026 (AEST)</div>
+    <div><b>Live artefact</b>claude.ai/artifact/SJihvya38JukdcAUL7JiFx (Version 10, v4.7)</div>
+    <div><b>Source of record</b>GitHub xrcallum/King-laundry- · branch claude/ai-confusion-ui-rendering-16allp · HEAD c2206a7</div>
+    <div><b>Filing</b>MAXCAL | LaundryKings › GOV00 › LKG-GOV00-02_Build Session Brief_v1 <span style="opacity:.75">(GOV00-01 is the Complete Dossier; no formal artefact register exists in the repo, so numbering follows the dossier's own precedent)</span></div>
+    <div><b>Status legend</b><span class="tag t-ver">Verified</span> checked against the live file or a script run in this session · <span class="tag t-asm">Assumption</span> modelled, basis and variable named · <span class="tag t-unv">Unverified</span> stated, not yet confirmed · <span class="tag t-done">Done</span> <span class="tag t-open">Open</span> <span class="tag t-blk">Blocked on a person</span></div>
+  </div>
+</div>
+
+<h1>Contents</h1>
+<ul class="toc">
+  <li><span>Part 1 — Recommendation and executive summary</span><span class="r"></span></li>
+  <li><span>Part 2 — Scope and how it was run</span><span class="r"></span></li>
+  <li><span>Part 3 — Build log, v4.3 → v4.7</span><span class="r"></span></li>
+  <li><span>Part 4 — AU compliance: what was actioned and why</span><span class="r"></span></li>
+  <li><span>Part 5 — Decisions needed from a principal</span><span class="r"></span></li>
+  <li><span>Part 6 — Build-for-scale note: the coverage checker</span><span class="r"></span></li>
+  <li><span>Part 7 — Drafted brief for the solicitor</span><span class="r"></span></li>
+  <li><span>Part 8 — Artefact register and file changes</span><span class="r"></span></li>
+  <li><span>Part 9 — Verification evidence</span><span class="r"></span></li>
+  <li><span>Part 10 — Attachments</span><span class="r"></span></li>
+</ul>
+
+<div class="part">
+<div class="part-kicker">Part 1</div>
+<h1>Recommendation and executive summary</h1>
+
+<div class="rec">
+  <div class="lbl">Recommendation</div>
+  <p>Publish is done — v4.7 is live now, no action needed to ship what's in this brief. The one item that blocks further progress is Part 5, decision 1: which cities are actually live today. Everything else in this brief is informational, already actioned, or routed to someone other than a principal.</p>
+</div>
+
+<p class="lede">Five defects were fixed, one honesty problem was removed at the root rather than patched, and one visual element was deleted rather than reworked. Nothing here required new functionality — every change either corrected something the code was already trying to do, or removed something that shouldn't have been asserted in the first place.</p>
+
+<h3>What changed, in one line each</h3>
+<table>
+<thead><tr><th>Version</th><th>What</th><th>Why it mattered</th></tr></thead>
+<tbody>
+<tr><td class="k">v4.3</td><td>Fixed square corners site-wide and a sticky-button collision</td><td>A missing colour token silently zeroed ten border-radius rules; browsers drop unknown custom properties without warning, so nothing errored</td></tr>
+<tr><td class="k">v4.4</td><td>Fixed the price estimate card: layout, a rendering glitch, and a total that did not add up</td><td>The column read $32 + $13.50 = $77.50 with no visible top-up line — on a page whose whole pitch is "price confirmed before we touch anything," a total that doesn't sum reads as either an error or a hidden charge</td></tr>
+<tr><td class="k">v4.5</td><td>Removed the home-page coverage map</td><td>It was two hand-drawn shapes with pins at invented coordinates, four of twenty marked <code>// mock</code> in the code itself, under a heading stating "sixteen suburbs collecting today"</td></tr>
+<tr><td class="k">v4.6</td><td>Rewrote every coverage claim to match the actual instruction (Australia-wide, major cities), removed six fabricated testimonials and four hardcoded "live activity" numbers, fixed a real 16px overflow on every page on a phone</td><td>The testimonials and numbers were shown to <em>every</em> visitor as fact; see Part 4 for the compliance read on this</td></tr>
+<tr><td class="k">v4.7</td><td>Removed five hand-drawn illustrations from the "how it works" section</td><td>Flagged as reading like clip art rather than brand craft; a smaller version of the same drawings would not have answered that critique, so they were removed and the section rebuilt as clean numbered text</td></tr>
+</tbody>
+</table>
+
+<h3>What's still open</h3>
+<table>
+<thead><tr><th>#</th><th>Item</th><th>Status</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>Which cities/postcodes are actually live today</td><td><span class="tag t-blk">Blocked on Callum</span></td><td>Callum Page</td></tr>
+<tr><td class="n">2</td><td>Terms of Service naming Queensland only, against a now Australia-wide site</td><td><span class="tag t-open">Routed to solicitor</span></td><td>Solicitor, via Part 7</td></tr>
+<tr><td class="n">3</td><td>Operator-portal preview shows an illustrative job without saying so</td><td><span class="tag t-open">Low priority</span></td><td>Callum Page</td></tr>
+<tr><td class="n">4</td><td>Hero "live activity" strip has no real numbers to show yet</td><td><span class="tag t-open">Waiting on data</span></td><td>Callum Page</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 2</div>
+<h1>Scope and how it was run</h1>
+<p>Work started from screenshots of the live site on a phone showing square corners where the design called for rounded ones, a sticky "Book" button sitting on top of the page's own final "Book" button, and a price-estimate card whose figures visibly did not add up. From there the same standard was applied to the rest of the page: does every visible claim have something real behind it, and does every element render the way its own CSS says it should.</p>
+<div class="box">
+<h4>Verification standard used on every change</h4>
+<ul>
+<li><code>verify/preflight.py</code> — the repository's own pre-publish script (script parses, no duplicate ids, exactly 34 page sections, no dangling <code>getElementById</code> targets, zero emoji, every called function defined, every <code>var()</code> token declared, AU compliance sentinels present) — run after every edit, must print <code>RESULT: PASS</code></li>
+<li>A real Chromium browser (Playwright, not a static read of the HTML) driven through every one of the 31 client-side routes, watching for uncaught JavaScript errors</li>
+<li>Viewport checks at 360, 390, 400, 420, 430 and 1280px — the widths that matter for phones and desktop — checking for any element wider than the viewport</li>
+<li>Screenshots taken and inspected at each fix, not assumed from reading the CSS</li>
+</ul>
+</div>
+<p>Everything reported as fixed in Part 3 passed all four checks before it was published. Nothing was shipped on the strength of "this should work now."</p>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 3</div>
+<h1>Build log, v4.3 → v4.7</h1>
+
+<h3>v4.3 — 19 Sep, 10:15 <span class="tag t-done">Done</span> <span class="mono small">da7e53c</span></h3>
+<p><strong>Square corners, site-wide.</strong> Ten CSS rules called <code>var(--r-lg)</code> — a token that was never declared anywhere in the file. A browser drops an undeclared custom property silently; no console error, nothing visibly broken in the source, the property just doesn't apply. Every one of those ten surfaces — the final call-to-action panel, the map card, the Kings Club card, segment cards, the marquee — rendered at radius zero instead of the intended 12–18px. Repointed each at the design system's declared scale.</p>
+<p><strong>Sticky "Book" button landing on the page's own "Book" button.</strong> The button used <code>position:fixed</code>, which normally pins an element to the browser viewport regardless of scroll. It had been placed inside a page section that runs a filled CSS animation on <code>transform</code> — and an element with an active transform becomes the containing block for anything fixed inside it, overriding the fix entirely. The button was scrolling with the page instead of floating over it, and came to rest on the final call-to-action panel. Moved outside that section; now genuinely fixed, and hidden specifically over the final CTA and the footer so it never again sits on top of another Book button.</p>
+<p><strong>Preflight gained a check</strong> for exactly this class of bug: every <code>var()</code> reference without a fallback must resolve to a declared property. Confirmed it fails against the pre-fix file with the same ten references, so this cannot ship unnoticed again.</p>
+
+<h3>Photo pipeline built (unrelated defect, same session) <span class="tag t-done">Done, later superseded</span> <span class="mono small">bda125e, 8e3fc2d</span></h3>
+<p>Built <code>tools/embed_photos.py</code> to drop real photographs into the "how a collection actually goes" section, resizing to WebP and requiring alt text and a licence record before anything embeds. This tooling was built before the decision (v4.7, below) to remove the placeholder illustrations entirely. It was not wasted: the empty photo slot and the embed script are unchanged and ready the moment real photographs exist — see Part 5, decision 4's sibling note on photography in <code>site/photos/README.md</code>.</p>
+
+<h3>v4.4 — 19 Sep, 10:48 <span class="tag t-done">Done</span> <span class="mono small">a5c8dc3</span></h3>
+<p><strong>A CSS class meant two different things.</strong> One rule (<code>.tab</code>) styled the app's bottom navigation bar: <code>flex-direction:column</code>, centred content, and bottom padding sized to clear an iPhone's home-indicator safe area. A second, unrelated rule redefined the same class name purely to add tabular number spacing to price figures. Seven price spans on the home page and the Kings Club calculator carried this second, unintended meaning — so every number on those cards was laid out as if it were a navigation button, including roughly 34px of dead bottom padding per row on a real iPhone (that padding is 0 in a browser test harness with no safe-area inset, which is why this wasn't caught earlier). Renamed the number-spacing class to <code>.tnum</code>; the five real navigation buttons are untouched.</p>
+<p><strong>A background "glow" rendered as a flat coloured bar with a hard edge.</strong> The CSS used <code>radial-gradient(circle, …)</code> inside a box 60% as wide as the screen but 140% as tall — on a phone, roughly eight times taller than wide. A circle's falloff in that box is far wider than the box itself, so it painted as a solid rectangle rather than a soft glow. Changed to <code>ellipse</code>, which scales its falloff to both dimensions of the box it's in.</p>
+<p><strong>The total did not add up.</strong> The card showed $32 (one load) plus $13.50 (delivery), and a total of $73.50 — the $28 difference (the minimum-order top-up) was mentioned only in a footnote below the total, never in the sum itself. Added it as its own line item, shown only when it applies, computed from the same live pricing configuration as everything else on the card — no new figure was invented.</p>
+
+<h3>v4.5 — 19 Sep, 10:57 <span class="tag t-done">Done</span> <span class="mono small">8374e51</span></h3>
+<p><strong>Removed the home-page coverage map outright.</strong> It rendered two hand-drawn shapes labelled "Brisbane" and "Logan" with 20 pins placed at hand-picked pixel coordinates that bore no relationship to real geography, under a heading reading "Live footprint across Brisbane &amp; Logan" and body copy stating "Sixteen suburbs collecting today." Four of the twenty pins were marked in the code itself as <code>// opening soon (mock, keeps the "growing" story alive)</code>. This was not adjustable to the Australia-wide instruction — it was deleted along with its supporting JavaScript and CSS. The coverage page (<code>#/coverage</code>) is unaffected and rebuilt properly in v4.6.</p>
+
+<h3>v4.6 — 19 Sep, 11:06 <span class="tag t-done">Done</span> <span class="mono small">daaccbc</span></h3>
+<p><strong>Every Brisbane / Logan / South East Queensland claim removed.</strong> 33 lines, roughly 104 occurrences, across the page <code>&lt;title&gt;</code>, meta description, Open Graph tags, the web app manifest, the top strip, the hero eyebrow and trust chip, the business and about and contact copy, the footer, every JavaScript-generated page title, and the <code>schema.org</code> structured data Google reads (<code>areaServed</code> was a list of 16 specific Queensland postal addresses; now <code>{"@type":"Country","name":"Australia"}</code>). Replaced throughout with "Australia's major cities and surrounds" — the principal's own wording. <span class="tag t-asm">Assumption</span> — no specific city or postcode list was supplied in this session, so none is named anywhere on the site; see Part 5, decision 1.</p>
+<p><strong>Coverage page rebuilt.</strong> The old page matched a postcode against a hardcoded table of 30 Queensland postcodes and returned an instant yes/no. That table cannot represent a national footprint and would need to become thousands of entries to keep doing what it did. Replaced with a postcode-and-email capture that promises a human confirmation by email before any booking — see Part 6 for the scale reasoning behind this specific choice.</p>
+<p><strong>Six testimonials and four "live activity" numbers removed.</strong> See Part 4 — this is the one item in this brief with a genuine compliance read, not just a design one.</p>
+<p><strong>Fixed a real layout bug affecting every single page.</strong> On a phone, the header row (logo + "Book a Collection" button + menu icon) measured 376px wide inside a 355px-wide row on a 390px-wide screen — 16px too wide, on <em>every</em> one of the 31 routes, causing the whole page to drag sideways when touched. The button now reads "Book now" under 480px width; the row no longer overflows at 360, 390 or 430px, confirmed by direct measurement, not visual inspection.</p>
+
+<h3>v4.7 — 19 Sep, 17:41 <span class="tag t-done">Done</span> <span class="mono small">c2206a7</span></h3>
+<p><strong>Removed the five hand-drawn illustrations in "how a collection actually goes."</strong> Each was built from a dozen or more individual SVG shapes (a doormat scene, a scale readout, a delivery van, a washing machine, a folded stack) and had been flagged as reading like amateur clip art rather than considered brand illustration. A smaller version of the same drawings would not answer that critique, so the decision was to remove rather than iterate. The section is now five plain cards: a numeral in a thin outlined circle, a heading, one line of copy, a hairline rule above a short caption — consistent with the numbered-step treatment already used elsewhere on the page. The empty photo slot behind each card (<code>data-photo="jn-N"</code>) is untouched, so the photo pipeline built earlier in this session still works unchanged the day real photography exists.</p>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 4</div>
+<h1>AU compliance: what was actioned and why</h1>
+<div class="box red">
+<h4>The one finding in this brief with real exposure</h4>
+<p>Before this session, the home page displayed to <strong>every visitor</strong>, as plain fact with no qualifying language: four specific performance numbers (47 loads collected that week, a 26-hour average return time, 12 Kings Club subscribers, a 98% quality pass rate) and six named customer testimonials with suburb and plan attached. All ten were fabricated. The four numbers were literal hardcoded values in the JavaScript (<code>const seed = { col: 47, ret: '26 hrs', sub: 12, sat: '98%' }</code>) with a comment claiming they would be replaced by real database figures "when available" — the code path meant to do that read a database handle (<code>window.db</code>) that does not exist anywhere in the file, so the fabricated numbers would have displayed unconditionally, forever, regardless of the business's real activity level. The testimonials had no submission mechanism, consent record, or real-customer link anywhere in the codebase.</p>
+<p>A specific, quantified, factual-sounding claim of business performance, shown to every visitor with no disclaimer, that cannot be evidenced, sits inside the kind of conduct the Australian Consumer Law addresses at s18 (misleading or deceptive conduct) and s29(1)(e)–(f) (false representations about performance characteristics and testimonials specifically). This is not a technical opinion on liability — that question belongs with a solicitor if it is ever asked — it is the factual basis for treating this as the priority item in this session rather than a design preference.</p>
+</div>
+<p><strong>Action taken.</strong> The testimonials and their carousel were deleted outright — there was no honest way to keep placeholder social proof. The numbers strip is not deleted: it is hidden (<code>hidden</code> attribute, confirmed removed from the render tree via computed-style check, not just visually collapsed) and will only ever populate from a real database write to <code>config/metrics</code>, using the same live-configuration pattern the site already uses for pricing. Nothing was invented to replace what was removed.</p>
+<table>
+<thead><tr><th>Compliance item</th><th>Status</th><th>Evidence</th></tr></thead>
+<tbody>
+<tr><td>NDIS registration statement</td><td><span class="tag t-ver">Verified present</span></td><td>Unchanged; preflight sentinel check passed on every run this session</td></tr>
+<tr><td>AS/NZS 4146 (clinical linen) statement</td><td><span class="tag t-ver">Verified present</span></td><td>Unchanged; preflight sentinel check passed on every run this session</td></tr>
+<tr><td>ABN / contractor statements</td><td><span class="tag t-ver">Verified present</span></td><td>Unchanged; preflight sentinel check passed on every run this session</td></tr>
+<tr><td>GST-inclusive AUD pricing, stated throughout</td><td><span class="tag t-ver">Verified present</span></td><td>Unchanged; preflight sentinel check passed on every run this session</td></tr>
+<tr><td>Australian Consumer Law "not limited" statement</td><td><span class="tag t-ver">Verified present</span></td><td>Unchanged; preflight sentinel check passed on every run this session</td></tr>
+<tr><td>Fabricated performance metrics</td><td><span class="tag t-cor">Corrected</span></td><td>Hidden pending real data — see above</td></tr>
+<tr><td>Fabricated testimonials</td><td><span class="tag t-cor">Corrected</span></td><td>Removed outright — see above</td></tr>
+<tr><td>False specific-suburb coverage claim</td><td><span class="tag t-cor">Corrected</span></td><td>Rewritten to match the principal's own instruction — see Part 3, v4.6</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 5</div>
+<h1>Decisions needed from a principal</h1>
+
+<div class="ask">
+<div class="lbl">Ask this person: Callum Page</div>
+<p><strong>Decision 1 — which cities are actually live today, and which are "opening soon."</strong> The site currently names no city anywhere; every reference reads "Australia's major cities and surrounds," which is accurate to what was said in this session but too generic to be useful for local search or for a customer trying to work out if the service reaches them.</p>
+<p><strong>Recommended:</strong> supply the definitive list now — city by city, live vs. opening-soon — so it can be written back into the title, meta description, structured data and hero copy with real place names.<br>
+<strong>Alternative:</strong> keep the generic wording indefinitely; safe and honest, but weak for local search since no specific place-name exists anywhere on the site.<br>
+<strong>Alternative:</strong> publish a dedicated cities page filled in city-by-city as each one goes live; matches the direction the business is headed but adds an ongoing content task immediately.</p>
+<div class="fill"></div>
+<p class="small">Email on file: not available in this session (no Ops Sheet Directory connector attached) — look up before sending.</p>
+</div>
+
+<div class="ask">
+<div class="lbl">Ask this person: Callum Page</div>
+<p><strong>Decision 3 — the operator-portal preview shows an illustrative job ("Coorparoo · Job LK-P9AA22") without saying it's an example.</strong> Low risk — it sits behind an operator-only admin view, not public marketing copy — but inconsistent with the standard applied everywhere else this session.</p>
+<p><strong>Recommended:</strong> add one line — "Illustrative preview, not a real job" — to the card. Five-minute change.<br>
+<strong>Alternative:</strong> replace the suburb name with a placeholder unconnected to any real place.<br>
+<strong>Alternative:</strong> leave as-is.</p>
+<div class="fill"></div>
+</div>
+
+<div class="ask">
+<div class="lbl">Ask this person: Callum Page</div>
+<p><strong>Decision 4 — the hero "activity" strip (loads this week, return time, subscribers, pass rate) is hidden and has nothing to show.</strong></p>
+<p><strong>Recommended:</strong> leave it hidden until genuine figures exist — this is what was just fixed in Part 4, and reversing it would reopen the same exposure.<br>
+<strong>Alternative:</strong> if any real, modest, evidenced number already exists (even a small one), publish that specific figure now via <code>config/metrics</code> rather than waiting for all four.<br>
+<strong>Alternative:</strong> replace the whole strip with a badge that makes no numeric claim at all (e.g. "New in [city]").</p>
+<div class="fill"></div>
+</div>
+
+<p>Decision 2 (Terms of Service governing law) is not addressed to a principal directly — see Part 7, which routes it to the solicitor per the legal/tax boundary this brief operates under.</p>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 6</div>
+<h1>Build-for-scale note: the coverage checker</h1>
+<div class="box paper">
+<h4>Justification and scale assumption, stated per instruction</h4>
+<p><strong>Justification.</strong> The coverage page previously matched a customer's postcode against a hardcoded JavaScript object of 30 Queensland postcodes and returned an instant yes, "opening soon," or no. That structure is fundamentally a single-city tool: representing genuine national, multi-city coverage the same way would mean a hardcoded list running to thousands of postcode entries, maintained by hand in the site's source code, republished on every change. It does not scale past the city it was written for.</p>
+<p><strong>Scale assumption.</strong> The instruction given this session was "Australia-wide — the major cities and surrounds, for the time being" — read here as a stated intention to expand beyond a single city within a normal planning horizon, not a permanent one-city business. The coverage mechanism was sized for that: it captures a postcode and an email and promises a human reply, which is exactly as useful at one city as it is at ten, and requires no code change as the footprint grows. The submission lands in the existing <code>coverage</code> collection, already surfaced in the ops dashboard's "Coverage requests" tab — <span class="tag t-ver">verified</span> in the source, no new ops tooling required.</p>
+<p><strong>What this trades away.</strong> The old page gave an instant answer; the new one always defers to a human. That is the correct trade while the real footprint is still being defined by Part 5, decision 1 — an instant "yes" today would need to be re-verified against Callum's actual answer regardless.</p>
+</div>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 7</div>
+<h1>Drafted brief for the solicitor</h1>
+<div class="box">
+<p>No legal or tax advice is given in this document. The question below is stated as a fact pattern with options; a solicitor should read it and answer, not this brief.</p>
+</div>
+<div class="card">
+<h4>Fact pattern</h4>
+<p>LaundryKings' public-facing website, as of this session, states its service area as "Australia's major cities and surrounds" throughout — home page, meta description, structured data read by search engines, and the coverage page. Prior to this session it stated a specific Queensland-only service area (Brisbane, Logan, South East Queensland). The site's Terms of Service (<code>#/terms</code>, clause 12, "Governing law") state: <em>"These terms are governed by the laws of Queensland, Australia, and the courts of Queensland have jurisdiction."</em> This clause was not changed in this session — it was flagged, not touched, because it is a legal drafting question, not a content-accuracy one.</p>
+<h4>The question</h4>
+<p>Now that the site markets and, per its own coverage-page copy, intends to actually accept bookings from customers in states other than Queensland, does a Queensland-only governing-law and jurisdiction clause remain appropriate, or does it need a different structure (for example, a clause that still nominates Queensland law but is drafted to properly bind an out-of-state consumer, or a multi-state approach)?</p>
+<h4>Options as understood by a non-lawyer, for the solicitor to correct or confirm</h4>
+<ol>
+<li><strong>Recommended starting point (subject to advice):</strong> keep Queensland as the nominated governing law and forum, drafted so it is enforceable against a consumer resident in another state — the common approach for an Australian online consumer business operating nationally from a single home state.</li>
+<li>A jurisdiction-specific carve-out is needed because operators are engaged locally in each state and local consumer-protection variations apply beyond the national ACL floor.</li>
+<li>Some other structure the fact pattern above doesn't anticipate.</li>
+</ol>
+</div>
+<p class="owner">Route: Callum Page or Max Jones to forward this section to the firm currently instructed on LaundryKings' Terms and Privacy Policy (both already marked "Draft for legal review — not yet in force" in the source, independent of this session's work).</p>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 8</div>
+<h1>Artefact register and file changes</h1>
+<table>
+<thead><tr><th>File</th><th>What changed this session</th></tr></thead>
+<tbody>
+<tr><td class="k mono">site/laundrykings-site.html</td><td>The live site source — every fix in Part 3. Net across the session: 5,433 lines, 390,424 bytes, down from a peak of 5,911 lines mid-session (v4.4) and 5,842 lines at the session's start</td></tr>
+<tr><td class="k mono">verify/preflight.py</td><td>Gained check 9 (undeclared <code>var()</code> tokens) and check 10 (every <code>&lt;img&gt;</code> has alt text)</td></tr>
+<tr><td class="k mono">tools/embed_photos.py</td><td>New. Resizes and embeds real photographs into the journey section when they exist; enforces alt text and a licence record before anything embeds</td></tr>
+<tr><td class="k mono">site/photos/README.md</td><td>New. The shot list, licensing rules, and the two sourcing routes (licensed stock now, own photography as the upgrade)</td></tr>
+<tr><td class="k mono">site/photos/photos.json</td><td>New. Empty scaffold — no photographs exist yet</td></tr>
+<tr><td class="k mono">README.md</td><td>Updated to describe the photo pipeline and drop references to the now-removed placeholder illustrations</td></tr>
+<tr><td class="k mono">dossier/LKG-GOV00-02_Build Session Brief_v1.{html,pdf}</td><td>New — this document</td></tr>
+</tbody>
+</table>
+<h3>Version and publish record</h3>
+<table>
+<thead><tr><th>Version</th><th>Commit</th><th>Timestamp (AEST)</th><th>Live artefact</th></tr></thead>
+<tbody>
+<tr><td>v4.3</td><td class="mono">da7e53c</td><td>10:15</td><td>—</td></tr>
+<tr><td>v4.4</td><td class="mono">a5c8dc3</td><td>10:48</td><td>—</td></tr>
+<tr><td>v4.5</td><td class="mono">8374e51</td><td>10:57</td><td>Version 8</td></tr>
+<tr><td>v4.6</td><td class="mono">daaccbc</td><td>11:06</td><td>Version 9</td></tr>
+<tr><td>v4.7</td><td class="mono">c2206a7</td><td>17:41</td><td>Version 10 (current live)</td></tr>
+</tbody>
+</table>
+<p class="small">All commits pushed to <span class="mono">origin/claude/ai-confusion-ui-rendering-16allp</span>. No pull request opened — none was requested. Compare the full range: <span class="mono">github.com/xrcallum/King-laundry-/compare/08cf498...c2206a7</span></p>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 9</div>
+<h1>Verification evidence</h1>
+<table>
+<thead><tr><th>Check</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Preflight, final state</td><td><span class="tag t-ver">PASS</span> 5,433 lines · 351 unique ids · 34 page sections · 110 <code>getElementById</code> targets, 0 missing · 0 emoji · every called function defined · 64 <code>var()</code> tokens, all declared · AU compliance sentinels present</td></tr>
+<tr><td>JavaScript errors across all 31 client-side routes</td><td><span class="tag t-ver">None</span> — checked at both 390×844 and 1280×900 after every version</td></tr>
+<tr><td>Horizontal overflow at 360 / 390 / 400 / 420 / 430 / 1280px</td><td><span class="tag t-ver">None</span> — measured via <code>document.documentElement.scrollWidth</code> against each viewport width, not visual inspection</td></tr>
+<tr><td>Landing-page PDF font rendering</td><td><span class="tag t-ver">Confirmed</span> real Archivo/Inter loaded (not a system fallback) via <code>document.fonts</code> check at render time</td></tr>
+<tr><td>Landing-page PDF content matches live site</td><td><span class="tag t-ver">Confirmed</span> — text-searched the rendered PDF for every removed claim (found none) and every current line (found all)</td></tr>
+<tr><td>Coverage-page submissions reach existing ops tooling</td><td><span class="tag t-ver">Confirmed</span> — same <code>coverage</code> collection name the dashboard already reads</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part">
+<div class="part-kicker">Part 10</div>
+<h1>Attachments</h1>
+<ul>
+<li><strong>LKG-MKT06-02_Landing Page_v4.7.pdf</strong> — the full home page, desktop then phone, rendered directly from the live artefact</li>
+<li><strong>This document</strong> — LKG-GOV00-02_Build Session Brief_v1.pdf</li>
+<li>Live site: <span class="mono">claude.ai/artifact/SJihvya38JukdcAUL7JiFx</span></li>
+<li>Source: <span class="mono">github.com/xrcallum/King-laundry-</span>, branch <span class="mono">claude/ai-confusion-ui-rendering-16allp</span></li>
+</ul>
+</div>
+
+</body>
+</html>
