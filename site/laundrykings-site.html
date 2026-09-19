@@ -2151,7 +2151,7 @@ svg.ic{width:24px;height:24px}
           <li>Knits reshaped and air-dried flat, never tumbled</li>
           <li>We do not offer ironing &mdash; this is our finishing service instead</li>
         </ul>
-        <span class="price" data-px="iron"></span>
+        <span class="price" data-px="premium"></span>
         <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Premium Clean <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
       </div>
       </div>
@@ -2216,7 +2216,7 @@ svg.ic{width:24px;height:24px}
       </div>
       <div class="ptab">
         <div class="ptab-h"><h3>Premium Clean</h3><span>Per load</span></div>
-        <div id="pxIron"></div>
+        <div id="pxPremium"></div>
       </div>
       <div class="ptab">
         <div class="ptab-h"><h3>Dry Cleaning</h3><span>Per item</span></div>
@@ -3366,7 +3366,7 @@ svg.ic{width:24px;height:24px}
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="pfSvc">Usual service</label>
         <div class="selw"><select class="sel" id="pfSvc">
-          <option value="wf">Wash &amp; Fold</option><option value="wfi">Wash, Fold &amp; Premium</option><option value="iron">Premium Clean</option><option value="linen">Blankets, Rugs &amp; Sheets</option><option value="dc">Dry cleaning</option>
+          <option value="wf">Wash &amp; Fold</option><option value="wfi">Wash, Fold &amp; Premium</option><option value="premium">Premium Clean</option><option value="linen">Blankets, Rugs &amp; Sheets</option><option value="dc">Dry cleaning</option>
         </select></div>
       </div>
       <label class="cbx"><input type="checkbox" id="pfEco"><span>Use fragrance-free / sensitive-skin detergent by default<span id="pfEcoPx"></span></span></label>
@@ -3550,7 +3550,7 @@ svg.ic{width:24px;height:24px}
     <div class="ap-card"><div class="ap-card-b">
       <div class="ap-g2">
         <div class="fld"><label class="lbl" for="invWt">Actual weight (kg)</label><input class="inp" type="number" min="0.1" step="0.1" id="invWt" placeholder="e.g. 4.2"></div>
-        <div class="fld"><label class="lbl" for="invIron">Premium Clean loads</label><input class="inp" type="number" min="0" id="invIron" placeholder="0"></div>
+        <div class="fld"><label class="lbl" for="invPremium">Premium Clean loads</label><input class="inp" type="number" min="0" id="invPremium" placeholder="0"></div>
         <div class="fld"><label class="lbl" for="invLinen">Blankets, rugs or sheet sets</label><input class="inp" type="number" min="0" id="invLinen" placeholder="0"></div>
       </div>
       <div class="fld"><label class="lbl" for="invNotes">Notes for customer (optional)</label><textarea class="ta" id="invNotes" placeholder="Item count, anything unusual, care notes…" style="min-height:56px"></textarea></div>
@@ -3815,7 +3815,7 @@ function paintPrices(){
   const map = {
     wf: 'From ' + money(PX.load) + ' per load',
     wfi: money(PX.load) + ' per load + ' + money(PX.premium) + ' Premium Clean',
-    iron: money(PX.premium) + ' per load',
+    premium: money(PX.premium) + ' per load',
     linen: 'From ' + money(PX.linenSheetSet) + ' per item',
     dc: 'From ' + money(PX.dcDress) + ' per item',
     bulk: 'From ' + money(PX.bulkDoona) + ' per item',
@@ -3838,7 +3838,7 @@ function paintPrices(){
     R('Blanket or quilt cover', 'Single or double', money(PX.linenBlanket)) +
     R('Rug or floor mat', 'Subject to size', money(PX.linenRug)) +
     R('Large-format items only', 'Not charged by weight', 'Per item');
-  document.getElementById('pxIron').innerHTML =
+  document.getElementById('pxPremium').innerHTML =
     R('Premium Clean — per load', 'Added to any wash & fold load', money(PX.premium)) +
     R('Delicates and fine knits', 'Gentle cycle, cool wash, reshaped and air-dried flat', 'Included') +
     R('Stain hand-treatment', 'Spot-treated before washing', 'Included') +
@@ -4092,7 +4092,7 @@ let BK = Object.assign({}, DEFAULT_BOOKING);
 const SVCS = [
   { id:'wf',    name:'Wash & Fold',               desc:'Washed on its own cycle, dried and folded.',                px:()=>'From '+money(PX.load)+' per load' },
   { id:'wfi',   name:'Wash, Fold & Premium',      desc:'Wash & Fold plus Premium Clean on the loads you pick.',     px:()=>money(PX.load)+' + '+money(PX.premium)+'/load' },
-  { id:'iron',  name:'Premium Clean',             desc:'Delicates, hand-treated stains, air-dried, hanger finish.', px:()=>money(PX.premium)+' per load' },
+  { id:'premium', name:'Premium Clean',             desc:'Delicates, hand-treated stains, air-dried, hanger finish.', px:()=>money(PX.premium)+' per load' },
   { id:'linen', name:'Blankets, Rugs & Sheets',   desc:'Large-format items only — not for everyday laundry.',       px:()=>'From '+money(PX.linenSheetSet)+' per item' },
   { id:'dc',    name:'Dry cleaning',              desc:'Suits, formal wear and delicates. PERC-free.',              px:()=>'From '+money(PX.dcDress)+' per item' },
 ];
@@ -4245,7 +4245,7 @@ function aiAnswer(text){
   return hit ? { handled:true, intent:hit.id, html:hit.reply(text) } : { handled:false };
 }
 
-const AI_CHIPS = ['How much for two loads?', 'Do you do ironing?', 'When is my next collection?', 'What are Crowns?', 'Do you cover my suburb?'];
+const AI_CHIPS = ['How much for two loads?', 'What is Premium Clean?', 'When is my next collection?', 'What are Crowns?', 'Do you cover my suburb?'];
 let AI_LOG = [];
 
 function aiPush(who, html){
@@ -4595,7 +4595,7 @@ function estimate(svc, a, b, bagQty){
   if (svc === 'wfi'  ){ const pc=Math.min(b,a), w=a*PX.load, i=pc*PX.premium; subtot+=w+i;
                         lines.push([a+' × wash & fold load'+(a>1?'s':''), w]);
                         if (pc) lines.push([pc+' × Premium Clean load'+(pc>1?'s':''), i]); }
-  if (svc === 'iron' ){ const v=a*PX.premium; subtot+=v; lines.push([a+' × Premium Clean load'+(a>1?'s':''), v]); }
+  if (svc === 'premium' ){ const v=a*PX.premium; subtot+=v; lines.push([a+' × Premium Clean load'+(a>1?'s':''), v]); }
   if (svc === 'linen'){ const v=a*PX.linenSheetSet; subtot+=v; lines.push([a+' × blanket, rug or sheet set'+(a>1?'s':''), v]); }
   if (svc === 'dc'   ){ const v=a*PX.dcDress; subtot+=v; lines.push([a+' × garment'+(a>1?'s':'')+' (indicative average)', v]); }
   const p = activeP();
@@ -4937,7 +4937,7 @@ const SVC_GRID = [
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0"/><path d="M8 4v12M14 4v12"/></svg>' },
   { id:'wfi',   name:'Washing', sub:'& Premium',
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 6H4L6 2z"/><rect x="3" y="8" width="18" height="14" rx="3"/><path d="M9 8V6M15 8V6"/><line x1="9" y1="15" x2="15" y2="15"/></svg>' },
-  { id:'iron',  name:'Premium', sub:'Clean',
+  { id:'premium', name:'Premium', sub:'Clean',
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6L12 3z"/><path d="M5 20h14"/></svg>' }
 ];
 
@@ -5196,7 +5196,7 @@ function calcInvoice(job){
     const items=Math.max(1,Math.round(kg/0.5)), v=items*PX.dcDress; sub+=v;
     lines.push([`${items} × garment${items>1?'s':''} (dry cleaned)`,v]);
   }
-  if((svc==='wfi'||svc==='iron')&&iron){ const v=iron*PX.premium; sub+=v; lines.push([`${iron} × Premium Clean load${iron>1?'s':''}`,v]); }
+  if((svc==='wfi'||svc==='premium')&&premiumLoads){ const v=premiumLoads*PX.premium; sub+=v; lines.push([`${premiumLoads} × Premium Clean load${premiumLoads>1?'s':''}`,v]); }
   if(svc==='linen'&&linenCount){ const v=linenCount*PX.linenSheetSet; sub+=v; lines.push([`${linenCount} × linen item at sheet set rate — use adj. field for blankets/rugs`,v]); }
   lines.push(['Collection & return',PX.delivery]); sub+=PX.delivery;
   if(adj){ lines.push([adj>=0?'Adjustment (surcharge)':'Adjustment (discount)',adj]); sub+=adj; }
@@ -5255,7 +5255,7 @@ function renderWizard(){
   /* volume card: show for wf/linen, hide for dc/comm */
   const volEl=document.getElementById('bkVolCard');
   if(volEl) volEl.style.display=['dc','comm'].includes(W.svc)?'none':'';
-  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='linen'?'Blankets, rugs or sheet sets':W.svc==='iron'?'Loads for Premium Clean':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
+  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='linen'?'Blankets, rugs or sheet sets':W.svc==='premium'?'Loads for Premium Clean':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
   { const bn = document.getElementById('bkNumA'); if (bn){ bn.textContent = W.a; bn.classList.remove('bump'); void bn.offsetWidth; bn.classList.add('bump'); } }
   document.getElementById('bkN1').innerHTML=(W.svc==='comm'?'Commercial enquiry':'Continue')+'<svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg>';
   if(document.getElementById('bkFldB')) document.getElementById('bkFldB').style.display=W.svc==='wfi'?'':'none';
