@@ -1313,6 +1313,22 @@ svg.ic{width:24px;height:24px}
 .stickyCta{display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + .8rem);left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);padding:.85rem 1.35rem;border-radius:999px;box-shadow:0 8px 24px rgba(196,56,40,.4);z-index:50;align-items:center;gap:.5rem;letter-spacing:.02em}
 .stickyCta:hover{background:var(--red-d);transform:translateX(-50%) translateY(-2px)}
 .stickyCta .ic{width:16px;height:16px}
+/* The pill yields to any in-content booking CTA and to the footer, and to the
+   assistant panel: a floating "Book a collection" over a real "Book a
+   collection" is the collision the owner photographed. */
+.stickyCta{transition:opacity .22s ease,transform .22s ease}
+.stickyCta.is-hidden{opacity:0;pointer-events:none;transform:translateX(-50%) translateY(14px)}
+/* Narrow phones: anchor to the left gutter and leave the FAB its 76px lane
+   so the two bottom layers can never meet. */
+@media(max-width:420px){
+  body.route-home .stickyCta{left:16px;right:76px;transform:none;justify-content:center}
+  body.route-home .stickyCta:hover{transform:translateY(-2px)}
+  body.route-home .stickyCta.is-hidden{transform:translateY(14px)}
+}
+/* Lift the assistant clear of the app tab bar; --tabs-h is set from the
+   bar's measured height when it goes live. */
+body.has-tabs #aiFab{bottom:calc(var(--tabs-h,64px) + 12px + env(safe-area-inset-bottom,0px))}
+body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-inset-bottom,0px))}
 @media (max-width:720px){
   /* only show sticky CTA on the home route */
   body.route-home .stickyCta{display:inline-flex}
@@ -4754,12 +4770,34 @@ async function aiSend(text){
   }
 }
 
+/* The pill is route-gated by CSS (body.route-home). This adds the second
+   gate: hide it while #hero, #finalcta or the footer is on screen, or the
+   assistant is open, so it never covers a control that does the same job. */
+let AI_OPEN = false;
+const STICKY_VIS = new Set();
+function syncStickyCta(){
+  const pill = document.querySelector('.stickyCta'); if (!pill) return;
+  pill.classList.toggle('is-hidden', STICKY_VIS.size > 0 || AI_OPEN);
+}
+function wireStickyCta(){
+  const pill = document.querySelector('.stickyCta');
+  if (!pill || !('IntersectionObserver' in window)) return;
+  const covers = ['#hero', '#finalcta', '#foot'].map(q => document.querySelector(q)).filter(Boolean);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => e.isIntersecting ? STICKY_VIS.add(e.target) : STICKY_VIS.delete(e.target));
+    syncStickyCta();
+  }, { threshold: 0.02 });
+  covers.forEach(el => io.observe(el));
+  syncStickyCta();
+}
+
 function wireAI(){
   const fab = document.getElementById('aiFab'), panel = document.getElementById('aiPanel');
   if (!fab || !panel) return;
   const open = on => {
     panel.hidden = !on;
     fab.setAttribute('aria-expanded', on ? 'true' : 'false');
+    AI_OPEN = on; syncStickyCta();
     if (on){
       if (!AI_LOG.length) aiPush('bot', 'Hello. I can tell you what things cost, check your collections '
         + 'and point you to the right page. What do you need?');
@@ -5086,6 +5124,11 @@ const sumRows = est => est.lines.map(([l,v]) => '<div class="sumr"><span>'+esc(l
 function renderTabs(id){
   const on = APP_ROUTES.includes(id);
   document.getElementById('tabs').classList.toggle('live', on);
+  document.body.classList.toggle('has-tabs', on);
+  if (on){
+    const h = document.getElementById('tabs').offsetHeight;
+    if (h) document.documentElement.style.setProperty('--tabs-h', h + 'px');
+  }
   document.body.style.paddingBottom = on ? '0' : '';
   document.querySelectorAll('.tab').forEach(t => {
     const k = t.dataset.tab;
@@ -7227,7 +7270,7 @@ window.kc5Pause = kc5Pause;
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); wireLeads(); wireAI(); renderOnboard(); route(); initHomeV5(); op5Init(); renderKcPortal();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); wireLeads(); wireAI(); renderOnboard(); route(); initHomeV5(); op5Init(); renderKcPortal(); wireStickyCta();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
