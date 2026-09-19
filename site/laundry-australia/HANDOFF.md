@@ -219,7 +219,9 @@ The page that is live carries none of the competitor-derived material the origin
 |---|---|---|---|
 | ~~Replace client tiles~~ | Moot — the client carousel was removed from the page. If clients are ever named, each must confirm in writing first. | — | Done |
 | ~~Build the nav menu~~ | Done 19 Sep 2026 — menu overlay and price-list panel. | Callum Page | Done |
-| ~~Fix dead nav links~~ | Done 19 Sep 2026 — the brand logo and the "Home laundry" menu item on both pages pointed at `home-laundry.html`, which the artefact does not serve. Both now point at `index.html`. | Callum Page | Done |
+| ~~Fix dead nav links~~ | Done 19 Sep 2026, twice — the brand logo and the "Home laundry" menu item on both pages pointed at `home-laundry.html`, which the artefact does not serve. Fixed to `index.html`, then reintroduced when a second session republished from an older copy, then fixed again the same day. If this keeps happening: whoever edits this page next should read the live artefact with the Artifact tool before publishing, not work from a stale local copy. | Callum Page | Done |
+| ~~Interactive estimator~~ | Done 19 Sep 2026 — the static price card in Pricing was replaced with a live estimator (load stepper, add-on toggles, running total) and the five process steps became a numbered rail. Built by a different session; merged in without losing the link fix or the price-panel `+` treatment (see below). | — | Done |
+| ~~Operator portal — first version~~ | Done 19 Sep 2026 — `portal.html`, published alongside the other two pages but not linked from the public nav. See §11. | Callum Page | Done, not final |
 | Rename the directory | Folder is still `site/laundry-australia/` — misleading post-rebrand. Suggest `site/laundrylegends/`. Deferred because it breaks every path reference in this document. | Callum Page | Next session |
 | Desktop breakpoint | Only one breakpoint exists (`≥640px`, type sizes and the step grid). Layout is single-column at every width. | Callum Page | TBC |
 | Audit workflow results | An Ultracode audit (`wf_9a84a40c-512`) comparing all 56 source frames against the build was launched and never reviewed. Largely superseded: the page no longer mirrors the source. | — | Optional |
@@ -234,14 +236,15 @@ The page that is live carries none of the competitor-derived material the origin
 - **If fonts don't render in a screenshot**, it's the proxy, not the CSS. Barlow Condensed reported `False` on a font-availability check during the original build while visually rendering correctly.
 - **The clouds SVG** uses `preserveAspectRatio="none"` and a series of `A` arc commands of differing radii along a baseline. Editing radii changes bump width; the `Z` close and the `L500 110` baseline must stay.
 - **Git:** develop on `claude/push-latest-chats-live-xnijoo`. Push with `git push -u origin claude/push-latest-chats-live-xnijoo`.
-- **Publishing:** the repo files and the live artefact must stay byte-identical. Publish `index.html` as the page and `contact.html` alongside it, both in the same call, to https://claude.ai/artifact/11cT6RXSi4G3EprLXGzFqE. Publishing without that URL creates a second artefact instead of updating the live one.
-- **The artefact serves `index.html` as the site root.** Nothing resolves `home-laundry.html` — any link to that name is dead. Internal links must use `index.html` and `contact.html`.
+- **Publishing:** the repo files and the live artefact must stay byte-identical. Publish `index.html` as the page and `contact.html` and `portal.html` alongside it, all in the same call, to https://claude.ai/artifact/11cT6RXSi4G3EprLXGzFqE. Publishing without that URL creates a second artefact instead of updating the live one.
+- **The artefact serves `index.html` as the site root.** Nothing resolves `home-laundry.html` — any link to that name is dead. Internal links must use `index.html`, `contact.html` and `portal.html`.
+- **Two sessions edited this artefact concurrently on 19 Sep 2026.** One added the interactive estimator and process rail; another (this one) was mid-publish of the price-panel `+` treatment when the first session's version went live, which silently reintroduced the dead-link bug and dropped the `+` from the price-panel rows (the on-page estimator and rate chips kept theirs — they were built fresh with it). Both were re-fixed and merged rather than one side overwriting the other. **Before publishing, always call the Artifact tool's `read` action on the live URL first** — a `publish` built on a stale copy is refused with a pointer to the newer version, but by then you've already done the work twice.
 
 ---
 
 ## 10. Full source
 
-The complete files are `site/laundry-australia/index.html` and `contact.html`. Rather than reproducing them here, pull them directly:
+The complete files are `site/laundry-australia/index.html`, `contact.html` and `portal.html`. Rather than reproducing them here, pull them directly:
 
 ```bash
 git clone https://github.com/xrcallum/King-laundry-
@@ -250,8 +253,25 @@ git checkout claude/push-latest-chats-live-xnijoo
 open site/laundry-australia/index.html
 ```
 
-If the new Claude session has no repo access, the two HTML files have been sent alongside this document — hand them over directly and ask it to work from those.
+If the new Claude session has no repo access, the HTML files have been sent alongside this document — hand them over directly and ask it to work from those.
 
 ---
 
-*Handoff prepared 19 September 2026, revised the same day after the live publish. Every figure and claim above is traceable to the repository on `claude/push-latest-chats-live-xnijoo`, except where explicitly labelled **ASSUMPTION** or **UNVERIFIED**. Sections 5 and 6 describe the earlier competitor-derived build and are kept as history; section 7 states what is actually live.*
+## 11. Operator portal (`portal.html`) — first version, not final
+
+**Status:** a working prototype, published live alongside the public pages but not linked from any public nav. Reachable only if someone has the direct URL path.
+
+**What it does:** an operator signs in with a name only (no password, no identity check — see limitations), sees an example round of three stops in suburbs drawn from the real coverage list, and for each stop can open a weigh-and-price sheet that calculates the total from the venture's own published rates — the same $32.00/load, +$15.00 Premium Clean, +$3.50 Eco add-on, $13.50 flat collection and return, and $73.50 one-off minimum (waived for Legends Club members) that appear on the public price list. The total shown is verified to match the worked example on the home page ($77.50 for 2 loads, no add-ons, not a Club member). A status ladder tracks each stop through Scheduled → Collected → Washing → Ready → Delivered.
+
+**What it deliberately does not do, and why:**
+- **No real bookings feed.** The round shown is example data, clearly labelled as such. There is no backend to receive a real booking yet.
+- **No real sign-in.** A name typed into a box is not authentication. Building real operator identity — who they are, whether they're screened, what they're allowed to see — is a security decision, not a styling one.
+- **Nothing is stored centrally.** Job status is kept in the browser's local storage only: per device, not shared with anyone, gone if site data is cleared. A shared database is available (the `db` capability) but wasn't added here, because turning it on means deciding what real operator and customer data gets stored and for how long — a Privacy Act question, not a code change, once real personal information is involved.
+- **No payment processing.**
+- **How operators are engaged is out of scope for this page.** Contractor vs employee status, ABN, Super obligations, WHS, insurance — these are legal and commercial questions for the venture's advisers. The portal's copy is deliberately neutral ("your round", "confirm and continue") rather than anything that implies an employment relationship, but this page does not decide the actual engagement terms and shouldn't be read as having done so.
+
+**Before this becomes the operators' real tool**, in rough order: decide on and build real sign-in, decide on and wire a shared database for round data (this is also when the venture needs a privacy-policy decision, since it stops being a static site once it stores anyone's personal information), connect it to an actual bookings source, and get the AU compliance items above signed off with an adviser.
+
+---
+
+*Handoff prepared 19 September 2026, revised twice the same day — once after the first live publish, again after merging a concurrent session's changes and adding the operator portal. Every figure and claim above is traceable to the repository on `claude/push-latest-chats-live-xnijoo`, except where explicitly labelled **ASSUMPTION** or **UNVERIFIED**. Sections 5 and 6 describe the earlier competitor-derived build and are kept as history; section 7 states what is actually live.*

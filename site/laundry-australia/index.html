@@ -36,6 +36,7 @@
   }
   img,svg{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
+  [hidden]{display:none!important}  /* CSS reset — my display:flex on .fee-row would otherwise beat the default */
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   :focus-visible{outline:3px solid var(--red-brand);outline-offset:3px;border-radius:6px}
   .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
@@ -288,10 +289,48 @@
     .reveal-stagger.is-visible>*:nth-child(n+6){transition-delay:.34s}
   }
 
+
+  /* ---- PROCESS RAIL (dense timeline replaces five giant cards) ---- */
+  .process-rail{list-style:none;margin:0;padding:24px 22px 8px;background:#fff;border-radius:var(--radius-card);box-shadow:var(--shadow-card)}
+  .process-rail li{display:grid;grid-template-columns:44px 1fr;column-gap:16px;padding-bottom:22px;position:relative}
+  .process-rail li:last-child{padding-bottom:0}
+  .process-rail li:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+  .process-rail .dot{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15px;position:relative;z-index:2;box-shadow:0 0 0 4px #fff}
+  .process-rail .content{padding-top:4px;min-width:0}
+  .process-rail h3{margin:0 0 3px;font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.2}
+  .process-rail p{margin:0;font-size:14.5px;color:var(--body);line-height:1.5}
+  .process-rail .meta{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--red);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+  .process-rail .meta::before{content:"";width:14px;height:1.5px;background:var(--red)}
+
+  /* ---- ESTIMATOR (interactive) ---- */
+  .estimator{background:#fff;border-radius:var(--radius-card);padding:26px 24px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:18px}
+  .estimator .eyebrow{color:var(--red);margin:0}
+  .estimator .est-title{margin:0;font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:20px;color:var(--navy);line-height:1.2}
+  .est-loads{display:flex;flex-wrap:wrap;gap:6px}
+  .est-loads button{flex:1;min-width:0;padding:12px 8px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;transition:background .15s ease,border-color .15s ease,color .15s ease}
+  .est-loads button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .est-loads-hint{margin:0;font-size:13px;color:var(--mute);line-height:1.4}
+  .est-addons{display:flex;flex-direction:column;gap:8px}
+  .est-addons label{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;color:var(--ink);transition:background .15s ease,border-color .15s ease}
+  .est-addons label:has(input:checked){background:var(--orange-w);border-color:var(--orange)}
+  .est-addons input{margin:0;width:18px;height:18px;accent-color:var(--orange);flex:0 0 auto}
+  .est-addons small{margin-left:auto;color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums}
+  .est-breakdown{display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:4px}
+  .est-note{margin:0;font-size:13px;color:var(--mute);line-height:1.5}
+
+  /* ---- RATE CHIP GRID ---- */
+  .rate-block{display:flex;flex-direction:column;gap:10px}
+  .rate-block .head{margin:0;font-family:'Inter',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+  .rate-block .head::after{content:"";flex:1;height:1px;background:var(--line)}
+  .rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .rate-chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;gap:2px;min-height:64px;justify-content:center}
+  .rate-chip .name{font-size:12.5px;color:var(--body);line-height:1.3}
+  .rate-chip .amt{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15.5px;color:var(--green);font-variant-numeric:tabular-nums}
+
   @media (min-width:640px){
     .hero .l1{font-size:66px}.hero .l2{font-size:88px}
     .segments{grid-template-columns:repeat(4,1fr)}
-    .steps{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
+    .rate-grid{grid-template-columns:repeat(6,1fr)}
   }
 </style>
 </head>
@@ -380,9 +419,10 @@
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow">How it works</p>
-        <h2 id="process-h" class="display">Our process. From your doormat and back again.</h2>
+        <h2 id="process-h" class="display">Five steps, one operator, next-day return.</h2>
+        <p class="lead">Bag on your doormat, weighed at your door, washed on its own cycle, and back where it started.</p>
       </div>
-      <div class="steps reveal-stagger"><article class="step-card"><svg class="icon" viewBox="0 0 72 72" aria-hidden="true"><rect x="8" y="56" width="56" height="8" rx="2" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M22 56 V26 Q22 20 28 20 H44 Q50 20 50 26 V56 Z" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M28 20 C28 10 44 10 44 20" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="num">Step 1</span><h3>You put it out</h3><p>Leave your bag at the agreed spot in your booked window. You do not need to be home.</p></article><article class="step-card"><svg class="icon" viewBox="0 0 72 72" aria-hidden="true"><rect x="10" y="44" width="52" height="18" rx="4" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M22 44 V34 H50 V44" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="53" r="4" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 34 V14 M26 20 L36 14 L46 20" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="num">Step 2</span><h3>Weighed at your door</h3><p>Your operator weighs and counts the bag and confirms the exact price before anything is washed. You pay after weighing.</p></article><article class="step-card"><svg class="icon" viewBox="0 0 72 72" aria-hidden="true"><path d="M6 48 V28 H40 L52 36 H64 V48 Z" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M40 28 V36 H52" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="52" r="6" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="52" cy="52" r="6" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M26 52 H46" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="num">Step 3</span><h3>Into your operator's round</h3><p>The same local operator runs your suburb, so your preferences travel with your bag.</p></article><article class="step-card"><svg class="icon" viewBox="0 0 72 72" aria-hidden="true"><rect x="12" y="10" width="48" height="54" rx="5" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M12 22 H60" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="36" cy="43" r="14" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M26 43 C30 38 42 48 46 43" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="20" cy="16" r="1.5" fill="#0D2052"/><circle cx="27" cy="16" r="1.5" fill="#0D2052"/></svg><span class="num">Step 4</span><h3>Washed on its own cycle</h3><p>Your load is never mixed with another household. Lights and darks are washed separately.</p></article><article class="step-card"><svg class="icon" viewBox="0 0 72 72" aria-hidden="true"><rect x="12" y="46" width="48" height="10" rx="3" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><rect x="16" y="34" width="40" height="10" rx="3" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><rect x="20" y="22" width="32" height="10" rx="3" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M8 62 H64" stroke="#0D2052" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="num">Step 5</span><h3>Back on your doormat</h3><p>Folded, tagged and returned where the bag was left. Standard next-day return.</p></article></div>
+      <ol class="process-rail reveal"><li><span class="dot">1</span><div class="content"><h3>You put it out</h3><p>Leave your bag at the agreed spot in your booked window. You do not need to be home.</p><span class="meta">Windows: 9–12 · 12–3 · 4–7</span></div></li><li><span class="dot">2</span><div class="content"><h3>Weighed at your door</h3><p>Your operator weighs and counts the bag and confirms the exact price before anything is washed.</p><span class="meta">Pay after weighing</span></div></li><li><span class="dot">3</span><div class="content"><h3>Into your operator's round</h3><p>The same local operator runs your suburb, so your preferences travel with your bag.</p><span class="meta">Same operator every time</span></div></li><li><span class="dot">4</span><div class="content"><h3>Washed on its own cycle</h3><p>Never mixed with another household. Lights and darks washed separately, folded and tagged.</p><span class="meta">Own cycle · no mixing</span></div></li><li><span class="dot">5</span><div class="content"><h3>Back on your doormat</h3><p>Returned where the bag was left. Late? Your collection and return fee is refunded.</p><span class="meta">Next-day return</span></div></li></ol>
     </div>
   </section>
 
@@ -424,32 +464,59 @@
         <g font-family="Inter,Arial,sans-serif" fill="#454C60" text-anchor="middle" font-size="16" letter-spacing="1.2">
           <text x="376" y="240">&amp; back on</text><text x="376" y="266">your doormat</text>
         </g>
-        <g text-anchor="middle" font-family="Archivo,Arial,sans-serif">
-          <text x="466" y="190" font-weight="700" font-size="33" fill="#EE6E1F" transform="rotate(-90 466 190)">LEGENDS</text>
-          <text x="506" y="190" font-weight="600" font-size="26" fill="#0D2052" transform="rotate(-90 506 190)">LAUNDRY</text>
-          <text x="531" y="190" font-family="Inter,Arial,sans-serif" font-size="9" letter-spacing="2.4" fill="#666D80" transform="rotate(-90 531 190)">FRESH &amp; EFFORTLESS</text>
+        <g transform="translate(475 116) scale(.55)">
+          <path d="M20 1 C20.6 12 21 13.2 24 15 C27.5 15.2 30.2 15.2 39 18 C30.2 20.8 27.5 20.8 24 25 C21 27.6 20.6 28 20 39 C19.4 28 19 27.6 16 25 C12.5 20.8 9.8 20.8 1 18 C9.8 15.2 12.5 15.2 16 15 C19 13.2 19.4 12 20 1 Z" fill="#EE6E1F" transform="rotate(20 20 20)"/>
         </g>
+        <g text-anchor="middle" font-family="Archivo,Arial,sans-serif">
+          <text x="486" y="176" font-weight="700" font-size="16" fill="#0D2052" letter-spacing=".5">LAUNDRY</text>
+          <text x="486" y="197" font-weight="600" font-size="13" fill="#0D2052" letter-spacing=".5">LEGENDS</text>
+        </g>
+        <text x="486" y="218" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="6" letter-spacing="1.6" fill="#666D80">FRESH &amp; EFFORTLESS</text>
       </svg>
 
-      <div class="price-card reveal">
-        <p class="eyebrow">Wash &amp; fold</p>
-        <p class="headline"><span class="name">Per load, about 5 kg</span><span class="price">$32.00+</span></p>
-        <ul>
-          <li>Washed, dried and folded on its own cycle, never mixed with another household</li>
-          <li>Lights and darks washed separately and charged as two loads</li>
-          <li>Premium Clean add-on $15.00 per load: delicates, stain hand-treatment, hanger finish. We do not offer ironing.</li>
-          <li>Eco or fragrance-free detergent add-on $3.50</li>
-        </ul>
+      <div class="estimator reveal">
+        <p class="eyebrow">Estimate your collection</p>
+        <p class="est-title">Wash &amp; fold, per load about 5&nbsp;kg</p>
+        <div class="est-loads" role="group" aria-label="Number of loads">
+          <button type="button" data-loads="1" class="active">1 load</button>
+          <button type="button" data-loads="2">2 loads</button>
+          <button type="button" data-loads="3">3 loads</button>
+          <button type="button" data-loads="4">4 loads</button>
+        </div>
+        <p class="est-loads-hint">Lights and darks are washed separately and count as separate loads.</p>
+        <div class="est-addons">
+          <label><input type="checkbox" data-add="premium"/> Premium Clean <small>+$15 / load</small></label>
+          <label><input type="checkbox" data-add="eco"/> Eco or fragrance-free <small>+$3.50</small></label>
+        </div>
+        <div class="est-breakdown">
+          <div class="fee-row"><span class="label">Wash &amp; fold <small id="est-loads-copy">1 load</small></span><span class="amt" id="est-wash">$32.00+</span></div>
+          <div class="fee-row" id="est-prem-row" hidden><span class="label">Premium Clean <small id="est-prem-copy">1 load</small></span><span class="amt" id="est-prem">$15.00+</span></div>
+          <div class="fee-row" id="est-eco-row" hidden><span class="label">Eco or fragrance-free</span><span class="amt">$3.50+</span></div>
+          <div class="fee-row"><span class="label">Collection &amp; return <small>Flat. No service or booking fee</small></span><span class="amt">$13.50</span></div>
+          <div class="fee-row total"><span class="label" id="est-total-label">Confirmed at your door</span><span class="amt" id="est-total">$73.50+</span></div>
+        </div>
+        <p class="est-note" id="est-note">Below the $73.50 one-off minimum. Waived for Legends Club members.</p>
       </div>
 
-      <div class="price-card reveal">
-        <p class="eyebrow">Worked example, one-off booking</p>
-        <div class="fee-rows">
-          <div class="fee-row"><span class="label">2 loads <small>About 10 kg, lights and darks</small></span><span class="amt">$64.00+</span></div>
-          <div class="fee-row"><span class="label">Collection &amp; return <small>Flat. No service or booking fee</small></span><span class="amt">$13.50</span></div>
-          <div class="fee-row total"><span class="label">Confirmed at your door</span><span class="amt">$77.50+</span></div>
+      <div class="rate-block reveal">
+        <p class="head">Linen &amp; bulky · per item</p>
+        <div class="rate-grid">
+          <div class="rate-chip"><span class="name">Sheet set</span><span class="amt">$24+</span></div>
+          <div class="rate-chip"><span class="name">Blanket</span><span class="amt">$32+</span></div>
+          <div class="rate-chip"><span class="name">Rug</span><span class="amt">$42+</span></div>
+          <div class="rate-chip"><span class="name">Doona</span><span class="amt">$45+</span></div>
+          <div class="rate-chip"><span class="name">King doona</span><span class="amt">$75+</span></div>
+          <div class="rate-chip"><span class="name">Curtain</span><span class="amt">$38+</span></div>
         </div>
-        <p class="note">Minimum one-off collection $73.50. Waived for Legends Club members.</p>
+      </div>
+
+      <div class="rate-block reveal">
+        <p class="head">Dry cleaning · partner cleaners, per item</p>
+        <div class="rate-grid">
+          <div class="rate-chip"><span class="name">Dress</span><span class="amt">$16.50+</span></div>
+          <div class="rate-chip"><span class="name">Jacket</span><span class="amt">$18.50+</span></div>
+          <div class="rate-chip"><span class="name">Suit</span><span class="amt">$32+</span></div>
+        </div>
       </div>
 
       <div class="club reveal">
@@ -652,6 +719,35 @@
         markActive(cur);
       },{passive:true});
     }
+    // Estimator (interactive live pricing)
+    (function(){
+      var box=document.querySelector('.estimator'); if(!box)return;
+      var loads=1, addOns={premium:false,eco:false};
+      var loadBtns=box.querySelectorAll('.est-loads button');
+      var addChecks=box.querySelectorAll('.est-addons input');
+      function $id(id){return document.getElementById(id);}
+      function fmt(n){return '$'+n.toFixed(2);}
+      function copy(n){return n+' load'+(n>1?'s':'');}
+      function update(){
+        var wash=loads*32, prem=addOns.premium?loads*15:0, eco=addOns.eco?3.50:0;
+        var subtotal=wash+prem+eco+13.50;
+        var below=subtotal<73.50;
+        var total=below?73.50:subtotal;
+        $id('est-wash').textContent=fmt(wash)+'+';
+        $id('est-prem').textContent=fmt(prem)+'+';
+        $id('est-loads-copy').textContent=copy(loads);
+        $id('est-prem-copy').textContent=copy(loads);
+        $id('est-prem-row').hidden=!addOns.premium;
+        $id('est-eco-row').hidden=!addOns.eco;
+        $id('est-total').textContent=fmt(total)+'+';
+        $id('est-total-label').textContent=below?'Minimum · confirmed at your door':'Confirmed at your door';
+        $id('est-note').hidden=!below;
+      }
+      loadBtns.forEach(function(b){b.addEventListener('click',function(){loads=parseInt(b.dataset.loads,10);loadBtns.forEach(function(x){x.classList.toggle('active',x===b);});update();});});
+      addChecks.forEach(function(c){c.addEventListener('change',function(){addOns[c.dataset.add]=c.checked;update();});});
+      update();
+    })();
+
     // Contact form: no backend yet
     var form=document.querySelector('.contact-form');
     if(form){form.addEventListener('submit',function(e){e.preventDefault();
