@@ -9,7 +9,7 @@ fix is measurable. Run it before EVERY publish of the live artefact.
 Checks (Dossier v2, Appendix A):
   1. exactly one <script> block and it parses (node --check)
   2. no duplicate id="" attributes
-  3. exactly 34 <section class="page"> elements
+  3. exactly EXPECTED_SECTIONS <section class="page"> elements
   4. every getElementById('x') target exists as an id
   5. zero emoji / pictographic glyphs anywhere in the file
   6. (--strict-tokens) no font-size or letter-spacing literal outside the design tokens
@@ -22,7 +22,7 @@ import tempfile
 import collections
 import os
 
-EXPECTED_SECTIONS = 35
+EXPECTED_SECTIONS = 36
 
 # Pictographs, dingbats, arrows, misc symbols, variation selectors.
 EMOJI = re.compile(

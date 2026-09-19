@@ -811,6 +811,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <li><a href="#/pricing" data-nav="pricing">Pricing</a></li>
     <li><a href="#/club" data-nav="club">Kings Club</a></li>
     <li><a href="#/business" data-nav="business">Business</a></li>
+    <li><a href="#/hotels" data-nav="hotels">Hotels</a></li>
     <li><a href="#/coverage" data-nav="coverage">Coverage</a></li>
     <li><a href="#/operators" data-nav="operators">Become an Operator</a></li>
   </ul>
@@ -828,6 +829,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   <a href="#/pricing">Pricing</a>
   <a href="#/club">Kings Club</a>
   <a href="#/business">Business &amp; Commercial</a>
+  <a href="#/hotels">Hotel Partners</a>
   <a href="#/support">Supported Living &amp; Aged Care</a>
   <a href="#/coverage">Coverage &amp; Suburbs</a>
   <a href="#/operators">Become an Operator</a>
@@ -1266,6 +1268,78 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 <!-- ================================================================
      BUSINESS
      ================================================================ -->
+<section class="page" id="p-hotels">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/">Home</a> / Hotel Partners</div>
+    <h1>Guest laundry, as a revenue line</h1>
+    <p>Your guests already ask about laundry. Right now that is a concierge problem with no margin. We turn it into a commission your property earns for putting cards in rooms.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="g2c" style="gap:3rem;align-items:start">
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">How it works</h2>
+        <ol class="chk2" style="margin-top:1.2rem">
+          <li>We supply branded cards for every room and your concierge desk.</li>
+          <li>Your guest scans and orders on a page co-branded with your property.</li>
+          <li>We collect from the concierge, wash and fold, and return to the front desk tagged by room number.</li>
+          <li>You are paid commission monthly, with an itemised statement.</li>
+        </ol>
+        <p class="pnote" style="margin-top:1.4rem"><strong>Your staff hold a bag. That is the whole job.</strong> No handling, no chemicals, no liability, no cost to the property.</p>
+      </div>
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">Guest pricing</h2>
+        <div id="htPricing" style="margin-top:1.2rem"></div>
+        <p class="pnote" style="margin-top:1rem">All prices include GST. We do not offer ironing; Premium Clean is our finishing service.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="wrap">
+    <span class="eyebrow">COMMISSION</span>
+    <h2 class="h2">Your rate rises with your portfolio</h2>
+    <p class="lede">Set by total rooms or number of properties, whichever reaches the higher tier first. Add a property and the whole group moves up from that date.</p>
+    <div id="htTiers" style="margin-top:1.6rem"></div>
+    <p class="pnote" style="margin-top:1.2rem"><strong>Volume kicker.</strong> Sustain 15% guest conversion for three consecutive months and your property is lifted one tier above its qualifier.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <span class="eyebrow">CALCULATOR</span>
+    <h2 class="h2">What your property would earn</h2>
+    <p class="lede">Enter your numbers. Everything recalculates against our current guest pricing.</p>
+    <div class="g2c" style="gap:2.4rem;align-items:start;margin-top:1.6rem">
+      <div class="card">
+        <div class="fld"><label class="lbl" for="htRooms">Total rooms</label>
+          <input class="inp" type="number" id="htRooms" min="1" max="5000" value="220"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htOcc">Average occupancy (%)</label>
+          <input class="inp" type="number" id="htOcc" min="1" max="100" value="63"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htConv">Guest uptake (%)</label>
+          <input class="inp" type="number" id="htConv" min="1" max="100" value="10"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htProps">Number of properties</label>
+          <input class="inp" type="number" id="htProps" min="1" max="200" value="1"></div>
+        <p class="ap-fine">Industry uptake for hotel laundry runs about 5 to 15 per cent of occupied rooms.</p>
+      </div>
+      <div class="card" id="htResult"></div>
+    </div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="wrap" style="max-width:640px">
+    <span class="eyebrow">ENQUIRE</span>
+    <h2 class="h2">Start the conversation</h2>
+    <p class="lede">A fifteen-minute call to confirm your room count and occupancy. No obligation.</p>
+    <div class="card" style="margin-top:1.4rem">
+      <div class="fld"><label class="lbl" for="htName">Your name</label><input class="inp" id="htName"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htHotel">Property name</label><input class="inp" id="htHotel"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htRole">Your role</label><input class="inp" id="htRole" placeholder="General Manager, Revenue, Front Office"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htEmail">Email</label><input class="inp" type="email" id="htEmail"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htPhone">Phone</label><input class="inp" id="htPhone"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htRoomsQ">Rooms at this property</label><input class="inp" type="number" id="htRoomsQ" min="1"></div>
+      <button class="btn btn-red btn-full" style="margin-top:1.2rem" id="htGo">Request a partnership call</button>
+      <p class="pnote" id="htMsg" style="margin-top:.9rem"></p>
+    </div>
+  </div></div>
+</section>
+
 <section class="page" id="p-business">
   <div class="phead"><div class="wrap">
     <div class="crumb"><a href="#/">Home</a> / Business &amp; Commercial</div>
@@ -2429,7 +2503,7 @@ const SOON_PC = {
 };
 
 /* ---------- ROUTER ---------- */
-const PAGES = ['home','services','pricing','club','business','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
+const PAGES = ['home','services','pricing','club','business','hotels','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
   'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards',
   'ops','opsbook','opsops','opsinv'];
 function route(){
@@ -2893,6 +2967,62 @@ const REWARDS = [
   { id:'cr25',  crowns:1000, label:'$25 credit toward any collection',  cap:25 },
   { id:'mth1',  crowns:2000, label:'One month of Kings Club, free',     cap:89 }
 ];
+
+/* ============================================================
+   HOTEL PARTNER PROGRAM
+   Guest pricing is separate from the residential rate card: a hotel
+   guest buys a finished bag, not a weighed household collection.
+   Commission rises with portfolio size so a group has a reason to
+   bring every property across rather than trialling one.
+   All figures LAUNCH ASSUMPTIONS pending Max's sign-off.
+   ============================================================ */
+const HOTEL_PX = {
+  standard: 40.00,   // one bag, up to 5 kg
+  double:   70.00,   // two bags, couples and families
+  package: 159.00,   // unlimited for the stay, from the 5th bag
+  premium:  15.00    // Premium Clean add-on, per bag
+};
+/* Blend assumes most guests buy a standard bag, a smaller share the
+   double, and a few long stays tip into the package. */
+const HOTEL_BLEND = 48.00;
+
+/* minProps is null on the first two tiers: below Premium a single
+   property qualifies on room count alone, so treating "1 property" as a
+   portfolio qualifier would push every small hotel straight past
+   Standard. */
+const HOTEL_TIERS = [
+  { name:'Standard',   pct:8,  minRooms:0,    minProps:null, note:'Single property under 100 rooms' },
+  { name:'Partner',    pct:10, minRooms:100,  minProps:null, note:'Single property, 100 to 200 rooms' },
+  { name:'Premium',    pct:12, minRooms:200,  minProps:2,    note:'200+ rooms, or 2 to 3 properties' },
+  { name:'Portfolio',  pct:15, minRooms:400,  minProps:3,    note:'3 to 5 properties, or 400+ rooms' },
+  { name:'Enterprise', pct:18, minRooms:800,  minProps:5,    note:'5 to 10 properties, or 800+ rooms' },
+  { name:'Exclusive',  pct:20, minRooms:1500, minProps:10,   note:'10+ properties, or an exclusive contract' }
+];
+
+/* Whichever of rooms or property count reaches higher wins. */
+function hotelTier(totalRooms, props){
+  return HOTEL_TIERS.reduce((best, t) => {
+    const byRooms = totalRooms >= t.minRooms;
+    const byProps = t.minProps != null && props >= t.minProps;
+    return (byRooms || byProps) && t.pct > best.pct ? t : best;
+  }, HOTEL_TIERS[0]);
+}
+
+function hotelModel(rooms, occPct, convPct, props){
+  const r = Math.max(1, Number(rooms) || 0);
+  const p = Math.max(1, Number(props) || 1);
+  const occupied = r * (Math.min(100, Math.max(0, Number(occPct) || 0)) / 100);
+  const ordersPerDay = occupied * (Math.min(100, Math.max(0, Number(convPct) || 0)) / 100);
+  const perProperty = ordersPerDay * HOTEL_BLEND * 365;
+  const annual = perProperty * p;
+  const tier = hotelTier(r * p, p);
+  const commission = annual * (tier.pct / 100);
+  return {
+    tier, occupied, ordersPerDay, annual, commission,
+    monthly: commission / 12,
+    perRoomNight: (r * p * 365) > 0 ? commission / (r * p * 365) : 0
+  };
+}
 
 const tierFor = spend => TIERS.reduce((t,x)=> spend >= x.min ? x : t, TIERS[0]);
 const nextTier = spend => TIERS.find(t => t.min > spend) || null;
@@ -3730,6 +3860,68 @@ function renderRewards(){
   }
 }
 
+/* ---------------- HOTEL PARTNER PAGE ---------------- */
+function paintHotels(){
+  const R = (n, note, v) => '<div class="prow"><div><strong>' + n + '</strong>'
+    + (note ? '<em>' + note + '</em>' : '') + '</div><b>' + v + '</b></div>';
+  const px = document.getElementById('htPricing');
+  if (px) px.innerHTML =
+      R('Standard bag', 'One bag, up to 5 kg. Washed, folded, returned.', money(HOTEL_PX.standard))
+    + R('Double bag', 'Two bags for couples and families, collected together.', money(HOTEL_PX.double))
+    + R('Room package', 'From the fifth bag: unlimited for the rest of the stay.', money(HOTEL_PX.package))
+    + R('Premium Clean', 'Optional finish per bag. Delicates, hand-treated stains.', '+' + money(HOTEL_PX.premium));
+
+  const tiers = document.getElementById('htTiers');
+  if (tiers) tiers.innerHTML = HOTEL_TIERS.map(t =>
+      '<div class="prow"><div><strong>' + t.name + '</strong><em>' + t.note + '</em></div><b>'
+    + t.pct + '%</b></div>').join('');
+
+  calcHotel();
+}
+
+function calcHotel(){
+  const host = document.getElementById('htResult'); if (!host) return;
+  const v = id => { const e = document.getElementById(id); return e ? Number(e.value) : 0; };
+  const m = hotelModel(v('htRooms'), v('htOcc'), v('htConv'), v('htProps'));
+  const props = Math.max(1, v('htProps') || 1);
+  host.innerHTML =
+      '<div class="prow"><div><strong>Your commission tier</strong>'
+    + '<em>' + esc(m.tier.note) + '</em></div><b>' + m.tier.pct + '%</b></div>'
+    + '<div class="prow"><div><strong>Rooms occupied each night</strong>'
+    + '<em>Across ' + props + ' propert' + (props === 1 ? 'y' : 'ies') + '</em></div><b>'
+    + Math.round(m.occupied * props).toLocaleString('en-AU') + '</b></div>'
+    + '<div class="prow"><div><strong>Guest orders per day</strong></div><b>'
+    + (m.ordersPerDay * props).toFixed(1) + '</b></div>'
+    + '<div class="prow"><div><strong>Laundry revenue a year</strong>'
+    + '<em>At a ' + money(HOTEL_BLEND) + ' blended order</em></div><b>'
+    + money(Math.round(m.annual)) + '</b></div>'
+    + '<div class="prow" style="border-top:2px solid var(--navy)"><div><strong>Your commission a year</strong>'
+    + '<em>' + money(Math.round(m.monthly)) + ' a month, or ' + money(m.perRoomNight.toFixed(2))
+    + ' per room-night</em></div><b style="font-size:1.15rem;color:var(--navy)">'
+    + money(Math.round(m.commission)) + '</b></div>';
+}
+
+function wireHotels(){
+  ['htRooms','htOcc','htConv','htProps'].forEach(id => {
+    const e = document.getElementById(id); if (e) e.oninput = calcHotel;
+  });
+  const go = document.getElementById('htGo');
+  if (go) go.onclick = async () => {
+    const name = val('htName'), hotel = val('htHotel'), email = val('htEmail');
+    if (!name || !hotel || !email){ say('htMsg', false, 'Add your name, property and email so we can reply.'); return; }
+    await save('hotelEnquiries', {
+      name, hotel, email,
+      role: val('htRole'), phone: val('htPhone'),
+      rooms: Number(document.getElementById('htRoomsQ').value) || null,
+      modelled: hotelModel(
+        Number(document.getElementById('htRooms').value),
+        Number(document.getElementById('htOcc').value),
+        Number(document.getElementById('htConv').value),
+        Number(document.getElementById('htProps').value)).tier.name
+    }, 'htMsg', 'Thank you. We will be in touch within one business day to arrange your partnership call.');
+  };
+}
+
 function wireRewards(){
   const btn = document.getElementById('rwRefCopy');
   if (!btn) return;
@@ -3829,7 +4021,7 @@ async function appBoot(){
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); route();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
