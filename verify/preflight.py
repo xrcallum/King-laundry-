@@ -22,7 +22,7 @@ import tempfile
 import collections
 import os
 
-EXPECTED_SECTIONS = 36
+EXPECTED_SECTIONS = 37
 
 # Pictographs, dingbats, arrows, misc symbols, variation selectors.
 EMOJI = re.compile(

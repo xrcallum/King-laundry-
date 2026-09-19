@@ -468,6 +468,24 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .rw-row .rw-l{flex:1}
 .rw-row .rw-l strong{display:block;font-size:.86rem;color:var(--navy)}
 .rw-row .rw-l small{font-size:.72rem;color:var(--mute)}
+.ob-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem}
+.ob-step{display:flex;align-items:flex-start;gap:.6rem;text-align:left;padding:.7rem .8rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer}
+.ob-step.on{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.ob-step.done .ob-n{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ob-n{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--mute)}
+.ob-t strong{display:block;font-size:.84rem;color:var(--navy);font-family:var(--fd)}
+.ob-t small{font-size:.7rem;color:var(--mute);line-height:1.4}
+.ob-q{padding:.9rem 0;border-bottom:1px solid var(--line)}
+.ob-q strong{display:block;font-size:.88rem;margin-bottom:.5rem;color:var(--navy)}
+.ob-a{display:block;width:100%;text-align:left;padding:.55rem .75rem;margin-bottom:.35rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer;font-size:.82rem}
+.ob-a.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy);font-weight:600}
+.ob-out{margin-top:1.1rem;padding:.9rem 1rem;border-radius:var(--r);border-left:3px solid var(--line);background:var(--bg2)}
+.ob-out strong{display:block;font-family:var(--fd);font-size:.95rem}
+.ob-out p{margin:.3rem 0 0;font-size:.82rem;color:var(--body)}
+.ob-out.contractor{border-left-color:var(--navy)}
+.ob-out.review,.ob-out.employee{border-left-color:var(--red);background:var(--red-w)}
+.ob-chk{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.84rem;cursor:pointer}
+.ob-chk input{margin-top:.2rem;flex-shrink:0}
 .ap-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .ap-tile{border-radius:var(--r2);padding:1.1rem;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none}
 .ap-tile.a{background:var(--red-w)}
@@ -1268,6 +1286,36 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 <!-- ================================================================
      BUSINESS
      ================================================================ -->
+<section class="page" id="p-onboard">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/operators">Operators</a> / Onboarding</div>
+    <h1>Operator onboarding</h1>
+    <p>Everything we need before you can take your first collection. Most of it takes about ten minutes; the police check is the only part that waits on someone else.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="ob-steps" id="obSteps"></div>
+
+    <div class="g2c" style="gap:2.4rem;align-items:start;margin-top:2rem">
+      <div>
+        <div class="card" id="obPanel"></div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin-top:0">Where you are up to</h3>
+          <div id="obStatus"></div>
+          <p class="ap-fine" id="obNote"></p>
+        </div>
+        <div class="card" style="margin-top:1.2rem">
+          <h3 style="margin-top:0">What these checks cost us</h3>
+          <div id="obCosts"></div>
+          <p class="ap-fine">We pay for both checks. You are never invoiced for onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
 <section class="page" id="p-hotels">
   <div class="phead"><div class="wrap">
     <div class="crumb"><a href="#/">Home</a> / Hotel Partners</div>
@@ -1531,6 +1579,7 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
         </select></div></div>
         <div class="fld"><label class="lbl">Anything else?</label><textarea class="ta" id="oNotes" placeholder="Optional"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="oGo">Submit application</button>
+        <a href="#/onboard" class="btn btn-out btn-full" style="margin-top:.6rem">Already approved? Start onboarding &#8250;</a>
         <div class="fmsg" id="oMsg"></div>
         <p class="fine">Submitting this form is an expression of interest only. It does not create any contract or obligation on either side.</p>
       </div>
@@ -2507,7 +2556,7 @@ const SOON_PC = {
 };
 
 /* ---------- ROUTER ---------- */
-const PAGES = ['home','services','pricing','club','business','hotels','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
+const PAGES = ['home','services','pricing','club','business','hotels','onboard','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
   'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards',
   'ops','opsbook','opsops','opsinv'];
 function route(){
@@ -2971,6 +3020,77 @@ const REWARDS = [
   { id:'cr25',  crowns:1000, label:'$25 credit toward any collection',  cap:25 },
   { id:'mth1',  crowns:2000, label:'One month of Kings Club, free',     cap:89 }
 ];
+
+/* ============================================================
+   OPERATOR ONBOARDING
+   Two of these steps call outside services and cannot complete in
+   the page: identity (Australia Post Digital iD) and the national
+   police check (NCCHC). Both are started here and resolve by
+   webhook, so the page tracks their state rather than their result.
+   ============================================================ */
+const OB_VENDORS = {
+  id:     { name:'Australia Post Digital iD', cost:1.50, turnaround:'minutes' },
+  police: { name:'National Crime Check',      cost:44.90, turnaround:'70% same day' }
+};
+
+const OB_STEPS = [
+  { id:'details',   label:'Your details',        blurb:'Name, contact, address and ABN.' },
+  { id:'status',    label:'Engagement check',    blurb:'Whether this role is a contractor or an employee.' },
+  { id:'identity',  label:'Identity',            blurb:'Photo ID matched to a live selfie.' },
+  { id:'police',    label:'Police check',        blurb:'National Police Certificate.' },
+  { id:'tax',       label:'Tax and super',       blurb:'TFN, super fund and bank details.' },
+  { id:'whs',       label:'Safety',              blurb:'Chemicals, manual handling and driving.' },
+  { id:'insurance', label:'Insurance',           blurb:'Only if you use your own vehicle.' }
+];
+
+/* Fair Work multi-factor test. No single answer decides it: the courts
+   weigh the whole relationship, so this scores the factors and flags
+   anything that needs a person to look at it. An ABN on its own never
+   makes someone a contractor, and getting this wrong is what triggers
+   superannuation and payroll tax exposure. */
+const OB_FACTORS = [
+  { id:'control',   q:'Who decides how the work is done?',
+    a:[['You decide your own method and order of work','c'],['LaundryKings directs the method step by step','e']] },
+  { id:'hours',     q:'Who sets your hours?',
+    a:[['You choose which jobs to accept and when','c'],['LaundryKings rosters you onto set shifts','e']] },
+  { id:'equipment', q:'Whose equipment is used?',
+    a:[['Mine — my own machines, vehicle and supplies','c'],['LaundryKings supplies the equipment','e']] },
+  { id:'delegate',  q:'Could you pay someone else to do a job for you?',
+    a:[['Yes, I can subcontract or delegate','c'],['No, I must do the work personally','e']] },
+  { id:'risk',      q:'Who carries the commercial risk if a job goes wrong?',
+    a:[['I do — I fix defects at my own cost','c'],['LaundryKings carries the cost','e']] },
+  { id:'exclusive', q:'Do you work for others as well?',
+    a:[['Yes, or I am free to','c'],['No, I work only for LaundryKings','e']] },
+  { id:'pay',       q:'How are you paid?',
+    a:[['Per job completed, against my invoice','c'],['An hourly or weekly wage','e']] }
+];
+
+function contractorTest(answers){
+  const vals = OB_FACTORS.map(f => answers[f.id]).filter(Boolean);
+  const answered = vals.length;
+  const employeeMarks = vals.filter(v => v === 'e').length;
+  const complete = answered === OB_FACTORS.length;
+  /* Any employee-leaning answer at all is worth a look, because the
+     factors are not equally weighted in law and we are not the ones
+     who get to decide the balance. */
+  let outcome = 'contractor', why = 'Every factor points to an independent contracting arrangement.';
+  if (!complete){ outcome = 'incomplete'; why = 'Answer every question so the result can be recorded.'; }
+  else if (employeeMarks >= 4){ outcome = 'employee'; why = 'Most factors point to employment. This role should be engaged as an employee.'; }
+  else if (employeeMarks > 0){ outcome = 'review'; why = employeeMarks + ' of ' + OB_FACTORS.length
+      + ' factors point toward employment. A person needs to look at this before you are engaged.'; }
+  return { outcome, why, employeeMarks, answered, complete,
+           superFlag: outcome !== 'contractor' };
+}
+
+const OB_WHS = [
+  'I have read the safety data sheets for every chemical I will use.',
+  'I understand safe manual handling for loads up to 15 kg.',
+  'I will not transport or process clinical or contaminated linen (AS/NZS 4146).',
+  'I hold a current driver licence and will keep my vehicle roadworthy.',
+  'I will report any injury, near miss or property damage the same day.'
+];
+
+let OB = { step:'details', details:{}, answers:{}, whs:[], checks:{ identity:'not started', police:'not started' } };
 
 /* ============================================================
    HOTEL PARTNER PROGRAM
@@ -4001,6 +4121,182 @@ function renderRewards(){
   }
 }
 
+/* ---------------- OPERATOR ONBOARDING ---------------- */
+function obDone(id){
+  if (id === 'details') return !!(OB.details.first && OB.details.last && OB.details.email && OB.details.phone);
+  if (id === 'status')  return contractorTest(OB.answers).complete;
+  if (id === 'identity')return OB.checks.identity === 'verified';
+  if (id === 'police')  return OB.checks.police === 'cleared';
+  if (id === 'tax')     return !!(OB.details.tfn && OB.details.superFund && OB.details.bsb);
+  if (id === 'whs')     return OB.whs.length === OB_WHS.length;
+  if (id === 'insurance') return OB.details.ownVehicle === 'no' || !!OB.details.policyNo;
+  return false;
+}
+
+function renderOnboard(){
+  const steps = document.getElementById('obSteps'); if (!steps) return;
+
+  steps.innerHTML = OB_STEPS.map((s,i) => {
+    const done = obDone(s.id), cur = OB.step === s.id;
+    return '<button class="ob-step' + (cur?' on':'') + (done?' done':'') + '" data-obstep="' + s.id + '">'
+      + '<span class="ob-n">' + (done ? '&#10003;' : (i+1)) + '</span>'
+      + '<span class="ob-t"><strong>' + s.label + '</strong><small>' + s.blurb + '</small></span></button>';
+  }).join('');
+  steps.querySelectorAll('[data-obstep]').forEach(b => b.onclick = () => { OB.step = b.dataset.obstep; renderOnboard(); });
+
+  const done = OB_STEPS.filter(s => obDone(s.id)).length;
+  const status = document.getElementById('obStatus');
+  if (status){
+    status.innerHTML = OB_STEPS.map(s =>
+      '<div class="prow"><div><strong>' + s.label + '</strong></div><b style="color:'
+      + (obDone(s.id) ? 'var(--navy)' : 'var(--mute)') + '">'
+      + (obDone(s.id) ? 'Done' : 'Waiting') + '</b></div>').join('');
+  }
+  const note = document.getElementById('obNote');
+  if (note) note.textContent = done === OB_STEPS.length
+    ? 'Everything is in. Max signs off your engagement status, then you are live.'
+    : done + ' of ' + OB_STEPS.length + ' complete. You can finish these in any order.';
+
+  const costs = document.getElementById('obCosts');
+  if (costs){
+    const total = OB_VENDORS.id.cost + OB_VENDORS.police.cost;
+    costs.innerHTML =
+        '<div class="prow"><div><strong>' + OB_VENDORS.id.name + '</strong><em>Identity, ' + OB_VENDORS.id.turnaround + '</em></div><b>' + money(OB_VENDORS.id.cost) + '</b></div>'
+      + '<div class="prow"><div><strong>' + OB_VENDORS.police.name + '</strong><em>Police check, ' + OB_VENDORS.police.turnaround + '</em></div><b>' + money(OB_VENDORS.police.cost) + '</b></div>'
+      + '<div class="prow"><div><strong>Total per operator</strong></div><b style="color:var(--navy)">' + money(total) + '</b></div>';
+  }
+
+  obPanel();
+}
+
+function obPanel(){
+  const el = document.getElementById('obPanel'); if (!el) return;
+  const d = OB.details;
+  const f = (id,label,val,type) => '<div class="fld"><label class="lbl" for="'+id+'">'+label+'</label>'
+    + '<input class="inp" id="'+id+'" type="'+(type||'text')+'" value="'+esc(val||'')+'"></div>';
+
+  if (OB.step === 'details'){
+    el.innerHTML = '<h3 style="margin-top:0">Your details</h3>'
+      + '<div class="g2">' + f('obFirst','First name',d.first) + f('obLast','Last name',d.last) + '</div>'
+      + f('obEmail','Email',d.email,'email') + f('obPhone','Mobile',d.phone,'tel')
+      + f('obDob','Date of birth',d.dob,'date')
+      + f('obAddr','Residential address',d.addr)
+      + f('obAbn','ABN (if you have one)',d.abn)
+      + '<p class="ap-fine">An ABN does not by itself make you a contractor. The next step works that out properly.</p>'
+      + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveDetails">Save and continue</button>'
+      + '<p class="pnote" id="obMsg" style="margin-top:.8rem"></p>';
+    document.getElementById('obSaveDetails').onclick = () => {
+      ['first','last','email','phone','dob','addr','abn'].forEach(k => {
+        OB.details[k] = val('ob' + k.charAt(0).toUpperCase() + k.slice(1));
+      });
+      if (!OB.details.first || !OB.details.email){ say('obMsg', false, 'We need at least your name and email.'); return; }
+      OB.step = 'status'; renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'status'){
+    const t = contractorTest(OB.answers);
+    el.innerHTML = '<h3 style="margin-top:0">Engagement check</h3>'
+      + '<p>This is the Fair Work multi-factor test. It decides whether the law treats this role as contracting or employment, which in turn decides superannuation and payroll tax. No single answer settles it.</p>'
+      + OB_FACTORS.map(q =>
+          '<div class="ob-q"><strong>' + q.q + '</strong>'
+          + q.a.map(([label,v]) =>
+              '<button type="button" class="ob-a' + (OB.answers[q.id]===v?' on':'') + '" data-obq="' + q.id + '" data-obv="' + v + '">'
+              + esc(label) + '</button>').join('')
+          + '</div>').join('')
+      + '<div class="ob-out ' + t.outcome + '"><strong>' + ({
+            contractor:'Independent contractor', employee:'Employee', review:'Needs review', incomplete:'Not finished'
+          })[t.outcome] + '</strong><p>' + t.why + '</p>'
+      + (t.superFlag && t.complete ? '<p class="ap-fine"><strong>Flagged:</strong> superannuation is likely payable and this may count toward payroll tax grouping. Max signs this off before engagement.</p>' : '')
+      + '</div>';
+    el.querySelectorAll('[data-obq]').forEach(b => b.onclick = () => {
+      OB.answers[b.dataset.obq] = b.dataset.obv; renderOnboard();
+    });
+    return;
+  }
+
+  if (OB.step === 'identity' || OB.step === 'police'){
+    const isId = OB.step === 'identity';
+    const v = isId ? OB_VENDORS.id : OB_VENDORS.police;
+    const state = isId ? OB.checks.identity : OB.checks.police;
+    const target = isId ? 'verified' : 'cleared';
+    el.innerHTML = '<h3 style="margin-top:0">' + (isId ? 'Identity' : 'Police check') + '</h3>'
+      + '<p>' + (isId
+          ? 'You photograph your licence or passport and take a short selfie. The match is done by ' + v.name + ' and takes about a minute.'
+          : 'A National Police Certificate through ' + v.name + '. Most come back the same day; some take up to three.') + '</p>'
+      + '<div class="prow"><div><strong>Provider</strong></div><b>' + v.name + '</b></div>'
+      + '<div class="prow"><div><strong>Status</strong></div><b style="color:' + (state===target?'var(--navy)':'var(--mute)') + '">' + state + '</b></div>'
+      + (state === 'not started'
+          ? '<button class="btn btn-red btn-full" style="margin-top:1rem" id="obStart">Start ' + (isId?'identity check':'police check') + '</button>'
+          : state === target
+            ? '<p class="pnote" style="margin-top:1rem">This check is complete. Nothing further needed.</p>'
+            : '<p class="pnote" style="margin-top:1rem">Submitted. We will email you the moment it clears — you do not need to wait on this page.</p>')
+      + '<p class="ap-fine">We pay for this check. Your documents go straight to the provider and are not stored by LaundryKings.</p>';
+    const btn = document.getElementById('obStart');
+    if (btn) btn.onclick = () => {
+      /* The real handoff runs through the kings-api worker, which holds
+         the vendor credentials and receives the result by webhook. */
+      if (isId) OB.checks.identity = 'in progress'; else OB.checks.police = 'submitted';
+      renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'tax'){
+    el.innerHTML = '<h3 style="margin-top:0">Tax, super and bank</h3>'
+      + f('obTfn','Tax file number',d.tfn)
+      + f('obSuper','Superannuation fund',d.superFund)
+      + f('obSuperNo','Member number',d.superNo)
+      + '<div class="g2">' + f('obBsb','BSB',d.bsb) + f('obAcct','Account number',d.acct) + '</div>'
+      + '<p class="ap-fine">Your TFN is sent straight to our accountant and is never displayed back in this portal.</p>'
+      + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveTax">Save</button>';
+    document.getElementById('obSaveTax').onclick = () => {
+      OB.details.tfn = val('obTfn'); OB.details.superFund = val('obSuper');
+      OB.details.superNo = val('obSuperNo'); OB.details.bsb = val('obBsb'); OB.details.acct = val('obAcct');
+      renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'whs'){
+    el.innerHTML = '<h3 style="margin-top:0">Safety</h3>'
+      + '<p>Tick each one to confirm you have read and understood it. These are the obligations that come with handling chemicals and driving for work.</p>'
+      + OB_WHS.map((w,i) =>
+          '<label class="ob-chk"><input type="checkbox" data-obwhs="' + i + '"'
+          + (OB.whs.includes(i)?' checked':'') + '><span>' + esc(w) + '</span></label>').join('')
+      + '<p class="ap-fine">Safety data sheets and the manual handling guide are in the operator portal once you are live.</p>';
+    el.querySelectorAll('[data-obwhs]').forEach(c => c.onchange = () => {
+      const i = Number(c.dataset.obwhs);
+      OB.whs = c.checked ? OB.whs.concat([i]).filter((x,n,a)=>a.indexOf(x)===n) : OB.whs.filter(x => x !== i);
+      renderOnboard();
+    });
+    return;
+  }
+
+  if (OB.step === 'insurance'){
+    const own = OB.details.ownVehicle || '';
+    el.innerHTML = '<h3 style="margin-top:0">Insurance</h3>'
+      + '<p>Only needed if you drive your own vehicle for collections.</p>'
+      + '<div class="ap-g2">'
+      + '<button type="button" class="bagopt' + (own==='yes'?' on':'') + '" data-obveh="yes"><strong>I use my own vehicle</strong><span>Comprehensive motor cover required</span></button>'
+      + '<button type="button" class="bagopt' + (own==='no'?' on':'') + '" data-obveh="no"><strong>I do not drive for collections</strong><span>No motor cover needed</span></button>'
+      + '</div>'
+      + (own === 'yes'
+          ? f('obInsurer','Insurer',d.insurer) + f('obPolicy','Policy number',d.policyNo) + f('obExpiry','Expiry date',d.expiry,'date')
+            + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveIns">Save</button>'
+          : own === 'no' ? '<p class="pnote" style="margin-top:1rem">Nothing further needed here.</p>' : '');
+    el.querySelectorAll('[data-obveh]').forEach(b => b.onclick = () => {
+      OB.details.ownVehicle = b.dataset.obveh; renderOnboard();
+    });
+    const s = document.getElementById('obSaveIns');
+    if (s) s.onclick = () => {
+      OB.details.insurer = val('obInsurer'); OB.details.policyNo = val('obPolicy'); OB.details.expiry = val('obExpiry');
+      renderOnboard();
+    };
+  }
+}
+
 /* ---------------- HOTEL PARTNER PAGE ---------------- */
 function paintHotels(){
   const R = (n, note, v) => '<div class="prow"><div><strong>' + n + '</strong>'
@@ -4162,7 +4458,7 @@ async function appBoot(){
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); route();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); renderOnboard(); route();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
