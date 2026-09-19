@@ -51,6 +51,25 @@
 <tr><td class="k">Pre-flight check 7</td><td><code>strip_js</code> did not understand a template literal nested inside another one, so a stray word inside a string could be reported as an undefined function. It now tracks <code>${'{'}</code> depth.</td></tr>
 </tbody></table>
 
+<h3>Interaction and motion layer (19 September 2026, commit 8d595e1)</h3>
+<p>Direction agreed with Callum before starting: evolve the existing system, whole site, visual and interaction layer only, no new features. Every addition is a token or a base-component rule, so it reaches all 34 sections without per-page edits.</p>
+<table>
+<thead><tr><th style="width:22%">Layer</th><th>What changed</th></tr></thead>
+<tbody>
+<tr><td class="k">Elevation</td><td>New tokens <code>--e-hov</code>, <code>--e-hov-dk</code>, <code>--e-press</code>, <code>--e-sheet</code>, <code>--e-toast</code> and <code>--lift</code>. Rest state stays border-only (D15 stands); a soft lift and shadow appear on hover and a scale-down on press, on buttons, cards, service tiles, plan cards, chips and the coverage pill.</td></tr>
+<tr><td class="k">Motion</td><td><code>--ease</code> and <code>--ease-spring</code> replace the flat <code>ease</code>. Route changes fade and slide in (<code>--tr-page</code>, 0 s under reduced motion); wizard steps and the mobile menu slide in; FAQ answers animate their height (grid <code>0fr</code> to <code>1fr</code>, each answer wrapped in <code>.ans-in</code>); inline status messages animate in; steppers pulse the number; the sticky nav gains a shadow once scrolled; nav links carry an animated underline on hover and on the active page.</td></tr>
+<tr><td class="k">Accessibility</td><td>Skip-to-content link first in the tab order, implemented as a focus-and-scroll handler because any bare <code>#id</code> anchor fires this router's <code>hashchange</code> listener and lands on home (reproduced, then fixed; <code>&lt;main&gt;</code> renamed to <code>main-content</code>). FAQ buttons carry <code>aria-expanded</code>; <code>say()</code> sets <code>role="status"</code> and <code>aria-live</code> on every message it writes; the live estimate total is <code>aria-live</code>; inputs get a visible focus ring, not a border change alone.</td></tr>
+<tr><td class="k">Verified</td><td>Preflight 8/8, e2e 20/20, a11y sweep 0 issues after the change. Hover and press states checked against computed <code>box-shadow</code> and <code>transform</code>, the skip link against <code>document.activeElement</code>, the nav against its class list; a full-page screenshot cannot show a transient pseudo-class, so none of this was taken from the CSS alone.</td></tr>
+</tbody></table>
+
+<h3>Layout review, both viewports (19 September 2026)</h3>
+<p>All 18 routes screenshotted at 1280 px and 390 px after the brand and content changes. No jumbled or overlapping layouts on either viewport. Three items carried forward rather than fixed, because each is a decision, not a defect:</p>
+<ul>
+<li><strong>Bulky Items beside Blankets, Rugs &amp; Sheets</strong> on the Services and Pricing pages: two adjacent large-textile categories a customer may not distinguish. Options: merge into one table (recommended), or add a one-line distinction to each heading.</li>
+<li><strong>Desktop chrome in the customer app.</strong> At 1280 px the marketing top nav and the phone-style bottom tab bar are both on screen, and the app column is phone-width. Works correctly (the tab bar is fixed to the viewport; a full-page capture misplaces it, a real scroll does not) but duplicates navigation. Options: hide the marketing links inside app routes on desktop, or widen the app column. Owner Callum.</li>
+<li><strong>Callout styles.</strong> The operators page introduces a dashed-border box for "what we cannot tell you yet", a third callout style beside the warning box and the plain card. Deliberate or not, worth a decision.</li>
+</ul>
+
 <h3>Verification added to the repository</h3>
 <table>
 <thead><tr><th style="width:22%">Check</th><th>What it proves</th><th style="width:14%">Result</th></tr></thead>
