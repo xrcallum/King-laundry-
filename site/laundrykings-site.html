@@ -1378,6 +1378,170 @@ svg.ic{width:24px;height:24px}
   .jn-n{margin-bottom:.25rem}
 }
 
+
+/* ── operator portal preview ── */
+
+/* ═════ OPERATOR PORTAL PREVIEW ═════ */
+.op5-band{background-color:var(--navy);background-image:linear-gradient(160deg,var(--navy) 0%,#0a1e4a 100%);padding:3rem 0;color:#fff;position:relative;overflow:hidden}
+.op5-band::before{content:"";position:absolute;top:-40%;left:-10%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(232,96,74,.18),transparent 60%);pointer-events:none}
+.op5-hd{position:relative;max-width:820px;margin:0 auto 2rem;text-align:center}
+.op5-eb{display:inline-block;font-family:var(--fd);font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;text-transform:uppercase;margin-bottom:.6rem}
+.op5-h{font-family:var(--fd);font-weight:900;font-size:var(--fs-h2);line-height:1.1;color:#fff;letter-spacing:var(--track-h1);margin:0 0 .8rem}
+.op5-sub{font-size:var(--fs-body);line-height:1.55;color:rgba(255,255,255,.85);margin:0 auto;max-width:60ch}
+
+/* frame */
+.op5-frame{position:relative;background-color:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.15)}
+.op5-frame-hd{display:flex;align-items:center;gap:.6rem;padding:.6rem 1rem;background-color:#0e2054;color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+.op5-frame-l{display:flex;gap:.35rem}
+.op5-dot{width:10px;height:10px;border-radius:50%;background:#333}
+.op5-dot-r{background:#ff5f57}.op5-dot-y{background:#febc2e}.op5-dot-g{background:#28c840}
+.op5-frame-t{flex:1;text-align:center;font-family:var(--fd);font-weight:600;font-size:11px;color:rgba(255,255,255,.85);letter-spacing:.02em}
+.op5-frame-r{display:flex;justify-content:flex-end;min-width:60px}
+.op5-live{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.1em;color:#4ade80}
+.op5-live-d{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.5);animation:op5Pulse 1.6s infinite}
+@keyframes op5Pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 6px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+/* tabs */
+.op5-tabs{display:grid;grid-template-columns:repeat(4,1fr);background-color:var(--paper);border-bottom:1px solid rgba(12,38,95,.1)}
+.op5-tabs button{background:transparent;border:none;padding:.85rem .4rem;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--mute);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border-bottom:3px solid transparent;transition:color var(--tr),border-color var(--tr),background-color var(--tr)}
+.op5-tabs button svg{width:16px;height:16px}
+.op5-tabs button:hover{color:var(--navy);background-color:rgba(12,38,95,.04)}
+.op5-tabs button.on{color:var(--navy);border-bottom-color:var(--red)}
+@media (max-width:640px){.op5-tabs button{flex-direction:column;gap:.2rem;padding:.65rem .3rem;font-size:10px}}
+
+/* body */
+.op5-body{padding:0;background-color:#fff;color:var(--ink)}
+.op5-pane{display:none;padding:1.35rem 1.35rem 1.5rem;animation:op5In .35s var(--ease) both}
+.op5-pane.on{display:block}
+@keyframes op5In{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Round today */
+.op5-round{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.op5-round-map{background-color:var(--paper);border-radius:12px;border:1px solid rgba(12,38,95,.08);overflow:hidden}
+.op5-round-map svg{width:100%;height:auto;display:block}
+.op5-round-cap{display:flex;justify-content:space-between;padding:.55rem .85rem;border-top:1px solid rgba(12,38,95,.08);font-family:var(--fd);font-size:11px;color:var(--mute);letter-spacing:.06em;text-transform:uppercase}
+.op5-round-cap-r{color:var(--navy);font-weight:700}
+.op5-stops{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.5rem}
+.op5-stop{display:flex;align-items:center;gap:.75rem;padding:.7rem .85rem;background-color:#fff;border:1px solid rgba(12,38,95,.1);border-radius:10px;position:relative}
+.op5-stop.done{opacity:.55}
+.op5-stop.on{border-color:var(--red);background-color:#fef7f5}
+.op5-stop-n{width:26px;height:26px;border-radius:50%;background-color:var(--paper);color:var(--navy);font-family:var(--fd);font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.op5-stop.on .op5-stop-n{background-color:var(--red);color:#fff}
+.op5-stop.done .op5-stop-n{background-color:var(--navy);color:#fff}
+.op5-stop-b{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1rem}
+.op5-stop-b strong{font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);line-height:1.2}
+.op5-stop-b span{font-size:11px;color:var(--body);line-height:1.35}
+.op5-stop-tag{font-family:var(--fd);font-weight:700;font-size:10px;letter-spacing:.05em;color:var(--mute);padding:.28rem .5rem;border-radius:6px;background-color:var(--paper);white-space:nowrap;flex-shrink:0}
+.op5-stop-tag.on{background-color:var(--red);color:#fff}
+.op5-stop-tag.done{background-color:rgba(13,122,63,.12);color:#0d7a3f}
+
+/* At the door */
+.op5-door{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem}
+.op5-door-l,.op5-door-r{display:flex;flex-direction:column;gap:1rem}
+.op5-door-cust{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;background-color:var(--paper);border:1px solid rgba(12,38,95,.08);border-radius:10px}
+.op5-av{width:38px;height:38px;border-radius:50%;background-color:var(--navy);color:#fff;font-family:var(--fd);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.op5-door-cust>div:not(.op5-av){flex:1;min-width:0}
+.op5-door-cust strong{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy)}
+.op5-door-cust span{display:block;font-size:11px;color:var(--body);margin-top:.15rem;line-height:1.35}
+.op5-scale{background-color:#0e2054;background-image:linear-gradient(160deg,#0e2054 0%,#0C265F 100%);color:#fff;border-radius:12px;padding:1.1rem 1.15rem;position:relative;overflow:hidden}
+.op5-scale::before{content:"";position:absolute;top:-30%;right:-15%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(232,96,74,.28),transparent 60%);pointer-events:none}
+.op5-scale-hd{font-family:var(--fd);font-weight:700;font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:.4rem;position:relative}
+.op5-scale-v{font-family:var(--fd);font-weight:900;font-size:44px;color:#fff;line-height:1;font-variant-numeric:tabular-nums;position:relative;letter-spacing:-.02em}
+.op5-scale-v span{font-size:16px;font-weight:600;color:rgba(255,255,255,.65);margin-left:.35rem}
+.op5-scale-bar{height:6px;background-color:rgba(255,255,255,.15);border-radius:3px;margin:.7rem 0 .35rem;position:relative;overflow:hidden}
+.op5-scale-bar-f{height:100%;background-color:#E8604A;background-image:linear-gradient(90deg,#D84330,#E8604A);border-radius:3px}
+.op5-scale-hint{font-size:11px;color:rgba(255,255,255,.7);position:relative}
+.op5-door-lines{background-color:var(--paper);border-radius:12px;padding:.9rem 1.05rem;border:1px solid rgba(12,38,95,.08)}
+.op5-dl{display:grid;grid-template-columns:1fr auto auto;gap:.6rem;font-size:var(--fs-micro);color:var(--body);padding:.32rem 0;align-items:baseline}
+.op5-dl em{font-style:normal;color:var(--mute);font-size:11px}
+.op5-dl b{font-family:var(--fd);font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.op5-dl-min{color:var(--red-d);font-size:11px}
+.op5-dl-min b{color:var(--red-d)}
+.op5-dl-tot{border-top:1px solid rgba(12,38,95,.1);padding-top:.55rem;margin-top:.35rem}
+.op5-dl-tot span,.op5-dl-tot b{font-family:var(--fd);font-weight:800;font-size:var(--fs-body);color:var(--navy)}
+.op5-door-notes{background-color:var(--red-w);border:1px dashed rgba(216,67,48,.35);border-radius:10px;padding:.85rem 1rem}
+.op5-door-notes label{display:block;font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.1em;color:var(--red-d);text-transform:uppercase;margin-bottom:.3rem}
+.op5-door-notes p{font-size:var(--fs-micro);color:var(--ink);margin:0;line-height:1.45;font-style:italic}
+.op5-door-prefs{display:grid;gap:.5rem}
+.op5-pref{display:flex;justify-content:space-between;gap:.6rem;padding:.55rem .85rem;background-color:#fff;border:1px solid rgba(12,38,95,.1);border-radius:8px;font-size:var(--fs-micro)}
+.op5-pref span{color:var(--mute);font-family:var(--fd);font-weight:600}
+.op5-pref strong{color:var(--navy);font-family:var(--fd);font-weight:700}
+.op5-door-cta{display:grid;grid-template-columns:1.4fr 1fr;gap:.5rem;margin-top:auto}
+.op5-btn{border:none;border-radius:10px;font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);padding:.85rem 1rem;cursor:pointer;transition:transform .15s var(--ease),box-shadow var(--tr),background-color var(--tr),border-color var(--tr);letter-spacing:.02em}
+.op5-btn-p{background-color:var(--red);color:#fff}
+.op5-btn-p:hover{background-color:var(--red-d);box-shadow:0 8px 20px rgba(216,67,48,.35);transform:translateY(-1px)}
+.op5-btn-g{background-color:var(--paper);color:var(--navy);border:1px solid rgba(12,38,95,.15)}
+.op5-btn-g:hover{border-color:var(--navy);background-color:#fff}
+.op5-btn-out{background-color:transparent;color:var(--navy);border:1.5px solid rgba(12,38,95,.2);padding:.55rem .8rem;font-size:11px;border-radius:8px}
+.op5-btn-out:hover{border-color:var(--navy);background-color:var(--paper)}
+.op5-door-msg{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:#0d7a3f;margin-top:.3rem;min-height:16px}
+
+/* Wash room */
+.op5-mach{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.op5-m{background-color:#fff;border:1px solid rgba(12,38,95,.1);border-radius:12px;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.55rem}
+.op5-m-hd{display:flex;justify-content:space-between;align-items:center}
+.op5-m-hd strong{font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.1em;color:var(--mute)}
+.op5-tag{font-family:var(--fd);font-weight:800;font-size:9px;letter-spacing:.1em;padding:.2rem .5rem;border-radius:6px}
+.op5-tag-run{background-color:rgba(43,75,170,.12);color:var(--navy-l)}
+.op5-tag-free{background-color:var(--paper);color:var(--mute)}
+.op5-tag-done{background-color:rgba(13,122,63,.15);color:#0d7a3f}
+.op5-m-drum{width:56px;height:56px;margin:.2rem auto}
+.op5-m-drum svg{width:100%;height:100%;display:block}
+.op5-m-turn{animation:op5Spin 3s linear infinite;transform-origin:30px 30px;transform-box:fill-box}
+.op5-m-slow{animation-duration:5s}
+@keyframes op5Spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.op5-m-turn{animation:none}}
+.op5-m-b{display:flex;justify-content:space-between;align-items:flex-end;gap:.7rem}
+.op5-m-b>div:first-child{flex:1;min-width:0}
+.op5-m-b b{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);line-height:1.2}
+.op5-m-b span{display:block;font-size:11px;color:var(--body);margin-top:.15rem;line-height:1.35}
+.op5-m-t{text-align:right}
+.op5-m-t-v{display:block;font-family:var(--fd);font-weight:900;color:var(--navy);font-size:var(--fs-4);line-height:1;font-variant-numeric:tabular-nums}
+.op5-m-t-l{display:block;font-size:9px;color:var(--mute);text-transform:uppercase;letter-spacing:.1em;margin-top:.15rem}
+.op5-m-ready{background-color:rgba(74,222,128,.08)}
+.op5-m-free{background-color:var(--paper)}
+
+/* Money */
+.op5-money{display:flex;flex-direction:column;gap:1rem}
+.op5-money-top{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:.7rem}
+.op5-money-tile{background-color:#fff;border:1px solid rgba(12,38,95,.1);border-radius:12px;padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.2rem}
+.op5-money-tile-nv{background-color:var(--navy);color:#fff;border-color:var(--navy)}
+.op5-money-tile-r{background-color:var(--red);background-image:linear-gradient(135deg,var(--red) 0%,var(--red-d) 100%);color:#fff;border-color:var(--red-d)}
+.op5-money-l{font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.op5-money-v{font-family:var(--fd);font-weight:900;font-size:var(--fs-2);line-height:1.05;font-variant-numeric:tabular-nums;margin:.15rem 0 .25rem;letter-spacing:-.01em}
+.op5-money-s{font-size:11px;line-height:1.4;opacity:.85}
+.op5-money-chart{display:grid;grid-template-columns:repeat(7,1fr);align-items:end;gap:.4rem;padding:1rem 1.15rem;background-color:var(--paper);border:1px solid rgba(12,38,95,.08);border-radius:12px;min-height:170px}
+.op5-bar{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:.35rem;height:100%;text-align:center}
+.op5-bar::before{content:"";display:block;height:var(--h,10%);width:100%;background-color:var(--navy-l);background-image:linear-gradient(180deg,var(--navy-l) 0%,var(--navy) 100%);border-radius:6px 6px 0 0;transition:height .5s var(--ease)}
+.op5-bar-on::before{background-image:linear-gradient(180deg,#E8604A 0%,var(--red-d) 100%)}
+.op5-bar-nx::before{background-color:rgba(12,38,95,.1);background-image:none;height:8px}
+.op5-bar span{font-family:var(--fd);font-weight:700;font-size:10px;color:var(--mute);letter-spacing:.06em}
+.op5-bar em{font-style:normal;font-family:var(--fd);font-weight:800;font-size:11px;color:var(--navy);font-variant-numeric:tabular-nums}
+.op5-bar-nx em{color:var(--mute)}
+.op5-money-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.op5-perk{background-color:#fff;border:1px solid rgba(12,38,95,.1);border-radius:10px;padding:.8rem 1rem;text-align:center}
+.op5-perk strong{display:block;font-family:var(--fd);font-weight:900;font-size:var(--fs-3);color:var(--navy);letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1}
+.op5-perk span{display:block;font-size:11px;color:var(--body);margin-top:.35rem;line-height:1.35}
+.op5-star{width:.9em;height:.9em;color:var(--red);margin-left:.15em;vertical-align:baseline}
+
+/* footer */
+.op5-ft{margin-top:1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.4rem;background-color:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;flex-wrap:wrap;color:#fff}
+.op5-ft-l{flex:1;min-width:260px;display:flex;flex-direction:column;gap:.2rem}
+.op5-ft-l strong{font-family:var(--fd);font-weight:800;color:#fff;font-size:var(--fs-body)}
+.op5-ft-l span{font-size:var(--fs-micro);color:rgba(255,255,255,.8);line-height:1.5}
+
+/* responsive */
+@media (max-width:900px){
+  .op5-round,.op5-door{grid-template-columns:1fr}
+  .op5-money-top{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .op5-mach{grid-template-columns:1fr}
+  .op5-money-perks{grid-template-columns:1fr}
+  .op5-money-chart{padding:.8rem}
+  .op5-h{font-size:clamp(1.55rem,6vw,2.1rem)}
+}
+
 </style>
 </head>
 <body>
@@ -2321,6 +2485,233 @@ svg.ic{width:24px;height:24px}
       </div>
     </div>
   </div></div>
+
+  <!-- ── Operator portal preview ─────────────────────── -->
+  <div class="op5-band"><div class="wrap">
+    <div class="op5-hd">
+      <span class="op5-eb">INSIDE THE OPERATOR PORTAL</span>
+      <h2 class="op5-h">This is your day, in one screen.</h2>
+      <p class="op5-sub">Every operator gets the same tool we use ourselves: your round, your at-the-door quote, your machines, your money — all live, on your phone.</p>
+    </div>
+
+    <div class="op5-frame">
+      <div class="op5-frame-hd">
+        <div class="op5-frame-l">
+          <div class="op5-dot op5-dot-r"></div>
+          <div class="op5-dot op5-dot-y"></div>
+          <div class="op5-dot op5-dot-g"></div>
+        </div>
+        <div class="op5-frame-t">LaundryKings · Operator · <span id="op5User">Alex M · Sunnybank round</span></div>
+        <div class="op5-frame-r"><span class="op5-live"><span class="op5-live-d"></span>LIVE</span></div>
+      </div>
+
+      <div class="op5-tabs" role="tablist" aria-label="Operator portal sections">
+        <button type="button" role="tab" aria-selected="true" data-op5tab="round" class="on">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          Round today
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-op5tab="door">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 14h6M12 5v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          At the door
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-op5tab="wash">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="14" r="4.5" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+          Wash room
+        </button>
+        <button type="button" role="tab" aria-selected="false" data-op5tab="money">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v10H4z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="13" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+          Money
+        </button>
+      </div>
+
+      <div class="op5-body">
+        <!-- Round today -->
+        <div class="op5-pane on" data-op5pane="round">
+          <div class="op5-round">
+            <div class="op5-round-map">
+              <svg viewBox="0 0 300 240" role="img" aria-label="Round mini-map">
+                <rect width="300" height="240" fill="#F6F3EE"/>
+                <path d="M20 60 Q120 20 200 90 T290 210" fill="none" stroke="rgba(12,38,95,.12)" stroke-width="18"/>
+                <path d="M40 200 L80 120 L160 100 L220 160 L260 60" fill="none" stroke="#0C265F" stroke-width="2.4" stroke-dasharray="3 5" stroke-linecap="round"/>
+                <!-- stops -->
+                <g class="op5-pin done"><circle cx="40"  cy="200" r="10" fill="#0C265F"/><text x="40"  y="204" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="10">1</text></g>
+                <g class="op5-pin on"><circle cx="80" cy="120" r="12" fill="#D84330"/><circle cx="80" cy="120" r="18" fill="none" stroke="#D84330" stroke-width="2" stroke-opacity=".45"><animate attributeName="r" values="14;24" dur="1.8s" repeatCount="indefinite"/><animate attributeName="stroke-opacity" values=".5;0" dur="1.8s" repeatCount="indefinite"/></circle><text x="80" y="124" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="800" font-size="10">2</text></g>
+                <g class="op5-pin"><circle cx="160" cy="100" r="10" fill="#fff" stroke="#0C265F" stroke-width="2"/><text x="160" y="104" text-anchor="middle" fill="#0C265F" font-family="Inter,sans-serif" font-weight="800" font-size="10">3</text></g>
+                <g class="op5-pin"><circle cx="220" cy="160" r="10" fill="#fff" stroke="#0C265F" stroke-width="2"/><text x="220" y="164" text-anchor="middle" fill="#0C265F" font-family="Inter,sans-serif" font-weight="800" font-size="10">4</text></g>
+                <g class="op5-pin"><circle cx="260" cy="60" r="10" fill="#fff" stroke="#0C265F" stroke-width="2"/><text x="260" y="64" text-anchor="middle" fill="#0C265F" font-family="Inter,sans-serif" font-weight="800" font-size="10">5</text></g>
+              </svg>
+              <div class="op5-round-cap"><span class="op5-round-cap-l">5 STOPS · SUNNYBANK ROUND</span><span class="op5-round-cap-r">7:00 AM – 11:20 AM</span></div>
+            </div>
+            <ol class="op5-stops">
+              <li class="op5-stop done">
+                <span class="op5-stop-n">1</span>
+                <div class="op5-stop-b">
+                  <strong>27 Camellia St</strong><span>Wash &amp; Fold · 2 loads · $77.50</span>
+                </div>
+                <span class="op5-stop-tag done">COLLECTED · 7:12</span>
+              </li>
+              <li class="op5-stop on">
+                <span class="op5-stop-n">2</span>
+                <div class="op5-stop-b">
+                  <strong>14/8 Padstow Rd</strong><span>Blankets &amp; Linen · 1 blanket · quote at door</span>
+                </div>
+                <span class="op5-stop-tag on">EN ROUTE · ETA 8:05</span>
+              </li>
+              <li class="op5-stop">
+                <span class="op5-stop-n">3</span>
+                <div class="op5-stop-b">
+                  <strong>102 Lister St</strong><span>Kings Club Solo · same operator · usual bag</span>
+                </div>
+                <span class="op5-stop-tag">08:30 – 09:00</span>
+              </li>
+              <li class="op5-stop">
+                <span class="op5-stop-n">4</span>
+                <div class="op5-stop-b">
+                  <strong>3 Bulcock Ave</strong><span>Wash &amp; Fold · ~3 loads · sensitive detergent</span>
+                </div>
+                <span class="op5-stop-tag">09:30 – 10:15</span>
+              </li>
+              <li class="op5-stop">
+                <span class="op5-stop-n">5</span>
+                <div class="op5-stop-b">
+                  <strong>91 McCullough St</strong><span>Kings Club Pair · usual bag + doona</span>
+                </div>
+                <span class="op5-stop-tag">10:45 – 11:20</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- At the door -->
+        <div class="op5-pane" data-op5pane="door">
+          <div class="op5-door">
+            <div class="op5-door-l">
+              <div class="op5-door-cust">
+                <div class="op5-av">PR</div>
+                <div>
+                  <strong>Padstow Rd · Priya R.</strong>
+                  <span>Booked at 21:14 last night · $73.50 minimum · Blankets &amp; Linen</span>
+                </div>
+              </div>
+              <div class="op5-scale">
+                <div class="op5-scale-hd">DIGITAL SCALE · CALIBRATED 06:52</div>
+                <div class="op5-scale-v" id="op5Wt">6.2<span>kg</span></div>
+                <div class="op5-scale-bar"><div class="op5-scale-bar-f" style="width:62%"></div></div>
+                <div class="op5-scale-hint">Weight logged to booking · confirms with customer receipt</div>
+              </div>
+              <div class="op5-door-lines">
+                <div class="op5-dl"><span>Sheet set</span><em>×1</em><b>$24.00</b></div>
+                <div class="op5-dl"><span>Blanket (queen)</span><em>×1</em><b>$32.00</b></div>
+                <div class="op5-dl"><span>Collection &amp; return</span><em></em><b>$13.50</b></div>
+                <div class="op5-dl op5-dl-min"><span>Below $73.50 minimum — adjustment</span><em></em><b>$4.00</b></div>
+                <div class="op5-dl op5-dl-tot"><span>Confirmed total</span><em></em><b>$73.50</b></div>
+              </div>
+            </div>
+            <div class="op5-door-r">
+              <div class="op5-door-notes">
+                <label>Customer note</label>
+                <p>"Doona cover is on backwards — I know. Please don't correct it."</p>
+              </div>
+              <div class="op5-door-prefs">
+                <div class="op5-pref"><span>Detergent</span><strong>Sensitive-skin</strong></div>
+                <div class="op5-pref"><span>Fold style</span><strong>KonMari</strong></div>
+                <div class="op5-pref"><span>Return spot</span><strong>Front porch, tucked left</strong></div>
+              </div>
+              <div class="op5-door-cta">
+                <button type="button" class="op5-btn op5-btn-p" onclick="op5Confirm(this)">Confirm &amp; collect</button>
+                <button type="button" class="op5-btn op5-btn-g">Re-weigh</button>
+              </div>
+              <span id="op5DoorMsg" class="op5-door-msg" aria-live="polite"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wash room -->
+        <div class="op5-pane" data-op5pane="wash">
+          <div class="op5-mach">
+            <article class="op5-m op5-m-on">
+              <div class="op5-m-hd"><strong>MACHINE 1</strong><span class="op5-tag op5-tag-run">RUNNING</span></div>
+              <div class="op5-m-drum"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="#0C265F" stroke-width="2"/><g style="transform-origin:30px 30px" class="op5-m-turn"><path d="M18 30 Q24 22 30 30 Q36 38 42 30" fill="none" stroke="#D84330" stroke-width="3" stroke-linecap="round"/></g></svg></div>
+              <div class="op5-m-b">
+                <div><b>Sunnybank · Job LK-JQDGV1</b><span>Wash &amp; Fold · own cycle · 60°</span></div>
+                <div class="op5-m-t"><span class="op5-m-t-v">24m</span><span class="op5-m-t-l">remaining</span></div>
+              </div>
+            </article>
+            <article class="op5-m op5-m-on">
+              <div class="op5-m-hd"><strong>MACHINE 2</strong><span class="op5-tag op5-tag-run">RUNNING</span></div>
+              <div class="op5-m-drum"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="#0C265F" stroke-width="2"/><g style="transform-origin:30px 30px" class="op5-m-turn op5-m-slow"><path d="M18 30 Q24 22 30 30 Q36 38 42 30" fill="none" stroke="#D84330" stroke-width="3" stroke-linecap="round"/></g></svg></div>
+              <div class="op5-m-b">
+                <div><b>Coorparoo · Job LK-P9AA22</b><span>Delicates · cold · sensitive</span></div>
+                <div class="op5-m-t"><span class="op5-m-t-v">12m</span><span class="op5-m-t-l">remaining</span></div>
+              </div>
+            </article>
+            <article class="op5-m op5-m-free">
+              <div class="op5-m-hd"><strong>MACHINE 3</strong><span class="op5-tag op5-tag-free">FREE</span></div>
+              <div class="op5-m-drum"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="none" stroke="#0C265F" stroke-width="2"/><circle cx="30" cy="30" r="14" fill="none" stroke="#0C265F" stroke-width="1.5" opacity=".25"/></svg></div>
+              <div class="op5-m-b">
+                <div><b>Ready for next load</b><span>Load next: Padstow Rd · sheet set</span></div>
+                <button type="button" class="op5-btn op5-btn-out">Assign</button>
+              </div>
+            </article>
+            <article class="op5-m op5-m-ready">
+              <div class="op5-m-hd"><strong>MACHINE 4</strong><span class="op5-tag op5-tag-done">READY</span></div>
+              <div class="op5-m-drum"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26" fill="#4ade80" opacity=".15"/><circle cx="30" cy="30" r="26" fill="none" stroke="#0d7a3f" stroke-width="2"/><path d="M22 30 L28 36 L38 24" fill="none" stroke="#0d7a3f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="op5-m-b">
+                <div><b>Camp Hill · Job LK-Q8ZZ11</b><span>Cycle done at 07:48 · fold, tag, load van</span></div>
+                <button type="button" class="op5-btn op5-btn-p">Move to fold</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Money -->
+        <div class="op5-pane" data-op5pane="money">
+          <div class="op5-money">
+            <div class="op5-money-top">
+              <div class="op5-money-tile">
+                <span class="op5-money-l">TODAY</span>
+                <span class="op5-money-v">$324.50</span>
+                <span class="op5-money-s">5 jobs · avg 47 min per stop</span>
+              </div>
+              <div class="op5-money-tile op5-money-tile-nv">
+                <span class="op5-money-l">THIS WEEK</span>
+                <span class="op5-money-v">$1,847.20</span>
+                <span class="op5-money-s">28 jobs · 4 recurring</span>
+              </div>
+              <div class="op5-money-tile op5-money-tile-r">
+                <span class="op5-money-l">NEXT PAYOUT · FRI 25 SEP</span>
+                <span class="op5-money-v">$1,412.60</span>
+                <span class="op5-money-s">Direct to your business account · statement attached</span>
+              </div>
+            </div>
+            <div class="op5-money-chart" aria-label="Earnings by day this week">
+              <div class="op5-bar" style="--h:52%"><span>Mon</span><em>$248</em></div>
+              <div class="op5-bar" style="--h:66%"><span>Tue</span><em>$312</em></div>
+              <div class="op5-bar" style="--h:48%"><span>Wed</span><em>$228</em></div>
+              <div class="op5-bar" style="--h:74%"><span>Thu</span><em>$352</em></div>
+              <div class="op5-bar op5-bar-on" style="--h:69%"><span>Fri</span><em>$324</em></div>
+              <div class="op5-bar op5-bar-nx" style="--h:0%"><span>Sat</span><em>—</em></div>
+              <div class="op5-bar op5-bar-nx" style="--h:0%"><span>Sun</span><em>—</em></div>
+            </div>
+            <div class="op5-money-perks">
+              <div class="op5-perk"><strong>98%</strong><span>quality-check pass rate</span></div>
+              <div class="op5-perk"><strong>4.9<svg class="op5-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 6 6.6.5-5.1 4.4 1.6 6.5L12 17l-5.8 3.4 1.6-6.5L2.7 9.5l6.6-.5z" fill="currentColor"/></svg></strong><span>customer rating (34)</span></div>
+              <div class="op5-perk"><strong>12 wk</strong><span>with LaundryKings</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="op5-ft">
+      <div class="op5-ft-l">
+        <strong>You keep 100% of your route.</strong>
+        <span>You're an independent contractor with your own ABN. We supply the customers, brand, kit and back-office; you supply the machines, the round and the quality.</span>
+      </div>
+      <a href="#opForm" class="btn btn-red btn-lg">Apply to run a round</a>
+    </div>
+  </div></div>
+
 </section>
 
 <!-- ================================================================
@@ -5154,9 +5545,43 @@ window.apShareOpen = apShareOpen;
 window.apShareClose = apShareClose;
 window.apShareCopy = apShareCopy;
 
+/* ── operator portal preview ── */
+
+/* ═════ OPERATOR PORTAL PREVIEW ═════ */
+function op5Init(){
+  const tabs = document.querySelectorAll('.op5-tabs [data-op5tab]');
+  const panes = document.querySelectorAll('.op5-body [data-op5pane]');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => { x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+    t.classList.add('on'); t.setAttribute('aria-selected','true');
+    const k = t.dataset.op5tab;
+    panes.forEach(p => p.classList.toggle('on', p.dataset.op5pane === k));
+  }));
+  // gentle scale-value nudge every 4s so the digit looks alive
+  const wt = document.getElementById('op5Wt');
+  if (wt){
+    let base = 6.2;
+    setInterval(() => {
+      const jitter = (Math.random()*0.06 - 0.03);
+      const v = (base + jitter).toFixed(1);
+      wt.firstChild.textContent = v;
+    }, 4000);
+  }
+}
+function op5Confirm(btn){
+  const msg = document.getElementById('op5DoorMsg');
+  btn.textContent = 'Collecting...'; btn.disabled = true;
+  setTimeout(() => {
+    if (msg) msg.textContent = 'Collected · booking updated · customer receipt sent.';
+    btn.textContent = 'Collected';
+    setTimeout(() => { btn.textContent = 'Confirm & collect'; btn.disabled = false; if (msg) msg.textContent = ''; }, 3500);
+  }, 900);
+}
+window.op5Confirm = op5Confirm;
+
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5(); op5Init();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
