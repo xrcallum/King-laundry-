@@ -98,7 +98,7 @@ function check(name, ok, detail) {
   await page.waitForTimeout(500);
   check('step 4 confirmation reached', await page.locator('#st4.on').count() === 1);
   const doneTx = await page.locator('#bkDoneTx').textContent();
-  check('confirmation shows a booking reference', /LK-[A-Z0-9]+/.test(doneTx || ''), doneTx);
+  check('confirmation shows a booking reference', /LL-[A-Z0-9]+/.test(doneTx || ''), doneTx);
 
   // ---- the booking is visible afterwards --------------------------------
   const state = await page.evaluate(() => ({

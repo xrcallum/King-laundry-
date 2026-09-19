@@ -87,6 +87,7 @@
 }
 @media(prefers-reduced-motion:reduce){:root{--tr-page:0s}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}  /* id selectors like #aiPanel{display:flex} otherwise beat the UA's [hidden] rule and the panel never closes */
 html{scroll-behavior:smooth}
 body{font-family:var(--fb);background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
