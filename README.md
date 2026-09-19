@@ -17,9 +17,10 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 
 1. Edit `site/laundrykings-site.html`.
 2. `python3 verify/preflight.py site/laundrykings-site.html` (add `--strict-tokens` once Phase A has landed). It must print `RESULT: PASS`.
-3. Commit with the artefact version in the message, e.g. `site: v4.3 Phase A foundation tokens`.
-4. Publish to the existing artefact URL with capabilities `{"db":{},"user":{}}`, favicon crown, contract 0.2.52. Never add `mcp`.
-5. Confirm on a phone.
+3. `NODE_PATH=/opt/node22/lib/node_modules node verify/collide.js site/laundrykings-site.html`. The floating layers (sticky pill, chat button, app tab bar, assistant panel) must not overlap each other or any button beneath them at phone widths. It must print `RESULT: PASS`. Preflight cannot see this class of bug; the collision check exists because it shipped once.
+4. Commit with the artefact version in the message, e.g. `site: v4.3 Phase A foundation tokens`.
+5. Publish to the existing artefact URL with capabilities `{"db":{},"user":{}}`, favicon crown, contract 0.2.52. Never add `mcp`.
+6. Confirm on a phone.
 
 ## Rebuild the dossier
 
