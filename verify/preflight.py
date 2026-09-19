@@ -15,6 +15,7 @@ Checks (Dossier v2, Appendix A):
   6. (--strict-tokens) no font-size or letter-spacing literal outside the design tokens
   7. every function called in the script is defined
   8. AU compliance sentinels present
+  9. every var(--token) without a fallback resolves to a declared custom property
 """
 import re
 import subprocess
@@ -218,6 +219,21 @@ def main(path, strict_tokens=False):
         fails.append("called but never defined: %s" % unknown)
     else:
         notes.append("every function called is defined")
+
+    # 9. every var(--token) resolves
+    # An undefined custom property is silently dropped by the browser: a missing
+    # radius token squares every card off and nothing errors. JS may set a
+    # property at runtime, so a var() carrying its own fallback is exempt.
+    declared = set(re.findall(r"(--[A-Za-z0-9_-]+)\s*:", src))
+    declared |= set(re.findall(r"setProperty\(\s*['\"](--[A-Za-z0-9_-]+)['\"]", src))
+    used = collections.Counter(
+        m.group(1) for m in re.finditer(r"var\(\s*(--[A-Za-z0-9_-]+)\s*\)", src))
+    undefined = {k: v for k, v in used.items() if k not in declared}
+    if undefined:
+        detail = ", ".join(f"{k} x{v}" for k, v in sorted(undefined.items(), key=lambda kv: -kv[1]))
+        fails.append(f"{sum(undefined.values())} var() references to undeclared tokens: {detail}")
+    else:
+        notes.append(f"{len(used)} distinct var() tokens, all declared")
 
     # 8. compliance sentinels
     for s in COMPLIANCE_SENTINELS:
