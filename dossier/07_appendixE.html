@@ -1,0 +1,97 @@
+<!-- ===================== APPENDIX E ===================== -->
+<div class="part">
+<p class="part-kicker">Appendix E</p>
+<h1>Build record: Phases A, B and C</h1>
+<p class="lede">KEA-18 was executed on 19 September 2026 against the copy of record. This appendix records what changed, what it was verified against, and the one defect found during the build that matters more than every design defect in Part 7 combined.</p>
+
+<div class="box red">
+<h4>The defect that was not in the audit <span class="tag t-new">Found during the build</span></h4>
+<p><strong>The customer app and the ops layer never initialised in v4.2.</strong> <code>appBoot()</code> called <code>wireWizard()</code> and <code>wireSettings()</code>. Neither function existed anywhere in the 3,586-line file. <code>appBoot</code> threw a ReferenceError on its second statement, so every line after it never ran: the version labels, <code>renderHome</code>, <code>renderAccount</code>, <code>renderForms</code>, <code>renderWizard</code>, <code>renderBookings</code>, <code>renderMessages</code>, <code>appRoute</code>, the not-signed-in notice, the live <code>config/booking</code> and <code>config/contact</code> listeners, and the editor preload of operations.</p>
+<p>Every control those two functions were meant to wire was therefore dead: the wizard's quantity steppers, Continue, Previous and Confirm, the recurring switch, the terms gate, and the settings save buttons <code>pdGo</code>, <code>pfGo</code>, <code>adGo</code>, <code>udGo</code> and <code>cmGo</code>, plus the profile switcher sheet. A customer could not complete a booking and could not save a profile, an address or a preference.</p>
+<p><strong>This corrects a claim carried in both editions of this dossier.</strong> Part 1 of v1 and v2 said "the site works end to end (booking → ops → invoice)". It did not. The functional claim was never tested; the audit that produced Part 7 was a design audit, and a design audit does not press the buttons.</p>
+</div>
+
+<h3>What shipped</h3>
+<table>
+<thead><tr><th style="width:12%">Phase</th><th>Change</th><th style="width:18%">Defect</th></tr></thead>
+<tbody>
+<tr><td class="k" rowspan="9">A<br>Foundation</td><td>Both missing functions implemented against the existing state objects and helpers; <code>appBoot</code> no longer dies on one bad statement</td><td>new</td></tr>
+<tr><td>214 font sizes mapped onto the eight-step scale; form inputs raised to 16 px so iOS stops zooming on focus</td><td>D17</td></tr>
+<tr><td>29 ad-hoc letter-spacing values replaced by tracking tokens that loosen as size drops</td><td>D4</td></tr>
+<tr><td>19 radii onto three tokens plus a pill</td><td>D18</td></tr>
+<tr><td>No rgba over a coloured surface anywhere; solid selected, hover and raised navy tints. This kills the purple Kings Club bug at its source rather than at the one place it showed</td><td>D3</td></tr>
+<tr><td>39 colour corrections on navy: translucent white body text measured about 3.6:1 and is now solid tokens at 7.57:1 or better; red text on navy measured 2.07 to 3.80:1 and is gone. The hero keeps red as a slab behind white text at 5.49:1, which is also the page's one red slab</td><td>D16, D20</td></tr>
+<tr><td><code>money()</code> drops .00 on whole dollars; tabular numerals on every price</td><td>D7</td></tr>
+<tr><td>124 emoji replaced by one 49-symbol SVG sprite, 24 px grid, 1.75 stroke, currentColor; the checklist tick became a masked SVG so no glyph survives</td><td>D1, D2</td></tr>
+<tr><td>Card shadows removed, borders raised to a visible step, hero capped at the display step</td><td>D15</td></tr>
+<tr><td class="k" rowspan="7">B<br>Marketing</td><td>Top nav six items to four; the wordmark is the heaviest element in the bar again</td><td>D14</td></tr>
+<tr><td>Mobile menu: one red CTA, five primary destinations, the rest behind a More group with <code>aria-expanded</code></td><td>D11</td></tr>
+<tr><td>Footer 26 links to eleven in two named groups, on the navy-d token, one legal row instead of two</td><td>D12</td></tr>
+<tr><td>Coverage Check button inline and secondary; the input leads</td><td>D8</td></tr>
+<tr><td>Kings Club saving now names its basis, two ad-hoc loads a week, in both places it appears</td><td>ACL</td></tr>
+<tr><td>Open Graph, Twitter card, and three JSON-LD blocks: LocalBusiness with all 16 live suburbs, Service with the published rates, FAQPage from the site's own entries. A title per route</td><td>D21</td></tr>
+<tr><td>Warm paper page surface; "what a load looks like" beside the estimator</td><td>Part 8, 9</td></tr>
+<tr><td class="k" rowspan="6">C<br>App</td><td>Stepper is one 150 px control with the value centred and tabular; both buttons keep a 44 px touch target</td><td>D5</td></tr>
+<tr><td>Active tab wears a red pill behind its icon, so the current tab is not signalled by colour on text alone</td><td>D1</td></tr>
+<tr><td>Accessible names on 17 icon-only controls that had none; remaining bare glyphs became real icons</td><td>D19</td></tr>
+<tr><td>Wizard card header stacks below 480 px</td><td>D10</td></tr>
+<tr><td>Installable web app: manifest, crown icon, standalone display, Apple touch icon, and a one-time install offer after the first booking</td><td>Part 9</td></tr>
+<tr><td>Five-stage booking timeline, Booked to Returned, with the current stage marked for assistive technology; scroll entry motion inside <code>prefers-reduced-motion: no-preference</code>; a visible focus ring everywhere</td><td>Part 9</td></tr>
+</tbody></table>
+
+<h3>Same-day follow-ups after the build (pre-launch audit, 19 September 2026)</h3>
+<table>
+<thead><tr><th style="width:26%">Item</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td class="k">Brand colour alignment</td><td>The site's tokens were derived from a brand guess (red #CC2228, navy #1A3480). Sampling the logo artwork gives red #D84330 and navy #0C265F. The navy token now is the logo navy. The logo red measures 4.41:1 on white, which fails AA for small text, so it ships as <code>--red-brand</code> for the logo, the hero slab and non-text marks, and <code>--red</code> is the same hue deepened to #C43828 (5.33:1 on white, 4.81:1 on paper) for buttons and small text. Favicon, manifest, theme-colour and every inline SVG fill follow. Part 8 carries the new values; the Part 2 table is left as the record of what v4.2 shipped.</td></tr>
+<tr><td class="k">Hero image and Open Graph card</td><td>The supplied brand photograph showed visibly soiled garments under the logo. A region-aware clean-up (<code>tools/clean_hero.py</code>) removed the soiling from every garment while leaving the logo pixels untouched; the result is <code>site/brand/laundrykings-hero-clean.jpg</code> and a 1200 × 630 crop is <code>site/og-card.png</code>, which the <code>og:image</code> and <code>twitter:image</code> tags now reference by absolute URL. The original is kept beside it.</td></tr>
+<tr><td class="k">Numbers that were typed, now computed</td><td>The Kings Club comparison on the home page, the pricing-page minimum in the lede, and the hero estimate all read from <code>PX</code>, so a <code>config/pricing</code> override cannot leave stale figures in copy. The saving rounds to whole dollars because the sentence says "around".</td></tr>
+<tr><td class="k">Large-linen estimate</td><td>The estimator and the ops invoice price linen at the sheet-set rate because the wizard has one quantity control; both now say so and show the three per-item rates, and the invoice points the operator at the adjustment field for blankets and rugs.</td></tr>
+<tr><td class="k">Rendering defects</td><td>The <code>.chk2</code> tick was an SVG string inside CSS <code>content</code>, which browsers print as text; it is now a background image. The sticky nav declared <code>box-shadow</code> twice; the dead declaration is gone.</td></tr>
+<tr><td class="k">Pre-flight check 7</td><td><code>strip_js</code> did not understand a template literal nested inside another one, so a stray word inside a string could be reported as an undefined function. It now tracks <code>${'{'}</code> depth.</td></tr>
+</tbody></table>
+
+<h3>Interaction and motion layer (19 September 2026, commit 8d595e1)</h3>
+<p>Direction agreed with Callum before starting: evolve the existing system, whole site, visual and interaction layer only, no new features. Every addition is a token or a base-component rule, so it reaches all 34 sections without per-page edits.</p>
+<table>
+<thead><tr><th style="width:22%">Layer</th><th>What changed</th></tr></thead>
+<tbody>
+<tr><td class="k">Elevation</td><td>New tokens <code>--e-hov</code>, <code>--e-hov-dk</code>, <code>--e-press</code>, <code>--e-sheet</code>, <code>--e-toast</code> and <code>--lift</code>. Rest state stays border-only (D15 stands); a soft lift and shadow appear on hover and a scale-down on press, on buttons, cards, service tiles, plan cards, chips and the coverage pill.</td></tr>
+<tr><td class="k">Motion</td><td><code>--ease</code> and <code>--ease-spring</code> replace the flat <code>ease</code>. Route changes fade and slide in (<code>--tr-page</code>, 0 s under reduced motion); wizard steps and the mobile menu slide in; FAQ answers animate their height (grid <code>0fr</code> to <code>1fr</code>, each answer wrapped in <code>.ans-in</code>); inline status messages animate in; steppers pulse the number; the sticky nav gains a shadow once scrolled; nav links carry an animated underline on hover and on the active page.</td></tr>
+<tr><td class="k">Accessibility</td><td>Skip-to-content link first in the tab order, implemented as a focus-and-scroll handler because any bare <code>#id</code> anchor fires this router's <code>hashchange</code> listener and lands on home (reproduced, then fixed; <code>&lt;main&gt;</code> renamed to <code>main-content</code>). FAQ buttons carry <code>aria-expanded</code>; <code>say()</code> sets <code>role="status"</code> and <code>aria-live</code> on every message it writes; the live estimate total is <code>aria-live</code>; inputs get a visible focus ring, not a border change alone.</td></tr>
+<tr><td class="k">Verified</td><td>Preflight 8/8, e2e 20/20, a11y sweep 0 issues after the change. Hover and press states checked against computed <code>box-shadow</code> and <code>transform</code>, the skip link against <code>document.activeElement</code>, the nav against its class list; a full-page screenshot cannot show a transient pseudo-class, so none of this was taken from the CSS alone.</td></tr>
+</tbody></table>
+
+<h3>Layout review, both viewports (19 September 2026)</h3>
+<p>All 18 routes screenshotted at 1280 px and 390 px after the brand and content changes. No jumbled or overlapping layouts on either viewport. Three items carried forward rather than fixed, because each is a decision, not a defect:</p>
+<ul>
+<li><strong>Bulky Items beside Blankets, Rugs &amp; Sheets</strong> on the Services and Pricing pages: two adjacent large-textile categories a customer may not distinguish. Options: merge into one table (recommended), or add a one-line distinction to each heading.</li>
+<li><strong>Desktop chrome in the customer app.</strong> At 1280 px the marketing top nav and the phone-style bottom tab bar are both on screen, and the app column is phone-width. Works correctly (the tab bar is fixed to the viewport; a full-page capture misplaces it, a real scroll does not) but duplicates navigation. Options: hide the marketing links inside app routes on desktop, or widen the app column. Owner Callum.</li>
+<li><strong>Callout styles.</strong> The operators page introduces a dashed-border box for "what we cannot tell you yet", a third callout style beside the warning box and the plain card. Deliberate or not, worth a decision.</li>
+</ul>
+
+<h3>Verification added to the repository</h3>
+<table>
+<thead><tr><th style="width:22%">Check</th><th>What it proves</th><th style="width:14%">Result</th></tr></thead>
+<tbody>
+<tr><td class="k">verify/preflight.py</td><td>Eight checks: one executable script that parses, no duplicate IDs, 34 sections, every <code>getElementById</code> target exists, zero emoji, every font-size and letter-spacing value is a token, <strong>every function called is defined</strong>, and the AU compliance sentinels are still present. The seventh check is the one that would have caught the boot defect; run against the original v4.2 it reports exactly <code>wireSettings</code> and <code>wireWizard</code>.</td><td><span class="tag t-ver">8/8 pass</span></td></tr>
+<tr><td class="k">verify/e2e.js</td><td>Drives a real browser through the flow a customer follows: save an address, see the coverage answer, choose a service, use the stepper, pick a window, hit the terms gate, confirm, then assert the booking record, the message and the Bookings list. Fails on any uncaught script error.</td><td><span class="tag t-ver">20/20 pass</span></td></tr>
+<tr><td class="k">verify/a11y.js</td><td>Walks every visible text node on all 18 routes at 390 px, resolves the real background through the ancestor chain including alpha, and measures contrast against the 4.5:1 and 3:1 floors. Also checks accessible names and the WCAG 2.2 target-size minimum.</td><td><span class="tag t-ver">0 issues</span></td></tr>
+</tbody></table>
+<p>The accessibility sweep found three defects on its first run, two of them introduced by this build: muted text fell to 4.29:1 when the page surface changed from white to paper underneath it, and the hero eyebrow rule was scoped to the whole home page rather than the hero, so eyebrows on paper bands measured 1.36:1. The third was pre-existing: 23 form inputs across four pages had visible labels that were never associated with them, so a screen reader announced an unlabelled edit field. All three are fixed.</p>
+
+<h3>What has deliberately not changed</h3>
+<ul>
+<li><strong>Pricing.</strong> Load $32, delivery $13.50 and minimum $73.50 are unchanged and still read from <code>config/pricing</code>. Two content decisions of 19 September 2026 sit on top of this build: ironing was withdrawn as a service (no wash-fold-iron, no iron-only) and replaced by a per-item Blankets, Rugs &amp; Sheets service at $24 / $32 / $42; and Kings Club rose 30% to $63.70 / $89.70 / $115.70 a week. The home-page saving now computes from those live figures rather than a typed number.</li>
+<li><strong>Compliance text.</strong> Every sentinel is still present and is checked on every build: the NDIS statement, the AS/NZS 4146 statement, the contractor and ABN statements, GST-inclusive pricing and the Australian Consumer Law statement.</li>
+<li><strong>Footer entity text.</strong> Still the placeholder. D13 is Max's to supply and was never going to be invented here.</li>
+<li><strong>The live artefact.</strong> Not republished. The work is committed to the branch and waits on a principal's decision to publish.</li>
+</ul>
+
+<div class="rec"><div class="lbl">What this changes about the plan</div>
+<ol>
+<li><strong>M1 was further away than the board showed.</strong> "First job operational" assumed a working booking flow. Until this build there was not one. M1 is now genuinely reachable, and the gating items are the ones in Part 16: the entity and ABN, the seeded config, and the first operator.</li>
+<li><strong>A design audit is not a functional test.</strong> Part 7 was thorough and correct about what it looked at. It looked at rendering. The three scripts above close that gap and now run before every publish.</li>
+<li><strong>Add KEA-24:</strong> "Ops portal walkthrough against a real booking" — this build verified the customer side end to end but the ops side (assign, collect, weigh, invoice, mark paid) has been exercised only by reading the code. Owner Callum, before the first paid job.</li>
+</ol></div>
+</div>

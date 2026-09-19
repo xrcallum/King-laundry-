@@ -1,2 +1,5 @@
 dossier/_render.js
 shots/
+tools/__pycache__/
+__pycache__/
+*.pyc

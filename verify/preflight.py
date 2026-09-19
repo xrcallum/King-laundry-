@@ -13,7 +13,8 @@ Checks (Dossier v2, Appendix A):
   4. every getElementById('x') target exists as an id
   5. zero emoji / pictographic glyphs anywhere in the file
   6. (--strict-tokens) no font-size or letter-spacing literal outside the design tokens
-  7. AU compliance sentinels present
+  7. every function called in the script is defined
+  8. AU compliance sentinels present
 """
 import re
 import subprocess
@@ -36,6 +37,14 @@ ALLOWED_FONT_SIZE = {"13px", "16px", "20px", "25px", "31px", "39px", "49px", "61
                      "var(--fs-micro)", "var(--fs-body)", "var(--fs-5)", "var(--fs-4)", "var(--fs-3)",
                      "var(--fs-2)", "var(--fs-1)", "var(--fs-display)"}
 
+# Anything the browser or the artefact runtime supplies.
+JS_GLOBALS = set("""
+if for while switch catch function return typeof new delete void do else try finally await async
+parseInt parseFloat isNaN isFinite encodeURIComponent decodeURIComponent encodeURI decodeURI
+setTimeout setInterval clearTimeout clearInterval requestAnimationFrame queueMicrotask
+alert confirm prompt fetch atob btoa structuredClone eval
+""".split())
+
 COMPLIANCE_SENTINELS = [
     "NDIS",                 # support page statement
     "AS/NZS 4146",          # no clinical linen
@@ -45,13 +54,100 @@ COMPLIANCE_SENTINELS = [
 ]
 
 
+
+def strip_js(js):
+    """Blank out comments, string/template literals and regex literals, so a name
+    that appears inside prose, CSS text or a character class is never mistaken
+    for a function call.
+
+    Template literals are handled with a depth counter so that nested templates
+    (backtick inside ${...} inside backtick) are correctly consumed.
+    """
+    out, i, n, prev = [], 0, len(js), ""
+    while i < n:
+        c = js[i]
+        two = js[i:i + 2]
+        if two == "/*":
+            j = js.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+            continue
+        if two == "//":
+            j = js.find("\n", i)
+            i = n if j < 0 else j
+            continue
+        if c == "`":
+            # Template literal — scan with brace depth tracking so nested
+            # ${`...`} structures are consumed rather than breaking the scan.
+            j, depth = i + 1, 0
+            while j < n:
+                ch = js[j]
+                if ch == "\\":
+                    j += 2
+                    continue
+                if ch == "$" and j + 1 < n and js[j + 1] == "{":
+                    depth += 1
+                    j += 2
+                    continue
+                if ch == "}" and depth > 0:
+                    depth -= 1
+                    j += 1
+                    continue
+                if ch == "`" and depth == 0:
+                    break
+                j += 1
+            out.append(' "" ')
+            i = j + 1
+            prev = ")"
+            continue
+        if c in "'\"":
+            q, j = c, i + 1
+            while j < n:
+                if js[j] == "\\":
+                    j += 2
+                    continue
+                if js[j] == q:
+                    break
+                j += 1
+            out.append(' "" ')
+            i = j + 1
+            prev = ")"
+            continue
+        if c == "/" and prev in "(,=:[!&|?{};+*%~^<>" :
+            j, klass = i + 1, False
+            while j < n:
+                ch = js[j]
+                if ch == "\\":
+                    j += 2
+                    continue
+                if ch == "[":
+                    klass = True
+                elif ch == "]":
+                    klass = False
+                elif ch == "/" and not klass:
+                    break
+                elif ch == "\n":
+                    break
+                j += 1
+            out.append(" RX ")
+            i = j + 1
+            prev = ")"
+            continue
+        out.append(c)
+        if not c.isspace():
+            prev = c
+        i += 1
+    return "".join(out)
+
+
 def main(path, strict_tokens=False):
     src = open(path, encoding="utf-8").read()
     fails = []
     notes = []
 
     # 1. script parses
-    scripts = re.findall(r"<script\b[^>]*>(.*?)</script>", src, re.S)
+    # Only executable blocks count; application/ld+json is data, not code.
+    scripts = [m.group(2) for m in re.finditer(r"<script\b([^>]*)>(.*?)</script>", src, re.S)
+               if not re.search(r'type\s*=\s*["\']application/ld\+json["\']', m.group(1))]
     if len(scripts) != 1:
         fails.append(f"expected 1 <script> block, found {len(scripts)}")
     for i, s in enumerate(scripts):
@@ -96,9 +192,12 @@ def main(path, strict_tokens=False):
 
     # 6. tokens
     if strict_tokens:
-        fs = [v for v in re.findall(r"font-size:\s*([^;}]+)", src) if v.strip() not in ALLOWED_FONT_SIZE
-              and not v.strip().startswith("clamp(")]
-        ls = [v for v in re.findall(r"letter-spacing:\s*([^;}]+)", src) if v.strip() not in ALLOWED_TRACKING
+        # Stop at a quote too: inline style="" attributes are not brace-delimited.
+        fs = [v for v in re.findall(r"font-size:\s*([^;}\"']+)", src)
+              if v.strip() not in ALLOWED_FONT_SIZE and v.strip() != "inherit"
+              and not v.strip().startswith("clamp(") and not v.strip().startswith("var(--fs-")]
+        ls = [v for v in re.findall(r"letter-spacing:\s*([^;}\"']+)", src)
+              if v.strip() not in ALLOWED_TRACKING and not v.strip().startswith("var(--track-")
               and not v.strip().startswith("var(")]
         if fs:
             fails.append(f"{len(fs)} font-size literals outside tokens: {sorted(set(v.strip() for v in fs))[:20]}")
@@ -107,7 +206,20 @@ def main(path, strict_tokens=False):
         if not fs and not ls:
             notes.append("all font-size and letter-spacing values are tokens")
 
-    # 7. compliance sentinels
+    # 7. every function called is defined
+    raw = scripts[0] if scripts else ""
+    js = strip_js(raw)
+    defined = set(re.findall(r"\bfunction\s+([A-Za-z_$][\w$]*)", raw))
+    defined |= set(re.findall(r"\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*(?:async\s*)?(?:\([^)]*\)|[A-Za-z_$][\w$]*)\s*=>", raw))
+    defined |= set(re.findall(r"\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*(?:async\s+)?function", raw))
+    called = set(re.findall(r"(?<![\w$.'\"])([a-z][A-Za-z_$0-9]*)\s*\(", js))
+    unknown = sorted(c for c in called - defined - JS_GLOBALS)
+    if unknown:
+        fails.append("called but never defined: %s" % unknown)
+    else:
+        notes.append("every function called is defined")
+
+    # 8. compliance sentinels
     for s in COMPLIANCE_SENTINELS:
         if s not in src:
             fails.append(f"AU compliance sentinel missing from file: {s!r}")

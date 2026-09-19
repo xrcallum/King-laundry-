@@ -40,7 +40,8 @@
 <tr><td>laundrykings.com.au purchasable via Vercel</td><td>connector + DNS</td><td class="n">assumed yes</td><td class="n">no; no DNS record</td><td><span class="tag t-unv">WHOIS needed</span></td></tr>
 <tr><td>laundrykings.com</td><td>connector + DNS</td><td class="n">—</td><td class="n">taken; resolves 13.248.169.48</td><td><span class="tag t-ver">Verified</span></td></tr>
 <tr><td>laundrykings.au · laundrykings.co</td><td>connector</td><td class="n">—</td><td class="n">available USD 23.99 · 29.99</td><td><span class="tag t-ver">Verified</span> 19 Sep</td></tr>
-<tr><td>Mobile menu item count</td><td>regex</td><td class="n">15</td><td class="n">selector not matched</td><td><span class="tag t-unv">Unverified</span></td></tr>
+<tr><td>Mobile menu item count (#mob)</td><td>regex</td><td class="n">15</td><td class="n">15</td><td><span class="tag t-ver">Verified</span> in fact-check pass</td></tr>
+<tr><td>Footer link contrast</td><td>alpha blend + WCAG luminance</td><td class="n">3.2:1</td><td class="n">5.3:1</td><td><span class="tag t-cor">Corrected</span> in fact-check pass</td></tr>
 </tbody></table>
 
 <h3>Method notes</h3>
@@ -48,7 +49,7 @@
 <li><strong>Emoji scan class:</strong> U+1F000 to U+1FAFF, U+2600 to U+27BF, U+2B00 to U+2BFF, U+2190 to U+21FF, with optional U+FE0F. v1's lower count likely came from a narrower class or from text extracted from the PDF, where the 6 pt code font drops emoji glyphs (the PDF-derived reconstruction finds only 16). The acceptance test in the pre-flight script is zero glyphs in the whole file, so the class is deliberately wide.</li>
 <li><strong>Contrast:</strong> WCAG 2.x relative luminance, sRGB, ratio (L1 + 0.05) ÷ (L2 + 0.05). "Derived" values in Part 2 use the same formula on token pairs not directly in v1.</li>
 <li><strong>DNS:</strong> getent ahosts from the build container; HTTP probing to the candidate domains is blocked by the egress proxy, so hosting could not be inspected.</li>
-<li><strong>What could not be verified:</strong> the Gamma deck contents, the Drive documents, Laundry Lady's 2026 per-load price and whether their minimum includes delivery, the mobile menu count, and the v1 real-device screenshots (accepted as stated).</li>
+<li><strong>What could not be verified:</strong> the Gamma deck contents, the Drive documents, Laundry Lady's 2026 per-load price and whether their minimum includes delivery, and the v1 real-device screenshots (accepted as stated). The mobile menu count was verified in the fact-check pass (Appendix D).</li>
 </ul>
 
 <h3>Pre-flight script (also at verify/preflight.py in the repository)</h3>
@@ -76,7 +77,10 @@
 <tr><td class="k">On-demand delivery minimum standards order commenced 17 Aug 2026; $31.30 to $32.00 an hour; scope food, drinks, alcohol, groceries; excludes vehicles over 1 tonne</td><td>Fair Work Ombudsman media release 17 Aug 2026; Fair Work Commission "Minimum standards order and decision made"; DLA Piper and Peninsula summaries</td><td>Indexed text</td></tr>
 <tr><td class="k">Queensland payroll tax threshold $1.3 million, rate 4.75% to $6.5 million, 4.95% above; mental health levy above $10 million</td><td>Queensland Revenue Office, payroll tax rates and thresholds 2026-27</td><td>Indexed text</td></tr>
 <tr><td class="k">Privacy Act small business exemption: reform progressing, sources conflict on commencement</td><td>Attorney-General's Department reform pages; secondary legal and IT commentary (Schiller Legal, ComplianceKit, others)</td><td>Indexed text; treat as unsettled</td></tr>
-<tr><td class="k">Stripe Australia domestic card pricing 1.7% + $0.30; 1.65% + $0.30 from 1 Oct 2026; card surcharging not permitted from 1 Oct 2026</td><td>stripe.com/au/pricing; Stripe support pricing updates</td><td>Indexed text</td></tr>
+<tr><td class="k">Stripe Australia domestic card pricing 1.7% + $0.30; 1.65% + $0.30 online and 1.65% + $0.10 in person from 1 Oct 2026; international 2.8% from 1 Apr 2027</td><td>stripe.com/au/pricing; two independent fee-calculator summaries dated 2026</td><td>Indexed text, two sources agree</td></tr>
+<tr><td class="k">Card surcharges on eftpos, Visa and Mastercard removed for all merchants from 1 Oct 2026; booking and service fees not tied to the card are outside the ban</td><td>Reserve Bank of Australia, "Removal of Card Payment Surcharges From 1 October 2026" FAQ; ANZ, CommBank and NAB merchant notices; ABC News 31 Mar 2026</td><td>Indexed text, four sources agree</td></tr>
+<tr><td class="k">Employee-like worker requires two or more of the s15P characteristics</td><td>Fair Work Act s15P (austlii); ACCI Business Guide to Employee-Like Workers (2024)</td><td>Indexed text, two sources agree</td></tr>
+<tr><td class="k">Queensland payroll tax deduction tapers $1 per $7 above $1.3 million, nil at $10.4 million</td><td>Queensland Revenue Office; RosterElf and QuickBooks 2026-27 guides</td><td>Indexed text, three sources agree</td></tr>
 <tr><td class="k">.com.au requires active ABN/ACN, enforced at registration and renewal from 20 May 2026; .au direct requires Australian presence only</td><td>auDA licensing rules; registrar notices (Instra, TPP Wholesale, VentraIP)</td><td>Indexed text</td></tr>
 <tr><td class="k">Bailee's (care, custody and control) cover is excluded from standard liability and sold separately</td><td>Trident Insurance (AU) and general insurer glossaries</td><td>Indexed text; broker to confirm</td></tr>
 <tr><td class="k">Work Health and Safety Act 2011 (Qld) and WHS Regulation 2011 (Qld), hazardous chemicals and SDS</td><td>Queensland legislation, general knowledge; not re-fetched</td><td>Unverified in session</td></tr>
