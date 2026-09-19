@@ -493,6 +493,26 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .ob-out.review,.ob-out.employee{border-left-color:var(--red);background:var(--red-w)}
 .ob-chk{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.84rem;cursor:pointer}
 .ob-chk input{margin-top:.2rem;flex-shrink:0}
+#aiFab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;width:52px;height:52px;border-radius:50%;border:none;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.24)}
+#aiFab:hover{background:var(--red)}
+#aiPanel{position:fixed;right:18px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:71;width:min(380px,calc(100vw - 36px));max-height:min(560px,calc(100vh - 140px));background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden}
+.ai-h{display:flex;align-items:center;gap:.6rem;padding:.8rem 1rem;background:var(--navy);color:#fff}
+.ai-h strong{display:block;font-family:var(--fd);font-size:.92rem}
+.ai-h small{display:block;font-size:.72rem;opacity:.75}
+.ai-h>div{flex:1}
+.ai-x{background:none;border:none;color:#fff;font-size:1.3rem;line-height:1;cursor:pointer;opacity:.8}
+.ai-log{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ai-m{max-width:88%;padding:.55rem .75rem;border-radius:12px;font-size:.84rem;line-height:1.5}
+.ai-m.you{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
+.ai-m.bot{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);border-bottom-left-radius:4px}
+.ai-m.bot a{color:var(--red);font-weight:600}
+.ai-chips{display:flex;flex-wrap:wrap;gap:.35rem;padding:0 1rem .6rem}
+.ai-chip{font-size:.74rem;padding:.3rem .6rem;border:1px solid var(--line);border-radius:999px;background:var(--bg2);cursor:pointer}
+.ai-chip:hover{border-color:var(--navy)}
+.ai-in{display:flex;gap:.4rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.ai-in input{flex:1;padding:.5rem .7rem;border:1.5px solid var(--line);border-radius:var(--r);font:inherit;font-size:.84rem}
+.ai-in button{padding:.4rem .8rem;font-size:1rem;line-height:1}
+@media(max-width:560px){#aiPanel{right:10px;left:10px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px))}#aiFab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}}
 .ap-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .ap-tile{border-radius:var(--r2);padding:1.1rem;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none}
 .ap-tile.a{background:var(--red-w)}
@@ -846,6 +866,22 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
     <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </div></div></nav>
+
+<button id="aiFab" aria-label="Ask LaundryKings" aria-expanded="false">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg>
+</button>
+<div id="aiPanel" role="dialog" aria-label="Ask LaundryKings" hidden>
+  <div class="ai-h">
+    <div><strong>Ask LaundryKings</strong><small id="aiSub">Prices, bookings and coverage</small></div>
+    <button class="ai-x" id="aiX" aria-label="Close">&#215;</button>
+  </div>
+  <div class="ai-log" id="aiLog"></div>
+  <div class="ai-chips" id="aiChips"></div>
+  <form class="ai-in" id="aiForm">
+    <input id="aiTx" autocomplete="off" placeholder="Ask about prices, your booking, anything">
+    <button type="submit" class="btn btn-nv" id="aiSend" aria-label="Send">&#8250;</button>
+  </form>
+</div>
 
 <div id="mob">
   <button class="mob-x" id="mobX" aria-label="Close menu">×</button>
@@ -3132,6 +3168,167 @@ const REWARDS = [
 ];
 
 /* ============================================================
+   ASSISTANT
+   Anything with a number in it is answered from config/pricing and
+   the customer's own records, never generated. A model that invents
+   a price creates a contract we then have to honour under the
+   Australian Consumer Law, so the priced answers below are computed
+   and only genuinely open text is sent to the model.
+
+   Free text posts to the kings-api worker, which holds the API key
+   and runs claude-opus-5. The page never holds a key: this artefact
+   publishes with capabilities {"db":{},"user":{}} and that is the
+   whole reason the model call lives server-side.
+   ============================================================ */
+const AI_ENDPOINT = '/api/ai/chat';
+
+/* Ordered: the first pattern that matches wins, so the refusals sit
+   above the general handlers. */
+const AI_INTENTS = [
+  { id:'ironing', re:/\biron(ing|ed|s)?\b|\bpress(ing|ed)?\b/i, reply(){
+      return 'We do not offer ironing. What we do instead is <strong>Premium Clean</strong> at '
+        + money(PX.premium) + ' a load: stains are treated by hand before washing, delicates and fine '
+        + 'knits go through a gentle cool cycle, knits are reshaped and air-dried flat, and shirts and '
+        + 'dresses come back on hangers rather than folded. For most things people used to send for '
+        + 'ironing, that is the closer match.';
+    } },
+  { id:'legal', re:/\b(tax|gst deduct|legal advice|sue|liabilit|contract law|solicitor|lawyer|deduction)\b/i, reply(){
+      return 'I am not able to give legal, tax or financial advice, and I would rather say so than guess. '
+        + 'If you send your question to our support team we will pass it to the right adviser.';
+    } },
+  { id:'price', re:/\b(price|pricing|cost|charge|how much|quote|rate)\b/i, reply(){
+      return 'Current rates, all GST inclusive:<br>'
+        + '&#8226; Wash &amp; fold ' + money(PX.load) + ' a load, about 5&nbsp;kg<br>'
+        + '&#8226; Premium Clean ' + money(PX.premium) + ' a load on top<br>'
+        + '&#8226; Collection and return ' + money(PX.delivery) + ' flat, both directions<br>'
+        + '&#8226; LaundryKings bag ' + money(PX.bag) + ', optional and yours to keep<br>'
+        + '&#8226; Minimum order ' + money(PX.minimum) + ' on one-off bookings<br>'
+        + 'Two loads with delivery comes to about ' + money(Math.max(PX.minimum, PX.load*2 + PX.delivery))
+        + '. Your operator confirms the real figure after weighing, before any work starts.';
+    } },
+  { id:'next', re:/\b(next|upcoming|when).{0,20}\b(pickup|collection|booking)\b|\bwhen.{0,12}\bcoming\b/i, reply(){
+      const up = (S.bookings||[]).filter(b => ['requested','confirmed'].includes(b.status))
+                                 .sort((a,b) => (a.date||'').localeCompare(b.date||''))[0];
+      if (!up) return 'You have no collection booked at the moment. '
+        + '<a href="#/book">Book one here</a> and I can talk you through it.';
+      return 'Your next collection is <strong>' + longDate(up.date) + '</strong>, ' + esc(up.window)
+        + ', reference ' + esc(up.ref) + '. You can change or cancel it from '
+        + '<a href="#/bookings">your bookings</a>.';
+    } },
+  { id:'crowns', re:/\b(crowns?|rewards?|loyalty|points?|tiers?|referrals?)\b/i, reply(){
+      const r = rewardsState();
+      return 'You have <strong>' + r.balance.toLocaleString('en-AU') + ' Crowns</strong>, worth '
+        + money(crownsToAud(r.balance)) + ', and you are on ' + r.tier.name + ' earning '
+        + r.tier.mult + ' per $1. '
+        + (r.next ? money(Math.max(0, r.next.min - r.rolling)) + ' more in the next 12 months reaches ' + r.next.name + '. ' : '')
+        + '<a href="#/rewards">See what you can spend them on</a>.';
+    } },
+  { id:'book', re:/\b(book|order|schedule|arrange|pick ?up my)\b/i, reply(){
+      return 'I can start that for you. <a href="#/book">Open the booking form</a> and pick a service, '
+        + 'a day and a window. If you are not sure how much you have, two loads covers a typical weekly '
+        + 'wash for a couple.';
+    } },
+  { id:'coverage', re:/\b(cover|servic\w*|area|suburb|postcode|do you come)\b/i, reply(text){
+      /* If they gave us a postcode, answer that one rather than sending
+         them to a form to re-enter what they just typed. */
+      const pc = (String(text||'').match(/\b(\d{4})\b/) || [])[1];
+      if (pc && LIVE_PC[pc]) return 'Yes. We collect from ' + esc(LIVE_PC[pc]) + ' (' + pc + ') now. '
+        + '<a href="#/book">Book a collection</a> whenever you are ready.';
+      if (pc && SOON_PC[pc]) return esc(SOON_PC[pc]) + ' (' + pc + ') is on our list but not live yet. '
+        + '<a href="#/coverage">Leave your details</a> and we will tell you the day it opens.';
+      if (pc) return 'We are not in ' + pc + ' yet. <a href="#/coverage">Register the postcode</a> and it '
+        + 'counts toward where we open next.';
+      const n = Object.keys(LIVE_PC).length;
+      return 'We collect from ' + n + ' suburbs across Brisbane and Logan right now, with more opening. '
+        + '<a href="#/coverage">Check your postcode here</a> and it will tell you straight away.';
+    } },
+  { id:'cancel', re:/\b(cancel|reschedule|change|move).{0,20}\b(booking|collection|pickup)\b/i, reply(){
+      return 'You can change or cancel any upcoming collection yourself from '
+        + '<a href="#/bookings">your bookings</a>. There is no charge to cancel before collection.';
+    } },
+  { id:'human', re:/\b(human|person|speak to someone|complain|manager|urgent)\b/i, reply(){
+      return 'I will get a person onto this. <a href="#/contact">Send us a message here</a> and it goes '
+        + 'straight to the team, or use <a href="#/feedback">feedback</a> if something went wrong with a '
+        + 'collection so it gets logged properly.';
+    } }
+];
+
+function aiAnswer(text){
+  const hit = AI_INTENTS.find(i => i.re.test(text));
+  return hit ? { handled:true, intent:hit.id, html:hit.reply(text) } : { handled:false };
+}
+
+const AI_CHIPS = ['How much for two loads?', 'Do you do ironing?', 'When is my next collection?', 'What are Crowns?', 'Do you cover my suburb?'];
+let AI_LOG = [];
+
+function aiPush(who, html){
+  AI_LOG.push({ who, html });
+  const log = document.getElementById('aiLog'); if (!log) return;
+  const d = document.createElement('div');
+  d.className = 'ai-m ' + who;
+  d.innerHTML = html;
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function aiSend(text){
+  const q = String(text || '').trim(); if (!q) return;
+  aiPush('you', esc(q));
+  const local = aiAnswer(q);
+  if (local.handled){ aiPush('bot', local.html); return; }
+
+  /* Anything not covered above goes to the worker, which runs the model
+     with the same refusals in its system prompt. If it is unreachable we
+     say so rather than inventing an answer. */
+  aiPush('bot', '<span id="aiThinking">Thinking...</span>');
+  try {
+    const res = await fetch(AI_ENDPOINT, {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ message:q, history: AI_LOG.slice(-8) })
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+    const data = await res.json();
+    const t = document.getElementById('aiThinking');
+    if (t) t.parentElement.innerHTML = esc(data.reply || '').replace(/\n/g,'<br>');
+  } catch (e){
+    const t = document.getElementById('aiThinking');
+    if (t) t.parentElement.innerHTML = 'I cannot reach our assistant right now, and I would rather '
+      + 'say that than guess. <a href="#/contact">Send us a message</a> and someone will answer properly.';
+  }
+}
+
+function wireAI(){
+  const fab = document.getElementById('aiFab'), panel = document.getElementById('aiPanel');
+  if (!fab || !panel) return;
+  const open = on => {
+    panel.hidden = !on;
+    fab.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on){
+      if (!AI_LOG.length) aiPush('bot', 'Hello. I can tell you what things cost, check your collections '
+        + 'and point you to the right page. What do you need?');
+      const tx = document.getElementById('aiTx'); if (tx) tx.focus();
+    }
+  };
+  fab.onclick = () => open(panel.hidden);
+  const x = document.getElementById('aiX'); if (x) x.onclick = () => open(false);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) open(false); });
+
+  const chips = document.getElementById('aiChips');
+  if (chips){
+    chips.innerHTML = AI_CHIPS.map(c => '<button type="button" class="ai-chip">' + esc(c) + '</button>').join('');
+    chips.querySelectorAll('.ai-chip').forEach(b => b.onclick = () => aiSend(b.textContent));
+  }
+
+  const form = document.getElementById('aiForm');
+  if (form) form.onsubmit = e => {
+    e.preventDefault();
+    const tx = document.getElementById('aiTx');
+    const v = tx.value; tx.value = '';
+    aiSend(v);
+  };
+}
+
+/* ============================================================
    PAYMENT METHODS
    Laundry is priced by weight, and the weight is not known until the
    operator has the bags. So nothing here charges the estimate: each
@@ -4684,7 +4881,7 @@ async function appBoot(){
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); wireLeads(); renderOnboard(); route();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); wireLeads(); wireAI(); renderOnboard(); route();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
