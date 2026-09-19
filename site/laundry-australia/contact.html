@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Home Laundry — Laundrylegends</title>
-<meta name="description" content="Home Laundry pickup and delivery from Laundrylegends. Fresh &amp; effortless. Book a pickup online or call 1800 PICKUP." />
+<title>Contact — Laundrylegends</title>
+<meta name="description" content="Get in touch with Laundrylegends. Call 1800 PICKUP, book online, or send us a message — laundry, ironing and dry cleaning, sorted." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Yellowtail&display=swap" rel="stylesheet" />
@@ -607,6 +607,80 @@
     margin:0 0 26px;
   }
 
+  /* ---- Contact page ---- */
+  .contact{padding:56px 0 40px; background:#fff}
+  .contact .container{position:relative}
+  .contact .sparkle-abs.sp-a{top:-6px; right:26px; width:34px}
+  .contact .sparkle-abs.sp-b{top:230px; right:8px; width:40px}
+  .contact h1{
+    margin:14px 0 18px;
+    font-family:'Anton',sans-serif; font-weight:400;
+    text-transform:uppercase;
+    font-size:clamp(34px, 10.5vw, 52px);
+    color:var(--blue);
+    letter-spacing:.02em;
+    line-height:.95;
+  }
+  .contact .lead{color:var(--ink); font-size:17px; margin:0 0 14px; max-width:340px}
+  .contact h3{
+    font-family:'Anton',sans-serif; font-weight:400;
+    text-transform:uppercase;
+    font-size:26px;
+    color:var(--blue);
+    letter-spacing:.02em;
+    margin:30px 0 8px;
+    line-height:1;
+  }
+  .contact address{font-style:normal; color:var(--ink); font-size:17px; line-height:1.45}
+  .contact .call-line{
+    display:inline-block;
+    font-family:'Anton',sans-serif; font-weight:400;
+    text-transform:uppercase;
+    font-size:22px;
+    color:var(--orange);
+    letter-spacing:.03em;
+    margin:16px 0 4px;
+  }
+  .contact .phone-line{color:var(--ink); font-size:17px; margin:10px 0 0}
+  .contact .phone-line a{color:var(--orange); text-decoration:underline}
+  .contact-form{
+    background:#fff;
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-card);
+    padding:34px 30px 36px;
+    margin:36px 0 10px;
+  }
+  .contact-form .field{margin:0 0 30px}
+  .contact-form label{
+    display:block;
+    color:var(--blue);
+    font-size:16px;
+    margin:0 0 6px;
+  }
+  .contact-form input,
+  .contact-form textarea{
+    width:100%;
+    border:0; border-bottom:1.5px solid var(--blue);
+    border-radius:0;
+    background:transparent;
+    font:inherit; color:var(--ink);
+    padding:4px 0 8px;
+    outline:none;
+  }
+  .contact-form textarea{min-height:110px; resize:vertical}
+  .contact-form input:focus,
+  .contact-form textarea:focus{border-bottom-color:var(--orange)}
+  .contact-form .submit{
+    font:inherit; color:var(--blue);
+    background:#fff;
+    border:1px solid var(--grey-line);
+    border-radius:8px;
+    padding:10px 26px;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
+    cursor:pointer;
+  }
+  .form-note{font-size:13px; color:#666; margin:14px 0 0}
+
   /* Larger screens */
   @media (min-width:640px){
     .hero .home{font-size:96px}
@@ -650,261 +724,54 @@
     </div>
   </nav>
 
-  <!-- =============== HERO =============== -->
-  <section class="hero" aria-label="Home Laundry">
+  <!-- =============== CONTACT =============== -->
+  <section class="contact" aria-labelledby="contact-h">
     <div class="container">
-      <h1>
-        <span class="home">HOME</span>
-        <span class="laundry">LAUNDRY</span>
-        <span class="script-sub">Fresh &amp; Effortless</span>
-      </h1>
-      <div class="cta-row" style="text-align:center">
-        <a class="btn-pill-outline" href="https://drycleaning.com.au/" aria-label="Order pickup">Order pickup</a>
-      </div>
-      <div class="hero-illustration" aria-hidden="true">
-        <!-- Iron with sparkles -->
-        <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- steam swoosh -->
-          <path d="M260 60 C300 30 360 40 380 90 C395 130 335 150 320 118" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-          <!-- iron body -->
-          <path d="M110 200 L340 200 C330 170 305 150 260 148 L190 148 C150 150 122 172 110 200 Z" stroke="#fff" stroke-width="3" stroke-linejoin="round" fill="none"/>
-          <!-- iron top rectangle -->
-          <rect x="200" y="158" width="70" height="26" rx="6" stroke="#fff" stroke-width="3" fill="none"/>
-          <!-- baseline plate -->
-          <path d="M116 200 L334 200" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-          <!-- sparkles -->
-          <g stroke="#EE6E1F" stroke-width="2.5" fill="none">
-            <path d="M240 118 L246 108 L252 118 L246 128 Z"/>
-            <circle cx="262" cy="112" r="2.5"/>
-            <path d="M150 90 L156 78 L162 90 L156 102 Z"/>
-            <circle cx="172" cy="82" r="2.5"/>
-          </g>
-          <g stroke="#fff" stroke-width="2.5" fill="none">
-            <path d="M92 130 L98 118 L104 130 L98 142 Z"/>
-            <circle cx="114" cy="122" r="2.5"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </section>
+      <svg class="sparkle-abs sp-a" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/><circle cx="34" cy="10" r="2" stroke="#EE6E1F" stroke-width="1.5" fill="none"/></svg>
+      <h1 id="contact-h">Let&rsquo;s talk laundry</h1>
+      <p class="lead">Whatever needs washing, we&rsquo;ve got you covered — laundry, ironing and dry cleaning.</p>
+      <p class="lead">Ring 1800 PICKUP, book online, or pop your details in the form below and we&rsquo;ll get straight back to you.</p>
+      <svg class="sparkle-abs sp-b" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/></svg>
 
-  <!-- =============== LIFE TOO BUSY =============== -->
-  <section class="section life-busy" aria-labelledby="life-busy-h">
-    <div class="container">
-      <svg class="sparkle-abs sp-1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/><circle cx="34" cy="10" r="2" stroke="#EE6E1F" stroke-width="1.5" fill="none"/></svg>
-      <h2 id="life-busy-h" class="display">Life&rsquo;s too short to spend it folding washing.</h2>
-      <p class="subline">Hand it over — we&rsquo;ve got it covered.</p>
-      <p class="body">Our Home Laundry service takes the grunt work off your plate in just a few taps.</p>
-      <svg class="sparkle-abs sp-2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/></svg>
+      <h3>Head Office</h3>
+      <address>
+        42 Fresh Lane,<br/>
+        Brisbane, QLD 4000
+      </address>
+      <a class="call-line" href="tel:1800742587">Call 1800 PICKUP</a>
 
-      <!-- SIMPLIFY YOUR LIFE card -->
-      <div class="simplify">
-        <h3>Take it off your list</h3>
-        <p>Book a pickup and your laundry day is done. We collect, wash, dry, fold — and if anything needs the full dry cleaning treatment, we handle that too — then bring it straight back to your door.</p>
-      </div>
+      <h3>Service Centre</h3>
+      <address>
+        Unit 5, 168 Distribution Drive<br/>
+        Coorparoo, QLD 4151
+      </address>
+      <p class="phone-line">T: <a href="tel:0735551800">(07) 3555 1800</a></p>
 
-      <!-- GET BACK TO DOING WHAT YOU LOVE card -->
-      <div class="love">
-        <h3>Reclaim your free time</h3>
-        <p>More time with your kids, your partner, your mates&hellip; less time dealing with household chores that eat up your weekend.</p>
-        <p>We genuinely love doing this stuff. Seriously — it&rsquo;s our thing.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============== OUR PROCESS =============== -->
-  <section class="section process" aria-labelledby="process-h">
-    <div class="container">
-      <h2 id="process-h">Our Process</h2>
-
-      <!-- ORDER -->
-      <article class="step-card">
-        <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
-          <!-- basket -->
-          <path d="M18 46 L102 46 L92 100 L28 100 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
-          <!-- clothes hump -->
-          <path d="M28 46 C36 26 58 20 74 30 C86 22 100 32 96 46" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <path d="M40 40 C46 34 54 36 58 42" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- vertical slats -->
-          <line x1="46" y1="60" x2="46" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-          <line x1="58" y1="60" x2="58" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-          <line x1="70" y1="60" x2="70" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-        <h3>Order</h3>
-        <p>Book online or ring 1800 PICKUP and the Laundrylegends crew will be on their way. Consider it handled.</p>
-      </article>
-
-      <!-- PICK UP -->
-      <article class="step-card">
-        <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
-          <!-- van body -->
-          <path d="M8 82 L8 52 L64 52 L82 68 L112 68 L112 82" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
-          <line x1="8" y1="82" x2="112" y2="82" stroke="#111" stroke-width="3" stroke-linecap="round"/>
-          <!-- window -->
-          <path d="M64 58 L78 68 L64 68 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
-          <!-- wheels -->
-          <circle cx="34" cy="88" r="10" stroke="#111" stroke-width="3" fill="none"/>
-          <circle cx="34" cy="88" r="3" stroke="#111" stroke-width="2" fill="none"/>
-          <circle cx="92" cy="88" r="10" stroke="#111" stroke-width="3" fill="none"/>
-          <circle cx="92" cy="88" r="3" stroke="#111" stroke-width="2" fill="none"/>
-          <!-- door line -->
-          <line x1="40" y1="52" x2="40" y2="82" stroke="#111" stroke-width="3"/>
-        </svg>
-        <h3>Pick up</h3>
-        <p>A Laundrylegends van heads your way, one of our team jumps out, collects your washing and we&rsquo;re gone — quick as you like.</p>
-      </article>
-
-      <!-- WASH & DRY -->
-      <article class="step-card">
-        <svg class="icon" viewBox="0 0 160 120" aria-hidden="true">
-          <!-- washer 1 -->
-          <rect x="6" y="14" width="66" height="92" rx="6" stroke="#111" stroke-width="3" fill="none"/>
-          <line x1="6" y1="34" x2="72" y2="34" stroke="#111" stroke-width="3"/>
-          <circle cx="14" cy="24" r="2" fill="#111"/>
-          <circle cx="24" cy="24" r="2" fill="#111"/>
-          <rect x="54" y="20" width="14" height="8" rx="2" stroke="#111" stroke-width="2" fill="none"/>
-          <circle cx="39" cy="70" r="24" stroke="#111" stroke-width="3" fill="none"/>
-          <circle cx="39" cy="70" r="15" stroke="#111" stroke-width="2" fill="none"/>
-          <!-- washer 2 -->
-          <rect x="88" y="14" width="66" height="92" rx="6" stroke="#111" stroke-width="3" fill="none"/>
-          <line x1="88" y1="34" x2="154" y2="34" stroke="#111" stroke-width="3"/>
-          <circle cx="96" cy="24" r="2" fill="#111"/>
-          <circle cx="106" cy="24" r="2" fill="#111"/>
-          <rect x="136" y="20" width="14" height="8" rx="2" stroke="#111" stroke-width="2" fill="none"/>
-          <circle cx="121" cy="70" r="24" stroke="#111" stroke-width="3" fill="none"/>
-          <circle cx="121" cy="70" r="15" stroke="#111" stroke-width="2" fill="none"/>
-        </svg>
-        <h3>Wash &amp; Dry</h3>
-        <p>Whites sorted from colours, delicates kept separate — then washed, dried and neatly folded. Anything needing the full dry cleaning treatment gets that too, just say the word.</p>
-      </article>
-
-      <!-- DROP OFF -->
-      <article class="step-card">
-        <svg class="icon" viewBox="0 0 140 100" aria-hidden="true">
-          <!-- iron -->
-          <path d="M20 80 L120 80 C115 62 96 50 68 50 C46 50 30 62 20 80 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
-          <rect x="60" y="56" width="30" height="12" rx="3" stroke="#111" stroke-width="3" fill="none"/>
-          <path d="M74 50 C90 32 108 30 128 40" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-        </svg>
-        <h3>Drop off</h3>
-        <p>Clean, fresh and ready to go — we bring it straight back to your door. All you have to do is put it away.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- =============== PRICING =============== -->
-  <section class="section pricing" aria-labelledby="pricing-h">
-    <div class="container">
-      <h2 id="pricing-h" class="pricing-title">Pricing</h2>
-      <hr class="pricing-rule" />
-
-      <!-- bags illustration: 4 flat shopping bags side-by-side, labelled -->
-      <svg class="bags-illo" viewBox="0 0 620 380" aria-hidden="true" role="img" aria-label="Laundrylegends bags — washed, dried, ironed, folded, ready for pickup">
-        <defs>
-          <!-- one bag body with handle, positioned via <use> -->
-        </defs>
-        <g stroke="#111" stroke-width="2.4" fill="#fff" stroke-linejoin="round" stroke-linecap="round">
-          <!-- back tall bag (Home Laundry branded) -->
-          <g>
-            <path d="M420 40 C420 22 480 22 480 40"/>
-            <path d="M380 60 L570 60 L570 340 L380 340 Z"/>
-            <line x1="380" y1="90" x2="570" y2="90"/>
-            <!-- fold tick -->
-            <path d="M470 60 L472 68 L468 68 Z" fill="#111"/>
-          </g>
-          <!-- washed dried -->
-          <g>
-            <path d="M50 100 C50 82 118 82 118 100"/>
-            <path d="M20 120 L180 120 L180 350 L20 350 Z"/>
-            <line x1="20" y1="150" x2="180" y2="150"/>
-            <path d="M96 120 L100 130 L92 130 Z" fill="#111"/>
-          </g>
-          <!-- ironed folded -->
-          <g>
-            <path d="M200 120 C200 102 268 102 268 120"/>
-            <path d="M170 140 L330 140 L330 355 L170 355 Z"/>
-            <line x1="170" y1="170" x2="330" y2="170"/>
-            <path d="M246 140 L250 150 L242 150 Z" fill="#111"/>
-          </g>
-          <!-- ready for pickup -->
-          <g>
-            <path d="M340 130 C340 112 408 112 408 130"/>
-            <path d="M310 150 L470 150 L470 360 L310 360 Z"/>
-            <line x1="310" y1="180" x2="470" y2="180"/>
-          </g>
-        </g>
-
-        <!-- Labels -->
-        <g font-family="Anton, Arial Narrow, sans-serif" font-weight="400" fill="#111" text-anchor="middle" letter-spacing=".5">
-          <text x="100" y="245" font-size="26">WASHED</text>
-          <text x="100" y="270" font-size="26">DRIED</text>
-          <text x="250" y="265" font-size="26">IRONED</text>
-          <text x="250" y="290" font-size="26">FOLDED</text>
-        </g>
-        <g font-family="Yellowtail, Kaushan Script, cursive" fill="#111" text-anchor="middle">
-          <text x="390" y="270" font-size="26">&amp; ready</text>
-          <text x="390" y="298" font-size="26">for pickup</text>
-        </g>
-
-        <!-- Laundrylegends brand on back bag -->
-        <g font-family="Anton, Arial Narrow, sans-serif" font-weight="400" fill="#111" text-anchor="middle">
-          <text x="475" y="188" font-size="30" transform="rotate(-90 475 188)">LAUNDRY</text>
-          <text x="500" y="188" font-size="46" transform="rotate(-90 500 188)">LEGENDS</text>
-        </g>
-        <text x="530" y="188" font-family="Yellowtail, cursive" font-size="22" fill="#111" text-anchor="middle" transform="rotate(-90 530 188)">Fresh &amp; Effortless</text>
-
-        <!-- Sparkles -->
-        <g stroke="#111" stroke-width="1.8" fill="none">
-          <path d="M40 96 C40 86 42 84 46 82 C42 80 40 78 40 68 C40 78 38 80 34 82 C38 84 40 86 40 96 Z"/>
-          <circle cx="60" cy="86" r="2"/>
-          <path d="M64 74 C64 66 66 64 70 62 C66 60 64 58 64 50 C64 58 62 60 58 62 C62 64 64 66 64 74 Z"/>
-          <path d="M340 342 C340 335 342 333 346 331 C342 329 340 327 340 320 C340 327 338 329 334 331 C338 333 340 335 340 342 Z"/>
-          <circle cx="360" cy="335" r="2"/>
-        </g>
-      </svg>
-
-      <!-- Personal bag wash -->
-      <div class="price-card">
-        <p class="script">Personal<br/>bag wash</p>
-        <p class="headline">Once a week pick up<span aria-hidden="true">*</span> <span class="price">$59.95</span></p>
-        <ul>
-          <li>* 1 standard 7kg household washing machine load per week <em>(all items including underwear)</em></li>
-          <li>* Up to 10 items ironed <em>(e.g. flat sheets/pillow cases)</em></li>
-          <li>* Excludes business shirts, delicates and dry cleaning items</li>
-          <li>* Terms &amp; conditions apply</li>
-        </ul>
-      </div>
-
-      <!-- Ironing -->
-      <div class="ironing-block">
-        <h3>Ironing</h3>
-        <div class="ironing-row">
-          <span class="label">Ironing per piece</span>
-          <span class="price">$3</span>
+      <!-- Contact form (placeholder — not wired to a backend yet) -->
+      <form class="contact-form" action="#" method="post">
+        <div class="field">
+          <label for="cf-first">First name*</label>
+          <input id="cf-first" name="first_name" type="text" autocomplete="given-name" required />
         </div>
-      </div>
-
-      <!-- Full price list -->
-      <a class="price-list-btn" href="#" data-open-prices>View full price list</a>
-
-      <!-- T&Cs -->
-      <div class="tc-block">
-        <h3>T&amp;C&rsquo;s</h3>
-        <ul>
-          <li class="strong">* Advise us of items valued at over $250. Extra delicate &amp; large items may incur higher charges</li>
-          <li class="strong">* All items identified as Dry Cleaning will be charged accordingly</li>
-          <li>* For personal bags, if over weight/specified number of pieces, extra charges may apply</li>
-          <li>* A basic wash is just that &ndash; provide us with the usual assortment of clothes your would normally put through a standard wash. No delicates. We have specific services for these items</li>
-          <li>* All prices include GST</li>
-        </ul>
-      </div>
-
-      <!-- CTA -->
-      <div class="cta-banner" id="pickup">
-        <h2>Request pickup<br/>online now</h2>
-        <a class="btn-pill-outline" href="https://drycleaning.com.au/" aria-label="Order pickup">Order pickup</a>
-        <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#fff" stroke-width="2" fill="none"/><circle cx="32" cy="12" r="2" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
-      </div>
+        <div class="field">
+          <label for="cf-last">Last name*</label>
+          <input id="cf-last" name="last_name" type="text" autocomplete="family-name" required />
+        </div>
+        <div class="field">
+          <label for="cf-phone">Phone*</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" required />
+        </div>
+        <div class="field">
+          <label for="cf-email">Email*</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="cf-message">Message*</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button class="submit" type="submit">Submit</button>
+        <p class="form-note">Form is a placeholder — no backend is connected yet.</p>
+      </form>
     </div>
   </section>
 
@@ -1061,6 +928,16 @@
           // otherwise treat as open mailing list form (no-op placeholder)
           window.location.hash = '#mailing-list';
         }
+      });
+    })();
+
+    // Contact form — placeholder until a backend exists
+    (function(){
+      var form = document.querySelector('.contact-form');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('Thanks! This form is not connected yet \u2014 please call 1800 PICKUP.');
       });
     })();
 

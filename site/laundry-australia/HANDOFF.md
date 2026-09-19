@@ -104,6 +104,7 @@ https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,
 Two small IIFEs at the bottom of the file:
 - **Mailing pill** — click within 44px of the left edge dismisses it (`.hidden`); clicking elsewhere sets `location.hash = '#mailing-list'` (placeholder, no target exists)
 - **Hamburger** — opens the full-screen menu overlay (`#site-menu`): About us, Our services (Commercial Laundry, Home Laundry, Dry Cleaning, Sports Laundry), Price list. Built 19 Sep 2026 from three new screen recordings of the source site's menu. "Blankets for Brisbane" (the competitor's charity campaign) was deliberately omitted.
+- **Contact page** — `contact.html`, built 19 Sep 2026 from the second source recording (competitor heading "Let's talk dirty" recharacterised to "Let's talk laundry", copy rewritten). Head Office / Service Centre placeholders, Call 1800 PICKUP, and a First name/Last name/Phone/Email/Message form. THE FORM HAS NO BACKEND — submit is intercepted with a notice. If it goes live it collects personal information: Privacy Act obligations and the missing Privacy Policy page (Blockers #6/#7) attach to it too.
 - **Price list panel** — `#price-panel` slide-up sheet with Sports / Personal / T&C's pill tabs (scroll-to + scroll-spy), opened from the menu or the "View full price list" button in Pricing. ALL FIGURES TRANSCRIBED FROM THE COMPETITOR'S PANEL — covered by Blocker #5, replace before publish. Express service fee $68.45 included.
 
 ---
