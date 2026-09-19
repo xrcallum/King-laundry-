@@ -35,6 +35,7 @@
   }
   img,svg{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
+  [hidden]{display:none!important}  /* CSS reset — my display:flex on .fee-row would otherwise beat the default */
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   :focus-visible{outline:3px solid var(--red-brand);outline-offset:3px;border-radius:6px}
   .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
@@ -287,10 +288,48 @@
     .reveal-stagger.is-visible>*:nth-child(n+6){transition-delay:.34s}
   }
 
+
+  /* ---- PROCESS RAIL (dense timeline replaces five giant cards) ---- */
+  .process-rail{list-style:none;margin:0;padding:24px 22px 8px;background:#fff;border-radius:var(--radius-card);box-shadow:var(--shadow-card)}
+  .process-rail li{display:grid;grid-template-columns:44px 1fr;column-gap:16px;padding-bottom:22px;position:relative}
+  .process-rail li:last-child{padding-bottom:0}
+  .process-rail li:not(:last-child)::after{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--line)}
+  .process-rail .dot{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15px;position:relative;z-index:2;box-shadow:0 0 0 4px #fff}
+  .process-rail .content{padding-top:4px;min-width:0}
+  .process-rail h3{margin:0 0 3px;font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.2}
+  .process-rail p{margin:0;font-size:14.5px;color:var(--body);line-height:1.5}
+  .process-rail .meta{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--red);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+  .process-rail .meta::before{content:"";width:14px;height:1.5px;background:var(--red)}
+
+  /* ---- ESTIMATOR (interactive) ---- */
+  .estimator{background:#fff;border-radius:var(--radius-card);padding:26px 24px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:18px}
+  .estimator .eyebrow{color:var(--red);margin:0}
+  .estimator .est-title{margin:0;font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:20px;color:var(--navy);line-height:1.2}
+  .est-loads{display:flex;flex-wrap:wrap;gap:6px}
+  .est-loads button{flex:1;min-width:0;padding:12px 8px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-weight:500;font-size:15px;transition:background .15s ease,border-color .15s ease,color .15s ease}
+  .est-loads button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .est-loads-hint{margin:0;font-size:13px;color:var(--mute);line-height:1.4}
+  .est-addons{display:flex;flex-direction:column;gap:8px}
+  .est-addons label{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;cursor:pointer;font-size:15px;color:var(--ink);transition:background .15s ease,border-color .15s ease}
+  .est-addons label:has(input:checked){background:var(--orange-w);border-color:var(--orange)}
+  .est-addons input{margin:0;width:18px;height:18px;accent-color:var(--orange);flex:0 0 auto}
+  .est-addons small{margin-left:auto;color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums}
+  .est-breakdown{display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:4px}
+  .est-note{margin:0;font-size:13px;color:var(--mute);line-height:1.5}
+
+  /* ---- RATE CHIP GRID ---- */
+  .rate-block{display:flex;flex-direction:column;gap:10px}
+  .rate-block .head{margin:0;font-family:'Inter',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px}
+  .rate-block .head::after{content:"";flex:1;height:1px;background:var(--line)}
+  .rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .rate-chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;gap:2px;min-height:64px;justify-content:center}
+  .rate-chip .name{font-size:12.5px;color:var(--body);line-height:1.3}
+  .rate-chip .amt{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);font-variant-numeric:tabular-nums}
+
   @media (min-width:640px){
     .hero .l1{font-size:66px}.hero .l2{font-size:88px}
     .segments{grid-template-columns:repeat(4,1fr)}
-    .steps{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
+    .rate-grid{grid-template-columns:repeat(6,1fr)}
   }
 </style>
 </head>
@@ -494,6 +533,35 @@
         markActive(cur);
       },{passive:true});
     }
+    // Estimator (interactive live pricing)
+    (function(){
+      var box=document.querySelector('.estimator'); if(!box)return;
+      var loads=1, addOns={premium:false,eco:false};
+      var loadBtns=box.querySelectorAll('.est-loads button');
+      var addChecks=box.querySelectorAll('.est-addons input');
+      function $id(id){return document.getElementById(id);}
+      function fmt(n){return '$'+n.toFixed(2);}
+      function copy(n){return n+' load'+(n>1?'s':'');}
+      function update(){
+        var wash=loads*32, prem=addOns.premium?loads*15:0, eco=addOns.eco?3.50:0;
+        var subtotal=wash+prem+eco+13.50;
+        var below=subtotal<73.50;
+        var total=below?73.50:subtotal;
+        $id('est-wash').textContent=fmt(wash);
+        $id('est-prem').textContent=fmt(prem);
+        $id('est-loads-copy').textContent=copy(loads);
+        $id('est-prem-copy').textContent=copy(loads);
+        $id('est-prem-row').hidden=!addOns.premium;
+        $id('est-eco-row').hidden=!addOns.eco;
+        $id('est-total').textContent=fmt(total);
+        $id('est-total-label').textContent=below?'Minimum · confirmed at your door':'Confirmed at your door';
+        $id('est-note').hidden=!below;
+      }
+      loadBtns.forEach(function(b){b.addEventListener('click',function(){loads=parseInt(b.dataset.loads,10);loadBtns.forEach(function(x){x.classList.toggle('active',x===b);});update();});});
+      addChecks.forEach(function(c){c.addEventListener('change',function(){addOns[c.dataset.add]=c.checked;update();});});
+      update();
+    })();
+
     // Contact form: no backend yet
     var form=document.querySelector('.contact-form');
     if(form){form.addEventListener('submit',function(e){e.preventDefault();
