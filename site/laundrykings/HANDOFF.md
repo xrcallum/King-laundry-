@@ -1,5 +1,17 @@
-# Laundrylegends — Home Laundry Landing Page
+# LaundryKings — Home Laundry Landing Page
 ## Complete Handoff Document
+
+> **STATUS 19 Sep 2026 — personalised to LaundryKings.** Both pages were rebuilt from the venture's own sources and the "Laundrylegends" placeholder brand is gone. Everything below this box that says Laundrylegends, 1800 PICKUP, orange/blue tokens or competitor pricing is **historical** and superseded by the current files.
+>
+> **Sources used (cite by section):** dossier Part 2 (brand, principals, "Do not say"), Part 3 (rate card, coverage, booking windows), Part 5 (guarantee, live site URL), Part 11 (mandatory compliance text); `site/laundrykings-site.html` `DEFAULT_PRICING` + `HOME_SUBURBS` + `content_update_2.py` (19 Sep 2026 Kings Club names Solo / Pair / Family and +30%).
+>
+> **What is now on the page:** logo artwork (`site/brand/logo-mark.png`, embedded) · tagline We Wash It Well · tokens navy `#0C265F` / red `#C43828` (buttons) / red-brand `#D84330` (marks) · Wash & fold $32.00/load (~5 kg), Premium Clean +$15.00, eco +$3.50, collection & return $13.50, one-off minimum $73.50, worked example 2 loads = $77.50 · Kings Club Solo $63.70 / Pair $89.70 / Family $115.70 with savings basis · five-step flow · 16 live suburbs with postcodes · windows 9–12 / 12–3 / 4–7 · guarantee points (48 h re-wash, late-return fee refund, $250 declaration) · mandatory footer lines (GST/AUD, not a registered NDIS provider, no AS/NZS 4146 / clinical linen, ACL not limited, Privacy/Terms "draft for legal review"). All CTAs go to the live LaundryKings site booking route `…/SJihvya38JukdcAUL7JiFx#/book`; menu/legal links go to its hash routes.
+>
+> **Deliberately NOT on the page (never invent):** phone, email, entity name, ABN, address — shown as "being connected / to be published" per README rule; owner Max Jones (D-03 entity/ABN due 25 Sep; D-01 phone/email due 26 Sep). No ironing, no same-day claim, no client logos, no exclamation marks, no emoji, no "premium/hassle-free/best in Brisbane". Mailing-list pill removed (Blocker #7 closed by removal).
+>
+> **Open items:** (1) Max to confirm Kings Club tier names — dossier Part 3 says Solo / Household / Full House, site file says Solo / Pair / Family; page follows the site file. (2) Pricing is "launch, under review" and is hard-coded here because this page has no DB — when `config/pricing` changes, rebuild. (3) Contact form has no backend; submit shows a notice. (4) `laundrykings.com.au` unconfirmed (D-09) so no domain appears on the page. (5) Fonts render as system fallbacks in the headless proxy only; live page loads Archivo/Inter.
+>
+> **Verification:** 390 px headless render of both pages — 0 overlapping text/button boxes, 0 horizontal overflow, 0 exclamation marks, 0 emoji, 0 competitor strings.
 
 **Prepared:** 19 September 2026
 **Venture:** Laundrylegends
