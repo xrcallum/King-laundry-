@@ -1046,36 +1046,6 @@ svg.ic{width:24px;height:24px}
   .h5-metrics{grid-template-columns:1fr 1fr}
 }
 
-/* ── Coverage map ── */
-#mapband{background:var(--paper);padding:2.6rem 0}
-.pc-inline{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
-.pc-inline input{width:170px;padding:.65rem .8rem;border:1.5px solid rgba(12,38,95,.15);background:#fff;border-radius:8px;font-family:var(--fd);font-weight:700;font-size:var(--fs-body);color:var(--navy);text-align:center;letter-spacing:.05em}
-.pc-inline input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(12,38,95,.15)}
-.pc-msg{font-size:var(--fs-micro);color:var(--navy);font-weight:600;padding-left:.4rem}
-.pc-msg.ok{color:#0d7a3f}
-.pc-msg.no{color:var(--red-d)}
-.mapc{margin-top:1.4rem;background:#fff;border-radius:var(--r3);padding:1.5rem;border:1px solid rgba(12,38,95,.08);position:relative}
-.map-svg{width:100%;max-width:440px;max-height:520px;height:auto;margin:0 auto;display:block}
-.map-region{font-family:var(--fd);font-weight:800;font-size:14px;fill:rgba(12,38,95,.35);letter-spacing:3px}
-.map-pin{cursor:pointer;transition:transform .18s var(--ease)}
-.map-pin:hover,.map-pin:focus{transform:scale(1.25)}
-.map-pin-c{transition:fill var(--tr)}
-.map-pin.live .map-pin-c{fill:#D84330}
-.map-pin.soon .map-pin-c{fill:#f7a94e;opacity:.7}
-.map-pin.you .map-pin-c{fill:#0C265F}
-.map-pin.you .map-pulse{fill:url(#gPulse);animation:mapPulse 2s ease-out infinite}
-@keyframes mapPulse{0%{r:8;opacity:1}100%{r:26;opacity:0}}
-.map-tt-t{fill:#fff;font-family:var(--fd);font-weight:700;font-size:11px}
-.map-tt-s{fill:rgba(255,255,255,.75);font-family:var(--fd);font-weight:500;font-size:9.5px}
-.map-legend{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1rem;font-size:var(--fs-micro);color:var(--body)}
-.ml-i{display:inline-flex;align-items:center;gap:.4rem}
-.ml-d{width:10px;height:10px;border-radius:50%;display:inline-block}
-.ml-live{background:#D84330}
-.ml-soon{background:#f7a94e;opacity:.75}
-.ml-you{background:#0C265F;box-shadow:0 0 0 4px rgba(12,38,95,.2)}
-.map-all{display:inline-flex;align-items:center;gap:.35rem;color:var(--navy);font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(12,38,95,.08);width:100%;justify-content:center}
-.map-all:hover{color:var(--red)}
-
 /* ── Bento ── */
 #bento{padding:3rem 0;background:#fff}
 .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:1rem;margin-top:1.4rem}
@@ -1779,54 +1749,6 @@ svg.ic{width:24px;height:24px}
       <div class="h5-met"><span class="h5-met-v" id="mSat">—</span><span class="h5-met-l">quality-check pass rate</span></div>
     </div>
   </div></div>
-
-  <!-- ── COVERAGE MAP ───────────────────────────────────── -->
-  <div id="mapband" class="reveal"><div class="wrap">
-    <div class="hd hd-2c">
-      <div>
-        <span class="eyebrow">WHERE WE COLLECT</span>
-        <h2 class="h2">Live footprint across Brisbane &amp; Logan.</h2>
-        <p class="h2-sub">Sixteen suburbs collecting today. New areas opening each month — tap any pin to see next available slot, or drop your postcode below.</p>
-      </div>
-      <form class="pc-inline" onsubmit="return covCheckHome(event)" role="search" aria-label="Postcode check">
-        <label class="sr-only" for="covPcHome">Your postcode</label>
-        <input id="covPcHome" name="pc" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="Your postcode" required>
-        <button type="submit" class="btn btn-nv">Check</button>
-        <span id="covPcHomeMsg" class="pc-msg" role="status" aria-live="polite"></span>
-      </form>
-    </div>
-
-    <div class="mapc">
-      <svg class="map-svg" viewBox="0 0 360 480" role="img" aria-labelledby="mapTitle" preserveAspectRatio="xMidYMid meet">
-        <title id="mapTitle">Map of collection suburbs across Brisbane and Logan</title>
-        <defs>
-          <radialGradient id="gPulse" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#D84330" stop-opacity=".55"/><stop offset="1" stop-color="#D84330" stop-opacity="0"/></radialGradient>
-        </defs>
-        <!-- subtle regional blobs -->
-        <path d="M40 40 C 60 30, 190 30, 210 60 C 235 100, 210 170, 170 190 C 120 210, 50 190, 30 140 Z" fill="#F0F3FC" opacity=".65"/>
-        <path d="M40 240 C 90 220, 260 210, 320 260 C 340 320, 300 430, 220 445 C 130 460, 40 420, 30 340 Z" fill="#F0F3FC" opacity=".65"/>
-        <!-- region labels -->
-        <text x="120" y="35" class="map-region">BRISBANE</text>
-        <text x="180" y="230" class="map-region">LOGAN</text>
-        <!-- pins -->
-        <g class="map-pins"></g>
-        <!-- floating tooltip -->
-        <g id="mapTip" transform="translate(0 0)" style="display:none;pointer-events:none">
-          <rect x="-70" y="-52" width="140" height="42" rx="8" fill="#0C265F"/>
-          <text x="0" y="-32" text-anchor="middle" class="map-tt-t" id="mapTipT">—</text>
-          <text x="0" y="-16" text-anchor="middle" class="map-tt-s" id="mapTipS">—</text>
-          <path d="M-6 -10 L0 -2 L6 -10 Z" fill="#0C265F"/>
-        </g>
-      </svg>
-      <div class="map-legend">
-        <span class="ml-i"><span class="ml-d ml-live"></span>Collecting now</span>
-        <span class="ml-i"><span class="ml-d ml-soon"></span>Opening this quarter</span>
-        <span class="ml-i"><span class="ml-d ml-you" id="mlYouWrap" hidden></span><span id="mlYouTxt"></span></span>
-      </div>
-      <a href="#/coverage" class="map-all">See every suburb, including opening soon <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
-    </div>
-  </div></div>
-
 
   <!-- ── JOURNEY (bespoke) ─────────────────────────────── -->
   <div id="journey" class="reveal jn-band"><div class="wrap">
@@ -5195,88 +5117,6 @@ async function appBoot(){
 
 /* ═════ HOME v5 JS ═════ */
 
-// suburb coordinates on the 360x480 viewBox
-const HOME_SUBURBS = [
-  { name:'Camp Hill',    pc:'4152', x:130, y:60,  live:true,  region:'BNE' },
-  { name:'Coorparoo',    pc:'4151', x:95,  y:80,  live:true,  region:'BNE' },
-  { name:'Greenslopes',  pc:'4120', x:70,  y:110, live:true,  region:'BNE' },
-  { name:'Holland Park', pc:'4121', x:100, y:135, live:true,  region:'BNE' },
-  { name:'Mansfield',    pc:'4122', x:170, y:135, live:true,  region:'BNE' },
-  { name:'Sunnybank',    pc:'4109', x:95,  y:185, live:true,  region:'BNE' },
-  { name:'Kuraby',       pc:'4119', x:125, y:230, live:true,  region:'BNE' },
-  { name:'Browns Plains',pc:'4118', x:55,  y:280, live:true,  region:'LOG' },
-  { name:'Springwood',   pc:'4127', x:190, y:260, live:true,  region:'LOG' },
-  { name:'Meadowbrook',  pc:'4131', x:185, y:315, live:true,  region:'LOG' },
-  { name:'Shailer Park', pc:'4128', x:255, y:295, live:true,  region:'LOG' },
-  { name:'Loganholme',   pc:'4129', x:280, y:325, live:true,  region:'LOG' },
-  { name:'Cornubia',     pc:'4130', x:305, y:295, live:true,  region:'LOG' },
-  { name:'Marsden',      pc:'4132', x:130, y:345, live:true,  region:'LOG' },
-  { name:'Waterford',    pc:'4133', x:180, y:365, live:true,  region:'LOG' },
-  { name:'Beenleigh',    pc:'4207', x:285, y:410, live:true,  region:'LOG' },
-  // opening soon (mock, keeps the "growing" story alive)
-  { name:'Wynnum',       pc:'4178', x:260, y:35,  live:false, region:'BNE' },
-  { name:'Carindale',    pc:'4152', x:230, y:105, live:false, region:'BNE' },
-  { name:'Regents Park', pc:'4118', x:90,  y:390, live:false, region:'LOG' },
-  { name:'Ormeau',       pc:'4208', x:320, y:445, live:false, region:'LOG' }
-];
-
-function paintMap(){
-  const g = document.querySelector('.map-pins'); if(!g) return;
-  g.innerHTML = HOME_SUBURBS.map((s,i) => `
-    <g class="map-pin ${s.live?'live':'soon'}" data-i="${i}" tabindex="0" role="button" aria-label="${s.name}${s.live?' — collecting now':' — opening this quarter'}" transform="translate(${s.x} ${s.y})">
-      <circle class="map-pin-c" r="7"/>
-      <circle r="12" fill="transparent"/>
-    </g>
-  `).join('');
-  const tip = document.getElementById('mapTip');
-  const tipT = document.getElementById('mapTipT');
-  const tipS = document.getElementById('mapTipS');
-  g.querySelectorAll('.map-pin').forEach(p => {
-    const idx = +p.dataset.i;
-    const s = HOME_SUBURBS[idx];
-    const show = () => {
-      tipT.textContent = s.name;
-      tipS.textContent = s.live ? `Collecting · ${s.pc}` : `Opening soon · ${s.pc}`;
-      tip.setAttribute('transform', `translate(${s.x} ${s.y})`);
-      tip.style.display = '';
-    };
-    const hide = () => { tip.style.display = 'none'; };
-    p.addEventListener('mouseenter', show);
-    p.addEventListener('mouseleave', hide);
-    p.addEventListener('focus', show);
-    p.addEventListener('blur', hide);
-    p.addEventListener('click', () => location.hash = '#/coverage');
-    p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); location.hash='#/coverage'; } });
-  });
-}
-
-function covCheckHome(e){
-  e.preventDefault();
-  const pc = document.getElementById('covPcHome').value.trim();
-  const msg = document.getElementById('covPcHomeMsg');
-  const you = document.getElementById('mlYouWrap');
-  const youT = document.getElementById('mlYouTxt');
-  // remove any previous "you" pin
-  document.querySelectorAll('.map-pin.you').forEach(n => n.remove());
-  if(!/^\d{4}$/.test(pc)){ msg.textContent='Enter a 4-digit postcode'; msg.className='pc-msg no'; you.hidden=true; youT.textContent=''; return false; }
-  const hit = HOME_SUBURBS.find(s => s.pc===pc);
-  const g = document.querySelector('.map-pins');
-  if(hit && hit.live){
-    msg.textContent = `Collecting in ${hit.name} — book a window.`; msg.className='pc-msg ok';
-    you.hidden=false; youT.textContent=`${hit.name} — you`;
-    g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
-  } else if(hit){
-    msg.textContent = `${hit.name} — opening this quarter. Leave your email on the coverage page.`; msg.className='pc-msg no';
-    you.hidden=false; youT.textContent=`${hit.name} — opening soon`;
-    g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
-  } else {
-    msg.textContent = 'Not one of our postcodes yet — head to the coverage page to request it.'; msg.className='pc-msg no';
-    you.hidden=true; youT.textContent='';
-  }
-  return false;
-}
-window.covCheckHome = covCheckHome;
-
 // ── hero quote widget ──
 const H5Q = { svc:'wf', loads:2, sh:1, bl:0, rg:0 };
 function h5Recalc(){
@@ -5471,7 +5311,6 @@ function stickyCtaWire(){
 }
 
 function initHomeV5(){
-  paintMap();
   h5Wire();
   kcWire();
   paintMetrics();
