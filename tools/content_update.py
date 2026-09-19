@@ -3,7 +3,7 @@
 ironing service, add a blankets/rugs/sheets-only service in its place, and
 raise the three Kings Club subscription prices by 30%.
 
-Run:  python3 tools/content_update.py site/laundrykings-site.html
+Run:  python3 tools/content_update.py site/laundrylegends-site.html
 """
 import re
 import sys

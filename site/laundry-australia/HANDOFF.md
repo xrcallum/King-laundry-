@@ -2,18 +2,22 @@
 ## Complete Handoff Document
 
 **Prepared:** 19 September 2026
+**Last revised:** 19 September 2026 — live publish, green `+` pricing
 **Venture:** Laundrylegends
 **Owner:** Callum Page
 **Repo:** `github.com/xrcallum/King-laundry-`
-**Branch:** `claude/laundry-australia-landing-page-g9nuvw`
-**File:** `site/laundry-australia/home-laundry.html` (single file, 871 lines, no build step)
-**Latest commit:** `30ea2f6`
+**Branch:** `claude/push-latest-chats-live-xnijoo`
+**Files:** `site/laundry-australia/index.html` and `contact.html` (self-contained, no build step)
+**Live:** https://claude.ai/artifact/11cT6RXSi4G3EprLXGzFqE — private, visible only to the owner and anyone the owner shares it with
+**Booking flow:** a separate artefact, `SJihvya38JukdcAUL7JiFx`, which every Book/Club/legal link targets
+
+> The two files in this folder are byte-identical to what is published at that URL. `index.html` is the home-laundry page; the artefact serves it as the site root. If you change one, republish both.
 
 ---
 
 ## 1. PASTE THIS INTO THE NEW CLAUDE FIRST
 
-> I'm continuing work on the Laundrylegends home-laundry landing page. It's a single self-contained HTML file — no build step, no dependencies beyond three Google Fonts. It lives at `site/laundry-australia/home-laundry.html` on branch `claude/laundry-australia-landing-page-g9nuvw` in `github.com/xrcallum/King-laundry-`.
+> I'm continuing work on the Laundrylegends home-laundry landing page. It's two self-contained HTML files — no build step, no dependencies beyond three Google Fonts. They live at `site/laundry-australia/index.html` and `contact.html` on branch `claude/push-latest-chats-live-xnijoo` in `github.com/xrcallum/King-laundry-`, and they are byte-identical to what is published at https://claude.ai/artifact/11cT6RXSi4G3EprLXGzFqE. Change the repo files and republish both to that URL together.
 >
 > It started as a mobile-first replica of a competitor's page (laundryaustralia.com.au/home-laundry/), built from iPhone screen recordings because the site couldn't be fetched directly. It has since been rebranded to Laundrylegends with recharacterised copy and a different display typeface.
 >
@@ -111,6 +115,8 @@ Two small IIFEs at the bottom of the file:
 
 ## 5. Complete copy inventory
 
+> **HISTORY — superseded.** This inventory, and the change log in section 6, describe the earlier build that mirrored the competitor's page. The live page carries different copy and its own pricing. Read section 7 for what is actually published. Kept here because it records where the original material came from.
+
 Every user-visible string, in document order. Use this to diff against any future edit.
 
 | Location | Copy |
@@ -179,22 +185,31 @@ Every user-visible string, in document order. Use this to diff against any futur
 
 ---
 
-## 7. BLOCKERS — do not publish until these are cleared
+## 7. BLOCKERS — all eight cleared, 19 September 2026
 
-These are the things that will cause real problems if the page goes live as-is. Ranked by exposure.
+The page that is live carries none of the competitor-derived material the original eight blockers described. Every one was checked against the published files before this revision, not assumed.
 
-| # | Blocker | Why it matters | Owner | Due |
-|---|---|---|---|---|
-| 1 | ~~**Client logos are third-party trademarks**~~ CLEARED 19 Sep 2026 — all five names replaced with neutral "Client logo" tiles on both pages before the first live publish. Still gated: no client may be named until they confirm in writing. Original exposure: — Louis Vuitton, RNA, Australian Rugby, Brisbane Showgrounds, Italian Street Kitchen | These were transcribed from a *competitor's* client list. Presenting them as Laundrylegends' clients is a misleading-conduct exposure under Australian Consumer Law, and a trademark issue on top. They are currently dashed placeholder tiles, not logos — keep it that way until each client has confirmed in writing. | Callum Page | Before any publish |
-| 2 | ~~**"Order pickup" CTAs point to `drycleaning.com.au`**~~ CLEARED 19 Sep 2026 — all four links repointed to the venture's own `contact.html` before the first live publish. Replace with the real booking flow when it exists. Original exposure: | That is the competitor's booking system. Four links on the page. Must be repointed to Laundrylegends' own booking flow. | Callum Page | Before any publish |
-| 3 | **1800 PICKUP is the competitor's number** | Appears in the meta description, Step 1 copy and the footer. Replace with Laundrylegends' own number. | Callum Page | Before any publish |
-| 4 | **Contact details are fabricated** — 42 Fresh Lane; Unit 5, 168 Distribution Drive; (07) 3555 1800 | Inserted as placeholders on request. They are not real addresses. Publishing a fake business address is a compliance problem. | Callum Page | Before any publish |
-| 5 | **Pricing is the competitor's pricing** — $59.95/week, $3/piece, $250 declaration threshold, 7kg load, 10 ironed items | Every figure on this page came from the competitor's page via screen recording. None has been set by Laundrylegends. All prices are stated GST-inclusive, which is correct for AU — but the numbers themselves need to be Laundrylegends' own. | Max Jones (pricing model) → Callum Page (implement) | Before any publish |
-| 6 | **Privacy Policy link is a dead `/privacy-policy/`** | No such page exists. Required if any mailing-list capture goes live. | Callum Page | Before mailing list activates |
-| 7 | **Mailing list pill does nothing** | Sets a URL hash pointing at nothing. Either wire it to a real capture form or remove it. If wired, it collects personal information — Privacy Act obligations attach. | Callum Page | Before any publish |
-| 8 | **Copy defects** — "your would normally" typo; "Service Center" US spelling | Small, but visible. | Callum Page | Before any publish |
+| # | Original blocker | How it was cleared | Verified |
+|---|---|---|---|
+| 1 | Client logos were third-party trademarks (Louis Vuitton, RNA, Australian Rugby, Brisbane Showgrounds, Italian Street Kitchen) | The client carousel was removed from the page entirely. No client is named anywhere. | No match for any of the five names in either file |
+| 2 | "Order pickup" CTAs pointed at `drycleaning.com.au` | Every Book/Club/legal link now targets the venture's own booking artefact `SJihvya38JukdcAUL7JiFx`. | No match for `drycleaning.com.au` |
+| 3 | 1800 PICKUP was the competitor's number | No phone number is published. The footer states "Phone line being connected." | No match for `1800 PICKUP` |
+| 4 | Contact details were fabricated (42 Fresh Lane; Unit 5, 168 Distribution Drive; (07) 3555 1800) | All removed. The footer publishes no address and states "Email to be published." | No match for any of the three |
+| 5 | Pricing was the competitor's pricing | Replaced with Laundrylegends' own launch pricing, set by the venture: $32.00 a load (~5 kg), $13.50 flat collection and return, Legends Club $63.70/$89.70/$115.70 a week. Labelled "Launch pricing, under review and subject to change". GST-inclusive, AUD. | Every `$` figure on the page is from the new schedule |
+| 6 | Privacy Policy link was a dead `/privacy-policy/` | Now points at the booking artefact's `#/privacy`. The footer states the policy and terms are "drafts for legal review and not yet in force". | Link resolves; disclaimer present |
+| 7 | Mailing list pill did nothing | Removed. The page captures no personal information, so no Privacy Act obligation attaches to it. | No match for `mail-pill` |
+| 8 | Copy defects — "your would normally", "Service Center" | Both strings are gone; the surrounding copy was rewritten. | No match for either |
 
-> **Legal boundary:** The above flags commercial and compliance *risk*. It is not legal advice. Items 1, 4, 6 and 7 should go to the venture's solicitor with a short brief before the page is published.
+**Still open before a public launch** — these are not page bugs, they are facts the business does not yet have:
+
+| Item | Detail | Owner | Due |
+|---|---|---|---|
+| Company name and ABN | The footer says "Company name and ABN to be published on registration". Australian Consumer Law expects a trading entity to be identifiable. | Max Jones | On registration |
+| Phone and email | Footer currently promises both without giving either. Publish them or drop the promise. | Callum Page | Before a public launch |
+| Privacy policy and Terms | Both are drafts and flagged as not in force. They need to be in force before any personal information is collected — the booking flow collects it. | Callum Page → solicitor | Before the booking flow goes public |
+| Pricing sign-off | The schedule is labelled launch pricing under review. Confirm it is the intended commercial position. | Max Jones | Before a public launch |
+
+> **Legal boundary:** the above flags commercial and compliance *risk*. It is not legal advice. The company-name, privacy and terms items should go to the venture's solicitor with a short brief.
 
 ---
 
@@ -202,11 +217,14 @@ These are the things that will cause real problems if the page goes live as-is. 
 
 | Task | Detail | Owner | Due |
 |---|---|---|---|
-| Replace client tiles | Drop real logo files into `site/laundry-australia/assets/`, swap each `<div class="placeholder">` for `<img src="assets/name.svg" alt="Name" />`. Instructions already in `assets/README.md`. Gated on Blocker #1. | Callum Page | On client sign-off |
-| ~~Build the nav menu~~ | Done 19 Sep 2026 — menu overlay + price-list panel built from new source recordings. Menu links except Home Laundry are `#` placeholders (no other pages exist yet) | Callum Page | Done |
-| Rename the directory | Folder is still `site/laundry-australia/` — misleading post-rebrand. Suggest `site/laundrylegends/`. | Callum Page | Next session |
-| Desktop breakpoint | Only one breakpoint exists (`≥640px`, type sizes only). Layout is single-column at every width. | Callum Page | TBC |
-| Audit workflow results | An Ultracode audit (`wf_9a84a40c-512`) comparing all 56 source frames against the build across 6 dimensions was launched and never reviewed. Results may still be retrievable in the prior session. | — | Optional |
+| ~~Replace client tiles~~ | Moot — the client carousel was removed from the page. If clients are ever named, each must confirm in writing first. | — | Done |
+| ~~Build the nav menu~~ | Done 19 Sep 2026 — menu overlay and price-list panel. | Callum Page | Done |
+| ~~Fix dead nav links~~ | Done 19 Sep 2026, twice — the brand logo and the "Home laundry" menu item on both pages pointed at `home-laundry.html`, which the artefact does not serve. Fixed to `index.html`, then reintroduced when a second session republished from an older copy, then fixed again the same day. If this keeps happening: whoever edits this page next should read the live artefact with the Artifact tool before publishing, not work from a stale local copy. | Callum Page | Done |
+| ~~Interactive estimator~~ | Done 19 Sep 2026 — the static price card in Pricing was replaced with a live estimator (load stepper, add-on toggles, running total) and the five process steps became a numbered rail. Built by a different session; merged in without losing the link fix or the price-panel `+` treatment (see below). | — | Done |
+| ~~Operator portal — first version~~ | Done 19 Sep 2026 — `portal.html`, published alongside the other two pages but not linked from the public nav. See §11. | Callum Page | Done, not final |
+| Rename the directory | Folder is still `site/laundry-australia/` — misleading post-rebrand. Suggest `site/laundrylegends/`. Deferred because it breaks every path reference in this document. | Callum Page | Next session |
+| Desktop breakpoint | Only one breakpoint exists (`≥640px`, type sizes and the step grid). Layout is single-column at every width. | Callum Page | TBC |
+| Audit workflow results | An Ultracode audit (`wf_9a84a40c-512`) comparing all 56 source frames against the build was launched and never reviewed. Largely superseded: the page no longer mirrors the source. | — | Optional |
 
 ---
 
@@ -217,23 +235,43 @@ These are the things that will cause real problems if the page goes live as-is. 
 - **Rendering/verification:** headless Chromium at `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Launch with the proxy configured or webfonts won't load.
 - **If fonts don't render in a screenshot**, it's the proxy, not the CSS. Barlow Condensed reported `False` on a font-availability check during the original build while visually rendering correctly.
 - **The clouds SVG** uses `preserveAspectRatio="none"` and a series of `A` arc commands of differing radii along a baseline. Editing radii changes bump width; the `Z` close and the `L500 110` baseline must stay.
-- **Git:** develop on `claude/laundry-australia-landing-page-g9nuvw`. Push with `git push -u origin claude/laundry-australia-landing-page-g9nuvw`. No PR has been opened.
+- **Git:** develop on `claude/push-latest-chats-live-xnijoo`. Push with `git push -u origin claude/push-latest-chats-live-xnijoo`.
+- **Publishing:** the repo files and the live artefact must stay byte-identical. Publish `index.html` as the page and `contact.html` and `portal.html` alongside it, all in the same call, to https://claude.ai/artifact/11cT6RXSi4G3EprLXGzFqE. Publishing without that URL creates a second artefact instead of updating the live one.
+- **The artefact serves `index.html` as the site root.** Nothing resolves `home-laundry.html` — any link to that name is dead. Internal links must use `index.html`, `contact.html` and `portal.html`.
+- **Two sessions edited this artefact concurrently on 19 Sep 2026.** One added the interactive estimator and process rail; another (this one) was mid-publish of the price-panel `+` treatment when the first session's version went live, which silently reintroduced the dead-link bug and dropped the `+` from the price-panel rows (the on-page estimator and rate chips kept theirs — they were built fresh with it). Both were re-fixed and merged rather than one side overwriting the other. **Before publishing, always call the Artifact tool's `read` action on the live URL first** — a `publish` built on a stale copy is refused with a pointer to the newer version, but by then you've already done the work twice.
 
 ---
 
 ## 10. Full source
 
-The complete file is `site/laundry-australia/home-laundry.html` in the repo at commit `30ea2f6`. It is 871 lines. Rather than reproducing it here, pull it directly:
+The complete files are `site/laundry-australia/index.html`, `contact.html` and `portal.html`. Rather than reproducing them here, pull them directly:
 
 ```bash
 git clone https://github.com/xrcallum/King-laundry-
 cd King-laundry-
-git checkout claude/laundry-australia-landing-page-g9nuvw
-open site/laundry-australia/home-laundry.html
+git checkout claude/push-latest-chats-live-xnijoo
+open site/laundry-australia/index.html
 ```
 
-If the new Claude session has no repo access, the HTML file has been sent alongside this document — hand it over directly and ask it to work from that.
+If the new Claude session has no repo access, the HTML files have been sent alongside this document — hand them over directly and ask it to work from those.
 
 ---
 
-*Handoff prepared 19 September 2026. Every figure and claim above is traceable to the repository at commit `30ea2f6` or to the three source screen recordings, except where explicitly labelled **fake**, **ASSUMPTION** or **UNVERIFIED**.*
+## 11. Operator portal (`portal.html`) — first version, not final
+
+**Status:** a working prototype, published live alongside the public pages but not linked from any public nav. Reachable only if someone has the direct URL path.
+
+**What it does:** an operator signs in with a name only (no password, no identity check — see limitations), sees an example round of three stops in suburbs drawn from the real coverage list, and for each stop can open a weigh-and-price sheet that calculates the total from the venture's own published rates — the same $32.00/load, +$15.00 Premium Clean, +$3.50 Eco add-on, $13.50 flat collection and return, and $73.50 one-off minimum (waived for Legends Club members) that appear on the public price list. The total shown is verified to match the worked example on the home page ($77.50 for 2 loads, no add-ons, not a Club member). A status ladder tracks each stop through Scheduled → Collected → Washing → Ready → Delivered.
+
+**What it deliberately does not do, and why:**
+- **No real bookings feed.** The round shown is example data, clearly labelled as such. There is no backend to receive a real booking yet.
+- **No real sign-in.** A name typed into a box is not authentication. Building real operator identity — who they are, whether they're screened, what they're allowed to see — is a security decision, not a styling one.
+- **Nothing is stored centrally.** Job status is kept in the browser's local storage only: per device, not shared with anyone, gone if site data is cleared. A shared database is available (the `db` capability) but wasn't added here, because turning it on means deciding what real operator and customer data gets stored and for how long — a Privacy Act question, not a code change, once real personal information is involved.
+- **No payment processing.**
+- **How operators are engaged is out of scope for this page.** Contractor vs employee status, ABN, Super obligations, WHS, insurance — these are legal and commercial questions for the venture's advisers. The portal's copy is deliberately neutral ("your round", "confirm and continue") rather than anything that implies an employment relationship, but this page does not decide the actual engagement terms and shouldn't be read as having done so.
+
+**Before this becomes the operators' real tool**, in rough order: decide on and build real sign-in, decide on and wire a shared database for round data (this is also when the venture needs a privacy-policy decision, since it stops being a static site once it stores anyone's personal information), connect it to an actual bookings source, and get the AU compliance items above signed off with an adviser.
+
+---
+
+*Handoff prepared 19 September 2026, revised twice the same day — once after the first live publish, again after merging a concurrent session's changes and adding the operator portal. Every figure and claim above is traceable to the repository on `claude/push-latest-chats-live-xnijoo`, except where explicitly labelled **ASSUMPTION** or **UNVERIFIED**. Sections 5 and 6 describe the earlier competitor-derived build and are kept as history; section 7 states what is actually live.*

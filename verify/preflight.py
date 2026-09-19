@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """LaundryKings pre-publish checks.
 
-Usage:  python3 verify/preflight.py site/laundrykings-site.html [--strict-tokens]
+Usage:  python3 verify/preflight.py site/laundrylegends-site.html [--strict-tokens]
 
 Exit code 0 = safe to publish. Every failing check is printed with a count so the
 fix is measurable. Run it before EVERY publish of the live artefact.

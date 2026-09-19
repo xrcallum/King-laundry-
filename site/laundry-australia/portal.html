@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Operator Portal — Laundrylegends</title>
+<meta name="description" content="Laundrylegends operator portal — today's round, weigh-and-price at the door, and job status, matched to the venture's published pricing." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* Same brand tokens as index.html / contact.html — do not fork these. */
+    --navy:#0D2052; --navy-d:#081540; --navy-l:#2B4BAA; --navy-w:#F0F3FC;
+    --orange:#EE6E1F; --orange-d:#D25F16; --orange-w:#FCE4D2;
+    --red:var(--orange); --red-brand:var(--orange); --red-d:var(--orange-d);
+    --paper:#F6F3EE; --ink:#141826; --body:#454C60; --mute:#666D80;
+    --line:#D3D9E6; --white:#FFFFFF;
+    --green:#0F7A32; --green-l:#4ADE80; --green-w:#E4F6EA;
+    --amber:#B4650A; --amber-w:#FBECD6;
+    --on-navy:#FFFFFF; --on-navy-2:#C9D2F2;
+    --shadow-card:0 14px 30px -20px rgba(13,32,82,.22), 0 4px 10px -6px rgba(13,32,82,.10);
+    --radius-card:22px; --radius-pill:999px;
+    --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:40px; --s6:56px;
+    --gutter:20px; --maxw:560px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink); background:var(--paper);
+    -webkit-font-smoothing:antialiased; line-height:1.5; font-size:16px;
+    padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  input{font:inherit}
+  :focus-visible{outline:3px solid var(--red-brand);outline-offset:3px;border-radius:6px}
+  .container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+  .display{font-family:'Archivo','Inter',sans-serif;font-weight:600;letter-spacing:.005em;line-height:1.1;text-wrap:balance}
+  .eyebrow{font-family:'Inter',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+  [hidden]{display:none!important}
+
+  /* ---- HEADER ---- */
+  .site-header{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
+    background:var(--navy);color:var(--on-navy);
+    padding:12px 18px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .brand{display:flex;align-items:flex-start;gap:12px;min-width:0}
+  .brand-mark{position:relative;font-family:'Archivo','Inter',sans-serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:22px;letter-spacing:.03em;line-height:.9;padding-right:18px}
+  .brand-mark .l1{display:block}
+  .brand-mark .l2{display:block;font-size:15px;letter-spacing:.02em}
+  .brand-mark .star{position:absolute;top:-8px;right:0;width:20px;height:20px}
+  .hdr-tag{color:var(--on-navy-2);font-weight:500;font-size:10px;letter-spacing:.2em;text-transform:uppercase;align-self:center;white-space:nowrap}
+  .hdr-link{color:var(--on-navy-2);font-size:13.5px;font-weight:500;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+
+  .section{padding-block:var(--s5)}
+  .stack{display:flex;flex-direction:column;gap:var(--s3)}
+
+  /* ---- Prototype notice ---- */
+  .notice{
+    background:var(--amber-w);border:1px solid #E8C289;border-radius:16px;
+    padding:16px 18px;display:flex;flex-direction:column;gap:8px;font-size:14.5px;color:#5C3D06;line-height:1.55;
+  }
+  .notice strong{font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:14.5px;color:#4A3204;display:block}
+  .notice ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+
+  /* ---- Sign-in ---- */
+  .signin-card{
+    background:#fff;border-radius:var(--radius-card);padding:30px 26px;box-shadow:var(--shadow-card);
+    display:flex;flex-direction:column;gap:var(--s3);margin-top:var(--s3);
+  }
+  .signin-card h1{margin:0;font-size:26px;color:var(--navy)}
+  .signin-card p{margin:0;color:var(--body);font-size:15.5px;line-height:1.55}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-weight:500}
+  .field input{
+    font-size:17px;color:var(--ink);width:100%;border:0;border-bottom:1.5px solid var(--line);
+    border-radius:0;padding:10px 2px;background:transparent;
+  }
+  .field input:focus{outline:0;border-bottom-color:var(--red)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;
+    border-radius:var(--radius-pill);font-family:'Inter',sans-serif;font-weight:600;font-size:15.5px;
+    border:1.5px solid transparent;transition:transform .15s ease,background .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn--red{background:var(--red);color:#fff;border-color:var(--red)}
+  .btn--red:hover{background:var(--red-d)}
+  .btn--outline{background:transparent;color:var(--navy);border-color:var(--line)}
+  .btn--outline:hover{background:var(--navy-w)}
+  .btn--sm{min-height:40px;padding:0 18px;font-size:14px}
+  .btn--full{width:100%}
+  .btn[disabled]{opacity:.45;pointer-events:none}
+
+  /* ---- Dashboard header ---- */
+  .greet{display:flex;flex-direction:column;gap:2px}
+  .greet h1{margin:0;font-size:24px;color:var(--navy)}
+  .greet p{margin:0;color:var(--body);font-size:14.5px}
+  .greet .signout{margin-left:auto}
+  .greet-row{display:flex;align-items:flex-start;gap:12px}
+
+  /* ---- Round summary tile ---- */
+  .round-summary{
+    background:var(--navy);color:#fff;border-radius:var(--radius-card);padding:22px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .round-summary .num{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:34px;line-height:1}
+  .round-summary .lbl{font-size:13px;color:var(--on-navy-2);margin-top:2px}
+  .round-summary .rt{text-align:right;font-size:13.5px;color:var(--on-navy-2);line-height:1.5}
+
+  /* ---- Stop cards ---- */
+  .stop{
+    background:#fff;border-radius:18px;padding:18px 18px;box-shadow:var(--shadow-card);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .stop-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .stop-id{font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:17px;color:var(--navy)}
+  .stop-meta{font-size:13.5px;color:var(--mute);margin-top:2px}
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--radius-pill);
+    font-size:12px;font-weight:600;letter-spacing:.02em;white-space:nowrap;
+  }
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+  .chip--scheduled{background:var(--line);color:var(--body)}
+  .chip--collected{background:var(--orange-w);color:var(--orange-d)}
+  .chip--washing{background:#DCE6FB;color:var(--navy-l)}
+  .chip--ready{background:var(--green-w);color:var(--green)}
+  .chip--delivered{background:var(--green-w);color:var(--green)}
+  .stop-actions{display:flex;flex-wrap:wrap;gap:8px}
+  .stop-price{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15px;color:var(--green)}
+
+  /* ---- Weigh & price panel ---- */
+  .wp-panel{position:fixed;inset:0;z-index:70;background:rgba(7,26,69,.5);display:flex;align-items:flex-end}
+  .wp-panel[hidden]{display:none}
+  .wp-sheet{
+    background:#fff;border-radius:22px 22px 0 0;width:100%;max-width:560px;margin:0 auto;
+    max-height:92vh;overflow-y:auto;padding:22px 22px calc(28px + env(safe-area-inset-bottom,0px));
+    display:flex;flex-direction:column;gap:var(--s3);
+  }
+  .wp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .wp-head h2{margin:0;font-size:20px;color:var(--navy)}
+  .wp-close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--mute);flex:0 0 auto}
+  .wp-close svg{width:22px;height:22px}
+  .stepper-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+  .stepper-row .lbl{font-size:15.5px;color:var(--ink)}
+  .stepper-row .lbl small{display:block;color:var(--mute);font-size:12.5px;margin-top:2px}
+  .stepper{display:flex;align-items:center;gap:14px}
+  .stepper button{
+    width:34px;height:34px;border-radius:50%;border:1.5px solid var(--navy);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;
+  }
+  .stepper button:active{background:var(--navy-w)}
+  .stepper .val{font-variant-numeric:tabular-nums;font-weight:600;min-width:14px;text-align:center}
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);gap:12px}
+  .toggle-row .lbl{font-size:15.5px}
+  .toggle-row .lbl small{display:block;color:var(--mute);font-size:12.5px;margin-top:2px}
+  .switch{position:relative;width:46px;height:27px;flex:0 0 auto}
+  .switch input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+  .switch .track{position:absolute;inset:0;background:var(--line);border-radius:999px;transition:background .15s ease}
+  .switch .knob{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .15s ease}
+  .switch input:checked + .track{background:var(--green)}
+  .switch input:checked ~ .knob{transform:translateX(19px)}
+  .wp-breakdown{background:var(--paper);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+  .bd-row{display:flex;justify-content:space-between;font-size:14.5px;color:var(--body)}
+  .bd-row.total{border-top:1.5px solid var(--navy);margin-top:4px;padding-top:10px;font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:19px;color:var(--navy)}
+  .bd-note{font-size:12.5px;color:var(--mute);line-height:1.5}
+
+  /* ---- Status ladder in the sheet ---- */
+  .ladder{display:flex;flex-wrap:wrap;gap:8px}
+  .ladder button{
+    padding:8px 14px;border-radius:var(--radius-pill);border:1.5px solid var(--line);font-size:13.5px;color:var(--body);
+  }
+  .ladder button.is-current{background:var(--navy);border-color:var(--navy);color:#fff}
+  .ladder button.is-done{background:var(--green-w);border-color:var(--green-w);color:var(--green)}
+
+  /* ---- About card ---- */
+  .about-card{background:#fff;border-radius:var(--radius-card);padding:24px 22px;box-shadow:var(--shadow-card);display:flex;flex-direction:column;gap:12px}
+  .about-card h3{margin:0;font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:16px;letter-spacing:.02em;color:var(--navy)}
+  .about-card p{margin:0;font-size:14.5px;color:var(--body);line-height:1.55}
+  .about-card ul{margin:0;padding-left:18px;font-size:14px;color:var(--body);line-height:1.6;display:flex;flex-direction:column;gap:2px}
+
+  /* ---- Footer ---- */
+  .footer{background:var(--navy);color:#fff;padding:var(--s5) 0 var(--s4)}
+  .footer p{margin:0;color:var(--on-navy-2);font-size:13.5px;line-height:1.6}
+  .footer .links{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13.5px;margin-top:10px}
+  .footer .links a{text-decoration:underline;text-underline-offset:3px;color:#fff}
+
+  @media (min-width:640px){
+    .stop-actions{flex-wrap:nowrap}
+  }
+</style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <a class="brand" href="index.html" aria-label="Laundrylegends — Always Fresh">
+      <span class="brand-mark" aria-hidden="true"><span class="l1">LAUNDRY<svg class="star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 1 C20.6 12 21 13.2 24 15 C27.5 15.2 30.2 15.2 39 18 C30.2 20.8 27.5 20.8 24 25 C21 27.6 20.6 28 20 39 C19.4 28 19 27.6 16 25 C12.5 20.8 9.8 20.8 1 18 C9.8 15.2 12.5 15.2 16 15 C19 13.2 19.4 12 20 1 Z" fill="#EE6E1F" transform="rotate(20 20 20)"/></svg></span><span class="l2">LEGENDS</span></span>
+      <span class="hdr-tag" aria-hidden="true">Operator<br/>Portal</span>
+    </a>
+    <a class="hdr-link" href="index.html">Public site</a>
+  </header>
+
+  <main class="container section stack" id="app">
+
+    <div class="notice">
+      <strong>This is a working prototype, not a connected system yet</strong>
+      <ul>
+        <li>The round below is example data, not a real booking — nothing here reaches a real customer.</li>
+        <li>Sign-in is a name only, with no password and no identity check — it is not a security control.</li>
+        <li>Job status is saved on this device only (browser storage). It is not shared with anyone else and is lost if you clear site data.</li>
+        <li>The price shown uses the same figures published on the price list, so if pricing changes there, it must be changed here too — there is no shared source yet.</li>
+        <li>Nothing here processes a payment.</li>
+      </ul>
+    </div>
+
+    <!-- =============== SIGN-IN =============== -->
+    <section id="signin-view">
+      <div class="signin-card">
+        <div>
+          <h1 class="display">Operator sign-in</h1>
+          <p style="margin-top:8px">Enter your name to see today's round. This does not check who you are — it only personalises the screen for this demo.</p>
+        </div>
+        <div class="field">
+          <label for="op-name">Your name</label>
+          <input id="op-name" type="text" autocomplete="name" placeholder="e.g. Sam" />
+        </div>
+        <button class="btn btn--red btn--full" id="signin-btn" type="button">Continue</button>
+      </div>
+    </section>
+
+    <!-- =============== DASHBOARD =============== -->
+    <section id="dash-view" hidden>
+      <div class="stack">
+        <div class="greet-row">
+          <div class="greet">
+            <p class="eyebrow">Today's round</p>
+            <h1 id="greet-name">G'day</h1>
+            <p id="greet-date"></p>
+          </div>
+          <button class="btn btn--outline btn--sm signout" id="signout-btn" type="button">Sign out</button>
+        </div>
+
+        <div class="round-summary">
+          <div>
+            <div class="num" id="round-count">0</div>
+            <div class="lbl">stops today</div>
+          </div>
+          <div class="rt">Camp Hill &amp; Coorparoo run<br/>Example round — replace with live bookings</div>
+        </div>
+
+        <div class="stack" id="stop-list" style="gap:14px"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container">
+    <div class="about-card" style="margin-top:8px">
+      <h3>What this tool does today, and what it doesn't</h3>
+      <p><strong>Does:</strong> shows an operator's round for the day, calculates the price for a stop from the venture's own published rates, and tracks a job through collection, washing, ready and delivered.</p>
+      <p><strong>Doesn't yet:</strong> receive real bookings (there is no backend feed), identify or screen who is signing in, store anything centrally or share it between devices, or take a payment. Building those is a separate decision — a shared database and a real sign-in are both available, but adding them means deciding what operator and customer data gets stored and for how long, which touches the Privacy Act once real personal information is involved.</p>
+      <p>How operators are engaged and paid — contractor agreement, ABN, insurance, Super obligations, WHS — is a legal and commercial matter for the venture's advisers, not something this screen decides or implies.</p>
+    </div>
+  </div>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>Laundrylegends operator tools. Internal use only — this page is not linked from the public site.</p>
+      <div class="links">
+        <a href="index.html">Home laundry</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============== WEIGH & PRICE SHEET =============== -->
+  <div class="wp-panel" id="wp-panel" role="dialog" aria-modal="true" aria-label="Weigh and price" hidden>
+    <div class="wp-sheet">
+      <div class="wp-head">
+        <div>
+          <p class="eyebrow" id="wp-stop-id">Stop</p>
+          <h2 id="wp-suburb">Suburb</h2>
+        </div>
+        <button class="wp-close" id="wp-close" type="button" aria-label="Close">
+          <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 4 L24 24 M24 4 L4 24" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div>
+        <div class="stepper-row">
+          <span class="lbl">Loads<small>Per load, about 5 kg. $32.00 a load.</small></span>
+          <div class="stepper">
+            <button type="button" data-step="-1" aria-label="Fewer loads">&minus;</button>
+            <span class="val" id="wp-loads">2</span>
+            <button type="button" data-step="1" aria-label="More loads">+</button>
+          </div>
+        </div>
+        <div class="toggle-row">
+          <span class="lbl">Premium Clean add-on<small>Delicates, stain hand-treatment, hanger finish. +$15.00 per load.</small></span>
+          <label class="switch"><input type="checkbox" id="wp-premium" /><span class="track"></span><span class="knob"></span></label>
+        </div>
+        <div class="toggle-row">
+          <span class="lbl">Eco / fragrance-free add-on<small>+$3.50, this order.</small></span>
+          <label class="switch"><input type="checkbox" id="wp-eco" /><span class="track"></span><span class="knob"></span></label>
+        </div>
+        <div class="toggle-row" style="border-bottom:0">
+          <span class="lbl">Legends Club member<small>Waives the $73.50 one-off minimum.</small></span>
+          <label class="switch"><input type="checkbox" id="wp-club" /><span class="track"></span><span class="knob"></span></label>
+        </div>
+      </div>
+
+      <div class="wp-breakdown">
+        <div class="bd-row"><span id="wp-loads-line">2 loads</span><span id="wp-loads-amt">$64.00</span></div>
+        <div class="bd-row" id="wp-premium-line" hidden><span>Premium Clean</span><span id="wp-premium-amt">$0.00</span></div>
+        <div class="bd-row" id="wp-eco-line" hidden><span>Eco add-on</span><span>$3.50</span></div>
+        <div class="bd-row"><span>Collection &amp; return</span><span>$13.50</span></div>
+        <div class="bd-row" id="wp-min-line" hidden><span>Minimum booking applied</span><span></span></div>
+        <div class="bd-row total"><span>Confirm with customer</span><span id="wp-total">$77.50</span></div>
+        <p class="bd-note">This must match the price list the customer sees. If it doesn't, stop and check the price panel on the home page before collecting.</p>
+      </div>
+
+      <div>
+        <p class="eyebrow" style="margin-bottom:8px">Job status</p>
+        <div class="ladder" id="wp-ladder"></div>
+      </div>
+
+      <button class="btn btn--red btn--full" id="wp-save" type="button">Save and close</button>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    'use strict';
+    var STATUSES = ['scheduled','collected','washing','ready','delivered'];
+    var STATUS_LABEL = {scheduled:'Scheduled',collected:'Collected',washing:'Washing',ready:'Ready',delivered:'Delivered'};
+
+    // Example round only — not a real booking feed. Suburbs match the
+    // coverage list already published on index.html.
+    var SAMPLE_STOPS = [
+      {id:'Booking #1042', suburb:'Camp Hill 4152', window:'9am–12pm', loads:2, premium:false, eco:false, club:false, status:'scheduled'},
+      {id:'Booking #1047', suburb:'Coorparoo 4151', window:'9am–12pm', loads:1, premium:true, eco:false, club:true, status:'scheduled'},
+      {id:'Booking #1051', suburb:'Camp Hill 4152', window:'12pm–3pm', loads:3, premium:false, eco:true, club:false, status:'scheduled'}
+    ];
+
+    var LS_KEY = 'll-portal-round-v1';
+    var LS_NAME = 'll-portal-operator';
+
+    function loadStops(){
+      try{
+        var raw = localStorage.getItem(LS_KEY);
+        if(raw) return JSON.parse(raw);
+      }catch(e){}
+      return SAMPLE_STOPS.map(function(s){ return Object.assign({}, s); });
+    }
+    function saveStops(stops){
+      try{ localStorage.setItem(LS_KEY, JSON.stringify(stops)); }catch(e){}
+    }
+    var stops = loadStops();
+
+    function price(stop){
+      var subtotal = stop.loads * 32 + (stop.premium ? stop.loads * 15 : 0) + (stop.eco ? 3.5 : 0);
+      var total = subtotal + 13.5;
+      var minApplied = false;
+      if(!stop.club && total < 73.5){ total = 73.5; minApplied = true; }
+      return {subtotal: subtotal, total: total, minApplied: minApplied};
+    }
+    function money(n){ return '$' + n.toFixed(2); }
+
+    // ---- Sign-in ----
+    var signinView = document.getElementById('signin-view');
+    var dashView = document.getElementById('dash-view');
+    var nameInput = document.getElementById('op-name');
+    try{ var savedName = localStorage.getItem(LS_NAME); if(savedName) nameInput.value = savedName; }catch(e){}
+
+    function enterDashboard(name){
+      document.getElementById('greet-name').textContent = 'G’day' + (name ? ', ' + name : '');
+      document.getElementById('greet-date').textContent = new Date().toLocaleDateString('en-AU', {weekday:'long', day:'numeric', month:'long'});
+      signinView.hidden = true; dashView.hidden = false;
+      renderStops();
+    }
+    document.getElementById('signin-btn').addEventListener('click', function(){
+      var name = nameInput.value.trim();
+      try{ localStorage.setItem(LS_NAME, name); }catch(e){}
+      enterDashboard(name);
+    });
+    document.getElementById('signout-btn').addEventListener('click', function(){
+      dashView.hidden = true; signinView.hidden = false;
+    });
+
+    // ---- Stop list ----
+    var stopList = document.getElementById('stop-list');
+    function renderStops(){
+      stopList.innerHTML = '';
+      document.getElementById('round-count').textContent = stops.length;
+      stops.forEach(function(stop, i){
+        var p = price(stop);
+        var card = document.createElement('div');
+        card.className = 'stop';
+        card.innerHTML =
+          '<div class="stop-top">' +
+            '<div><div class="stop-id">' + stop.id + '</div>' +
+            '<div class="stop-meta">' + stop.suburb + ' · ' + stop.window + '</div></div>' +
+            '<span class="chip chip--' + stop.status + '">' + STATUS_LABEL[stop.status] + '</span>' +
+          '</div>' +
+          '<div class="stop-actions">' +
+            '<button class="btn btn--outline btn--sm" data-open="' + i + '" type="button">Weigh &amp; price</button>' +
+            '<span class="stop-price">' + money(p.total) + '</span>' +
+          '</div>';
+        stopList.appendChild(card);
+      });
+      Array.prototype.forEach.call(stopList.querySelectorAll('[data-open]'), function(btn){
+        btn.addEventListener('click', function(){ openSheet(Number(btn.getAttribute('data-open'))); });
+      });
+    }
+
+    // ---- Weigh & price sheet ----
+    var panel = document.getElementById('wp-panel');
+    var currentIndex = null;
+    var loadsEl = document.getElementById('wp-loads');
+    var premiumEl = document.getElementById('wp-premium');
+    var ecoEl = document.getElementById('wp-eco');
+    var clubEl = document.getElementById('wp-club');
+    var ladder = document.getElementById('wp-ladder');
+
+    function openSheet(i){
+      currentIndex = i;
+      var s = stops[i];
+      document.getElementById('wp-stop-id').textContent = s.id;
+      document.getElementById('wp-suburb').textContent = s.suburb;
+      loadsEl.textContent = s.loads;
+      premiumEl.checked = s.premium;
+      ecoEl.checked = s.eco;
+      clubEl.checked = s.club;
+      renderLadder(s.status);
+      updateTotals();
+      panel.hidden = false;
+    }
+    function closeSheet(){ panel.hidden = true; renderStops(); currentIndex = null; }
+    document.getElementById('wp-close').addEventListener('click', closeSheet);
+    document.getElementById('wp-save').addEventListener('click', function(){ saveStops(stops); closeSheet(); });
+    panel.addEventListener('click', function(e){ if(e.target === panel) { saveStops(stops); closeSheet(); } });
+
+    function currentStop(){ return stops[currentIndex]; }
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-step]'), function(btn){
+      btn.addEventListener('click', function(){
+        var s = currentStop(); if(!s) return;
+        var delta = Number(btn.getAttribute('data-step'));
+        s.loads = Math.max(1, Math.min(6, s.loads + delta));
+        loadsEl.textContent = s.loads;
+        updateTotals();
+      });
+    });
+    [['wp-premium','premium'], ['wp-eco','eco'], ['wp-club','club']].forEach(function(pair){
+      document.getElementById(pair[0]).addEventListener('change', function(e){
+        var s = currentStop(); if(!s) return;
+        s[pair[1]] = e.target.checked;
+        updateTotals();
+      });
+    });
+
+    function updateTotals(){
+      var s = currentStop(); if(!s) return;
+      var p = price(s);
+      document.getElementById('wp-loads-line').textContent = s.loads + (s.loads === 1 ? ' load' : ' loads');
+      document.getElementById('wp-loads-amt').textContent = money(s.loads * 32);
+      var premiumLine = document.getElementById('wp-premium-line');
+      premiumLine.hidden = !s.premium;
+      if(s.premium) document.getElementById('wp-premium-amt').textContent = money(s.loads * 15);
+      document.getElementById('wp-eco-line').hidden = !s.eco;
+      var minLine = document.getElementById('wp-min-line');
+      minLine.hidden = !p.minApplied;
+      if(p.minApplied) minLine.querySelector('span:last-child').textContent = money(73.5);
+      document.getElementById('wp-total').textContent = money(p.total);
+    }
+
+    function renderLadder(current){
+      ladder.innerHTML = '';
+      var idx = STATUSES.indexOf(current);
+      STATUSES.forEach(function(st, i){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = STATUS_LABEL[st];
+        if(i === idx) b.className = 'is-current';
+        else if(i < idx) b.className = 'is-done';
+        b.addEventListener('click', function(){
+          var s = currentStop(); if(!s) return;
+          s.status = st;
+          renderLadder(st);
+        });
+        ladder.appendChild(b);
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
