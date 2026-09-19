@@ -135,21 +135,25 @@ Every user-visible string, in document order. Use this to diff against any futur
 | Price card | *Personal bag wash* — Once a week pick up* **$59.95** |
 | Price bullets | * 1 standard 7kg household washing machine load per week *(all items including underwear)* · * Up to 10 items ironed *(e.g. flat sheets/pillow cases)* · * Excludes business shirts, delicates and dry cleaning items · * Terms & conditions apply |
 | Ironing | Ironing per piece — **$3** |
-| T&Cs | * Advise us of items valued at over $250. Extra delicate & large items may incur higher charges · * All items identified as Dry Cleaning will be charged accordingly · * For personal bags, if over weight/specified number of pieces, extra charges may apply · * A basic wash is just that – provide us with the usual assortment of clothes your would normally put through a standard wash. No delicates. We have specific services for these items · * All prices include GST |
+| T&Cs | * Advise us of items valued at over $250. Extra delicate & large items may incur higher charges · * All items identified as Dry Cleaning will be charged accordingly · * For personal bags, if over weight/specified number of pieces, extra charges may apply · * A basic wash is just that – provide us with the usual assortment of clothes you would normally put through a standard wash. No delicates. We have specific services for these items · * All prices include GST |
 | CTA banner | Request pickup / online now · [Order pickup] |
 | Clients h2 | We wash for / the best around |
 | Clients lead | A few of our valued clients — you might recognise a name or two. |
 | Client tiles | Italian Street Kitchen · Louis Vuitton · RNA · Australian Rugby · Brisbane Showgrounds |
 | Footer brand | LAUNDRY / LEGENDS · *Always Fresh* · [Order pickup] |
-| Footer addresses | **Head Office** — 42 Fresh Lane, Brisbane, QLD 4000 · **Service Center** — Unit 5, 168 Distribution Drive, Coorparoo, QLD 4151 |
+| Footer addresses | **Head Office** — 42 Fresh Lane, Brisbane, QLD 4000 · **Service Centre** — Unit 5, 168 Distribution Drive, Coorparoo, QLD 4151 |
 | Footer phone | T: (07) 3555 1800 · Call 1800 PICKUP |
 | Footer legal | © Copyright 2026 Laundrylegends \| All rights reserved \| Privacy Policy |
 | Mailing pill | × Mailing list |
 
-### Known copy defects (inherited from the source page, deliberately preserved)
+### Copy defects — RESOLVED 19 September 2026
 
-- T&Cs bullet 4: *"clothes **your** would normally"* — should be "you". Carried over from the original transcription. **Fix before go-live.**
-- "Service Center" uses US spelling. Should be "Centre" for Australian English. **Fix before go-live.**
+Both inherited defects have been corrected in the page source:
+
+- T&Cs bullet 4: *"clothes **your** would normally"* → *"clothes **you** would normally"*
+- Footer heading: *"Service **Center**"* → *"Service **Centre**"* (Australian English)
+
+The inventory above reflects the corrected strings.
 
 ---
 
@@ -172,7 +176,7 @@ Every user-visible string, in document order. Use this to diff against any futur
 | Clients lead | Not to name drop, but here's just a few of our valued clients. | A few of our valued clients — you might recognise a name or two. |
 | Dry cleaning ref | "our Plus Dry Cleaners intensive care treatment" | "the full dry cleaning treatment" |
 | Head Office | 20 Propriety Street, Tingalpa QLD 4173 | 42 Fresh Lane, Brisbane QLD 4000 (**fake**) |
-| Second address | Plus Dry Cleaners Stores, Yeronga | Service Center, Coorparoo (**fake**) |
+| Second address | Plus Dry Cleaners Stores, Yeronga | Service Centre, Coorparoo (**fake**) |
 | Phone | (07) 3848 3775 | (07) 3555 1800 (**fake**) |
 
 ---
@@ -190,7 +194,7 @@ These are the things that will cause real problems if the page goes live as-is. 
 | 5 | **Pricing is the competitor's pricing** — $59.95/week, $3/piece, $250 declaration threshold, 7kg load, 10 ironed items | Every figure on this page came from the competitor's page via screen recording. None has been set by Laundrylegends. All prices are stated GST-inclusive, which is correct for AU — but the numbers themselves need to be Laundrylegends' own. | Max Jones (pricing model) → Callum Page (implement) | Before any publish |
 | 6 | **Privacy Policy link is a dead `/privacy-policy/`** | No such page exists. Required if any mailing-list capture goes live. | Callum Page | Before mailing list activates |
 | 7 | **Mailing list pill does nothing** | Sets a URL hash pointing at nothing. Either wire it to a real capture form or remove it. If wired, it collects personal information — Privacy Act obligations attach. | Callum Page | Before any publish |
-| 8 | **Copy defects** — "your would normally" typo; "Service Center" US spelling | Small, but visible. | Callum Page | Before any publish |
+| ~~8~~ | ~~**Copy defects**~~ — **RESOLVED 19 Sep 2026.** Typo and US spelling corrected in page source. | — | Callum Page | Done |
 
 > **Legal boundary:** The above flags commercial and compliance *risk*. It is not legal advice. Items 1, 4, 6 and 7 should go to the venture's solicitor with a short brief before the page is published.
 
