@@ -18,8 +18,8 @@
     --grey-card:#2E2E2E;
     --grey-line:#E6E6E6;
     --grey-page:#F5F5F5;
-    --blue:#194B9E;
-    --blue-2:#0F3F8A;
+    --blue:#0D2052;
+    --blue-2:#081540;
     --white:#FFFFFF;
     --shadow-card:0 14px 30px -20px rgba(0,0,0,.16), 0 4px 10px -6px rgba(0,0,0,.08);
     --shadow-cta:0 12px 22px -14px rgba(238,110,31,.4);
@@ -423,12 +423,13 @@
   /* ---- FOOTER ---- */
   .footer{
     background:var(--blue); color:#fff;
-    padding:40px 24px 20px;
+    padding:44px 24px 20px;
     position:relative;
     overflow:hidden;
+    border-top:3px solid var(--orange);
   }
-  .footer .brand-mark{color:#fff; font-size:32px}
-  .footer .brand-mark .l2{font-size:22px}
+  .footer .brand-mark{color:#fff; font-size:36px}
+  .footer .brand-mark .l2{font-size:25px}
   .footer .brand{align-items:flex-start; gap:10px}
   .footer .brand-tag{color:rgba(255,255,255,.85); font-size:11px; padding-top:20px}
   .footer .order-btn{
@@ -623,6 +624,58 @@
     .hero .script-sub{font-size:16px}
     .life-busy h2{font-size:38px}
   }
+
+  /* ---- SCROLL PROGRESS BAR ---- */
+  .scroll-progress{
+    position:fixed; top:0; left:0; z-index:200;
+    height:3px; width:0; background:var(--orange);
+    pointer-events:none;
+  }
+
+  /* ---- HEADER SHRINK ON SCROLL ---- */
+  .site-header{transition:padding .22s ease}
+  .site-header.scrolled{padding-top:8px; padding-bottom:8px}
+
+  /* ---- HERO ENTRY ---- */
+  @keyframes heroSlideUp{
+    from{opacity:0;transform:translateY(24px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+  @keyframes heroCTAFade{
+    from{opacity:0;transform:translateY(10px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+    .scroll-progress{transition:width .1s linear}
+
+    .hero h1{animation:heroSlideUp .7s cubic-bezier(.22,1,.36,1) both}
+    .hero .cta-row{animation:heroCTAFade .5s cubic-bezier(.22,1,.36,1) .32s both}
+
+    /* ---- REVEAL ON SCROLL ---- */
+    .reveal{
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .6s cubic-bezier(.22,1,.36,1),
+                 transform .6s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.is-visible{opacity:1;transform:translateY(0)}
+
+    /* ---- STAGGER GROUPS ---- */
+    .reveal-stagger > *{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .52s cubic-bezier(.22,1,.36,1),
+                 transform .52s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal-stagger.is-visible > *:nth-child(1){transition-delay:0s}
+    .reveal-stagger.is-visible > *:nth-child(2){transition-delay:.08s}
+    .reveal-stagger.is-visible > *:nth-child(3){transition-delay:.16s}
+    .reveal-stagger.is-visible > *:nth-child(4){transition-delay:.24s}
+    .reveal-stagger.is-visible > *:nth-child(5){transition-delay:.32s}
+    .reveal-stagger.is-visible > *{opacity:1;transform:translateY(0)}
+  }
 </style>
 </head>
 <body>
@@ -701,11 +754,12 @@
   <section class="section life-busy" aria-labelledby="life-busy-h">
     <div class="container">
       <svg class="sparkle-abs sp-1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/><circle cx="34" cy="10" r="2" stroke="#EE6E1F" stroke-width="1.5" fill="none"/></svg>
-      <h2 id="life-busy-h" class="display">Life&rsquo;s too short to spend it folding washing.</h2>
-      <p class="subline">Hand it over — we&rsquo;ve got it covered.</p>
+      <h2 id="life-busy-h" class="display reveal">Life&rsquo;s too short to spend it folding washing.</h2>
+      <p class="subline reveal">Hand it over — we&rsquo;ve got it covered.</p>
       <p class="body">Our Home Laundry service takes the grunt work off your plate in just a few taps.</p>
       <svg class="sparkle-abs sp-2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/></svg>
 
+      <div class="reveal-stagger">
       <!-- SIMPLIFY YOUR LIFE card -->
       <div class="simplify">
         <h3>Take it off your list</h3>
@@ -718,14 +772,16 @@
         <p>More time with your kids, your partner, your mates&hellip; less time dealing with household chores that eat up your weekend.</p>
         <p>We genuinely love doing this stuff. Seriously — it&rsquo;s our thing.</p>
       </div>
+      </div><!-- /.reveal-stagger -->
     </div>
   </section>
 
   <!-- =============== OUR PROCESS =============== -->
   <section class="section process" aria-labelledby="process-h">
     <div class="container">
-      <h2 id="process-h">Our Process</h2>
+      <h2 id="process-h" class="reveal">Our Process</h2>
 
+      <div class="steps reveal-stagger">
       <!-- ORDER -->
       <article class="step-card">
         <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
@@ -798,82 +854,67 @@
         <h3>Drop off</h3>
         <p>Clean, fresh and ready to go — we bring it straight back to your door. All you have to do is put it away.</p>
       </article>
+      </div><!-- /.steps.reveal-stagger -->
     </div>
   </section>
 
   <!-- =============== PRICING =============== -->
   <section class="section pricing" aria-labelledby="pricing-h">
     <div class="container">
-      <h2 id="pricing-h" class="pricing-title">Pricing</h2>
+      <h2 id="pricing-h" class="pricing-title reveal">Pricing</h2>
       <hr class="pricing-rule" />
 
-      <!-- bags illustration: 4 flat shopping bags side-by-side, labelled -->
-      <svg class="bags-illo" viewBox="0 0 620 380" aria-hidden="true" role="img" aria-label="Laundrylegends bags — washed, dried, ironed, folded, ready for pickup">
-        <defs>
-          <!-- one bag body with handle, positioned via <use> -->
-        </defs>
-        <g stroke="#111" stroke-width="2.4" fill="#fff" stroke-linejoin="round" stroke-linecap="round">
-          <!-- back tall bag (Home Laundry branded) -->
-          <g>
-            <path d="M420 40 C420 22 480 22 480 40"/>
-            <path d="M380 60 L570 60 L570 340 L380 340 Z"/>
-            <line x1="380" y1="90" x2="570" y2="90"/>
-            <!-- fold tick -->
-            <path d="M470 60 L472 68 L468 68 Z" fill="#111"/>
-          </g>
-          <!-- washed dried -->
-          <g>
-            <path d="M50 100 C50 82 118 82 118 100"/>
-            <path d="M20 120 L180 120 L180 350 L20 350 Z"/>
-            <line x1="20" y1="150" x2="180" y2="150"/>
-            <path d="M96 120 L100 130 L92 130 Z" fill="#111"/>
-          </g>
-          <!-- ironed folded -->
-          <g>
-            <path d="M200 120 C200 102 268 102 268 120"/>
-            <path d="M170 140 L330 140 L330 355 L170 355 Z"/>
-            <line x1="170" y1="170" x2="330" y2="170"/>
-            <path d="M246 140 L250 150 L242 150 Z" fill="#111"/>
-          </g>
-          <!-- ready for pickup -->
-          <g>
-            <path d="M340 130 C340 112 408 112 408 130"/>
-            <path d="M310 150 L470 150 L470 360 L310 360 Z"/>
-            <line x1="310" y1="180" x2="470" y2="180"/>
-          </g>
-        </g>
+      <!-- bags illustration: clean line art, 4 bags — back brand bag drawn first (z-order behind) -->
+      <svg class="bags-illo reveal" viewBox="0 0 560 350" aria-hidden="true" role="img" aria-label="Laundrylegends bags — washed, dried, ironed, folded, ready for pickup">
 
-        <!-- Labels -->
-        <g font-family="Archivo, Arial, sans-serif" font-weight="400" fill="#111" text-anchor="middle" letter-spacing=".5">
-          <text x="100" y="245" font-size="26">WASHED</text>
-          <text x="100" y="270" font-size="26">DRIED</text>
-          <text x="250" y="265" font-size="26">IRONED</text>
-          <text x="250" y="290" font-size="26">FOLDED</text>
-        </g>
-        <g font-family="Inter, Arial, sans-serif" fill="#333" text-anchor="middle" letter-spacing="1.5" font-size="15">
-          <text x="390" y="270">&amp; ready</text>
-          <text x="390" y="294">for pickup</text>
-        </g>
+        <!-- === BACK BRAND BAG (drawn first, sits behind bags 1–3) === -->
+        <path d="M 449 36 C 449 12 543 12 543 36" fill="none" stroke="#111" stroke-width="2.3" stroke-linecap="round"/>
+        <rect x="424" y="36" width="124" height="302" fill="#fff" stroke="#111" stroke-width="2.2" rx="1"/>
+        <line x1="424" y1="70" x2="548" y2="70" stroke="#111" stroke-width="1.5"/>
+        <polygon points="485,36 490,48 480,48" fill="#111"/>
+        <!-- Vertical brand columns: LEGENDS dominant, LAUNDRY secondary, Fresh caption -->
+        <text x="460" y="190" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="700" font-size="46" fill="#111" transform="rotate(-90 460 190)">LEGENDS</text>
+        <text x="506" y="190" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600" font-size="25" fill="#111" transform="rotate(-90 506 190)">LAUNDRY</text>
+        <text x="531" y="190" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" letter-spacing="2.4" fill="#666" transform="rotate(-90 531 190)">FRESH &amp; EFFORTLESS</text>
 
-        <!-- Laundrylegends brand on back bag -->
-        <g font-family="Archivo, Arial, sans-serif" font-weight="400" fill="#111" text-anchor="middle">
-          <text x="475" y="188" font-size="30" transform="rotate(-90 475 188)">LAUNDRY</text>
-          <text x="500" y="188" font-size="46" transform="rotate(-90 500 188)">LEGENDS</text>
-        </g>
-        <text x="530" y="188" font-family="Inter, Arial, sans-serif" font-size="11" letter-spacing="2" fill="#111" text-anchor="middle" transform="rotate(-90 530 188)">Fresh &amp; Effortless</text>
+        <!-- === BAG 1: WASHED / DRIED === -->
+        <path d="M 40 108 C 40 80 128 80 128 108" fill="none" stroke="#111" stroke-width="2.3" stroke-linecap="round"/>
+        <rect x="12" y="108" width="136" height="230" fill="#fff" stroke="#111" stroke-width="2.2" rx="1"/>
+        <line x1="12" y1="140" x2="148" y2="140" stroke="#111" stroke-width="1.5"/>
+        <polygon points="80,108 86,120 74,120" fill="#111"/>
+        <text x="80" y="242" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600" font-size="21" fill="#111" letter-spacing=".5">WASHED</text>
+        <text x="80" y="267" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600" font-size="21" fill="#111" letter-spacing=".5">DRIED</text>
 
-        <!-- Sparkles -->
-        <g stroke="#111" stroke-width="1.8" fill="none">
-          <path d="M40 96 C40 86 42 84 46 82 C42 80 40 78 40 68 C40 78 38 80 34 82 C38 84 40 86 40 96 Z"/>
-          <circle cx="60" cy="86" r="2"/>
-          <path d="M64 74 C64 66 66 64 70 62 C66 60 64 58 64 50 C64 58 62 60 58 62 C62 64 64 66 64 74 Z"/>
-          <path d="M340 342 C340 335 342 333 346 331 C342 329 340 327 340 320 C340 327 338 329 334 331 C338 333 340 335 340 342 Z"/>
-          <circle cx="360" cy="335" r="2"/>
+        <!-- === BAG 2: IRONED / FOLDED === -->
+        <path d="M 188 100 C 188 72 276 72 276 100" fill="none" stroke="#111" stroke-width="2.3" stroke-linecap="round"/>
+        <rect x="160" y="100" width="136" height="238" fill="#fff" stroke="#111" stroke-width="2.2" rx="1"/>
+        <line x1="160" y1="132" x2="296" y2="132" stroke="#111" stroke-width="1.5"/>
+        <polygon points="228,100 234,112 222,112" fill="#111"/>
+        <text x="228" y="244" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600" font-size="21" fill="#111" letter-spacing=".5">IRONED</text>
+        <text x="228" y="269" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="600" font-size="21" fill="#111" letter-spacing=".5">FOLDED</text>
+
+        <!-- === BAG 3: & ready / for pickup === -->
+        <path d="M 336 92 C 336 64 424 64 424 92" fill="none" stroke="#111" stroke-width="2.3" stroke-linecap="round"/>
+        <rect x="308" y="92" width="136" height="246" fill="#fff" stroke="#111" stroke-width="2.2" rx="1"/>
+        <line x1="308" y1="124" x2="444" y2="124" stroke="#111" stroke-width="1.5"/>
+        <text x="376" y="246" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="16" fill="#444" letter-spacing="1.2">&#38; ready</text>
+        <text x="376" y="272" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="16" fill="#444" letter-spacing="1.2">for pickup</text>
+
+        <!-- Sparkles top-left -->
+        <g fill="#111">
+          <path d="M 44 74 C 44 63 46 60 50 58 C 46 56 44 53 44 42 C 44 53 42 56 38 58 C 42 60 44 63 44 74 Z"/>
+          <circle cx="66" cy="60" r="2.8"/>
+          <path d="M 77 47 C 77 37 79 34 83 32 C 79 30 77 27 77 17 C 77 27 75 30 71 32 C 75 34 77 37 77 47 Z"/>
+        </g>
+        <!-- Sparkle bottom-right corner -->
+        <g fill="#111">
+          <path d="M 330 340 C 330 330 332 327 336 325 C 332 323 330 320 330 310 C 330 320 328 323 324 325 C 328 327 330 330 330 340 Z"/>
+          <circle cx="354" cy="332" r="2.4"/>
         </g>
       </svg>
 
       <!-- Personal bag wash -->
-      <div class="price-card">
+      <div class="price-card reveal">
         <p class="script">Personal<br/>bag wash</p>
         <p class="headline">Once a week pick up<span aria-hidden="true">*</span> <span class="price">$59.95</span></p>
         <ul>
@@ -885,7 +926,7 @@
       </div>
 
       <!-- Ironing -->
-      <div class="ironing-block">
+      <div class="ironing-block reveal">
         <h3>Ironing</h3>
         <div class="ironing-row">
           <span class="label">Ironing per piece</span>
@@ -897,7 +938,7 @@
       <a class="price-list-btn" href="#" data-open-prices>View full price list</a>
 
       <!-- T&Cs -->
-      <div class="tc-block">
+      <div class="tc-block reveal">
         <h3>T&amp;C&rsquo;s</h3>
         <ul>
           <li class="strong">* Advise us of items valued at over $250. Extra delicate &amp; large items may incur higher charges</li>
@@ -909,7 +950,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="cta-banner" id="pickup">
+      <div class="cta-banner reveal" id="pickup">
         <h2>Request pickup<br/>online now</h2>
         <a class="btn-pill-outline" href="contact.html" aria-label="Order pickup">Order pickup</a>
         <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#fff" stroke-width="2" fill="none"/><circle cx="32" cy="12" r="2" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
@@ -921,9 +962,9 @@
   <section class="wash" aria-labelledby="wash-h">
     <div class="container">
       <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" fill="#EE6E1F"/></svg>
-      <h2 id="wash-h">We wash for<br/>the best around</h2>
-      <p class="lead">A few of our valued clients — you might recognise a name or two.</p>
-      <div class="clients" aria-label="Valued clients">
+      <h2 id="wash-h" class="reveal">We wash for<br/>the best around</h2>
+      <p class="lead reveal">A few of our valued clients — you might recognise a name or two.</p>
+      <div class="clients reveal-stagger" aria-label="Valued clients">
         <!--
           Horizontal carousel. Tiles are neutral placeholders: no client may be
           named here until they have confirmed in writing (HANDOFF.md Blocker #1).
@@ -1145,6 +1186,48 @@
         markActive(current);
       }, {passive:true});
     })();
+  </script>
+
+  <!-- =============== SCROLL & REVEAL =============== -->
+  <script>
+  (function(){
+    'use strict';
+
+    // --- Scroll progress bar ---
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.insertBefore(bar, document.body.firstChild);
+
+    var header = document.querySelector('.site-header');
+    var docEl  = document.documentElement;
+
+    window.addEventListener('scroll', function(){
+      var scrolled = window.scrollY || docEl.scrollTop;
+      var total    = docEl.scrollHeight - docEl.clientHeight;
+      bar.style.width = (total > 0 ? Math.min(scrolled / total * 100, 100) : 0) + '%';
+      if(header) header.classList.toggle('scrolled', scrolled > 40);
+    }, {passive:true});
+
+    // --- Reveal on scroll via IntersectionObserver ---
+    var targets = document.querySelectorAll('.reveal, .reveal-stagger');
+    if(!targets.length) return;
+
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+
+    targets.forEach(function(el){ io.observe(el); });
+  })();
   </script>
 </body>
 </html>
