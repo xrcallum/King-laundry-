@@ -1,4 +1,4 @@
-# LaundryKings — copy of record
+# Linen Legends — copy of record
 
 Laundry collection and delivery Australia-wide.
 This repository is the source of record for the website file and the project dossier.
