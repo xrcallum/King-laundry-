@@ -57,16 +57,16 @@
 
 | Role | Font | Weight | Notes |
 |---|---|---|---|
-| Display / headings | **Anton** | 400 (single weight) | Swapped from Barlow Condensed at rebrand to create visual distance |
-| Script accent | **Yellowtail** | 400 | Hero subtitle, brand tagline, price card labels |
-| Body | **Poppins** | 300–700 + italics | |
+| Display / headings | **Archivo** | 600 (logo lockup 700) | Corporate restyle 19 Sep 2026 — replaced Anton; calmer scale, leading ≥1.0 |
+| Label accent | **Inter** 500, letter-spaced caps (.2–.32em) | 500 | Replaced Yellowtail script — hero subtitle, brand tagline, price-card labels |
+| Body | **Inter** | 300–600 + italics | Replaced Poppins |
 
 Google Fonts URL in `<head>`:
 ```
-https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Yellowtail&display=swap
+https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;1,500&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap
 ```
 
-> **Note for the next Claude:** Anton is a single-weight font. Any `font-weight: 900` on an Anton element is inert. The rebrand removed those; don't reintroduce them.
+> **Note for the next Claude:** the 19 Sep 2026 corporate restyle replaced Anton/Yellowtail/Poppins with Archivo/Inter across both pages, reduced heading sizes and weights (600 max, logo 700), softened card shadows, and converted all script accents to letter-spaced uppercase Inter labels. The type-scale table below reflects the ORIGINAL Anton build and is superseded — read the CSS as source of truth.
 
 ### Type scale (fluid)
 
