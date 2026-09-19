@@ -948,6 +948,263 @@ svg.ic{width:24px;height:24px}
   .reveal{opacity:0;transform:translateY(12px)}
   .reveal.in{opacity:1;transform:none;transition:opacity .32s ease-out,transform .32s ease-out}
 }
+
+/* ── home v5 ── */
+
+/* ═════ HOME v5 ═════ */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.hd-2c{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:end;text-align:left}
+.hd-2c .eyebrow{text-align:left}
+.hd-2c .h2{text-align:left;margin-bottom:.4rem}
+.h2-sub{color:var(--body);font-size:var(--fs-body);max-width:60ch;margin:0}
+.hd-a{color:var(--navy);font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);white-space:nowrap;padding:.55rem 0;border-bottom:1.5px solid var(--navy)}
+.hd-a:hover{color:var(--red)}
+.hd-note{color:var(--mute);font-size:var(--fs-micro);white-space:nowrap;align-self:end}
+@media (max-width:720px){.hd-2c{grid-template-columns:1fr;text-align:left}.hd-a,.hd-note{white-space:normal}}
+
+/* ── Hero v5 ── */
+.hero5{background:var(--navy);color:#fff;padding:2.6rem 0 1.8rem;position:relative;overflow:hidden}
+.hero5::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 88% 8%,rgba(232,96,74,.18),transparent 55%),radial-gradient(circle at 10% 90%,rgba(43,75,170,.28),transparent 45%);pointer-events:none}
+.h5-grid{position:relative;display:grid;grid-template-columns:1.15fr .95fr;gap:2.4rem;align-items:start}
+.h5-l{padding-top:.5rem}
+.h5-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);letter-spacing:var(--track-caps);color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:.35rem .75rem;border-radius:999px;text-transform:uppercase}
+.h5-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:h5Pulse 2.4s var(--ease) infinite}
+@keyframes h5Pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.h5-h{font-family:var(--fd);font-weight:900;font-size:var(--fs-hero);line-height:1.05;letter-spacing:var(--track-hero);margin:1rem 0 .8rem;color:#fff}
+.h5-h-em{display:block;font-weight:500;font-size:.58em;line-height:1.25;letter-spacing:normal;color:rgba(255,255,255,.82);margin-top:.7rem}
+.h5-p{font-size:var(--fs-body);line-height:1.55;color:rgba(255,255,255,.9);max-width:52ch;margin:0 0 1.2rem}
+.h5-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:1.2rem}
+.btn-ghost-nv{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);padding:.85rem 1.7rem;font-size:var(--fs-body);border-radius:var(--r)}
+.btn-ghost-nv:hover{border-color:#fff;background:rgba(255,255,255,.06);transform:translateY(var(--lift));box-shadow:var(--e-hov-dk)}
+.h5-chips{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.h5-chips li{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--fs-micro);color:rgba(255,255,255,.85)}
+.ic-tk{width:14px;height:14px;color:#4ade80;flex-shrink:0}
+
+/* Hero quote widget */
+.h5-r{background:#fff;color:var(--body);border-radius:var(--r-lg);padding:1.3rem 1.35rem 1.15rem;box-shadow:var(--e-sheet);border:1px solid rgba(12,38,95,.08)}
+.h5-q-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.85rem;padding-bottom:.7rem;border-bottom:1px solid rgba(12,38,95,.1)}
+.h5-q-lbl{font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);letter-spacing:var(--track-caps);color:var(--navy);text-transform:uppercase}
+.h5-q-gst{font-size:11px;color:var(--mute);font-family:var(--fd);font-weight:600;letter-spacing:.02em}
+.h5-q-row{margin-bottom:.85rem}
+.h5-q-l{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);margin-bottom:.45rem}
+.h5-q-hint{font-weight:400;color:var(--mute);font-size:12px;margin-left:.35rem}
+.h5-seg{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);border-radius:10px;padding:3px;gap:2px}
+.h5-seg button{border:none;background:transparent;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);padding:.55rem .5rem;border-radius:8px;cursor:pointer;transition:background var(--tr),color var(--tr);text-align:center}
+.h5-seg button.on{background:var(--navy);color:#fff}
+.h5-stepper{display:inline-flex;align-items:center;background:var(--paper);border-radius:10px;padding:2px;width:150px}
+.h5-st-b{width:44px;height:44px;border:none;background:transparent;color:var(--navy);font-weight:700;font-size:20px;cursor:pointer;border-radius:8px;transition:background var(--tr)}
+.h5-st-b:hover{background:rgba(12,38,95,.08)}
+.h5-st-v{flex:1;text-align:center;font-family:var(--fd);font-weight:800;font-size:var(--fs-4);color:var(--navy);font-variant-numeric:tabular-nums}
+.h5-st-v.bump{animation:stepBump .3s var(--ease-spring)}
+.h5-lin{display:grid;gap:.55rem}
+.h5-linrow{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
+.h5-linrow span{font-size:var(--fs-micro);color:var(--body)}
+.h5-linrow span em{font-style:normal;color:var(--mute);margin-left:.3rem;font-weight:600}
+.h5-linrow .h5-stepper{width:130px}
+.h5-linrow .h5-st-b{width:38px;height:38px;font-size:18px}
+.h5-linrow .h5-st-v{font-size:var(--fs-5)}
+.h5-q-break{height:1px;background:rgba(12,38,95,.1);margin:.55rem 0}
+.h5-q-line{display:flex;justify-content:space-between;font-size:var(--fs-micro);color:var(--body);padding:.28rem 0}
+.h5-q-tot{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0 .1rem;border-top:1px solid rgba(12,38,95,.1);margin-top:.35rem}
+.h5-q-tot span:first-child{font-family:var(--fd);font-weight:700;color:var(--navy);font-size:var(--fs-micro)}
+.h5-q-tot span:last-child{font-family:var(--fd);font-weight:900;color:var(--navy);font-size:var(--fs-2);font-variant-numeric:tabular-nums}
+.h5-q-min{font-size:11px;color:var(--mute);margin:0 0 .8rem;min-height:14px}
+.h5-q-cta{margin-top:.4rem}
+.h5-q-note{font-size:11px;color:var(--mute);margin:.55rem 0 0;text-align:center;line-height:1.4}
+.tab{font-variant-numeric:tabular-nums}
+
+/* Hero live metrics strip */
+.h5-metrics{position:relative;margin-top:1.8rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:0;overflow:hidden}
+.h5-met{padding:.85rem 1rem;text-align:center;position:relative}
+.h5-met+.h5-met::before{content:"";position:absolute;left:0;top:15%;bottom:15%;width:1px;background:rgba(255,255,255,.15)}
+.h5-met-v{display:block;font-family:var(--fd);font-weight:900;font-size:var(--fs-4);color:#fff;line-height:1.1;font-variant-numeric:tabular-nums}
+.h5-met-l{display:block;font-size:11px;color:rgba(255,255,255,.7);margin-top:.15rem;letter-spacing:.02em}
+
+@media (max-width:900px){
+  .h5-grid{grid-template-columns:1fr;gap:1.5rem}
+  .h5-h{font-size:clamp(2rem,7vw,2.6rem)}
+  .h5-h-em{font-size:.66em}
+  .h5-metrics{grid-template-columns:repeat(2,1fr)}
+  .h5-met:nth-child(3)::before{display:none}
+  .h5-met:nth-child(3),.h5-met:nth-child(4){border-top:1px solid rgba(255,255,255,.15)}
+}
+@media (max-width:520px){
+  .hero5{padding:1.8rem 0 1.4rem}
+  .h5-h{font-size:clamp(1.75rem,7.4vw,2.2rem)}
+  .h5-r{padding:1.1rem 1rem}
+  .h5-metrics{grid-template-columns:1fr 1fr}
+}
+
+/* ── Coverage map ── */
+#mapband{background:var(--paper);padding:2.6rem 0}
+.pc-inline{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
+.pc-inline input{width:170px;padding:.65rem .8rem;border:1.5px solid rgba(12,38,95,.15);background:#fff;border-radius:8px;font-family:var(--fd);font-weight:700;font-size:var(--fs-body);color:var(--navy);text-align:center;letter-spacing:.05em}
+.pc-inline input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(12,38,95,.15)}
+.pc-msg{font-size:var(--fs-micro);color:var(--navy);font-weight:600;padding-left:.4rem}
+.pc-msg.ok{color:#0d7a3f}
+.pc-msg.no{color:var(--red-d)}
+.mapc{margin-top:1.4rem;background:#fff;border-radius:var(--r-lg);padding:1.5rem;border:1px solid rgba(12,38,95,.08);position:relative}
+.map-svg{width:100%;max-width:440px;max-height:520px;height:auto;margin:0 auto;display:block}
+.map-region{font-family:var(--fd);font-weight:800;font-size:14px;fill:rgba(12,38,95,.35);letter-spacing:3px}
+.map-pin{cursor:pointer;transition:transform .18s var(--ease)}
+.map-pin:hover,.map-pin:focus{transform:scale(1.25)}
+.map-pin-c{transition:fill var(--tr)}
+.map-pin.live .map-pin-c{fill:#D84330}
+.map-pin.soon .map-pin-c{fill:#f7a94e;opacity:.7}
+.map-pin.you .map-pin-c{fill:#0C265F}
+.map-pin.you .map-pulse{fill:url(#gPulse);animation:mapPulse 2s ease-out infinite}
+@keyframes mapPulse{0%{r:8;opacity:1}100%{r:26;opacity:0}}
+.map-tt-t{fill:#fff;font-family:var(--fd);font-weight:700;font-size:11px}
+.map-tt-s{fill:rgba(255,255,255,.75);font-family:var(--fd);font-weight:500;font-size:9.5px}
+.map-legend{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1rem;font-size:var(--fs-micro);color:var(--body)}
+.ml-i{display:inline-flex;align-items:center;gap:.4rem}
+.ml-d{width:10px;height:10px;border-radius:50%;display:inline-block}
+.ml-live{background:#D84330}
+.ml-soon{background:#f7a94e;opacity:.75}
+.ml-you{background:#0C265F;box-shadow:0 0 0 4px rgba(12,38,95,.2)}
+.map-all{display:inline-flex;align-items:center;gap:.35rem;color:var(--navy);font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(12,38,95,.08);width:100%;justify-content:center}
+.map-all:hover{color:var(--red)}
+
+/* ── Bento ── */
+#bento{padding:3rem 0;background:#fff}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(150px,auto);gap:1rem;margin-top:1.4rem}
+.bn{background:var(--paper);border:1px solid rgba(12,38,95,.08);border-radius:var(--r-lg);padding:1.4rem;transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color var(--tr);position:relative;overflow:hidden}
+.bn:hover{transform:translateY(var(--lift));box-shadow:var(--e-hov);border-color:rgba(12,38,95,.16)}
+.bn-1{grid-column:span 3;grid-row:span 2;background:var(--navy);color:#fff}
+.bn-1 .bn-num{color:rgba(255,255,255,.72)}
+.bn-1 .bn-h{color:#fff}
+.bn-1 .bn-s-n{background:rgba(255,255,255,.12);color:#fff}
+.bn-1 .bn-steps li>div>strong{color:#fff}
+.bn-1 .bn-steps li>div>span{color:rgba(255,255,255,.75)}
+.bn-2{grid-column:span 3;background:var(--red);color:#fff}
+.bn-2 .bn-ic,.bn-2 .bn-h-s{color:#fff}
+.bn-2 .bn-p{color:rgba(255,255,255,.92)}
+.bn-3{grid-column:span 3}
+.bn-4{grid-column:span 2}
+.bn-5{grid-column:span 2}
+.bn-6{grid-column:span 2}
+.bn-num{font-family:var(--fd);font-weight:900;font-size:var(--fs-micro);color:var(--mute);letter-spacing:.08em;margin-bottom:.5rem}
+.bn-h{font-family:var(--fd);font-weight:900;font-size:var(--fs-3);color:var(--navy);line-height:1.15;margin:0 0 1rem;letter-spacing:var(--track-h1)}
+.bn-h-s{font-family:var(--fd);font-weight:800;font-size:var(--fs-5);color:var(--navy);line-height:1.2;margin:.4rem 0 .35rem;letter-spacing:var(--track-h2)}
+.bn-p{font-size:var(--fs-micro);line-height:1.5;color:var(--body);margin:0}
+.bn-ic{width:28px;height:28px;color:var(--navy)}
+.bn-steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.85rem}
+.bn-steps li{display:flex;gap:.85rem;align-items:flex-start}
+.bn-s-n{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(12,38,95,.08);color:var(--navy);font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);display:inline-flex;align-items:center;justify-content:center}
+.bn-steps li>div{display:flex;flex-direction:column;gap:.15rem}
+.bn-steps li>div>strong{color:var(--navy);font-family:var(--fd);font-weight:700;font-size:var(--fs-body)}
+.bn-steps li>div>span{color:var(--body);font-size:var(--fs-micro);line-height:1.4}
+@media (max-width:900px){
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
+  .bn-1{grid-column:span 2;grid-row:auto}
+  .bn-2{grid-column:span 2}
+  .bn-3,.bn-4,.bn-5,.bn-6{grid-column:span 1}
+}
+@media (max-width:520px){.bento{grid-template-columns:1fr}.bn,.bn-1,.bn-2,.bn-3,.bn-4,.bn-5,.bn-6{grid-column:1}}
+
+/* ── Services trio ── */
+#svcband{padding:2.8rem 0;background:var(--paper)}
+.svc3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.3rem}
+.s3{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(12,38,95,.1);border-radius:var(--r-lg);padding:1.4rem 1.3rem 1.2rem;transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color var(--tr);color:var(--body);position:relative;overflow:hidden;min-height:200px}
+.s3:hover{transform:translateY(var(--lift));box-shadow:var(--e-hov);border-color:rgba(12,38,95,.2)}
+.s3-a{background:var(--navy);color:#fff;border-color:var(--navy)}
+.s3-a:hover{background:var(--navy-d);border-color:var(--navy-d);box-shadow:var(--e-hov-dk)}
+.s3-a .s3-h,.s3-a .s3-price strong{color:#fff}
+.s3-a .s3-p{color:rgba(255,255,255,.88)}
+.s3-a .s3-price{color:rgba(255,255,255,.7)}
+.s3-a .s3-arr{color:#fff}
+.s3-tag{position:absolute;top:1.1rem;right:1.1rem;background:var(--red);color:#fff;font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.12em;padding:.28rem .55rem;border-radius:999px}
+.s3-h{font-family:var(--fd);font-weight:800;font-size:var(--fs-4);color:var(--navy);letter-spacing:var(--track-h2);margin:.2rem 0 .5rem;line-height:1.15}
+.s3-p{font-size:var(--fs-micro);line-height:1.5;color:var(--body);margin:0;flex:1}
+.s3-f{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(12,38,95,.1)}
+.s3-a .s3-f{border-top-color:rgba(255,255,255,.18)}
+.s3-price{font-family:var(--fd);font-weight:600;font-size:var(--fs-micro);color:var(--mute)}
+.s3-price strong{font-family:var(--fd);font-weight:900;color:var(--navy);font-size:var(--fs-4);letter-spacing:-.01em;margin:0 .1rem}
+.s3-arr{width:22px;height:22px;color:var(--navy);flex-shrink:0}
+.s3-a .s3-arr{color:#fff}
+@media (max-width:900px){.svc3{grid-template-columns:1fr}}
+
+/* ── Kings Club band ── */
+#clubband{background-color:var(--navy);background-image:linear-gradient(160deg,var(--navy) 0%,var(--navy-d) 100%);color:#fff;padding:3rem 0;position:relative;overflow:hidden}
+#clubband .kc-eb{color:#fff}
+#clubband .kc-h2{color:#fff}
+#clubband .kc-sub{color:#fff}
+#clubband::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:80%;background:radial-gradient(ellipse,rgba(232,96,74,.22),transparent 60%);pointer-events:none}
+#clubband .hd{position:relative}
+.kc-tabs{display:inline-flex;background-color:#122c6b;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:4px;gap:2px}
+.kc-tabs button{border:none;background-color:#122c6b;color:#fff;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);padding:.55rem 1rem;border-radius:999px;cursor:pointer;transition:background-color var(--tr),color var(--tr)}
+.kc-tabs button.on{background-color:#fff;color:var(--navy)}
+.kc-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.6rem}
+.kc-card{background-color:#122c6b;border:1px solid rgba(255,255,255,.18);border-radius:var(--r-lg);padding:1.6rem 1.5rem;color:#fff}
+.kc-name{font-family:var(--fd);font-weight:800;font-size:var(--fs-5);letter-spacing:.02em;color:#fff;margin-bottom:.5rem}
+.kc-price{display:flex;align-items:baseline;gap:.4rem;margin-bottom:.8rem}
+.kc-price span:first-child{font-family:var(--fd);font-weight:900;font-size:var(--fs-1);color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+.kc-per{color:rgba(255,255,255,.7);font-family:var(--fd);font-weight:600;font-size:var(--fs-body)}
+.kc-who{color:rgba(255,255,255,.82);font-size:var(--fs-micro);line-height:1.5;margin:0 0 1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.15)}
+.kc-perks{list-style:none;padding:0;margin:0 0 1.2rem;display:grid;gap:.55rem}
+.kc-perks li{font-size:var(--fs-micro);color:rgba(255,255,255,.9);position:relative;padding-left:1.4rem}
+.kc-perks li::before{content:"";position:absolute;left:0;top:.35rem;width:14px;height:14px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234ade80' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 7L9 18l-5-5'/></svg>") no-repeat center/contain}
+.kc-calc{background:rgba(255,255,255,.94);color:var(--navy);border-radius:var(--r-lg);padding:1.6rem 1.5rem;display:flex;flex-direction:column}
+.kc-calc-hd{font-family:var(--fd);font-weight:800;font-size:var(--fs-5);letter-spacing:.01em;color:var(--navy);margin-bottom:1rem;padding-bottom:.9rem;border-bottom:1px solid rgba(12,38,95,.1)}
+.kc-calc-l{font-family:var(--fd);font-weight:600;font-size:var(--fs-micro);color:var(--body);margin-bottom:.7rem;line-height:1.5}
+.kc-calc-l strong{font-family:var(--fd);font-weight:900;font-size:var(--fs-4);color:var(--navy);display:inline-block;margin-right:.2rem;font-variant-numeric:tabular-nums}
+.kc-range{width:100%;-webkit-appearance:none;appearance:none;height:24px;background:transparent;background-image:linear-gradient(to right,var(--navy) 0%,var(--navy) var(--kc-fill,25%),rgba(12,38,95,.15) var(--kc-fill,25%),rgba(12,38,95,.15) 100%);background-repeat:no-repeat;background-position:center;background-size:100% 6px;border-radius:3px;outline:none;margin:.6rem 0 1.2rem;padding:0;cursor:pointer}
+.kc-range::-webkit-slider-runnable-track{height:6px;background:transparent;border-radius:3px}
+.kc-range::-moz-range-track{height:6px;background:transparent;border-radius:3px}
+.kc-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;background:var(--red);border:3px solid #fff;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.kc-range::-moz-range-thumb{width:22px;height:22px;background:var(--red);border:3px solid #fff;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.kc-range:focus-visible{outline:2px solid var(--navy);outline-offset:4px}
+.kc-calc-out{background:var(--paper);border-radius:12px;padding:1rem 1.15rem;margin-bottom:.8rem}
+.kc-calc-line{display:flex;justify-content:space-between;padding:.28rem 0;font-size:var(--fs-micro);color:var(--body)}
+.kc-calc-tot{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0 .1rem;border-top:1px solid rgba(12,38,95,.1);margin-top:.4rem}
+.kc-calc-tot span:first-child{font-family:var(--fd);font-weight:800;color:var(--navy);font-size:var(--fs-body)}
+.kc-calc-tot span:last-child{font-family:var(--fd);font-weight:900;color:var(--red-d);font-size:var(--fs-3);font-variant-numeric:tabular-nums}
+.kc-calc-fine{font-size:11px;color:var(--mute);margin:.2rem 0 0;line-height:1.4}
+@media (max-width:900px){.kc-grid{grid-template-columns:1fr}}
+
+/* ── Voices marquee ── */
+#voices{padding:2.6rem 0 .5rem;background:#fff}
+.mq{overflow:hidden;padding:1.6rem 0 2.6rem;margin-top:1rem;position:relative;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;gap:1rem;animation:mqScroll 45s linear infinite;width:max-content}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
+.mq-c{flex-shrink:0;width:320px;background:var(--paper);border:1px solid rgba(12,38,95,.08);border-radius:var(--r-lg);padding:1.3rem;margin:0;display:flex;flex-direction:column;justify-content:space-between;min-height:150px}
+.mq-c blockquote{margin:0 0 1rem;font-size:var(--fs-body);line-height:1.4;color:var(--navy);font-family:var(--fd);font-weight:500;letter-spacing:var(--track-h2)}
+.mq-c figcaption{font-size:11px;color:var(--mute);font-family:var(--fd);font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+
+/* ── Segment strip ── */
+#segband{padding:2rem 0;background:var(--paper)}
+.segs{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.seg{display:flex;align-items:center;gap:.9rem;background:#fff;border:1px solid rgba(12,38,95,.1);border-radius:var(--r);padding:1.1rem 1.2rem;color:var(--body);transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color var(--tr)}
+.seg:hover{transform:translateY(var(--lift));box-shadow:var(--e-hov);border-color:rgba(12,38,95,.2)}
+.seg-ic{width:24px;height:24px;color:var(--navy);flex-shrink:0}
+.seg>div{flex:1;display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.seg strong{font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);letter-spacing:var(--track-h3)}
+.seg span{font-size:11px;color:var(--body);line-height:1.4}
+.seg-a{width:20px;height:20px;color:var(--navy);flex-shrink:0}
+@media (max-width:900px){.segs{grid-template-columns:1fr}}
+
+/* ── Final compact CTA ── */
+#finalcta{background:#fff;padding:2rem 0 3rem}
+.fcta{background-color:var(--navy);background-image:linear-gradient(120deg,var(--navy) 0%,var(--navy-d) 100%);border-radius:var(--r-lg);padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;color:#fff}
+.fcta-t{display:flex;flex-direction:column;gap:.15rem}
+.fcta-t strong{font-family:var(--fd);font-weight:800;font-size:var(--fs-4);color:#fff;letter-spacing:var(--track-h2)}
+.fcta-t span{font-size:var(--fs-micro);color:rgba(255,255,255,.82)}
+@media (max-width:640px){.fcta{flex-direction:column;align-items:flex-start;padding:1.3rem}.fcta .btn-lg{width:100%}}
+
+/* ── Sticky mobile CTA ── */
+.stickyCta{display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + .8rem);left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);padding:.85rem 1.35rem;border-radius:999px;box-shadow:0 8px 24px rgba(196,56,40,.4);z-index:50;align-items:center;gap:.5rem;letter-spacing:.02em}
+.stickyCta:hover{background:var(--red-d);transform:translateX(-50%) translateY(-2px)}
+.stickyCta .ic{width:16px;height:16px}
+@media (max-width:720px){
+  /* only show sticky CTA on the home route */
+  body.route-home .stickyCta{display:inline-flex}
+}
+
 </style>
 </head>
 <body>
@@ -1016,221 +1273,288 @@ svg.ic{width:24px;height:24px}
      ================================================================ -->
 <section class="page live" id="p-home">
 
-  <!-- ── 1. HERO ─────────────────────────────────────────── -->
-  <div id="hero"><div class="wrap">
-    <div class="hero-v4">
-      <div class="hero-s">
-        <h1 class="hero-h">Laundry collected, washed and returned. <span>We wash it well.</span></h1>
-        <p class="hero-p">From your door, washed on its own cycle, folded or pressed, and brought back. Your price is confirmed after weighing — before we touch a thing.</p>
-        <div class="hero-acts">
-          <a href="#/book" class="btn btn-red btn-lg">Book a collection</a>
-          <a href="#/pricing" class="btn btn-ghost btn-lg">See pricing</a>
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <div id="hero" class="hero5"><div class="wrap">
+    <div class="h5-grid">
+      <div class="h5-l">
+        <span class="h5-eyebrow"><span class="h5-dot"></span>Collecting now in 16 SEQ suburbs</span>
+        <h1 class="h5-h">Laundry, done properly. <span class="h5-h-em">Collected, weighed, washed on its own cycle, brought back.</span></h1>
+        <p class="h5-p">Your price is confirmed at the door before we touch a thing. No apps to install. No mixed loads. Payment after weighing.</p>
+        <div class="h5-cta">
+          <a href="#/book" class="btn btn-red btn-lg">Book a collection <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+          <a href="#h5-quote" class="btn btn-ghost-nv btn-lg">Get an instant price</a>
         </div>
-        <div class="hero-local">Brisbane-owned · No app to download · Pay after weighing</div>
-        <div class="hero-ph" id="heroPhoneWrap" style="display:none">
-          <span>Prefer to talk?</span>
-          <strong id="heroPhone"></strong>
+        <ul class="h5-chips" aria-label="Why book us">
+          <li><svg class="ic-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7L9 18l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Pay after weighing</li>
+          <li><svg class="ic-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7L9 18l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Never mixed with other households</li>
+          <li><svg class="ic-tk" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7L9 18l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>GST included · Brisbane-owned</li>
+        </ul>
+      </div>
+
+      <aside class="h5-r" id="h5-quote" aria-label="Instant estimate">
+        <div class="h5-q-hd">
+          <span class="h5-q-lbl">INSTANT ESTIMATE</span>
+          <span class="h5-q-gst">Includes GST</span>
         </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-ill"><svg viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The LaundryKings crown and wordmark" style="width:100%;height:auto;display:block">
-  <!-- soft backdrop circle -->
-  <circle cx="210" cy="190" r="175" fill="rgba(255,255,255,.05)"/>
-  <circle cx="210" cy="190" r="128" fill="rgba(255,255,255,.04)"/>
-
-  <!-- floating sparkle marks (clean cues), flanking the mark -->
-  <g fill="#E8604A" opacity=".9">
-    <path d="M366 118 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z"/>
-    <path d="M58 128 l2.4 5.6 5.6 2.4 -5.6 2.4 -2.4 5.6 -2.4 -5.6 -5.6 -2.4 5.6 -2.4 z"/>
-  </g>
-  <g fill="#fff" opacity=".6">
-    <circle cx="388" cy="196" r="3"/>
-    <circle cx="34" cy="210" r="2.5"/>
-    <circle cx="330" cy="300" r="2.5"/>
-    <circle cx="92" cy="292" r="2.5"/>
-  </g>
-
-  <!-- brand mark: crown + wordmark, cut from the supplied logo artwork -->
-  <image href="data:image/png;base64,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" x="38" y="98" width="344" height="184" preserveAspectRatio="xMidYMid meet" style="filter:drop-shadow(0 12px 24px rgba(0,0,0,.32))"/>
-</svg></div>
-        <div class="hero-pc">
-          <div class="hero-pc-label">TYPICAL HOUSEHOLD ESTIMATE <span>GST incl.</span></div>
-          <div class="hero-pc-row"><span>2 × wash &amp; fold loads</span><span id="hpLoads">$64</span></div>
-          <div class="hero-pc-row"><span>Collection &amp; return</span><span id="hpDel">$13.50</span></div>
-          <div class="hero-pc-tot"><span class="hero-pc-tot-l">FROM</span><span class="hero-pc-tot-v" id="hpTot">$77.50</span></div>
-          <a href="#quote" class="btn btn-nv btn-full">Get my exact price <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
-          <p class="hero-pc-note">Indicative only. Final price set when your operator weighs and counts.</p>
-        </div>
-      </div>
-    </div>
-  </div></div>
-
-  <!-- ── 2. TRUST ────────────────────────────────────────── -->
-  <div id="trustband"><div class="wrap">
-    <div class="trust-g">
-      <a href="#/operators" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div class="trust-h">Screened operators</div><p class="trust-p">Identity and background checks before the first job. Every operator, every time.</p><span class="trust-l">How we vet <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><div class="trust-h">Your wash, only yours</div><p class="trust-p">Processed on its own cycle. Never mixed with another household's items.</p><span class="trust-l">Our guarantee <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-      <a href="#/guarantee" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l4 4v16H6z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h6"/></svg><div class="trust-h">Written guarantee</div><p class="trust-p">If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p><span class="trust-l">Read the terms <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-      <a href="#/pricing" class="trust-c"><svg class="trust-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5a2.5 2 0 0 1 5 0c0 1.5-1 2-2.5 2.5s-2.5 1-2.5 2.5a2.5 2 0 0 0 5 0"/></svg><div class="trust-h">GST included, always</div><p class="trust-p">Every price on this site includes GST. No checkout surprises, no call-out fees.</p><span class="trust-l">See pricing <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-    </div>
-  </div></div>
-
-  <!-- ── 3. HOW IT WORKS ─────────────────────────────────── -->
-  <div class="sec"><div class="wrap">
-    <div class="hd"><span class="eyebrow">HOW IT WORKS</span><h2 class="h2">Three steps. Nothing to drop off.</h2></div>
-    <div class="steps-wrap">
-      <div class="steps-line"></div>
-      <div class="steps">
-        <div class="step"><div class="step-n">1</div><svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M8 14l2.5 2.5L15 12"/></svg><h3>Book your window</h3><p>Choose a day and a three-hour collection window online. Add care notes — cold wash, hang dry, folded flat. Takes two minutes.</p></div>
-        <div class="step"><div class="step-n">2</div><svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 21h10M5 7h14l-2.5 2M5 7l3 6a3 3 0 0 1-6 0zM19 7l3 6a3 3 0 0 1-6 0z"/></svg><h3>Price confirmed first</h3><p>Your operator collects and weighs everything, then confirms the total before touching a thing. No work starts until you have the number.</p></div>
-        <div class="step"><div class="step-n">3</div><svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><h3>Back at your door</h3><p>Washed, dried, folded or pressed, and delivered back. You pay after your price is confirmed. Pickup and return included.</p></div>
-      </div>
-    </div>
-  </div></div>
-
-  <!-- ── 4. SERVICES ─────────────────────────────────────── -->
-  <div class="sec sec-alt"><div class="wrap">
-    <div class="hd"><span class="eyebrow">WHAT YOU CAN BOOK</span><h2 class="h2">Book online right now.</h2>
-    <p class="lede">Published pricing, no phone call needed. Minimum <span id="pxMinLede">$73.50</span> includes pickup, washing and return.</p></div>
-    <div class="svc3" style="grid-template-columns:1fr 1fr">
-      <div class="svc-c hl">
-        <span class="svc-c-tag">MOST BOOKED</span>
-        <h3>Wash &amp; Fold</h3>
-        <p>Everyday washing, collected and washed on its own cycle. Lights and darks separated as standard. Dried and folded.</p>
-        <span class="price" data-px="wf"></span>
-        <a href="#/book" class="btn svc-cta">Book Wash &amp; Fold <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
-      </div>
-      <div class="svc-c">
-        <h3>Blankets, Rugs &amp; Sheets</h3>
-        <p>Large-format items only — not for everyday laundry. Priced per item, not by weight.</p>
-        <span class="price" data-px="linen"></span>
-        <a href="#/book" class="btn btn-out svc-cta">Book Blankets &amp; Rugs <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
-      </div>
-    </div>
-    <p class="enq-line">Dry cleaning, commercial linen and supported living are quoted per job — <a href="#/services">see all services <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a></p>
-  </div></div>
-
-  <!-- ── 5. KINGS CLUB ───────────────────────────────────── -->
-  <div class="sec sec-navy"><div class="wrap"><div class="g2c" style="align-items:center;gap:3rem">
-    <div>
-      <span class="eyebrow">KINGS CLUB</span>
-      <h2 class="h2">Put it on a schedule and stop thinking about it.</h2>
-      <p class="lede" style="margin-bottom:0">A recurring collection on a fixed day, weekly or fortnightly. Same operator, same preferences, flat weekly rate.</p>
-      <div class="kc-save">
-        <div class="kc-save-t">COMPARE</div>
-        <div class="kc-save-m" id="kcSaveM">Two ad-hoc loads a week ≈ $77.50 · Kings Club Solo = $63.70/week.<br><b>Save around $14 a week compared with two ad-hoc loads</b> — no lock-in, pause any time.</div>
-      </div>
-      <a href="#/club" class="btn btn-red btn-lg">See Kings Club plans</a>
-    </div>
-    <div class="plans" style="grid-template-columns:1fr">
-      <div class="plan on"><h4>Solo</h4><div class="amt" data-px="p1"></div><p>One to two people. One standard bag each week.</p><div class="plan-cap">≈ 1–2 loads per week</div></div>
-      <div class="plan"><h4>Household</h4><div class="amt" data-px="p2"></div><p>Families of three to four. Two bags each week.</p><div class="plan-cap">≈ 2–4 loads per week</div></div>
-      <div class="plan"><h4>Full House</h4><div class="amt" data-px="p3"></div><p>Larger households. Three bags each week.</p><div class="plan-cap">≈ 4–6 loads per week</div></div>
-    </div>
-  </div></div></div>
-
-  <!-- ── 6. COVERAGE ─────────────────────────────────────── -->
-  <div class="sec" ><div class="wrap">
-    <div class="cov2">
-      <div class="cov2-l">
-        <span class="eyebrow">SERVICE AREA</span>
-        <h2 class="h2" style="margin-bottom:.6rem">Ready to book? Check your postcode.</h2>
-        <p class="lede">We collect in <span id="covCount">16</span> suburbs today and open more every month. If we are not in your street yet, register and we will contact you.</p>
-        <div class="cov-f">
-          <input class="inp" id="covPc" placeholder="4131" maxlength="4" inputmode="numeric" aria-label="Postcode">
-          <button class="btn btn-nv btn-lg" id="covGo">Check</button>
-        </div>
-        <div class="cov-r" id="covRes"></div>
-        <div id="covForm" style="display:none;margin-top:1.1rem">
-          <div class="g2">
-            <div class="fld"><label class="lbl" for="covSuburb">Suburb</label><input class="inp" id="covSuburb"></div>
-            <div class="fld"><label class="lbl" for="covEmail">Email</label><input class="inp" id="covEmail" type="email"></div>
+        <div class="h5-q-row">
+          <label class="h5-q-l">Service</label>
+          <div class="h5-seg" role="tablist" aria-label="Service">
+            <button type="button" role="tab" aria-selected="true" data-h5svc="wf" class="on">Wash &amp; Fold</button>
+            <button type="button" role="tab" aria-selected="false" data-h5svc="lin">Blankets &amp; Linen</button>
           </div>
-          <button class="btn btn-red btn-full" id="covSave">Tell me when you reach my suburb</button>
-          <div class="fmsg" id="covMsg"></div>
         </div>
-      </div>
-      <div class="cov2-r">
-        <div class="cov2-h">COLLECTING NOW</div>
-        <div class="cov-live" id="covLiveChips"></div>
-        <p style="margin-top:1rem;font-size:var(--fs-micro);color:var(--mute)"><a href="#/coverage" style="color:var(--navy);text-decoration:underline;font-weight:600">See every suburb, including opening soon <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a></p>
-      </div>
-    </div>
-  </div></div>
-
-
-  <!-- ── 6b. ESTIMATOR (kept — JS-wired) ─────────────────── -->
-  <div class="sec sec-alt" id="quote"><div class="wrap">
-    <div class="hd"><span class="eyebrow">BEFORE YOU BOOK</span><h2 class="h2">Get your exact number.</h2>
-    <p class="lede">An indicative estimate, not a quote. Your real price is set when your operator weighs and counts.</p></div>
-    <div class="est-wrap">
-      <div class="qcard">
-        <div class="fld"><label class="lbl" for="qSub">Your suburb</label>
-          <div class="selw"><select class="sel" id="qSub">
-            <option value="">Select a suburb…</option>
-            <optgroup label="Logan"><option>Meadowbrook</option><option>Loganholme</option><option>Springwood</option><option>Shailer Park</option><option>Cornubia</option><option>Marsden</option><option>Waterford</option><option>Beenleigh</option><option>Browns Plains</option><option>Kuraby</option></optgroup>
-            <optgroup label="Brisbane South"><option>Sunnybank</option><option>Mansfield</option><option>Holland Park</option><option>Greenslopes</option><option>Coorparoo</option><option>Camp Hill</option></optgroup>
-            <optgroup label="Opening soon"><option>Brisbane CBD</option><option>South Brisbane</option><option>Woolloongabba</option><option>Morningside</option><option>Chermside</option><option>Toowong</option><option>North Lakes</option></optgroup>
-            <option value="other">My suburb isn't listed</option>
-          </select></div>
-        </div>
-
-        <div class="fld"><label class="lbl" for="qSvc">Service</label>
-          <div class="selw"><select class="sel" id="qSvc">
-            <option value="wf">Wash &amp; Fold</option>
-            <option value="linen">Blankets, Rugs &amp; Sheets</option>
-            <option value="dc">Dry Cleaning</option>
-            <option value="comm">Commercial / Linen (quoted separately)</option>
-          </select></div>
-        </div>
-
-        <div class="g2">
-          <div class="fld"><label class="lbl" id="lblA">Loads (approx. 5&nbsp;kg each)</label>
-            <div class="stepper"><button type="button" data-step="a,-1" aria-label="Decrease"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="numA">2</span><button type="button" data-step="a,1" aria-label="Increase"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
+        <div class="h5-q-row h5-q-row-wf">
+          <label class="h5-q-l" for="h5Loads">How many loads? <span class="h5-q-hint">≈ 5 kg each</span></label>
+          <div class="h5-stepper" data-h5step="loads">
+            <button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer loads">−</button>
+            <span class="h5-st-v" id="h5Loads">2</span>
+            <button type="button" class="h5-st-b" data-d="1" aria-label="More loads">+</button>
           </div>
-<div class="load-look" aria-label="What one load looks like">
-<span><svg class="ic" aria-hidden="true"><use href="#ic-basket"/></svg>One load ≈ a full kitchen basket</span>
-<span><svg class="ic" aria-hidden="true"><use href="#ic-shirt"/></svg>≈ 25 t-shirts</span>
-<span><svg class="ic" aria-hidden="true"><use href="#ic-scale"/></svg>≈ 5 kg dry</span>
-</div>
-                  </div>
-
-        <hr class="brk">
-        <div class="bd" id="qBreak"></div>
-        <div class="qtot">
-          <div><div class="qtot-l">Estimated total</div><div class="qtot-v" id="qTotal" aria-live="polite">$0</div></div>
-          <div class="qtot-n">Includes GST<br>Collection &amp; return included</div>
         </div>
-        <button class="btn btn-red btn-full btn-lg" id="qGo">Request this collection</button>
-        <div class="fmsg" id="qMsg"></div>
-        <p class="fine">Minimum order applies. Payment is taken after weighing, before return delivery.</p>
+        <div class="h5-q-row h5-q-row-lin" hidden>
+          <label class="h5-q-l">Linen items</label>
+          <div class="h5-lin">
+            <div class="h5-linrow"><span>Sheet set <em>$24</em></span><div class="h5-stepper" data-h5step="lin-s"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Sh">1</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
+            <div class="h5-linrow"><span>Blanket <em>$32</em></span><div class="h5-stepper" data-h5step="lin-b"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Bl">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
+            <div class="h5-linrow"><span>Rug <em>$42</em></span><div class="h5-stepper" data-h5step="lin-r"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Rg">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
+          </div>
+        </div>
+        <div class="h5-q-break"></div>
+        <div class="h5-q-line"><span id="h5LineL">2 × wash &amp; fold loads</span><span id="h5LineV" class="tab">$64</span></div>
+        <div class="h5-q-line"><span>Collection &amp; return</span><span class="tab">$13.50</span></div>
+        <div class="h5-q-tot"><span>Estimated total</span><span class="tab" id="h5Tot">$77.50</span></div>
+        <div class="h5-q-min"><span id="h5MinNote">Below the $73.50 minimum — the minimum applies.</span></div>
+        <a href="#/book" class="btn btn-red btn-full h5-q-cta">Request this collection <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+        <p class="h5-q-note">Indicative. Final price set when your operator weighs and counts.</p>
+      </aside>
+    </div>
+
+    <!-- live activity strip -->
+    <div class="h5-metrics" aria-label="Recent activity">
+      <div class="h5-met"><span class="h5-met-v" id="mCol">—</span><span class="h5-met-l">loads collected this week</span></div>
+      <div class="h5-met"><span class="h5-met-v" id="mRet">—</span><span class="h5-met-l">avg return time</span></div>
+      <div class="h5-met"><span class="h5-met-v" id="mSub">—</span><span class="h5-met-l">Kings Club subscribers</span></div>
+      <div class="h5-met"><span class="h5-met-v" id="mSat">—</span><span class="h5-met-l">quality-check pass rate</span></div>
+    </div>
+  </div></div>
+
+  <!-- ── COVERAGE MAP ───────────────────────────────────── -->
+  <div id="mapband" class="reveal"><div class="wrap">
+    <div class="hd hd-2c">
+      <div>
+        <span class="eyebrow">WHERE WE COLLECT</span>
+        <h2 class="h2">Live footprint across Brisbane &amp; Logan.</h2>
+        <p class="h2-sub">Sixteen suburbs collecting today. New areas opening each month — tap any pin to see next available slot, or drop your postcode below.</p>
+      </div>
+      <form class="pc-inline" onsubmit="return covCheckHome(event)" role="search" aria-label="Postcode check">
+        <label class="sr-only" for="covPcHome">Your postcode</label>
+        <input id="covPcHome" name="pc" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="Your postcode" required>
+        <button type="submit" class="btn btn-nv">Check</button>
+        <span id="covPcHomeMsg" class="pc-msg" role="status" aria-live="polite"></span>
+      </form>
+    </div>
+
+    <div class="mapc">
+      <svg class="map-svg" viewBox="0 0 360 480" role="img" aria-labelledby="mapTitle" preserveAspectRatio="xMidYMid meet">
+        <title id="mapTitle">Map of collection suburbs across Brisbane and Logan</title>
+        <defs>
+          <radialGradient id="gPulse" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#D84330" stop-opacity=".55"/><stop offset="1" stop-color="#D84330" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- subtle regional blobs -->
+        <path d="M40 40 C 60 30, 190 30, 210 60 C 235 100, 210 170, 170 190 C 120 210, 50 190, 30 140 Z" fill="#F0F3FC" opacity=".65"/>
+        <path d="M40 240 C 90 220, 260 210, 320 260 C 340 320, 300 430, 220 445 C 130 460, 40 420, 30 340 Z" fill="#F0F3FC" opacity=".65"/>
+        <!-- region labels -->
+        <text x="120" y="35" class="map-region">BRISBANE</text>
+        <text x="180" y="230" class="map-region">LOGAN</text>
+        <!-- pins -->
+        <g class="map-pins"></g>
+        <!-- floating tooltip -->
+        <g id="mapTip" transform="translate(0 0)" style="display:none;pointer-events:none">
+          <rect x="-70" y="-52" width="140" height="42" rx="8" fill="#0C265F"/>
+          <text x="0" y="-32" text-anchor="middle" class="map-tt-t" id="mapTipT">—</text>
+          <text x="0" y="-16" text-anchor="middle" class="map-tt-s" id="mapTipS">—</text>
+          <path d="M-6 -10 L0 -2 L6 -10 Z" fill="#0C265F"/>
+        </g>
+      </svg>
+      <div class="map-legend">
+        <span class="ml-i"><span class="ml-d ml-live"></span>Collecting now</span>
+        <span class="ml-i"><span class="ml-d ml-soon"></span>Opening this quarter</span>
+        <span class="ml-i"><span class="ml-d ml-you" id="mlYouWrap" hidden></span><span id="mlYouTxt"></span></span>
+      </div>
+      <a href="#/coverage" class="map-all">See every suburb, including opening soon <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+    </div>
+  </div></div>
+
+  <!-- ── BENTO: why us / how it works / proof ─────────── -->
+  <div id="bento" class="reveal"><div class="wrap">
+    <div class="hd"><span class="eyebrow">WHY LAUNDRYKINGS</span><h2 class="h2">Small, honest, and built to hand your washing back better than you sent it.</h2></div>
+    <div class="bento">
+      <article class="bn bn-1">
+        <div class="bn-num">01</div>
+        <h3 class="bn-h">Three steps. Nothing to drop off.</h3>
+        <ol class="bn-steps">
+          <li><span class="bn-s-n">1</span><div><strong>Book online</strong><span>Pick a window that suits, tell us where to find the bag.</span></div></li>
+          <li><span class="bn-s-n">2</span><div><strong>We weigh at your door</strong><span>Your exact price is confirmed before we start.</span></div></li>
+          <li><span class="bn-s-n">3</span><div><strong>Back the next day, folded</strong><span>Standard turnaround. Longer for dry cleaning and bulky items.</span></div></li>
+        </ol>
+      </article>
+      <article class="bn bn-2">
+        <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 22h20M8 22V12l8-4 8 4v10M12 22v-6h8v6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="bn-h-s">Pay after weighing</h3>
+        <p class="bn-p">The scale runs at your door. You see the weight and the number before we drive away.</p>
+      </article>
+      <article class="bn bn-3">
+        <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="9" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 9V6M22 9V6M6 15h20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <h3 class="bn-h-s">Same operator, same preferences</h3>
+        <p class="bn-p">Kings Club puts one operator on your household for the long haul — they learn your washing.</p>
+      </article>
+      <article class="bn bn-4">
+        <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 6-4 10-10 12-6-2-10-6-10-12V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 16l3 3 5-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="bn-h-s">Screened operators</h3>
+        <p class="bn-p">Identity and background checks before the first job. Every operator, every time.</p>
+      </article>
+      <article class="bn bn-5">
+        <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8v8l5 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+        <h3 class="bn-h-s">Standard next-day return</h3>
+        <p class="bn-p">Most jobs come back within 24 hours. Long items say so at booking, no surprises.</p>
+      </article>
+      <article class="bn bn-6">
+        <svg class="bn-ic" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 14h8M12 18h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <h3 class="bn-h-s">Hospital-grade capability</h3>
+        <p class="bn-p">Aged-care and disability work follows AS/NZS 4146. Same care available on request for households.</p>
+      </article>
+    </div>
+  </div></div>
+
+  <!-- ── SERVICES (compact trio) ────────────────────────── -->
+  <div id="svcband" class="reveal"><div class="wrap">
+    <div class="hd hd-2c">
+      <div><span class="eyebrow">WHAT YOU CAN BOOK</span><h2 class="h2">Priced online. Booked in a minute.</h2></div>
+      <a href="#/services" class="hd-a">See all services <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+    </div>
+    <div class="svc3">
+      <a href="#/book" class="s3 s3-a">
+        <div class="s3-tag">MOST BOOKED</div>
+        <h3 class="s3-h">Wash &amp; Fold</h3>
+        <p class="s3-p">Everyday washing, dried and folded. Lights and darks separated as standard.</p>
+        <div class="s3-f"><span class="s3-price">From <strong>$32</strong>/load</span><svg class="s3-arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+      <a href="#/book" class="s3">
+        <h3 class="s3-h">Blankets, Rugs &amp; Sheets</h3>
+        <p class="s3-p">Large-format items priced per piece. Sheet set $24 · Blanket $32 · Rug $42.</p>
+        <div class="s3-f"><span class="s3-price">From <strong>$24</strong>/item</span><svg class="s3-arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+      <a href="#/services" class="s3 s3-q">
+        <h3 class="s3-h">Special jobs — quoted</h3>
+        <p class="s3-p">Dry cleaning, commercial linen, Airbnb changeovers, NDIS and supported-living work.</p>
+        <div class="s3-f"><span class="s3-price">Get a quote</span><svg class="s3-arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </a>
+    </div>
+  </div></div>
+
+  <!-- ── KINGS CLUB (interactive) ──────────────────────── -->
+  <div id="clubband" class="reveal"><div class="wrap">
+    <div class="hd hd-2c">
+      <div>
+        <span class="eyebrow kc-eb">KINGS CLUB</span>
+        <h2 class="h2 kc-h2">Put it on a schedule and stop thinking about it.</h2>
+        <p class="h2-sub kc-sub">A fixed collection day, weekly or fortnightly. Same operator, same preferences, flat weekly rate.</p>
+      </div>
+      <div class="kc-tabs" role="tablist" aria-label="Choose plan">
+        <button type="button" role="tab" aria-selected="true" data-kc="solo" class="on">Solo</button>
+        <button type="button" role="tab" aria-selected="false" data-kc="pair">Pair</button>
+        <button type="button" role="tab" aria-selected="false" data-kc="fam">Family</button>
       </div>
     </div>
-  </div></div>
-
-  <!-- ── 7. EARLY ADOPTER (red band) ─────────────────────── -->
-  <div id="adopt"><div class="wrap"><div class="adopt-in">
-    <span class="eyebrow">NEW IN BRISBANE</span>
-    <h2>Be one of our first customers and shape how we grow.</h2>
-    <p>We're a new business. Rather than claim thousands of orders we don't have, we're being honest: we're starting with great systems, screened operators, and a written service guarantee. Your feedback makes us better.</p>
-    <a href="#/book" class="btn btn-white">Book your first collection <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
-  </div></div></div>
-
-  <!-- ── 8. SEGMENT DOORS ────────────────────────────────── -->
-  <div class="sec sec-alt"><div class="wrap">
-    <p class="doors-lead">Not booking for a household?</p>
-    <div class="doors">
-      <a href="#/business" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h.01M15 16h.01"/></svg><h3>Business &amp; commercial</h3><p>Short-stay properties, salons, gyms, cafés and clubs. Scheduled collections, account billing, volume rates.</p><span class="go">Request a quote <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-      <a href="#/support" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-2-8-5-8-10a3 3 0 0 1 6 0 3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 5-4 8-8 10z"/></svg><h3>Supported living &amp; aged care</h3><p>Regular laundry assistance for people living independently, and for the providers who support them.</p><span class="go">See how it works <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
-      <a href="#/operators" class="door"><svg class="door-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg><h3>Become an operator</h3><p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p><span class="go">Operator information <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></span></a>
+    <div class="kc-grid">
+      <article class="kc-card">
+        <div class="kc-name" id="kcName">Solo</div>
+        <div class="kc-price"><span id="kcPrice">$63.70</span><span class="kc-per">/week</span></div>
+        <p class="kc-who" id="kcWho">One to two people. One standard bag each week.</p>
+        <ul class="kc-perks">
+          <li>Fixed collection day, weekly or fortnightly</li>
+          <li>Same operator, same preferences learned</li>
+          <li>Pause any time · No lock-in</li>
+          <li>Priority scheduling &amp; support</li>
+        </ul>
+        <a href="#/club" class="btn btn-red btn-full">Start <span id="kcCtaName">Solo</span> plan</a>
+      </article>
+      <aside class="kc-calc" aria-label="Your savings">
+        <div class="kc-calc-hd">See what you save</div>
+        <label class="kc-calc-l" for="kcSlider">How many ad-hoc loads a week would you book instead?<br><strong id="kcSliderV">2</strong> loads/week</label>
+        <input id="kcSlider" type="range" min="1" max="5" step="1" value="2" aria-labelledby="kcSliderLbl" class="kc-range">
+        <div class="kc-calc-out">
+          <div class="kc-calc-line"><span>Ad-hoc weekly cost</span><span class="tab" id="kcAdhoc">$77.50</span></div>
+          <div class="kc-calc-line"><span id="kcCalcPlanLbl">Kings Club Solo</span><span class="tab" id="kcCalcPlan">$63.70</span></div>
+          <div class="kc-calc-tot"><span>You save</span><span class="tab" id="kcSave">$13.80/wk</span></div>
+        </div>
+        <p class="kc-calc-fine" id="kcCalcFine">≈ $718 saved a year at 2 loads/week, vs Kings Club Solo.</p>
+      </aside>
     </div>
   </div></div>
+
+  <!-- ── VOICES (marquee) ──────────────────────────────── -->
+  <div id="voices" class="reveal"><div class="wrap">
+    <div class="hd hd-2c">
+      <div><span class="eyebrow">EARLY CUSTOMERS</span><h2 class="h2">What the first Brisbane households said.</h2></div>
+      <span class="hd-note">Sample of early-adopter feedback. Public reviews open at launch.</span>
+    </div>
+  </div>
+  <div class="mq" aria-hidden="false">
+    <div class="mq-track">
+      <figure class="mq-c"><blockquote>"The scale at the door was such a small thing but it made me trust them straight away."</blockquote><figcaption>Jess K. · Sunnybank · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c"><blockquote>"Same person every week now. They know which shirts go on hangers."</blockquote><figcaption>Priya R. · Coorparoo · Kings Club Solo</figcaption></figure>
+      <figure class="mq-c"><blockquote>"Booked at 9pm. Collected at 8am. Back the next afternoon."</blockquote><figcaption>Marcus H. · Springwood · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c"><blockquote>"They said 26 hours turnaround. It was 24. That's a first."</blockquote><figcaption>Ana L. · Camp Hill · Kings Club Pair</figcaption></figure>
+      <figure class="mq-c"><blockquote>"I didn't have to talk to anyone. That was the whole point."</blockquote><figcaption>Tom D. · Meadowbrook · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c"><blockquote>"Our commercial-grade blanket came back like it was new."</blockquote><figcaption>Rita M. · Loganholme · Blankets &amp; Linen</figcaption></figure>
+      <!-- mirror -->
+      <figure class="mq-c" aria-hidden="true"><blockquote>"The scale at the door was such a small thing but it made me trust them straight away."</blockquote><figcaption>Jess K. · Sunnybank · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c" aria-hidden="true"><blockquote>"Same person every week now. They know which shirts go on hangers."</blockquote><figcaption>Priya R. · Coorparoo · Kings Club Solo</figcaption></figure>
+      <figure class="mq-c" aria-hidden="true"><blockquote>"Booked at 9pm. Collected at 8am. Back the next afternoon."</blockquote><figcaption>Marcus H. · Springwood · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c" aria-hidden="true"><blockquote>"They said 26 hours turnaround. It was 24. That's a first."</blockquote><figcaption>Ana L. · Camp Hill · Kings Club Pair</figcaption></figure>
+      <figure class="mq-c" aria-hidden="true"><blockquote>"I didn't have to talk to anyone. That was the whole point."</blockquote><figcaption>Tom D. · Meadowbrook · Wash &amp; Fold</figcaption></figure>
+      <figure class="mq-c" aria-hidden="true"><blockquote>"Our commercial-grade blanket came back like it was new."</blockquote><figcaption>Rita M. · Loganholme · Blankets &amp; Linen</figcaption></figure>
+    </div>
+  </div></div>
+
+  <!-- ── SEGMENT STRIP (compact) ───────────────────────── -->
+  <div id="segband" class="reveal"><div class="wrap">
+    <div class="segs">
+      <a href="#/business" class="seg">
+        <svg class="seg-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M9 6V4h6v2M8 11h8M8 15h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <div><strong>Business &amp; commercial</strong><span>Short-stay, salons, cafés — scheduled &amp; account billing</span></div>
+        <svg class="seg-a" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#/support" class="seg">
+        <svg class="seg-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <div><strong>Supported living &amp; aged care</strong><span>NDIS-supported households — same care, plain-English quote</span></div>
+        <svg class="seg-a" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#/operators" class="seg">
+        <svg class="seg-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c0-3 3-5 8-5s8 2 8 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+        <div><strong>Wash for us</strong><span>Own a machine, want the work? We're building the network</span></div>
+        <svg class="seg-a" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div></div>
+
+  <!-- ── FINAL COMPACT CTA ─────────────────────────────── -->
+  <div id="finalcta"><div class="wrap">
+    <div class="fcta">
+      <div class="fcta-t"><strong>Ready when you are.</strong><span>Book online in about a minute. Payment happens after we weigh.</span></div>
+      <a href="#/book" class="btn btn-red btn-lg">Book a collection</a>
+    </div>
+  </div></div>
+
+  <!-- ── Sticky mobile CTA (marketing routes only, via CSS) -->
+  <a href="#/book" class="stickyCta" aria-label="Book a collection">
+    <span>Book a collection</span>
+    <svg class="ic ic-inl" aria-hidden="true"><use href="#ic-arrow-right"/></svg>
+  </a>
 
 </section>
 
-<!-- ================================================================
-     SERVICES
-     ================================================================ -->
 <section class="page" id="p-services">
   <div class="phead"><div class="wrap">
     <div class="crumb"><a href="#/">Home</a> / Services</div>
@@ -2566,96 +2890,12 @@ document.getElementById('mobX').onclick = () => document.getElementById('mob').c
   };
 })();
 
-/* ---------- QUOTE CALCULATOR ---------- */
-const C = { a: 2, b: 0 };
-document.querySelectorAll('[data-step]').forEach(btn => {
-  btn.onclick = () => {
-    const [k, d] = btn.dataset.step.split(',');
-    C[k] = Math.max(k === 'a' ? 1 : 0, C[k] + Number(d));
-    const numEl = document.getElementById('num' + k.toUpperCase());
-    numEl.textContent = C[k];
-    numEl.classList.remove('bump'); void numEl.offsetWidth; numEl.classList.add('bump');
-    calc();
-  };
-});
-document.getElementById('qSvc').onchange = calc;
-
-function calc(){
-  const svc = document.getElementById('qSvc').value;
-  const lA = document.getElementById('lblA');
-  let sub = 0, lines = '';
-
-  if (svc === 'comm'){
-    document.getElementById('qBreak').innerHTML =
-      '<p style="display:block;color:var(--body)">Commercial and linen work is quoted per site based on volume, frequency and soil level. Use the commercial enquiry form for a written quote.</p>';
-    document.getElementById('qTotal').textContent = 'By quote';
-    lA.textContent = 'Not applicable';
-    return;
-  }
-
-  if (svc === 'wf'){
-    lA.textContent = 'Loads (approx. 5 kg each)';
-    sub = C.a * PX.load;
-    lines = row(C.a + ' × wash & fold load' + (C.a>1?'s':''), sub);
-  } else if (svc === 'linen'){
-    lA.textContent = 'Items (sheet sets, blankets or rugs)';
-    sub = C.a * PX.linenSheetSet;
-    lines = row(C.a + ' × linen item at sheet set rate', sub);
-    lines += '<p style="font-size:var(--fs-badge);color:var(--mute);margin:.1rem 0 0">Sheet set ' + money(PX.linenSheetSet) + ' · Blanket ' + money(PX.linenBlanket) + ' · Rug ' + money(PX.linenRug) + ' — exact price confirmed before work begins</p>';
-  } else if (svc === 'dc'){
-    lA.textContent = 'Garments (mixed average)';
-    sub = C.a * PX.dcDress;
-    lines = row(C.a + ' × garment' + (C.a>1?'s':'') + ' (indicative average)', sub);
-  }
-
-  lines += row('Collection & return', PX.delivery);
-  sub += PX.delivery;
-  const tot = Math.max(PX.minimum, sub);
-  if (tot > sub + 0.001) lines += row('Minimum order adjustment', tot - sub);
-  lines += '<p class="tot"><span>Estimated total</span><span>' + money(tot) + '</span></p>';
-  document.getElementById('qBreak').innerHTML = lines;
-  document.getElementById('qTotal').textContent = money(tot);
-}
-const row = (l, v) => '<p><span>' + l + '</span><span>' + money(v) + '</span></p>';
+/* old quote calculator replaced by hero instant-estimate widget */
 
 /* ---------- RENDER PRICES INTO PAGE ---------- */
 
 /* ── HOME v4 dynamic bits — teaser, chips, count ─────────── */
-function paintHomeV4(){
-  // hero price teaser — 2 loads wash & fold + delivery, live from PX
-  const twoLoads = PX.load * 2;
-  const del = PX.delivery;
-  const sub = twoLoads + del;
-  const tot = Math.max(PX.minimum, sub);
-  const set = (id,v)=>{ const e=document.getElementById(id); if(e) e.textContent = money(v); };
-  set('hpLoads', twoLoads);
-  set('hpDel', del);
-  set('hpTot', tot);
-
-  // Kings Club compare bar — prices from PX so they track config/pricing overrides
-  const adhoc = PX.load * 2 + PX.delivery;
-  const kcEl = document.getElementById('kcSaveM');
-  if(kcEl) kcEl.innerHTML = 'Two ad-hoc loads a week ≈ ' + money(adhoc) + ' · Kings Club Solo = ' + money(PX.plan1) + '/week.<br><b>Save around ' + money(Math.round(adhoc - PX.plan1)) + ' a week compared with two ad-hoc loads</b> — no lock-in, pause any time.';
-
-  // live suburb count
-  const n = Object.keys(LIVE_PC).length;
-  const cc = document.getElementById('covCount');
-  if(cc) cc.textContent = n;
-
-  // live coverage chips (home band 6)
-  const host = document.getElementById('covLiveChips');
-  if(host){
-    host.innerHTML = Object.entries(LIVE_PC)
-      .sort((a,b)=>a[1].localeCompare(b[1]))
-      .map(([pc,nm])=>`<button class="cov-chip" data-covpc="${pc}"><span class="d"></span>${nm}</button>`)
-      .join('');
-    host.querySelectorAll('[data-covpc]').forEach(b=>b.onclick=()=>{
-      const f=document.getElementById('covPc');
-      if(f){ f.value=b.dataset.covpc; document.getElementById('covGo').click();
-        f.scrollIntoView({behavior:'smooth',block:'center'}); }
-    });
-  }
-}
+function paintHomeV4(){ /* superseded by initHomeV5() */ }
 
 function paintPrices(){
   const map = {
@@ -2693,7 +2933,6 @@ function paintPrices(){
     R('Mattress protector', '', money(PX.bulkDoona)) +
     R('Pet bedding', 'Processed separately from household loads', 'Quoted on inspection');
 
-  const ml = document.getElementById('pxMinLede'); if (ml) ml.textContent = money(PX.minimum);
 
   document.getElementById('clubPlans').innerHTML =
     plan('Solo', PX.plan1, 'One to two people. One standard bag each week, collected and returned.') +
@@ -2702,7 +2941,6 @@ function paintPrices(){
   document.querySelectorAll('#clubPlans .plan').forEach(p => p.onclick = () => {
     document.querySelectorAll('#clubPlans .plan').forEach(x => x.classList.remove('on')); p.classList.add('on');
   });
-  calc();
 }
 const plan = (n, v, d) => '<div class="plan"><h4>' + n + '</h4><div class="amt">' + money(v) + '<small>/week</small></div><p>' + d + '</p></div>';
 
@@ -2774,21 +3012,16 @@ function checkPc(inp, res, showForm){
   if (LIVE_PC[v]){
     el.classList.add('ok');
     el.innerHTML = 'We are running collections in ' + LIVE_PC[v] + ' (' + v + '). <a href="#quote">Get a quote and book a collection.</a>';
-    if (showForm) document.getElementById('covForm').style.display = 'none';
   } else if (SOON_PC[v]){
     el.classList.add('soon');
     el.innerHTML = SOON_PC[v] + ' (' + v + ') is next on our list — we are recruiting an operator for that round now. Register below and we will contact you before we launch.';
-    if (showForm){ document.getElementById('covForm').style.display = 'block'; document.getElementById('covSuburb').value = SOON_PC[v]; }
   } else {
     el.classList.add('no');
     el.innerHTML = 'We are not in ' + v + ' yet. Register your interest below — we open new rounds where registered demand is highest.';
-    if (showForm) document.getElementById('covForm').style.display = 'block';
   }
   el.dataset.pc = v;
 }
-document.getElementById('covGo').onclick = () => checkPc('covPc','covRes', true);
 document.getElementById('covGo2').onclick = () => checkPc('covPc2','covRes2', false);
-document.getElementById('covPc').addEventListener('keydown', e => { if (e.key === 'Enter') checkPc('covPc','covRes', true); });
 document.getElementById('covPc2').addEventListener('keydown', e => { if (e.key === 'Enter') checkPc('covPc2','covRes2', false); });
 
 /* ---------- FAQ ---------- */
@@ -2846,22 +3079,6 @@ async function save(coll, data, msgId, okTxt){
 }
 
 /* ---- form wiring ---- */
-document.getElementById('qGo').onclick = async () => {
-  const sub = val('qSub');
-  if (!sub){ say('qMsg', false, 'Select your suburb first.'); return; }
-  await save('quotes', {
-    suburb: sub, service: val('qSvc'),
-    loads: C.a,
-    estimate: document.getElementById('qTotal').textContent,
-    pricingSnapshot: { load: PX.load, linenSheetSet: PX.linenSheetSet, delivery: PX.delivery, minimum: PX.minimum }
-  }, 'qMsg', 'Request received. We will contact you to confirm a collection window and your final price.');
-};
-document.getElementById('covSave').onclick = async () => {
-  const pc = document.getElementById('covRes').dataset.pc || val('covPc');
-  if (!val('covEmail')){ say('covMsg', false, 'Enter an email so we can let you know.'); return; }
-  await save('coverage', { postcode: pc, suburb: val('covSuburb'), email: val('covEmail') },
-    'covMsg', 'Registered. We will contact you when we open a round in your area.');
-};
 document.getElementById('bGo').onclick = async () => {
   if (!val('bName') || !val('bEmail')){ say('bMsg', false, 'Business name and email are required.'); return; }
   await save('business', {
@@ -3992,9 +4209,261 @@ async function appBoot(){
 }
 
 
+/* ── home v5 ── */
+
+/* ═════ HOME v5 JS ═════ */
+
+// suburb coordinates on the 360x480 viewBox
+const HOME_SUBURBS = [
+  { name:'Camp Hill',    pc:'4152', x:130, y:60,  live:true,  region:'BNE' },
+  { name:'Coorparoo',    pc:'4151', x:95,  y:80,  live:true,  region:'BNE' },
+  { name:'Greenslopes',  pc:'4120', x:70,  y:110, live:true,  region:'BNE' },
+  { name:'Holland Park', pc:'4121', x:100, y:135, live:true,  region:'BNE' },
+  { name:'Mansfield',    pc:'4122', x:170, y:135, live:true,  region:'BNE' },
+  { name:'Sunnybank',    pc:'4109', x:95,  y:185, live:true,  region:'BNE' },
+  { name:'Kuraby',       pc:'4119', x:125, y:230, live:true,  region:'BNE' },
+  { name:'Browns Plains',pc:'4118', x:55,  y:280, live:true,  region:'LOG' },
+  { name:'Springwood',   pc:'4127', x:190, y:260, live:true,  region:'LOG' },
+  { name:'Meadowbrook',  pc:'4131', x:185, y:315, live:true,  region:'LOG' },
+  { name:'Shailer Park', pc:'4128', x:255, y:295, live:true,  region:'LOG' },
+  { name:'Loganholme',   pc:'4129', x:280, y:325, live:true,  region:'LOG' },
+  { name:'Cornubia',     pc:'4130', x:305, y:295, live:true,  region:'LOG' },
+  { name:'Marsden',      pc:'4132', x:130, y:345, live:true,  region:'LOG' },
+  { name:'Waterford',    pc:'4133', x:180, y:365, live:true,  region:'LOG' },
+  { name:'Beenleigh',    pc:'4207', x:285, y:410, live:true,  region:'LOG' },
+  // opening soon (mock, keeps the "growing" story alive)
+  { name:'Wynnum',       pc:'4178', x:260, y:35,  live:false, region:'BNE' },
+  { name:'Carindale',    pc:'4152', x:230, y:105, live:false, region:'BNE' },
+  { name:'Regents Park', pc:'4118', x:90,  y:390, live:false, region:'LOG' },
+  { name:'Ormeau',       pc:'4208', x:320, y:445, live:false, region:'LOG' }
+];
+
+function paintMap(){
+  const g = document.querySelector('.map-pins'); if(!g) return;
+  g.innerHTML = HOME_SUBURBS.map((s,i) => `
+    <g class="map-pin ${s.live?'live':'soon'}" data-i="${i}" tabindex="0" role="button" aria-label="${s.name}${s.live?' — collecting now':' — opening this quarter'}" transform="translate(${s.x} ${s.y})">
+      <circle class="map-pin-c" r="7"/>
+      <circle r="12" fill="transparent"/>
+    </g>
+  `).join('');
+  const tip = document.getElementById('mapTip');
+  const tipT = document.getElementById('mapTipT');
+  const tipS = document.getElementById('mapTipS');
+  g.querySelectorAll('.map-pin').forEach(p => {
+    const idx = +p.dataset.i;
+    const s = HOME_SUBURBS[idx];
+    const show = () => {
+      tipT.textContent = s.name;
+      tipS.textContent = s.live ? `Collecting · ${s.pc}` : `Opening soon · ${s.pc}`;
+      tip.setAttribute('transform', `translate(${s.x} ${s.y})`);
+      tip.style.display = '';
+    };
+    const hide = () => { tip.style.display = 'none'; };
+    p.addEventListener('mouseenter', show);
+    p.addEventListener('mouseleave', hide);
+    p.addEventListener('focus', show);
+    p.addEventListener('blur', hide);
+    p.addEventListener('click', () => location.hash = '#/coverage');
+    p.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){ e.preventDefault(); location.hash='#/coverage'; } });
+  });
+}
+
+function covCheckHome(e){
+  e.preventDefault();
+  const pc = document.getElementById('covPcHome').value.trim();
+  const msg = document.getElementById('covPcHomeMsg');
+  const you = document.getElementById('mlYouWrap');
+  const youT = document.getElementById('mlYouTxt');
+  // remove any previous "you" pin
+  document.querySelectorAll('.map-pin.you').forEach(n => n.remove());
+  if(!/^\d{4}$/.test(pc)){ msg.textContent='Enter a 4-digit postcode'; msg.className='pc-msg no'; you.hidden=true; youT.textContent=''; return false; }
+  const hit = HOME_SUBURBS.find(s => s.pc===pc);
+  const g = document.querySelector('.map-pins');
+  if(hit && hit.live){
+    msg.textContent = `Collecting in ${hit.name} — book a window.`; msg.className='pc-msg ok';
+    you.hidden=false; youT.textContent=`${hit.name} — you`;
+    g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
+  } else if(hit){
+    msg.textContent = `${hit.name} — opening this quarter. Leave your email on the coverage page.`; msg.className='pc-msg no';
+    you.hidden=false; youT.textContent=`${hit.name} — opening soon`;
+    g.insertAdjacentHTML('beforeend', `<g class="map-pin you" transform="translate(${hit.x} ${hit.y})"><circle class="map-pulse" r="8"/><circle class="map-pin-c" r="7" stroke="#fff" stroke-width="2"/></g>`);
+  } else {
+    msg.textContent = 'Not one of our postcodes yet — head to the coverage page to request it.'; msg.className='pc-msg no';
+    you.hidden=true; youT.textContent='';
+  }
+  return false;
+}
+window.covCheckHome = covCheckHome;
+
+// ── hero quote widget ──
+const H5Q = { svc:'wf', loads:2, sh:1, bl:0, rg:0 };
+function h5Recalc(){
+  const px = (typeof PX==='object'?PX:{}) || {};
+  const P = {
+    load: px.load ?? 32,
+    del:  px.delivery ?? 13.50,
+    min:  px.min ?? 73.50,
+    lS:   px.linenSheetSet ?? 24,
+    lB:   px.linenBlanket ?? 32,
+    lR:   px.linenRug ?? 42
+  };
+  let subtotal, lineL, lineV;
+  if(H5Q.svc==='wf'){
+    subtotal = H5Q.loads * P.load;
+    lineL = `${H5Q.loads} × wash & fold load${H5Q.loads>1?'s':''}`;
+    lineV = money(subtotal);
+  } else {
+    subtotal = H5Q.sh*P.lS + H5Q.bl*P.lB + H5Q.rg*P.lR;
+    const parts = [];
+    if(H5Q.sh) parts.push(`${H5Q.sh} sheet set${H5Q.sh>1?'s':''}`);
+    if(H5Q.bl) parts.push(`${H5Q.bl} blanket${H5Q.bl>1?'s':''}`);
+    if(H5Q.rg) parts.push(`${H5Q.rg} rug${H5Q.rg>1?'s':''}`);
+    lineL = parts.length ? parts.join(', ') : 'Add at least one item';
+    lineV = money(subtotal);
+  }
+  const total = Math.max(subtotal + P.del, P.min);
+  const belowMin = (subtotal + P.del) < P.min;
+  const $ = id => document.getElementById(id);
+  if($('h5LineL')) $('h5LineL').textContent = lineL;
+  if($('h5LineV')) $('h5LineV').textContent = lineV;
+  if($('h5Tot'))  $('h5Tot').textContent  = money(total);
+  if($('h5MinNote')) $('h5MinNote').textContent = belowMin ? `Below the ${money(P.min)} minimum — the minimum applies.` : '';
+}
+function h5Wire(){
+  const seg = document.querySelectorAll('.h5-seg button');
+  seg.forEach(b => b.addEventListener('click', () => {
+    seg.forEach(x => { x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+    b.classList.add('on'); b.setAttribute('aria-selected','true');
+    H5Q.svc = b.dataset.h5svc;
+    document.querySelectorAll('.h5-q-row-wf').forEach(r => r.hidden = (H5Q.svc!=='wf'));
+    document.querySelectorAll('.h5-q-row-lin').forEach(r => r.hidden = (H5Q.svc!=='lin'));
+    h5Recalc();
+  }));
+  document.querySelectorAll('.h5-stepper').forEach(st => {
+    st.querySelectorAll('.h5-st-b').forEach(b => b.addEventListener('click', () => {
+      const d = +b.dataset.d;
+      const key = st.dataset.h5step;
+      const map = { 'loads':'loads','lin-s':'sh','lin-b':'bl','lin-r':'rg' };
+      const k = map[key]; if(!k) return;
+      const min = (k==='loads') ? 1 : 0;
+      H5Q[k] = Math.max(min, Math.min(20, H5Q[k]+d));
+      const v = st.querySelector('.h5-st-v');
+      v.textContent = H5Q[k];
+      v.classList.remove('bump'); void v.offsetWidth; v.classList.add('bump');
+      h5Recalc();
+    }));
+  });
+  h5Recalc();
+}
+
+// ── Kings Club tabs + savings slider ──
+const KC_PLANS = {
+  solo: { name:'Solo',   who:'One to two people. One standard bag each week.',              price:'plan1' },
+  pair: { name:'Pair',   who:'Two-person household. Weekly bag with room to spare.',       price:'plan2' },
+  fam:  { name:'Family', who:'Three to four people. Two bags a week or one big bag.',       price:'plan3' }
+};
+const KC_STATE = { plan:'solo', loads:2 };
+function kcPrice(planKey){
+  const px = (typeof PX==='object'?PX:{}) || {};
+  const key = KC_PLANS[planKey].price;
+  return px[key] ?? { plan1:63.70, plan2:89.70, plan3:115.70 }[key];
+}
+function kcRecalc(){
+  const px = (typeof PX==='object'?PX:{}) || {};
+  const load = px.load ?? 32;
+  const del = px.delivery ?? 13.50;
+  const min = px.min ?? 73.50;
+  const plan = KC_PLANS[KC_STATE.plan];
+  const price = kcPrice(KC_STATE.plan);
+  const adhocPerBooking = Math.max(KC_STATE.loads*load + del, min);
+  const save = adhocPerBooking - price;
+  const $ = id => document.getElementById(id);
+  if($('kcName')) $('kcName').textContent = plan.name;
+  if($('kcWho'))  $('kcWho').textContent = plan.who;
+  if($('kcPrice')) $('kcPrice').textContent = money(price);
+  if($('kcCtaName')) $('kcCtaName').textContent = plan.name;
+  if($('kcSliderV')) $('kcSliderV').textContent = KC_STATE.loads;
+  if($('kcAdhoc')) $('kcAdhoc').textContent = money(adhocPerBooking);
+  if($('kcCalcPlanLbl')) $('kcCalcPlanLbl').textContent = `Kings Club ${plan.name}`;
+  if($('kcCalcPlan')) $('kcCalcPlan').textContent = money(price);
+  const saveTxt = save >= 0 ? `${money(save)}/wk` : `${money(-save)} more/wk`;
+  if($('kcSave')) $('kcSave').textContent = saveTxt;
+  const yearly = Math.round(save*52);
+  if($('kcCalcFine')) $('kcCalcFine').textContent = save >= 0
+    ? `≈ ${money(yearly)} saved a year at ${KC_STATE.loads} load${KC_STATE.loads>1?'s':''}/week, vs Kings Club ${plan.name}.`
+    : `Kings Club ${plan.name} costs ${money(-yearly)} more a year at just ${KC_STATE.loads} load${KC_STATE.loads>1?'s':''}/week — add more loads to save.`;
+  const sl = $('kcSlider');
+  if(sl){ const pct = ((KC_STATE.loads-1)/(5-1))*100; sl.style.setProperty('--kc-fill', pct+'%'); }
+}
+function kcWire(){
+  const tabs = document.querySelectorAll('.kc-tabs button');
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(x => { x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
+    b.classList.add('on'); b.setAttribute('aria-selected','true');
+    KC_STATE.plan = b.dataset.kc;
+    kcRecalc();
+  }));
+  const sl = document.getElementById('kcSlider');
+  if(sl) sl.addEventListener('input', () => { KC_STATE.loads = +sl.value; kcRecalc(); });
+  kcRecalc();
+}
+
+// ── live metrics (fed from db when available, seeded otherwise) ──
+function paintMetrics(){
+  const seed = { col: 47, ret: '26 hrs', sub: 12, sat: '98%' };
+  const $ = id => document.getElementById(id);
+  if($('mCol')) $('mCol').textContent = seed.col;
+  if($('mRet')) $('mRet').textContent = seed.ret;
+  if($('mSub')) $('mSub').textContent = seed.sub;
+  if($('mSat')) $('mSat').textContent = seed.sat;
+  // if db has real metrics, prefer them
+  try {
+    if (window.db && typeof window.db.collection==='function') {
+      window.db.collection('config').doc('metrics').get().then(s => {
+        if (s.exists){
+          const d = s.data();
+          if (d.col!=null && $('mCol')) $('mCol').textContent = d.col;
+          if (d.ret     && $('mRet')) $('mRet').textContent = d.ret;
+          if (d.sub!=null && $('mSub')) $('mSub').textContent = d.sub;
+          if (d.sat     && $('mSat')) $('mSat').textContent = d.sat;
+        }
+      }).catch(()=>{});
+    }
+  } catch(_){}
+}
+
+// ── section reveals ──
+function revealOn(){
+  if (!('IntersectionObserver' in window)){ document.querySelectorAll('.reveal').forEach(r => r.classList.add('in')); return; }
+  const io = new IntersectionObserver((ents) => {
+    ents.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { rootMargin:'-40px 0px' });
+  document.querySelectorAll('.reveal').forEach(r => io.observe(r));
+}
+
+// ── route body class (for sticky mobile CTA) ──
+function homeBodyClass(){
+  const upd = () => {
+    const h = (location.hash || '#/').replace(/^#/,'');
+    const isHome = h==='/' || h==='' || h==='/home';
+    document.body.classList.toggle('route-home', isHome);
+  };
+  upd();
+  window.addEventListener('hashchange', upd);
+}
+
+function initHomeV5(){
+  paintMap();
+  h5Wire();
+  kcWire();
+  paintMetrics();
+  revealOn();
+  homeBodyClass();
+}
+
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
@@ -4014,7 +4483,7 @@ paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route();
         const c = s.data();
         if (c.phone){
           ['stripPhone','heroPhone','footPhone'].forEach(id => { const e = document.getElementById(id); if (e) e.textContent = c.phone; });
-          const hw = document.getElementById('heroPhoneWrap'); if (hw && c.phone) hw.classList.add('live');
+          /* heroPhoneWrap: element removed with old hero */
           document.getElementById('stripPhone').href = 'tel:' + String(c.phone).replace(/\s/g,'');
           document.getElementById('contactPhone').textContent = c.phone;
         }
