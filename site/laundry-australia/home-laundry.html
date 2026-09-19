@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Home Laundry — Laundry Australia</title>
+<meta name="description" content="Home Laundry pickup and delivery from Laundry Australia. Clean & simple. Order pickup online or call 1800 PICKUP." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Yellowtail&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --orange:#EE6E1F;
+    --orange-2:#F58A3A;
+    --orange-soft:#FCE4D2;
+    --ink:#111111;
+    --ink-2:#333333;
+    --grey-card:#2E2E2E;
+    --grey-line:#E6E6E6;
+    --grey-page:#F5F5F5;
+    --blue:#194B9E;
+    --blue-2:#0F3F8A;
+    --white:#FFFFFF;
+    --shadow-card:0 22px 40px -22px rgba(0,0,0,.28), 0 6px 14px -8px rgba(0,0,0,.15);
+    --shadow-cta:0 20px 30px -18px rgba(238,110,31,.55);
+    --radius-card:26px;
+    --radius-pill:999px;
+    --gutter:20px;
+    --maxw:520px; /* mobile-first single column */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    background:#fff;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    line-height:1.45;
+    font-size:16px;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  .display{
+    font-family:'Barlow Condensed','Poppins',sans-serif;
+    font-weight:900;
+    letter-spacing:.01em;
+    line-height:.92;
+    text-transform:uppercase;
+  }
+  .script{
+    font-family:'Yellowtail','Kaushan Script','Lucida Handwriting','Segoe Script',cursive;
+    font-weight:400;
+    letter-spacing:.005em;
+    font-style:normal;
+  }
+  .container{
+    width:100%;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 var(--gutter);
+  }
+
+  /* ---- STICKY HEADER (hero-integrated on scroll top) ---- */
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    background:#000; color:#fff;
+    padding:14px 18px 12px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+  }
+  .brand{display:flex; align-items:flex-start; gap:8px; line-height:.9}
+  .brand-mark{
+    position:relative;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    color:#fff;
+    font-size:28px;
+    letter-spacing:.01em;
+    line-height:.9;
+  }
+  .brand-mark .l1{display:block}
+  .brand-mark .l2{display:block; font-size:20px; letter-spacing:.02em}
+  .brand-mark .star{
+    position:absolute; top:-14px; right:-18px;
+    width:26px; height:26px;
+  }
+  .footer .brand-mark .star{top:-18px; right:-22px; width:32px; height:32px}
+  .brand-tag{
+    color:#fff;
+    font-family:'Yellowtail',cursive;
+    font-size:18px;
+    line-height:1;
+    align-self:center;
+    padding-top:14px;
+  }
+  .hamburger{
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+  }
+  .hamburger span{
+    display:block; width:28px; height:3px; background:#fff; border-radius:2px;
+    position:relative;
+  }
+  .hamburger span::before,.hamburger span::after{
+    content:""; position:absolute; left:0; right:0; height:3px; background:#fff; border-radius:2px;
+  }
+  .hamburger span::before{top:-9px}
+  .hamburger span::after{top:9px}
+
+  /* ---- HERO ---- */
+  .hero{
+    background:#000; color:#fff;
+    padding:8px 22px 44px;
+    position:relative; overflow:hidden;
+  }
+  .hero h1{
+    margin:0;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    line-height:.86;
+    letter-spacing:.005em;
+  }
+  .hero .home{
+    display:block;
+    font-size:clamp(48px, 17vw, 84px);
+    padding-top:8px;
+  }
+  .hero .laundry{
+    display:block;
+    font-size:clamp(70px, 22vw, 130px);
+    margin-top:-4px;
+    letter-spacing:-.005em;
+  }
+  .hero .script-sub{
+    display:block;
+    font-family:'Yellowtail','Kaushan Script','Lucida Handwriting','Segoe Script',cursive;
+    font-weight:400;
+    text-transform:none;
+    font-size:clamp(34px, 11vw, 56px);
+    line-height:1;
+    margin-top:8px;
+    padding-right:6px;
+    text-align:right;
+  }
+  .hero .cta-row{margin-top:26px}
+  .btn-pill-outline{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:220px; height:52px;
+    padding:0 32px;
+    border:1.5px solid #fff; color:#fff;
+    border-radius:var(--radius-pill);
+    background:transparent;
+    font-family:'Poppins',sans-serif;
+    font-weight:400;
+    font-size:20px;
+  }
+  .btn-pill-outline:hover{background:rgba(255,255,255,.08)}
+  .hero-illustration{
+    margin:38px auto 0;
+    width:88%; max-width:420px;
+    position:relative;
+  }
+
+  /* ---- LIFE TOO BUSY ---- */
+  .section{padding:64px 0}
+  .section .container{position:relative}
+  .life-busy h2{
+    margin:0;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    line-height:.9;
+    font-size:clamp(28px, 8.5vw, 44px);
+    color:#000;
+    text-align:center;
+    padding:0 6px;
+  }
+  .life-busy .subline{
+    text-align:center; margin-top:16px;
+    font-size:17px; color:#111;
+  }
+  .life-busy .body{
+    text-align:center; margin:14px auto 0;
+    max-width:340px; color:#111;
+    font-size:17px;
+  }
+  .sparkle-abs{position:absolute; pointer-events:none}
+  .life-busy .sp-1{top:-10px; right:20px; width:34px}
+  .life-busy .sp-2{top:170px; left:22px; width:38px}
+
+  /* ---- SIMPLIFY YOUR LIFE (dark card) ---- */
+  .simplify{
+    margin-top:24px;
+    background:var(--grey-card);
+    color:#fff;
+    padding:36px 28px 40px;
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-card);
+  }
+  .simplify h3{
+    margin:0 0 14px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:34px;
+    letter-spacing:.02em;
+    line-height:.95;
+  }
+  .simplify p{margin:0; font-size:16.5px; line-height:1.5; color:#f5f5f5}
+
+  /* ---- GET BACK TO DOING WHAT YOU LOVE ---- */
+  .love{
+    margin-top:26px;
+    background:#fff;
+    padding:36px 28px 40px;
+    border-radius:var(--radius-card);
+    box-shadow:var(--shadow-card);
+  }
+  .love h3{
+    margin:0 0 18px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:34px;
+    color:var(--orange);
+    line-height:.95;
+    letter-spacing:.01em;
+  }
+  .love p{margin:0 0 14px; font-size:16.5px; color:#111}
+  .love p:last-child{margin-bottom:0}
+
+  /* ---- OUR PROCESS ---- */
+  .process{padding-top:20px; padding-bottom:20px}
+  .process h2{
+    margin:0 0 22px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:34px;
+    color:#000;
+    letter-spacing:.02em;
+    padding-left:6px;
+  }
+  .step-card{
+    background:#fff;
+    border-radius:var(--radius-card);
+    padding:26px 26px 30px;
+    box-shadow:var(--shadow-card);
+    margin:0 0 22px;
+  }
+  .step-card .icon{
+    width:120px; height:120px;
+    margin:8px auto 20px;
+    display:block;
+  }
+  .step-card h3{
+    margin:0 0 10px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:30px;
+    letter-spacing:.02em;
+    color:#000;
+    line-height:1;
+  }
+  .step-card p{margin:0; font-size:16.5px; color:#111; line-height:1.5}
+
+  /* ---- PRICING ---- */
+  .pricing-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:36px;
+    color:#000;
+    margin:8px 0 6px;
+    letter-spacing:.02em;
+  }
+  .pricing-rule{
+    height:2px; background:var(--orange);
+    border:0; margin:0 0 26px;
+  }
+  .bags-illo{
+    margin:12px auto 34px;
+    width:100%; max-width:460px;
+  }
+  .price-card{
+    background:#fff;
+    border-radius:var(--radius-card);
+    padding:28px 28px 32px;
+    box-shadow:var(--shadow-card);
+    margin-bottom:28px;
+  }
+  .price-card .script{
+    font-family:'Yellowtail',cursive;
+    font-size:38px;
+    line-height:1;
+    color:#111;
+    margin:0 0 10px;
+  }
+  .price-card .headline{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:34px;
+    color:#000;
+    letter-spacing:.02em;
+    margin:2px 0 16px;
+    line-height:1;
+  }
+  .price-card .headline .price{white-space:nowrap}
+  .price-card ul{
+    margin:0; padding:0; list-style:none;
+    font-size:15.5px; color:#111; line-height:1.55;
+  }
+  .price-card ul li{margin:0}
+  .price-card em{font-style:italic}
+  .ironing-block h3{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:30px;
+    color:#000;
+    margin:8px 0 10px;
+    letter-spacing:.02em;
+  }
+  .ironing-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:6px 0 14px; border-bottom:1.5px solid var(--orange);
+    font-size:17px;
+  }
+  .ironing-row .label{color:#111}
+  .ironing-row .price{color:#111; font-weight:500}
+  .tc-block{margin-top:26px}
+  .tc-block h3{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:26px;
+    letter-spacing:.02em;
+    margin:0 0 14px;
+    color:#000;
+  }
+  .tc-block ul{margin:0; padding:0; list-style:none; font-size:15px; color:#111; line-height:1.55}
+  .tc-block li{margin:0}
+  .tc-block li.strong{font-weight:700}
+
+  /* ---- REQUEST PICKUP CTA ---- */
+  .cta-banner{
+    margin:32px 0 8px;
+    background:var(--orange);
+    color:#fff;
+    border-radius:26px;
+    padding:44px 24px 40px;
+    text-align:center;
+    position:relative;
+    box-shadow:var(--shadow-cta);
+  }
+  .cta-banner h2{
+    margin:0 0 22px;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:36px;
+    letter-spacing:.02em;
+    line-height:1;
+  }
+  .cta-banner .sparkle-abs{top:56%; right:22px; width:26px; opacity:.9}
+
+  /* ---- WASH (CLIENTS) ---- */
+  .wash{
+    padding:56px 0 40px;
+    background:#fff;
+  }
+  .wash .container{position:relative}
+  .wash .sparkle-abs{top:-4px; left:14px; width:36px}
+  .wash h2{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:38px;
+    color:var(--blue);
+    margin:26px 0 14px;
+    letter-spacing:.02em;
+    line-height:.95;
+  }
+  .wash .lead{color:var(--blue); font-size:17px; margin:0 0 26px}
+  .clients{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:14px; align-items:center; justify-items:center;
+    margin:22px 0 12px;
+  }
+  .client{
+    width:100%; max-width:110px; height:80px;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--blue);
+    text-align:center;
+    font-size:11px;
+    padding:6px;
+  }
+  .client img{max-height:64px; width:auto; object-fit:contain}
+  .client .placeholder{
+    border:1px dashed rgba(25,75,158,.35);
+    border-radius:10px;
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(25,75,158,.65);
+    text-transform:uppercase;
+    font-weight:600;
+    letter-spacing:.06em;
+  }
+
+  /* ---- FOOTER ---- */
+  .footer{
+    background:var(--blue); color:#fff;
+    padding:40px 24px 20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .footer .brand-mark{color:#fff; font-size:38px}
+  .footer .brand-mark .l2{font-size:26px}
+  .footer .brand{align-items:flex-start; gap:10px}
+  .footer .brand-tag{color:#fff; font-size:22px; padding-top:22px}
+  .footer .order-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--orange); color:#fff;
+    padding:0 40px; height:56px;
+    border-radius:var(--radius-pill);
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:22px; letter-spacing:.03em;
+    margin:22px 0 30px;
+  }
+  .footer h4{
+    color:var(--orange);
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:22px;
+    margin:22px 0 8px;
+    letter-spacing:.02em;
+    line-height:1;
+  }
+  .footer address{
+    font-style:normal; color:#fff; font-size:16px; line-height:1.4;
+  }
+  .footer .phone{color:#fff; font-size:16px; margin-top:14px}
+  .footer .call-1800{
+    color:#fff;
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    font-size:22px;
+    letter-spacing:.03em;
+    margin:14px 0 22px;
+    display:block;
+  }
+  .footer .legal{
+    color:#fff; font-size:14px; margin:6px 0 30px; opacity:.95;
+  }
+  .footer .legal a{color:#fff; text-decoration:underline}
+  .clouds{
+    display:block; width:100%; height:auto; margin-bottom:-2px;
+  }
+
+  /* ---- Sticky Mailing List pill ---- */
+  .mail-pill{
+    position:fixed; left:16px; bottom:18px; z-index:50;
+    background:var(--orange); color:#fff;
+    display:inline-flex; align-items:center; gap:10px;
+    padding:12px 22px 12px 16px;
+    border-radius:var(--radius-pill);
+    box-shadow:0 12px 24px -12px rgba(238,110,31,.55);
+    font-family:'Poppins',sans-serif;
+    font-weight:400; font-size:16px;
+  }
+  .mail-pill .x{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border:1.5px solid #fff; border-radius:50%;
+    font-size:13px;
+  }
+  .mail-pill.hidden{display:none}
+
+  /* Larger screens */
+  @media (min-width:640px){
+    .hero .home{font-size:96px}
+    .hero .laundry{font-size:152px}
+    .hero .script-sub{font-size:64px}
+    .life-busy h2{font-size:56px}
+  }
+</style>
+</head>
+<body>
+  <!-- =============== HEADER =============== -->
+  <header class="site-header" role="banner">
+    <a class="brand" href="/" aria-label="Laundry Australia — Delivering More">
+      <span class="brand-mark" aria-hidden="true">
+        <span class="l1">LAUNDRY<svg class="star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 1 C20.6 12 21 13.2 24 15 C27.5 15.2 30.2 15.2 39 18 C30.2 20.8 27.5 20.8 24 25 C21 27.6 20.6 28 20 39 C19.4 28 19 27.6 16 25 C12.5 20.8 9.8 20.8 1 18 C9.8 15.2 12.5 15.2 16 15 C19 13.2 19.4 12 20 1 Z" fill="#EE6E1F" transform="rotate(20 20 20)"/></svg></span>
+        <span class="l2">AUSTRALIA</span>
+      </span>
+      <span class="brand-tag">Delivering<br/>More</span>
+    </a>
+    <button class="hamburger" type="button" aria-label="Open menu" aria-controls="site-menu" aria-expanded="false">
+      <span></span>
+    </button>
+  </header>
+
+  <!-- =============== HERO =============== -->
+  <section class="hero" aria-label="Home Laundry">
+    <div class="container">
+      <h1>
+        <span class="home">HOME</span>
+        <span class="laundry">LAUNDRY</span>
+        <span class="script-sub">Clean &amp; Simple</span>
+      </h1>
+      <div class="cta-row" style="text-align:center">
+        <a class="btn-pill-outline" href="#pickup" aria-label="Order pickup">Order pickup</a>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <!-- Iron with sparkles -->
+        <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- steam swoosh -->
+          <path d="M260 60 C300 30 360 40 380 90 C395 130 335 150 320 118" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <!-- iron body -->
+          <path d="M110 200 L340 200 C330 170 305 150 260 148 L190 148 C150 150 122 172 110 200 Z" stroke="#fff" stroke-width="3" stroke-linejoin="round" fill="none"/>
+          <!-- iron top rectangle -->
+          <rect x="200" y="158" width="70" height="26" rx="6" stroke="#fff" stroke-width="3" fill="none"/>
+          <!-- baseline plate -->
+          <path d="M116 200 L334 200" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <!-- sparkles -->
+          <g stroke="#EE6E1F" stroke-width="2.5" fill="none">
+            <path d="M240 118 L246 108 L252 118 L246 128 Z"/>
+            <circle cx="262" cy="112" r="2.5"/>
+            <path d="M150 90 L156 78 L162 90 L156 102 Z"/>
+            <circle cx="172" cy="82" r="2.5"/>
+          </g>
+          <g stroke="#fff" stroke-width="2.5" fill="none">
+            <path d="M92 130 L98 118 L104 130 L98 142 Z"/>
+            <circle cx="114" cy="122" r="2.5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== LIFE TOO BUSY =============== -->
+  <section class="section life-busy" aria-labelledby="life-busy-h">
+    <div class="container">
+      <svg class="sparkle-abs sp-1" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/><circle cx="34" cy="10" r="2" stroke="#EE6E1F" stroke-width="1.5" fill="none"/></svg>
+      <h2 id="life-busy-h" class="display">Life&rsquo;s too busy to waste precious time doing laundry.</h2>
+      <p class="subline">Let us do it for you!</p>
+      <p class="body">Our Home Laundry service is designed to simplify your life with the click of a button.</p>
+      <svg class="sparkle-abs sp-2" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#EE6E1F" stroke-width="2" fill="none"/></svg>
+
+      <!-- SIMPLIFY YOUR LIFE card -->
+      <div class="simplify">
+        <h3>Simplify your life</h3>
+        <p>Place an order and consider your laundry day done. We pick it up, wash it, fold it, dry it, even give it our Plus Dry Cleaners intensive care treatment if required and promptly drop it back to you.</p>
+      </div>
+
+      <!-- GET BACK TO DOING WHAT YOU LOVE card -->
+      <div class="love">
+        <h3>Get back to doing what you love</h3>
+        <p>Would you rather be spending time with your kids, partner, family or friends&hellip; or doing mundane household chores</p>
+        <p>Fortunately for you we love doing that stuff! Loonies hey?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== OUR PROCESS =============== -->
+  <section class="section process" aria-labelledby="process-h">
+    <div class="container">
+      <h2 id="process-h">Our Process</h2>
+
+      <!-- ORDER -->
+      <article class="step-card">
+        <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
+          <!-- basket -->
+          <path d="M18 46 L102 46 L92 100 L28 100 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <!-- clothes hump -->
+          <path d="M28 46 C36 26 58 20 74 30 C86 22 100 32 96 46" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M40 40 C46 34 54 36 58 42" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- vertical slats -->
+          <line x1="46" y1="60" x2="46" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+          <line x1="58" y1="60" x2="58" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+          <line x1="70" y1="60" x2="70" y2="90" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h3>Order</h3>
+        <p>Click a mouse, push a button or simply dial 1800 PICKUP and we will be there to pick up your dirty stuff. Delegation done.</p>
+      </article>
+
+      <!-- PICK UP -->
+      <article class="step-card">
+        <svg class="icon" viewBox="0 0 120 120" aria-hidden="true">
+          <!-- van body -->
+          <path d="M8 82 L8 52 L64 52 L82 68 L112 68 L112 82" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <line x1="8" y1="82" x2="112" y2="82" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+          <!-- window -->
+          <path d="M64 58 L78 68 L64 68 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <!-- wheels -->
+          <circle cx="34" cy="88" r="10" stroke="#111" stroke-width="3" fill="none"/>
+          <circle cx="34" cy="88" r="3" stroke="#111" stroke-width="2" fill="none"/>
+          <circle cx="92" cy="88" r="10" stroke="#111" stroke-width="3" fill="none"/>
+          <circle cx="92" cy="88" r="3" stroke="#111" stroke-width="2" fill="none"/>
+          <!-- door line -->
+          <line x1="40" y1="52" x2="40" y2="82" stroke="#111" stroke-width="3"/>
+        </svg>
+        <h3>Pick up</h3>
+        <p>We race out in one of our super schmick HOME LAUNDRY vans to your home where one of our friendly team will jump out and pick up your washing before disappearing in a flash.</p>
+      </article>
+
+      <!-- WASH & DRY -->
+      <article class="step-card">
+        <svg class="icon" viewBox="0 0 160 120" aria-hidden="true">
+          <!-- washer 1 -->
+          <rect x="6" y="14" width="66" height="92" rx="6" stroke="#111" stroke-width="3" fill="none"/>
+          <line x1="6" y1="34" x2="72" y2="34" stroke="#111" stroke-width="3"/>
+          <circle cx="14" cy="24" r="2" fill="#111"/>
+          <circle cx="24" cy="24" r="2" fill="#111"/>
+          <rect x="54" y="20" width="14" height="8" rx="2" stroke="#111" stroke-width="2" fill="none"/>
+          <circle cx="39" cy="70" r="24" stroke="#111" stroke-width="3" fill="none"/>
+          <circle cx="39" cy="70" r="15" stroke="#111" stroke-width="2" fill="none"/>
+          <!-- washer 2 -->
+          <rect x="88" y="14" width="66" height="92" rx="6" stroke="#111" stroke-width="3" fill="none"/>
+          <line x1="88" y1="34" x2="154" y2="34" stroke="#111" stroke-width="3"/>
+          <circle cx="96" cy="24" r="2" fill="#111"/>
+          <circle cx="106" cy="24" r="2" fill="#111"/>
+          <rect x="136" y="20" width="14" height="8" rx="2" stroke="#111" stroke-width="2" fill="none"/>
+          <circle cx="121" cy="70" r="24" stroke="#111" stroke-width="3" fill="none"/>
+          <circle cx="121" cy="70" r="15" stroke="#111" stroke-width="2" fill="none"/>
+        </svg>
+        <h3>Wash &amp; Dry</h3>
+        <p>We carefully go about separating your whites from your colours and your delicates from the rest and then wash, dry and neatly fold your clothes. We can even give some the intensive care dry cleaning treatment if requested.</p>
+      </article>
+
+      <!-- DROP OFF -->
+      <article class="step-card">
+        <svg class="icon" viewBox="0 0 140 100" aria-hidden="true">
+          <!-- iron -->
+          <path d="M20 80 L120 80 C115 62 96 50 68 50 C46 50 30 62 20 80 Z" stroke="#111" stroke-width="3" fill="none" stroke-linejoin="round"/>
+          <rect x="60" y="56" width="30" height="12" rx="3" stroke="#111" stroke-width="3" fill="none"/>
+          <path d="M74 50 C90 32 108 30 128 40" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>Drop off</h3>
+        <p>With a smile on our dial and your washing all clean and fresh we race back out to your home. How efficient are you?</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- =============== PRICING =============== -->
+  <section class="section pricing" aria-labelledby="pricing-h">
+    <div class="container">
+      <h2 id="pricing-h" class="pricing-title">Pricing</h2>
+      <hr class="pricing-rule" />
+
+      <!-- bags illustration: 4 flat shopping bags side-by-side, labelled -->
+      <svg class="bags-illo" viewBox="0 0 620 380" aria-hidden="true" role="img" aria-label="Home Laundry bags — washed, dried, ironed, folded, ready for pickup">
+        <defs>
+          <!-- one bag body with handle, positioned via <use> -->
+        </defs>
+        <g stroke="#111" stroke-width="2.4" fill="#fff" stroke-linejoin="round" stroke-linecap="round">
+          <!-- back tall bag (Home Laundry branded) -->
+          <g>
+            <path d="M420 40 C420 22 480 22 480 40"/>
+            <path d="M380 60 L570 60 L570 340 L380 340 Z"/>
+            <line x1="380" y1="90" x2="570" y2="90"/>
+            <!-- fold tick -->
+            <path d="M470 60 L472 68 L468 68 Z" fill="#111"/>
+          </g>
+          <!-- washed dried -->
+          <g>
+            <path d="M50 100 C50 82 118 82 118 100"/>
+            <path d="M20 120 L180 120 L180 350 L20 350 Z"/>
+            <line x1="20" y1="150" x2="180" y2="150"/>
+            <path d="M96 120 L100 130 L92 130 Z" fill="#111"/>
+          </g>
+          <!-- ironed folded -->
+          <g>
+            <path d="M200 120 C200 102 268 102 268 120"/>
+            <path d="M170 140 L330 140 L330 355 L170 355 Z"/>
+            <line x1="170" y1="170" x2="330" y2="170"/>
+            <path d="M246 140 L250 150 L242 150 Z" fill="#111"/>
+          </g>
+          <!-- ready for pickup -->
+          <g>
+            <path d="M340 130 C340 112 408 112 408 130"/>
+            <path d="M310 150 L470 150 L470 360 L310 360 Z"/>
+            <line x1="310" y1="180" x2="470" y2="180"/>
+          </g>
+        </g>
+
+        <!-- Labels -->
+        <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="900" fill="#111" text-anchor="middle" letter-spacing=".5">
+          <text x="100" y="245" font-size="26">WASHED</text>
+          <text x="100" y="270" font-size="26">DRIED</text>
+          <text x="250" y="265" font-size="26">IRONED</text>
+          <text x="250" y="290" font-size="26">FOLDED</text>
+        </g>
+        <g font-family="Yellowtail, Kaushan Script, cursive" fill="#111" text-anchor="middle">
+          <text x="390" y="270" font-size="26">&amp; ready</text>
+          <text x="390" y="298" font-size="26">for pickup</text>
+        </g>
+
+        <!-- Home Laundry brand on back bag -->
+        <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="900" fill="#111" text-anchor="middle">
+          <text x="475" y="188" font-size="30" transform="rotate(-90 475 188)">HOME</text>
+          <text x="500" y="188" font-size="46" transform="rotate(-90 500 188)">LAUNDRY</text>
+        </g>
+        <text x="530" y="188" font-family="Yellowtail, cursive" font-size="22" fill="#111" text-anchor="middle" transform="rotate(-90 530 188)">Clean &amp; Simple</text>
+
+        <!-- Sparkles -->
+        <g stroke="#111" stroke-width="1.8" fill="none">
+          <path d="M40 96 C40 86 42 84 46 82 C42 80 40 78 40 68 C40 78 38 80 34 82 C38 84 40 86 40 96 Z"/>
+          <circle cx="60" cy="86" r="2"/>
+          <path d="M64 74 C64 66 66 64 70 62 C66 60 64 58 64 50 C64 58 62 60 58 62 C62 64 64 66 64 74 Z"/>
+          <path d="M340 342 C340 335 342 333 346 331 C342 329 340 327 340 320 C340 327 338 329 334 331 C338 333 340 335 340 342 Z"/>
+          <circle cx="360" cy="335" r="2"/>
+        </g>
+      </svg>
+
+      <!-- Personal bag wash -->
+      <div class="price-card">
+        <p class="script">Personal<br/>bag wash</p>
+        <p class="headline">Once a week pick up<span aria-hidden="true">*</span> <span class="price">$59.95</span></p>
+        <ul>
+          <li>* 1 standard 7kg household washing machine load per week <em>(all items including underwear)</em></li>
+          <li>* Up to 10 items ironed <em>(e.g. flat sheets/pillow cases)</em></li>
+          <li>* Excludes business shirts, delicates and dry cleaning items</li>
+          <li>* Terms &amp; conditions apply</li>
+        </ul>
+      </div>
+
+      <!-- Ironing -->
+      <div class="ironing-block">
+        <h3>Ironing</h3>
+        <div class="ironing-row">
+          <span class="label">Ironing per piece</span>
+          <span class="price">$3</span>
+        </div>
+      </div>
+
+      <!-- T&Cs -->
+      <div class="tc-block">
+        <h3>T&amp;C&rsquo;s</h3>
+        <ul>
+          <li class="strong">* Advise us of items valued at over $250. Extra delicate &amp; large items may incur higher charges</li>
+          <li class="strong">* All items identified as Dry Cleaning will be charged accordingly</li>
+          <li>* For personal bags, if over weight/specified number of pieces, extra charges may apply</li>
+          <li>* A basic wash is just that &ndash; provide us with the usual assortment of clothes your would normally put through a standard wash. No delicates. We have specific services for these items</li>
+          <li>* All prices include GST</li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-banner" id="pickup">
+        <h2>Request pickup<br/>online now</h2>
+        <a class="btn-pill-outline" href="tel:1800742587" aria-label="Order pickup">Order pickup</a>
+        <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" stroke="#fff" stroke-width="2" fill="none"/><circle cx="32" cy="12" r="2" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== WASH — CLIENTS =============== -->
+  <section class="wash" aria-labelledby="wash-h">
+    <div class="container">
+      <svg class="sparkle-abs" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 L23 18 L38 20 L23 22 L20 37 L17 22 L2 20 L17 18 Z" fill="#EE6E1F"/></svg>
+      <h2 id="wash-h">It all comes out<br/>in the wash</h2>
+      <p class="lead">Not to name drop, but here&rsquo;s just a few of our valued clients.</p>
+      <div class="clients" aria-label="Valued clients">
+        <!-- Placeholder tiles; drop real logo files into /site/laundry-australia/assets/ and swap the img src -->
+        <div class="client"><div class="placeholder">RNA</div></div>
+        <div class="client"><div class="placeholder">Rugby</div></div>
+        <div class="client"><div class="placeholder">Brisbane<br/>Showgrounds</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="brand" aria-label="Laundry Australia — Delivering More">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="l1">LAUNDRY<svg class="star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 1 C20.6 12 21 13.2 24 15 C27.5 15.2 30.2 15.2 39 18 C30.2 20.8 27.5 20.8 24 25 C21 27.6 20.6 28 20 39 C19.4 28 19 27.6 16 25 C12.5 20.8 9.8 20.8 1 18 C9.8 15.2 12.5 15.2 16 15 C19 13.2 19.4 12 20 1 Z" fill="#EE6E1F" transform="rotate(20 20 20)"/></svg></span>
+          <span class="l2">AUSTRALIA</span>
+        </span>
+        <span class="brand-tag">Delivering<br/>More</span>
+      </div>
+
+      <a class="order-btn" href="#pickup">Order pickup</a>
+
+      <h4>Head<br/>Office</h4>
+      <address>
+        20 Propriety Street,<br/>
+        Tingalpa, QLD 4173
+      </address>
+
+      <h4>Plus Dry<br/>Cleaners Stores</h4>
+      <address>
+        Shop 3.1 Yeronga Village 427<br/>
+        Fairfield Rd Yeronga, QLD 4104
+      </address>
+
+      <p class="phone">T: <a href="tel:0738483775" style="color:#fff">(07) 3848 3775</a></p>
+
+      <a class="call-1800" href="tel:1800742587">Call 1800 PICKUP</a>
+
+      <p class="legal">&copy; Copyright 2026 | All rights reserved | <a href="/privacy-policy/">Privacy Policy</a></p>
+    </div>
+
+    <!-- clouds strip -->
+    <svg class="clouds" viewBox="0 0 500 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 90 L500 90 L500 60 C480 60 470 44 450 44 C430 44 420 60 400 60 C380 60 370 30 340 30 C310 30 300 60 280 60 C260 60 250 46 230 46 C210 46 200 60 180 60 C160 60 150 34 120 34 C90 34 80 60 60 60 C40 60 30 48 10 48 L0 48 Z" fill="#fff"/>
+      <circle cx="300" cy="26" r="14" fill="#fff"/>
+    </svg>
+  </footer>
+
+  <!-- Sticky Mailing List pill -->
+  <button class="mail-pill" id="mailPill" type="button" aria-label="Join mailing list, tap to close">
+    <span class="x" aria-hidden="true">&times;</span>
+    <span>Mailing list</span>
+  </button>
+
+  <script>
+    // Dismiss mailing pill
+    (function(){
+      var pill = document.getElementById('mailPill');
+      if(!pill) return;
+      // Click the X circle area to dismiss
+      pill.addEventListener('click', function(e){
+        var rect = pill.getBoundingClientRect();
+        var xArea = rect.left + 44;
+        if(e.clientX <= xArea){
+          pill.classList.add('hidden');
+        } else {
+          // otherwise treat as open mailing list form (no-op placeholder)
+          window.location.hash = '#mailing-list';
+        }
+      });
+    })();
+
+    // Hamburger toggle (placeholder — no menu content yet)
+    (function(){
+      var btn = document.querySelector('.hamburger');
+      if(!btn) return;
+      btn.addEventListener('click', function(){
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    })();
+  </script>
+</body>
+</html>
