@@ -1205,6 +1205,120 @@ svg.ic{width:24px;height:24px}
   body.route-home .stickyCta{display:inline-flex}
 }
 
+
+/* ── app v5 ── */
+
+/* ═════ APP v5 ═════ */
+.ap-top5{background-color:var(--navy);background-image:linear-gradient(160deg,var(--navy) 0%,#0e2054 100%);padding:1.3rem 0 1.35rem;position:relative;overflow:hidden}
+.ap-top5::after{content:"";position:absolute;bottom:-30px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(232,96,74,.18),transparent 65%);pointer-events:none}
+.ap-hero5{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:relative}
+.ap-hero-l{flex:1;min-width:0}
+.ap-hero-eb{display:inline-block;font-family:var(--fd);font-weight:700;font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.65);margin-bottom:.35rem;text-transform:uppercase}
+.ap-hero-h{font-family:var(--fd);font-weight:900;font-size:var(--fs-3);color:#fff;line-height:1.15;margin:0 0 .3rem;letter-spacing:var(--track-h1)}
+.ap-hero-p{font-size:var(--fs-micro);color:rgba(255,255,255,.78);margin:0;line-height:1.4}
+.ap-sw{display:inline-flex;align-items:center;gap:.35rem;background-color:#0e2054;border:1.5px solid rgba(255,255,255,.28);color:#fff;border-radius:999px;padding:.42rem .85rem;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);max-width:52%;flex-shrink:0}
+.ap-sw-c{width:12px;height:12px;color:#fff;flex-shrink:0}
+.ap-sw span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.ap-hs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:1.15rem;background-color:#0e2054;background-image:linear-gradient(90deg,rgba(255,255,255,.03),rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:12px;overflow:hidden;position:relative}
+.ap-hs{padding:.7rem .5rem;text-align:center;position:relative}
+.ap-hs+.ap-hs::before{content:"";position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.15)}
+.ap-hs-v{display:block;font-family:var(--fd);font-weight:900;font-size:var(--fs-4);color:#fff;line-height:1.05;font-variant-numeric:tabular-nums}
+.ap-hs-l{display:block;font-size:10px;color:rgba(255,255,255,.7);margin-top:.15rem;letter-spacing:.02em;line-height:1.2}
+
+/* Timeline card */
+.ap-tl{background:var(--white);border:1px solid var(--line);border-radius:var(--r2);padding:0;margin-bottom:1rem;overflow:hidden}
+.ap-tl-hd{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 1.15rem .8rem;gap:1rem}
+.ap-tl-hd-l{flex:1;min-width:0}
+.ap-tl-eyb{font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.12em;color:var(--red);text-transform:uppercase;margin-bottom:.25rem}
+.ap-tl-when{font-family:var(--fd);font-weight:800;font-size:var(--fs-body);color:var(--navy);line-height:1.2}
+.ap-tl-svc{font-size:11px;color:var(--mute);margin-top:.15rem;display:block}
+.ap-tl-cd{text-align:right;background:var(--red-w);border:1px solid rgba(216,67,48,.25);color:var(--red-d);font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);padding:.4rem .7rem;border-radius:8px;letter-spacing:.02em;font-variant-numeric:tabular-nums;white-space:nowrap;flex-shrink:0}
+
+.ap-tl-op{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.15rem;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ap-tl-av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--fd);font-weight:900;font-size:var(--fs-micro);display:flex;align-items:center;justify-content:center;letter-spacing:.02em;flex-shrink:0}
+.ap-tl-op-t{flex:1;min-width:0}
+.ap-tl-op-t strong{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy)}
+.ap-tl-op-t small{display:block;font-size:11px;color:var(--mute);margin-top:.1rem;line-height:1.35}
+
+.ap-tl-steps{list-style:none;padding:1rem 1.15rem .6rem;margin:0;position:relative}
+.ap-tl-steps::before{content:"";position:absolute;left:calc(1.15rem + 11px);top:1.5rem;bottom:1.6rem;width:2px;background:var(--line)}
+.ap-tl-steps li{display:flex;align-items:flex-start;gap:.75rem;padding:.35rem 0;position:relative}
+.ap-tl-steps .d{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--white);border:2px solid var(--line);color:var(--mute);font-family:var(--fd);font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;font-variant-numeric:tabular-nums;transition:all var(--tr)}
+.ap-tl-steps li.done .d{background:var(--navy);border-color:var(--navy);color:#fff}
+.ap-tl-steps li.on .d{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 0 4px rgba(216,67,48,.15);animation:apTlPulse 2s ease-out infinite}
+@keyframes apTlPulse{0%{box-shadow:0 0 0 0 rgba(216,67,48,.3)}70%{box-shadow:0 0 0 10px rgba(216,67,48,0)}100%{box-shadow:0 0 0 0 rgba(216,67,48,0)}}
+.ap-tl-steps li>div{flex:1;padding-top:.15rem;min-width:0}
+.ap-tl-steps li>div>b{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy)}
+.ap-tl-steps li.done>div>b{color:var(--ink)}
+.ap-tl-steps li:not(.done):not(.on)>div>b{color:var(--mute);font-weight:600}
+.ap-tl-steps li>div>em{display:block;font-style:normal;font-size:11px;color:var(--mute);margin-top:.05rem;line-height:1.35}
+@media (prefers-reduced-motion:reduce){.ap-tl-steps li.on .d{animation:none}}
+
+.ap-tl-ft{display:flex;align-items:center;gap:.55rem;padding:.75rem 1.15rem 1rem;border-top:1px solid var(--line);background:var(--paper)}
+.ap-tl-est{font-family:var(--fd);font-weight:800;color:var(--navy);font-size:var(--fs-body);font-variant-numeric:tabular-nums;margin-right:auto}
+.ap-tl-est small{display:block;font-family:var(--fb);font-weight:400;font-size:10px;color:var(--mute);letter-spacing:.04em;text-transform:uppercase;margin-top:-.05rem}
+.ap-tl-btn{background:transparent;border:1.5px solid var(--line);color:var(--navy);font-family:var(--fd);font-weight:700;font-size:11px;padding:.5rem .85rem;border-radius:8px;cursor:pointer;transition:all var(--tr);white-space:nowrap}
+.ap-tl-btn:hover{border-color:var(--navy);background:var(--navy-w)}
+.ap-tl-btn-x{color:var(--red-d);border-color:rgba(216,67,48,.35)}
+.ap-tl-btn-x:hover{background:var(--red-w);border-color:var(--red)}
+
+/* Quick actions grid */
+.ap-qa{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-bottom:.5rem}
+.ap-qa-b{display:flex;flex-direction:column;gap:.15rem;padding:1rem 1rem 1.05rem;background:var(--white);border:1px solid var(--line);border-radius:var(--r2);color:var(--ink);text-align:left;cursor:pointer;transition:transform .18s var(--ease),box-shadow var(--tr),border-color var(--tr);font-family:inherit;font-size:inherit;position:relative;min-height:104px}
+.ap-qa-b:hover{transform:translateY(-2px);box-shadow:var(--e-hov);border-color:rgba(12,38,95,.2)}
+.ap-qa-i{width:22px;height:22px;color:var(--navy);margin-bottom:.4rem}
+.ap-qa-b strong{font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);letter-spacing:var(--track-h3)}
+.ap-qa-b span{font-size:11px;color:var(--mute);line-height:1.35;margin-top:.1rem}
+.ap-qa-red{background-color:var(--red);background-image:linear-gradient(135deg,var(--red) 0%,var(--red-d) 100%);border-color:var(--red-d);color:#fff}
+.ap-qa-red .ap-qa-i,.ap-qa-red strong,.ap-qa-red span{color:#fff}
+.ap-qa-red:hover{box-shadow:0 8px 20px rgba(216,67,48,.35);border-color:var(--red)}
+
+/* Recent activity */
+.ap-recent{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.2rem}
+.ap-ract{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;background:var(--white);border:1px solid var(--line);border-radius:var(--r2);color:var(--ink);transition:border-color var(--tr),transform .18s var(--ease)}
+.ap-ract:hover{border-color:rgba(12,38,95,.2);transform:translateY(-1px)}
+.ap-ract-d{flex-shrink:0;width:44px;height:44px;border-radius:10px;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--navy);font-family:var(--fd);line-height:1}
+.ap-ract-d s{font-size:9px;text-decoration:none;font-weight:700;letter-spacing:.02em;color:var(--mute);text-transform:uppercase}
+.ap-ract-d b{font-size:var(--fs-body);font-weight:900;color:var(--navy);margin:1px 0}
+.ap-ract-m{flex:1;min-width:0}
+.ap-ract-m strong{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--ink);line-height:1.25}
+.ap-ract-m small{display:block;font-size:11px;color:var(--mute);margin-top:.1rem;line-height:1.35}
+.ap-ract-r{text-align:right;flex-shrink:0}
+.ap-ract-r b{display:block;font-family:var(--fd);font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;font-size:var(--fs-micro)}
+.ap-ract-r .pill{font-size:9px;padding:.15rem .45rem;margin-top:.2rem}
+.ap-recent-empty{background:var(--white);border:1px dashed var(--line);border-radius:var(--r2);padding:1rem 1.1rem;font-size:var(--fs-micro);color:var(--mute);text-align:center}
+
+/* Tip card */
+.ap-tip{background-color:var(--navy-w);border:1px solid var(--navy-l);border-radius:var(--r2);padding:1rem 1.15rem;margin-bottom:1rem;position:relative}
+.ap-tip-eb{font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.12em;color:var(--navy);text-transform:uppercase;margin-bottom:.35rem}
+.ap-tip p{font-size:var(--fs-micro);color:var(--ink);line-height:1.5;margin:0 0 .5rem}
+.ap-tip-a{font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);display:inline-flex;align-items:center;gap:.3rem}
+.ap-tip-a:hover{color:var(--red)}
+
+/* Referral sheet */
+.ap-sheet{position:fixed;inset:0;background:rgba(12,38,95,.45);display:flex;align-items:flex-end;justify-content:center;z-index:200}
+.ap-sheet[hidden]{display:none}
+.ap-sheet-in{width:100%;max-width:520px;background:#fff;border-radius:var(--r2) var(--r2) 0 0;padding:1.3rem 1.35rem calc(1.3rem + env(safe-area-inset-bottom));box-shadow:var(--e-sheet);animation:apSheetIn .3s var(--ease) both}
+@keyframes apSheetIn{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.ap-sheet-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.ap-sheet-hd strong{font-family:var(--fd);font-weight:800;color:var(--navy);font-size:var(--fs-4);letter-spacing:var(--track-h2)}
+.ap-sheet-x{background:none;border:none;font-size:26px;line-height:1;color:var(--mute);cursor:pointer;padding:.2rem .5rem}
+.ap-sheet-p{font-size:var(--fs-micro);color:var(--body);line-height:1.5;margin:0 0 1rem}
+.ap-sheet-code label{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:var(--navy);margin-bottom:.4rem}
+.ap-sheet-code-row{display:flex;gap:.4rem}
+.ap-sheet-code-row input{flex:1;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:8px;font-family:var(--fb);font-size:var(--fs-micro);color:var(--ink);background:var(--paper)}
+.ap-sheet-msg{display:block;font-size:11px;color:#0d7a3f;margin-top:.5rem;min-height:14px;font-weight:600}
+
+@media (min-width:640px){
+  .ap-qa{grid-template-columns:repeat(3,1fr)}
+  .ap-hs-v{font-size:var(--fs-3)}
+}
+@media (max-width:400px){
+  .ap-hs-v{font-size:var(--fs-5)}
+  .ap-hero-h{font-size:var(--fs-4)}
+}
+
 </style>
 </head>
 <body>
@@ -2203,28 +2317,96 @@ svg.ic{width:24px;height:24px}
 
 <!-- ---------------- APP HOME ---------------- -->
 <section class="page" id="p-app">
-  <div class="ap-top"><div class="ap-in"><div class="ap-topr">
-    <div class="ap-hi" id="apHi">Welcome<small id="apHiSub">Let's get your first collection booked</small></div>
-    <button class="ap-sw" id="apSw"><span id="apSwName">My profile</span><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-chevron-down"/></svg></i></button>
-  </div></div></div>
+  <!-- Hero: greeting + profile switch + status stats -->
+  <div class="ap-top ap-top5"><div class="ap-in">
+    <div class="ap-hero5">
+      <div class="ap-hero-l">
+        <span class="ap-hero-eb" id="apHeroEb">EVENING</span>
+        <h1 class="ap-hero-h" id="apHiName">Welcome</h1>
+        <p class="ap-hero-p" id="apHiSub">Let's get your first collection booked</p>
+      </div>
+      <button class="ap-sw" id="apSw" type="button" aria-label="Switch profile"><span id="apSwName">My profile</span><svg class="ap-sw-c" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+    <div class="ap-hs-row">
+      <div class="ap-hs"><span class="ap-hs-v" id="apStLoads">—</span><span class="ap-hs-l">loads processed</span></div>
+      <div class="ap-hs"><span class="ap-hs-v" id="apStSaved">—</span><span class="ap-hs-l">saved with us</span></div>
+      <div class="ap-hs"><span class="ap-hs-v" id="apStStreak">—</span><span class="ap-hs-l">week streak</span></div>
+      <div class="ap-hs"><span class="ap-hs-v" id="apStPlan">Free</span><span class="ap-hs-l">current plan</span></div>
+    </div>
+  </div></div>
+
   <div class="ap"><div class="ap-in">
 
-    <div class="ap-sec-t" id="apFutT">UPCOMING COLLECTIONS (0)</div>
-    <div id="apNext"></div>
+    <!-- Section title + timeline / next-collection card -->
+    <div class="ap-sec-t" id="apFutT">Upcoming collections (0)</div>
+    <div id="apNext5"></div>
 
-    <div class="ap-sec-t">HOW IT WORKS</div>
-    <div class="ap-card"><div class="ap-card-b">
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-basket"/></svg></i><div><strong>Prepare for collection</strong><small>Leave your laundry at the door ready for pickup by your LaundryKings operator.</small></div></div>
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-scale"/></svg></i><div><strong>Weighed &amp; invoiced</strong><small>Items are counted and weighed, then your final price is confirmed before any work starts.</small></div></div>
-      <div class="ap-row" style="border:none;box-shadow:none;margin:0;padding:.55rem 0"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-truck"/></svg></i><div><strong>Returned to your door</strong><small>We launder your items and deliver them back, washed, folded or pressed.</small></div></div>
-    </div></div>
+    <!-- Quick actions grid -->
+    <div class="ap-sec-t">Quick actions</div>
+    <div class="ap-qa">
+      <a href="#/book" class="ap-qa-b ap-qa-red">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <strong>Book a collection</strong>
+        <span>Choose service &amp; window</span>
+      </a>
+      <a href="#/club" class="ap-qa-b" id="apQaClub">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l4 4 4-7 4 7 4-4-1 10H5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>Kings Club</strong>
+        <span id="apQaClubSub">Join for weekly saving</span>
+      </a>
+      <a href="#/messages" class="ap-qa-b" id="apQaMsg">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v10H8l-4 4z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>Messages</strong>
+        <span id="apQaMsgSub">All up to date</span>
+      </a>
+      <button type="button" class="ap-qa-b" onclick="apShareOpen()">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>Invite a friend</strong>
+        <span>Give $10, get $10</span>
+      </button>
+      <a href="#/invoices" class="ap-qa-b">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6zM9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <strong>Invoices</strong>
+        <span>Receipts &amp; history</span>
+      </a>
+      <a href="#/feedback" class="ap-qa-b">
+        <svg class="ap-qa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6 6 .9-4.5 4.4L18 20l-6-3-6 3 1.5-6.7L3 8.9 9 8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <strong>Feedback</strong>
+        <span>Rate us · report an issue</span>
+      </a>
+    </div>
 
-    <div class="ap-tiles" style="margin-top:1rem">
-      <a href="#/pricing" class="ap-tile a"><strong>Pricing</strong><small>Learn how pricing works</small></a>
-      <a href="#/faq" class="ap-tile b"><strong>FAQs</strong><small>Prepare for your first pickup</small></a>
+    <!-- Recent activity -->
+    <div class="ap-sec-t">Recent activity</div>
+    <div id="apRecent" class="ap-recent"></div>
+
+    <!-- Kings Club upsell / tip card -->
+    <div class="ap-tip" id="apTip">
+      <div class="ap-tip-eb">TIP</div>
+      <p id="apTipTxt">Leave your bag at the same spot each time and your operator will learn your routine — collections get faster after the third pickup.</p>
+      <a href="#/faq" class="ap-tip-a">More tips <svg class="ic-inl" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
     </div>
 
   </div></div>
+
+  <!-- Invite sheet -->
+  <div id="apShareSheet" class="ap-sheet" hidden>
+    <div class="ap-sheet-in">
+      <div class="ap-sheet-hd">
+        <strong>Invite a friend</strong>
+        <button type="button" class="ap-sheet-x" onclick="apShareClose()" aria-label="Close">×</button>
+      </div>
+      <p class="ap-sheet-p">Send them your referral link. They get $10 off their first collection, you get $10 off your next one when they book.</p>
+      <div class="ap-sheet-code">
+        <label for="apShareLink">Your referral link</label>
+        <div class="ap-sheet-code-row">
+          <input id="apShareLink" readonly value="https://laundrykings.com.au/join/LK-YOU">
+          <button type="button" class="btn btn-nv" onclick="apShareCopy()">Copy</button>
+        </div>
+        <span id="apShareMsg" class="ap-sheet-msg" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ---------------- BOOKING WIZARD ---------------- -->
@@ -3293,24 +3475,7 @@ function renderTabs(id){
   b.style.display = n ? '' : 'none'; b.textContent = n;
 }
 
-function renderHome(){
-  const p = activeP();
-  const nm = (S.acct.first || (p && p.contact) || '').split(' ')[0];
-  const h = new Date().getHours();
-  const greet = h < 12 ? 'Morning' : h < 17 ? 'Afternoon' : 'Evening';
-  document.getElementById('apHi').firstChild.textContent = nm ? greet + ' ' + nm + '!' : greet + '!';
-  const up = S.bookings.filter(b => b.status === 'requested' || b.status === 'confirmed');
-  document.getElementById('apHiSub').textContent = up.length
-    ? 'You have ' + up.length + ' collection' + (up.length>1?'s':'') + ' coming up'
-    : "Let's get your first collection booked";
-  document.getElementById('apFutT').textContent = 'UPCOMING COLLECTIONS (' + up.length + ')';
-  document.getElementById('apNext').innerHTML = up.length
-    ? up.slice(0,3).map(bookingCard).join('')
-    : '<div class="ap-card"><div class="ap-card-b ap-empty"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-calendar"/></svg></i><h3>No collections scheduled</h3>'
-      + '<p>Book ahead to secure your preferred collection window.</p>'
-      + '<a href="#/book" class="btn btn-red btn-lg">Book a collection</a></div></div>';
-  [['apSwName',1],['apSwName2',1]].forEach(([id]) => { const e = document.getElementById(id); if (e) e.textContent = p ? p.name : 'My profile'; });
-}
+function renderHome(){ renderAppHome5(); }
 
 function bookingCard(b){
   const d = fromIso(b.date);
@@ -4460,6 +4625,219 @@ function initHomeV5(){
   revealOn();
   homeBodyClass();
 }
+
+/* ── app v5 ── */
+
+/* ═════ APP v5 rendering ═════ */
+
+function apGreetEyb(){
+  const h = new Date().getHours();
+  return h < 12 ? 'MORNING' : h < 17 ? 'AFTERNOON' : 'EVENING';
+}
+function apInitials(name){
+  return (name||'').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0]).join('').toUpperCase() || 'LK';
+}
+function apCountdown(iso, window){
+  // Returns "3d 14h" or "8h 22m" until the START of the window.
+  try {
+    const [start] = String(window||'').split(/\s*[–-]\s*/);
+    // Parse window start like "8am", "4pm", "12pm"
+    const m = String(start).trim().match(/(\d+)(am|pm)/i);
+    const d = fromIso(iso);
+    if (m){
+      let h = +m[1] % 12; if (/pm/i.test(m[2])) h += 12;
+      d.setHours(h, 0, 0, 0);
+    }
+    const now = Date.now();
+    let diff = d.getTime() - now;
+    if (diff <= 0) return 'Now';
+    const days = Math.floor(diff / 86400000); diff -= days*86400000;
+    const hrs  = Math.floor(diff / 3600000);   diff -= hrs*3600000;
+    const mins = Math.floor(diff / 60000);
+    if (days) return days + 'd ' + hrs + 'h';
+    if (hrs)  return hrs + 'h ' + mins + 'm';
+    return mins + 'm';
+  } catch(_){ return ''; }
+}
+
+const AP_STAGES = [
+  { key:'requested',  label:'Requested',        hint:'You booked · confirmation sent' },
+  { key:'assigned',   label:'Operator assigned',hint:'Within 24 h of your window' },
+  { key:'enroute',    label:'On the way',       hint:'You will get a message when they leave' },
+  { key:'weighed',    label:'Weighed & invoiced',hint:'At your door — price confirmed before wash' },
+  { key:'washing',    label:'Washing',          hint:'On your own cycle · lights & darks separated' },
+  { key:'returning',  label:'Coming back',      hint:'Standard turnaround is next day' },
+  { key:'delivered',  label:'Returned',         hint:'Left at your agreed spot' }
+];
+function apStageIndex(b){
+  // Map booking.status to stage index. Live data will update this over time.
+  const s = b.status || 'requested';
+  if (s === 'cancelled') return -1;
+  if (s === 'complete')  return 6;
+  if (s === 'confirmed') return 1;
+  return 0; // requested
+}
+
+function apTimelineCard(b){
+  const d = fromIso(b.date);
+  const cd = apCountdown(b.date, b.window);
+  const stage = apStageIndex(b);
+  const svcName = (typeof SVCNAME==='function') ? SVCNAME(b.svc) : (b.svc||'Wash & Fold');
+  const opName = b.operator || 'To be assigned';
+  const opInitials = apInitials(b.operator || 'LK');
+  const opBlurb = b.operator
+    ? `Your operator for ${b.operator.split(/\s+/)[0]}${b.suburb?` — ${esc(b.suburb)}`:''}.`
+    : 'One will be confirmed 24 hours before your window.';
+  const steps = AP_STAGES.map((st, i) => {
+    const cls = (i < stage) ? 'done' : (i === stage ? 'on' : '');
+    return `<li class="${cls}"><span class="d">${i+1}</span><div><b>${st.label}</b><em>${st.hint}</em></div></li>`;
+  }).join('');
+  const est = b.estimate ? money(b.estimate) : '';
+  return `
+    <div class="ap-tl" data-b="${esc(b.id)}">
+      <div class="ap-tl-hd">
+        <div class="ap-tl-hd-l">
+          <div class="ap-tl-eyb">NEXT COLLECTION · ${esc(b.ref)}</div>
+          <div class="ap-tl-when">${dayName(d)} ${d.getDate()} ${monName(d)} · ${esc(b.window)}</div>
+          <span class="ap-tl-svc">${esc(svcName)}${b.recurring?` · repeats ${esc(b.recurring)}`:''}</span>
+        </div>
+        ${cd ? `<div class="ap-tl-cd" title="Time until your window opens">${cd}</div>` : ''}
+      </div>
+      <div class="ap-tl-op">
+        <div class="ap-tl-av">${opInitials}</div>
+        <div class="ap-tl-op-t"><strong>${esc(opName)}</strong><small>${opBlurb}</small></div>
+      </div>
+      <ol class="ap-tl-steps" aria-label="Collection progress">${steps}</ol>
+      <div class="ap-tl-ft">
+        <div class="ap-tl-est">${est || '—'}${est ? '<small>ESTIMATED</small>' : ''}</div>
+        <a href="#/messages" class="ap-tl-btn">Message</a>
+        ${(b.status==='requested'||b.status==='confirmed') ? `<button type="button" class="ap-tl-btn ap-tl-btn-x" data-cancel="${esc(b.id)}">Cancel</button>` : ''}
+      </div>
+    </div>`;
+}
+
+function apRecentActivityCard(b){
+  const d = fromIso(b.date);
+  const svcName = (typeof SVCNAME==='function') ? SVCNAME(b.svc) : (b.svc||'—');
+  const pill = b.status === 'cancelled' ? '<span class="pill cx">CANCELLED</span>'
+             : b.status === 'complete'  ? '<span class="pill ok">COMPLETE</span>'
+             : b.status === 'confirmed' ? '<span class="pill up">CONFIRMED</span>'
+             : '<span class="pill pd">AWAITING</span>';
+  return `<a class="ap-ract" href="#/bookings">
+    <div class="ap-ract-d"><s>${monName(d)}</s><b>${d.getDate()}</b></div>
+    <div class="ap-ract-m"><strong>${esc(svcName)}</strong><small>${esc(b.window||'')} · ${esc(b.ref||'')}</small></div>
+    <div class="ap-ract-r"><b>${b.estimate ? money(b.estimate) : '—'}</b>${pill}</div>
+  </a>`;
+}
+
+function apStatsCompute(){
+  const bookings = (S && Array.isArray(S.bookings)) ? S.bookings : [];
+  const completed = bookings.filter(b => b.status === 'complete');
+  const loads = completed.reduce((a,b) => a + (b.loads || 1), 0);
+  // savings estimate: assume 15% saving on completed jobs versus ad-hoc pricing
+  const saved = completed.reduce((a,b) => a + (b.estimate || 0), 0) * 0.15;
+  // week streak: consecutive weeks with at least one completed booking, walking back from now
+  const weeks = new Set(completed.map(b => {
+    const t = fromIso(b.date); const y = t.getFullYear();
+    const jan1 = new Date(y,0,1);
+    const w = Math.floor(((t - jan1)/86400000 + jan1.getDay()) / 7);
+    return `${y}-${w}`;
+  }));
+  const now = new Date(); const y = now.getFullYear();
+  const jan1 = new Date(y,0,1);
+  const currentWeek = Math.floor(((now - jan1)/86400000 + jan1.getDay()) / 7);
+  let streak = 0;
+  for (let w = currentWeek; w >= 0; w--){
+    if (weeks.has(`${y}-${w}`)) streak++;
+    else if (streak > 0) break;
+  }
+  const plan = (S && S.acct && S.acct.plan) || null;
+  const planName = plan === 'plan1' ? 'Solo' : plan === 'plan2' ? 'Pair' : plan === 'plan3' ? 'Family' : 'Free';
+  return { loads, saved, streak, planName };
+}
+
+function renderAppHome5(){
+  const $ = id => document.getElementById(id);
+  const p = (typeof activeP === 'function') ? activeP() : null;
+  const nm = (S && S.acct && (S.acct.first || (p && p.contact) || '')).split(' ')[0];
+  const up = (S && Array.isArray(S.bookings) ? S.bookings : []).filter(b => b.status === 'requested' || b.status === 'confirmed')
+              .sort((a,b) => (a.date||'').localeCompare(b.date||''));
+  const past = (S && Array.isArray(S.bookings) ? S.bookings : []).filter(b => !['requested','confirmed'].includes(b.status))
+              .sort((a,b) => (b.date||'').localeCompare(a.date||''));
+
+  if ($('apHeroEb')) $('apHeroEb').textContent = apGreetEyb();
+  if ($('apHiName')) $('apHiName').textContent = nm ? `${nm}!` : 'Welcome';
+  if ($('apHiSub'))  $('apHiSub').textContent = up.length
+    ? `You have ${up.length} collection${up.length>1?'s':''} coming up.`
+    : "Let's get your first collection booked.";
+  if ($('apFutT'))   $('apFutT').textContent = `Upcoming collections (${up.length})`;
+
+  const stats = apStatsCompute();
+  if ($('apStLoads')) $('apStLoads').textContent = stats.loads;
+  if ($('apStSaved')) $('apStSaved').textContent = stats.saved > 0 ? money(Math.round(stats.saved)) : '—';
+  if ($('apStStreak'))$('apStStreak').textContent = stats.streak;
+  if ($('apStPlan')) $('apStPlan').textContent = stats.planName;
+
+  if ($('apNext5')) $('apNext5').innerHTML = up.length
+    ? up.slice(0,2).map(apTimelineCard).join('')
+    : `<div class="ap-card"><div class="ap-card-b ap-empty">
+         <i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-calendar"/></svg></i>
+         <h3>No collections scheduled</h3>
+         <p>Book ahead to secure your preferred collection window.</p>
+         <a href="#/book" class="btn btn-red btn-lg">Book a collection</a>
+       </div></div>`;
+
+  if ($('apRecent')) $('apRecent').innerHTML = past.length
+    ? past.slice(0,3).map(apRecentActivityCard).join('')
+    : '<div class="ap-recent-empty">No history yet. Your completed collections will show here.</div>';
+
+  // Kings Club quick-action label reflects membership
+  if ($('apQaClub')) {
+    const isMember = (S && S.acct && S.acct.plan);
+    const sub = $('apQaClubSub');
+    if (sub) sub.textContent = isMember ? `You're on ${stats.planName} — manage plan` : 'Save with a weekly plan';
+  }
+  // Messages quick-action shows unread count
+  if ($('apQaMsg')) {
+    const msgs = (S && Array.isArray(S.messages)) ? S.messages : [];
+    const unread = msgs.filter(m => !m.read).length;
+    const sub = $('apQaMsgSub');
+    if (sub) sub.textContent = unread ? `${unread} new` : 'All up to date';
+  }
+
+  // Cancel-buttons within timeline cards
+  document.querySelectorAll('#apNext5 [data-cancel]').forEach(b => {
+    b.onclick = () => (typeof cancelBooking === 'function') && cancelBooking(b.dataset.cancel);
+  });
+
+  // Live-update the countdowns every minute while the app tab is visible
+  if (renderAppHome5._t) clearInterval(renderAppHome5._t);
+  if (up.length){
+    renderAppHome5._t = setInterval(() => {
+      document.querySelectorAll('#apNext5 .ap-tl').forEach(card => {
+        const id = card.dataset.b;
+        const b = up.find(x => x.id === id); if (!b) return;
+        const el = card.querySelector('.ap-tl-cd');
+        if (el) el.textContent = apCountdown(b.date, b.window);
+      });
+    }, 60000);
+  }
+}
+
+// referral sheet
+function apShareOpen(){ const s = document.getElementById('apShareSheet'); if (s) s.hidden = false; }
+function apShareClose(){ const s = document.getElementById('apShareSheet'); if (s) s.hidden = true; }
+function apShareCopy(){
+  const i = document.getElementById('apShareLink'); if (!i) return;
+  i.select();
+  try {
+    navigator.clipboard.writeText(i.value);
+    const m = document.getElementById('apShareMsg'); if (m) m.textContent = 'Copied — send it to a friend.';
+  } catch(_){}
+}
+window.apShareOpen = apShareOpen;
+window.apShareClose = apShareClose;
+window.apShareCopy = apShareCopy;
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
