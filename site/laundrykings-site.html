@@ -452,6 +452,13 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .bagopt span{font-size:.76rem;color:var(--mute);line-height:1.45}
 .bagopt:hover{border-color:var(--navy)}
 .bagopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
+.payopt{display:block;width:100%;text-align:left;padding:.65rem .8rem;margin-bottom:.4rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer}
+.payopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
+.payopt strong{display:block;font-family:var(--fd);font-size:.86rem;color:var(--navy)}
+.payopt strong em{font-style:normal;font-weight:600;font-size:.72rem;color:var(--red);margin-left:.3rem}
+.payopt span{display:block;font-size:.74rem;color:var(--mute);line-height:1.45}
+.pay-expl{margin-top:.8rem;padding:.8rem .9rem;border-radius:var(--r);background:var(--bg2);border:1px solid var(--line)}
+.pay-expl>p:first-child{margin:0 0 .5rem;font-size:.82rem;color:var(--body)}
 .rw-hero{background:var(--navy);border-color:var(--navy)}
 .rw-hero .ap-card-b{color:#fff}
 .rw-bal{font-family:var(--fd);font-weight:800;font-size:2.6rem;line-height:1;color:#fff;display:flex;align-items:baseline;gap:.4rem}
@@ -2150,6 +2157,10 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
           <div class="ap-note" style="margin:.9rem 0 0"><i><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-.125em"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></i><span id="bkMinNote"></span></div>
           <p class="ap-fine" style="margin-top:.7rem">Payment is processed online after your items are weighed and counted, and before your completed laundry is returned.</p>
           <div class="paym"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>GOOGLE&nbsp;PAY</span><span>APPLE&nbsp;PAY</span></div>
+          <div class="ap-sec-t" style="margin-top:1.2rem">HOW YOU WOULD LIKE TO PAY</div>
+          <div id="bkPayOpts"></div>
+          <div class="pay-expl" id="bkPayExpl"></div>
+
           <label class="cbx"><input type="checkbox" id="bkTos"><span>I agree to the <a href="#/terms">Terms of Service</a> and the <a href="#/guarantee">Service Guarantee</a>.</span></label>
           <div class="fmsg" id="bkMsg"></div>
         </div>
@@ -3121,6 +3132,44 @@ const REWARDS = [
 ];
 
 /* ============================================================
+   PAYMENT METHODS
+   Laundry is priced by weight, and the weight is not known until the
+   operator has the bags. So nothing here charges the estimate: each
+   method either holds it, takes a deposit against it, or defers
+   entirely, and the balance settles once the real figure exists.
+   depositPct 0 means nothing is taken up front.
+   ============================================================ */
+const PAY_METHODS = [
+  { id:'payid',  name:'PayID',            depositPct:0,   fee:0.20,
+    blurb:'Bank transfer from your banking app. Cheapest for us, so it is the one we ask for first.',
+    settle:'We send a PayID request for the real amount once your laundry is weighed.' },
+  { id:'card',   name:'Card',             depositPct:0,   fee:null, hold:true,
+    blurb:'Visa, Mastercard, Apple Pay or Google Pay.',
+    settle:'We place a hold for the estimate now and charge only the actual amount after weighing. If the real figure is lower, the difference is never taken.' },
+  { id:'deposit',name:'Deposit and balance', depositPct:30, fee:null,
+    blurb:'Pay part now, the rest when the job is done.',
+    settle:'We take 30% of the estimate now. The balance is charged once your laundry is weighed and confirmed.' },
+  { id:'paypal', name:'PayPal',           depositPct:0,   fee:null,
+    blurb:'If you would rather not give us a card directly.',
+    settle:'We send a PayPal request for the real amount once your laundry is weighed.' },
+  { id:'bpay',   name:'BPAY invoice',     depositPct:0,   fee:null, b2bOnly:true,
+    blurb:'Business accounts only. Invoiced on 14-day terms.',
+    settle:'Invoiced after the job with 14 days to pay. Available on approved business accounts.' }
+];
+
+/* A deposit is only meaningful above the minimum order: below it the
+   estimate barely exceeds the floor and splitting it creates two
+   trivial charges instead of one. */
+function payPlan(methodId, estimateTotal){
+  const m = PAY_METHODS.find(x => x.id === methodId) || PAY_METHODS[0];
+  const est = Number(estimateTotal) || 0;
+  const pct = m.depositPct && est > PX.minimum ? m.depositPct : 0;
+  const now = Math.round(est * (pct / 100) * 100) / 100;
+  return { method: m, now, later: Math.round((est - now) * 100) / 100, pct,
+           held: m.hold ? est : 0 };
+}
+
+/* ============================================================
    OPERATOR ONBOARDING
    Two of these steps call outside services and cannot complete in
    the page: identity (Australia Post Digital iD) and the national
@@ -3552,7 +3601,7 @@ function renderInvoices(){
 /* ============================================================
    BOOKING WIZARD
    ============================================================ */
-const W = { step:1, svc:'wf', a:2, b:0, bag:0, bagQty:1, date:'', win:'', rec:false, freq:'weekly' };
+const W = { step:1, svc:'wf', a:2, b:0, bag:0, bagQty:1, pay:'payid', date:'', win:'', rec:false, freq:'weekly' };
 
 function wizStep(n){
   W.step = n;
@@ -3631,6 +3680,8 @@ async function submitBooking(){
     profileId: p.id, address: addrLine(p), suburb: p.suburb,
     care, del,
     estimate: est ? est.total : null,
+    payMethod: W.pay,
+    depositDue: payPlan(W.pay, est ? est.total : 0).now,
     createdAt: Date.now()
   };
   S.bookings.unshift(b);
@@ -4099,6 +4150,7 @@ function renderWizard(){
         <div class="opt-m"><strong>${win.label}</strong><small>${longDate(W.date)}</small></div>
       </div>`:'' ;
   const est=estimate(W.svc,W.a,W.b,W.bag?W.bagQty:0);
+  renderPayOpts(est);
   document.getElementById('bkSum').innerHTML=est?sumRows(est):'';
   document.getElementById('bkMinNote').textContent=`Minimum service charge of ${money(PX.minimum)} (incl GST) applies per collection, including pickup and return delivery.`;
   document.getElementById('bkRecSub').textContent=win
@@ -4218,6 +4270,37 @@ function renderRewards(){
       ? 'Crowns lapse on ' + longDate(isoDate(new Date(r.lapsesAt))) + ' unless you book again before then. Any collection resets the clock.'
       : 'Crowns lapse 12 months after your last completed collection.';
   }
+}
+
+/* ---------------- PAYMENT CHOICE ON THE BOOKING ---------------- */
+function renderPayOpts(est){
+  const host = document.getElementById('bkPayOpts'); if (!host) return;
+  const p = activeP();
+  const isBusiness = !!(p && /business|commercial/i.test(p.type || ''));
+  const avail = PAY_METHODS.filter(m => !m.b2bOnly || isBusiness);
+  if (!avail.some(m => m.id === W.pay)) W.pay = avail[0].id;
+
+  host.innerHTML = avail.map(m =>
+    '<button type="button" class="payopt' + (W.pay === m.id ? ' on' : '') + '" data-pay="' + m.id + '">'
+    + '<strong>' + esc(m.name) + (m.depositPct ? ' <em>' + m.depositPct + '% now</em>' : '') + '</strong>'
+    + '<span>' + esc(m.blurb) + '</span></button>').join('');
+  host.querySelectorAll('[data-pay]').forEach(b => b.onclick = () => { W.pay = b.dataset.pay; renderWizard(); });
+
+  const expl = document.getElementById('bkPayExpl'); if (!expl) return;
+  const total = est ? est.total : 0;
+  const plan = payPlan(W.pay, total);
+  let rows = '<p>' + esc(plan.method.settle) + '</p>';
+  if (plan.now > 0){
+    rows += '<div class="prow"><div><strong>Due now</strong><em>' + plan.pct + '% of the estimate</em></div><b>' + money(plan.now) + '</b></div>'
+          + '<div class="prow"><div><strong>Due after weighing</strong><em>Adjusted to the real amount</em></div><b>' + money(plan.later) + '</b></div>';
+  } else if (plan.held > 0){
+    rows += '<div class="prow"><div><strong>Held now</strong><em>Not a charge — released if unused</em></div><b>' + money(plan.held) + '</b></div>'
+          + '<div class="prow"><div><strong>Charged after weighing</strong><em>The actual amount, up to the hold</em></div><b>at cost</b></div>';
+  } else {
+    rows += '<div class="prow"><div><strong>Due now</strong></div><b>Nothing</b></div>'
+          + '<div class="prow"><div><strong>Due after weighing</strong><em>The actual amount</em></div><b>' + money(total) + ' est.</b></div>';
+  }
+  expl.innerHTML = rows + '<p class="ap-fine">Every figure here is the estimate. Your operator confirms the real price after weighing and before any work starts, and you can decline at that point at no cost.</p>';
 }
 
 /* ---------------- INVESTOR + FRANCHISE ---------------- */
