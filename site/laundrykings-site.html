@@ -154,7 +154,11 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 
 /* ---------- HERO ---------- */
 #hero{background:var(--navy);color:var(--white);padding:var(--spy) 0;position:relative;overflow:hidden}
-#hero::after{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(circle,rgba(204,34,40,.14) 0%,transparent 62%);pointer-events:none}
+/* Ellipse, not circle: this box is 60% wide by 140% tall, so on a phone it is
+   eight times taller than it is wide. A circle's falloff is then far wider than
+   the box and the glow paints as a flat bar with a hard vertical edge. An
+   ellipse scales its falloff to both axes, so it stays a corner glow. */
+#hero::after{content:'';position:absolute;top:-20%;right:-10%;width:60%;height:140%;background:radial-gradient(ellipse,rgba(204,34,40,.14) 0%,transparent 62%);pointer-events:none}
 .hero-g{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1}
 .eyebrow{display:inline-block;font-family:var(--fd);font-size:var(--fs-badge);font-weight:700;letter-spacing:var(--track-caps);color:var(--red);margin-bottom:1rem}
 .hero-h{font-size:var(--fs-hero);font-weight:900;margin-bottom:1.1rem;line-height:1.28;letter-spacing:var(--track-display)}
@@ -968,7 +972,7 @@ svg.ic{width:24px;height:24px}
 /* ── Hero v5 ── */
 .hero5{background:var(--navy);color:#fff;padding:2.6rem 0 1.8rem;position:relative;overflow:hidden}
 .hero5::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 88% 8%,rgba(232,96,74,.18),transparent 55%),radial-gradient(circle at 10% 90%,rgba(43,75,170,.28),transparent 45%);pointer-events:none}
-.h5-grid{position:relative;display:grid;grid-template-columns:1.15fr .95fr;gap:2.4rem;align-items:start}
+.h5-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .95fr;gap:2.4rem;align-items:start}
 .h5-l{padding-top:.5rem}
 .h5-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);letter-spacing:var(--track-caps);color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:.35rem .75rem;border-radius:999px;text-transform:uppercase}
 .h5-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:h5Pulse 2.4s var(--ease) infinite}
@@ -1007,14 +1011,18 @@ svg.ic{width:24px;height:24px}
 .h5-linrow .h5-st-b{width:38px;height:38px;font-size:18px}
 .h5-linrow .h5-st-v{font-size:var(--fs-5)}
 .h5-q-break{height:1px;background:rgba(12,38,95,.1);margin:.55rem 0}
-.h5-q-line{display:flex;justify-content:space-between;font-size:var(--fs-micro);color:var(--body);padding:.28rem 0}
+.h5-q-line{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;line-height:1.35;font-size:var(--fs-micro);color:var(--body);padding:.28rem 0}
+.h5-q-line .tnum,.h5-q-tot .tnum{white-space:nowrap}
 .h5-q-tot{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0 .1rem;border-top:1px solid rgba(12,38,95,.1);margin-top:.35rem}
 .h5-q-tot span:first-child{font-family:var(--fd);font-weight:700;color:var(--navy);font-size:var(--fs-micro)}
-.h5-q-tot span:last-child{font-family:var(--fd);font-weight:900;color:var(--navy);font-size:var(--fs-2);font-variant-numeric:tabular-nums}
+.h5-q-tot span:last-child{font-family:var(--fd);font-weight:900;color:var(--navy);font-size:var(--fs-2);line-height:1;font-variant-numeric:tabular-nums}
 .h5-q-min{font-size:11px;color:var(--mute);margin:0 0 .8rem;min-height:14px}
 .h5-q-cta{margin-top:.4rem}
 .h5-q-note{font-size:11px;color:var(--mute);margin:.55rem 0 0;text-align:center;line-height:1.4}
-.tab{font-variant-numeric:tabular-nums}
+/* Tabular numerals. Named .tnum, not .tab: .tab is the app bottom tab bar
+   (display:flex, column, and a safe-area bottom padding), and every price
+   span carrying it was being laid out as a tab-bar button. */
+.tnum{font-variant-numeric:tabular-nums}
 
 /* Hero live metrics strip */
 .h5-metrics{position:relative;margin-top:1.8rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:0;overflow:hidden}
@@ -1753,9 +1761,10 @@ svg.ic{width:24px;height:24px}
           </div>
         </div>
         <div class="h5-q-break"></div>
-        <div class="h5-q-line"><span id="h5LineL">2 × wash &amp; fold loads</span><span id="h5LineV" class="tab">$64</span></div>
-        <div class="h5-q-line"><span>Collection &amp; return</span><span class="tab">$13.50</span></div>
-        <div class="h5-q-tot"><span>Estimated total</span><span class="tab" id="h5Tot">$77.50</span></div>
+        <div class="h5-q-line"><span id="h5LineL">2 × wash &amp; fold loads</span><span id="h5LineV" class="tnum">$64</span></div>
+        <div class="h5-q-line"><span>Collection &amp; return</span><span class="tnum">$13.50</span></div>
+        <div class="h5-q-line" id="h5MinRow" hidden><span>Minimum charge top-up</span><span class="tnum" id="h5MinV">$28</span></div>
+        <div class="h5-q-tot"><span>Estimated total</span><span class="tnum" id="h5Tot">$77.50</span></div>
         <div class="h5-q-min"><span id="h5MinNote">Below the $73.50 minimum — the minimum applies.</span></div>
         <a href="#/book" class="btn btn-red btn-full h5-q-cta">Request this collection <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
         <p class="h5-q-note">Indicative. Final price set when your operator weighs and counts.</p>
@@ -2173,9 +2182,9 @@ svg.ic{width:24px;height:24px}
         <label class="kc-calc-l" for="kcSlider">How many ad-hoc loads a week would you book instead?<br><strong id="kcSliderV">2</strong> loads/week</label>
         <input id="kcSlider" type="range" min="1" max="5" step="1" value="2" aria-labelledby="kcSliderLbl" class="kc-range">
         <div class="kc-calc-out">
-          <div class="kc-calc-line"><span>Ad-hoc weekly cost</span><span class="tab" id="kcAdhoc">$77.50</span></div>
-          <div class="kc-calc-line"><span id="kcCalcPlanLbl">Kings Club Solo</span><span class="tab" id="kcCalcPlan">$63.70</span></div>
-          <div class="kc-calc-tot"><span>You save</span><span class="tab" id="kcSave">$13.80/wk</span></div>
+          <div class="kc-calc-line"><span>Ad-hoc weekly cost</span><span class="tnum" id="kcAdhoc">$77.50</span></div>
+          <div class="kc-calc-line"><span id="kcCalcPlanLbl">Kings Club Solo</span><span class="tnum" id="kcCalcPlan">$63.70</span></div>
+          <div class="kc-calc-tot"><span>You save</span><span class="tnum" id="kcSave">$13.80/wk</span></div>
         </div>
         <p class="kc-calc-fine" id="kcCalcFine">≈ $718 saved a year at 2 loads/week, vs Kings Club Solo.</p>
       </aside>
@@ -5300,7 +5309,13 @@ function h5Recalc(){
   if($('h5LineL')) $('h5LineL').textContent = lineL;
   if($('h5LineV')) $('h5LineV').textContent = lineV;
   if($('h5Tot'))  $('h5Tot').textContent  = money(total);
-  if($('h5MinNote')) $('h5MinNote').textContent = belowMin ? `Below the ${money(P.min)} minimum — the minimum applies.` : '';
+  // Show the top-up as its own line. Without it the two figures above simply do
+  // not add up to the total, which reads as a mistake or a hidden charge.
+  if($('h5MinRow')){
+    $('h5MinRow').hidden = !belowMin;
+    if($('h5MinV')) $('h5MinV').textContent = money(P.min - (subtotal + P.del));
+  }
+  if($('h5MinNote')) $('h5MinNote').textContent = belowMin ? `${money(P.min)} is the minimum per collection.` : '';
 }
 function h5Wire(){
   const seg = document.querySelectorAll('.h5-seg button');
