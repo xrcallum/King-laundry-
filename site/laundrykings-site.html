@@ -1542,6 +1542,82 @@ svg.ic{width:24px;height:24px}
   .op5-h{font-size:clamp(1.55rem,6vw,2.1rem)}
 }
 
+
+/* ── kings club portal ── */
+
+/* ═════ Kings Club member portal ═════ */
+.kc5{background-color:var(--navy);background-image:linear-gradient(155deg,var(--navy) 0%,#0a1e4a 60%,#0e2a6a 100%);color:#fff;border-radius:16px;padding:1.4rem 1.4rem 1.2rem;margin-bottom:1.35rem;position:relative;overflow:hidden;box-shadow:0 20px 50px -20px rgba(12,38,95,.4)}
+.kc5::before{content:"";position:absolute;top:-40%;right:-20%;width:70%;height:80%;background:radial-gradient(ellipse,rgba(232,96,74,.22),transparent 60%);pointer-events:none}
+.kc5-hd{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;position:relative;margin-bottom:1.1rem;padding-bottom:1.1rem;border-bottom:1px solid rgba(255,255,255,.15)}
+.kc5-hd-l{flex:1;min-width:0}
+.kc5-plan-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fd);font-weight:800;font-size:10px;letter-spacing:.14em;color:#fff;background-color:var(--red);padding:.25rem .55rem;border-radius:6px;text-transform:uppercase}
+.kc5-plan-badge svg{width:12px;height:12px}
+.kc5-plan-name{display:block;font-family:var(--fd);font-weight:900;font-size:var(--fs-3);color:#fff;line-height:1.1;margin:.55rem 0 .15rem;letter-spacing:-.01em}
+.kc5-plan-meta{font-size:var(--fs-micro);color:rgba(255,255,255,.75);line-height:1.4}
+.kc5-price{text-align:right;flex-shrink:0}
+.kc5-price-v{font-family:var(--fd);font-weight:900;font-size:var(--fs-2);color:#fff;font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.02em}
+.kc5-price-per{display:block;font-family:var(--fd);font-weight:600;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.05em;text-transform:uppercase;margin-top:.15rem}
+
+.kc5-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin-bottom:1.1rem}
+.kc5-st{padding:.5rem 0;text-align:center;position:relative}
+.kc5-st+.kc5-st::before{content:"";position:absolute;left:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.15)}
+.kc5-st-v{display:block;font-family:var(--fd);font-weight:900;font-size:var(--fs-3);color:#fff;font-variant-numeric:tabular-nums;line-height:1.05;letter-spacing:-.01em}
+.kc5-st-l{display:block;font-size:10px;color:rgba(255,255,255,.7);margin-top:.2rem;letter-spacing:.06em;text-transform:uppercase}
+
+.kc5-streak{position:relative;background-color:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:.85rem 1rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.9rem}
+.kc5-streak-dots{display:flex;gap:.35rem}
+.kc5-streak-dot{width:14px;height:14px;border-radius:50%;background-color:rgba(255,255,255,.15);position:relative}
+.kc5-streak-dot.on{background-color:#4ade80}
+.kc5-streak-dot.on::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 8px rgba(74,222,128,.5)}
+.kc5-streak-t{flex:1;min-width:0}
+.kc5-streak-t strong{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:#fff}
+.kc5-streak-t small{display:block;font-size:11px;color:rgba(255,255,255,.75);margin-top:.15rem;line-height:1.35}
+
+.kc5-prefs{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;position:relative;margin-bottom:1.1rem}
+.kc5-pref{background-color:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.7rem .85rem;text-align:left}
+.kc5-pref-l{display:block;font-family:var(--fd);font-weight:700;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:.3rem}
+.kc5-pref-v{display:block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);color:#fff;line-height:1.3}
+
+.kc5-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;position:relative}
+.kc5-a{background-color:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);padding:.65rem .5rem;border-radius:10px;cursor:pointer;text-align:center;transition:background-color var(--tr),border-color var(--tr),transform .15s var(--ease);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.35rem}
+.kc5-a:hover{background-color:rgba(255,255,255,.16);border-color:rgba(255,255,255,.35);transform:translateY(-1px)}
+.kc5-a-red{background-color:var(--red);border-color:var(--red-d);color:#fff}
+.kc5-a-red:hover{background-color:var(--red-d)}
+.kc5-a svg{width:14px;height:14px}
+
+.kc5-ref{position:relative;margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.kc5-ref-l{display:flex;flex-direction:column;gap:.1rem;flex:1;min-width:200px}
+.kc5-ref-l strong{font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);color:#fff}
+.kc5-ref-l span{font-size:11px;color:rgba(255,255,255,.75);line-height:1.35}
+.kc5-ref-pill{display:inline-flex;align-items:center;gap:.5rem;background-color:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.35);color:#4ade80;font-family:var(--fd);font-weight:800;font-size:var(--fs-micro);padding:.4rem .7rem;border-radius:8px}
+.kc5-ref-pill b{color:#fff}
+
+/* Non-member (upsell) variant */
+.kc5-up{background-color:var(--paper);background-image:none;color:var(--ink);border:1.5px solid rgba(12,38,95,.12);box-shadow:0 8px 24px -12px rgba(12,38,95,.15)}
+.kc5-up::before{background:radial-gradient(ellipse,rgba(216,67,48,.1),transparent 65%);opacity:.6}
+.kc5-up .kc5-hd{border-bottom-color:rgba(12,38,95,.1)}
+.kc5-up .kc5-plan-badge{background-color:var(--red);color:#fff}
+.kc5-up .kc5-plan-name,.kc5-up .kc5-price-v{color:var(--navy)}
+.kc5-up .kc5-plan-meta,.kc5-up .kc5-price-per,.kc5-up .kc5-st-l,.kc5-up .kc5-pref-l,.kc5-up .kc5-ref-l span,.kc5-up .kc5-streak-t small{color:var(--mute)}
+.kc5-up .kc5-st-v,.kc5-up .kc5-pref-v,.kc5-up .kc5-streak-t strong,.kc5-up .kc5-ref-l strong{color:var(--navy)}
+.kc5-up .kc5-st+.kc5-st::before,.kc5-up .kc5-streak,.kc5-up .kc5-pref,.kc5-up .kc5-a,.kc5-up .kc5-ref{background-color:transparent}
+.kc5-up .kc5-streak,.kc5-up .kc5-pref{background-color:#fff;border-color:rgba(12,38,95,.1)}
+.kc5-up .kc5-a{background-color:#fff;border-color:rgba(12,38,95,.15);color:var(--navy)}
+.kc5-up .kc5-a:hover{border-color:var(--navy);background-color:var(--paper)}
+.kc5-up .kc5-a-red{background-color:var(--red);border-color:var(--red-d);color:#fff}
+.kc5-up .kc5-a-red:hover{background-color:var(--red-d)}
+.kc5-up .kc5-ref{border-top-color:rgba(12,38,95,.1)}
+.kc5-up .kc5-streak-dot{background-color:rgba(12,38,95,.15)}
+.kc5-up .kc5-streak-dot.on{background-color:var(--red)}
+
+@media (max-width:640px){
+  .kc5-stats,.kc5-prefs{grid-template-columns:1fr 1fr}
+  .kc5-st:nth-child(3){grid-column:span 2}
+  .kc5-actions{grid-template-columns:1fr}
+  .kc5-price-v{font-size:var(--fs-3)}
+  .kc5-plan-name{font-size:var(--fs-4)}
+}
+
 </style>
 </head>
 <body>
@@ -3281,6 +3357,9 @@ svg.ic{width:24px;height:24px}
   </div></div></div>
   <div class="ap"><div class="ap-in">
 
+
+    <!-- ── Kings Club member portal ──────────────────── -->
+    <div id="kcPortal"></div>
     <div class="ap-sec-t">PROFILE SETTINGS — ACTIVE PROFILE</div>
     <div class="ap-card"><div class="ap-card-b">
       <div id="acIdc"></div>
@@ -5579,9 +5658,154 @@ function op5Confirm(btn){
 }
 window.op5Confirm = op5Confirm;
 
+/* ── kings club portal ── */
+
+/* ═════ Kings Club member portal ═════ */
+
+const KC5_PLANS = {
+  plan1: { key:'plan1', name:'Solo',   who:'One to two people. One standard bag each week.' },
+  plan2: { key:'plan2', name:'Pair',   who:'Two-person household. Weekly bag with room to spare.' },
+  plan3: { key:'plan3', name:'Family', who:'Three to four people. Two bags a week.' }
+};
+function kc5PxPrice(pk){
+  const px = (typeof PX==='object'?PX:{}) || {};
+  const def = { plan1:63.70, plan2:89.70, plan3:115.70 };
+  return px[pk] ?? def[pk];
+}
+function kc5Stats(){
+  const bookings = (S && Array.isArray(S.bookings)) ? S.bookings : [];
+  const done = bookings.filter(b => b.status === 'complete');
+  const yearAgo = Date.now() - 365*86400*1000;
+  const yearJobs = done.filter(b => (b.date ? new Date(b.date).getTime() : 0) >= yearAgo);
+  const saved = yearJobs.reduce((a,b) => a + (b.estimate || 0), 0) * 0.15;
+  // streak
+  const weeks = new Set(done.map(b => {
+    const t = b.date ? new Date(b.date) : null; if (!t) return '';
+    const y = t.getFullYear(); const jan1 = new Date(y,0,1);
+    return `${y}-${Math.floor(((t - jan1)/86400000 + jan1.getDay()) / 7)}`;
+  }));
+  const now = new Date(); const y = now.getFullYear(); const jan1 = new Date(y,0,1);
+  const curW = Math.floor(((now - jan1)/86400000 + jan1.getDay()) / 7);
+  let streak = 0;
+  for (let w = curW; w >= 0; w--){
+    if (weeks.has(`${y}-${w}`)) streak++;
+    else if (streak > 0) break;
+  }
+  const upcoming = bookings.filter(b => b.status === 'requested' || b.status === 'confirmed')
+                          .sort((a,b) => (a.date||'').localeCompare(b.date||''))[0];
+  return { saved, streak, next: upcoming, doneCount: done.length };
+}
+
+function kc5PrefLabel(v, def){
+  return v && String(v).trim() ? v : def;
+}
+
+function renderKcPortal(){
+  const host = document.getElementById('kcPortal'); if (!host) return;
+  const acct = (S && S.acct) || {};
+  const stats = kc5Stats();
+  const isMember = !!acct.plan && KC5_PLANS[acct.plan];
+  if (isMember){
+    const plan = KC5_PLANS[acct.plan];
+    const price = kc5PxPrice(acct.plan);
+    const dots = Array.from({length: 8}, (_,i) => i < stats.streak ? '<span class="kc5-streak-dot on"></span>' : '<span class="kc5-streak-dot"></span>').join('');
+    const next = stats.next;
+    const nextTxt = next ? `${new Date(next.date).toLocaleDateString('en-AU',{weekday:'short',day:'numeric',month:'short'})} · ${esc(next.window||'')}` : 'Not scheduled';
+    host.innerHTML = `
+      <div class="kc5">
+        <div class="kc5-hd">
+          <div class="kc5-hd-l">
+            <span class="kc5-plan-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l4 4 4-7 4 7 4-4-1 10H5z" fill="currentColor"/></svg>Kings Club member</span>
+            <span class="kc5-plan-name">${esc(plan.name)}</span>
+            <span class="kc5-plan-meta">${esc(plan.who)}</span>
+          </div>
+          <div class="kc5-price">
+            <span class="kc5-price-v">${money(price)}</span>
+            <span class="kc5-price-per">per week</span>
+          </div>
+        </div>
+
+        <div class="kc5-stats">
+          <div class="kc5-st"><span class="kc5-st-v">${money(Math.round(stats.saved))}</span><span class="kc5-st-l">saved this year</span></div>
+          <div class="kc5-st"><span class="kc5-st-v">${stats.doneCount}</span><span class="kc5-st-l">loads processed</span></div>
+          <div class="kc5-st"><span class="kc5-st-v">${nextTxt.length>18?nextTxt.split('·')[0]:nextTxt}</span><span class="kc5-st-l">next collection</span></div>
+        </div>
+
+        <div class="kc5-streak">
+          <div class="kc5-streak-dots" aria-label="Weekly streak">${dots}</div>
+          <div class="kc5-streak-t"><strong>${stats.streak} week streak</strong><small>Consecutive weeks with a collection. Keep it going — subscribers on 5+ get first pick of new suburb openings.</small></div>
+        </div>
+
+        <div class="kc5-prefs">
+          <div class="kc5-pref"><span class="kc5-pref-l">Detergent</span><span class="kc5-pref-v">${esc(kc5PrefLabel(acct.detergent, 'Standard'))}</span></div>
+          <div class="kc5-pref"><span class="kc5-pref-l">Fold style</span><span class="kc5-pref-v">${esc(kc5PrefLabel(acct.foldStyle, 'Neat stack'))}</span></div>
+          <div class="kc5-pref"><span class="kc5-pref-l">Quiet hours</span><span class="kc5-pref-v">${esc(kc5PrefLabel(acct.quietHours, 'After 7pm'))}</span></div>
+        </div>
+
+        <div class="kc5-actions">
+          <a href="#/prefs" class="kc5-a"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 2M12 3a9 9 0 1 0 9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Edit preferences</a>
+          <button type="button" class="kc5-a" onclick="kc5Pause(this)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="6" width="4" height="12" fill="currentColor"/><rect x="13" y="6" width="4" height="12" fill="currentColor"/></svg>Pause plan</button>
+          <button type="button" class="kc5-a kc5-a-red" onclick="apShareOpen&&apShareOpen()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a5 5 0 019-3 5 5 0 019 3c0 5.5-7 10-7 10z" fill="currentColor"/></svg>Refer &amp; earn</button>
+        </div>
+
+        <div class="kc5-ref">
+          <div class="kc5-ref-l">
+            <strong>Referral credit</strong>
+            <span>Every friend who books gives you $10 off your next collection.</span>
+          </div>
+          <span class="kc5-ref-pill"><b>${acct.referralCredit || 0}</b> friends signed · <b>${money(((acct.referralCredit || 0) * 10))}</b> credit</span>
+        </div>
+      </div>`;
+  } else {
+    // Non-member upsell — pushes the value using their actual usage if we have it
+    const bookings = (S && Array.isArray(S.bookings)) ? S.bookings : [];
+    const done = bookings.filter(b => b.status === 'complete');
+    const perWeek = done.length ? Math.max(1, Math.round(done.length / 12)) : 2;
+    const px = (typeof PX==='object'?PX:{}) || {};
+    const adHocPerWk = perWeek * (px.load ?? 32) + (px.delivery ?? 13.50);
+    const plan1 = kc5PxPrice('plan1');
+    const saving = Math.max(0, adHocPerWk - plan1);
+    const yearly = Math.round(saving * 52);
+    host.innerHTML = `
+      <div class="kc5 kc5-up">
+        <div class="kc5-hd">
+          <div class="kc5-hd-l">
+            <span class="kc5-plan-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l4 4 4-7 4 7 4-4-1 10H5z" fill="currentColor"/></svg>Kings Club</span>
+            <span class="kc5-plan-name">Get the same operator, every week.</span>
+            <span class="kc5-plan-meta">A fixed collection day, same operator, same preferences learned. Flat weekly rate. No lock-in.</span>
+          </div>
+          <div class="kc5-price">
+            <span class="kc5-price-v">${money(plan1)}</span>
+            <span class="kc5-price-per">solo · per week</span>
+          </div>
+        </div>
+        <div class="kc5-stats">
+          <div class="kc5-st"><span class="kc5-st-v">${money(saving)}</span><span class="kc5-st-l">saved / week vs ad-hoc</span></div>
+          <div class="kc5-st"><span class="kc5-st-v">${money(yearly)}</span><span class="kc5-st-l">saved / year (est.)</span></div>
+          <div class="kc5-st"><span class="kc5-st-v">24 hrs</span><span class="kc5-st-l">standard turnaround</span></div>
+        </div>
+        <div class="kc5-prefs">
+          <div class="kc5-pref"><span class="kc5-pref-l">Same operator</span><span class="kc5-pref-v">Learns your washing over time</span></div>
+          <div class="kc5-pref"><span class="kc5-pref-l">Preferences kept</span><span class="kc5-pref-v">Detergent, fold style, quiet hours</span></div>
+          <div class="kc5-pref"><span class="kc5-pref-l">Never mixed</span><span class="kc5-pref-v">Own cycle, every time</span></div>
+        </div>
+        <div class="kc5-actions">
+          <a href="#/club" class="kc5-a">Compare plans</a>
+          <a href="#/faq" class="kc5-a">Read the rules</a>
+          <a href="#/club" class="kc5-a kc5-a-red">Join Kings Club</a>
+        </div>
+      </div>`;
+  }
+}
+function kc5Pause(btn){
+  btn.textContent = 'Pausing...'; btn.disabled = true;
+  setTimeout(() => { btn.textContent = 'Plan paused'; setTimeout(() => { btn.disabled = false; btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="6" width="4" height="12" fill="currentColor"/><rect x="13" y="6" width="4" height="12" fill="currentColor"/></svg>Pause plan'; }, 2000); }, 700);
+}
+window.kc5Pause = kc5Pause;
+
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5(); op5Init();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5(); op5Init(); renderKcPortal();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
