@@ -16,6 +16,7 @@
     --red:var(--orange); --red-brand:var(--orange); --red-d:var(--orange-d); --red-w:var(--orange-w);
     --paper:#F6F3EE; --ink:#141826; --body:#454C60; --mute:#666D80;
     --line:#D3D9E6; --white:#FFFFFF;
+    --green:#0F7A32; --green-l:#4ADE80;
     --on-navy:#FFFFFF; --on-navy-2:#C9D2F2;
     --shadow-card:0 14px 30px -20px rgba(13,32,82,.22), 0 4px 10px -6px rgba(13,32,82,.10);
     --shadow-cta:0 12px 22px -14px rgba(238,110,31,.45);
@@ -140,7 +141,7 @@
   .price-card .eyebrow{color:var(--mute)}
   .price-card .headline{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px}
   .price-card .headline .name{font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:22px;color:var(--navy);line-height:1.15}
-  .price-card .headline .price{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:28px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .price-card .headline .price{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:28px;color:var(--green);white-space:nowrap;font-variant-numeric:tabular-nums}
   .price-card .headline .unit{font-size:14px;color:var(--mute);font-weight:400;margin-left:4px}
   .price-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:15.5px;color:var(--body);line-height:1.5}
   .price-card li{padding-left:18px;position:relative}
@@ -150,9 +151,9 @@
   .fee-row:last-child{border-bottom:0}
   .fee-row .label{color:var(--ink)}
   .fee-row .label small{display:block;color:var(--mute);font-size:13.5px;margin-top:2px}
-  .fee-row .amt{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .fee-row .amt{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--green)}
   .fee-row.total{border-top:2px solid var(--navy);margin-top:4px;padding-top:14px}
-  .fee-row.total .amt{font-family:'Archivo','Inter',sans-serif;font-size:22px;color:var(--navy)}
+  .fee-row.total .amt{font-family:'Archivo','Inter',sans-serif;font-size:22px;color:var(--green)}
 
   .club{background:var(--navy);color:#fff;border-radius:var(--radius-card);padding:30px 26px;display:flex;flex-direction:column;gap:var(--s3)}
   .club .eyebrow{color:var(--on-navy-2)}
@@ -161,7 +162,7 @@
   .tiers{display:flex;flex-direction:column;gap:10px}
   .tier{display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:2px;align-items:baseline;padding:14px 16px;border:1px solid rgba(255,255,255,.22);border-radius:14px}
   .tier .t-name{font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:18px}
-  .tier .t-price{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tier .t-price{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:20px;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--green-l)}
   .tier .t-price small{font-family:'Inter',sans-serif;font-weight:400;font-size:12.5px;color:var(--on-navy-2)}
   .tier .t-desc{grid-column:1/-1;color:var(--on-navy-2);font-size:14.5px}
   .club ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14.5px;color:var(--on-navy-2)}
@@ -259,7 +260,7 @@
   .price-scroll h2{font-family:'Archivo','Inter',sans-serif;font-weight:600;font-size:22px;color:var(--navy);margin:28px 0 4px}
   .price-scroll h3{font-family:'Inter',sans-serif;font-weight:500;font-size:12px;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin:22px 0 2px}
   .price-row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0 10px;border-bottom:1.5px solid var(--line);font-size:16.5px;color:var(--ink)}
-  .price-row .amt{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums}
+  .price-row .amt{white-space:nowrap;font-weight:600;font-variant-numeric:tabular-nums;color:var(--green)}
   .price-row small{display:block;color:var(--mute);font-size:13.5px}
   .price-tc-card{background:var(--navy-w);border-radius:var(--radius-card);padding:24px 22px;margin:14px 0 10px;font-size:15.5px;line-height:1.55;color:var(--ink);display:flex;flex-direction:column;gap:14px}
   .price-tc-card p{margin:0}
@@ -324,7 +325,7 @@
   .rate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
   .rate-chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;gap:2px;min-height:64px;justify-content:center}
   .rate-chip .name{font-size:12.5px;color:var(--body);line-height:1.3}
-  .rate-chip .amt{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15.5px;color:var(--navy);font-variant-numeric:tabular-nums}
+  .rate-chip .amt{font-family:'Archivo','Inter',sans-serif;font-weight:700;font-size:15.5px;color:var(--green);font-variant-numeric:tabular-nums}
 
   @media (min-width:640px){
     .hero .l1{font-size:66px}.hero .l2{font-size:88px}
@@ -488,11 +489,11 @@
           <label><input type="checkbox" data-add="eco"/> Eco or fragrance-free <small>+$3.50</small></label>
         </div>
         <div class="est-breakdown">
-          <div class="fee-row"><span class="label">Wash &amp; fold <small id="est-loads-copy">1 load</small></span><span class="amt" id="est-wash">$32.00</span></div>
-          <div class="fee-row" id="est-prem-row" hidden><span class="label">Premium Clean <small id="est-prem-copy">1 load</small></span><span class="amt" id="est-prem">$15.00</span></div>
-          <div class="fee-row" id="est-eco-row" hidden><span class="label">Eco or fragrance-free</span><span class="amt">$3.50</span></div>
+          <div class="fee-row"><span class="label">Wash &amp; fold <small id="est-loads-copy">1 load</small></span><span class="amt" id="est-wash">$32.00+</span></div>
+          <div class="fee-row" id="est-prem-row" hidden><span class="label">Premium Clean <small id="est-prem-copy">1 load</small></span><span class="amt" id="est-prem">$15.00+</span></div>
+          <div class="fee-row" id="est-eco-row" hidden><span class="label">Eco or fragrance-free</span><span class="amt">$3.50+</span></div>
           <div class="fee-row"><span class="label">Collection &amp; return <small>Flat. No service or booking fee</small></span><span class="amt">$13.50</span></div>
-          <div class="fee-row total"><span class="label" id="est-total-label">Confirmed at your door</span><span class="amt" id="est-total">$73.50</span></div>
+          <div class="fee-row total"><span class="label" id="est-total-label">Confirmed at your door</span><span class="amt" id="est-total">$73.50+</span></div>
         </div>
         <p class="est-note" id="est-note">Below the $73.50 one-off minimum. Waived for Legends Club members.</p>
       </div>
@@ -500,21 +501,21 @@
       <div class="rate-block reveal">
         <p class="head">Linen &amp; bulky · per item</p>
         <div class="rate-grid">
-          <div class="rate-chip"><span class="name">Sheet set</span><span class="amt">$24</span></div>
-          <div class="rate-chip"><span class="name">Blanket</span><span class="amt">$32</span></div>
-          <div class="rate-chip"><span class="name">Rug</span><span class="amt">$42</span></div>
-          <div class="rate-chip"><span class="name">Doona</span><span class="amt">$45</span></div>
-          <div class="rate-chip"><span class="name">King doona</span><span class="amt">$75</span></div>
-          <div class="rate-chip"><span class="name">Curtain</span><span class="amt">$38</span></div>
+          <div class="rate-chip"><span class="name">Sheet set</span><span class="amt">$24+</span></div>
+          <div class="rate-chip"><span class="name">Blanket</span><span class="amt">$32+</span></div>
+          <div class="rate-chip"><span class="name">Rug</span><span class="amt">$42+</span></div>
+          <div class="rate-chip"><span class="name">Doona</span><span class="amt">$45+</span></div>
+          <div class="rate-chip"><span class="name">King doona</span><span class="amt">$75+</span></div>
+          <div class="rate-chip"><span class="name">Curtain</span><span class="amt">$38+</span></div>
         </div>
       </div>
 
       <div class="rate-block reveal">
         <p class="head">Dry cleaning · partner cleaners, per item</p>
         <div class="rate-grid">
-          <div class="rate-chip"><span class="name">Dress</span><span class="amt">$16.50</span></div>
-          <div class="rate-chip"><span class="name">Jacket</span><span class="amt">$18.50</span></div>
-          <div class="rate-chip"><span class="name">Suit</span><span class="amt">$32</span></div>
+          <div class="rate-chip"><span class="name">Dress</span><span class="amt">$16.50+</span></div>
+          <div class="rate-chip"><span class="name">Jacket</span><span class="amt">$18.50+</span></div>
+          <div class="rate-chip"><span class="name">Suit</span><span class="amt">$32+</span></div>
         </div>
       </div>
 
@@ -732,13 +733,13 @@
         var subtotal=wash+prem+eco+13.50;
         var below=subtotal<73.50;
         var total=below?73.50:subtotal;
-        $id('est-wash').textContent=fmt(wash);
-        $id('est-prem').textContent=fmt(prem);
+        $id('est-wash').textContent=fmt(wash)+'+';
+        $id('est-prem').textContent=fmt(prem)+'+';
         $id('est-loads-copy').textContent=copy(loads);
         $id('est-prem-copy').textContent=copy(loads);
         $id('est-prem-row').hidden=!addOns.premium;
         $id('est-eco-row').hidden=!addOns.eco;
-        $id('est-total').textContent=fmt(total);
+        $id('est-total').textContent=fmt(total)+'+';
         $id('est-total-label').textContent=below?'Minimum · confirmed at your door':'Confirmed at your door';
         $id('est-note').hidden=!below;
       }
