@@ -375,6 +375,31 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   .foot-g{grid-template-columns:1fr}
   .nav-cta .btn-ghost{display:none}
 }
+/* A `1fr` grid track will not shrink below its content's min-content
+   width, so one long unbreakable line inside a card pushes the whole
+   grid — and the page — wider than the screen. Letting these tracks
+   floor at 0 makes the content wrap instead, which is what the
+   single-column mobile layouts already assume. */
+.g2,.g3,.g2c,.steps,.plans{grid-template-columns:none;grid-auto-flow:row}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3,.steps,.plans{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g2c{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card,.svc-c,.plan,.fpanel,.kc-card,.kc-calc,.s3{min-width:0}
+@media(max-width:980px){
+  .g3,.steps,.plans,.g2c{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+  .g2{grid-template-columns:minmax(0,1fr)}
+}
+/* Same floor for the footer and the Kings Club grid, whose long link
+   lists and headings otherwise set a min-content wider than a phone. */
+.foot-g{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr)}
+.foot-g>div{min-width:0}
+.kc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:980px){.foot-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.kc-grid{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.foot-g{grid-template-columns:minmax(0,1fr)}}
+
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 /* ============================================================
@@ -523,6 +548,74 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 .ap-cnt{text-align:right;font-size:var(--fs-badge);color:var(--mute);margin-top:.25rem}
 .ap-g2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 @media(max-width:560px){.ap-g2{grid-template-columns:1fr}}
+.bagopt{display:flex;flex-direction:column;gap:.2rem;text-align:left;padding:.8rem .9rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer;transition:border-color .15s,background .15s}
+.bagopt strong{font-family:var(--fd);font-weight:800;font-size:.9rem;color:var(--navy)}
+.bagopt span{font-size:.76rem;color:var(--mute);line-height:1.45}
+.bagopt:hover{border-color:var(--navy)}
+.bagopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
+.payopt{display:block;width:100%;text-align:left;padding:.65rem .8rem;margin-bottom:.4rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer}
+.payopt.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy)}
+.payopt strong{display:block;font-family:var(--fd);font-size:.86rem;color:var(--navy)}
+.payopt strong em{font-style:normal;font-weight:600;font-size:.72rem;color:var(--red);margin-left:.3rem}
+.payopt span{display:block;font-size:.74rem;color:var(--mute);line-height:1.45}
+.pay-expl{margin-top:.8rem;padding:.8rem .9rem;border-radius:var(--r);background:var(--bg2);border:1px solid var(--line)}
+.pay-expl>p:first-child{margin:0 0 .5rem;font-size:.82rem;color:var(--body)}
+.rw-hero{background:var(--navy);border-color:var(--navy)}
+.rw-hero .ap-card-b{color:#fff}
+.rw-bal{font-family:var(--fd);font-weight:800;font-size:2.6rem;line-height:1;color:#fff;display:flex;align-items:baseline;gap:.4rem}
+.rw-bal small{font-size:.9rem;font-weight:600;opacity:.75;letter-spacing:.08em}
+.rw-worth{font-size:.8rem;opacity:.75;margin-top:.2rem}
+.rw-tierline{display:flex;align-items:center;gap:.6rem;margin-top:.9rem;flex-wrap:wrap;font-size:.8rem;opacity:.9}
+.rw-badge{display:inline-block;padding:.2rem .6rem;border-radius:999px;background:rgba(255,255,255,.16);font-weight:700;letter-spacing:.06em;font-size:.72rem;text-transform:uppercase}
+.rw-prog{height:6px;border-radius:999px;background:rgba(255,255,255,.2);margin-top:.9rem;overflow:hidden}
+.rw-prog-b{height:100%;background:#fff;border-radius:999px;width:0;transition:width .4s}
+.rw-hero .ap-fine{color:rgba(255,255,255,.75)}
+.rw-row{display:flex;align-items:center;gap:.9rem;padding:.8rem .95rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);margin-bottom:.5rem}
+.rw-row.off{opacity:.55}
+.rw-row .rw-c{font-family:var(--fd);font-weight:800;font-size:.95rem;color:var(--navy);min-width:62px}
+.rw-row .rw-l{flex:1}
+.rw-row .rw-l strong{display:block;font-size:.86rem;color:var(--navy)}
+.rw-row .rw-l small{font-size:.72rem;color:var(--mute)}
+.rw-row .rw-l{min-width:0}
+@media(max-width:360px){.rw-row{flex-wrap:wrap}.rw-row .btn{width:100%}}
+.ob-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem}
+.ob-step{display:flex;align-items:flex-start;gap:.6rem;text-align:left;padding:.7rem .8rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer}
+.ob-step.on{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}
+.ob-step.done .ob-n{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ob-n{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--mute)}
+.ob-t strong{display:block;font-size:.84rem;color:var(--navy);font-family:var(--fd)}
+.ob-t small{font-size:.7rem;color:var(--mute);line-height:1.4}
+.ob-q{padding:.9rem 0;border-bottom:1px solid var(--line)}
+.ob-q strong{display:block;font-size:.88rem;margin-bottom:.5rem;color:var(--navy)}
+.ob-a{display:block;width:100%;text-align:left;padding:.55rem .75rem;margin-bottom:.35rem;border:1.5px solid var(--line);border-radius:var(--r);background:var(--bg2);cursor:pointer;font-size:.82rem}
+.ob-a.on{border-color:var(--navy);background:#fff;box-shadow:inset 0 0 0 1px var(--navy);font-weight:600}
+.ob-out{margin-top:1.1rem;padding:.9rem 1rem;border-radius:var(--r);border-left:3px solid var(--line);background:var(--bg2)}
+.ob-out strong{display:block;font-family:var(--fd);font-size:.95rem}
+.ob-out p{margin:.3rem 0 0;font-size:.82rem;color:var(--body)}
+.ob-out.contractor{border-left-color:var(--navy)}
+.ob-out.review,.ob-out.employee{border-left-color:var(--red);background:var(--red-w)}
+.ob-chk{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.84rem;cursor:pointer}
+.ob-chk input{margin-top:.2rem;flex-shrink:0}
+#aiFab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;width:52px;height:52px;border-radius:50%;border:none;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.24)}
+#aiFab:hover{background:var(--red)}
+#aiPanel{position:fixed;right:18px;bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:71;width:min(380px,calc(100vw - 36px));max-height:min(560px,calc(100vh - 140px));background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden}
+.ai-h{display:flex;align-items:center;gap:.6rem;padding:.8rem 1rem;background:var(--navy);color:#fff}
+.ai-h strong{display:block;font-family:var(--fd);font-size:.92rem}
+.ai-h small{display:block;font-size:.72rem;opacity:.75}
+.ai-h>div{flex:1}
+.ai-x{background:none;border:none;color:#fff;font-size:1.3rem;line-height:1;cursor:pointer;opacity:.8}
+.ai-log{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.6rem}
+.ai-m{max-width:88%;padding:.55rem .75rem;border-radius:12px;font-size:.84rem;line-height:1.5}
+.ai-m.you{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:4px}
+.ai-m.bot{align-self:flex-start;background:var(--bg2);border:1px solid var(--line);border-bottom-left-radius:4px}
+.ai-m.bot a{color:var(--red);font-weight:600}
+.ai-chips{display:flex;flex-wrap:wrap;gap:.35rem;padding:0 1rem .6rem}
+.ai-chip{font-size:.74rem;padding:.3rem .6rem;border:1px solid var(--line);border-radius:999px;background:var(--bg2);cursor:pointer}
+.ai-chip:hover{border-color:var(--navy)}
+.ai-in{display:flex;gap:.4rem;padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.ai-in input{flex:1;padding:.5rem .7rem;border:1.5px solid var(--line);border-radius:var(--r);font:inherit;font-size:.84rem}
+.ai-in button{padding:.4rem .8rem;font-size:1rem;line-height:1}
+@media(max-width:560px){#aiPanel{right:10px;left:10px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px))}#aiFab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}}
 .ap-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .ap-tile{border-radius:var(--r2);padding:1.1rem;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none}
 .ap-tile.a{background:var(--red-w)}
@@ -752,9 +845,14 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
 @media(max-width:660px){.steps{grid-template-columns:1fr}}
 
 /* ── services: navy middle card + per-card CTA ───────────── */
-.svc3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-@media(max-width:860px){.svc3{grid-template-columns:1fr 1fr}}
-@media(max-width:580px){.svc3{grid-template-columns:1fr}}
+/* minmax(0,...) rather than 1fr: a plain 1fr track will not shrink below
+   its min-content, so a long CTA label ("Book Wash, Fold & Premium")
+   widened the whole card past the viewport instead of wrapping. */
+.svc3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media(max-width:860px){.svc3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.svc3{grid-template-columns:minmax(0,1fr)}}
+.svc-c{min-width:0}
+.svc-c .svc-cta{white-space:normal;text-align:center}
 .svc-c{display:flex;flex-direction:column}
 .svc-cta{margin-top:1rem;width:100%}
 .svc-c.hl{background:var(--navy);border-color:var(--navy);color:#fff}
@@ -820,6 +918,18 @@ h1,h2,h3,h4{font-family:var(--fd);font-weight:800;line-height:1.14;letter-spacin
   .brand svg{width:30px;height:30px}
   .nav-cta .btn-red{padding:.48rem .8rem;font-size:var(--fs-micro)}
   .nav-cta{gap:.45rem}
+  /* The brand and the CTA were both flex-shrink:0, so when their natural
+     widths exceeded the bar neither could give and the burger was pushed
+     off-screen. The brand yields instead: the mark stays, the wordmark
+     truncates only if it has to. */
+  .nav-in{gap:.6rem}
+  .brand{flex-shrink:1;min-width:0}
+  .brand-wm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+/* 2.2rem of side padding on the closing CTA left its label wider than a
+   320px screen. Let it wrap and give back some of the padding. */
+@media(max-width:360px){
+  .btn-white{padding-left:1.1rem;padding-right:1.1rem;white-space:normal}
 }
 /* tap targets ≥ 40px on all chip/stepper/back controls */
 .bk-filt,.ops-otab,.cov-chip,.dtab{min-height:38px;display:inline-flex;align-items:center}
@@ -869,7 +979,10 @@ svg.ic{width:24px;height:24px}
 #mobRest a{color:var(--on-navy-2)}
 
 /* Footer: two link groups and a legal row. */
-.foot-legal{display:block;white-space:nowrap}
+/* nowrap kept the three legal links on one line, which is 339px — wider
+   than a 320px phone — so the footer alone scrolled every page sideways.
+   The separators still read correctly when the row wraps. */
+.foot-legal{display:block;white-space:normal}
 .foot-legal a{color:var(--on-navy-2);text-decoration:underline}
 .foot-legal a:hover{color:var(--white)}
 
@@ -1649,6 +1762,7 @@ svg.ic{width:24px;height:24px}
     <li><a href="#/pricing" data-nav="pricing">Pricing</a></li>
     <li><a href="#/club" data-nav="club">Kings&nbsp;Club</a></li>
     <li><a href="#/business" data-nav="business">For&nbsp;business</a></li>
+    <li><a href="#/hotels" data-nav="hotels">Hotels</a></li>
   </ul>
   <div class="nav-cta">
     <a href="#/app" class="btn btn-ghost">My Account</a>
@@ -1656,6 +1770,22 @@ svg.ic{width:24px;height:24px}
     <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </div></div></nav>
+
+<button id="aiFab" aria-label="Ask LaundryKings" aria-expanded="false">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12z"/></svg>
+</button>
+<div id="aiPanel" role="dialog" aria-label="Ask LaundryKings" hidden>
+  <div class="ai-h">
+    <div><strong>Ask LaundryKings</strong><small id="aiSub">Prices, bookings and coverage</small></div>
+    <button class="ai-x" id="aiX" aria-label="Close">&#215;</button>
+  </div>
+  <div class="ai-log" id="aiLog"></div>
+  <div class="ai-chips" id="aiChips"></div>
+  <form class="ai-in" id="aiForm">
+    <input id="aiTx" autocomplete="off" placeholder="Ask about prices, your booking, anything">
+    <button type="submit" class="btn btn-nv" id="aiSend" aria-label="Send">&#8250;</button>
+  </form>
+</div>
 
 <div id="mob">
   <button class="mob-x" id="mobX" aria-label="Close menu">×</button>
@@ -1719,17 +1849,17 @@ svg.ic{width:24px;height:24px}
         <div class="h5-q-row h5-q-row-wf">
           <label class="h5-q-l" for="h5Loads">How many loads? <span class="h5-q-hint">≈ 5 kg each</span></label>
           <div class="h5-stepper" data-h5step="loads">
-            <button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer loads">−</button>
+            <button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer loads"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button>
             <span class="h5-st-v" id="h5Loads">2</span>
-            <button type="button" class="h5-st-b" data-d="1" aria-label="More loads">+</button>
+            <button type="button" class="h5-st-b" data-d="1" aria-label="More loads"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button>
           </div>
         </div>
         <div class="h5-q-row h5-q-row-lin" hidden>
           <label class="h5-q-l">Linen items</label>
           <div class="h5-lin">
-            <div class="h5-linrow"><span>Sheet set <em>$24</em></span><div class="h5-stepper" data-h5step="lin-s"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Sh">1</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
-            <div class="h5-linrow"><span>Blanket <em>$32</em></span><div class="h5-stepper" data-h5step="lin-b"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Bl">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
-            <div class="h5-linrow"><span>Rug <em>$42</em></span><div class="h5-stepper" data-h5step="lin-r"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer">−</button><span class="h5-st-v" id="h5Rg">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More">+</button></div></div>
+            <div class="h5-linrow"><span>Sheet set <em>$24</em></span><div class="h5-stepper" data-h5step="lin-s"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span class="h5-st-v" id="h5Sh">1</span><button type="button" class="h5-st-b" data-d="1" aria-label="More"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div></div>
+            <div class="h5-linrow"><span>Blanket <em>$32</em></span><div class="h5-stepper" data-h5step="lin-b"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span class="h5-st-v" id="h5Bl">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div></div>
+            <div class="h5-linrow"><span>Rug <em>$42</em></span><div class="h5-stepper" data-h5step="lin-r"><button type="button" class="h5-st-b" data-d="-1" aria-label="Fewer"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span class="h5-st-v" id="h5Rg">0</span><button type="button" class="h5-st-b" data-d="1" aria-label="More"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div></div>
           </div>
         </div>
         <div class="h5-q-break"></div>
@@ -2253,6 +2383,17 @@ svg.ic{width:24px;height:24px}
         </ul>
         <span class="price" data-px="linen"></span>
         <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Blankets &amp; Rugs <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+      <div class="card"><h3>Premium Clean</h3>
+        <p>Our finishing service, added per load to any wash.</p>
+        <ul class="chk2" style="margin-top:.9rem">
+          <li>Gentle cool cycle for delicates and fine knits</li>
+          <li>Stains spot-treated by hand before washing</li>
+          <li>Knits reshaped and air-dried flat, never tumbled</li>
+          <li>We do not offer ironing &mdash; this is our finishing service instead</li>
+        </ul>
+        <span class="price" data-px="premium"></span>
+        <a href="#/book" class="btn btn-nv btn-full" style="margin-top:1rem">Book Premium Clean <svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
+      </div>
       </div>
       <div class="card"><h3>Dry Cleaning</h3>
         <p>Handled through vetted specialist partner cleaners.</p>
@@ -2284,7 +2425,7 @@ svg.ic{width:24px;height:24px}
         <span class="price">Quoted per site — <a href="#/business" style="text-decoration:underline">enquire</a></span>
       </div>
     </div>
-    <div class="pnote" style="margin-top:2rem"><strong>What affects your final price:</strong> weight, number of separated loads, large linen items, bulky items, and your distance from the nearest active operator. Your operator confirms the final figure after weighing and before any work begins.</div>
+    <div class="pnote" style="margin-top:2rem"><strong>What affects your final price:</strong> weight, number of separated loads, loads selected for Premium Clean, large linen items, bulky items, and your distance from the nearest active operator. Your operator confirms the final figure after weighing and before any work begins.</div>
   </div></div>
 
   <div class="sec sec-alt"><div class="wrap" style="text-align:center">
@@ -2314,6 +2455,10 @@ svg.ic{width:24px;height:24px}
         <div id="pxLinen"></div>
       </div>
       <div class="ptab">
+        <div class="ptab-h"><h3>Premium Clean</h3><span>Per load</span></div>
+        <div id="pxPremium"></div>
+      </div>
+      <div class="ptab">
         <div class="ptab-h"><h3>Dry Cleaning</h3><span>Per item</span></div>
         <div id="pxDry"></div>
       </div>
@@ -2328,6 +2473,7 @@ svg.ic{width:24px;height:24px}
       <ol style="margin:1rem 0 0 1.2rem">
         <li style="font-size:var(--fs-micro);color:var(--body);margin-bottom:.5rem"><strong>Loads.</strong> One load is approximately 5&nbsp;kg. Lights and darks are washed separately and count as two loads.</li>
         <li style="font-size:var(--fs-micro);color:var(--body);margin-bottom:.5rem"><strong>Large linen.</strong> Blankets, rugs and sheet sets only — charged per item, not by weight.</li>
+        <li style="font-size:var(--fs-micro);color:var(--body);margin-bottom:.5rem"><strong>Premium Clean.</strong> Charged per load you select, not per item. We do not offer ironing.</li>
         <li style="font-size:var(--fs-micro);color:var(--body);margin-bottom:.5rem"><strong>Delivery.</strong> One flat fee covering both collection and return.</li>
         <li style="font-size:var(--fs-micro);color:var(--body);margin-bottom:.5rem"><strong>Minimum order.</strong> Applies to one-off bookings. Kings Club members are not subject to it.</li>
         <li style="font-size:var(--fs-micro);color:var(--body)"><strong>Confirmation.</strong> Your operator weighs and counts at collection and confirms the final price before starting.</li>
@@ -2347,7 +2493,7 @@ svg.ic{width:24px;height:24px}
   </div></div>
   <div class="sec sec-navy"><div class="wrap">
     <div class="hd"><span class="eyebrow">PLANS</span><h2 class="h2">Pick the size that matches your household.</h2>
-    <p class="lede">All plans include collection and return.</p></div>
+    <p class="lede">All plans include collection and return. Premium Clean can be added to any plan at the standard per-load rate.</p></div>
     <div class="plans" id="clubPlans"></div>
     <p style="margin-top:1.8rem;font-size:var(--fs-micro);color:var(--on-navy-2)">Bag sizes are confirmed at your first collection. If you consistently exceed your plan size, we will contact you to move you up rather than silently charging extra.</p>
   </div></div>
@@ -2365,6 +2511,205 @@ svg.ic{width:24px;height:24px}
 <!-- ================================================================
      BUSINESS
      ================================================================ -->
+<section class="page" id="p-invest">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/">Home</a> / Investors</div>
+    <h1>Investor enquiries</h1>
+    <p>LaundryKings is an owner-operated laundry pickup and delivery business across Brisbane, Logan and South East Queensland, building toward a multi-operator network.</p>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="g2c" style="gap:3rem;align-items:start">
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">What we will share</h2>
+        <ul class="chk2" style="margin-top:1.2rem">
+          <li>Unit economics per collection and per operator</li>
+          <li>Coverage, current suburbs and the expansion sequence</li>
+          <li>The operator model and what it costs to onboard one</li>
+          <li>Revenue lines: households, business, supported living and hotel partners</li>
+          <li>Current trading position and what capital would be used for</li>
+        </ul>
+        <div class="pnote" style="margin-top:1.6rem"><strong>What we will not do.</strong> We do not publish forecasts we cannot evidence, and nothing on this site is an offer of securities or an invitation to invest. Any discussion happens under a signed non-disclosure agreement and through our adviser.</div>
+      </div>
+      <div class="fpanel">
+        <h3>Request the information pack</h3>
+        <p class="fsub">Tell us who you are and we will come back to you. The pack is not sent automatically.</p>
+        <div class="g2">
+          <div class="fld"><label class="lbl" for="ivFirst">First name</label><input class="inp" id="ivFirst"></div>
+          <div class="fld"><label class="lbl" for="ivLast">Last name</label><input class="inp" id="ivLast"></div>
+        </div>
+        <div class="fld"><label class="lbl" for="ivEmail">Email</label><input class="inp" type="email" id="ivEmail"></div>
+        <div class="fld"><label class="lbl" for="ivPhone">Phone</label><input class="inp" type="tel" id="ivPhone"></div>
+        <div class="fld"><label class="lbl" for="ivOrg">Organisation</label><input class="inp" id="ivOrg"></div>
+        <div class="fld"><label class="lbl" for="ivType">You are</label><div class="selw"><select class="sel" id="ivType">
+          <option>Private investor</option><option>Family office</option><option>Venture or PE fund</option>
+          <option>Strategic or trade buyer</option><option>Adviser acting for a client</option>
+        </select></div></div>
+        <div class="fld"><label class="lbl" for="ivRange">Indicative range</label><div class="selw"><select class="sel" id="ivRange">
+          <option>Prefer not to say</option><option>Under $250k</option><option>$250k to $1M</option><option>$1M to $5M</option><option>Over $5M</option>
+        </select></div></div>
+        <div class="fld"><label class="lbl" for="ivNotes">Anything else</label><textarea class="ta" id="ivNotes" placeholder="Optional"></textarea></div>
+        <button class="btn btn-red btn-full btn-lg" id="ivGo">Request the pack</button>
+        <div class="fmsg" id="ivMsg"></div>
+        <p class="fine">Submitting this form is an enquiry only. It creates no obligation on either side and is not an application to invest.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="page" id="p-franchise">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/">Home</a> / Franchise</div>
+    <h1>Run LaundryKings in your area</h1>
+    <p>We are opening territories beyond our current coverage. You run the operation in your postcode group; we supply the brand, the booking system, the customers and the back office.</p>
+  </div></div>
+  <div class="sec"><div class="wrap">
+    <div class="g2c" style="gap:3rem;align-items:start">
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">Check your territory</h2>
+        <p>Enter the postcode you would want to operate. We will tell you whether it is open, already taken, or outside where we can support you yet.</p>
+        <div class="fld" style="margin-top:1rem"><label class="lbl" for="frPc">Postcode</label>
+          <input class="inp" id="frPc" inputmode="numeric" maxlength="4" placeholder="4131"></div>
+        <button class="btn btn-nv" style="margin-top:.8rem" id="frCheck">Check this postcode</button>
+        <div id="frRes" style="margin-top:1rem"></div>
+
+        <h2 class="h2" style="font-size:1.4rem;margin-top:2.4rem">What you get</h2>
+        <ul class="chk2" style="margin-top:1.2rem">
+          <li>Exclusive rights to your postcode group</li>
+          <li>The booking platform, customer app and operator tools</li>
+          <li>Inbound customers from our marketing, not a cold start</li>
+          <li>Onboarding, safety documentation and supplier pricing</li>
+          <li>Invoicing, payment handling and support handled centrally</li>
+        </ul>
+        <div class="pnote" style="margin-top:1.6rem"><strong>Before anything is signed.</strong> Franchising in Australia is regulated by the Franchising Code of Conduct. You would receive a disclosure document and the Code requires a cooling-off period. We will tell you to take independent legal and accounting advice, and we mean it.</div>
+      </div>
+      <div class="fpanel">
+        <h3>Register your interest</h3>
+        <p class="fsub">A first conversation about the territory, the numbers and whether it suits you.</p>
+        <div class="g2">
+          <div class="fld"><label class="lbl" for="frFirst">First name</label><input class="inp" id="frFirst"></div>
+          <div class="fld"><label class="lbl" for="frLast">Last name</label><input class="inp" id="frLast"></div>
+        </div>
+        <div class="fld"><label class="lbl" for="frEmail">Email</label><input class="inp" type="email" id="frEmail"></div>
+        <div class="fld"><label class="lbl" for="frPhone">Phone</label><input class="inp" type="tel" id="frPhone"></div>
+        <div class="fld"><label class="lbl" for="frArea">Area or postcode you want</label><input class="inp" id="frArea"></div>
+        <div class="fld"><label class="lbl" for="frExp">Relevant experience</label><div class="selw"><select class="sel" id="frExp">
+          <option>Ran a business before</option><option>Managed teams, not owned</option>
+          <option>Worked in laundry or cleaning</option><option>New to both</option>
+        </select></div></div>
+        <div class="fld"><label class="lbl" for="frCap">Capital available to start</label><div class="selw"><select class="sel" id="frCap">
+          <option>Prefer not to say</option><option>Under $20k</option><option>$20k to $50k</option><option>$50k to $100k</option><option>Over $100k</option>
+        </select></div></div>
+        <div class="fld"><label class="lbl" for="frNotes">Anything else</label><textarea class="ta" id="frNotes" placeholder="Optional"></textarea></div>
+        <button class="btn btn-red btn-full btn-lg" id="frGo">Register interest</button>
+        <div class="fmsg" id="frMsg"></div>
+        <p class="fine">This is an expression of interest. It is not an offer of a franchise and creates no obligation on either side.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="page" id="p-onboard">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/operators">Operators</a> / Onboarding</div>
+    <h1>Operator onboarding</h1>
+    <p>Everything we need before you can take your first collection. Most of it takes about ten minutes; the police check is the only part that waits on someone else.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="ob-steps" id="obSteps"></div>
+
+    <div class="g2c" style="gap:2.4rem;align-items:start;margin-top:2rem">
+      <div>
+        <div class="card" id="obPanel"></div>
+      </div>
+      <div>
+        <div class="card">
+          <h3 style="margin-top:0">Where you are up to</h3>
+          <div id="obStatus"></div>
+          <p class="ap-fine" id="obNote"></p>
+        </div>
+        <div class="card" style="margin-top:1.2rem">
+          <h3 style="margin-top:0">What these checks cost us</h3>
+          <div id="obCosts"></div>
+          <p class="ap-fine">We pay for both checks. You are never invoiced for onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="page" id="p-hotels">
+  <div class="phead"><div class="wrap">
+    <div class="crumb"><a href="#/">Home</a> / Hotel Partners</div>
+    <h1>Guest laundry, as a revenue line</h1>
+    <p>Your guests already ask about laundry. Right now that is a concierge problem with no margin. We turn it into a commission your property earns for putting cards in rooms.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <div class="g2c" style="gap:3rem;align-items:start">
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">How it works</h2>
+        <ol class="chk2" style="margin-top:1.2rem">
+          <li>We supply branded cards for every room and your concierge desk.</li>
+          <li>Your guest scans and orders on a page co-branded with your property.</li>
+          <li>We collect from the concierge, wash and fold, and return to the front desk tagged by room number.</li>
+          <li>You are paid commission monthly, with an itemised statement.</li>
+        </ol>
+        <p class="pnote" style="margin-top:1.4rem"><strong>Your staff hold a bag. That is the whole job.</strong> No handling, no chemicals, no liability, no cost to the property.</p>
+      </div>
+      <div>
+        <h2 class="h2" style="font-size:1.4rem">Guest pricing</h2>
+        <div id="htPricing" style="margin-top:1.2rem"></div>
+        <p class="pnote" style="margin-top:1rem">All prices include GST. We do not offer ironing; Premium Clean is our finishing service.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="wrap">
+    <span class="eyebrow">COMMISSION</span>
+    <h2 class="h2">Your rate rises with your portfolio</h2>
+    <p class="lede">Set by total rooms or number of properties, whichever reaches the higher tier first. Add a property and the whole group moves up from that date.</p>
+    <div id="htTiers" style="margin-top:1.6rem"></div>
+    <p class="pnote" style="margin-top:1.2rem"><strong>Volume kicker.</strong> Sustain 15% guest conversion for three consecutive months and your property is lifted one tier above its qualifier.</p>
+  </div></div>
+
+  <div class="sec"><div class="wrap">
+    <span class="eyebrow">CALCULATOR</span>
+    <h2 class="h2">What your property would earn</h2>
+    <p class="lede">Enter your numbers. Everything recalculates against our current guest pricing.</p>
+    <div class="g2c" style="gap:2.4rem;align-items:start;margin-top:1.6rem">
+      <div class="card">
+        <div class="fld"><label class="lbl" for="htRooms">Total rooms</label>
+          <input class="inp" type="number" id="htRooms" min="1" max="5000" value="220"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htOcc">Average occupancy (%)</label>
+          <input class="inp" type="number" id="htOcc" min="1" max="100" value="63"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htConv">Guest uptake (%)</label>
+          <input class="inp" type="number" id="htConv" min="1" max="100" value="10"></div>
+        <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htProps">Number of properties</label>
+          <input class="inp" type="number" id="htProps" min="1" max="200" value="1"></div>
+        <p class="ap-fine">Industry uptake for hotel laundry runs about 5 to 15 per cent of occupied rooms.</p>
+      </div>
+      <div class="card" id="htResult"></div>
+    </div>
+  </div></div>
+
+  <div class="sec sec-alt"><div class="wrap" style="max-width:640px">
+    <span class="eyebrow">ENQUIRE</span>
+    <h2 class="h2">Start the conversation</h2>
+    <p class="lede">A fifteen-minute call to confirm your room count and occupancy. No obligation.</p>
+    <div class="card" style="margin-top:1.4rem">
+      <div class="fld"><label class="lbl" for="htName">Your name</label><input class="inp" id="htName"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htHotel">Property name</label><input class="inp" id="htHotel"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htRole">Your role</label><input class="inp" id="htRole" placeholder="General Manager, Revenue, Front Office"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htEmail">Email</label><input class="inp" type="email" id="htEmail"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htPhone">Phone</label><input class="inp" id="htPhone"></div>
+      <div class="fld" style="margin-top:.9rem"><label class="lbl" for="htRoomsQ">Rooms at this property</label><input class="inp" type="number" id="htRoomsQ" min="1"></div>
+      <button class="btn btn-red btn-full" style="margin-top:1.2rem" id="htGo">Request a partnership call</button>
+      <p class="pnote" id="htMsg" style="margin-top:.9rem"></p>
+    </div>
+  </div></div>
+</section>
+
 <section class="page" id="p-business">
   <div class="phead"><div class="wrap">
     <div class="crumb"><a href="#/">Home</a> / Business &amp; Commercial</div>
@@ -2556,6 +2901,7 @@ svg.ic{width:24px;height:24px}
         </select></div></div>
         <div class="fld"><label class="lbl" for="oNotes">Anything else?</label><textarea class="ta" id="oNotes" placeholder="Optional"></textarea></div>
         <button class="btn btn-red btn-full btn-lg" id="oGo">Submit application</button>
+        <a href="#/onboard" class="btn btn-out btn-full" style="margin-top:.6rem">Already approved? Start onboarding &#8250;</a>
         <div class="fmsg" id="oMsg"></div>
         <p class="fine">Submitting this form is an expression of interest only. It does not create any contract or obligation on either side.</p>
       </div>
@@ -3226,8 +3572,31 @@ svg.ic{width:24px;height:24px}
             <div class="fld"><label class="lbl" id="bkLblA">Loads (approx. 5&nbsp;kg each)</label>
               <div class="stepper"><button type="button" data-bstep="a,-1" aria-label="Decrease loads"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumA">2</span><button type="button" data-bstep="a,1" aria-label="Increase loads"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
             </div>
+            <div class="fld" id="bkFldB"><label class="lbl" id="bkLblB">Loads needing Premium Clean</label>
+              <div class="stepper"><button type="button" data-bstep="b,-1" aria-label="Fewer Premium Clean loads"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkNumB">0</span><button type="button" data-bstep="b,1" aria-label="More Premium Clean loads"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
+            </div>
           </div>
           <p class="ap-fine">Final price is set after your operator weighs and counts on collection — the estimate is for their planning only.</p>
+        </div>
+      </div>
+
+      <!-- bag choice — optional, chargeable -->
+      <div class="ap-card" id="bkBagCard" style="margin-top:.6rem">
+        <div class="ap-card-h"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-basket"/></svg></i>Do you need a bag?</div>
+        <div class="ap-card-b">
+          <div class="ap-g2">
+            <button type="button" class="bagopt on" id="bkBagNo" data-bag="0">
+              <strong>I have my own</strong><span>Use any bag or basket. No charge.</span>
+            </button>
+            <button type="button" class="bagopt" id="bkBagYes" data-bag="1">
+              <strong>Send me a bag</strong><span id="bkBagPx">Reusable LaundryKings bag</span>
+            </button>
+          </div>
+          <div class="fld" id="bkBagQtyWrap" style="display:none;margin-top:.7rem">
+            <label class="lbl" id="bkBagQtyLbl">How many bags</label>
+            <div class="stepper"><button type="button" data-bstep="bag,-1" aria-label="Fewer bags"><svg class="ic" aria-hidden="true"><use href="#ic-minus"/></svg></button><span id="bkBagQty">1</span><button type="button" data-bstep="bag,1" aria-label="More bags"><svg class="ic" aria-hidden="true"><use href="#ic-plus"/></svg></button></div>
+          </div>
+          <p class="ap-fine">Bags are yours to keep and reuse every week — you only pay for them once.</p>
         </div>
       </div>
 
@@ -3299,6 +3668,10 @@ svg.ic{width:24px;height:24px}
           <div class="ap-note" style="margin:.9rem 0 0"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-card"/></svg></i><span id="bkMinNote"></span></div>
           <p class="ap-fine" style="margin-top:.7rem">Payment is processed online after your items are weighed and counted, and before your completed laundry is returned.</p>
           <div class="paym"><span>VISA</span><span>MASTERCARD</span><span>AMEX</span><span>GOOGLE&nbsp;PAY</span><span>APPLE&nbsp;PAY</span></div>
+          <div class="ap-sec-t" style="margin-top:1.2rem">HOW YOU WOULD LIKE TO PAY</div>
+          <div id="bkPayOpts"></div>
+          <div class="pay-expl" id="bkPayExpl"></div>
+
           <label class="cbx"><input type="checkbox" id="bkTos"><span>I agree to the <a href="#/terms">Terms of Service</a> and the <a href="#/guarantee">Service Guarantee</a>.</span></label>
           <div class="fmsg" id="bkMsg"></div>
         </div>
@@ -3368,11 +3741,46 @@ svg.ic{width:24px;height:24px}
     </div>
 
     <div class="ap-sec-t">USER SETTINGS — ACROSS ALL PROFILES</div>
+    <a href="#/rewards" class="ap-row"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-crown"/></svg></i><div><strong>King Rewards</strong><small id="acRwSub">Crowns balance, tier benefits and your referral code</small></div><em>›</em></a>
     <a href="#/userdet" class="ap-row"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-user"/></svg></i><div><strong>User details</strong><small>Name, email, phone, password</small></div><em class="ic"><svg class="ic ic-sm" aria-hidden="true"><use href="#ic-chevron-right"/></svg></em></a>
     <a href="#/feedback" class="ap-row"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-chat"/></svg></i><div><strong>Feedback</strong><small>Share feedback or report an issue</small></div><em class="ic"><svg class="ic ic-sm" aria-hidden="true"><use href="#ic-chevron-right"/></svg></em></a>
     <a href="#/help" class="ap-row"><i class="ic"><svg class="ic" aria-hidden="true"><use href="#ic-help"/></svg></i><div><strong>Help &amp; support</strong><small>FAQs, contact support, policies</small></div><em class="ic"><svg class="ic ic-sm" aria-hidden="true"><use href="#ic-chevron-right"/></svg></em></a>
 
     <div class="ap-ver">LaundryKings customer portal · <span id="apVer">v1.0</span></div>
+  </div></div>
+</section>
+
+<!-- ---------------- KING REWARDS ---------------- -->
+<section class="page" id="p-rewards">
+  <div class="ap"><div class="ap-in">
+    <div class="ap-h"><button class="ap-back" onclick="location.hash='#/app'">‹</button><div><h2>King Rewards</h2><p>Your Crowns, tier and referral link.</p></div></div>
+
+    <div class="ap-card rw-hero">
+      <div class="ap-card-b">
+        <div class="rw-bal"><span id="rwCrowns">0</span><small>Crowns</small></div>
+        <div class="rw-worth" id="rwWorth">worth $0.00</div>
+        <div class="rw-tierline"><span class="rw-badge" id="rwTier">Member</span><span id="rwMult">earning 1 Crown per $1</span></div>
+        <div class="rw-prog"><div class="rw-prog-b" id="rwProgBar"></div></div>
+        <p class="ap-fine" id="rwProgTx">Spend to reach your next tier.</p>
+      </div>
+    </div>
+
+    <div class="ap-sec-t">SPEND YOUR CROWNS</div>
+    <div id="rwRewards"></div>
+
+    <div class="ap-sec-t">YOUR TIER BENEFITS</div>
+    <div class="ap-card"><div class="ap-card-b"><ul class="chk2" id="rwPerks"></ul></div></div>
+
+    <div class="ap-sec-t">REFER A FRIEND</div>
+    <div class="ap-card"><div class="ap-card-b">
+      <p style="margin:0 0 .7rem">Give a friend <strong id="rwRefGive">$15</strong> off their first collection. When it is completed you get <strong id="rwRefGet">$15</strong> in credit.</p>
+      <div class="fld"><label class="lbl" for="rwRefCode">Your referral code</label>
+        <input class="inp" id="rwRefCode" readonly></div>
+      <button class="btn btn-nv btn-full" style="margin-top:.7rem" id="rwRefCopy">Copy referral link</button>
+      <p class="ap-fine" id="rwRefMsg">Credit is released once your friend's first collection is completed and paid.</p>
+    </div></div>
+
+    <p class="ap-fine" id="rwLapse"></p>
   </div></div>
 </section>
 
@@ -3428,7 +3836,7 @@ svg.ic{width:24px;height:24px}
     <div class="ap-card"><div class="ap-card-b">
       <div class="fld"><label class="lbl" for="pfSvc">Usual service</label>
         <div class="selw"><select class="sel" id="pfSvc">
-          <option value="wf">Wash &amp; Fold</option><option value="linen">Blankets, Rugs &amp; Sheets</option><option value="dc">Dry cleaning</option>
+          <option value="wf">Wash &amp; Fold</option><option value="wfi">Wash, Fold &amp; Premium</option><option value="premium">Premium Clean</option><option value="linen">Blankets, Rugs &amp; Sheets</option><option value="dc">Dry cleaning</option>
         </select></div>
       </div>
       <label class="cbx"><input type="checkbox" id="pfEco"><span>Use fragrance-free / sensitive-skin detergent by default<span id="pfEcoPx"></span></span></label>
@@ -3612,6 +4020,7 @@ svg.ic{width:24px;height:24px}
     <div class="ap-card"><div class="ap-card-b">
       <div class="ap-g2">
         <div class="fld"><label class="lbl" for="invWt">Actual weight (kg)</label><input class="inp" type="number" min="0.1" step="0.1" id="invWt" placeholder="e.g. 4.2"></div>
+        <div class="fld"><label class="lbl" for="invPremium">Premium Clean loads</label><input class="inp" type="number" min="0" id="invPremium" placeholder="0"></div>
         <div class="fld"><label class="lbl" for="invLinen">Blankets, rugs or sheet sets</label><input class="inp" type="number" min="0" id="invLinen" placeholder="0"></div>
       </div>
       <div class="fld"><label class="lbl" for="invNotes">Notes for customer (optional)</label><textarea class="ta" id="invNotes" placeholder="Item count, anything unusual, care notes…" style="min-height:56px"></textarea></div>
@@ -3673,9 +4082,11 @@ svg.ic{width:24px;height:24px}
 <li><a href="#/services">Services</a></li><li><a href="#/pricing">Pricing</a></li>
 <li><a href="#/club">Kings Club</a></li><li><a href="#/coverage">Coverage &amp; suburbs</a></li>
 <li><a href="#/business">For business</a></li><li><a href="#/support">Supported living</a></li>
+<li><a href="#/hotels">Hotel partners</a></li>
 </ul></div>
 <div><h4>COMPANY</h4><ul>
-<li><a href="#/about">About us</a></li><li><a href="#/operators">Become an operator</a></li>
+<li><a href="#/about">About us</a></li><li><a href="#/operators">Become an operator</a></li><li><a href="#/franchise">Franchise a territory</a></li>
+<li><a href="#/invest">Investor enquiries</a></li>
 <li><a href="#/faq">FAQ</a></li><li><a href="#/guarantee">Service guarantee</a></li>
 <li><a href="#/contact">Contact &amp; complaints</a></li>
 </ul></div>
@@ -3733,6 +4144,8 @@ svg.ic{width:24px;height:24px}
    Owner can overwrite these in db at config/pricing.        */
 const DEFAULT_PRICING = {
   load: 32.00,          // per ~5kg load, wash & fold
+  premium: 15.00,       // Premium Clean add-on, per load (replaces ironing)
+  bag: 12.00,           // branded bag, optional paid line item
   delivery: 13.50,      // collection + return, one flat fee
   minimum: 73.50,   // Laundry Lady $70 min +5% — decision 18 Sep 2026
   dcJacket: 18.50,
@@ -3752,6 +4165,10 @@ let PX = Object.assign({}, DEFAULT_PRICING);
 let DB = null, USER = null, CAN_EDIT = false;
 
 const money = n => { const v = Number(n) || 0; return '$' + (Math.abs(v - Math.round(v)) < 0.005 ? String(Math.round(v)) : v.toFixed(2)); };
+/* Whole dollars with thousands separators — annual projections run to six
+   figures, where cents are noise and an unseparated run of digits is hard
+   to read at a glance. */
+const bigMoney = n => '$' + Math.round(Number(n) || 0).toLocaleString('en-AU');
 
 /* ---------- SUBURB DATA ---------- */
 const LIVE_PC = {
@@ -3767,8 +4184,8 @@ const SOON_PC = {
 };
 
 /* ---------- ROUTER ---------- */
-const PAGES = ['home','services','pricing','club','business','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
-  'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help',
+const PAGES = ['home','services','pricing','club','business','hotels','onboard','invest','franchise','support','coverage','operators','about','guarantee','faq','contact','privacy','terms','dash',
+  'app','book','bookings','messages','thread','account','profile','pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards',
   'ops','opsbook','opsops','opsinv'];
 /* One title per route. Search engines and browser history both read this. */
 const TITLES = {
@@ -3867,6 +4284,8 @@ function paintHomeV4(){ /* superseded by initHomeV5() */ }
 function paintPrices(){
   const map = {
     wf: 'From ' + money(PX.load) + ' per load',
+    wfi: money(PX.load) + ' per load + ' + money(PX.premium) + ' Premium Clean',
+    premium: money(PX.premium) + ' per load',
     linen: 'From ' + money(PX.linenSheetSet) + ' per item',
     dc: 'From ' + money(PX.dcDress) + ' per item',
     bulk: 'From ' + money(PX.bulkDoona) + ' per item',
@@ -3882,12 +4301,19 @@ function paintPrices(){
     R('Lights & darks separated', 'Washed separately — charged as two loads', money(PX.load * 2)) +
     R('Collection & return', 'One flat fee, both directions', money(PX.delivery)) +
     R('Eco / fragrance-free detergent', 'Optional add-on per load', money(PX.ecoAddon)) +
+    R('LaundryKings bag', 'Optional. Reusable; buy once, use every week', money(PX.bag)) +
     R('Minimum order', 'One-off bookings only', money(PX.minimum));
   document.getElementById('pxLinen').innerHTML =
     R('Sheet set', 'Per set, any bed size', money(PX.linenSheetSet)) +
     R('Blanket or quilt cover', 'Single or double', money(PX.linenBlanket)) +
     R('Rug or floor mat', 'Subject to size', money(PX.linenRug)) +
     R('Large-format items only', 'Not charged by weight', 'Per item');
+  document.getElementById('pxPremium').innerHTML =
+    R('Premium Clean — per load', 'Added to any wash & fold load', money(PX.premium)) +
+    R('Delicates and fine knits', 'Gentle cycle, cool wash, reshaped and air-dried flat', 'Included') +
+    R('Stain hand-treatment', 'Spot-treated before washing', 'Included') +
+    R('Hanger finish', 'Shirts and dresses returned on hangers, not folded', 'Included') +
+    R('We do not offer ironing', 'Premium Clean is our finishing service instead', '—');
   document.getElementById('pxDry').innerHTML =
     R('Dress or skirt', 'From — final price depends on fabric', money(PX.dcDress)) +
     R('Suit jacket or blazer', '', money(PX.dcJacket)) +
@@ -3902,9 +4328,9 @@ function paintPrices(){
 
 
   document.getElementById('clubPlans').innerHTML =
-    plan('Solo', PX.plan1, 'One to two people. One standard bag each week, collected and returned.') +
-    plan('Household', PX.plan2, 'Families of three to four. Two standard bags each week, collected and returned.') +
-    plan('Full House', PX.plan3, 'Larger households. Three bags each week, collected and returned.');
+    plan('Fresh', PX.plan1, 'Wash &amp; fold on a fixed weekly day. One to two people. Premium Clean can be added per load.') +
+    plan('Fresh+', PX.plan2, 'Families of three to four. Wash &amp; fold plus Premium Clean included on delicate loads.') +
+    plan('King', PX.plan3, 'Everything in Fresh+, plus priority 24-hour turnaround and first pick of collection windows.');
   document.querySelectorAll('#clubPlans .plan').forEach(p => p.onclick = () => {
     document.querySelectorAll('#clubPlans .plan').forEach(x => x.classList.remove('on')); p.classList.add('on');
   });
@@ -4134,10 +4560,11 @@ const DEFAULT_BOOKING = {
 let BK = Object.assign({}, DEFAULT_BOOKING);
 
 const SVCS = [
-  { id:'wf',    name:'Wash & Fold',                 desc:'Washed on its own cycle, dried and folded.',                          px:()=>'From '+money(PX.load)+' per load' },
-  { id:'linen', name:'Blankets, Rugs & Sheets',      desc:'Large-format items only — not for everyday laundry.',                px:()=>'From '+money(PX.linenSheetSet)+' per item' },
-  { id:'dc',    name:'Dry cleaning',                 desc:'Suits, formal wear and delicates. PERC-free.',                       px:()=>'From '+money(PX.dcDress)+' per item' },
-  { id:'comm',  name:'Commercial / linen',           desc:'Quoted per site — sends an enquiry, not a booking.',                 px:()=>'By quote' }
+  { id:'wf',    name:'Wash & Fold',               desc:'Washed on its own cycle, dried and folded.',                px:()=>'From '+money(PX.load)+' per load' },
+  { id:'wfi',   name:'Wash, Fold & Premium',      desc:'Wash & Fold plus Premium Clean on the loads you pick.',     px:()=>money(PX.load)+' + '+money(PX.premium)+'/load' },
+  { id:'premium', name:'Premium Clean',             desc:'Delicates, hand-treated stains, air-dried, hanger finish.', px:()=>money(PX.premium)+' per load' },
+  { id:'linen', name:'Blankets, Rugs & Sheets',   desc:'Large-format items only — not for everyday laundry.',       px:()=>'From '+money(PX.linenSheetSet)+' per item' },
+  { id:'dc',    name:'Dry cleaning',              desc:'Suits, formal wear and delicates. PERC-free.',              px:()=>'From '+money(PX.dcDress)+' per item' },
 ];
 const SVCNAME = id => (SVCS.find(s=>s.id===id)||{}).name || 'Collection';
 
@@ -4151,7 +4578,7 @@ const COMMS = [
 
 /* ---- state ---- */
 const APP_ROUTES = ['app','book','bookings','messages','thread','account','profile',
-                    'pdetails','prefs','address','comms','invoices','userdet','feedback','help'];
+                    'pdetails','prefs','address','comms','invoices','userdet','feedback','help','rewards'];
 let UID = null, ACCT_REF = null, APP_READY = false;
 const S = {
   acct: { first:'', last:'', email:'', phone:'', activeId:'', comms:{ ops:true, msg:true, inv:true, svc:true, promo:false } },
@@ -4159,6 +4586,408 @@ const S = {
 };
 const MEM = { acct:null, profiles:[], bookings:[], messages:[] };
 let PERSISTED = false;
+
+/* ============================================================
+   KING REWARDS — Crowns loyalty engine
+   Design basis (see KLG-MKT06-01):
+     - 1 Crown per $1, worth $0.02 (Sephora parity, ~2% return)
+     - Tier multipliers so only the heaviest users earn the top rate
+       (Starbucks model) — protects margin at the base
+     - Every redemption is dollar-capped (Starbucks margin shield)
+     - New accounts open with SIGNUP_CROWNS already banked: the
+       endowed-progress effect (Nunes & Dreze 2006) roughly doubled
+       completion, 34% vs 19%, when a card started part-filled
+     - Crowns lapse 12 months after the last completed order, so
+       dormant balances do not sit on the books forever
+   Thresholds are LAUNCH ASSUMPTIONS pending Max's Ops Sheet sign-off.
+   ============================================================ */
+const CROWN_VALUE  = 0.02;   // AUD per Crown
+const SIGNUP_CROWNS = 100;   // endowed progress
+const CROWN_EXPIRY_DAYS = 365;
+const REFERRAL_CREDIT = 15.00;  // give $15 / get $15, ~37% of a first order
+
+const TIERS = [
+  { id:'member',   name:'Member',   min:0,    mult:1,    perks:['App access and Crowns balance','Referral code','Birthday-month Premium Clean, free'] },
+  { id:'silver',   name:'Silver',   min:400,  mult:1.25, perks:['Priority collection windows','48-hour price lock on quotes','Early access to new services'] },
+  { id:'gold',     name:'Gold',     min:900,  mult:1.5,  perks:['Same-day service where available','One free Premium Clean load each month','Priority support queue'] },
+  { id:'platinum', name:'Platinum', min:1800, mult:2,    perks:['Guaranteed 4-hour collection window','Direct line to your operator','Free bag replacement each year','First access to seasonal capacity'] }
+];
+
+/* Redemption menu. Weighted toward high-margin add-ons so perceived
+   value runs ahead of marginal cost; every row carries a hard cap. */
+const REWARDS = [
+  { id:'pc1',   crowns:250,  label:'Premium Clean upgrade on one load', cap:15 },
+  { id:'bag1',  crowns:400,  label:'One LaundryKings bag',              cap:12 },
+  { id:'cr10',  crowns:500,  label:'$10 credit toward any collection',  cap:10 },
+  { id:'wash1', crowns:750,  label:'One standard load washed free',     cap:32 },
+  { id:'cr25',  crowns:1000, label:'$25 credit toward any collection',  cap:25 },
+  { id:'mth1',  crowns:2000, label:'One month of Kings Club, free',     cap:89 }
+];
+
+/* ============================================================
+   ASSISTANT
+   Anything with a number in it is answered from config/pricing and
+   the customer's own records, never generated. A model that invents
+   a price creates a contract we then have to honour under the
+   Australian Consumer Law, so the priced answers below are computed
+   and only genuinely open text is sent to the model.
+
+   Free text posts to the kings-api worker, which holds the API key
+   and runs claude-opus-5. The page never holds a key: this artefact
+   publishes with capabilities {"db":{},"user":{}} and that is the
+   whole reason the model call lives server-side.
+   ============================================================ */
+const AI_ENDPOINT = '/api/ai/chat';
+
+/* Ordered: the first pattern that matches wins, so the refusals sit
+   above the general handlers. */
+const AI_INTENTS = [
+  { id:'ironing', re:/\biron(ing|ed|s)?\b|\bpress(ing|ed)?\b/i, reply: text => {
+      return 'We do not offer ironing. What we do instead is <strong>Premium Clean</strong> at '
+        + money(PX.premium) + ' a load: stains are treated by hand before washing, delicates and fine '
+        + 'knits go through a gentle cool cycle, knits are reshaped and air-dried flat, and shirts and '
+        + 'dresses come back on hangers rather than folded. For most things people used to send for '
+        + 'ironing, that is the closer match.';
+    } },
+  { id:'legal', re:/\b(tax|gst deduct|legal advice|sue|liabilit|contract law|solicitor|lawyer|deduction)\b/i, reply: text => {
+      return 'I am not able to give legal, tax or financial advice, and I would rather say so than guess. '
+        + 'If you send your question to our support team we will pass it to the right adviser.';
+    } },
+  { id:'price', re:/\b(price|pricing|cost|charge|how much|quote|rate)\b/i, reply: text => {
+      return 'Current rates, all GST inclusive:<br>'
+        + '&#8226; Wash &amp; fold ' + money(PX.load) + ' a load, about 5&nbsp;kg<br>'
+        + '&#8226; Premium Clean ' + money(PX.premium) + ' a load on top<br>'
+        + '&#8226; Collection and return ' + money(PX.delivery) + ' flat, both directions<br>'
+        + '&#8226; LaundryKings bag ' + money(PX.bag) + ', optional and yours to keep<br>'
+        + '&#8226; Minimum order ' + money(PX.minimum) + ' on one-off bookings<br>'
+        + 'Two loads with delivery comes to about ' + money(Math.max(PX.minimum, PX.load*2 + PX.delivery))
+        + '. Your operator confirms the real figure after weighing, before any work starts.';
+    } },
+  { id:'next', re:/\b(next|upcoming|when).{0,20}\b(pickup|collection|booking)\b|\bwhen.{0,12}\bcoming\b/i, reply: text => {
+      const up = (S.bookings||[]).filter(b => ['requested','confirmed'].includes(b.status))
+                                 .sort((a,b) => (a.date||'').localeCompare(b.date||''))[0];
+      if (!up) return 'You have no collection booked at the moment. '
+        + '<a href="#/book">Book one here</a> and I can talk you through it.';
+      return 'Your next collection is <strong>' + longDate(up.date) + '</strong>, ' + esc(up.window)
+        + ', reference ' + esc(up.ref) + '. You can change or cancel it from '
+        + '<a href="#/bookings">your bookings</a>.';
+    } },
+  { id:'crowns', re:/\b(crowns?|rewards?|loyalty|points?|tiers?|referrals?)\b/i, reply: text => {
+      const r = rewardsState();
+      return 'You have <strong>' + r.balance.toLocaleString('en-AU') + ' Crowns</strong>, worth '
+        + money(crownsToAud(r.balance)) + ', and you are on ' + r.tier.name + ' earning '
+        + r.tier.mult + ' per $1. '
+        + (r.next ? money(Math.max(0, r.next.min - r.rolling)) + ' more in the next 12 months reaches ' + r.next.name + '. ' : '')
+        + '<a href="#/rewards">See what you can spend them on</a>.';
+    } },
+  { id:'book', re:/\b(book|order|schedule|arrange|pick ?up my)\b/i, reply: text => {
+      return 'I can start that for you. <a href="#/book">Open the booking form</a> and pick a service, '
+        + 'a day and a window. If you are not sure how much you have, two loads covers a typical weekly '
+        + 'wash for a couple.';
+    } },
+  { id:'coverage', re:/\b(cover|servic\w*|area|suburb|postcode|do you come)\b/i, reply: text => {
+      /* If they gave us a postcode, answer that one rather than sending
+         them to a form to re-enter what they just typed. */
+      const pc = (String(text||'').match(/\b(\d{4})\b/) || [])[1];
+      if (pc && LIVE_PC[pc]) return 'Yes. We collect from ' + esc(LIVE_PC[pc]) + ' (' + pc + ') now. '
+        + '<a href="#/book">Book a collection</a> whenever you are ready.';
+      if (pc && SOON_PC[pc]) return esc(SOON_PC[pc]) + ' (' + pc + ') is on our list but not live yet. '
+        + '<a href="#/coverage">Leave your details</a> and we will tell you the day it opens.';
+      if (pc) return 'We are not in ' + pc + ' yet. <a href="#/coverage">Register the postcode</a> and it '
+        + 'counts toward where we open next.';
+      const n = Object.keys(LIVE_PC).length;
+      return 'We collect from ' + n + ' suburbs across Brisbane and Logan right now, with more opening. '
+        + '<a href="#/coverage">Check your postcode here</a> and it will tell you straight away.';
+    } },
+  { id:'cancel', re:/\b(cancel|reschedule|change|move).{0,20}\b(booking|collection|pickup)\b/i, reply: text => {
+      return 'You can change or cancel any upcoming collection yourself from '
+        + '<a href="#/bookings">your bookings</a>. There is no charge to cancel before collection.';
+    } },
+  { id:'human', re:/\b(human|person|speak to someone|complain|manager|urgent)\b/i, reply: text => {
+      return 'I will get a person onto this. <a href="#/contact">Send us a message here</a> and it goes '
+        + 'straight to the team, or use <a href="#/feedback">feedback</a> if something went wrong with a '
+        + 'collection so it gets logged properly.';
+    } }
+];
+
+function aiAnswer(text){
+  const hit = AI_INTENTS.find(i => i.re.test(text));
+  return hit ? { handled:true, intent:hit.id, html:hit.reply(text) } : { handled:false };
+}
+
+const AI_CHIPS = ['How much for two loads?', 'What is Premium Clean?', 'When is my next collection?', 'What are Crowns?', 'Do you cover my suburb?'];
+let AI_LOG = [];
+
+function aiPush(who, html){
+  AI_LOG.push({ who, html });
+  const log = document.getElementById('aiLog'); if (!log) return;
+  const d = document.createElement('div');
+  d.className = 'ai-m ' + who;
+  d.innerHTML = html;
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function aiSend(text){
+  const q = String(text || '').trim(); if (!q) return;
+  aiPush('you', esc(q));
+  const local = aiAnswer(q);
+  if (local.handled){ aiPush('bot', local.html); return; }
+
+  /* Anything not covered above goes to the worker, which runs the model
+     with the same refusals in its system prompt. If it is unreachable we
+     say so rather than inventing an answer. */
+  aiPush('bot', '<span id="aiThinking">Thinking...</span>');
+  try {
+    const res = await fetch(AI_ENDPOINT, {
+      method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ message:q, history: AI_LOG.slice(-8) })
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+    const data = await res.json();
+    const t = document.getElementById('aiThinking');
+    if (t) t.parentElement.innerHTML = esc(data.reply || '').replace(/\n/g,'<br>');
+  } catch (e){
+    const t = document.getElementById('aiThinking');
+    if (t) t.parentElement.innerHTML = 'I cannot reach our assistant right now, and I would rather '
+      + 'say that than guess. <a href="#/contact">Send us a message</a> and someone will answer properly.';
+  }
+}
+
+function wireAI(){
+  const fab = document.getElementById('aiFab'), panel = document.getElementById('aiPanel');
+  if (!fab || !panel) return;
+  const open = on => {
+    panel.hidden = !on;
+    fab.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on){
+      if (!AI_LOG.length) aiPush('bot', 'Hello. I can tell you what things cost, check your collections '
+        + 'and point you to the right page. What do you need?');
+      const tx = document.getElementById('aiTx'); if (tx) tx.focus();
+    }
+  };
+  fab.onclick = () => open(panel.hidden);
+  const x = document.getElementById('aiX'); if (x) x.onclick = () => open(false);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) open(false); });
+
+  const chips = document.getElementById('aiChips');
+  if (chips){
+    chips.innerHTML = AI_CHIPS.map(c => '<button type="button" class="ai-chip">' + esc(c) + '</button>').join('');
+    chips.querySelectorAll('.ai-chip').forEach(b => b.onclick = () => aiSend(b.textContent));
+  }
+
+  const form = document.getElementById('aiForm');
+  if (form) form.onsubmit = e => {
+    e.preventDefault();
+    const tx = document.getElementById('aiTx');
+    const v = tx.value; tx.value = '';
+    aiSend(v);
+  };
+}
+
+/* ============================================================
+   PAYMENT METHODS
+   Laundry is priced by weight, and the weight is not known until the
+   operator has the bags. So nothing here charges the estimate: each
+   method either holds it, takes a deposit against it, or defers
+   entirely, and the balance settles once the real figure exists.
+   depositPct 0 means nothing is taken up front.
+   ============================================================ */
+const PAY_METHODS = [
+  { id:'payid',  name:'PayID',            depositPct:0,   fee:0.20,
+    blurb:'Bank transfer from your banking app. Cheapest for us, so it is the one we ask for first.',
+    settle:'We send a PayID request for the real amount once your laundry is weighed.' },
+  { id:'card',   name:'Card',             depositPct:0,   fee:null, hold:true,
+    blurb:'Visa, Mastercard, Apple Pay or Google Pay.',
+    settle:'We place a hold for the estimate now and charge only the actual amount after weighing. If the real figure is lower, the difference is never taken.' },
+  { id:'deposit',name:'Deposit and balance', depositPct:30, fee:null,
+    blurb:'Pay part now, the rest when the job is done.',
+    settle:'We take 30% of the estimate now. The balance is charged once your laundry is weighed and confirmed.' },
+  { id:'paypal', name:'PayPal',           depositPct:0,   fee:null,
+    blurb:'If you would rather not give us a card directly.',
+    settle:'We send a PayPal request for the real amount once your laundry is weighed.' },
+  { id:'bpay',   name:'BPAY invoice',     depositPct:0,   fee:null, b2bOnly:true,
+    blurb:'Business accounts only. Invoiced on 14-day terms.',
+    settle:'Invoiced after the job with 14 days to pay. Available on approved business accounts.' }
+];
+
+/* A deposit is only meaningful above the minimum order: below it the
+   estimate barely exceeds the floor and splitting it creates two
+   trivial charges instead of one. */
+function payPlan(methodId, estimateTotal){
+  const m = PAY_METHODS.find(x => x.id === methodId) || PAY_METHODS[0];
+  const est = Number(estimateTotal) || 0;
+  const pct = m.depositPct && est > PX.minimum ? m.depositPct : 0;
+  const now = Math.round(est * (pct / 100) * 100) / 100;
+  return { method: m, now, later: Math.round((est - now) * 100) / 100, pct,
+           held: m.hold ? est : 0 };
+}
+
+/* ============================================================
+   OPERATOR ONBOARDING
+   Two of these steps call outside services and cannot complete in
+   the page: identity (Australia Post Digital iD) and the national
+   police check (NCCHC). Both are started here and resolve by
+   webhook, so the page tracks their state rather than their result.
+   ============================================================ */
+const OB_VENDORS = {
+  id:     { name:'Australia Post Digital iD', cost:1.50, turnaround:'minutes' },
+  police: { name:'National Crime Check',      cost:44.90, turnaround:'70% same day' }
+};
+
+const OB_STEPS = [
+  { id:'details',   label:'Your details',        blurb:'Name, contact, address and ABN.' },
+  { id:'status',    label:'Engagement check',    blurb:'Whether this role is a contractor or an employee.' },
+  { id:'identity',  label:'Identity',            blurb:'Photo ID matched to a live selfie.' },
+  { id:'police',    label:'Police check',        blurb:'National Police Certificate.' },
+  { id:'tax',       label:'Tax and super',       blurb:'TFN, super fund and bank details.' },
+  { id:'whs',       label:'Safety',              blurb:'Chemicals, manual handling and driving.' },
+  { id:'insurance', label:'Insurance',           blurb:'Only if you use your own vehicle.' }
+];
+
+/* Fair Work multi-factor test. No single answer decides it: the courts
+   weigh the whole relationship, so this scores the factors and flags
+   anything that needs a person to look at it. An ABN on its own never
+   makes someone a contractor, and getting this wrong is what triggers
+   superannuation and payroll tax exposure. */
+const OB_FACTORS = [
+  { id:'control',   q:'Who decides how the work is done?',
+    a:[['You decide your own method and order of work','c'],['LaundryKings directs the method step by step','e']] },
+  { id:'hours',     q:'Who sets your hours?',
+    a:[['You choose which jobs to accept and when','c'],['LaundryKings rosters you onto set shifts','e']] },
+  { id:'equipment', q:'Whose equipment is used?',
+    a:[['Mine — my own machines, vehicle and supplies','c'],['LaundryKings supplies the equipment','e']] },
+  { id:'delegate',  q:'Could you pay someone else to do a job for you?',
+    a:[['Yes, I can subcontract or delegate','c'],['No, I must do the work personally','e']] },
+  { id:'risk',      q:'Who carries the commercial risk if a job goes wrong?',
+    a:[['I do — I fix defects at my own cost','c'],['LaundryKings carries the cost','e']] },
+  { id:'exclusive', q:'Do you work for others as well?',
+    a:[['Yes, or I am free to','c'],['No, I work only for LaundryKings','e']] },
+  { id:'pay',       q:'How are you paid?',
+    a:[['Per job completed, against my invoice','c'],['An hourly or weekly wage','e']] }
+];
+
+function contractorTest(answers){
+  const vals = OB_FACTORS.map(f => answers[f.id]).filter(Boolean);
+  const answered = vals.length;
+  const employeeMarks = vals.filter(v => v === 'e').length;
+  const complete = answered === OB_FACTORS.length;
+  /* Any employee-leaning answer at all is worth a look, because the
+     factors are not equally weighted in law and we are not the ones
+     who get to decide the balance. */
+  let outcome = 'contractor', why = 'Every factor points to an independent contracting arrangement.';
+  if (!complete){ outcome = 'incomplete'; why = 'Answer every question so the result can be recorded.'; }
+  else if (employeeMarks >= 4){ outcome = 'employee'; why = 'Most factors point to employment. This role should be engaged as an employee.'; }
+  else if (employeeMarks > 0){ outcome = 'review'; why = employeeMarks + ' of ' + OB_FACTORS.length
+      + ' factors point toward employment. A person needs to look at this before you are engaged.'; }
+  return { outcome, why, employeeMarks, answered, complete,
+           superFlag: outcome !== 'contractor' };
+}
+
+const OB_WHS = [
+  'I have read the safety data sheets for every chemical I will use.',
+  'I understand safe manual handling for loads up to 15 kg.',
+  'I will not transport or process clinical or contaminated linen (AS/NZS 4146).',
+  'I hold a current driver licence and will keep my vehicle roadworthy.',
+  'I will report any injury, near miss or property damage the same day.'
+];
+
+let OB = { step:'details', details:{}, answers:{}, whs:[], checks:{ identity:'not started', police:'not started' } };
+
+/* ============================================================
+   HOTEL PARTNER PROGRAM
+   Guest pricing is separate from the residential rate card: a hotel
+   guest buys a finished bag, not a weighed household collection.
+   Commission rises with portfolio size so a group has a reason to
+   bring every property across rather than trialling one.
+   All figures LAUNCH ASSUMPTIONS pending Max's sign-off.
+   ============================================================ */
+const HOTEL_PX = {
+  standard: 40.00,   // one bag, up to 5 kg
+  double:   70.00,   // two bags, couples and families
+  package: 159.00,   // unlimited for the stay, from the 5th bag
+  premium:  15.00    // Premium Clean add-on, per bag
+};
+/* Blend assumes most guests buy a standard bag, a smaller share the
+   double, and a few long stays tip into the package. */
+const HOTEL_BLEND = 48.00;
+
+/* minProps is null on the first two tiers: below Premium a single
+   property qualifies on room count alone, so treating "1 property" as a
+   portfolio qualifier would push every small hotel straight past
+   Standard. */
+const HOTEL_TIERS = [
+  { name:'Standard',   pct:8,  minRooms:0,    minProps:null, note:'Single property under 100 rooms' },
+  { name:'Partner',    pct:10, minRooms:100,  minProps:null, note:'Single property, 100 to 200 rooms' },
+  { name:'Premium',    pct:12, minRooms:200,  minProps:2,    note:'200+ rooms, or 2 to 3 properties' },
+  { name:'Portfolio',  pct:15, minRooms:400,  minProps:3,    note:'3 to 5 properties, or 400+ rooms' },
+  { name:'Enterprise', pct:18, minRooms:800,  minProps:5,    note:'5 to 10 properties, or 800+ rooms' },
+  { name:'Exclusive',  pct:20, minRooms:1500, minProps:10,   note:'10+ properties, or an exclusive contract' }
+];
+
+/* Whichever of rooms or property count reaches higher wins. */
+function hotelTier(totalRooms, props){
+  return HOTEL_TIERS.reduce((best, t) => {
+    const byRooms = totalRooms >= t.minRooms;
+    const byProps = t.minProps != null && props >= t.minProps;
+    return (byRooms || byProps) && t.pct > best.pct ? t : best;
+  }, HOTEL_TIERS[0]);
+}
+
+function hotelModel(rooms, occPct, convPct, props){
+  const r = Math.max(1, Number(rooms) || 0);
+  const p = Math.max(1, Number(props) || 1);
+  const occupied = r * (Math.min(100, Math.max(0, Number(occPct) || 0)) / 100);
+  const ordersPerDay = occupied * (Math.min(100, Math.max(0, Number(convPct) || 0)) / 100);
+  const perProperty = ordersPerDay * HOTEL_BLEND * 365;
+  const annual = perProperty * p;
+  const tier = hotelTier(r * p, p);
+  const commission = annual * (tier.pct / 100);
+  return {
+    tier, occupied, ordersPerDay, annual, commission,
+    monthly: commission / 12,
+    perRoomNight: (r * p * 365) > 0 ? commission / (r * p * 365) : 0
+  };
+}
+
+const tierFor = spend => TIERS.reduce((t,x)=> spend >= x.min ? x : t, TIERS[0]);
+const nextTier = spend => TIERS.find(t => t.min > spend) || null;
+const crownsToAud = c => Math.round(c * CROWN_VALUE * 100) / 100;
+
+/* Crowns earned by one order, at the tier the customer held when it ran. */
+function crownsFor(amount, tierId){
+  const t = TIERS.find(x=>x.id===tierId) || TIERS[0];
+  return Math.floor(Number(amount||0) * t.mult);
+}
+
+/* Rolling 12-month spend drives tier; lifetime spend sets a floor so a
+   long-standing customer never drops back to Member after a quiet patch. */
+const LIFETIME_FLOOR_SPEND = 3000;
+const LIFETIME_FLOOR_TIER  = 'silver';
+
+function rewardsState(){
+  const r = S.acct.rewards || {};
+  const now = Date.now();
+  const yearAgo = now - CROWN_EXPIRY_DAYS*864e5;
+  const orders = (S.bookings||[]).filter(b => b.status==='complete' && b.paidAmount);
+  const rolling = orders.filter(b => (b.completedAt||0) >= yearAgo)
+                        .reduce((s,b)=> s + Number(b.paidAmount||0), 0);
+  const lifetime = orders.reduce((s,b)=> s + Number(b.paidAmount||0), 0);
+  let tier = tierFor(rolling);
+  if (lifetime >= LIFETIME_FLOOR_SPEND){
+    const floor = TIERS.find(t=>t.id===LIFETIME_FLOOR_TIER);
+    if (floor && floor.min > tier.min) tier = floor;
+  }
+  const balance = Math.max(0, Number(r.balance || SIGNUP_CROWNS));
+  const lastOrder = orders.reduce((m,b)=> Math.max(m, b.completedAt||0), 0);
+  return {
+    balance, tier, rolling, lifetime,
+    next: nextTier(rolling),
+    lapsesAt: lastOrder ? lastOrder + CROWN_EXPIRY_DAYS*864e5 : null,
+    referralCode: r.referralCode || '',
+    redeemed: r.redeemed || []
+  };
+}
 
 const uid4 = () => Math.random().toString(36).slice(2,8);
 const REF = () => 'LK-' + Date.now().toString(36).slice(-4).toUpperCase() + Math.random().toString(36).slice(2,4).toUpperCase();
@@ -4227,15 +5056,22 @@ function addMessage(ref, title, body){
   S.messages.unshift(m); pushDoc('messages', m); return m;
 }
 
-/* ---- pricing estimate ---- */
-function estimate(svc, a, b){
+/* ---- pricing estimate ----
+   bagQty is optional; when supplied each bag is added as a one-off line item. */
+function estimate(svc, a, b, bagQty){
   if (svc === 'comm') return null;
   let lines = [], subtot = 0;
   if (svc === 'wf'   ){ const v=a*PX.load; subtot+=v; lines.push([a+' × wash & fold load'+(a>1?'s':''), v]); }
+  if (svc === 'wfi'  ){ const pc=Math.min(b,a), w=a*PX.load, i=pc*PX.premium; subtot+=w+i;
+                        lines.push([a+' × wash & fold load'+(a>1?'s':''), w]);
+                        if (pc) lines.push([pc+' × Premium Clean load'+(pc>1?'s':''), i]); }
+  if (svc === 'premium' ){ const v=a*PX.premium; subtot+=v; lines.push([a+' × Premium Clean load'+(a>1?'s':''), v]); }
   if (svc === 'linen'){ const v=a*PX.linenSheetSet; subtot+=v; lines.push([a+' × blanket, rug or sheet set'+(a>1?'s':''), v]); }
   if (svc === 'dc'   ){ const v=a*PX.dcDress; subtot+=v; lines.push([a+' × garment'+(a>1?'s':'')+' (indicative average)', v]); }
   const p = activeP();
   if (p && p.eco){ const v = PX.ecoAddon; subtot += v; lines.push(['Fragrance-free / sensitive detergent', v]); }
+  const nb = Number(bagQty) || 0;
+  if (nb > 0){ const v = nb * PX.bag; subtot += v; lines.push([nb + ' × LaundryKings bag' + (nb>1?'s':'') + ' (yours to keep)', v]); }
   lines.push(['Collection & return', PX.delivery]); subtot += PX.delivery;
   const total = Math.max(PX.minimum, subtot);
   if (total > subtot + 0.001) lines.push(['Minimum order adjustment', total - subtot]);
@@ -4350,6 +5186,12 @@ function renderAccount(){
     + '<div><h3>'+esc(p.name)+'</h3><p>'+(addrLine(p) ? esc(addrLine(p)) : '<em style="color:var(--mute)">No collection address saved yet</em>')+'</p>'+chips+'</div></div>';
   ['acIdc','prIdc'].forEach(id => { const e = document.getElementById(id); if (e) e.innerHTML = card; });
   const sw = document.getElementById('apSwName2'); if (sw) sw.textContent = p.name;
+  const rwSub = document.getElementById('acRwSub');
+  if (rwSub){
+    const r = rewardsState();
+    rwSub.textContent = r.balance.toLocaleString('en-AU') + ' Crowns · ' + r.tier.name
+      + ' · worth ' + money(crownsToAud(r.balance));
+  }
 }
 
 function renderSheet(){
@@ -4397,7 +5239,7 @@ function renderInvoices(){
 /* ============================================================
    BOOKING WIZARD
    ============================================================ */
-const W = { step:1, svc:'wf', a:2, b:0, date:'', win:'', rec:false, freq:'weekly' };
+const W = { step:1, svc:'wf', a:2, b:0, bag:0, bagQty:1, pay:'payid', date:'', win:'', rec:false, freq:'weekly' };
 
 function wizStep(n){
   W.step = n;
@@ -4415,6 +5257,145 @@ function wizStep(n){
 
 
 /* ============================================================
+   WIZARD + SETTINGS WIRING
+   appBoot calls both of these. They were referenced but never
+   defined, so appBoot threw on its second statement and every
+   later line — renderHome, renderAccount, appRoute — never ran,
+   leaving the whole portal inert. Defining them restores boot and
+   connects the controls that had no handler.
+   ============================================================ */
+function wireWizard(){
+  const on = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; };
+
+  /* step 1 -> 2. Commercial work is a written quote, not a booking,
+     so that choice is diverted to the enquiry form instead. */
+  on('bkN1', () => {
+    if (W.svc === 'comm'){ location.hash = '#/business'; return; }
+    wizStep(2); renderWizard();
+  });
+  on('bkN2', () => {
+    if (!W.win){ say('bkMsg', false, 'Choose a collection window to continue.'); return; }
+    wizStep(3); renderWizard();
+  });
+  on('bkP2', () => { wizStep(1); renderWizard(); });
+  on('bkP3', () => { wizStep(2); renderWizard(); });
+  on('bkBack', () => { wizStep(Math.max(1, W.step - 1)); renderWizard(); });
+
+  const dt = document.getElementById('bkDate');
+  if (dt) dt.onchange = () => { W.date = dt.value; W.win = ''; renderWizard(); };
+
+  const rec = document.getElementById('bkRec');
+  if (rec) rec.onclick = () => {
+    W.rec = !W.rec;
+    rec.classList.toggle('on', W.rec);
+    const o = document.getElementById('bkRecOpts');
+    if (o) o.style.display = W.rec ? '' : 'none';
+    renderWizard();
+  };
+  document.querySelectorAll('[data-freq]').forEach(b => b.onclick = () => {
+    W.freq = b.dataset.freq;
+    document.querySelectorAll('[data-freq]').forEach(x => x.classList.toggle('on', x === b));
+  });
+
+  on('bkGo', submitBooking);
+}
+
+async function submitBooking(){
+  const p = activeP();
+  if (!p || !addrLine(p)){ say('bkMsg', false, 'Add a collection address in your profile first.'); return; }
+  if (!W.win){ say('bkMsg', false, 'Choose a collection window.'); return; }
+  const tos = document.getElementById('bkTos');
+  if (tos && !tos.checked){ say('bkMsg', false, 'Please accept the terms to confirm.'); return; }
+
+  const est = estimate(W.svc, W.a, W.b, W.bag ? W.bagQty : 0);
+  const care = val('bkCare'), del = val('bkDel');
+  const b = {
+    id: 'b' + uid4(), ref: REF(), status: 'requested',
+    svc: W.svc, loads: W.a, premiumLoads: W.b,
+    bags: W.bag ? W.bagQty : 0,
+    date: W.date, window: W.win,
+    recurring: W.rec ? W.freq : '',
+    profileId: p.id, address: addrLine(p), suburb: p.suburb,
+    care, del,
+    estimate: est ? est.total : null,
+    payMethod: W.pay,
+    depositDue: payPlan(W.pay, est ? est.total : 0).now,
+    createdAt: Date.now()
+  };
+  S.bookings.unshift(b);
+  await pushDoc('bookings', b);
+
+  /* Opt-in saves back to the profile so the next booking is prefilled. */
+  const saveCare = document.getElementById('bkCareSave');
+  const saveDel  = document.getElementById('bkDelSave');
+  if ((saveCare && saveCare.checked && care) || (saveDel && saveDel.checked && del)){
+    if (saveCare && saveCare.checked && care) p.care = care;
+    if (saveDel && saveDel.checked && del) p.del = del;
+    await saveProfile(p);
+  }
+
+  addMessage(b.ref, 'Collection ' + b.ref + ' requested',
+    'We have your request for ' + longDate(b.date) + ', ' + b.window + '. '
+    + 'Your operator will confirm shortly. The final price is set after weighing, before any work begins.');
+
+  const done = document.getElementById('bkDoneTx');
+  if (done) done.textContent = b.ref + ' — ' + longDate(b.date) + ', ' + b.window;
+  wizStep(4);
+  renderBookings(); renderMessages(); renderTabs('book');
+}
+
+function wireSettings(){
+  const on = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; };
+  const p = () => activeP();
+
+  on('pdGo', async () => {
+    const x = p(); if (!x) return;
+    if (!val('pdName')){ say('pdMsg', false, 'A profile name is required.'); return; }
+    Object.assign(x, { name: val('pdName'), contact: val('pdContact'), email: val('pdEmail'),
+                       phone: val('pdPhone'), type: val('pdType'),
+                       preferred: document.getElementById('pdPref')?.checked });
+    say('pdMsg', await saveProfile(x), 'Profile details saved.');
+    renderAccount();
+  });
+
+  on('pfGo', async () => {
+    const x = p(); if (!x) return;
+    Object.assign(x, { care: val('pfCare'), del: val('pfDel'), svc: val('pfSvc'),
+                       eco: document.getElementById('pfEco')?.checked });
+    say('pfMsg', await saveProfile(x), 'Service preferences saved.');
+    renderWizard();
+  });
+
+  on('adGo', async () => {
+    const x = p(); if (!x) return;
+    if (!val('adLine1') || !val('adSub')){ say('adMsg', false, 'Street address and suburb are required.'); return; }
+    Object.assign(x, { line1: val('adLine1'), suburb: val('adSub'), postcode: val('adPc'),
+                       state: val('adState'), access: val('adAccess') });
+    say('adMsg', await saveProfile(x), 'Collection address saved.');
+    renderAccount(); renderWizard();
+  });
+
+  on('cmGo', async () => {
+    document.querySelectorAll('[data-cm]').forEach(b => { S.acct.comms[b.dataset.cm] = b.classList.contains('on'); });
+    say('cmMsg', await saveAcct(), 'Notification preferences saved.');
+  });
+
+  on('udGo', async () => {
+    if (!val('udEmail')){ say('udMsg', false, 'An email address is required.'); return; }
+    Object.assign(S.acct, { first: val('udFirst'), last: val('udLast'),
+                            email: val('udEmail'), phone: val('udPhone') });
+    say('udMsg', await saveAcct(), 'Your details have been saved.');
+  });
+
+  on('fbGo', async () => {
+    if (!val('fbTx')){ say('fbMsg', false, 'Tell us what happened so we can act on it.'); return; }
+    await save('feedback', { type: val('fbType'), ref: val('fbRef'), text: val('fbTx') },
+      'fbMsg', 'Thank you. Your feedback has been logged and we will follow it up.');
+    const t = document.getElementById('fbTx'); if (t) t.value = '';
+  });
+}
+
+/* ============================================================
    V2 UPGRADES — ops portal + enhanced renderers
    ============================================================ */
 
@@ -4423,7 +5404,11 @@ const SVC_GRID = [
   { id:'wf',    name:'Wash, Dry', sub:'& Fold',
     svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><line x1="5" y1="6" x2="8" y2="6"/><circle cx="11" cy="6" r="1" fill="currentColor"/></svg>' },
   { id:'linen', name:'Blankets, Rugs', sub:'& Sheets',
-    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0"/><path d="M8 4v12M14 4v12"/></svg>' }
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0"/><path d="M8 4v12M14 4v12"/></svg>' },
+  { id:'wfi',   name:'Washing', sub:'& Premium',
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 6H4L6 2z"/><rect x="3" y="8" width="18" height="14" rx="3"/><path d="M9 8V6M15 8V6"/><line x1="9" y1="15" x2="15" y2="15"/></svg>' },
+  { id:'premium', name:'Premium', sub:'Clean',
+    svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6L12 3z"/><path d="M5 20h14"/></svg>' }
 ];
 
 /* ---- ops state ---- */
@@ -4681,6 +5666,7 @@ function calcInvoice(job){
     const items=Math.max(1,Math.round(kg/0.5)), v=items*PX.dcDress; sub+=v;
     lines.push([`${items} × garment${items>1?'s':''} (dry cleaned)`,v]);
   }
+  if((svc==='wfi'||svc==='premium')&&premiumLoads){ const v=premiumLoads*PX.premium; sub+=v; lines.push([`${premiumLoads} × Premium Clean load${premiumLoads>1?'s':''}`,v]); }
   if(svc==='linen'&&linenCount){ const v=linenCount*PX.linenSheetSet; sub+=v; lines.push([`${linenCount} × linen item at sheet set rate — use adj. field for blankets/rugs`,v]); }
   lines.push(['Collection & return',PX.delivery]); sub+=PX.delivery;
   if(adj){ lines.push([adj>=0?'Adjustment (surcharge)':'Adjustment (discount)',adj]); sub+=adj; }
@@ -4739,9 +5725,38 @@ function renderWizard(){
   /* volume card: show for wf/linen, hide for dc/comm */
   const volEl=document.getElementById('bkVolCard');
   if(volEl) volEl.style.display=['dc','comm'].includes(W.svc)?'none':'';
-  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='linen'?'Blankets, rugs or sheet sets':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
+  if(document.getElementById('bkLblA')) document.getElementById('bkLblA').textContent=W.svc==='linen'?'Blankets, rugs or sheet sets':W.svc==='premium'?'Loads for Premium Clean':W.svc==='dc'?'Garments':'Loads (approx. 5 kg each)';
   { const bn = document.getElementById('bkNumA'); if (bn){ bn.textContent = W.a; bn.classList.remove('bump'); void bn.offsetWidth; bn.classList.add('bump'); } }
   document.getElementById('bkN1').innerHTML=(W.svc==='comm'?'Commercial enquiry':'Continue')+'<svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg>';
+  if(document.getElementById('bkFldB')) document.getElementById('bkFldB').style.display=W.svc==='wfi'?'':'none';
+  if(document.getElementById('bkNumB')) document.getElementById('bkNumB').textContent=W.b;
+
+  /* quantity steppers */
+  document.querySelectorAll('[data-bstep]').forEach(btn=>{
+    btn.onclick=()=>{
+      const [k,d]=btn.dataset.bstep.split(',');
+      const key = k==='bag' ? 'bagQty' : k;
+      const floor = (k==='a'||k==='bag') ? 1 : 0;
+      W[key]=Math.max(floor, Math.min(40, (W[key]||0) + Number(d)));
+      if(k==='a' && W.b>W.a) W.b=W.a;
+      renderWizard();
+    };
+  });
+
+  /* bag choice: hide for commercial enquiries */
+  const bagCard=document.getElementById('bkBagCard');
+  if(bagCard) bagCard.style.display=W.svc==='comm'?'none':'';
+  const bagPx=document.getElementById('bkBagPx');
+  if(bagPx) bagPx.textContent=money(PX.bag)+' each, yours to keep';
+  const bagYes=document.getElementById('bkBagYes'), bagNo=document.getElementById('bkBagNo');
+  if(bagYes&&bagNo){
+    bagYes.classList.toggle('on',!!W.bag); bagNo.classList.toggle('on',!W.bag);
+    bagYes.onclick=()=>{ W.bag=1; renderWizard(); };
+    bagNo.onclick=()=>{ W.bag=0; renderWizard(); };
+  }
+  const bagWrap=document.getElementById('bkBagQtyWrap');
+  if(bagWrap) bagWrap.style.display=W.bag?'':'none';
+  if(document.getElementById('bkBagQty')) document.getElementById('bkBagQty').textContent=W.bagQty;
 
   /* step 3 address */
   const ad=p && addrLine(p)
@@ -4774,7 +5789,8 @@ function renderWizard(){
         <div class="opt-d"><s>${dayName(d)}</s><b>${d.getDate()}</b><s>${monName(d)}</s></div>
         <div class="opt-m"><strong>${win.label}</strong><small>${longDate(W.date)}</small></div>
       </div>`:'' ;
-  const est=estimate(W.svc,W.a,W.b);
+  const est=estimate(W.svc,W.a,W.b,W.bag?W.bagQty:0);
+  renderPayOpts(est);
   document.getElementById('bkSum').innerHTML=est?sumRows(est):'';
   document.getElementById('bkMinNote').textContent=`Minimum service charge of ${money(PX.minimum)} (incl GST) applies per collection, including pickup and return delivery.`;
   document.getElementById('bkRecSub').textContent=win
@@ -4860,6 +5876,410 @@ function richBookingCard(b){
   </div>`;
 }
 
+/* ---------------- KING REWARDS RENDER ---------------- */
+function renderRewards(){
+  const r = rewardsState();
+  const set = (id,v)=>{ const e=document.getElementById(id); if(e) e.textContent=v; };
+
+  set('rwCrowns', r.balance.toLocaleString('en-AU'));
+  set('rwWorth', 'worth ' + money(crownsToAud(r.balance)));
+  set('rwTier', r.tier.name);
+  set('rwMult', 'earning ' + r.tier.mult + ' Crown' + (r.tier.mult===1?'':'s') + ' per $1');
+
+  /* progress toward the next tier, measured on rolling 12-month spend */
+  const bar = document.getElementById('rwProgBar');
+  if (r.next){
+    const span = r.next.min - r.tier.min;
+    const pct = span > 0 ? Math.max(0, Math.min(100, ((r.rolling - r.tier.min) / span) * 100)) : 0;
+    if (bar) bar.style.width = pct.toFixed(1) + '%';
+    set('rwProgTx', money(Math.max(0, r.next.min - r.rolling)) + ' more in the next 12 months to reach ' + r.next.name + '.');
+  } else {
+    if (bar) bar.style.width = '100%';
+    set('rwProgTx', 'You are at our highest tier. Thank you.');
+  }
+
+  /* redemption menu — a row dims until the balance covers it */
+  const host = document.getElementById('rwRewards');
+  if (host){
+    host.innerHTML = REWARDS.map(x => {
+      const ok = r.balance >= x.crowns;
+      return '<div class="rw-row' + (ok?'':' off') + '">'
+        + '<div class="rw-c">' + x.crowns.toLocaleString('en-AU') + '</div>'
+        + '<div class="rw-l"><strong>' + esc(x.label) + '</strong>'
+        + '<small>Value capped at ' + money(x.cap) + '</small></div>'
+        + '<button class="btn btn-out" data-redeem="' + x.id + '"' + (ok?'':' disabled') + '>'
+        + (ok ? 'Redeem' : 'Locked') + '</button></div>';
+    }).join('');
+    host.querySelectorAll('[data-redeem]').forEach(b => b.onclick = () => redeemCrowns(b.dataset.redeem));
+  }
+
+  const perks = document.getElementById('rwPerks');
+  if (perks) perks.innerHTML = r.tier.perks.map(p => '<li>' + esc(p) + '</li>').join('');
+
+  set('rwRefGive', money(REFERRAL_CREDIT));
+  set('rwRefGet', money(REFERRAL_CREDIT));
+  const code = document.getElementById('rwRefCode');
+  if (code) code.value = r.referralCode || referralCode();
+
+  const lapse = document.getElementById('rwLapse');
+  if (lapse){
+    lapse.textContent = r.lapsesAt
+      ? 'Crowns lapse on ' + longDate(isoDate(new Date(r.lapsesAt))) + ' unless you book again before then. Any collection resets the clock.'
+      : 'Crowns lapse 12 months after your last completed collection.';
+  }
+}
+
+/* ---------------- PAYMENT CHOICE ON THE BOOKING ---------------- */
+function renderPayOpts(est){
+  const host = document.getElementById('bkPayOpts'); if (!host) return;
+  const p = activeP();
+  const isBusiness = !!(p && /business|commercial/i.test(p.type || ''));
+  const avail = PAY_METHODS.filter(m => !m.b2bOnly || isBusiness);
+  if (!avail.some(m => m.id === W.pay)) W.pay = avail[0].id;
+
+  host.innerHTML = avail.map(m =>
+    '<button type="button" class="payopt' + (W.pay === m.id ? ' on' : '') + '" data-pay="' + m.id + '">'
+    + '<strong>' + esc(m.name) + (m.depositPct ? ' <em>' + m.depositPct + '% now</em>' : '') + '</strong>'
+    + '<span>' + esc(m.blurb) + '</span></button>').join('');
+  host.querySelectorAll('[data-pay]').forEach(b => b.onclick = () => { W.pay = b.dataset.pay; renderWizard(); });
+
+  const expl = document.getElementById('bkPayExpl'); if (!expl) return;
+  const total = est ? est.total : 0;
+  const plan = payPlan(W.pay, total);
+  let rows = '<p>' + esc(plan.method.settle) + '</p>';
+  if (plan.now > 0){
+    rows += '<div class="prow"><div><strong>Due now</strong><em>' + plan.pct + '% of the estimate</em></div><b>' + money(plan.now) + '</b></div>'
+          + '<div class="prow"><div><strong>Due after weighing</strong><em>Adjusted to the real amount</em></div><b>' + money(plan.later) + '</b></div>';
+  } else if (plan.held > 0){
+    rows += '<div class="prow"><div><strong>Held now</strong><em>Not a charge — released if unused</em></div><b>' + money(plan.held) + '</b></div>'
+          + '<div class="prow"><div><strong>Charged after weighing</strong><em>The actual amount, up to the hold</em></div><b>at cost</b></div>';
+  } else {
+    rows += '<div class="prow"><div><strong>Due now</strong></div><b>Nothing</b></div>'
+          + '<div class="prow"><div><strong>Due after weighing</strong><em>The actual amount</em></div><b>' + money(total) + ' est.</b></div>';
+  }
+  expl.innerHTML = rows + '<p class="ap-fine">Every figure here is the estimate. Your operator confirms the real price after weighing and before any work starts, and you can decline at that point at no cost.</p>';
+}
+
+/* ---------------- INVESTOR + FRANCHISE ---------------- */
+function wireLeads(){
+  const go = (btn, fn) => { const e = document.getElementById(btn); if (e) e.onclick = fn; };
+
+  go('ivGo', async () => {
+    if (!val('ivFirst') || !val('ivEmail')){ say('ivMsg', false, 'We need a name and an email to reply to.'); return; }
+    await save('investorEnquiries', {
+      first: val('ivFirst'), last: val('ivLast'), email: val('ivEmail'), phone: val('ivPhone'),
+      org: val('ivOrg'), type: val('ivType'), range: val('ivRange'), notes: val('ivNotes')
+    }, 'ivMsg', 'Thank you. We will come back to you directly — the pack is sent by a person, not automatically.');
+  });
+
+  go('frGo', async () => {
+    if (!val('frFirst') || !val('frEmail')){ say('frMsg', false, 'We need a name and an email to reply to.'); return; }
+    await save('franchiseEnquiries', {
+      first: val('frFirst'), last: val('frLast'), email: val('frEmail'), phone: val('frPhone'),
+      area: val('frArea'), experience: val('frExp'), capital: val('frCap'), notes: val('frNotes')
+    }, 'frMsg', 'Thank you. We will be in touch to talk through the territory and the numbers.');
+  });
+
+  go('frCheck', () => {
+    const pc = val('frPc');
+    const res = document.getElementById('frRes'); if (!res) return;
+    if (!/^\d{4}$/.test(pc)){
+      res.innerHTML = '<div class="pnote">Enter a four-digit Australian postcode.</div>';
+      return;
+    }
+    /* A postcode we already service is not available to franchise: we run
+       it ourselves. The pipeline postcodes are the ones worth talking about. */
+    if (LIVE_PC[pc]){
+      res.innerHTML = '<div class="pnote"><strong>' + esc(LIVE_PC[pc]) + ' (' + pc + ') is already ours.</strong> '
+        + 'We operate here directly, so it is not available as a territory. Nearby postcodes may be.</div>';
+    } else if (SOON_PC[pc]){
+      res.innerHTML = '<div class="pnote" style="border-left-color:var(--navy)"><strong>' + esc(SOON_PC[pc]) + ' (' + pc + ') is next on our list.</strong> '
+        + 'This is exactly the kind of territory we are opening. Worth a conversation.</div>';
+    } else {
+      res.innerHTML = '<div class="pnote"><strong>' + pc + ' is outside our current footprint.</strong> '
+        + 'We can still talk, but we would be honest that support is thinner this far out until we have operators nearby.</div>';
+    }
+    const area = document.getElementById('frArea');
+    if (area && !area.value) area.value = pc;
+  });
+}
+
+/* ---------------- OPERATOR ONBOARDING ---------------- */
+function obDone(id){
+  if (id === 'details') return !!(OB.details.first && OB.details.last && OB.details.email && OB.details.phone);
+  if (id === 'status')  return contractorTest(OB.answers).complete;
+  if (id === 'identity')return OB.checks.identity === 'verified';
+  if (id === 'police')  return OB.checks.police === 'cleared';
+  if (id === 'tax')     return !!(OB.details.tfn && OB.details.superFund && OB.details.bsb);
+  if (id === 'whs')     return OB.whs.length === OB_WHS.length;
+  if (id === 'insurance') return OB.details.ownVehicle === 'no' || !!OB.details.policyNo;
+  return false;
+}
+
+function renderOnboard(){
+  const steps = document.getElementById('obSteps'); if (!steps) return;
+
+  steps.innerHTML = OB_STEPS.map((s,i) => {
+    const done = obDone(s.id), cur = OB.step === s.id;
+    return '<button class="ob-step' + (cur?' on':'') + (done?' done':'') + '" data-obstep="' + s.id + '">'
+      + '<span class="ob-n">' + (done ? '&#10003;' : (i+1)) + '</span>'
+      + '<span class="ob-t"><strong>' + s.label + '</strong><small>' + s.blurb + '</small></span></button>';
+  }).join('');
+  steps.querySelectorAll('[data-obstep]').forEach(b => b.onclick = () => { OB.step = b.dataset.obstep; renderOnboard(); });
+
+  const done = OB_STEPS.filter(s => obDone(s.id)).length;
+  const status = document.getElementById('obStatus');
+  if (status){
+    status.innerHTML = OB_STEPS.map(s =>
+      '<div class="prow"><div><strong>' + s.label + '</strong></div><b style="color:'
+      + (obDone(s.id) ? 'var(--navy)' : 'var(--mute)') + '">'
+      + (obDone(s.id) ? 'Done' : 'Waiting') + '</b></div>').join('');
+  }
+  const note = document.getElementById('obNote');
+  if (note) note.textContent = done === OB_STEPS.length
+    ? 'Everything is in. Max signs off your engagement status, then you are live.'
+    : done + ' of ' + OB_STEPS.length + ' complete. You can finish these in any order.';
+
+  const costs = document.getElementById('obCosts');
+  if (costs){
+    const total = OB_VENDORS.id.cost + OB_VENDORS.police.cost;
+    costs.innerHTML =
+        '<div class="prow"><div><strong>' + OB_VENDORS.id.name + '</strong><em>Identity, ' + OB_VENDORS.id.turnaround + '</em></div><b>' + money(OB_VENDORS.id.cost) + '</b></div>'
+      + '<div class="prow"><div><strong>' + OB_VENDORS.police.name + '</strong><em>Police check, ' + OB_VENDORS.police.turnaround + '</em></div><b>' + money(OB_VENDORS.police.cost) + '</b></div>'
+      + '<div class="prow"><div><strong>Total per operator</strong></div><b style="color:var(--navy)">' + money(total) + '</b></div>';
+  }
+
+  obPanel();
+}
+
+function obPanel(){
+  const el = document.getElementById('obPanel'); if (!el) return;
+  const d = OB.details;
+  const f = (id,label,val,type) => '<div class="fld"><label class="lbl" for="'+id+'">'+label+'</label>'
+    + '<input class="inp" id="'+id+'" type="'+(type||'text')+'" value="'+esc(val||'')+'"></div>';
+
+  if (OB.step === 'details'){
+    el.innerHTML = '<h3 style="margin-top:0">Your details</h3>'
+      + '<div class="g2">' + f('obFirst','First name',d.first) + f('obLast','Last name',d.last) + '</div>'
+      + f('obEmail','Email',d.email,'email') + f('obPhone','Mobile',d.phone,'tel')
+      + f('obDob','Date of birth',d.dob,'date')
+      + f('obAddr','Residential address',d.addr)
+      + f('obAbn','ABN (if you have one)',d.abn)
+      + '<p class="ap-fine">An ABN does not by itself make you a contractor. The next step works that out properly.</p>'
+      + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveDetails">Save and continue</button>'
+      + '<p class="pnote" id="obMsg" style="margin-top:.8rem"></p>';
+    document.getElementById('obSaveDetails').onclick = () => {
+      ['first','last','email','phone','dob','addr','abn'].forEach(k => {
+        OB.details[k] = val('ob' + k.charAt(0).toUpperCase() + k.slice(1));
+      });
+      if (!OB.details.first || !OB.details.email){ say('obMsg', false, 'We need at least your name and email.'); return; }
+      OB.step = 'status'; renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'status'){
+    const t = contractorTest(OB.answers);
+    el.innerHTML = '<h3 style="margin-top:0">Engagement check</h3>'
+      + '<p>This is the Fair Work multi-factor test. It decides whether the law treats this role as contracting or employment, which in turn decides superannuation and payroll tax. No single answer settles it.</p>'
+      + OB_FACTORS.map(q =>
+          '<div class="ob-q"><strong>' + q.q + '</strong>'
+          + q.a.map(([label,v]) =>
+              '<button type="button" class="ob-a' + (OB.answers[q.id]===v?' on':'') + '" data-obq="' + q.id + '" data-obv="' + v + '">'
+              + esc(label) + '</button>').join('')
+          + '</div>').join('')
+      + '<div class="ob-out ' + t.outcome + '"><strong>' + ({
+            contractor:'Independent contractor', employee:'Employee', review:'Needs review', incomplete:'Not finished'
+          })[t.outcome] + '</strong><p>' + t.why + '</p>'
+      + (t.superFlag && t.complete ? '<p class="ap-fine"><strong>Flagged:</strong> superannuation is likely payable and this may count toward payroll tax grouping. Max signs this off before engagement.</p>' : '')
+      + '</div>';
+    el.querySelectorAll('[data-obq]').forEach(b => b.onclick = () => {
+      OB.answers[b.dataset.obq] = b.dataset.obv; renderOnboard();
+    });
+    return;
+  }
+
+  if (OB.step === 'identity' || OB.step === 'police'){
+    const isId = OB.step === 'identity';
+    const v = isId ? OB_VENDORS.id : OB_VENDORS.police;
+    const state = isId ? OB.checks.identity : OB.checks.police;
+    const target = isId ? 'verified' : 'cleared';
+    el.innerHTML = '<h3 style="margin-top:0">' + (isId ? 'Identity' : 'Police check') + '</h3>'
+      + '<p>' + (isId
+          ? 'You photograph your licence or passport and take a short selfie. The match is done by ' + v.name + ' and takes about a minute.'
+          : 'A National Police Certificate through ' + v.name + '. Most come back the same day; some take up to three.') + '</p>'
+      + '<div class="prow"><div><strong>Provider</strong></div><b>' + v.name + '</b></div>'
+      + '<div class="prow"><div><strong>Status</strong></div><b style="color:' + (state===target?'var(--navy)':'var(--mute)') + '">' + state + '</b></div>'
+      + (state === 'not started'
+          ? '<button class="btn btn-red btn-full" style="margin-top:1rem" id="obStart">Start ' + (isId?'identity check':'police check') + '</button>'
+          : state === target
+            ? '<p class="pnote" style="margin-top:1rem">This check is complete. Nothing further needed.</p>'
+            : '<p class="pnote" style="margin-top:1rem">Submitted. We will email you the moment it clears — you do not need to wait on this page.</p>')
+      + '<p class="ap-fine">We pay for this check. Your documents go straight to the provider and are not stored by LaundryKings.</p>';
+    const btn = document.getElementById('obStart');
+    if (btn) btn.onclick = () => {
+      /* The real handoff runs through the kings-api worker, which holds
+         the vendor credentials and receives the result by webhook. */
+      if (isId) OB.checks.identity = 'in progress'; else OB.checks.police = 'submitted';
+      renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'tax'){
+    el.innerHTML = '<h3 style="margin-top:0">Tax, super and bank</h3>'
+      + f('obTfn','Tax file number',d.tfn)
+      + f('obSuper','Superannuation fund',d.superFund)
+      + f('obSuperNo','Member number',d.superNo)
+      + '<div class="g2">' + f('obBsb','BSB',d.bsb) + f('obAcct','Account number',d.acct) + '</div>'
+      + '<p class="ap-fine">Your TFN is sent straight to our accountant and is never displayed back in this portal.</p>'
+      + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveTax">Save</button>';
+    document.getElementById('obSaveTax').onclick = () => {
+      OB.details.tfn = val('obTfn'); OB.details.superFund = val('obSuper');
+      OB.details.superNo = val('obSuperNo'); OB.details.bsb = val('obBsb'); OB.details.acct = val('obAcct');
+      renderOnboard();
+    };
+    return;
+  }
+
+  if (OB.step === 'whs'){
+    el.innerHTML = '<h3 style="margin-top:0">Safety</h3>'
+      + '<p>Tick each one to confirm you have read and understood it. These are the obligations that come with handling chemicals and driving for work.</p>'
+      + OB_WHS.map((w,i) =>
+          '<label class="ob-chk"><input type="checkbox" data-obwhs="' + i + '"'
+          + (OB.whs.includes(i)?' checked':'') + '><span>' + esc(w) + '</span></label>').join('')
+      + '<p class="ap-fine">Safety data sheets and the manual handling guide are in the operator portal once you are live.</p>';
+    el.querySelectorAll('[data-obwhs]').forEach(c => c.onchange = () => {
+      const i = Number(c.dataset.obwhs);
+      OB.whs = c.checked ? OB.whs.concat([i]).filter((x,n,a)=>a.indexOf(x)===n) : OB.whs.filter(x => x !== i);
+      renderOnboard();
+    });
+    return;
+  }
+
+  if (OB.step === 'insurance'){
+    const own = OB.details.ownVehicle || '';
+    el.innerHTML = '<h3 style="margin-top:0">Insurance</h3>'
+      + '<p>Only needed if you drive your own vehicle for collections.</p>'
+      + '<div class="ap-g2">'
+      + '<button type="button" class="bagopt' + (own==='yes'?' on':'') + '" data-obveh="yes"><strong>I use my own vehicle</strong><span>Comprehensive motor cover required</span></button>'
+      + '<button type="button" class="bagopt' + (own==='no'?' on':'') + '" data-obveh="no"><strong>I do not drive for collections</strong><span>No motor cover needed</span></button>'
+      + '</div>'
+      + (own === 'yes'
+          ? f('obInsurer','Insurer',d.insurer) + f('obPolicy','Policy number',d.policyNo) + f('obExpiry','Expiry date',d.expiry,'date')
+            + '<button class="btn btn-nv btn-full" style="margin-top:1rem" id="obSaveIns">Save</button>'
+          : own === 'no' ? '<p class="pnote" style="margin-top:1rem">Nothing further needed here.</p>' : '');
+    el.querySelectorAll('[data-obveh]').forEach(b => b.onclick = () => {
+      OB.details.ownVehicle = b.dataset.obveh; renderOnboard();
+    });
+    const s = document.getElementById('obSaveIns');
+    if (s) s.onclick = () => {
+      OB.details.insurer = val('obInsurer'); OB.details.policyNo = val('obPolicy'); OB.details.expiry = val('obExpiry');
+      renderOnboard();
+    };
+  }
+}
+
+/* ---------------- HOTEL PARTNER PAGE ---------------- */
+function paintHotels(){
+  const R = (n, note, v) => '<div class="prow"><div><strong>' + n + '</strong>'
+    + (note ? '<em>' + note + '</em>' : '') + '</div><b>' + v + '</b></div>';
+  const px = document.getElementById('htPricing');
+  if (px) px.innerHTML =
+      R('Standard bag', 'One bag, up to 5 kg. Washed, folded, returned.', money(HOTEL_PX.standard))
+    + R('Double bag', 'Two bags for couples and families, collected together.', money(HOTEL_PX.double))
+    + R('Room package', 'From the fifth bag: unlimited for the rest of the stay.', money(HOTEL_PX.package))
+    + R('Premium Clean', 'Optional finish per bag. Delicates, hand-treated stains.', '+' + money(HOTEL_PX.premium));
+
+  const tiers = document.getElementById('htTiers');
+  if (tiers) tiers.innerHTML = HOTEL_TIERS.map(t =>
+      '<div class="prow"><div><strong>' + t.name + '</strong><em>' + t.note + '</em></div><b>'
+    + t.pct + '%</b></div>').join('');
+
+  calcHotel();
+}
+
+function calcHotel(){
+  const host = document.getElementById('htResult'); if (!host) return;
+  const v = id => { const e = document.getElementById(id); return e ? Number(e.value) : 0; };
+  const m = hotelModel(v('htRooms'), v('htOcc'), v('htConv'), v('htProps'));
+  const props = Math.max(1, v('htProps') || 1);
+  host.innerHTML =
+      '<div class="prow"><div><strong>Your commission tier</strong>'
+    + '<em>' + esc(m.tier.note) + '</em></div><b>' + m.tier.pct + '%</b></div>'
+    + '<div class="prow"><div><strong>Rooms occupied each night</strong>'
+    + '<em>Across ' + props + ' propert' + (props === 1 ? 'y' : 'ies') + '</em></div><b>'
+    + Math.round(m.occupied * props).toLocaleString('en-AU') + '</b></div>'
+    + '<div class="prow"><div><strong>Guest orders per day</strong></div><b>'
+    + (m.ordersPerDay * props).toFixed(1) + '</b></div>'
+    + '<div class="prow"><div><strong>Laundry revenue a year</strong>'
+    + '<em>At a ' + money(HOTEL_BLEND) + ' blended order</em></div><b>'
+    + bigMoney(m.annual) + '</b></div>'
+    + '<div class="prow" style="border-top:2px solid var(--navy)"><div><strong>Your commission a year</strong>'
+    + '<em>' + bigMoney(m.monthly) + ' a month, or ' + money(m.perRoomNight)
+    + ' per available room-night</em></div><b style="font-size:1.15rem;color:var(--navy)">'
+    + bigMoney(m.commission) + '</b></div>';
+}
+
+function wireHotels(){
+  ['htRooms','htOcc','htConv','htProps'].forEach(id => {
+    const e = document.getElementById(id); if (e) e.oninput = calcHotel;
+  });
+  const go = document.getElementById('htGo');
+  if (go) go.onclick = async () => {
+    const name = val('htName'), hotel = val('htHotel'), email = val('htEmail');
+    if (!name || !hotel || !email){ say('htMsg', false, 'Add your name, property and email so we can reply.'); return; }
+    await save('hotelEnquiries', {
+      name, hotel, email,
+      role: val('htRole'), phone: val('htPhone'),
+      rooms: Number(document.getElementById('htRoomsQ').value) || null,
+      modelled: hotelModel(
+        Number(document.getElementById('htRooms').value),
+        Number(document.getElementById('htOcc').value),
+        Number(document.getElementById('htConv').value),
+        Number(document.getElementById('htProps').value)).tier.name
+    }, 'htMsg', 'Thank you. We will be in touch within one business day to arrange your partnership call.');
+  };
+}
+
+function wireRewards(){
+  const btn = document.getElementById('rwRefCopy');
+  if (!btn) return;
+  btn.onclick = async () => {
+    const code = referralCode();
+    const link = location.origin + location.pathname + '#/book?ref=' + encodeURIComponent(code);
+    let copied = false;
+    try { await navigator.clipboard.writeText(link); copied = true; } catch(e){}
+    say('rwRefMsg', true, copied ? 'Referral link copied. Send it to anyone.' : 'Copy this link: ' + link);
+    await saveAcct();
+  };
+}
+
+/* A stable per-account code. Derived from the account ref so it survives
+   a reload without needing another round trip to the database. */
+function referralCode(){
+  S.acct.rewards = S.acct.rewards || {};
+  if (!S.acct.rewards.referralCode){
+    const seed = (S.acct.first || 'KING').replace(/[^a-z]/gi,'').slice(0,5).toUpperCase() || 'KING';
+    S.acct.rewards.referralCode = seed + '-' + uid4().toUpperCase();
+  }
+  return S.acct.rewards.referralCode;
+}
+
+async function redeemCrowns(id){
+  const x = REWARDS.find(w => w.id === id); if (!x) return;
+  const r = rewardsState();
+  if (r.balance < x.crowns){ say('rwRefMsg', false, 'Not enough Crowns for that reward yet.'); return; }
+  S.acct.rewards = S.acct.rewards || {};
+  S.acct.rewards.balance = r.balance - x.crowns;
+  S.acct.rewards.redeemed = (S.acct.rewards.redeemed || []).concat([{ id:x.id, crowns:x.crowns, at:Date.now() }]);
+  await saveAcct();
+  addMessage('REWARDS', 'Reward applied: ' + x.label,
+    x.label + ' has been added to your account and will be applied to your next collection. '
+    + x.crowns.toLocaleString('en-AU') + ' Crowns were deducted. Value capped at ' + money(x.cap) + '.');
+  renderRewards(); renderMessages();
+}
+
 /* ================================================================
    UPDATED appRoute + appBoot — add ops routing
    ================================================================ */
@@ -4890,6 +6310,7 @@ function appRoute(id){
   if(id==='messages')  renderMessages();
   if(id==='thread')    renderThread();
   if(['account','profile'].includes(id)) renderAccount();
+  if(id==='rewards')   renderRewards();
   if(['pdetails','prefs','address','comms','userdet','invoices'].includes(id)) renderForms();
   if(id==='ops')     { if(CAN_EDIT) opsSkeleton('opsRoot'); opsLoad().then(renderOps); }
   if(id==='opsbook') renderOpsBook();
@@ -5141,6 +6562,7 @@ async function appBoot(){
   await appLoad();
   try { wireWizard(); } catch(e){ console.error('[LK] wireWizard', e); }
   try { wireSettings(); } catch(e){ console.error('[LK] wireSettings', e); }
+  try { wireRewards(); } catch(e){ console.error('[LK] wireRewards', e); }
   ['apVer','apVer2'].forEach(i=>{ const e=document.getElementById(i); if(e) e.textContent='v1.0 · '+(PERSISTED?'signed in':'session only'); });
   renderHome(); renderAccount(); renderForms(); renderWizard(); renderBookings(); renderMessages();
   appRoute(curId);
@@ -5805,7 +7227,7 @@ window.kc5Pause = kc5Pause;
 
 /* ---------- BOOT ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
-paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); route(); initHomeV5(); op5Init(); renderKcPortal();
+paintPrices(); paintSubs(); paintFaq(); paintHomeV4(); paintHotels(); wireHotels(); wireLeads(); wireAI(); renderOnboard(); route(); initHomeV5(); op5Init(); renderKcPortal();
 
 (async () => {
   try { DB = await claude.use('db'); } catch(e){ DB = null; }
