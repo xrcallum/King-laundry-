@@ -19,7 +19,7 @@
 <tr><td class="k">2</td><td class="k">The emoji census was under-counted.</td><td>A Unicode scan of the live file finds 83 &lt;i&gt; tags, 75 of which contain an emoji (29 distinct), plus 49 loose symbol glyphs in prose (16 distinct; 23 are the "→" arrow). v1 said 47 and 19.</td><td>Phase A acceptance test becomes "Unicode scan returns zero", never a count. The icon sprite needs about 30 symbols, not 27 (Part 8).</td></tr>
 <tr><td class="k">3</td><td class="k">laundrykings.com.au cannot be bought through Vercel today, and laundrykings.com is taken.</td><td>Vercel reports .com.au and .com "not available for purchase". DNS: laundrykings.com resolves to a third-party host; laundrykings.com.au has no record, which is consistent with either an unregistered name that Vercel does not sell, or a registered but unused name. <span class="tag t-unv">Unverified</span> until an auDA WHOIS lookup.</td><td>M2's headline outcome "site live at laundrykings.com.au" now depends on KEA-14 (an active ABN is required for any .com.au) and on a registrar that sells .com.au. Options in Part 16, decision D-09.</td></tr>
 <tr><td class="k">4</td><td class="k">Laundry Lady's rate card is partly public, and it changes the +5% decision.</td><td>Search-indexed content of thelaundrylady.com.au/pricing (effective 27 July 2026): minimum $70.00, pickup and delivery $14.50, service fee $2.20 recurring or $5.50 one-off. Their 2024 price list: $27.50 per 5 kg load, ironing from $2.75 per item. Direct fetch of the page is blocked from this environment, so the per-load 2026 figure is <span class="tag t-unv">Unverified</span>.</td><td>Our $32 load is already about 16% above their 2024 load price; a further +5% on line items is not needed to be "premium". The stronger position is the all-in floor: a one-off Laundry Lady booking appears to cost $70 + $14.50 + $5.50 = $90.00 versus our $73.50 with delivery included, if their minimum excludes those fees. Part 3 and decision D-04.</td></tr>
-<tr><td class="k">5</td><td class="k">The Kings Club "save around $28 every week" claim is true only at two loads.</td><td>At the v4.2 price: 2 loads ($64.00) + delivery ($13.50) = $77.50 versus Solo $49.00, saving $28.50 (36.8%) <span class="tag t-ver">Verified</span>. After the 19 September re-price (Solo $63.70) the same comparison saves $13.80 (17.8%), and at one load ($45.50 ad hoc) a Solo member pays $18.20 more.</td><td>Qualify the claim with its basis wherever it appears. Australian Consumer Law treats an unqualified comparison as a representation. Done: the home page now computes the figure from live pricing and reads "save around $14 a week compared with two ad-hoc loads".</td></tr>
+<tr><td class="k">5</td><td class="k">The Legends Club "save around $28 every week" claim is true only at two loads.</td><td>At the v4.2 price: 2 loads ($64.00) + delivery ($13.50) = $77.50 versus Solo $49.00, saving $28.50 (36.8%) <span class="tag t-ver">Verified</span>. After the 19 September re-price (Solo $63.70) the same comparison saves $13.80 (17.8%), and at one load ($45.50 ad hoc) a Solo member pays $18.20 more.</td><td>Qualify the claim with its basis wherever it appears. Australian Consumer Law treats an unqualified comparison as a representation. Done: the home page now computes the figure from live pricing and reads "save around $14 a week compared with two ad-hoc loads".</td></tr>
 <tr><td class="k">6</td><td class="k">Red on navy fails contrast at 2.07:1.</td><td>Computed from the brand tokens (#CC2228 on #1A3480). The Bold Editorial direction puts red CTAs, crown and price figures on navy surfaces.</td><td>Red never sits directly on navy. Red on paper or white only; on navy, the CTA is white-filled with red text, or a white outline. Written into the design system (Part 8).</td></tr>
 <tr><td class="k">7</td><td class="k">Linear is behind the dossier.</td><td>KEA-11 still reads "deploy laundrykings.com.au to Cloudflare Pages" while v1 says Vercel. No issue carries a due date. Every issue is assigned to Callum, including the four decisions v1 gives to Max. Milestone dates exist only in Linear: M1 15 Oct, M2 30 Nov, M3 31 Dec 2026.</td><td>Ten-minute hygiene pass (Part 6): retitle KEA-11, add due dates, add Max as a Linear member and reassign D-01, D-03, D-04 and D-07.</td></tr>
 </tbody></table>
@@ -32,7 +32,7 @@
   <ol>
     <li><strong>Today, Callum (19 Sep):</strong> commit the v4.2 file to Git, run the pre-flight script in Appendix A, then execute Phase A exactly as the resume block in Part 17 states. One publish.</li>
     <li><strong>Today, Callum (19 Sep):</strong> Linear hygiene pass (Part 6) and run the auDA WHOIS check on laundrykings.com.au (Part 16, D-09).</li>
-    <li><strong>By 25 Sep, Max:</strong> pricing decision D-04 with the competitor card in Part 3; company name, ABN and address for the footer (D-03); confirm the three Kings Club price points (D-07).</li>
+    <li><strong>By 25 Sep, Max:</strong> pricing decision D-04 with the competitor card in Part 3; company name, ABN and address for the footer (D-03); confirm the three Legends Club price points (D-07).</li>
     <li><strong>By 26 Sep, both:</strong> seed config/contact and config/payment (D-01) so the phone placeholder disappears and an invoice can be paid.</li>
     <li><strong>By 30 Sep, Callum:</strong> Phase B and Phase C publishes, imagery via Gamma, then close KEA-18.</li>
     <li><strong>By 3 Oct, Max with adviser:</strong> operator engagement brief (Part 10) covering contractor test, employee-like exposure and Super, before KEA-7 registers the first operator.</li>
@@ -72,10 +72,10 @@
 <thead><tr><th style="width:22%">Asset</th><th>Location</th><th style="width:22%">Status</th></tr></thead>
 <tbody>
 <tr><td class="k">Live artefact</td><td>claude.ai/artifact/SJihvya38JukdcAUL7JiFx</td><td><span class="tag t-ver">Verified</span> readable, v4.2</td></tr>
-<tr><td class="k">Copy of record</td><td>github.com/xrcallum/King-laundry- · branch claude/document-review-expand-u6pv21 · <code>site/laundrykings-site.html</code></td><td><span class="tag t-new">New in v2</span> committed with this dossier</td></tr>
-<tr><td class="k">Working file (session container)</td><td>/mnt/user-data/outputs/laundrykings-site.html</td><td>Ephemeral. If missing, read the artefact or clone the repo.</td></tr>
+<tr><td class="k">Copy of record</td><td>github.com/xrcallum/King-laundry- · branch claude/document-review-expand-u6pv21 · <code>site/laundrylegends-site.html</code></td><td><span class="tag t-new">New in v2</span> committed with this dossier</td></tr>
+<tr><td class="k">Working file (session container)</td><td>/mnt/user-data/outputs/laundrylegends-site.html</td><td>Ephemeral. If missing, read the artefact or clone the repo.</td></tr>
 <tr><td class="k">Linear</td><td>linear.app/keatonmills/project/laundrykings-full-platform-build-9848085bf693</td><td><span class="tag t-ver">Verified</span> 14 issues, 3 milestones</td></tr>
-<tr><td class="k">Google Drive</td><td>MAXCAL | LaundryKings (Max owns the account)</td><td><span class="tag t-unv">Unverified</span> not visible from Callum's Drive; confirm the folder is shared to callum@maxcalprojects.com</td></tr>
+<tr><td class="k">Google Drive</td><td>MAXCAL | Laundrylegends (Max owns the account)</td><td><span class="tag t-unv">Unverified</span> not visible from Callum's Drive; confirm the folder is shared to callum@maxcalprojects.com</td></tr>
 <tr><td class="k">Gamma deck</td><td>gamma.app/generations/7P0KIACPOrpdTTjegwCEu</td><td><span class="tag t-unv">Unverified</span> not re-opened in v2</td></tr>
 </tbody></table>
 
@@ -87,7 +87,7 @@
 <div class="part">
 <p class="part-kicker">Part 2</p>
 <h1>The project, principals and brand</h1>
-<p class="lede">LaundryKings is laundry pickup and delivery across Brisbane, Logan and South East Queensland. Independent operators run collection rounds in their own suburb under the LaundryKings brand. Web-first, no app download. Tagline: "We Wash It Well."</p>
+<p class="lede">Laundrylegends is laundry pickup and delivery across Brisbane, Logan and South East Queensland. Independent operators run collection rounds in their own suburb under the Laundrylegends brand. Web-first, no app download. Tagline: "We Wash It Well."</p>
 
 <h3>Principals</h3>
 <table>
@@ -130,21 +130,21 @@
 <table>
 <thead><tr><th style="width:26%">Artefact</th><th>System</th><th style="width:30%">Proposed filing name</th><th style="width:12%">Owner</th></tr></thead>
 <tbody>
-<tr><td class="k">Website (marketing, app, ops)</td><td>Claude artefact + Git copy of record</td><td class="mono">LKG-SYS09-01_Website_v4.2</td><td>Callum</td></tr>
-<tr><td class="k">This dossier</td><td>PDF in Drive GOV00 + Git</td><td class="mono">LKG-GOV00-01_Complete Dossier_v2</td><td>Callum</td></tr>
-<tr><td class="k">Master Blueprint</td><td>Google Doc, Drive GOV00</td><td class="mono">LKG-GOV00-02_Master Blueprint_v1</td><td>Max</td></tr>
-<tr><td class="k">Ops Runbook</td><td>Google Doc, Drive OPS03</td><td class="mono">LKG-OPS03-01_Ops Runbook_v1</td><td>Max</td></tr>
-<tr><td class="k">Build Log</td><td>Google Doc, Drive SYS09</td><td class="mono">LKG-SYS09-02_Build Log_v1</td><td>Callum</td></tr>
+<tr><td class="k">Website (marketing, app, ops)</td><td>Claude artefact + Git copy of record</td><td class="mono">LLG-SYS09-01_Website_v4.2</td><td>Callum</td></tr>
+<tr><td class="k">This dossier</td><td>PDF in Drive GOV00 + Git</td><td class="mono">LLG-GOV00-01_Complete Dossier_v2</td><td>Callum</td></tr>
+<tr><td class="k">Master Blueprint</td><td>Google Doc, Drive GOV00</td><td class="mono">LLG-GOV00-02_Master Blueprint_v1</td><td>Max</td></tr>
+<tr><td class="k">Ops Runbook</td><td>Google Doc, Drive OPS03</td><td class="mono">LLG-OPS03-01_Ops Runbook_v1</td><td>Max</td></tr>
+<tr><td class="k">Build Log</td><td>Google Doc, Drive SYS09</td><td class="mono">LLG-SYS09-02_Build Log_v1</td><td>Callum</td></tr>
 <tr><td class="k">Work tracker</td><td>Linear project + 3 milestones</td><td>n/a (system of record for tasks)</td><td>Callum</td></tr>
 </tbody></table>
-<p class="small">The prefix LKG is an <span class="tag t-asm">Assumption</span>; the venture prefix is set in the Maxcal artefact register, which was not available in this session. Codes follow the Maxcal filing standard: GOV00, FIN01, LEG02, OPS03, PRD04, CUS05, MKT06, SUP07, PPL08, SYS09, Archive99. One live version; superseded versions move to Archive99. This v2 supersedes v1; move v1 to Archive99 on filing.</p>
+<p class="small">The prefix LLG is an <span class="tag t-asm">Assumption</span>; the venture prefix is set in the Maxcal artefact register, which was not available in this session. Codes follow the Maxcal filing standard: GOV00, FIN01, LEG02, OPS03, PRD04, CUS05, MKT06, SUP07, PPL08, SYS09, Archive99. One live version; superseded versions move to Archive99. This v2 supersedes v1; move v1 to Archive99 on filing.</p>
 </div>
 
 <!-- ===================== PART 3 ===================== -->
 <div class="part">
 <p class="part-kicker">Part 3</p>
 <h1>Pricing, competitor rate card, unit economics, coverage and booking</h1>
-<p class="lede">Source of truth for price is the database document <code>config/pricing</code>. These figures were re-read from the live file and are unchanged from v1. What is new is the competitor card with dates and sources, a parametric unit-economics model, and a qualifier on the Kings Club savings claim.</p>
+<p class="lede">Source of truth for price is the database document <code>config/pricing</code>. These figures were re-read from the live file and are unchanged from v1. What is new is the competitor card with dates and sources, a parametric unit-economics model, and a qualifier on the Legends Club savings claim.</p>
 
 <h3>Rate card, AUD, GST-inclusive <span class="tag t-ver">Verified</span></h3>
 <div class="grid2">
@@ -164,27 +164,27 @@
 <tr><td>Dry clean: jacket / dress / suit</td><td class="n">$18.50 / $16.50 / $32.00</td></tr>
 <tr><td>Bulk: doona / king / curtain</td><td class="n">$45.00 / $75.00 / $38.00</td></tr>
 <tr><td>Large linen: sheet set / blanket or quilt cover / rug, per item (replaces ironing, 19 Sep 2026)</td><td class="n">$24.00 / $32.00 / $42.00</td></tr>
-<tr><td>Kings Club Solo (about 1 to 2 loads), per week — $49.00 + 30%, 19 Sep 2026</td><td class="n">$63.70</td></tr>
-<tr><td>Kings Club Household (about 2 to 4 loads), per week — $69.00 + 30%</td><td class="n">$89.70</td></tr>
-<tr><td>Kings Club Full House (about 4 to 6 loads), per week — $89.00 + 30%</td><td class="n">$115.70</td></tr>
-<tr><td>Kings Club members</td><td class="n">exempt from minimum</td></tr>
+<tr><td>Legends Club Solo (about 1 to 2 loads), per week — $49.00 + 30%, 19 Sep 2026</td><td class="n">$63.70</td></tr>
+<tr><td>Legends Club Household (about 2 to 4 loads), per week — $69.00 + 30%</td><td class="n">$89.70</td></tr>
+<tr><td>Legends Club Full House (about 4 to 6 loads), per week — $89.00 + 30%</td><td class="n">$115.70</td></tr>
+<tr><td>Legends Club members</td><td class="n">exempt from minimum</td></tr>
 </tbody></table>
 </div>
 <p>Invoice maths in the ops portal: loads = ceil(kg ÷ 5) × $32.00; large linen = items × $24.00 at the sheet-set rate, with blankets (+$8) and rugs (+$18) entered through the adjustment field until the wizard takes separate counts; plus $13.50 delivery; floor at $73.50; a manual adjustment field. The minimum was set at Laundry Lady's $70 plus 5% on 18 September 2026.</p>
 
-<div class="box warn"><h4>Kings Club savings claim: add the basis <span class="tag t-new">New in v2</span></h4>
+<div class="box warn"><h4>Legends Club savings claim: add the basis <span class="tag t-new">New in v2</span></h4>
 <p>Two ad-hoc loads a week cost $64.00 + $13.50 = $77.50. At the current Solo price of $63.70 the saving is $13.80 a week, 17.8%; at one load the ad-hoc price is $45.50, so Solo costs $18.20 more. Under the Australian Consumer Law an unqualified comparison is a representation the customer can rely on, so the copy carries its basis: "save around $14 a week compared with two ad-hoc loads". The figure is computed from <code>config/pricing</code> at render time and rounded to whole dollars, so a future re-price cannot leave a stale number in the sentence. Done 19 Sep 2026 (Appendix E).</p></div>
 
 <h3>Competitor rate card: The Laundry Lady <span class="tag t-new">New in v2</span></h3>
 <p>Direct fetch of thelaundrylady.com.au is blocked from this build environment. The figures below come from search-indexed text of their pricing page and their published 2024 customer price list; each is dated. Max to confirm against the live page before D-04 is decided.</p>
 <table>
-<thead><tr><th style="width:26%">Component</th><th class="n" style="width:16%">Laundry Lady</th><th style="width:20%">As at</th><th class="n" style="width:14%">LaundryKings</th><th>Read</th></tr></thead>
+<thead><tr><th style="width:26%">Component</th><th class="n" style="width:16%">Laundry Lady</th><th style="width:20%">As at</th><th class="n" style="width:14%">Laundrylegends</th><th>Read</th></tr></thead>
 <tbody>
 <tr><td class="k">Wash, dry and fold, per 5 kg load</td><td class="n">$27.50</td><td>2024 price list <span class="tag t-unv">2026 figure unverified</span></td><td class="n">$32.00</td><td>We are about 16% above their 2024 load price already.</td></tr>
 <tr><td class="k">Minimum per service</td><td class="n">$70.00</td><td>Pricing page, effective 27 Jul 2026</td><td class="n">$73.50</td><td>Our minimum is their minimum plus 5%.</td></tr>
 <tr><td class="k">Pickup and delivery</td><td class="n">$14.50</td><td>Pricing page, effective 27 Jul 2026 ($12.50 in 2024)</td><td class="n">$13.50</td><td>We are $1.00 cheaper on delivery.</td></tr>
 <tr><td class="k">Service fee, recurring / one-off</td><td class="n">$2.20 / $5.50</td><td>Pricing page, effective 27 Jul 2026 ($2.00 in 2024)</td><td class="n">none</td><td>We charge no booking or service fee. Say so.</td></tr>
-<tr><td class="k">Ironing, per item</td><td class="n">from $2.75</td><td>2024 price list (range to $14.74 for complex items)</td><td class="n">not offered</td><td>Ironing was withdrawn on 19 Sep 2026; LaundryKings offers large linen per item instead (sheet set $24, blanket $32, rug $42). No comparable Laundry Lady figure found.</td></tr>
+<tr><td class="k">Ironing, per item</td><td class="n">from $2.75</td><td>2024 price list (range to $14.74 for complex items)</td><td class="n">not offered</td><td>Ironing was withdrawn on 19 Sep 2026; Laundrylegends offers large linen per item instead (sheet set $24, blanket $32, rug $42). No comparable Laundry Lady figure found.</td></tr>
 <tr><td class="k">Eco liquid, per load</td><td class="n">+$3.00</td><td>2024 price list</td><td class="n">+$3.50</td><td>Parity.</td></tr>
 <tr><td class="k">Card fee</td><td class="n">2.3% "included"</td><td>2024 price list note</td><td class="n">none stated</td><td>From 1 Oct 2026 the Reserve Bank's reforms remove card surcharges on eftpos, Visa and Mastercard for all Australian merchants, so no one can pass this fee on (Appendix B).</td></tr>
 </tbody></table>
@@ -192,13 +192,13 @@
 <div class="fig">
 <svg viewBox="0 0 720 150" width="720" height="150" font-family="Inter, Liberation Sans, Arial" font-size="10">
   <text x="0" y="12" font-weight="600" fill="#141826" font-size="11">One-off booking floor, all-in, AUD inc. GST</text>
-  <text x="0" y="26" fill="#6B7386" font-size="9">Laundry Lady figure assumes the $70 minimum excludes delivery and the one-off service fee (unverified). LaundryKings minimum includes delivery.</text>
+  <text x="0" y="26" fill="#6B7386" font-size="9">Laundry Lady figure assumes the $70 minimum excludes delivery and the one-off service fee (unverified). Laundrylegends minimum includes delivery.</text>
   <!-- legend -->
-  <rect x="520" y="6" width="9" height="9" rx="2" fill="#2B4BAA"/><text x="533" y="14" fill="#3C4356">LaundryKings</text>
+  <rect x="520" y="6" width="9" height="9" rx="2" fill="#2B4BAA"/><text x="533" y="14" fill="#3C4356">Laundrylegends</text>
   <rect x="612" y="6" width="9" height="9" rx="2" fill="#B5651D"/><text x="625" y="14" fill="#3C4356">Laundry Lady</text>
   <!-- bars: scale 0..100 -> 0..560 px starting x=120 -->
   <line x1="120" y1="40" x2="120" y2="130" stroke="#D5DAE6"/>
-  <text x="0" y="62" fill="#3C4356">LaundryKings</text>
+  <text x="0" y="62" fill="#3C4356">Laundrylegends</text>
   <rect x="120" y="50" width="411.6" height="20" fill="#2B4BAA" rx="0"/><rect x="527.6" y="50" width="4" height="20" fill="#2B4BAA" rx="4"/>
   <text x="538" y="64" fill="#141826" font-weight="600">$73.50</text>
   <text x="0" y="104" fill="#3C4356">Laundry Lady</text>

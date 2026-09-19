@@ -66,7 +66,7 @@ if src != before:
 # PWA — the "no app to download" promise, made literal
 # =====================================================================
 MANIFEST = (
-    '{"name":"LaundryKings","short_name":"LaundryKings","start_url":"#/app","scope":"./",'
+    '{"name":"Laundrylegends","short_name":"Laundrylegends","start_url":"#/app","scope":"./",'
     '"display":"standalone","background_color":"%23FFFFFF","theme_color":"%2312245C",'
     '"description":"Laundry collected, washed and returned across Brisbane, Logan and South East Queensland.",'
     '"icons":[{"src":"ICON192","sizes":"192x192","type":"image/svg%2Bxml","purpose":"any maskable"}]}'
@@ -85,7 +85,7 @@ src = src.replace('<meta name="theme-color" content="#12245C">',
                   '<link rel="icon" href="' + CROWN + '">\n'
                   '<link rel="apple-touch-icon" href="' + CROWN + '">\n'
                   '<meta name="apple-mobile-web-app-capable" content="yes">\n'
-                  '<meta name="apple-mobile-web-app-title" content="LaundryKings">\n'
+                  '<meta name="apple-mobile-web-app-title" content="Laundrylegends">\n'
                   '<link rel="manifest" href="data:application/manifest+json,' + manifest + '">')
 note("web app manifest and icons")
 
@@ -118,8 +118,8 @@ src = src.replace("      renderBookings(); renderMessages(); renderHome(); rende
                   "      renderBookings(); renderMessages(); renderHome(); renderTabs('book');\n      offerInstall();")
 note("install offer after the first booking")
 
-INSTALL_HTML = """<div id="lkInstall" role="dialog" aria-live="polite" aria-label="Add LaundryKings to your home screen">
-  <div><strong>Add LaundryKings to your home screen</strong><small>One tap to your bookings. No app store, no download.</small></div>
+INSTALL_HTML = """<div id="lkInstall" role="dialog" aria-live="polite" aria-label="Add Laundrylegends to your home screen">
+  <div><strong>Add Laundrylegends to your home screen</strong><small>One tap to your bookings. No app store, no download.</small></div>
   <div class="lk-inst-acts">
     <button class="btn btn-out" data-install-no>Not now</button>
     <button class="btn btn-nv" data-install>Add</button>

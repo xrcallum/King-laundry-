@@ -8,10 +8,10 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 
 | Path | What it is |
 |---|---|
-| `site/laundrylegends-site.html` | The complete website (marketing, customer app, ops backend) as one file. Renamed from `laundrykings-site.html` and rebranded LaundryKings → Laundrylegends on 19 September 2026; the live artefact needs republishing to match (see note below). |
+| `site/laundrylegends-site.html` | The complete website (marketing, customer app, ops backend) as one file. Renamed from `laundrykings-site.html` and rebranded LaundryKings → Laundrylegends on 19 September 2026. Published live at `https://claude.ai/artifact/5QptppvdarNfZyVYBFpyy3` (capabilities `{"db":{},"user":{}}`, contract 0.2.52, icon crown). Two older artefacts still titled "LaundryKings" were not overwritten and should be retired manually once confirmed unused. |
 | `verify/preflight.py` | Pre-publish checks. Run before every publish. |
 | `dossier/*.html`, `dossier/build.py` | Source and build script for the Complete Project Dossier. |
-| `dossier/LKG-GOV00-01_Complete Dossier_v2.pdf` | The built dossier, revision 2, 19 September 2026. |
+| `dossier/LLG-GOV00-01_Complete Dossier_v3.pdf` | The built dossier, revision 3, 19 September 2026 — full LaundryKings → Laundrylegends rebrand, filing prefix LKG → LLG. |
 
 ## Publish workflow (never skip a step)
 
@@ -26,12 +26,14 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 
 ```
 python3 dossier/build.py site/laundrylegends-site.html verify/preflight.py \
-  "dossier/LKG-GOV00-01_Complete Dossier_v2.html" "dossier/LKG-GOV00-01_Complete Dossier_v2.pdf"
+  "dossier/LLG-GOV00-01_Complete Dossier_v3.html" "dossier/LLG-GOV00-01_Complete Dossier_v3.pdf"
 ```
 
-Requires Python 3, Node with Playwright and a Chromium build. Appendix C of the PDF is generated from the site file at build time, so the PDF always matches the committed source.
+Requires Python 3, Node with Playwright and a Chromium build (the build script uses `pymupdf`, not `pypdf`, for page-number extraction — `pypdf` panics in this environment via its `cryptography` binding). Appendix C of the PDF is generated from the site file at build time, so the PDF always matches the committed source.
 
-**Not yet done:** the dossier PDF (`LKG-GOV00-01_Complete Dossier_v2.pdf`) still carries the `LKG` filing prefix and "LaundryKings" in its own header/footer template and title, and hasn't been rebuilt since the rename. Renaming a filed governance document's code is a filing decision, not a text substitution — confirm the new prefix (`LLG`? `LL`?) before renaming and rebuilding it, rather than guessing.
+**Filing note:** the dossier now files as `LLG-GOV00-01` (prefix `LLG` for Laundrylegends, replacing `LKG`) — an assumption pending confirmation against the real Maxcal artefact register, flagged as such on the cover page.
+
+**Domain facts not yet re-verified:** the domain-availability/WHOIS findings in Parts 9–18 (D-09) were checked against `laundrykings.*` before the 19 September rebrand and are left under that name — restating them under `laundrylegends.*` without re-running the check would assert an unverified fact. Re-run the same Vercel/WHOIS check against `laundrylegends.com.au`, `.com`, `.au` and `.co` before D-09 is decided.
 
 ## Rules that travel with the code
 

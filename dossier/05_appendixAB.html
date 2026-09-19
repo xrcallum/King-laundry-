@@ -8,11 +8,11 @@
 <table>
 <thead><tr><th style="width:24%">Input</th><th>Detail</th></tr></thead>
 <tbody>
-<tr><td class="k">Dossier v1</td><td>LaundryKings_Complete_Dossier.pdf, 50 pages, 19 Sep 2026. Text extracted with pypdf. Part 11 (pages 15 to 50) parsed by line number; 3,587 numbered lines recovered, 351 carrying the " &gt;&gt;" truncation marker; reconstructed size 218,696 bytes against the stated 236,498.</td></tr>
+<tr><td class="k">Dossier v1</td><td>Laundrylegends_Complete_Dossier.pdf, 50 pages, 19 Sep 2026. Text extracted with pypdf. Part 11 (pages 15 to 50) parsed by line number; 3,587 numbered lines recovered, 351 carrying the " &gt;&gt;" truncation marker; reconstructed size 218,696 bytes against the stated 236,498.</td></tr>
 <tr><td class="k">Live artefact</td><td>claude.ai/artifact/SJihvya38JukdcAUL7JiFx read in full through the Artifact connector. 3,586 lines, 236,498 bytes. SHA-256 <span class="mono">b1bda883095b3cbedf64dcdc57876edd67a8005e222b34f2e6f423f49ceac589</span>. Stored declaration <code>{"db":{},"user":{}}</code>, contract 0.2.52.</td></tr>
 <tr><td class="k">Linear</td><td>Project and issues listed through the Linear connector, 19 Sep 2026 AEST.</td></tr>
 <tr><td class="k">Vercel</td><td>Domain availability checked read-only for six names. No purchase.</td></tr>
-<tr><td class="k">Google Drive</td><td>Two searches from callum@maxcalprojects.com (full text "LaundryKings"; titles containing Maxcal, Blueprint, Laundry). Both empty.</td></tr>
+<tr><td class="k">Google Drive</td><td>Two searches from callum@maxcalprojects.com (full text "Laundrylegends"; titles containing Maxcal, Blueprint, Laundry). Both empty.</td></tr>
 <tr><td class="k">Public web</td><td>Search-indexed content only; direct fetch of thelaundrylady.com.au and fairwork.gov.au is blocked by the build environment's egress policy. Sources in Appendix B.</td></tr>
 </tbody></table>
 
@@ -34,10 +34,10 @@
 <tr><td>Distinct font-size · border-radius</td><td>regex</td><td class="n">—</td><td class="n">57 · 17</td><td><span class="tag t-new">New</span></td></tr>
 <tr><td>og: meta · JSON-LD · aria-label · &lt;img&gt; · &lt;svg&gt;</td><td>regex</td><td class="n">—</td><td class="n">0 · 0 · 9 · 0 · 16</td><td><span class="tag t-new">New</span></td></tr>
 <tr><td>Script parses · duplicate ids · missing targets</td><td>node --check · regex</td><td class="n">—</td><td class="n">yes · 0 of 281 · 0 of 120</td><td><span class="tag t-ver">Verified</span></td></tr>
-<tr><td>Kings Club saving at two loads</td><td>arithmetic</td><td class="n">≈$28 (37%)</td><td class="n">$28.50 (36.8%)</td><td><span class="tag t-ver">Verified</span>, qualifier needed</td></tr>
+<tr><td>Legends Club saving at two loads</td><td>arithmetic</td><td class="n">≈$28 (37%)</td><td class="n">$28.50 (36.8%)</td><td><span class="tag t-ver">Verified</span>, qualifier needed</td></tr>
 <tr><td>Linear issue states</td><td>connector</td><td class="n">4 done, 10 open</td><td class="n">4 done, 10 backlog</td><td><span class="tag t-ver">Verified</span>; KEA-11 title stale</td></tr>
 <tr><td>Milestone dates</td><td>connector</td><td class="n">—</td><td class="n">15 Oct · 30 Nov · 31 Dec</td><td><span class="tag t-new">New</span></td></tr>
-<tr><td>laundrykings.com.au purchasable via Vercel</td><td>connector + DNS</td><td class="n">assumed yes</td><td class="n">no; no DNS record</td><td><span class="tag t-unv">WHOIS needed</span></td></tr>
+<tr><td>laundrylegends.com.au purchasable via Vercel</td><td>connector + DNS</td><td class="n">assumed yes</td><td class="n">no; no DNS record</td><td><span class="tag t-unv">WHOIS needed</span></td></tr>
 <tr><td>laundrykings.com</td><td>connector + DNS</td><td class="n">—</td><td class="n">taken; resolves 13.248.169.48</td><td><span class="tag t-ver">Verified</span></td></tr>
 <tr><td>laundrykings.au · laundrykings.co</td><td>connector</td><td class="n">—</td><td class="n">available USD 23.99 · 29.99</td><td><span class="tag t-ver">Verified</span> 19 Sep</td></tr>
 <tr><td>Mobile menu item count (#mob)</td><td>regex</td><td class="n">15</td><td class="n">15</td><td><span class="tag t-ver">Verified</span> in fact-check pass</td></tr>
@@ -54,7 +54,7 @@
 
 <h3>Pre-flight script (also at verify/preflight.py in the repository)</h3>
 <p>Run before every publish. Pass <code>--strict-tokens</code> after Phase A lands so the token rules are enforced too.</p>
-<pre>python3 verify/preflight.py site/laundrykings-site.html --strict-tokens
+<pre>python3 verify/preflight.py site/laundrylegends-site.html --strict-tokens
 # expected on v4.2 today (verified 19 Sep): FAIL on emoji (139 glyphs, 39 distinct, incl. 15 variation selectors),
 # FAIL on 235 font-size and 19 letter-spacing literals; PASS on script, ids, sections, targets, sentinels
 # expected after Phase A: PASS on all seven checks</pre>

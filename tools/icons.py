@@ -1,4 +1,4 @@
-"""LaundryKings icon sprite — 24px grid, 1.75 stroke, currentColor.
+"""Laundrylegends icon sprite — 24px grid, 1.75 stroke, currentColor.
 
 One symbol per icon. Presentation attributes sit on the <symbol> so they are
 inherited by the paths through the shadow tree, which keeps each <use> site to

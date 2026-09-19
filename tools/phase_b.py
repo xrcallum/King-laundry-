@@ -6,7 +6,7 @@ D11 mobile menu: 15 flat items, no groups, no CTA
 D12 footer: 26 links, about 1,400px tall on a phone
 D14 nav red CTA outweighs the logo
 D21 no Open Graph tags, no structured data, one title for 34 pages
-plus the Kings Club savings qualifier, the warm paper surface, and the
+plus the Legends Club savings qualifier, the warm paper surface, and the
 "what a load looks like" strip the estimator needs.
 """
 import json
@@ -33,7 +33,7 @@ src, n = re.subn(r'(<ul class="nav-links">)(.*?)(</ul>)',
     lambda m: m.group(1) + """
     <li><a href="#/services" data-nav="services">Services</a></li>
     <li><a href="#/pricing" data-nav="pricing">Pricing</a></li>
-    <li><a href="#/club" data-nav="club">Kings&nbsp;Club</a></li>
+    <li><a href="#/club" data-nav="club">Legends&nbsp;Club</a></li>
     <li><a href="#/business" data-nav="business">For&nbsp;business</a></li>
   """ + m.group(3), src, count=1, flags=re.S)
 assert n == 1, "nav-links not found"
@@ -45,7 +45,7 @@ log.append("nav reduced to four items")
 NEW_MOB = """  <a href="#/book" class="mob-cta">Book a collection<svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-arrow-right"/></svg></a>
   <a href="#/services">Services</a>
   <a href="#/pricing">Pricing</a>
-  <a href="#/club">Kings Club</a>
+  <a href="#/club">Legends Club</a>
   <a href="#/coverage">Coverage &amp; suburbs</a>
   <a href="#/app">My account &amp; bookings</a>
   <button class="mob-more" id="mobMore" aria-expanded="false" aria-controls="mobRest">More<svg class="ic ic-inl ic-aft" aria-hidden="true"><use href="#ic-chevron-down"/></svg></button>
@@ -71,7 +71,7 @@ OLD_FOOT = re.search(r'<div><h4>SERVICES</h4>.*?SUPPORT &amp; LEGAL.*?</ul></div
 assert OLD_FOOT, "footer columns not found"
 NEW_FOOT = """<div><h4>SERVICE</h4><ul>
 <li><a href="#/services">Services</a></li><li><a href="#/pricing">Pricing</a></li>
-<li><a href="#/club">Kings Club</a></li><li><a href="#/coverage">Coverage &amp; suburbs</a></li>
+<li><a href="#/club">Legends Club</a></li><li><a href="#/coverage">Coverage &amp; suburbs</a></li>
 <li><a href="#/business">For business</a></li><li><a href="#/support">Supported living</a></li>
 </ul></div>
 <div><h4>COMPANY</h4><ul>
@@ -103,7 +103,7 @@ sub1('<button class="btn btn-nv btn-lg" id="covGo2">Check my postcode</button>',
      "coverage Check button made secondary and inline")
 
 # =====================================================================
-# 5. Kings Club savings claim carries its basis (ACL)
+# 5. Legends Club savings claim carries its basis (ACL)
 # =====================================================================
 n = 0
 for old, new in [
@@ -115,7 +115,7 @@ for old, new in [
         src = src.replace(old, new)
         n += 1
 if n:
-    log.append("Kings Club saving carries its basis (%d places)" % n)
+    log.append("Legends Club saving carries its basis (%d places)" % n)
 
 # =====================================================================
 # 6. Page surface: warm paper instead of blue-grey
@@ -142,8 +142,8 @@ ld = [
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
-        "@id": "https://laundrykings.com.au/#business",
-        "name": "LaundryKings",
+        "@id": "https://laundrylegends.com.au/#business",
+        "name": "Laundrylegends",
         "slogan": "We Wash It Well",
         "description": "Laundry pickup and delivery across Brisbane, Logan and South East Queensland. "
                        "Wash and fold, ironing, dry cleaning and commercial linen, collected from your door "
@@ -159,7 +159,7 @@ ld = [
         "@context": "https://schema.org",
         "@type": "Service",
         "serviceType": "Laundry pickup and delivery",
-        "provider": {"@id": "https://laundrykings.com.au/#business"},
+        "provider": {"@id": "https://laundrylegends.com.au/#business"},
         "areaServed": {"@type": "State", "name": "Queensland"},
         "offers": {"@type": "Offer", "priceCurrency": "AUD",
                    "description": "Wash and fold from $32 per load (about 5 kg). Collection and return $13.50. "
@@ -170,14 +170,14 @@ ld = [
 
 HEAD_ADD = """<meta name="theme-color" content="#12245C">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="LaundryKings">
+<meta property="og:site_name" content="Laundrylegends">
 <meta property="og:locale" content="en_AU">
 <meta property="og:title" content="Laundry collected, washed and returned — Brisbane, Logan &amp; SEQ">
 <meta property="og:description" content="From your door, washed on its own cycle, folded or pressed, and brought back. From $32 a load, $13.50 collection and return. Price confirmed after weighing, before any work begins.">
 <meta property="og:image" content="og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="LaundryKings — laundry pickup and delivery in Brisbane, Logan and South East Queensland">
+<meta property="og:image:alt" content="Laundrylegends — laundry pickup and delivery in Brisbane, Logan and South East Queensland">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Laundry collected, washed and returned — Brisbane, Logan &amp; SEQ">
 <meta name="twitter:description" content="From $32 a load. Collection and return $13.50. Price confirmed after weighing, before any work begins.">
@@ -199,12 +199,12 @@ const TITLES = {
   home:'Laundry Pickup & Delivery, Brisbane, Logan & SEQ',
   services:'Our services — wash, fold, iron, dry clean',
   pricing:'Pricing — every price includes GST',
-  club:'Kings Club — weekly laundry on a fixed day',
+  club:'Legends Club — weekly laundry on a fixed day',
   business:'Commercial & linen laundry for business',
   support:'Supported living & aged care laundry',
   coverage:'Coverage & suburbs we collect from',
-  operators:'Become a LaundryKings operator',
-  about:'About LaundryKings',
+  operators:'Become a Laundrylegends operator',
+  about:'About Laundrylegends',
   guarantee:'Our service guarantee',
   faq:'Frequently asked questions',
   contact:'Contact us',
@@ -215,7 +215,7 @@ const TITLES = {
 };
 function setTitle(id){
   const t = TITLES[id];
-  document.title = (t ? t + ' | LaundryKings' : 'LaundryKings — Laundry Pickup & Delivery | Brisbane, Logan & SEQ');
+  document.title = (t ? t + ' | Laundrylegends' : 'Laundrylegends — Laundry Pickup & Delivery | Brisbane, Logan & SEQ');
 }
 """
 sub1("function route(){", TITLES.strip("\n") + "\n\nfunction route(){", "per-route titles")

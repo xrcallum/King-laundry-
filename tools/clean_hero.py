@@ -1,4 +1,4 @@
-"""Region-aware stain removal for the LaundryKings hero photograph.
+"""Region-aware stain removal for the Laundrylegends hero photograph.
 
 Every garment in the photo is a hand-mapped band; inside each band, dirt is
 detected relative to that garment's own dominant colour (or its lightness for
@@ -6,7 +6,7 @@ same-hue soiling), then filled from the garment's clean pixels. The logo is
 protected by a mask seeded on its flat red and navy and never touched.
 
 Usage: python3 tools/clean_hero.py <source.jpg>   (writes into the current dir:
-       laundrykings-hero-clean.jpg, og-card.png and review crops)
+       laundrylegends-hero-clean.jpg, og-card.png and review crops)
 """
 import cv2, numpy as np, sys
 
@@ -187,7 +187,7 @@ for kind, name, R in regions:
     allst |= st; allfab |= fm
 
 res = np.clip(out, 0, 255).astype(np.uint8)
-cv2.imwrite('laundrykings-hero-clean.jpg', res, [cv2.IMWRITE_JPEG_QUALITY, 94])
+cv2.imwrite('laundrylegends-hero-clean.jpg', res, [cv2.IMWRITE_JPEG_QUALITY, 94])
 cv2.imwrite('zoom7_right.png', cv2.resize(np.hstack([im[80:557, 690:980], res[80:557, 690:980]]), None, fx=1.6, fy=1.6, interpolation=cv2.INTER_CUBIC))
 cv2.imwrite('compare7.png', np.vstack([im, res]))
 # Open Graph card 1200x630: scale to width, centre-crop height (logo sits mid-frame)

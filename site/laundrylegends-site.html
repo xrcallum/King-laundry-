@@ -1776,7 +1776,7 @@ body.has-tabs #aiPanel{bottom:calc(var(--tabs-h,64px) + 74px + env(safe-area-ins
   <ul class="nav-links">
     <li><a href="#/services" data-nav="services">Services</a></li>
     <li><a href="#/pricing" data-nav="pricing">Pricing</a></li>
-    <li><a href="#/club" data-nav="club">Kings&nbsp;Club</a></li>
+    <li><a href="#/club" data-nav="club">Legends&nbsp;Club</a></li>
     <li><a href="#/business" data-nav="business">For&nbsp;business</a></li>
     <li><a href="#/hotels" data-nav="hotels">Hotels</a></li>
   </ul>
@@ -4346,7 +4346,7 @@ function paintPrices(){
   document.getElementById('clubPlans').innerHTML =
     plan('Fresh', PX.plan1, 'Wash &amp; fold on a fixed weekly day. One to two people. Premium Clean can be added per load.') +
     plan('Fresh+', PX.plan2, 'Families of three to four. Wash &amp; fold plus Premium Clean included on delicate loads.') +
-    plan('King', PX.plan3, 'Everything in Fresh+, plus priority 24-hour turnaround and first pick of collection windows.');
+    plan('Legend', PX.plan3, 'Everything in Fresh+, plus priority 24-hour turnaround and first pick of collection windows.');
   document.querySelectorAll('#clubPlans .plan').forEach(p => p.onclick = () => {
     document.querySelectorAll('#clubPlans .plan').forEach(x => x.classList.remove('on')); p.classList.add('on');
   });

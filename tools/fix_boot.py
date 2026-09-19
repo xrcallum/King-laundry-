@@ -126,7 +126,7 @@ function wireWizard(){
       /* hand the job to operations */
       if (DB){
         try { const { id, ...rest } = b; await DB.collection('bookings_inbox').doc(id).set(rest); }
-        catch(e){ console.error('[LK] bookings_inbox', e); }
+        catch(e){ console.error('[LL] bookings_inbox', e); }
       }
 
       /* optionally keep the notes on the profile */
@@ -149,7 +149,7 @@ function wireWizard(){
       say('bkMsg', true, 'Booking ' + b.ref + ' requested.');
       wizStep(4);
     } catch(e){
-      console.error('[LK] booking', e);
+      console.error('[LL] booking', e);
       say('bkMsg', false, 'Could not confirm that booking. Please try again.');
     } finally {
       go.disabled = false;
@@ -258,8 +258,8 @@ src = src.replace(anchor, WIRING.strip("\n") + "\n\n" + anchor, 1)
 # appBoot should not die on one bad statement ever again.
 OLD_BOOT = "  await appLoad();\n  wireWizard(); wireSettings();"
 NEW_BOOT = ("  await appLoad();\n"
-            "  try { wireWizard(); } catch(e){ console.error('[LK] wireWizard', e); }\n"
-            "  try { wireSettings(); } catch(e){ console.error('[LK] wireSettings', e); }")
+            "  try { wireWizard(); } catch(e){ console.error('[LL] wireWizard', e); }\n"
+            "  try { wireSettings(); } catch(e){ console.error('[LL] wireSettings', e); }")
 assert OLD_BOOT in src, "appBoot head not found"
 src = src.replace(OLD_BOOT, NEW_BOOT)
 

@@ -8,7 +8,7 @@
 <svg viewBox="0 0 720 264" width="720" height="264" font-family="Inter, Liberation Sans, Arial" font-size="9.5">
   <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#6B7386"/></marker></defs>
   <rect x="10" y="10" width="700" height="244" rx="6" fill="#F7F8FC" stroke="#D5DAE6"/>
-  <text x="22" y="28" font-weight="700" fill="#071A45" font-size="11">laundrykings-site.html · v4.2 · single file, hash router (#/page)</text>
+  <text x="22" y="28" font-weight="700" fill="#071A45" font-size="11">laundrylegends-site.html · v4.2 · single file, hash router (#/page)</text>
   <!-- three columns -->
   <rect x="22" y="40" width="210" height="120" rx="4" fill="#fff" stroke="#0C265F"/>
   <text x="32" y="56" font-weight="700" fill="#0C265F">Marketing · 15 pages</text>
@@ -91,7 +91,7 @@
 <tbody>
 <tr><td class="k">Hosting and functions</td><td>Vercel (static file + serverless functions)</td><td>Already connected. Functions give us a place for Stripe webhooks and email sends without a server to run. Cloudflare Pages would work equally; the decision is made, so Linear should follow it.</td><td>KEA-11</td></tr>
 <tr><td class="k">Database and auth</td><td>Supabase (Postgres + Auth + Row Level Security) <span class="tag t-asm">Recommended</span></td><td>Firebase is the closer match to the current document model, so migration is easier there. Supabase wins on SQL for finance reporting, on row-level rules for operators, and on Australian region hosting (Sydney). Either replaces the artefact db and user capabilities. Decision D-10.</td><td>KEA-11, KEA-16</td></tr>
-<tr><td class="k">Payments</td><td>Stripe Checkout + Stripe Billing for Kings Club</td><td>Hosted checkout, Apple Pay and Google Pay without extra integration, subscriptions with pause and skip built in. 1.7% + $0.30 domestic, dropping to 1.65% from 1 Oct 2026.</td><td>KEA-13</td></tr>
+<tr><td class="k">Payments</td><td>Stripe Checkout + Stripe Billing for Legends Club</td><td>Hosted checkout, Apple Pay and Google Pay without extra integration, subscriptions with pause and skip built in. 1.7% + $0.30 domestic, dropping to 1.65% from 1 Oct 2026.</td><td>KEA-13</td></tr>
 <tr><td class="k">Email</td><td>Resend (transactional)</td><td>Templates for booked, assigned, collected, invoiced, paid, returned. Postmark is the equivalent; pick one and stop.</td><td>KEA-12</td></tr>
 <tr><td class="k">SMS</td><td>Twilio or MessageMedia (AU sender ID)</td><td>Only for the two moments customers act on: "operator is 15 minutes away" and "invoice ready". Spam Act consent captured at booking (Part 11).</td><td>new</td></tr>
 <tr><td class="k">Domain and DNS</td><td>See D-09</td><td>.com.au requires an active ABN under auDA rules; .au direct requires Australian presence only.</td><td>KEA-11, KEA-14</td></tr>
@@ -108,7 +108,7 @@
 <tr><td class="k">1 · 18 Sep · Customer app</td><td>Full app layer on top of the original marketing artefact (owned by another org member; republished as a new artefact owned by Callum). Tab bar, 3-step wizard, bookings, messages, threads, settings tree of eight sub-pages, profile switcher, per-user private store.</td></tr>
 <tr><td class="k">2 · 18 Sep · Ops backend, v2</td><td>Ops dashboard, job detail, operator management, invoice generator. Wizard step 1 rebuilt to the Laundry Lady reference (screenshot 9). Bookings page: filter chips and rich cards with Support and Rebook.</td></tr>
 <tr><td class="k">3 · 18 Sep · Pricing and first UX pass</td><td>Minimum $73.50. Hero simplified. Phone placeholder hidden until <code>config/contact.phone</code> exists. Coverage legend and region grouping. Nav de-duplicated.</td></tr>
-<tr><td class="k">4 · 18 to 19 Sep · Connectors and Home v4</td><td>Linear project, three milestones, issues KEA-5 to KEA-17. Drive filing and three Google Docs. Gamma 10-slide deck. Home v4 in eight bands: two-column hero with SVG illustration and live price teaser, trust band second, navy step circles, navy middle service card with per-card CTAs, Kings Club savings box, two-column coverage with live chips, estimator, red early-adopter band, segment doors. Skeleton shimmer on ops. Postcode 4131 fixed. Services CTAs. Mobile fixes. Closed KEA-5, 8, 9, 10. Status update posted, On Track.</td></tr>
+<tr><td class="k">4 · 18 to 19 Sep · Connectors and Home v4</td><td>Linear project, three milestones, issues KEA-5 to KEA-17. Drive filing and three Google Docs. Gamma 10-slide deck. Home v4 in eight bands: two-column hero with SVG illustration and live price teaser, trust band second, navy step circles, navy middle service card with per-card CTAs, Legends Club savings box, two-column coverage with live chips, estimator, red early-adopter band, segment doors. Skeleton shimmer on ops. Postcode 4131 fixed. Services CTAs. Mobile fixes. Closed KEA-5, 8, 9, 10. Status update posted, On Track.</td></tr>
 <tr><td class="k">5 · 19 Sep · This revision</td><td>No publish. Live file read in full and hashed, census re-run, Linear and Vercel cross-checked, competitor and compliance research, Git repository initialised as copy of record, dossier v2.</td></tr>
 </tbody></table>
 <h3>What the live file contains that v1 did not list <span class="tag t-ver">Verified</span></h3>
@@ -124,7 +124,7 @@
 <div class="part">
 <p class="part-kicker">Part 6</p>
 <h1>Linear state, cross-checked live</h1>
-<p class="lede">Read from Linear on 19 Sep 2026 (AEST). Project "LaundryKings — Full Platform Build", lead Callum, target 31 Dec 2026, status Backlog. Fourteen issues, four done. Three milestones with dates that v1 did not record.</p>
+<p class="lede">Read from Linear on 19 Sep 2026 (AEST). Project "Laundrylegends — Full Platform Build", lead Callum, target 31 Dec 2026, status Backlog. Fourteen issues, four done. Three milestones with dates that v1 did not record.</p>
 
 <table>
 <thead><tr><th style="width:8%">ID</th><th>Title in Linear</th><th style="width:10%">Status</th><th style="width:8%">Priority</th><th style="width:10%">Milestone</th><th style="width:30%">Blocker or note (v2)</th></tr></thead>
@@ -135,7 +135,7 @@
 <tr><td class="k">KEA-8</td><td>App loading states, skeleton screens</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Ops only; customer lists still render without skeletons. Acceptable.</td></tr>
 <tr><td class="k">KEA-9</td><td>Mobile audit 390/393 px</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Done by CSS analysis; the real-device screenshots that followed produced KEA-18.</td></tr>
 <tr><td class="k">KEA-10</td><td>Postcode data, 4131 label</td><td><span class="tag t-done">Done</span></td><td>High</td><td>M1</td><td>Verified in the live file.</td></tr>
-<tr><td class="k">KEA-11</td><td>Domain: deploy laundrykings.com.au to Cloudflare Pages</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M2</td><td><span class="tag t-cor">Stale</span> v1 chose Vercel. Also depends on KEA-14 (ABN for .com.au) and on the domain finding (D-09). Retitle.</td></tr>
+<tr><td class="k">KEA-11</td><td>Domain: deploy laundrylegends.com.au to Cloudflare Pages</td><td><span class="tag t-open">Backlog</span></td><td>Urgent</td><td>M2</td><td><span class="tag t-cor">Stale</span> v1 chose Vercel. Also depends on KEA-14 (ABN for .com.au) and on the domain finding (D-09). Retitle.</td></tr>
 <tr><td class="k">KEA-12</td><td>Email automation, Resend or Postmark via Vercel function</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Needs KEA-11.</td></tr>
 <tr><td class="k">KEA-13</td><td>Stripe Checkout, payment intent endpoint and webhook</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Needs a Stripe account in the trading entity's name, so needs D-03.</td></tr>
 <tr><td class="k">KEA-14</td><td>Footer: publish ABN, company name, address</td><td><span class="tag t-open">Backlog</span></td><td>High</td><td>M2</td><td>Placeholder text is live and public today. Owner should be Max. Also gates .com.au and Stripe.</td></tr>
@@ -150,8 +150,8 @@
 <thead><tr><th style="width:22%">Milestone</th><th style="width:12%">Target</th><th style="width:10%">Progress</th><th>Definition of done, as written in Linear</th></tr></thead>
 <tbody>
 <tr><td class="k">M1 First Job Operational</td><td>15 Oct 2026</td><td>57%</td><td>Home redesigned, ops portal working, config seeded with real contact and payment details, first operator registered, first booking confirmed and invoiced.</td></tr>
-<tr><td class="k">M2 Public Launch</td><td>30 Nov 2026</td><td>0%</td><td>Site live at laundrykings.com.au. Automated email confirmations. Stripe. SMS notifications. Real photography. Google Business Profile live. ABN published. 5+ operator reviews collected.</td></tr>
-<tr><td class="k">M3 Growth Platform</td><td>31 Dec 2026</td><td>0%</td><td>Operator mobile portal. Kings Club subscription management. SEO. Analytics. HubSpot CRM. 3+ rounds operational. 50+ bookings a month.</td></tr>
+<tr><td class="k">M2 Public Launch</td><td>30 Nov 2026</td><td>0%</td><td>Site live at laundrylegends.com.au. Automated email confirmations. Stripe. SMS notifications. Real photography. Google Business Profile live. ABN published. 5+ operator reviews collected.</td></tr>
+<tr><td class="k">M3 Growth Platform</td><td>31 Dec 2026</td><td>0%</td><td>Operator mobile portal. Legends Club subscription management. SEO. Analytics. HubSpot CRM. 3+ rounds operational. 50+ bookings a month.</td></tr>
 </tbody></table>
 
 <div class="rec"><div class="lbl">Linear hygiene pass, Callum, 19 Sep 2026, ten minutes</div>
@@ -159,7 +159,7 @@
 <li>Retitle KEA-11 to "Domain and hosting: Vercel deploy + domain decision (D-09)". Add a dependency on KEA-14.</li>
 <li>Add due dates: KEA-18 30 Sep · KEA-6 26 Sep · KEA-7 3 Oct · KEA-14 25 Sep · KEA-11, 12, 13, 15 14 Nov · KEA-16, 17 12 Dec.</li>
 <li>Invite Max to the Linear workspace and assign KEA-14 and the decisions D-03, D-04, D-07 and D-12 to Max.</li>
-<li>Create KEA-19 "Pre-flight script in CI: node --check, dup-ID, 34 sections, getElementById, zero emoji" (Appendix A supplies the script). KEA-20 "Kings Club claim qualifier". KEA-21 "Open Graph + JSON-LD in file (pre-domain half of KEA-17)". KEA-22 "Operator engagement brief to adviser" (owner Max). KEA-23 "Insurance quotes: the four policies in Part 10" (owner Max).</li>
+<li>Create KEA-19 "Pre-flight script in CI: node --check, dup-ID, 34 sections, getElementById, zero emoji" (Appendix A supplies the script). KEA-20 "Legends Club claim qualifier". KEA-21 "Open Graph + JSON-LD in file (pre-domain half of KEA-17)". KEA-22 "Operator engagement brief to adviser" (owner Max). KEA-23 "Insurance quotes: the four policies in Part 10" (owner Max).</li>
 <li>Post a status update: On Track for M1 only if D-01 and D-03 land by 26 Sep; otherwise At Risk. Say which.</li>
 </ol></div>
 </div>
@@ -179,7 +179,7 @@
 <tr><td class="k">Emoji inside &lt;i&gt; tags</td><td class="n">27 distinct · 47 total</td><td class="n">29 distinct · 75 total (of 83 &lt;i&gt;)</td><td><span class="tag t-cor">Corrected</span> Most frequent: truck 6, basket 5, shirt 5, receipt 5, person 4, chat 4, pin 4, lock 4, envelope 4, calendar 4 + 3.</td></tr>
 <tr><td class="k">Loose symbol glyphs in prose</td><td class="n">19 distinct</td><td class="n">16 distinct · 49 total</td><td><span class="tag t-cor">Refined</span> 23 are "→", 6 are "✓". Regex boundaries differ; the acceptance test is zero, not a count.</td></tr>
 <tr><td class="k">letter-spacing values</td><td class="n">13</td><td class="n">13</td><td><span class="tag t-ver">Verified</span> −.035 −.03 −.025 −.02 −.01 · .01 .02 .03 .06 .07 .09 .1 .14 em</td></tr>
-<tr><td class="k">Kings Club selected state</td><td class="n">rgba(204,34,40,.13) over navy</td><td class="n">same</td><td><span class="tag t-ver">Verified</span> renders indigo</td></tr>
+<tr><td class="k">Legends Club selected state</td><td class="n">rgba(204,34,40,.13) over navy</td><td class="n">same</td><td><span class="tag t-ver">Verified</span> renders indigo</td></tr>
 <tr><td class="k">money()</td><td class="n">always .00</td><td class="n">same</td><td><span class="tag t-ver">Verified</span> <code>'$' + Number(n).toFixed(2)</code></td></tr>
 <tr><td class="k">Footer links</td><td class="n">26</td><td class="n">26</td><td><span class="tag t-ver">Verified</span></td></tr>
 <tr><td class="k">Mobile menu items (#mob)</td><td class="n">15</td><td class="n">15 links + close button</td><td><span class="tag t-ver">Verified</span> no grouping, no CTA</td></tr>
@@ -238,7 +238,7 @@
 <tbody>
 <tr><td class="k">D1</td><td>Tab bar mixes glyph and colour emoji; renders as iOS emoji. Worst single defect.</td><td>R5</td><td>C</td><td>Tab bar uses 5 sprite icons; zero emoji in file.</td></tr>
 <tr><td class="k">D2</td><td>Box emoji in wizard "Approximate quantity" header.</td><td>R5</td><td>A</td><td>Sprite icon at 24 px.</td></tr>
-<tr><td class="k">D3</td><td>Selected Kings Club plan renders purple.</td><td>R2</td><td>A</td><td>Computed background equals #2A2F6B exactly.</td></tr>
+<tr><td class="k">D3</td><td>Selected Legends Club plan renders purple.</td><td>R2</td><td>A</td><td>Computed background equals #2A2F6B exactly.</td></tr>
 <tr><td class="k">D4</td><td>Fixed tracking: "Get your exact number." jams at 24 px.</td><td>R1</td><td>A</td><td>Tracking tokens by size; no ad-hoc letter-spacing remains.</td></tr>
 <tr><td class="k">D5</td><td>Stepper: minus and plus at opposite edges, value floating.</td><td>R4</td><td>C</td><td>Stepper max-width 140 px, three elements touching.</td></tr>
 <tr><td class="k">D6</td><td>"→ Continue": arrow before verb.</td><td>R4</td><td>C</td><td>Verb first, arrow icon after, on every primary button.</td></tr>
@@ -265,7 +265,7 @@
 <div class="part">
 <p class="part-kicker">Part 8</p>
 <h1>Design system specification: Bold Editorial</h1>
-<p class="lede">Confident, graphic, unapologetically LaundryKings. Own the crown, own the red. Differentiate hard from Laundry Lady's soft pink domestic look. Polish benchmark is Rinse (US). v1 gave the direction; this part gives the tokens, so a build session makes no taste calls.</p>
+<p class="lede">Confident, graphic, unapologetically Laundrylegends. Own the crown, own the red. Differentiate hard from Laundry Lady's soft pink domestic look. Polish benchmark is Rinse (US). v1 gave the direction; this part gives the tokens, so a build session makes no taste calls.</p>
 
 <h3>Type scale, 1.25 major third, 8 steps</h3>
 <p class="small">Exact ratio from a 13 px base gives 13 / 16.25 / 20.3 / 25.4 / 31.7 / 39.7 / 49.6 / 62.0. The tokens round to whole pixels and round the top four down (31, 39, 49, 61) so headings sit slightly tighter than the pure ratio; this is a deliberate optical choice carried over from v1, not an arithmetic error.</p>
@@ -287,7 +287,7 @@
   <div class="spec-row"><div class="m">fs-2 39 · −0.03em · 800</div><div class="t" style="font-size:23.4pt;letter-spacing:-.03em">Book. We collect. It comes back.</div></div>
   <div class="spec-row"><div class="m">fs-3 31 · −0.02em · 800</div><div class="t" style="font-size:18.6pt;letter-spacing:-.02em;font-variant-numeric:tabular-nums">$32 a load · $13.50 delivery · $73.50 min</div></div>
   <div class="spec-row"><div class="m">fs-4 25 · −0.02em · 700</div><div class="t" style="font-size:15pt;letter-spacing:-.02em;font-weight:700">Step 2 of 3: choose your window</div></div>
-  <div class="spec-row"><div class="m">fs-5 20 · −0.01em · 700</div><div class="t" style="font-size:12pt;letter-spacing:-.01em;font-weight:700">Kings Club · Solo · Household · Full House</div></div>
+  <div class="spec-row"><div class="m">fs-5 20 · −0.01em · 700</div><div class="t" style="font-size:12pt;letter-spacing:-.01em;font-weight:700">Legends Club · Solo · Household · Full House</div></div>
   <div class="spec-row"><div class="m">body 16 · 0 · 400</div><div class="t" style="font-size:9.6pt;font-family:var(--fb);font-weight:400;color:var(--body)">Your operator messages you before arrival. Price confirmed after weighing.</div></div>
   <div class="spec-row"><div class="m">micro 13 · caps +0.08em · 600</div><div class="t" style="font-size:7.8pt;font-family:var(--fb);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--red)">Live in 16 suburbs · GST inclusive</div></div>
   <p class="figcap">Figure 8.1. Tracking loosens as size drops. Rendered at 60% of screen size (1 px = 0.6 pt here) so the largest step fits the print column; ratios between steps are exact. Weight 900 is Archivo Black-equivalent and is reserved for the two largest steps.</p>
@@ -337,7 +337,7 @@
 <tr><td class="k">Trust masthead</td><td>One navy strip under the hero: GST-inclusive pricing, written guarantee, screened operators, live in 16 suburbs. Four items, icons, no cards.</td></tr>
 <tr><td class="k">How it works</td><td>Horizontal timeline on paper, three steps, 4rem numerals in navy, one line each, one photo slot per step (Gamma placeholders now, real photos for M2).</td></tr>
 <tr><td class="k">Services</td><td>The one card grid on the page. Three cards, middle card navy with white CTA. Six services become three doors plus a "see all services" link.</td></tr>
-<tr><td class="k">Kings Club</td><td>Full-bleed red slab, white type, the one red slab on the page. Savings box carries the two-load basis (Part 3).</td></tr>
+<tr><td class="k">Legends Club</td><td>Full-bleed red slab, white type, the one red slab on the page. Savings box carries the two-load basis (Part 3).</td></tr>
 <tr><td class="k">Coverage</td><td>Typographic suburb cloud grouped by region on paper; postcode input with an inline secondary Check button (D8, D9).</td></tr>
 <tr><td class="k">Segment doors</td><td>Households · Businesses · Become an operator. Three paper tiles, navy type, arrow icons.</td></tr>
 <tr><td class="k">Footer</td><td>Navy-d. Column 1 crown and one line; column 2 ten to twelve links in two groups; row 3 entity name, ABN, address (D13), compliance line, GST statement. Text #C9D2F2 or white only.</td></tr>
@@ -346,7 +346,7 @@
 <h3>Imagery brief <span class="tag t-new">New in v2</span></h3>
 <p>Every strong competitor shows a human and a price in three seconds. We show a price. Phase B adds the human with generated placeholders; M2 replaces them with a real operator, photographed once, half a day, in their own suburb. Brief for both:</p>
 <ul>
-<li><strong>Subject:</strong> one operator, mid-thirties to fifties, in a plain navy tee, at a real Logan or Brisbane-south front door, handing over a folded stack in a LaundryKings bag. Daylight, overcast preferred. No studio, no stock smile.</li>
+<li><strong>Subject:</strong> one operator, mid-thirties to fifties, in a plain navy tee, at a real Logan or Brisbane-south front door, handing over a folded stack in a Laundrylegends bag. Daylight, overcast preferred. No studio, no stock smile.</li>
 <li><strong>Crop and ratio:</strong> hero 4:5 portrait and 16:9 landscape variants; how-it-works three squares (book on phone, collection at door, folded return); OG card 1200 × 630 with paper background, crown, and the line "Laundry collected, washed and returned. From $32 a load."</li>
 <li><strong>Colour grade:</strong> warm neutral to sit on paper; no pink, no teal. Red appears only as the bag tag.</li>
 <li><strong>Consent:</strong> model release signed by the operator, filed PPL08, before publication.</li>

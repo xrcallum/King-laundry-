@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Content update, 19 Sep 2026: drop the duplicate location line, remove every
 ironing service, add a blankets/rugs/sheets-only service in its place, and
-raise the three Kings Club subscription prices by 30%.
+raise the three Legends Club subscription prices by 30%.
 
 Run:  python3 tools/content_update.py site/laundrylegends-site.html
 """
@@ -33,7 +33,7 @@ sub1('        <span class="eyebrow">BRISBANE · LOGAN · SOUTH EAST QLD</span>\n
 
 # =====================================================================
 # 2. Pricing: three new per-item prices for the replacement service,
-#    ironing prices removed, Kings Club raised 30%.
+#    ironing prices removed, Legends Club raised 30%.
 # =====================================================================
 sub1("""const DEFAULT_PRICING = {
   load: 32.00,          // per ~5kg load, wash & fold
@@ -64,10 +64,10 @@ sub1("""const DEFAULT_PRICING = {
   linenBlanket: 32.00,    // single/double blanket or quilt cover, per item
   linenRug: 42.00,        // rug or floor mat, per item, subject to size
   ecoAddon: 3.50,
-  // Kings Club, +30% on the launch rate, effective 19 Sep 2026
+  // Legends Club, +30% on the launch rate, effective 19 Sep 2026
   plan1: 63.70, plan2: 89.70, plan3: 115.70
 };""",
-     "no more ironing prices; three new large-linen prices; Kings Club +30%")
+     "no more ironing prices; three new large-linen prices; Legends Club +30%")
 
 # =====================================================================
 # 3. Service catalogue: drop wfi and iron, add linen
@@ -149,12 +149,12 @@ sub1('''    <div class="svc3">
      "home page: two service cards, Wash & Fold now most-booked")
 
 # =====================================================================
-# 6. Kings Club teaser (home) — savings claim recomputed for the new
+# 6. Legends Club teaser (home) — savings claim recomputed for the new
 #    Solo price, ironing dropped from Full House
 # =====================================================================
-sub1('<div class="kc-save-m">Two ad-hoc loads a week ≈ $77.50 · Kings Club Solo = $49/week.<br><b>Save around $28 a week compared with two ad-hoc loads</b> — no lock-in, pause any time.</div>',
-     '<div class="kc-save-m">Two ad-hoc loads a week ≈ $77.50 · Kings Club Solo = $63.70/week.<br><b>Save around $14 a week compared with two ad-hoc loads</b> — no lock-in, pause any time.</div>',
-     "Kings Club saving recomputed for the new Solo price ($13.80, stated as ~$14)")
+sub1('<div class="kc-save-m">Two ad-hoc loads a week ≈ $77.50 · Legends Club Solo = $49/week.<br><b>Save around $28 a week compared with two ad-hoc loads</b> — no lock-in, pause any time.</div>',
+     '<div class="kc-save-m">Two ad-hoc loads a week ≈ $77.50 · Legends Club Solo = $63.70/week.<br><b>Save around $14 a week compared with two ad-hoc loads</b> — no lock-in, pause any time.</div>',
+     "Legends Club saving recomputed for the new Solo price ($13.80, stated as ~$14)")
 
 sub1('      <div class="plan"><h4>Full House</h4><div class="amt" data-px="p3"></div><p>Larger households. Three bags plus an ironing allowance.</p><div class="plan-cap">≈ 4–6 loads per week + ironing</div></div>',
      '      <div class="plan"><h4>Full House</h4><div class="amt" data-px="p3"></div><p>Larger households. Three bags each week.</p><div class="plan-cap">≈ 4–6 loads per week</div></div>',
@@ -383,12 +383,12 @@ sub1("""  if((svc==='wfi'||svc==='iron')&&iron){ const v=iron*PX.iron; sub+=v; l
 # =====================================================================
 # 17. Meta description, title, JSON-LD, per-route titles
 # =====================================================================
-sub1('<title>LaundryKings — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>',
-     '<title>LaundryKings — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>',
+sub1('<title>Laundrylegends — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>',
+     '<title>Laundrylegends — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>',
      "title unchanged (no ironing mentioned in it)", count=1)
 
-sub1('<meta name="description" content="LaundryKings — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, ironing, dry cleaning, commercial linen. We Wash It Well.">',
-     '<meta name="description" content="LaundryKings — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, dry cleaning, large linen, commercial laundry. We Wash It Well.">',
+sub1('<meta name="description" content="Laundrylegends — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, ironing, dry cleaning, commercial linen. We Wash It Well.">',
+     '<meta name="description" content="Laundrylegends — laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash &amp; fold, dry cleaning, large linen, commercial laundry. We Wash It Well.">',
      "meta description: no ironing")
 
 sub1('"description":"Laundry pickup and delivery across Brisbane, Logan and South East Queensland. Wash and fold, ironing, dry cleaning and commercial linen, collected from your door and returned. All prices include GST."',

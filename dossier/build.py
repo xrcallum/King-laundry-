@@ -65,7 +65,7 @@ const {chromium}=require('playwright');
   await p.waitForTimeout(800);
   await p.pdf({path:process.argv[3],format:'A4',printBackground:true,preferCSSPageSize:true,
     displayHeaderFooter:true,
-    headerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Laundrylegends &#8212; Complete Project Dossier v2</span><span>19 September 2026</span></div>',
+    headerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Laundrylegends &#8212; Complete Project Dossier v3</span><span>19 September 2026</span></div>',
     footerTemplate:'<div style="font-family:Arial,sans-serif;font-size:7pt;color:#6B7386;width:100%;padding:0 15mm;display:flex;justify-content:space-between"><span>Prepared for Max Jones and Callum Page &#183; MAXCAL | Laundrylegends</span><span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>',
     margin:{top:'16mm',bottom:'18mm',left:'15mm',right:'15mm'}});
   await b.close();
@@ -90,11 +90,11 @@ def page_map(pdf_path):
     cross-reference in body text reads 'Part 7'. That case difference is what makes
     this safe.
     """
-    from pypdf import PdfReader
-    reader = PdfReader(pdf_path)
+    import pymupdf
+    doc = pymupdf.open(pdf_path)
     found = {}
-    for i, page in enumerate(reader.pages, 1):
-        text = page.extract_text() or ""
+    for i, page in enumerate(doc, 1):
+        text = page.get_text() or ""
         for m in re.finditer(r"\bPART (\d+)\b", text):
             found.setdefault(f"Part {m.group(1)}", i)
         for m in re.finditer(r"\bAPPENDIX ([A-E])\b", text):
@@ -126,5 +126,5 @@ open(out_html, "w", encoding="utf-8").write(body2)
 print(f"pass 2: contents filled for {len(pages)} entries")
 render(out_html, out_pdf)
 
-from pypdf import PdfReader  # noqa: E402
-print(f"done: {out_pdf} — {len(PdfReader(out_pdf).pages)} pages, {os.path.getsize(out_pdf):,} bytes")
+import pymupdf  # noqa: E402
+print(f"done: {out_pdf} — {pymupdf.open(out_pdf).page_count} pages, {os.path.getsize(out_pdf):,} bytes")
