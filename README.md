@@ -10,7 +10,7 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 |---|---|
 | `site/laundrykings-site.html` | The complete website (marketing, customer app, ops backend) as one file. v4.2, byte-identical to the live artefact. |
 | `verify/preflight.py` | Pre-publish checks. Run before every publish. |
-| `site/photos/` | Real photographs of the operation, plus the shot list and the alt text that goes with them. Empty until the shots are taken. |
+| `site/photos/` | Journey photographs, the sourcing brief, the alt text and `CREDITS.md` — the licence record. Empty until the photos land. |
 | `tools/embed_photos.py` | Puts those photographs into the journey steps on the home page, as resized WebP data URIs. `--strip` takes them back out. |
 | `dossier/*.html`, `dossier/build.py` | Source and build script for the Complete Project Dossier. |
 | `dossier/LKG-GOV00-01_Complete Dossier_v2.pdf` | The built dossier, revision 2, 19 September 2026. |
@@ -52,5 +52,8 @@ Requires Python 3, Node with Playwright and a Chromium build. Appendix C of the 
 - Never invent footer entity text. Company name, ABN and address come from Max Jones.
 - Pricing lives in the database document `config/pricing`; do not hard-code changes.
 - Every image needs alt text describing what is in the frame. Preflight enforces it.
+- Every photograph needs a recorded source, and a licence and URL unless we shot it.
+  `tools/embed_photos.py` refuses to embed one without, and writes `site/photos/CREDITS.md`.
 - No photograph of an identifiable person, house number or number plate without a
   signed release on file.
+- No other company's branding, signage or livery in any photograph.

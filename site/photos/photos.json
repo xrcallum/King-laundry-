@@ -1,9 +1,9 @@
 {
-  "_comment": "Alt text for each journey photograph. Required before a photo can be embedded — tools/embed_photos.py refuses to run without it. Describe what is actually in the frame, not what the step is about; a screen reader user should get the same information a sighted user gets from the picture. Delete the _comment key when you fill this in.",
+  "_comment": "One entry per photograph. 'alt' and 'source' are always required. Anything not shot by us also needs 'licence' and 'url' — that is the licence record. For your own work use \"source\": \"LaundryKings own photograph\" and leave licence/url empty. Delete this _comment key once you start filling it in.",
 
-  "jn-1": { "alt": "" },
-  "jn-2": { "alt": "" },
-  "jn-3": { "alt": "" },
-  "jn-4": { "alt": "" },
-  "jn-5": { "alt": "" }
+  "jn-1": { "alt": "", "source": "", "credit": "", "licence": "", "url": "" },
+  "jn-2": { "alt": "", "source": "", "credit": "", "licence": "", "url": "" },
+  "jn-3": { "alt": "", "source": "", "credit": "", "licence": "", "url": "" },
+  "jn-4": { "alt": "", "source": "", "credit": "", "licence": "", "url": "" },
+  "jn-5": { "alt": "", "source": "", "credit": "", "licence": "", "url": "" }
 }
