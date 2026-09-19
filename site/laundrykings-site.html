@@ -2488,6 +2488,10 @@ let PX = Object.assign({}, DEFAULT_PRICING);
 let DB = null, USER = null, CAN_EDIT = false;
 
 const money = n => '$' + Number(n).toFixed(2);
+/* Whole dollars with thousands separators — annual projections run to six
+   figures, where cents are noise and an unseparated run of digits is hard
+   to read at a glance. */
+const bigMoney = n => '$' + Math.round(Number(n) || 0).toLocaleString('en-AU');
 
 /* ---------- SUBURB DATA ---------- */
 const LIVE_PC = {
@@ -3347,6 +3351,143 @@ function wizStep(n){
 
 
 /* ============================================================
+   WIZARD + SETTINGS WIRING
+   appBoot calls both of these. They were referenced but never
+   defined, so appBoot threw on its second statement and every
+   later line — renderHome, renderAccount, appRoute — never ran,
+   leaving the whole portal inert. Defining them restores boot and
+   connects the controls that had no handler.
+   ============================================================ */
+function wireWizard(){
+  const on = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; };
+
+  /* step 1 -> 2. Commercial work is a written quote, not a booking,
+     so that choice is diverted to the enquiry form instead. */
+  on('bkN1', () => {
+    if (W.svc === 'comm'){ location.hash = '#/business'; return; }
+    wizStep(2); renderWizard();
+  });
+  on('bkN2', () => {
+    if (!W.win){ say('bkMsg', false, 'Choose a collection window to continue.'); return; }
+    wizStep(3); renderWizard();
+  });
+  on('bkP2', () => { wizStep(1); renderWizard(); });
+  on('bkP3', () => { wizStep(2); renderWizard(); });
+  on('bkBack', () => { wizStep(Math.max(1, W.step - 1)); renderWizard(); });
+
+  const dt = document.getElementById('bkDate');
+  if (dt) dt.onchange = () => { W.date = dt.value; W.win = ''; renderWizard(); };
+
+  const rec = document.getElementById('bkRec');
+  if (rec) rec.onclick = () => {
+    W.rec = !W.rec;
+    rec.classList.toggle('on', W.rec);
+    const o = document.getElementById('bkRecOpts');
+    if (o) o.style.display = W.rec ? '' : 'none';
+    renderWizard();
+  };
+  document.querySelectorAll('[data-freq]').forEach(b => b.onclick = () => {
+    W.freq = b.dataset.freq;
+    document.querySelectorAll('[data-freq]').forEach(x => x.classList.toggle('on', x === b));
+  });
+
+  on('bkGo', submitBooking);
+}
+
+async function submitBooking(){
+  const p = activeP();
+  if (!p || !addrLine(p)){ say('bkMsg', false, 'Add a collection address in your profile first.'); return; }
+  if (!W.win){ say('bkMsg', false, 'Choose a collection window.'); return; }
+  const tos = document.getElementById('bkTos');
+  if (tos && !tos.checked){ say('bkMsg', false, 'Please accept the terms to confirm.'); return; }
+
+  const est = estimate(W.svc, W.a, W.b, W.bag ? W.bagQty : 0);
+  const care = val('bkCare'), del = val('bkDel');
+  const b = {
+    id: 'b' + uid4(), ref: REF(), status: 'requested',
+    svc: W.svc, loads: W.a, premiumLoads: W.b,
+    bags: W.bag ? W.bagQty : 0,
+    date: W.date, window: W.win,
+    recurring: W.rec ? W.freq : '',
+    profileId: p.id, address: addrLine(p), suburb: p.suburb,
+    care, del,
+    estimate: est ? est.total : null,
+    createdAt: Date.now()
+  };
+  S.bookings.unshift(b);
+  await pushDoc('bookings', b);
+
+  /* Opt-in saves back to the profile so the next booking is prefilled. */
+  const saveCare = document.getElementById('bkCareSave');
+  const saveDel  = document.getElementById('bkDelSave');
+  if ((saveCare && saveCare.checked && care) || (saveDel && saveDel.checked && del)){
+    if (saveCare && saveCare.checked && care) p.care = care;
+    if (saveDel && saveDel.checked && del) p.del = del;
+    await saveProfile(p);
+  }
+
+  addMessage(b.ref, 'Collection ' + b.ref + ' requested',
+    'We have your request for ' + longDate(b.date) + ', ' + b.window + '. '
+    + 'Your operator will confirm shortly. The final price is set after weighing, before any work begins.');
+
+  const done = document.getElementById('bkDoneTx');
+  if (done) done.textContent = b.ref + ' — ' + longDate(b.date) + ', ' + b.window;
+  wizStep(4);
+  renderBookings(); renderMessages(); renderTabs('book');
+}
+
+function wireSettings(){
+  const on = (id, fn) => { const e = document.getElementById(id); if (e) e.onclick = fn; };
+  const p = () => activeP();
+
+  on('pdGo', async () => {
+    const x = p(); if (!x) return;
+    if (!val('pdName')){ say('pdMsg', false, 'A profile name is required.'); return; }
+    Object.assign(x, { name: val('pdName'), contact: val('pdContact'), email: val('pdEmail'),
+                       phone: val('pdPhone'), type: val('pdType'),
+                       preferred: document.getElementById('pdPref')?.checked });
+    say('pdMsg', await saveProfile(x), 'Profile details saved.');
+    renderAccount();
+  });
+
+  on('pfGo', async () => {
+    const x = p(); if (!x) return;
+    Object.assign(x, { care: val('pfCare'), del: val('pfDel'), svc: val('pfSvc'),
+                       eco: document.getElementById('pfEco')?.checked });
+    say('pfMsg', await saveProfile(x), 'Service preferences saved.');
+    renderWizard();
+  });
+
+  on('adGo', async () => {
+    const x = p(); if (!x) return;
+    if (!val('adLine1') || !val('adSub')){ say('adMsg', false, 'Street address and suburb are required.'); return; }
+    Object.assign(x, { line1: val('adLine1'), suburb: val('adSub'), postcode: val('adPc'),
+                       state: val('adState'), access: val('adAccess') });
+    say('adMsg', await saveProfile(x), 'Collection address saved.');
+    renderAccount(); renderWizard();
+  });
+
+  on('cmGo', async () => {
+    document.querySelectorAll('[data-cm]').forEach(b => { S.acct.comms[b.dataset.cm] = b.classList.contains('on'); });
+    say('cmMsg', await saveAcct(), 'Notification preferences saved.');
+  });
+
+  on('udGo', async () => {
+    if (!val('udEmail')){ say('udMsg', false, 'An email address is required.'); return; }
+    Object.assign(S.acct, { first: val('udFirst'), last: val('udLast'),
+                            email: val('udEmail'), phone: val('udPhone') });
+    say('udMsg', await saveAcct(), 'Your details have been saved.');
+  });
+
+  on('fbGo', async () => {
+    if (!val('fbTx')){ say('fbMsg', false, 'Tell us what happened so we can act on it.'); return; }
+    await save('feedback', { type: val('fbType'), ref: val('fbRef'), text: val('fbTx') },
+      'fbMsg', 'Thank you. Your feedback has been logged and we will follow it up.');
+    const t = document.getElementById('fbTx'); if (t) t.value = '';
+  });
+}
+
+/* ============================================================
    V2 UPGRADES — ops portal + enhanced renderers
    ============================================================ */
 
@@ -3894,11 +4035,11 @@ function calcHotel(){
     + (m.ordersPerDay * props).toFixed(1) + '</b></div>'
     + '<div class="prow"><div><strong>Laundry revenue a year</strong>'
     + '<em>At a ' + money(HOTEL_BLEND) + ' blended order</em></div><b>'
-    + money(Math.round(m.annual)) + '</b></div>'
+    + bigMoney(m.annual) + '</b></div>'
     + '<div class="prow" style="border-top:2px solid var(--navy)"><div><strong>Your commission a year</strong>'
-    + '<em>' + money(Math.round(m.monthly)) + ' a month, or ' + money(m.perRoomNight.toFixed(2))
-    + ' per room-night</em></div><b style="font-size:1.15rem;color:var(--navy)">'
-    + money(Math.round(m.commission)) + '</b></div>';
+    + '<em>' + bigMoney(m.monthly) + ' a month, or ' + money(m.perRoomNight)
+    + ' per available room-night</em></div><b style="font-size:1.15rem;color:var(--navy)">'
+    + bigMoney(m.commission) + '</b></div>';
 }
 
 function wireHotels(){
