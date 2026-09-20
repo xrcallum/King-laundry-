@@ -1,15 +1,15 @@
-# Laundrylegends — Site rebuild plan (React + API)
+# Linen Legends — Site rebuild plan (React + API)
 
-**Prepared:** 20 September 2026 · **Owner:** Callum Page · **Venture:** Laundrylegends
+**Prepared:** 20 September 2026 · **Revised:** 20 September 2026 (rebrand + scope update, §12) · **Owner:** Callum Page · **Venture:** Linen Legends (renamed from Laundrylegends by Callum Page in this conversation, 20 Sep 2026 — see §12.1)
 **Branch:** `claude/laundry-legends-build-qmcafm` · **Repo:** `github.com/xrcallum/King-laundry-`
-**Filing:** code pending — README flags the `LKG` vs `LL` prefix as an open filing decision (Max Jones). File under SYS09 once decided.
-**Status:** v1 — plan only. Nothing in this document has been built yet.
+**Filing:** code pending — README flags the `LKG` vs `LL` prefix as an open filing decision (Max Jones). The rebrand strengthens the case for `LL` (fits both "Legends" and "Linen Legends"), but the decision itself stays with Max Jones. File under SYS09 once decided.
+**Status:** v2 — plan only. Nothing has been built yet. §1–§11 are the original plan; §12 records the 20 Sep rebrand and scope changes and supersedes any conflicting text above it (brand name, domain, milestone count).
 
 ---
 
 ## 0. Recommendation
 
-Build the 12-route React site and its API as **one Vite + React app at the repo root with the API as Vercel serverless functions under `api/`**, deployed to Vercel (its MCP connector is already attached to this workspace). Run the 12-step build sequence as **four milestones, not twelve messages**, each ending in a commit, one scripted verification run and one screenshot contact sheet. Lift every line of copy, every price and every postcode **programmatically from the existing site file** (`site/laundrylegends-site.html`) rather than retyping it. Keep the existing artefact live until the new site passes the acceptance checklist in §7. Seven decisions in §3 need an answer from Callum before Milestone 1 starts; everything else is locked here.
+**Superseded by §12 — read that section first.** Build the site and its API as **one Vite + React app at the repo root with the API as Vercel serverless functions under `api/`**, deployed to Vercel (its MCP connector is already attached to this workspace). §12.4 now runs this as **six milestones**, not four — the booking/account app Callum brought into scope on 20 Sep 2026 is a genuine seventh 15-page surface, not a copy change. Lift every line of copy, every price and every postcode **programmatically from the existing site file** (`site/laundrylegends-site.html`) rather than retyping it, with a brand find-and-replace pass (Laundrylegends → Linen Legends) baked into that extraction step. Keep the existing artefact live under its current brand until the new site passes the acceptance checklist in §7. §3 plus §12.5 hold the full decision list; everything else is locked here.
 
 ---
 
@@ -51,7 +51,7 @@ Build the 12-route React site and its API as **one Vite + React app at the repo 
 
 | Option | Fit | Verdict |
 |---|---|---|
-| **Vercel: static Vite build + `api/` functions** | Connector already attached. Free Hobby tier covers launch traffic. `laundrylegends.com.au` (already referenced in the site's JSON-LD) attaches as a custom domain. | **(Recommended)** |
+| **Vercel: static Vite build + `api/` functions** | Connector already attached. Free Hobby tier covers launch traffic. Custom domain: `linenlegends.com.au` once the ABN exists to register it (§12.2) — a Vercel-issued `*.vercel.app` URL serves previews and any pre-ABN soft launch. | **(Recommended)** |
 | Keep publishing as a Claude artefact | Artefacts serve static HTML only. `/api/*` cannot exist, so every form in the spec fails. | Not viable for this spec. |
 | Render / Railway with an always-on Express server | Works, but adds a paid always-on process and a second deploy pipeline. | Only if Vercel is refused. |
 
@@ -69,17 +69,19 @@ The existing artefact's `db` already holds bookings from the current site. Once 
 
 ## 3. Decisions to lock before Milestone 1
 
-> **Ask this person: Callum Page** — answer D1–D7 in one message. Each has a default; silence means the default applies and is labelled ASSUMPTION in the code.
+> **Ask this person: Callum Page** — D4 and D7 are resolved below (20 Sep 2026); D10–D11 are new. D1, D2, D3, D5, D8, D9 were not addressed in the follow-up and their defaults apply, labelled ASSUMPTION in the code, until Callum says otherwise.
 
-| # | Decision | Options (best first) | Default if unanswered |
+| # | Decision | Options (best first) | Status |
 |---|---|---|---|
-| D1 | **Postcode 4000.** Your checklist says 4000 → active. The coverage data of record says 4000 → opening soon. | (a) Keep data of record (4000 = opening) and change the test to a live postcode such as 4131 **(Recommended — no unverified coverage claim)** · (b) Move 4000 into `LIVE_PC` because an operator is confirmed for the CBD | (a) |
-| D2 | **48-hour turnaround for blankets.** New rule; current copy says turnaround is "confirmed at booking". | (a) Estimator shows "Indicative turnaround: 48 h" for the linen service; FAQ and terms copy unchanged **(Recommended)** · (b) Publish 48 h as a commitment across the site | (a) |
-| D3 | **Pricing, Privacy and Terms pages** exist in the PDF but are not in the 12 routes. Footer links point at them. | (a) Add `/pricing`, `/privacy`, `/terms` as static routes rendered from extracted copy — three small files **(Recommended)** · (b) Drop them and remove the footer links | (a) |
-| D4 | **Customer app and operator portal** (PDF pp. 42–49; `portal.html`) are outside the 12 routes. | (a) Out of scope for this rebuild; the "My Account" button links to the existing artefact until phase 2 **(Recommended)** · (b) Include now (roughly doubles the build) | (a) |
-| D5 | **BACKEND SPEC.** Not in the repo. | (a) Paste it and I diff it against §4 · (b) Accept §4 as the spec **(Recommended if it matches your memory of it)** | (b) |
-| D6 | **Ops Sheet webhook URL** for bookings/enquiries. | Provide the Apps Script web-app URL, or confirm the Sheet has no script yet and I add the `doPost` handler to the single Ops Runner script in a later step | Dev JSON fallback; Sheet wiring becomes an action in §10 |
-| D7 | **Brand string.** PDF says "LaundryKings / Kings Club". Repo is "Laundrylegends". Your sequence says `/legends-club`. | (a) "Laundrylegends" (one word, as the repo) and "Legends Club" **(Recommended — matches the copy of record)** · (b) "Laundry Legends" two words | (a) |
+| D1 | **Postcode 4000.** Your checklist says 4000 → active. The coverage data of record says 4000 → opening soon. | (a) Keep data of record (4000 = opening) and change the test to a live postcode such as 4131 **(Recommended — no unverified coverage claim)** · (b) Move 4000 into `LIVE_PC` because an operator is confirmed for the CBD | Open — default (a) applies |
+| D2 | **48-hour turnaround for blankets.** New rule; current copy says turnaround is "confirmed at booking". | (a) Estimator shows "Indicative turnaround: 48 h" for the linen service; FAQ and terms copy unchanged **(Recommended)** · (b) Publish 48 h as a commitment across the site | Open — default (a) applies |
+| D3 | **Pricing, Privacy and Terms pages** exist in the PDF but are not in the 12 routes. Footer links point at them. | (a) Add `/pricing`, `/privacy`, `/terms` as static routes rendered from extracted copy — three small files **(Recommended)** · (b) Drop them and remove the footer links | Open — default (a) applies |
+| ~~D4~~ | ~~Customer app and operator portal are outside the 12 routes.~~ | — | **Resolved 20 Sep 2026 — reversed.** Callum: bring the actual booking-process app in, "mastered... Uber/service-style". Now Milestone 4 (§6). D10 covers the one open sub-question (tracking depth). |
+| D5 | **BACKEND SPEC.** Not in the repo. | (a) Paste it and I diff it against §4 · (b) Accept §4 as the spec **(Recommended if it matches your memory of it)** | Open — default (b) applies |
+| D6 | **Ops Sheet webhook URL** for bookings/enquiries. | Provide the Apps Script web-app URL, or confirm the Sheet has no script yet and I add the `doPost` handler to the single Ops Runner script in a later step | Open — dev JSON fallback meanwhile (action in §10) |
+| ~~D7~~ | ~~Brand string.~~ | — | **Superseded 20 Sep 2026 by the rebrand (§12.1).** Now "Linen Legends" (two words) and "Legends Club" (ASSUMPTION — "Legends Club" reads fine under the new name and needs no rework; say so if you want it changed, e.g. to "Linen Club"). |
+| D10 | **Booking-status tracking depth (new, §6 Milestone 4).** A real timestamped status timeline is in scope now. A live-moving-van map is a second product (needs an operator app streaming GPS). | (a) Status timeline only at launch, live map is a phase-2 project **(Recommended)** · (b) Scope the live map now — this is materially larger than everything else in this plan combined | Open — default (a) applies |
+| D11 | **Filing prefix**, now that the venture is confirmed as Linen Legends. | (a) `LL` — fits "Legends" and "Linen Legends" both **(Recommended)** · (b) Something else | Stays Max Jones's call per README; not mine or Callum's to set |
 
 ---
 
@@ -131,9 +133,9 @@ These are the rules that make the difference. Each is a concrete instruction to 
 
 ---
 
-## 6. Build sequence as four milestones
+## 6. Build sequence as six milestones
 
-Each milestone maps to the numbered steps in the original sequence. "Gate" is what must be true before the milestone is committed.
+**Updated 20 Sep 2026:** two milestones added — M4 (booking and account experience) and M5 (motion and premium design polish, the effects triaged in §11 plus the Apple/BMW-style pass Callum asked for in §12). The original Milestone 4 is renumbered Milestone 6 and unchanged otherwise. Each milestone maps to the numbered steps in the original build sequence, plus the additions below. "Gate" is what must be true before the milestone is committed.
 
 ### Milestone 1 — Foundations (steps 1–3)
 
@@ -177,17 +179,46 @@ Each milestone maps to the numbered steps in the original sequence. "Gate" is wh
 | Gate | All 15 routes render; every enquiry form returns `{ok:true}` via UI; shots; zero console errors. |
 | Commit | `site: M3 all routes` |
 
-### Milestone 4 — Final pass and cut-over prep (step 12)
+### Milestone 4 — Booking and account experience, Uber/service-style (added 20 Sep 2026)
+
+Callum: *"I want the app features of our actual booking process... mastered and turned from a simple AI build into a quality Uber/service-style booking visual."* Source is already in the repo — the customer-app routes inside `site/laundrylegends-site.html` (`#/app`, `#/bookings`, `#/account`, `#/messages`, `#/profile`, `#/invoices`, `bookingCard()`, the `S.messages` model) and `site/laundry-australia/portal.html`. No resend needed; `tools/extract_site_data.mjs` pulls the same source it already reads for pricing and copy.
+
+**What "mastered" means concretely**, not just restyled:
+
+| Item | Detail |
+|---|---|
+| Order status timeline | A five-to-seven-step stepper — Booked → Confirmed → Collector on the way → Collected → Washing → Ready → Delivered — each step timestamped once reached, large current-step type, Uber-style single-card layout. Ports the existing `status` field (`awaiting-operator`, `confirmed`, `complete`, `cancelled`) into the richer timeline; extra intermediate states are new. |
+| **Not built now: live GPS tracking.** A moving van on a real map needs an operator app streaming real location — a second product, not a visual. **Decision D10** below. | The timeline above is real (driven by whatever status the booking record actually holds) — it is not a fake animation. It simply doesn't show a live-moving pin until there is a real feed. |
+| `/account` | Bookings list (`bookingCard()` redesigned as a card list, filterable by status), profile, saved preferences (detergent, hang-dry, folding style — ported from the Legends Club "set your preferences" copy), addresses. |
+| `/messages` | Notification list ported from `S.messages`, unread badge, read state. In-app only at launch — no push/SMS infrastructure exists yet. |
+| Visual bar | White/near-white cards on the light theme, one accent (ember) for the active step and primary actions, generous spacing, large confident numerals for price and ETA — the reference is Uber's trip-status screen and Apple's order-tracking emails, not a dashboard. |
+| API additions | `GET /api/bookings/:id` (poll for status), booking record gains `statusHistory:[{status,at}]`. Both additive to §4, no breaking change to `/api/bookings`. |
+| Gate | A seeded booking walks through all timeline states in the UI; `/account`, `/messages` render with the same data the booking POST created; shots; zero console errors. |
+| Commit | `site: M4 booking and account experience` |
+
+### Milestone 5 — Motion and premium design polish (added 20 Sep 2026)
+
+Applies §11's In-list (parallax, reveals, sticky stacking, progress bar, glass header, fullscreen nav, magnetic and liquid-fill buttons, tilt, glow borders, checkmark draws, bento grid) across every route built in M1–M4, then a dedicated Apple/BMW-style pass: type scale and spacing audited against an 8 px grid, section rhythm tightened, imagery treated with a consistent duotone/grain placeholder until real photography lands (§12.3), copy cut per §12.3 item 6 (roughly 40% shorter, compliance text untouched).
+
+| Item | Detail |
+|---|---|
+| Motion pass | §11.2–§11.5 "In" items wired into `Reveal`/`Kinetic`/`Marquee`/`Section` and the new booking-app components from M4. |
+| Design pass | Spacing and type scale audit against an 8 px grid; hero and section rhythm tightened; `<picture>` duotone/grain placeholder treatment on the one hero image until real photography (§12.3) replaces it. |
+| Copy pass | Marketing page copy cut to roughly 40% of current length; every compliance sentinel (§8) and the guarantee/terms text stay verbatim and full length. |
+| Gate | Web-vitals thresholds from §11.1 hold across all routes; shots contact sheet reviewed by Callum (§12.6) before M6. |
+| Commit | `site: M5 motion and design polish` |
+
+### Milestone 6 — Final pass and cut-over prep (was Milestone 4, renumbered)
 
 | Item | Detail |
 |---|---|
 | Form audit | curl + UI for booking, contact and the three enquiry kinds; assert `{ok:true}` and an `id`. |
 | Mobile nav | Open, close, route change closes menu, focus trap, `Escape`. |
-| Console | Zero errors and zero warnings across 15 routes at 390 px and 1280 px. |
+| Console | Zero errors and zero warnings across all routes (15 marketing + `/account`, `/messages`) at 390 px and 1280 px. |
 | Accessibility | Reuse `verify/a11y.js` pattern against the built `dist/`; fix contrast on ember-on-navy if flagged. |
-| Compliance sentinels | Port the README rule into `verify/sentinels.mjs`: GST-inclusive statement, NDIS statement, AS/NZS 4146 statement, contractor and WHS statements, ACL not-limited statement, no invented entity text, no phone or email unless supplied. Build fails if any is missing. |
+| Compliance sentinels | Port the README rule into `verify/sentinels.mjs`: GST-inclusive statement, NDIS statement, AS/NZS 4146 statement, contractor and WHS statements, ACL not-limited statement, no invented entity text, no phone or email unless supplied, brand string is "Linen Legends" nowhere "Laundrylegends". Build fails if any is missing. |
 | Deploy | Vercel preview deployment via the connector; smoke script re-run against the preview URL. |
-| Commit | `site: M4 final pass — forms, nav, a11y, sentinels` |
+| Commit | `site: M6 final pass — forms, nav, a11y, sentinels` |
 
 ---
 
@@ -257,15 +288,19 @@ Legal boundary: these are compliance and commercial risks flagged for the princi
 
 | # | Action | Owner | Date |
 |---|---|---|---|
-| 1 | Answer decisions D1–D9 (§3 and §11.7) in one message | Callum Page | Before Milestone 1 |
+| 1 | Answer remaining open decisions D1, D2, D3, D5, D6, D8, D9, D10 (§3, §11.7) — or confirm defaults, one message | Callum Page | Before Milestone 1 |
 | 2 | Run Milestone 1 (foundations) and commit | Build session (current model) | Next session |
 | 3 | Run Milestone 2 (home + tools) and commit | Build session (Sonnet) | Session after M1 |
-| 4 | Run Milestone 3 (all routes) and commit | Build session (Sonnet) | Session after M2 |
-| 5 | Run Milestone 4 (final pass) and deploy a Vercel preview | Build session (current model) | Session after M3 |
-| 6 | Provide Ops Sheet Apps Script web-app URL, or approve adding `doPost` to the Ops Runner script | Callum Page | Before M4 |
-| 7 | Confirm filing prefix (`LKG` or `LL`) so this plan and the dossier can be filed | Max Jones | Open since 19 Sep 2026 |
-| 8 | Freeze the artefact `db` store once the new site accepts bookings | Callum Page | At cut-over |
-| 9 | Clear §9 business blockers | Max Jones / Callum Page | Before public launch |
+| 4 | Run Milestone 3 (all marketing routes) and commit | Build session (Sonnet) | Session after M2 |
+| 5 | Run Milestone 4 (booking and account app) and commit | Build session (Sonnet) | Session after M3 |
+| 6 | Run Milestone 5 (motion and design polish) and commit | Build session (Sonnet) | Session after M4 |
+| 7 | Run Milestone 6 (final pass) and deploy a Vercel preview | Build session (current model) | Session after M5 |
+| 8 | Provide Ops Sheet Apps Script web-app URL, or approve adding `doPost` to the Ops Runner script | Callum Page | Before M6 |
+| 9 | Confirm filing prefix (D11) so this plan and the dossier can be filed | Max Jones | Open since 19 Sep 2026, strengthened toward `LL` by the rebrand |
+| 10 | Register `linenlegends.com.au` (§12.2) | Callum Page | Once the ABN exists |
+| 11 | Decide whether to rebrand the still-live old artefact/site now or let it retire at cut-over (§12.1) | Callum Page | Whenever convenient — not blocking |
+| 12 | Freeze the artefact `db` store once the new site accepts bookings | Callum Page | At cut-over |
+| 13 | Clear §9 business blockers | Max Jones / Callum Page | Before public launch |
 
 ---
 
@@ -382,3 +417,55 @@ Total: roughly one extra turn across the four milestones. Everything marked Late
 |---|---|---|---|
 | D8 | Which operator-app features are live today, for the bento copy (alerts, route tracking, payouts) | (a) Only features live at launch appear, others say "Coming" **(Recommended)** · (b) List planned features as planned | (a) |
 | D9 | Horizontal steps rail on desktop | (a) Phase 2 **(Recommended)** · (b) Include in M2 at roughly one extra turn | (a) |
+
+---
+
+## 12. Premium design brief and scope update — resolved 20 Sep 2026
+
+Callum asked for an Apple/BMW/Samsung-style site — "very modern, no corner cut visuals" — then answered ten follow-up questions and, in a second round, three clarifying questions about two answers that were ambiguous or contradictory against the docs of record. This section is the record of that exchange and is authoritative where it conflicts with §0–§11.
+
+### 12.1 Rebrand: Laundrylegends → Linen Legends
+
+Confirmed by Callum Page, 20 Sep 2026, after I flagged that it contradicted every existing doc (README, HANDOFF, the live artefact, the site's own JSON-LD, the current filing-prefix discussion). **This is a real rebrand, not a typo fix.** What it touches:
+
+| Touches | Handling |
+|---|---|
+| New build (this plan, §1–§11, the eventual `src/data/site.js`, all new copy) | Uses "Linen Legends" from Milestone 1 onward. `tools/extract_site_data.mjs` runs a brand find-and-replace pass (Laundrylegends → Linen Legends, laundrylegends.com.au → linenlegends.com.au) while pulling copy from the old file. |
+| Order reference prefix `LL-` | **No change needed** — "LL" already fits "Linen Legends" as well as it fit "Laundrylegends". |
+| The still-live artefact and `site/laundrylegends-site.html` | **Untouched by this rebuild.** They keep the old brand until either cut-over (§2.3) or a separate small request to rebrand them now (action register #11). Not blocking. |
+| Filing prefix (`LKG` vs `LL`) | Still Max Jones's call (README), but the rebrand strengthens `LL` (D11). |
+| Company name for ABN registration | Unaffected either way — that's a separate legal step owned by Max Jones (§9), and "Linen Legends" vs any registered trading name is worth checking doesn't clash before the ABN application. |
+
+### 12.2 Domain
+
+Confirmed: **`linenlegends.com.au`, registered once the ABN exists** (Recommended option, chosen). One correction made during the question: `.co.au` is not a real Australian namespace — the standard options are `.com.au` / `.org.au` / `.net.au` (require an ABN or trademark under auDA rules) or a bare `.au` (available without an ABN since 2022). Callum chose to wait for the ABN rather than take the bare-`.au` or interim-`.com` alternatives, so **no domain purchase happens before the ABN lands.** The site runs on a Vercel-issued `*.vercel.app` URL until then. Domain availability for `linenlegends.com.au` itself is **UNVERIFIED** — nobody has checked a registrar; that's a five-minute check worth doing before the ABN application locks the name in, not after.
+
+### 12.3 Visual direction — Apple / BMW / Samsung, "no corner cut visuals"
+
+| Question | Answer | Consequence |
+|---|---|---|
+| Reference style | Not picked explicitly between the three; the request stands as "modern, no cut corners" generally | §6 Milestone 5 treats this as: BMW-style dark cinematic hero + Apple-style restrained light content sections, per my original recommendation, since Callum didn't override it. Revisit in the M5 gate review if the contact sheet doesn't land right. |
+| Photography and film | "We will worry about photography and film last" | Confirmed as deferred. M5 ships with the one existing hero JPG under a consistent duotone/grain placeholder treatment, not stock photography (stock is exactly the "corner cut" the brief is trying to avoid). Real assets swap in later without a redesign. |
+| 3D hero object | "No" | Confirmed out. No 3D library enters the bundle. |
+| Logo and brand files | "We'll do that last" | Confirmed deferred, same bucket as photography. M1's design tokens (navy/ember, the type ramp) don't depend on a final logo file. |
+| Typeface | Not actually answered — the reply was about Max Jones's role in the business, not a font. See 12.4. | Default stands: a self-hosted variable grotesk from Google Fonts, zero licensing risk. No commercial face is licensed. Revisit whenever Callum names one. |
+| Copy length | "Ok" (to cutting page copy to roughly 40%) | Confirmed, executed in M5. Compliance text and the guarantee/terms stay full length regardless. |
+| Testimonials | "No testimonials as we will have a real input review system not fake" | Confirmed: no fake reviews, ever. The site launches with no reviews section. **New item, not yet scoped:** a real review-capture flow. §12.5 records it as a Later item, seeded by reusing the existing `#/feedback` pattern already in the old site rather than inventing a new one (convergence). |
+| Five milestones (the polish pass) | "Okay" | Now folded into six (§6 Milestone 5), because Milestone 4 (booking app) was added in the same round — not because the polish pass itself grew. |
+| Sign-off | "Me" | Callum Page alone approves the Milestone 5 contact sheet before Milestone 6 starts (§6 M5 gate). |
+
+### 12.4 Typeface / logo clarification
+
+My second-round question asked whether "Max Jones is our licensed face" meant a commercial font licence. Callum's answer: **"No, Max is our owner, he is the licensed everything and the local face to the business."** This is not a typeface decision — it means Max Jones is a business owner/principal and the business's public-facing representative, consistent with the standing context (Max Jones: structures numbers, long-range planning, prior multi-site operator). No font is licensed. The earlier ABC News link (Condobolin/Charleville shops story) was noise, not an instruction, and is disregarded. **Consequence for the build:** none directly — but Max being "the local face" is a usable, UNVERIFIED-until-confirmed fact for `/about` page copy (e.g. an owner's note or photo) once photography is scoped (§12.3), not before.
+
+### 12.5 Booking-process app brought into scope
+
+See §6 Milestone 4 for the full build detail. Summary: the customer-facing booking management experience — order status, bookings list, messages, account/profile — is now in scope for this rebuild, redesigned to an Uber/service-app visual standard rather than ported as-is. Source is already in the repo (no resend needed). One technical honesty point carried into D10: a live GPS-tracked map is a second product, not a styling choice, and is not built now.
+
+### 12.6 Net effect on the plan
+
+- Milestone count: **4 → 6** (booking app + polish pass, both new since the original plan).
+- Route count: 15 marketing routes (unchanged) **+ `/account`, `/messages`** app surfaces.
+- Domain and brand: **Linen Legends**, `linenlegends.com.au` pending ABN — every reference in §0–§11 to "Laundrylegends" or `laundrylegends.com.au` is superseded by this section.
+- No change to: pricing of record, coverage of record, estimator rule, compliance sentinels, hosting choice, persistence choice, or the credit-efficiency rules in §5 — those hold as written.
+- Still open before Milestone 1: D1, D2, D3, D5, D6, D8, D9, D10 (defaults apply on silence, per §3); D11 stays with Max Jones; action register items 9–11.
