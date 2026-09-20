@@ -51,7 +51,7 @@
 
 | Option | Fit | Verdict |
 |---|---|---|
-| **Vercel: static Vite build + `api/` functions** | Connector already attached. Free Hobby tier covers launch traffic. Custom domain: `linenlegends.com.au` once the ABN exists to register it (§12.2) — a Vercel-issued `*.vercel.app` URL serves previews and any pre-ABN soft launch. | **(Recommended)** |
+| **Vercel: static Vite build + `api/` functions** | Connector already attached. Free Hobby tier covers launch traffic. Custom domain: `linenlegends.com.au` — registered 20 Sep 2026 (§12.2), attaches at cut-over; a Vercel-issued `*.vercel.app` URL serves previews until then. | **(Recommended)** |
 | Keep publishing as a Claude artefact | Artefacts serve static HTML only. `/api/*` cannot exist, so every form in the spec fails. | Not viable for this spec. |
 | Render / Railway with an always-on Express server | Works, but adds a paid always-on process and a second deploy pipeline. | Only if Vercel is refused. |
 
@@ -297,7 +297,7 @@ Legal boundary: these are compliance and commercial risks flagged for the princi
 | 7 | Run Milestone 6 (final pass) and deploy a Vercel preview | Build session (current model) | Session after M5 |
 | 8 | Provide Ops Sheet Apps Script web-app URL, or approve adding `doPost` to the Ops Runner script | Callum Page | Before M6 |
 | 9 | Confirm filing prefix (D11) so this plan and the dossier can be filed | Max Jones | Open since 19 Sep 2026, strengthened toward `LL` by the rebrand |
-| 10 | Register `linenlegends.com.au` (§12.2) | Callum Page | Once the ABN exists |
+| 10 | ~~Register `linenlegends.com.au`~~ **Done 20 Sep 2026.** Remaining: confirm the eligibility basis (ABN? which entity?) so the footer entity text can go real (§12.2), then point DNS at Vercel at cut-over | Max Jones (entity/ABN) · Callum Page (DNS) | Entity text before public launch; DNS at cut-over |
 | 11 | Decide whether to rebrand the still-live old artefact/site now or let it retire at cut-over (§12.1) | Callum Page | Whenever convenient — not blocking |
 | 12 | Freeze the artefact `db` store once the new site accepts bookings | Callum Page | At cut-over |
 | 13 | Clear §9 business blockers | Max Jones / Callum Page | Before public launch |
@@ -438,7 +438,11 @@ Confirmed by Callum Page, 20 Sep 2026, after I flagged that it contradicted ever
 
 ### 12.2 Domain
 
-Confirmed: **`linenlegends.com.au`, registered once the ABN exists** (Recommended option, chosen). One correction made during the question: `.co.au` is not a real Australian namespace — the standard options are `.com.au` / `.org.au` / `.net.au` (require an ABN or trademark under auDA rules) or a bare `.au` (available without an ABN since 2022). Callum chose to wait for the ABN rather than take the bare-`.au` or interim-`.com` alternatives, so **no domain purchase happens before the ABN lands.** The site runs on a Vercel-issued `*.vercel.app` URL until then. Domain availability for `linenlegends.com.au` itself is **UNVERIFIED** — nobody has checked a registrar; that's a five-minute check worth doing before the ABN application locks the name in, not after.
+**`linenlegends.com.au` is REGISTERED** — confirmed by Callum Page, 20 Sep 2026, exact string checked back against the registrar spelling. It becomes the canonical domain in every URL, the JSON-LD `@id`, Open Graph tags and the eventual email addresses from Milestone 1 onward. One correction made during the earlier question stands for the record: `.co.au` is not a real Australian namespace — the options are `.com.au` / `.org.au` / `.net.au` (ABN or trademark required under auDA rules) or a bare `.au`.
+
+**Follow-on fact to confirm:** a `.com.au` registration requires an ABN, ACN or trademark basis. If it was registered against a new ABN, that same ABN also clears the biggest §9 footer blocker — Max Jones should supply the registered entity name and ABN for the footer, and the "Company name and ABN to be published on registration" placeholder can finally be replaced with real text. If it was registered some other way (e.g. under an existing entity of the principals'), say which entity, because the footer must name the actual trading entity. UNVERIFIED until one of them confirms — the footer text still comes from Max Jones only, per the standing rule.
+
+Remaining domain tasks: point `linenlegends.com.au` at the Vercel project at cut-over (DNS at the registrar or delegate to Vercel), and decide the www/apex redirect direction (Recommended: apex canonical, www redirects). Owner: Callum Page, at cut-over.
 
 ### 12.3 Visual direction — Apple / BMW / Samsung, "no corner cut visuals"
 
@@ -466,6 +470,6 @@ See §6 Milestone 4 for the full build detail. Summary: the customer-facing book
 
 - Milestone count: **4 → 6** (booking app + polish pass, both new since the original plan).
 - Route count: 15 marketing routes (unchanged) **+ `/account`, `/messages`** app surfaces.
-- Domain and brand: **Linen Legends**, `linenlegends.com.au` pending ABN — every reference in §0–§11 to "Laundrylegends" or `laundrylegends.com.au` is superseded by this section.
+- Domain and brand: **Linen Legends**, `linenlegends.com.au` (registered 20 Sep 2026) — every reference in §0–§11 to "Laundrylegends" or `laundrylegends.com.au` is superseded by this section.
 - No change to: pricing of record, coverage of record, estimator rule, compliance sentinels, hosting choice, persistence choice, or the credit-efficiency rules in §5 — those hold as written.
 - Still open before Milestone 1: D1, D2, D3, D5, D6, D8, D9, D10 (defaults apply on silence, per §3); D11 stays with Max Jones; action register items 9–11.
