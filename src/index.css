@@ -59,5 +59,11 @@
 /* Scroll progress */
 .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--ember); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; }
 
+/* Checkmark-draw success indicator — sizing/color set by Tailwind utilities on the <svg> itself. */
+.checkmark-circle { stroke: currentColor; stroke-width: 2; stroke-dasharray: 166; stroke-dashoffset: 166; animation: checkmark-circle .5s cubic-bezier(.65,0,.45,1) forwards; }
+.checkmark-check { stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 48; stroke-dashoffset: 48; animation: checkmark-check .35s .5s cubic-bezier(.65,0,.45,1) forwards; }
+@keyframes checkmark-circle { to { stroke-dashoffset: 0; } }
+@keyframes checkmark-check { to { stroke-dashoffset: 0; } }
+
 /* Grain overlay */
 .grain::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: .04; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E"); }

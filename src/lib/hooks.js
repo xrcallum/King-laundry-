@@ -1,5 +1,22 @@
 import { useEffect, useRef } from 'react';
 const fine = () => window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Scroll parallax — moves an element at a fraction of scroll speed. Hero decoration only. */
+export function useParallax(speed = 0.15) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || reduced()) return;
+    let raf = null;
+    const apply = () => { el.style.transform = `translate3d(0, ${window.scrollY * speed}px, 0)`; raf = null; };
+    const onScroll = () => { if (raf === null) raf = requestAnimationFrame(apply); };
+    apply();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
+  }, [speed]);
+  return ref;
+}
 
 /* Magnetic pull toward the cursor — primary CTAs only, 12px max. */
 export function useMagnetic(strength = 12) {

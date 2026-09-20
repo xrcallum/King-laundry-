@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { sendEnquiry } from '../lib/api.js';
+import SuccessCard from './SuccessCard.jsx';
 
 const FIELDS = {
   business: { org: 'Business name', detail: 'Estimated volume & frequency — e.g. 4 properties, approx. 6 changeovers per week' },
@@ -21,10 +22,10 @@ export default function EnquiryForm({ kind }) {
   };
 
   if (done) return (
-    <div className="card border-green-600/30 bg-green-50" role="status">
+    <SuccessCard>
       <p className="font-display font-bold text-green-900">Enquiry received — reference {done}.</p>
       <p className="mt-1 text-sm text-green-900/80">We answer every enquiry, same business day where we can.{kind === 'operator' && ' Submitting this form is an expression of interest only — it does not create any contract or obligation on either side.'}</p>
-    </div>
+    </SuccessCard>
   );
   return (
     <form onSubmit={submit} className="card grid gap-4 sm:grid-cols-2">

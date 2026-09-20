@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { createBooking, getEstimate } from '../lib/api.js';
 import { loadEstimate } from '../lib/estimatorStore.js';
+import { WINDOWS, POSTCODE_PATTERN, PHONE_PATTERN } from '../lib/bookingOptions.js';
+import SuccessCard from './SuccessCard.jsx';
 
 const SVC = { wf: 'Wash & Fold', linen: 'Blankets, Rugs & Sheets', dc: 'Dry Cleaning', bulky: 'Bulky & Household' };
-const WINDOWS = ['9am–12pm', '12pm–3pm', '4pm–7pm'];
 const money = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
 const minDate = () => { const d = new Date(Date.now() + 86400000); return d.toISOString().slice(0, 10); };
 
@@ -39,11 +40,11 @@ export default function BookingForm() {
   };
 
   if (result) return (
-    <div className="card mx-auto max-w-xl border-green-600/30 bg-green-50" role="status">
+    <SuccessCard className="mx-auto max-w-xl">
       <p className="eyebrow !text-green-700">Booking request received</p>
       <p className="mt-2 font-display text-3xl font-extrabold text-green-900">{result.id}</p>
       <p className="mt-2 text-sm text-green-900/80">Keep this reference. An operator will confirm your window. Estimated total {money(result.estimate.total)}, GST included — your exact price is confirmed after weighing, before any work starts.</p>
-    </div>
+    </SuccessCard>
   );
 
   return (
@@ -54,11 +55,11 @@ export default function BookingForm() {
           <select id="bk-svc" className="input" value={b.service} onChange={set('service')}>{Object.entries(SVC).map(([k, v]) => <option key={k} value={k}>{v}</option>)}</select></div>
         <div><label className="label" htmlFor="bk-qty">Quantity</label><input id="bk-qty" className="input" type="number" min="1" max="50" required value={b.qty} onChange={set('qty')} /></div>
         <div><label className="label" htmlFor="bk-name">Full name</label><input id="bk-name" className="input" required value={b.name} onChange={set('name')} autoComplete="name" /></div>
-        <div><label className="label" htmlFor="bk-phone">Phone</label><input id="bk-phone" className="input" type="tel" required value={b.phone} onChange={set('phone')} autoComplete="tel" /></div>
+        <div><label className="label" htmlFor="bk-phone">Phone</label><input id="bk-phone" className="input" type="tel" required pattern={PHONE_PATTERN} title="Enter a valid phone number." value={b.phone} onChange={set('phone')} autoComplete="tel" /></div>
         <div className="sm:col-span-2"><label className="label" htmlFor="bk-email">Email</label><input id="bk-email" className="input" type="email" required value={b.email} onChange={set('email')} autoComplete="email" /></div>
         <div className="sm:col-span-2"><label className="label" htmlFor="bk-addr">Collection address</label><input id="bk-addr" className="input" required value={b.address} onChange={set('address')} autoComplete="street-address" /></div>
         <div><label className="label" htmlFor="bk-sub">Suburb</label><input id="bk-sub" className="input" required value={b.suburb} onChange={set('suburb')} /></div>
-        <div><label className="label" htmlFor="bk-pc">Postcode</label><input id="bk-pc" className="input" required inputMode="numeric" maxLength={4} value={b.postcode} onChange={(e) => setB({ ...b, postcode: e.target.value.replace(/\D/g, '').slice(0, 4) })} /></div>
+        <div><label className="label" htmlFor="bk-pc">Postcode</label><input id="bk-pc" className="input" required inputMode="numeric" maxLength={4} pattern={POSTCODE_PATTERN} title="Enter a four-digit postcode." value={b.postcode} onChange={(e) => setB({ ...b, postcode: e.target.value.replace(/\D/g, '').slice(0, 4) })} /></div>
         <div><label className="label" htmlFor="bk-date">Collection day</label><input id="bk-date" className="input" type="date" min={minDate()} required value={b.date} onChange={set('date')} /></div>
         <div><label className="label" htmlFor="bk-win">Window</label>
           <select id="bk-win" className="input" value={b.window} onChange={set('window')}>{WINDOWS.map((w) => <option key={w}>{w}</option>)}</select></div>

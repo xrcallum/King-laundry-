@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Section from '../components/Section.jsx';
 import Reveal from '../components/Reveal.jsx';
+import SuccessCard from '../components/SuccessCard.jsx';
 import { sendContact } from '../lib/api.js';
 
 const TOPICS = ['Question', 'Quote', 'Complaint', 'Something else'];
@@ -23,7 +24,7 @@ function ContactForm() {
 
   if (result) {
     return (
-      <div className="card border-green-600/30 bg-green-50" role="status">
+      <SuccessCard>
         <p className="font-display font-bold text-green-900">Message received — reference {result.id}.</p>
         <p className="mt-1 text-sm text-green-900/80">We aim to respond the same business day.</p>
         {state.complaint && (
@@ -31,7 +32,7 @@ function ContactForm() {
             Complaints are escalated rather than queued — acknowledged within one business day.
           </p>
         )}
-      </div>
+      </SuccessCard>
     );
   }
 

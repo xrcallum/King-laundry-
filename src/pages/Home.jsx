@@ -7,7 +7,7 @@ import Estimator from '../components/Estimator.jsx';
 import PostcodeChecker from '../components/PostcodeChecker.jsx';
 import FAQAccordion from '../components/FAQAccordion.jsx';
 import site from '../data/site.js';
-import { useMagnetic, useTilt } from '../lib/hooks.js';
+import { useMagnetic, useTilt, useParallax } from '../lib/hooks.js';
 
 const TRUST = [
   ['Screened operators', 'Identity and background checks before the first job. Every operator, every time.'],
@@ -35,10 +35,11 @@ function ClubCard({ p, i }) {
 
 export default function Home() {
   const mag = useMagnetic(12);
+  const parallax = useParallax(0.18);
   return (
     <>
       <section className="relative overflow-hidden bg-navy text-white">
-        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(80%_60%_at_70%_20%,#0e2a6a_0%,transparent_60%)]" />
+        <div ref={parallax} aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(80%_60%_at_70%_20%,#0e2a6a_0%,transparent_60%)]" />
         <div className="container-x relative grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:items-center">
           <div>
             <Kinetic

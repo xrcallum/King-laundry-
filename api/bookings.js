@@ -2,6 +2,8 @@ import { estimate } from './_lib/pricing.js';
 import { save, find } from './_lib/store.js';
 import { REF } from './_lib/ref.js';
 import { bad, noStore, rateLimit, spamGuard } from './_lib/http.js';
+import { validateBookingFields } from './_lib/validate.js';
+import { WINDOWS } from '../src/lib/bookingOptions.js';
 
 export default async function handler(req, res) {
   noStore(res);
@@ -17,6 +19,8 @@ export default async function handler(req, res) {
     if (!b[f]) return bad(res, 'missing_field', `Missing required field: ${f}.`);
   }
   if (b.consent !== true) return bad(res, 'consent', 'Consent to be contacted about this booking is required.');
+  const fv = validateBookingFields(b, WINDOWS);
+  if (!fv.ok) return bad(res, fv.error, fv.message);
   const est = estimate({ service: b.service, qty: b.qty, eco: b.eco, bags: b.bags });
   if (!est.ok) return res.status(400).json(est);
   const id = REF();
