@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Section from '../components/Section.jsx';
 import Reveal from '../components/Reveal.jsx';
 import PostcodeChecker from '../components/PostcodeChecker.jsx';
-import { LIVE_PC, SOON_PC } from '../../api/_lib/coverage.js';
+import { LIVE_PC, SOON_PC } from '../data/coverageData.js';
 
 function bySuburb(map) {
   return Object.entries(map)

@@ -3,18 +3,23 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const files = [];
-const walk = (d) => { for (const f of readdirSync(d, { withFileTypes: true })) {
+const files = [], srcFiles = [];
+const walk = (d, out, ext) => { for (const f of readdirSync(d, { withFileTypes: true })) {
   const p = join(d, f.name);
-  if (f.isDirectory()) walk(p);
-  else if (/\.(html|js)$/.test(f.name)) files.push(p);
+  if (f.isDirectory()) walk(p, out, ext);
+  else if (ext.test(f.name)) out.push(p);
 } };
-walk('dist');
+walk('dist', files, /\.(html|js)$/);
+walk('src', srcFiles, /\.(jsx|js|css)$/);
 const body = files.map((f) => readFileSync(f, 'utf8')).join('\n');
+/* Emoji check runs over OUR source + built HTML only — vendor bundles carry their own
+   internal strings (e.g. react-router's dev warning) that are not page content. */
+const ours = srcFiles.map((f) => readFileSync(f, 'utf8')).join('\n') + readFileSync('dist/index.html', 'utf8');
 
 const MUST = [
   ['GST statement', 'All prices include GST and are in AUD'],
-  ['Entity placeholder', 'Company name and ABN to be published on registration'],
+  ['ABN published', 'ABN 12 482 409 883'],
+  ['Entity name pending flag', 'Registered entity name to be published'],
   ['Australian owned', 'Australian owned and operated'],
   ['NDIS statement', 'not currently a registered NDIS provider'],
   ['AS/NZS 4146 statement', 'AS/NZS 4146'],
@@ -36,7 +41,8 @@ for (const [name, s] of MUST) {
   if (!ok) fail++;
 }
 for (const [name, s] of NEVER) {
-  const hit = typeof s === 'string' ? body.includes(s) : s.test(body);
+  const hay = name === 'Emoji' ? ours : body;
+  const hit = typeof s === 'string' ? hay.includes(s) : s.test(hay);
   console.log(`${hit ? 'FAIL' : 'PASS'}  must-not: ${name}`);
   if (hit) fail++;
 }

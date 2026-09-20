@@ -33,7 +33,7 @@ const site = {
   /* Compliance sentinels — verbatim from the source of record, brand-substituted only.
      verify/sentinels.mjs asserts every one of these appears in the built site. */
   legal: {
-    footerEntity: 'Company name and ABN to be published on registration',
+    footerEntity: 'ABN 12 482 409 883 · Registered entity name to be published', // ABN supplied by Callum Page 20 Sep 2026 (checksum valid); entity name UNVERIFIED, owed by Max Jones
     gst: 'All prices include GST and are in AUD',
     owned: 'Australian owned and operated',
     phone: 'Phone line being connected',
