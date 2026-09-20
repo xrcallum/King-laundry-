@@ -3,7 +3,7 @@
 **Prepared:** 20 September 2026 · **Revised:** 20 September 2026 (rebrand + scope update, §12) · **Owner:** Callum Page · **Venture:** Linen Legends (renamed from Laundrylegends by Callum Page in this conversation, 20 Sep 2026 — see §12.1)
 **Branch:** `claude/laundry-legends-build-qmcafm` · **Repo:** `github.com/xrcallum/King-laundry-`
 **Filing:** code pending — README flags the `LKG` vs `LL` prefix as an open filing decision (Max Jones). The rebrand strengthens the case for `LL` (fits both "Legends" and "Linen Legends"), but the decision itself stays with Max Jones. File under SYS09 once decided.
-**Status:** v2 — plan only. Nothing has been built yet. §1–§11 are the original plan; §12 records the 20 Sep rebrand and scope changes and supersedes any conflicting text above it (brand name, domain, milestone count).
+**Status:** v3 — BUILT. All six milestones shipped 20 Sep 2026; see §12.7 for the end-of-session state. §1–§11 are the original plan; §12 records the rebrand, scope changes and build status and supersedes any conflicting text above it.
 
 ---
 
