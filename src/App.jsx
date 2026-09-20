@@ -4,6 +4,8 @@ import Lenis from 'lenis';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
+import NotFound from './pages/NotFound.jsx';
+import Seo from './components/Seo.jsx';
 
 const P = (n) => lazy(() => import(`./pages/${n}.jsx`));
 const PAGES = {
@@ -13,7 +15,17 @@ const PAGES = {
   '/guarantee': P('Guarantee'), '/faq': P('Faq'), '/contact': P('Contact'),
   '/privacy': P('Privacy'), '/terms': P('Terms'), '/account': P('Account'), '/messages': P('Messages'),
 };
-const NotFound = P('Placeholder');
+const TITLES = {
+  '/': null, '/book': 'Book a collection', '/services': 'Our services', '/pricing': 'Pricing',
+  '/legends-club': 'Legends Club', '/coverage': 'Coverage & suburbs', '/business': 'Business & commercial laundry',
+  '/supported-living': 'Supported living & aged care', '/operators': 'Become an operator', '/about': 'About us',
+  '/guarantee': 'Our service guarantee', '/faq': 'Frequently asked questions', '/contact': 'Contact us',
+  '/privacy': 'Privacy policy', '/terms': 'Terms of service', '/account': 'My account', '/messages': 'Messages',
+};
+function RouteSeo() {
+  const { pathname } = useLocation();
+  return <Seo title={TITLES[pathname] || TITLES['/']} path={pathname === '/' ? '' : pathname} />;
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,13 +48,14 @@ export default function App() {
   return (
     <div className="grain">
       <ScrollToTop />
+      <RouteSeo />
       <Navbar />
       <main id="main">
         <Suspense fallback={<div className="container-x py-24" aria-busy="true" />}>
           <Routes>
             <Route path="/" element={<Home />} />
             {Object.entries(PAGES).map(([path, C]) => <Route key={path} path={path} element={<C />} />)}
-            <Route path="*" element={<NotFound title="Page not found" notFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

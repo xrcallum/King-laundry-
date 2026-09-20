@@ -473,3 +473,7 @@ See §6 Milestone 4 for the full build detail. Summary: the customer-facing book
 - Domain and brand: **Linen Legends**, `linenlegends.com.au` (registered 20 Sep 2026) — every reference in §0–§11 to "Laundrylegends" or `laundrylegends.com.au` is superseded by this section.
 - No change to: pricing of record, coverage of record, estimator rule, compliance sentinels, hosting choice, persistence choice, or the credit-efficiency rules in §5 — those hold as written.
 - Still open before Milestone 1: D1, D2, D3, D5, D6, D8, D9, D10 (defaults apply on silence, per §3); D11 stays with Max Jones; action register items 9–11.
+
+### 12.7 Build status — 20 Sep 2026, end of session
+
+M1–M6 are BUILT and pushed on `claude/laundry-legends-build-qmcafm`: all 17 routes plus 404, live estimator and postcode checker, booking with `LL-` references and status timeline, three enquiry kinds, contact with complaint escalation, SEO/JSON-LD under the Linen Legends brand and `linenlegends.com.au`, ABN 12 482 409 883 in the footer (entity name pending, Max Jones), compliance sentinels enforced at build. Gates at final push: smoke 15/15, sentinels 19/19, screenshots all routes at two widths with zero console errors. Vercel project `linenlegends-site` is linked to the repo; every push deploys. Deployment protection defaults apply to preview URLs (open logged into Vercel). Outstanding: D6 Ops Sheet webhook (bookings on the deployed site are ephemeral until set), registered entity name for the footer, DNS to `linenlegends.com.au` at cut-over, §9 business blockers.

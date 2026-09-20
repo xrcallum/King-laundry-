@@ -68,13 +68,19 @@ const COMMERCIAL = {
 function ServiceCard({ s, dark = false, delay = 0, to = '/book' }) {
   return (
     <Reveal delay={delay} className="h-full">
-      <div className={`card h-full ${dark ? '!border-ember !bg-navy text-white ring-1 ring-ember' : ''}`}>
+      <div
+        className={`card h-full transition-all duration-300 hover:-translate-y-1 ${
+          dark
+            ? '!border-ember !bg-navy text-white ring-1 ring-ember hover:shadow-xl hover:shadow-ember/20'
+            : 'hover:border-navy-light hover:shadow-lg'
+        }`}
+      >
         <h3 className={`font-display text-xl font-bold ${dark ? 'text-white' : ''}`}>{s.name}</h3>
         <p className={`mt-2 leading-relaxed ${dark ? 'text-white/75' : ''}`}>{s.blurb}</p>
         <ul className={`mt-4 space-y-1.5 text-sm ${dark ? 'text-white/80' : ''}`}>
           {s.bullets.map((b) => (
             <li key={b} className="flex gap-2">
-              <span aria-hidden="true" className={dark ? 'text-ember' : 'text-navy'}>•</span>
+              <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ember" />
               <span>{b}</span>
             </li>
           ))}
@@ -111,13 +117,13 @@ export default function Services() {
 
       <Section>
         <Reveal>
-          <div className="card">
+          <div className="card transition-all duration-300 hover:-translate-y-1 hover:border-navy-light hover:shadow-lg">
             <h3 className="font-display text-xl font-bold">{COMMERCIAL.name}</h3>
             <p className="mt-2 leading-relaxed">{COMMERCIAL.blurb}</p>
             <ul className="mt-4 grid gap-1.5 text-sm sm:grid-cols-2">
               {COMMERCIAL.bullets.map((b) => (
                 <li key={b} className="flex gap-2">
-                  <span aria-hidden="true" className="text-navy">•</span>
+                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-ember" />
                   <span>{b}</span>
                 </li>
               ))}

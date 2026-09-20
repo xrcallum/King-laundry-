@@ -12,15 +12,19 @@ function bySuburb(map) {
 
 function SuburbGrid({ items, tone }) {
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    <div className="flex flex-wrap gap-2.5">
       {items.map((s) => (
-        <div
+        <span
           key={s.postcode}
-          className={`rounded-xl border p-4 text-sm ${tone === 'active' ? 'border-line bg-white' : 'border-line bg-paper'}`}
+          className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-navy-light hover:shadow-md"
         >
-          <p className="font-display font-bold text-ink">{s.suburb}</p>
-          <p className="mt-0.5 text-body">{s.postcode}</p>
-        </div>
+          <span
+            aria-hidden="true"
+            className={`h-1.5 w-1.5 shrink-0 rounded-full ${tone === 'active' ? 'bg-green-600' : 'bg-amber-500'}`}
+          />
+          <span className="font-display font-bold text-ink">{s.suburb}</span>
+          <span className="font-mono text-xs text-body/60">{s.postcode}</span>
+        </span>
       ))}
     </div>
   );
