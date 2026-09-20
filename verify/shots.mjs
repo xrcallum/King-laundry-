@@ -9,12 +9,22 @@ mkdirSync('shots', { recursive: true });
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
 let errors = [];
 for (const [w, h, tag] of [[390, 844, 'mobile'], [1280, 800, 'desktop']]) {
-  const page = await browser.newPage({ viewport: { width: w, height: h } });
+  // reducedMotion: content-complete captures — Lenis stays off and reveals render instantly.
+  const page = await browser.newPage({ viewport: { width: w, height: h }, reducedMotion: 'reduce' });
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`${tag} ${page.url()} :: ${m.text()}`); });
   page.on('pageerror', (e) => errors.push(`${tag} ${page.url()} :: ${e.message}`));
   for (const r of ROUTES) {
     await page.goto(BASE + r, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(600);
+    // Scroll through the page so IntersectionObserver reveals fire before a fullPage capture.
+    await page.evaluate(async () => {
+      const step = innerHeight * 0.8;
+      for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+        scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 90));
+      }
+      scrollTo(0, 0);
+    });
+    await page.waitForTimeout(700);
     const name = (r === '/' ? 'home' : r.replaceAll('/', '_').slice(1));
     await page.screenshot({ path: `shots/${name}-${tag}.png`, fullPage: true });
   }

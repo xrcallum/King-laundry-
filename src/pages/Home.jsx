@@ -7,6 +7,7 @@ import Estimator from '../components/Estimator.jsx';
 import PostcodeChecker from '../components/PostcodeChecker.jsx';
 import FAQAccordion from '../components/FAQAccordion.jsx';
 import site from '../data/site.js';
+import { useMagnetic, useTilt } from '../lib/hooks.js';
 
 const TRUST = [
   ['Screened operators', 'Identity and background checks before the first job. Every operator, every time.'],
@@ -20,7 +21,20 @@ const STEPS = [
   ['Back at your door', 'Washed, dried, folded or pressed, and delivered back. You pay after your price is confirmed. Pickup and return included.'],
 ];
 
+function ClubCard({ p, i }) {
+  const tilt = useTilt(6);
+  return (
+    <div ref={tilt} className={`card h-full !border-white/15 !bg-white/[0.05] text-white ${i === 0 ? 'ring-1 ring-ember' : ''}`}>
+      <h3 className="font-display font-bold text-white">{p.name}</h3>
+      <p className="mt-1 font-display text-4xl font-extrabold text-white">{['$63.70', '$89.70', '$115.70'][i]}<span className="text-sm font-semibold text-white/50">/week</span></p>
+      <p className="mt-3 text-sm text-white/75">{p.blurb}</p>
+      <p className="mt-4 border-t border-white/15 pt-3 text-xs font-semibold tracking-wide text-white/60">{p.loads.toUpperCase()}</p>
+    </div>
+  );
+}
+
 export default function Home() {
+  const mag = useMagnetic(12);
   return (
     <>
       <section className="relative overflow-hidden bg-navy text-white">
@@ -37,7 +51,7 @@ export default function Home() {
                 Your price is confirmed after weighing — before we touch a thing.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/book" className="btn-primary">Book a collection</Link>
+                <Link ref={mag} to="/book" className="btn-primary">Book a collection</Link>
                 <Link to="/pricing" className="btn-outline">See pricing</Link>
               </div>
               <p className="mt-6 text-sm text-white/60">Brisbane-owned · No app to download · Pay after weighing</p>
@@ -131,12 +145,7 @@ export default function Home() {
         <div className="grid gap-5 lg:grid-cols-3">
           {site.club.plans.map((p, i) => (
             <Reveal key={p.key} delay={i * 90} className="h-full">
-              <div className={`card h-full !border-white/15 !bg-white/[0.05] text-white ${i === 0 ? 'ring-1 ring-ember' : ''}`}>
-                <h3 className="font-display font-bold text-white">{p.name}</h3>
-                <p className="mt-1 font-display text-4xl font-extrabold text-white">{['$63.70', '$89.70', '$115.70'][i]}<span className="text-sm font-semibold text-white/50">/week</span></p>
-                <p className="mt-3 text-sm text-white/75">{p.blurb}</p>
-                <p className="mt-4 border-t border-white/15 pt-3 text-xs font-semibold tracking-wide text-white/60">{p.loads.toUpperCase()}</p>
-              </div>
+              <ClubCard p={p} i={i} />
             </Reveal>
           ))}
         </div>
