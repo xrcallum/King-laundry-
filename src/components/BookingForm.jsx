@@ -28,7 +28,14 @@ export default function BookingForm() {
     e.preventDefault();
     setErr(null);
     const r = await createBooking({ ...b, qty: Number(b.qty), bags: Number(b.bags) });
-    if (r.ok) setResult(r); else setErr(r.message);
+    if (r.ok) {
+      setResult(r);
+      try {
+        const mine = JSON.parse(localStorage.getItem('ll-bookings') || '[]');
+        mine.unshift({ id: r.id, date: b.date, service: b.service, at: new Date().toISOString() });
+        localStorage.setItem('ll-bookings', JSON.stringify(mine.slice(0, 20)));
+      } catch { /* private mode */ }
+    } else setErr(r.message);
   };
 
   if (result) return (
