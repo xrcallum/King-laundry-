@@ -257,7 +257,7 @@ Legal boundary: these are compliance and commercial risks flagged for the princi
 
 | # | Action | Owner | Date |
 |---|---|---|---|
-| 1 | Answer decisions D1–D7 in §3 in one message | Callum Page | Before Milestone 1 |
+| 1 | Answer decisions D1–D9 (§3 and §11.7) in one message | Callum Page | Before Milestone 1 |
 | 2 | Run Milestone 1 (foundations) and commit | Build session (current model) | Next session |
 | 3 | Run Milestone 2 (home + tools) and commit | Build session (Sonnet) | Session after M1 |
 | 4 | Run Milestone 3 (all routes) and commit | Build session (Sonnet) | Session after M2 |
@@ -295,3 +295,90 @@ data/                              # dev-only JSON store, git-ignored
 ## Appendix B — Sizing note
 
 BUILD FOR SCALE: the API is stateless functions and a single pricing module, so adding suburbs, services or a second region is a data change, not a code change. The Ops Sheet is the record at launch; if booking volume passes roughly 500 rows a month (ASSUMPTION — the point at which a Sheet becomes slow to work in day to day), the `store.js` interface is the one place to swap in a database without touching the site.
+
+---
+
+## 11. Motion and interaction wishlist — triage (added 20 Sep 2026)
+
+Callum supplied a 40-item list of scroll, navigation, layout and micro-interaction effects. Each is triaged below into **In** (built in this rebuild), **Later** (phase 2, mostly the operator portal or customer app) or **Out** (conflicts with brand, compliance, performance or credit cost). Convergence rule: every "In" item is an extension of a component already in §6 (`Reveal`, `Kinetic`, `Marquee`, `Section`, `Navbar`, `Footer`) or one of three new small hooks. No animation library is added. No GSAP, Lottie, Three.js or Framer Motion.
+
+### 11.1 Rules that govern every effect
+
+| Rule | Detail |
+|---|---|
+| Reduced motion | Every effect checks `prefers-reduced-motion: reduce` and degrades to a plain state. Not optional. |
+| Pointer-only effects | Magnetic, tilt, liquid fill and hover reveals run only under `@media (pointer: fine)`. Touch devices get the static state. |
+| Compositor only | Animate `transform` and `opacity` only. No animated `top`, `height`, `filter` or `box-shadow` on scroll. |
+| Budget | JavaScript ≤ 150 KB gzipped, Largest Contentful Paint ≤ 2.5 s on a mid-range phone, Cumulative Layout Shift ≤ 0.1. `verify/shots.mjs` records these from Playwright and fails the gate if exceeded. (ASSUMPTION: thresholds are Google's Core Web Vitals "good" bands; variable is the test device profile.) |
+| No effect touches a number | Prices, totals and postcodes are never scrambled, counted up, or animated. A customer must never see a price appear to change. |
+| One accent | The ember accent is the single action colour. No second accent (teal, orange, lavender) is introduced. |
+
+### 11.2 Scroll mechanics
+
+| Item | Verdict | How, and where it lands |
+|---|---|---|
+| Scroll-driven parallax (multi-layer) | **In** | `useScrollProgress()` hook drives `translate3d` on two hero layers (image and badge cluster) and one background layer per `Section`. Milestone 2. |
+| Scrubbable Lottie animations | **Out** | Needs vector animation files that do not exist and a 60 KB+ runtime. Replaced by scroll-scrubbed SVG stroke draws (see checkmark, §11.5). Revisit if brand animation assets are commissioned. |
+| Horizontal scroll section | **Later** | Desktop-only horizontal rail for the "three steps" section is possible, but scroll-jacking hurts mobile and accessibility, and it is the most expensive single effect to get right. Vertical steps with sticky stacking ship first. |
+| Reveal-on-scroll wipes (clip-path unmask) | **In** | Already the job of `Reveal.jsx`. Add variants `fade`, `rise`, `wipe-x`, `wipe-y`, `mask-lines` (hero). Milestone 1. |
+| Sticky section stacking (card deck) | **In** | `position: sticky` with staggered `top` offsets on the three-steps cards and the three Legends Club plans. CSS only. Milestone 2. |
+| Progress scroll indicator | **In** | 2 px ember line in `Navbar`, `scaleX` from `useScrollProgress()`. Milestone 1. |
+| Smooth inertial scrolling | **In** | Lenis, already specified. Disabled under reduced motion and on touch (native scroll is better there). |
+
+### 11.3 Navigation
+
+| Item | Verdict | How, and where it lands |
+|---|---|---|
+| Shrinking sticky header with glass blur | **In** | `Navbar` gets a `scrolled` class at 24 px: height 76→60 px, `backdrop-filter: blur(12px)`, 60 % navy. Milestone 1. |
+| Hidden drawer navigation (fullscreen overlay, large type) | **In** | The planned mobile menu becomes a fullscreen overlay at all widths: `clip-path: circle()` expand from the burger, links in the display face at `clamp(2rem, 8vw, 4.5rem)`, staggered rise. Focus trap and `Escape` already in Milestone 4. |
+| Floating action menu (bottom pill) | **Out** for the marketing site | Collides with hero CTAs and the estimator on phones, and this exact class of overlap bug shipped once already (README, collision check). The customer app already has a tab bar; the pattern belongs there. |
+| Dynamic breadcrumbs | **Simplified In** | The site is two levels deep. Static `Home / Page` breadcrumb on every non-home route (matches the PDF). No history logic. |
+| Contextual footer morph | **Simplified In** | Footer reveals with a single wipe and the marquee slows as it enters view. No rich graphics. |
+| Inline dynamic search with thumbnails | **Out** | Fifteen pages and no catalogue: nothing to search. An FAQ filter input on `/faq` covers the real need. |
+
+### 11.4 Responsive, performance and page transitions
+
+| Item | Verdict | How, and where it lands |
+|---|---|---|
+| Fluid responsive resizing (`clamp`, `vw`) | **In** | Already the type system in §6 Milestone 1. |
+| Accessible focus states | **In** | Two-ring focus: 2 px ember outline, 2 px navy offset, `:focus-visible` only. Verified by `verify/a11y.js` pattern. |
+| Hardware-accelerated CSS | **In** | The compositor-only rule in §11.1. |
+| Smart @2x asset swapping | **In** | `srcset` 1x/2x plus AVIF/WebP `<picture>` for the hero image, the only raster asset. Milestone 2. |
+| Optimised font loading | **In** | Self-hosted woff2, `font-display: swap`, `size-adjust` metric-matched fallbacks to kill layout shift. Milestone 1. |
+| WebGL wave/wipe page transitions | **Out** | A WebGL context for a transition costs more than every other effect combined and fails the JS budget. **Replaced** by a CSS clip-path wipe using the View Transitions API where supported, plain fade elsewhere. Reads as a clean "wipe" without the GPU cost. |
+
+### 11.5 Layout, colour and micro-interactions
+
+| Item | Verdict | How, and where it lands |
+|---|---|---|
+| Bento grid layouts | **In** | The trust strip on Home and the "what you get" block on `/operators` become bento grids. **Copy rule:** cards may only name features that exist today. "SMS alerts" and "route tracking" are not live (current copy says "once our messaging system is live"), so they are labelled "Coming" or omitted. UNVERIFIED until Callum confirms which operator features are live. |
+| Aurora / mesh gradients | **Out** as specified, **Later** in palette | Sky blue, seafoam and lavender are off-brand. A slow navy-to-deep-navy mesh with one ember bloom behind the hero is a possible phase-2 refinement once the rest is stable. |
+| Dark-mode toggle with circular mask | **Later** | Night-shift operators use the operator portal, which is out of scope (D4). Marketing site ships one theme. |
+| Neomorphism accents | **Out** | Inset soft-shadow controls fail contrast guidance and read as a different brand. |
+| High-contrast typography hierarchy | **In** | Already the display/body pairing in §6. |
+| Content border highlights (glowing active border) | **In** | Active Legends Club plan and the selected service card get a 1 px ember border with a 0→1 opacity glow. Milestone 2. |
+| Vibrant accent pops | **In, one accent** | Ember is the pop. No second accent. "Book a Demo" wording does not apply; primary CTA stays "Book a collection". |
+| Magnetic buttons | **In** | `useMagnetic()` hook on primary `.btn` only, 12 px max pull, pointer-fine only. Milestone 1. |
+| Image reveal on hover over suburb names | **Out** | Requires photographs of real operators, which do not exist and would need written consent. Revisit when there are operators and photos. |
+| Liquid button fill | **In** | CSS pseudo-element wave (`translateY` on a sine-edge SVG mask) on `.btn-primary` hover. Milestone 1. |
+| Card tilt (3D) | **In** | `useTilt()` hook on the three club cards, ±6°, pointer-fine only, reduced-motion off. Milestone 2. |
+| Text scramble on figures | **Out** | Violates the "no effect touches a number" rule. Prices must read as fixed. |
+| Icon bounces and checkmark draw | **In** | Stroke-dashoffset draw on the estimator's "GST included" tick and form success states; step icons get a one-time 4 px bounce on reveal. Milestone 2. |
+| Sound / haptic feedback | **Out** | Browsers block autoplay audio without a gesture, most users find UI sounds intrusive, and there is no Operator/Customer toggle on the marketing site. |
+
+### 11.6 Effect on the build
+
+| Milestone | Added work | Delta (ASSUMPTION: one turn ≈ one milestone as sized in §6) |
+|---|---|---|
+| M1 | `Reveal` variants, progress bar, shrinking glass header, fullscreen overlay nav, `useScrollProgress` / `useMagnetic` / `useTilt` hooks, liquid fill and focus styles in `index.css`, font self-hosting | About half a turn |
+| M2 | Parallax layers, sticky stacking, bento trust strip, glow borders, tilt on club cards, checkmark draws, hero `<picture>` | About half a turn |
+| M4 | Web-vitals thresholds in `verify/shots.mjs`, reduced-motion audit, View Transitions wipe | Small |
+
+Total: roughly one extra turn across the four milestones. Everything marked Later or Out costs nothing now.
+
+### 11.7 Decisions this adds
+
+| # | Decision | Options (best first) | Default |
+|---|---|---|---|
+| D8 | Which operator-app features are live today, for the bento copy (alerts, route tracking, payouts) | (a) Only features live at launch appear, others say "Coming" **(Recommended)** · (b) List planned features as planned | (a) |
+| D9 | Horizontal steps rail on desktop | (a) Phase 2 **(Recommended)** · (b) Include in M2 at roughly one extra turn | (a) |
