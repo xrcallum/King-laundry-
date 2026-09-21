@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="en-AU" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Velo — The Fastest Inbox</title>
+<meta name="description" content="Velo is a keyboard-first email client built for speed. Triage a day of mail in minutes, not hours.">
+<meta name="colour-scheme" content="dark light">
+<meta property="og:title" content="Velo — The Fastest Inbox">
+<meta property="og:description" content="Keyboard-first email built for speed. Triage a day of mail in minutes.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%236c5ce7'/><path d='M28 62 L50 30 L72 62 Z' fill='%23fff'/></svg>">
+<style>
+/* ============================================================
+   VELO — single-file product landing page
+   Original design, original copy. No external dependencies.
+   Tokens live on :root. Re-skin by changing this block only.
+   ============================================================ */
+:root{
+  /* brand */
+  --brand:#6c5ce7;
+  --brand-2:#22d3ee;
+  --brand-3:#f472b6;
+
+  /* surfaces */
+  --bg:#06070c;
+  --bg-elev:#0b0d16;
+  --surface:rgba(255,255,255,.035);
+  --surface-2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.16);
+
+  /* text */
+  --fg:#f4f5fb;
+  --fg-muted:#a6abc2;
+  --fg-dim:#71768c;
+
+  /* geometry */
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-xl:32px;
+  --gutter:20px;
+  --maxw:1180px;
+
+  /* motion */
+  --ease:cubic-bezier(.22,.8,.27,1);
+  --fast:160ms; --med:340ms; --slow:720ms;
+
+  --shadow-lg:0 40px 100px -30px rgba(0,0,0,.85), 0 8px 28px -12px rgba(0,0,0,.6);
+  --font:"Inter var","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+
+:root[data-theme="light"]{
+  --bg:#fbfbfd; --bg-elev:#ffffff;
+  --surface:rgba(10,12,24,.035); --surface-2:rgba(10,12,24,.06);
+  --line:rgba(10,12,24,.10); --line-strong:rgba(10,12,24,.18);
+  --fg:#0c0e18; --fg-muted:#4d5468; --fg-dim:#767c90;
+  --shadow-lg:0 40px 90px -36px rgba(16,18,40,.28), 0 6px 22px -12px rgba(16,18,40,.16);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.6;
+  letter-spacing:-.011em;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+h1,h2,h3,h4{margin:0;line-height:1.08;letter-spacing:-.035em;font-weight:600}
+p{margin:0}
+::selection{background:color-mix(in oxygen, var(--brand) 45%, transparent);color:#fff}
+
+/* ---------- layout primitives ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.section{position:relative;padding:clamp(72px,10vw,140px) 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--fg-muted);
+}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--line-strong)}
+.h-xl{font-size:clamp(2.6rem,7.2vw,4.6rem)}
+.h-lg{font-size:clamp(2rem,4.6vw,3.2rem)}
+.h-md{font-size:clamp(1.35rem,2.4vw,1.75rem);letter-spacing:-.025em}
+.lede{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--fg-muted);line-height:1.62;max-width:56ch}
+.center{text-align:center}
+.center .lede{margin-inline:auto}
+.stack-sm>*+*{margin-top:14px}
+.stack>*+*{margin-top:22px}
+.stack-lg>*+*{margin-top:34px}
+
+/* ---------- ambient light ---------- */
+.glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.glow span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.42}
+.glow .g1{width:46vw;height:46vw;left:-8vw;top:-14vw;background:var(--brand)}
+.glow .g2{width:38vw;height:38vw;right:-10vw;top:2vw;background:var(--brand-2);opacity:.26}
+.glow .g3{width:30vw;height:30vw;left:34vw;top:26vw;background:var(--brand-3);opacity:.18}
+:root[data-theme="light"] .glow span{opacity:.22}
+.grid-lines{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 75%);
+  opacity:.5;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:46px;padding:0 22px;border-radius:999px;
+  font-size:14.5px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;
+  transition:transform var(--fast) var(--ease),background var(--fast) var(--ease),box-shadow var(--fast) var(--ease),border-color var(--fast) var(--ease);
+}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn-primary{
+  background:linear-gradient(180deg,#8b7cff,var(--brand));
+  color:#fff;
+  box-shadow:0 1px 0 rgba(255,255,255,.28) inset,0 12px 34px -12px color-mix(in oxygen,var(--brand) 80%,transparent);
+}
+.btn-primary:hover{box-shadow:0 1px 0 rgba(255,255,255,.34) inset,0 18px 44px -12px color-mix(in oxygen,var(--brand) 92%,transparent);transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--line-strong);background:var(--surface);color:var(--fg)}
+.btn-ghost:hover{background:var(--surface-2);border-color:var(--fg-dim)}
+.btn-lg{height:54px;padding:0 28px;font-size:15.5px}
+.btn .kbd{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  padding:2px 6px;border-radius:5px;background:rgba(255,255,255,.18);
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;inset:12px 0 auto;z-index:70;
+  transition:transform var(--med) var(--ease);
+}
+.nav-inner{
+  width:min(var(--maxw),calc(100% - 2*var(--gutter)));margin-inline:auto;
+  display:flex;align-items:center;gap:18px;
+  height:60px;padding:0 10px 0 18px;border-radius:999px;
+  border:1px solid transparent;background:transparent;
+  transition:background var(--med) var(--ease),border-color var(--med) var(--ease),box-shadow var(--med) var(--ease),backdrop-filter var(--med);
+}
+.nav.is-stuck .nav-inner{
+  background:color-mix(in oxygen,var(--bg-elev) 72%,transparent);
+  border-color:var(--line);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 16px 40px -26px rgba(0,0,0,.9);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:650;letter-spacing:-.03em;font-size:17px}
+.brand-mark{
+  width:26px;height:26px;border-radius:8px;flex:none;
+  background:linear-gradient(140deg,#8b7cff,var(--brand) 55%,#4b3fd6);
+  display:grid;place-items:center;
+  box-shadow:0 4px 14px -4px color-mix(in oxygen,var(--brand) 85%,transparent);
+}
+.brand-mark svg{width:14px;height:14px}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:8px}
+.nav-links a{
+  padding:8px 13px;border-radius:999px;font-size:14px;font-weight:500;color:var(--fg-muted);
+  transition:color var(--fast) var(--ease),background var(--fast) var(--ease);
+}
+.nav-links a:hover{color:var(--fg);background:var(--surface)}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.icon-btn{
+  width:38px;height:38px;display:grid;place-items:center;border-radius:999px;
+  border:1px solid var(--line);color:var(--fg-muted);
+  transition:color var(--fast),border-color var(--fast),background var(--fast);
+}
+.icon-btn:hover{color:var(--fg);background:var(--surface);border-color:var(--line-strong)}
+.icon-btn svg{width:17px;height:17px}
+.nav-toggle{display:none}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .nav-actions .btn-ghost{display:none}
+  .nav-toggle{display:grid}
+}
+.mobile-menu{
+  position:fixed;inset:0;z-index:69;display:none;
+  background:color-mix(in oxygen,var(--bg) 92%,transparent);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:96px var(--gutter) 40px;
+}
+.mobile-menu.open{display:block}
+.mobile-menu a{
+  display:block;padding:18px 4px;font-size:1.6rem;font-weight:600;letter-spacing:-.03em;
+  border-bottom:1px solid var(--line);
+}
+.mobile-menu .btn{margin-top:28px;width:100%}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding-top:clamp(120px,16vh,180px);padding-bottom:0;overflow:hidden}
+.hero .wrap{position:relative;z-index:1}
+.pill{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 8px 6px 6px;border-radius:999px;
+  border:1px solid var(--line);background:var(--surface);
+  font-size:13px;color:var(--fg-muted);
+}
+.pill b{
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;color:#fff;
+  background:linear-gradient(135deg,#8b7cff,var(--brand));
+}
+.pill svg{width:13px;height:13px;opacity:.6}
+.hero h1{max-width:16ch;margin-inline:auto}
+.hero h1 .accent{
+  background:linear-gradient(100deg,var(--brand-2),#a78bfa 42%,var(--brand-3));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}
+.hero-note{font-size:13px;color:var(--fg-dim)}
+
+/* ---------- app mockup ---------- */
+.mock-shell{
+  position:relative;margin-top:clamp(48px,7vw,80px);
+  perspective:1800px;
+}
+.mock{
+  position:relative;z-index:1;
+  border-radius:var(--r-xl);border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,color-mix(in oxygen,var(--bg-elev) 96%,#fff 4%),var(--bg-elev));
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+  transform:rotateX(9deg) translateZ(0);
+  transform-origin:50% 0;
+  transition:transform var(--slow) var(--ease);
+}
+.mock-shell.settled .mock{transform:rotateX(0deg)}
+.mock-bar{
+  display:flex;align-items:center;gap:14px;
+  height:46px;padding:0 16px;border-bottom:1px solid var(--line);
+  background:color-mix(in oxygen,var(--bg-elev) 80%,#fff 3%);
+}
+.dots{display:flex;gap:7px}
+.dots i{width:11px;height:11px;border-radius:50%;background:var(--line-strong)}
+.dots i:nth-child(1){background:#ff5f57}.dots i:nth-child(2){background:#febc2e}.dots i:nth-child(3){background:#28c840}
+.mock-search{
+  flex:1;max-width:340px;margin-inline:auto;height:28px;border-radius:8px;
+  border:1px solid var(--line);background:var(--surface);
+  display:flex;align-items:center;gap:8px;padding:0 10px;
+  font-size:12px;color:var(--fg-dim);
+}
+.mock-search .kbd{margin-left:auto;font-family:var(--mono);font-size:10px;border:1px solid var(--line);border-radius:4px;padding:1px 5px}
+.mock-body{display:grid;grid-template-columns:184px minmax(0,1fr) minmax(0,1.25fr);min-height:clamp(320px,44vw,520px)}
+.mock-side{border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:3px}
+.mock-side .lbl{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-dim);padding:10px 10px 6px}
+.side-row{
+  display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:9px;
+  font-size:13px;color:var(--fg-muted);
+}
+.side-row .dot{width:7px;height:7px;border-radius:50%;background:var(--line-strong);flex:none}
+.side-row.active{background:var(--surface-2);color:var(--fg);font-weight:600}
+.side-row.active .dot{background:var(--brand)}
+.side-row .n{margin-left:auto;font-size:11px;font-family:var(--mono);color:var(--fg-dim)}
+.mock-list{border-right:1px solid var(--line);overflow:hidden}
+.mail{
+  padding:13px 15px;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr auto;gap:4px 10px;align-items:center;
+  transition:background var(--fast) var(--ease);
+}
+.mail:hover{background:var(--surface)}
+.mail.sel{background:color-mix(in oxygen,var(--brand) 13%,transparent);box-shadow:inset 3px 0 0 var(--brand)}
+.av{
+  width:26px;height:26px;border-radius:50%;grid-row:span 2;flex:none;
+  display:grid;place-items:center;font-size:10.5px;font-weight:700;color:#fff;letter-spacing:.02em;
+}
+.mail .from{font-size:13px;font-weight:600;color:var(--fg);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mail .time{font-size:11px;color:var(--fg-dim);font-family:var(--mono)}
+.mail .subj{grid-column:2/4;font-size:12.5px;color:var(--fg-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mock-read{padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.read-head{display:flex;align-items:center;gap:11px}
+.read-head .meta{min-width:0}
+.read-head .meta b{display:block;font-size:13.5px;font-weight:650}
+.read-head .meta span{font-size:11.5px;color:var(--fg-dim)}
+.read-chips{margin-left:auto;display:flex;gap:6px}
+.chip{
+  font-size:11px;padding:4px 9px;border-radius:999px;
+  border:1px solid var(--line);color:var(--fg-muted);background:var(--surface);white-space:nowrap;
+}
+.read-subject{font-size:17px;font-weight:650;letter-spacing:-.025em}
+.skel{height:9px;border-radius:5px;background:var(--surface-2)}
+.skel.w90{width:90%}.skel.w75{width:75%}.skel.w60{width:60%}.skel.w40{width:40%}
+.read-body{display:flex;flex-direction:column;gap:9px;margin-top:2px}
+.read-foot{margin-top:auto;display:flex;gap:8px;align-items:center;padding-top:14px;border-top:1px solid var(--line)}
+@media (max-width:980px){.mock-body{grid-template-columns:150px minmax(0,1fr)}.mock-read{display:none}}
+@media (max-width:620px){.mock-body{grid-template-columns:minmax(0,1fr)}.mock-side{display:none}.mock-search{max-width:none}}
+
+/* command palette floating over the mock */
+.palette{
+  position:absolute;z-index:3;left:50%;bottom:clamp(-18px,-1.6vw,-10px);
+  width:min(420px,84%);transform:translate(-50%,0);
+  border-radius:var(--r-lg);border:1px solid var(--line-strong);
+  background:color-mix(in oxygen,var(--bg-elev) 88%,transparent);
+  backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+}
+.palette-in{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line)}
+.palette-in svg{width:15px;height:15px;color:var(--fg-dim);flex:none}
+.palette-in .typed{font-size:14px;font-weight:500}
+.caret{display:inline-block;width:1.5px;height:15px;background:var(--brand);vertical-align:-2px;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.palette-list{padding:6px}
+.p-row{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;font-size:13px;color:var(--fg-muted)}
+.p-row.on{background:var(--surface-2);color:var(--fg)}
+.p-row .kbd{margin-left:auto;font-family:var(--mono);font-size:10.5px;border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--fg-dim)}
+.p-row .ico{width:16px;height:16px;flex:none;opacity:.75}
+@media (max-width:620px){.palette{display:none}}
+
+/* ---------- marquee logos ---------- */
+.proof{padding:clamp(56px,7vw,84px) 0 0}
+.proof p{text-align:center;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-dim);font-weight:600}
+.marquee{
+  margin-top:26px;overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.marquee-track{display:flex;width:max-content;gap:56px;animation:slide 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.logo-word{
+  font-size:19px;font-weight:700;letter-spacing:-.04em;color:var(--fg-dim);
+  opacity:.72;white-space:nowrap;transition:opacity var(--fast),color var(--fast);
+}
+.logo-word:hover{opacity:1;color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.stat{background:var(--bg);padding:26px 22px;text-align:center}
+.stat b{display:block;font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:650;letter-spacing:-.04em;line-height:1}
+.stat b .u{font-size:.55em;color:var(--fg-muted);margin-left:2px}
+.stat span{display:block;margin-top:8px;font-size:12.5px;color:var(--fg-muted)}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- feature rows ---------- */
+.feature{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.feature+.feature{margin-top:clamp(72px,9vw,124px)}
+.feature.flip .feat-copy{order:2}
+@media (max-width:880px){.feature{grid-template-columns:1fr}.feature.flip .feat-copy{order:0}}
+.feat-art{
+  position:relative;border-radius:var(--r-lg);border:1px solid var(--line);
+  background:linear-gradient(160deg,color-mix(in oxygen,var(--bg-elev) 94%,#fff 3%),var(--bg-elev));
+  padding:24px;min-height:300px;overflow:hidden;
+  box-shadow:0 24px 60px -34px rgba(0,0,0,.8);
+}
+.feat-art::after{
+  content:"";position:absolute;width:280px;height:280px;border-radius:50%;
+  filter:blur(80px);opacity:.3;right:-70px;top:-70px;background:var(--brand);
+}
+.feat-art>*{position:relative;z-index:1}
+.bullets{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+.bullets li{display:flex;gap:11px;font-size:14.5px;color:var(--fg-muted);line-height:1.5}
+.bullets svg{width:17px;height:17px;flex:none;margin-top:3px;color:var(--brand-2)}
+
+/* art: shortcut keys */
+.keys{display:flex;flex-wrap:wrap;gap:9px}
+.key{
+  min-width:46px;height:46px;padding:0 13px;border-radius:11px;
+  display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600;
+  border:1px solid var(--line-strong);background:var(--surface);
+  box-shadow:0 3px 0 var(--line),inset 0 1px 0 rgba(255,255,255,.07);
+  transition:transform var(--fast) var(--ease),box-shadow var(--fast) var(--ease),color var(--fast);
+}
+.key.hot{color:#fff;background:linear-gradient(180deg,#8b7cff,var(--brand));border-color:transparent;box-shadow:0 3px 0 #3f33b8}
+.key:hover{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+.key-cap{font-size:12px;color:var(--fg-dim);margin-top:14px}
+
+/* art: split inbox */
+.split-rows{display:flex;flex-direction:column;gap:10px}
+.split-row{
+  display:flex;align-items:center;gap:11px;padding:12px 13px;border-radius:12px;
+  border:1px solid var(--line);background:var(--surface);
+}
+.split-row .tag{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;margin-left:auto;white-space:nowrap;
+}
+.tag.t1{background:color-mix(in oxygen,var(--brand) 22%,transparent);color:#c3b8ff}
+.tag.t2{background:color-mix(in oxygen,var(--brand-2) 20%,transparent);color:#9fe9f5}
+.tag.t3{background:color-mix(in oxygen,var(--brand-3) 20%,transparent);color:#fbc0dd}
+:root[data-theme="light"] .tag.t1{color:#4b3fd6}
+:root[data-theme="light"] .tag.t2{color:#0b7c8c}
+:root[data-theme="light"] .tag.t3{color:#b83b7d}
+
+/* art: reply composer */
+.composer{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden}
+.composer-head{padding:11px 14px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--fg-dim)}
+.composer-body{padding:14px;display:flex;flex-direction:column;gap:9px;min-height:120px}
+.ai-line{font-size:14px;line-height:1.55}
+.ai-line .ghost{color:var(--fg-dim)}
+.composer-foot{display:flex;align-items:center;gap:8px;padding:11px 14px;border-top:1px solid var(--line)}
+
+/* ---------- testimonials ---------- */
+.quotes{columns:3;column-gap:20px}
+@media (max-width:980px){.quotes{columns:2}}
+@media (max-width:640px){.quotes{columns:1}}
+.quote{
+  break-inside:avoid;margin:0 0 20px;padding:24px;
+  border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);
+  transition:border-color var(--fast) var(--ease),transform var(--fast) var(--ease),background var(--fast);
+}
+.quote:hover{border-color:var(--line-strong);background:var(--surface-2);transform:translateY(-3px)}
+.quote p{font-size:14.5px;line-height:1.62;color:var(--fg)}
+.quote footer{display:flex;align-items:center;gap:11px;margin-top:18px}
+.quote footer b{font-size:13px;font-weight:650;display:block}
+.quote footer span{font-size:12px;color:var(--fg-dim)}
+.stars{display:flex;gap:2px;margin-bottom:12px}
+.stars svg{width:14px;height:14px;color:#f5b544}
+
+/* ---------- pricing ---------- */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+@media (max-width:900px){.plans{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+.plan{
+  border:1px solid var(--line);border-radius:var(--r-xl);padding:28px;
+  background:var(--surface);display:flex;flex-direction:column;gap:18px;
+  transition:border-color var(--fast) var(--ease),transform var(--fast) var(--ease);
+}
+.plan:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.plan.best{
+  border-color:transparent;position:relative;
+  background:
+    linear-gradient(var(--bg-elev),var(--bg-elev)) padding-box,
+    linear-gradient(160deg,var(--brand),var(--brand-2)) border-box;
+  border:1px solid transparent;
+  box-shadow:0 30px 70px -40px color-mix(in oxygen,var(--brand) 90%,transparent);
+}
+.plan .badge{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:999px;color:#fff;
+  background:linear-gradient(135deg,#8b7cff,var(--brand));white-space:nowrap;
+}
+.plan h3{font-size:15px;font-weight:650;letter-spacing:-.02em}
+.price{display:flex;align-items:baseline;gap:4px}
+.price b{font-size:2.6rem;font-weight:650;letter-spacing:-.045em;line-height:1}
+.price span{font-size:13px;color:var(--fg-dim)}
+.plan .desc{font-size:13.5px;color:var(--fg-muted);line-height:1.55}
+.plan ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.plan li{display:flex;gap:10px;font-size:13.5px;color:var(--fg-muted)}
+.plan li svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--brand-2)}
+.plan .btn{width:100%;margin-top:auto}
+.toggle{
+  display:inline-flex;padding:4px;border-radius:999px;border:1px solid var(--line);background:var(--surface);gap:2px;
+}
+.toggle button{
+  padding:7px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--fg-muted);
+  transition:background var(--fast),color var(--fast);
+}
+.toggle button[aria-pressed="true"]{background:var(--surface-2);color:var(--fg)}
+.toggle .save{font-size:10.5px;color:var(--brand-2);margin-left:6px;font-weight:700}
+
+/* ---------- faq ---------- */
+.faq{max-width:780px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-size:16px;font-weight:600;letter-spacing:-.02em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:8px;top:50%;width:11px;height:11px;
+  border-right:2px solid var(--fg-dim);border-bottom:2px solid var(--fg-dim);
+  transform:translateY(-70%) rotate(45deg);transition:transform var(--med) var(--ease);
+}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.faq .a{padding:0 44px 24px 0;font-size:14.5px;color:var(--fg-muted);line-height:1.62}
+
+/* ---------- final cta ---------- */
+.cta-card{
+  position:relative;overflow:hidden;text-align:center;
+  border:1px solid var(--line-strong);border-radius:var(--r-xl);
+  padding:clamp(44px,7vw,84px) var(--gutter);
+  background:linear-gradient(165deg,color-mix(in oxygen,var(--bg-elev) 92%,#fff 5%),var(--bg-elev));
+  box-shadow:var(--shadow-lg);
+}
+.cta-card::before{
+  content:"";position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(110px);
+  background:var(--brand);opacity:.30;left:50%;top:-260px;transform:translateX(-50%);
+}
+.cta-card>*{position:relative;z-index:1}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--line);padding:clamp(48px,6vw,72px) 0 34px;margin-top:clamp(64px,8vw,110px)}
+.foot-grid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+@media (max-width:880px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
+.foot-col h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim);font-weight:700;margin-bottom:14px}
+.foot-col a{display:block;padding:5px 0;font-size:14px;color:var(--fg-muted);transition:color var(--fast)}
+.foot-col a:hover{color:var(--fg)}
+.foot-bottom{
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  margin-top:44px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--fg-dim);
+}
+.foot-bottom .socials{margin-left:auto;display:flex;gap:8px}
+
+/* ---------- scroll reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity var(--slow) var(--ease),transform var(--slow) var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .mock{transform:none!important}
+}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:12px;z-index:99;padding:10px 16px;border-radius:10px;background:var(--brand);color:#fff}
+:focus-visible{outline:2px solid var(--brand-2);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3 2 20h20L12 3Z"/></svg></span>Velo
+    </a>
+    <nav class="nav-links">
+      <a href="#speed">Speed</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+      <a class="btn btn-ghost" href="#pricing">Sign in</a>
+      <a class="btn btn-primary" href="#cta">Get started</a>
+      <button class="icon-btn nav-toggle" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#speed">Speed</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+  <a class="btn btn-primary btn-lg" href="#cta">Get started free</a>
+</div>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="glow"><span class="g1"></span><span class="g2"></span><span class="g3"></span></div>
+  <div class="grid-lines"></div>
+  <div class="wrap center stack-lg">
+    <div class="rv">
+      <span class="pill"><b>New</b> Split Inbox now ships with smart rules
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>
+      </span>
+    </div>
+    <h1 class="h-xl rv">The inbox that moves<br><span class="accent">as fast as you think</span></h1>
+    <p class="lede rv">Velo is a keyboard-first email client for people who live in their inbox. Triage a hundred messages in the time it used to take to open ten — every action under 60&nbsp;milliseconds.</p>
+    <div class="hero-cta rv">
+      <a class="btn btn-primary btn-lg" href="#cta">Start free — 14 days <span class="kbd">↵</span></a>
+      <a class="btn btn-ghost btn-lg" href="#speed">See it in motion</a>
+    </div>
+    <p class="hero-note rv">No card required · macOS, Windows, iOS, Android · Works with Gmail &amp; Outlook</p>
+
+    <div class="mock-shell rv" id="mockShell">
+      <div class="mock">
+        <div class="mock-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="mock-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            Search all mail <span class="kbd">⌘K</span>
+          </div>
+        </div>
+        <div class="mock-body">
+          <aside class="mock-side">
+            <div class="lbl">Split Inbox</div>
+            <div class="side-row active"><span class="dot"></span>Important <span class="n">7</span></div>
+            <div class="side-row"><span class="dot"></span>Team <span class="n">12</span></div>
+            <div class="side-row"><span class="dot"></span>Calendar <span class="n">3</span></div>
+            <div class="side-row"><span class="dot"></span>News <span class="n">41</span></div>
+            <div class="lbl">Views</div>
+            <div class="side-row"><span class="dot"></span>Starred</div>
+            <div class="side-row"><span class="dot"></span>Snoozed <span class="n">5</span></div>
+            <div class="side-row"><span class="dot"></span>Sent</div>
+          </aside>
+          <div class="mock-list" id="mockList"></div>
+          <div class="mock-read">
+            <div class="read-head">
+              <span class="av" style="background:linear-gradient(140deg,#8b7cff,#4b3fd6)">PR</span>
+              <span class="meta"><b>Priya Raman</b><span>to me · 8:41 am</span></span>
+              <span class="read-chips"><span class="chip">Reply ⌘↵</span><span class="chip">Snooze H</span></span>
+            </div>
+            <div class="read-subject">Q3 rollout — final sign-off</div>
+            <div class="read-body">
+              <div class="skel w90"></div><div class="skel w75"></div><div class="skel w90"></div>
+              <div class="skel w60"></div><div class="skel w40"></div>
+            </div>
+            <div class="read-foot"><span class="chip">↩ Reply</span><span class="chip">⇥ Forward</span><span class="chip">E Archive</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="palette">
+        <div class="palette-in">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          <span class="typed" id="typed"></span><span class="caret"></span>
+        </div>
+        <div class="palette-list">
+          <div class="p-row on"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><path d="m3 8 9 6 9-6"/></svg>Snooze until tomorrow<span class="kbd">H</span></div>
+          <div class="p-row"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Mark done &amp; next<span class="kbd">E</span></div>
+          <div class="p-row"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Remind me if no reply<span class="kbd">R</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section class="proof">
+  <div class="wrap">
+    <p class="rv">Trusted by fast teams at</p>
+    <div class="marquee rv"><div class="marquee-track" id="track"></div></div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="section" id="speed">
+  <div class="wrap stack-lg">
+    <div class="center stack-sm rv">
+      <span class="eyebrow">Measured, not claimed</span>
+      <h2 class="h-lg">Four hours back, every week</h2>
+      <p class="lede">Numbers below are illustrative product targets for this template — replace them with your own instrumented figures before publishing.</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>60<span class="u">ms</span></b><span>Ceiling on every interaction</span></div>
+      <div class="stat"><b>4<span class="u">h</span></b><span>Saved per person, per week</span></div>
+      <div class="stat"><b>2×</b><span>Faster median reply time</span></div>
+      <div class="stat"><b>100<span class="u">%</span></b><span>Offline-capable by default</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="center stack-sm rv" style="margin-bottom:clamp(48px,6vw,80px)">
+      <span class="eyebrow">Built for throughput</span>
+      <h2 class="h-lg">Every keystroke earns its place</h2>
+    </div>
+
+    <div class="feature rv">
+      <div class="feat-copy stack">
+        <span class="eyebrow">Command palette</span>
+        <h3 class="h-md">Never touch the mouse again</h3>
+        <p class="lede">One shortcut opens everything: people, threads, attachments, settings, actions. Fuzzy search ranks by what you actually open, so the right result is almost always first.</p>
+        <ul class="bullets">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Over 120 actions, all reachable in two keystrokes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Rebind any shortcut, or import a scheme you already know</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Results ranked on-device — nothing leaves your machine</li>
+        </ul>
+      </div>
+      <div class="feat-art">
+        <div class="keys">
+          <span class="key hot">⌘</span><span class="key hot">K</span><span class="key">E</span><span class="key">H</span>
+          <span class="key">R</span><span class="key">⇧U</span><span class="key">G I</span><span class="key">↩</span>
+          <span class="key">⌥⌫</span><span class="key">/</span><span class="key">J</span><span class="key">K</span>
+        </div>
+        <p class="key-cap">Press ⌘K anywhere. Everything else follows from there.</p>
+      </div>
+    </div>
+
+    <div class="feature flip rv">
+      <div class="feat-copy stack">
+        <span class="eyebrow">Split Inbox</span>
+        <h3 class="h-md">The important mail, on its own</h3>
+        <p class="lede">Rules you write in plain language sort mail into focused lanes before you ever see it. Check the lane that matters now; the rest waits until you choose to look.</p>
+        <ul class="bullets">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Unlimited lanes, per account or shared across a team</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Batch notifications so only one lane can interrupt you</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Auto-archive newsletters without unsubscribing</li>
+        </ul>
+      </div>
+      <div class="feat-art">
+        <div class="split-rows">
+          <div class="split-row"><span class="av" style="background:linear-gradient(140deg,#8b7cff,#4b3fd6)">AC</span><span>Contract redline is back</span><span class="tag t1">Important</span></div>
+          <div class="split-row"><span class="av" style="background:linear-gradient(140deg,#22d3ee,#0d94a8)">TM</span><span>Standup notes — Thursday</span><span class="tag t2">Team</span></div>
+          <div class="split-row"><span class="av" style="background:linear-gradient(140deg,#f472b6,#c02d7c)">NW</span><span>The Weekly Dispatch, issue 214</span><span class="tag t3">News</span></div>
+          <div class="split-row"><span class="av" style="background:linear-gradient(140deg,#8b7cff,#4b3fd6)">RB</span><span>Invoice 8821 has been paid</span><span class="tag t1">Important</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature rv">
+      <div class="feat-copy stack">
+        <span class="eyebrow">Assisted replies</span>
+        <h3 class="h-md">Draft in your voice, not a robot's</h3>
+        <p class="lede">Start a sentence and Velo finishes the thought using the way you actually write — your phrasing, your sign-off, your level of formality. Accept with Tab, or ignore it entirely.</p>
+        <ul class="bullets">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Tone learned from your sent mail, never shared between accounts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Thread summaries for anything longer than ten replies</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Every suggestion editable before it sends — nothing auto-sends</li>
+        </ul>
+      </div>
+      <div class="feat-art">
+        <div class="composer">
+          <div class="composer-head">Re: Q3 rollout — final sign-off</div>
+          <div class="composer-body">
+            <p class="ai-line">Thanks Priya — happy to sign off.<span class="ghost" id="ghost"></span></p>
+            <div class="skel w60"></div><div class="skel w40"></div>
+          </div>
+          <div class="composer-foot"><span class="chip">Tab to accept</span><span class="chip">⌘↵ Send</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTES ================= -->
+<section class="section">
+  <div class="wrap stack-lg">
+    <div class="center stack-sm rv">
+      <span class="eyebrow">What people say</span>
+      <h2 class="h-lg">Hard to go back</h2>
+      <p class="lede">Illustrative testimonials for this template. Swap in real, attributable quotes before you publish.</p>
+    </div>
+    <div class="quotes rv" id="quotes"></div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="section" id="pricing">
+  <div class="wrap stack-lg">
+    <div class="center stack-sm rv">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h-lg">Simple, per seat</h2>
+      <p class="lede">All prices in AUD and inclusive of GST. Cancel any time; no lock-in.</p>
+      <div style="margin-top:22px">
+        <div class="toggle" role="group" aria-label="Billing period">
+          <button id="mBtn" aria-pressed="true">Monthly</button>
+          <button id="yBtn" aria-pressed="false">Yearly<span class="save">−20%</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="plans rv">
+      <div class="plan">
+        <h3>Starter</h3>
+        <div class="price"><b>$0</b><span>/ forever</span></div>
+        <p class="desc">One account, the full keyboard model, and everything you need to decide.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>1 mail account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Command palette &amp; shortcuts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Community support</li>
+        </ul>
+        <a class="btn btn-ghost" href="#cta">Start free</a>
+      </div>
+      <div class="plan best">
+        <span class="badge">Most popular</span>
+        <h3>Pro</h3>
+        <div class="price"><b data-m="$38" data-y="$30">$38</b><span data-m="/ user / month" data-y="/ user / month, billed yearly">/ user / month</span></div>
+        <p class="desc">The whole product: Split Inbox, assisted replies, reminders and read status.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Unlimited accounts &amp; lanes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Assisted replies &amp; thread summaries</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Follow-up reminders &amp; send later</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Priority support, under 4 hours</li>
+        </ul>
+        <a class="btn btn-primary" href="#cta">Start 14-day trial</a>
+      </div>
+      <div class="plan">
+        <h3>Team</h3>
+        <div class="price"><b data-m="$52" data-y="$42">$52</b><span data-m="/ user / month" data-y="/ user / month, billed yearly">/ user / month</span></div>
+        <p class="desc">Everything in Pro, plus shared inboxes and the controls an admin needs.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Shared inboxes &amp; assignment</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>SSO, SCIM &amp; audit log</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Data residency options</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Named onboarding lead</li>
+        </ul>
+        <a class="btn btn-ghost" href="#cta">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="wrap stack-lg">
+    <div class="center stack-sm rv">
+      <span class="eyebrow">Questions</span>
+      <h2 class="h-lg">Before you switch</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>Do I have to change my email address?</summary><div class="a">No. Velo connects to the Gmail or Outlook account you already use. Your address, your history and your existing filters stay exactly where they are.</div></details>
+      <details><summary>What happens to my mail if I stop paying?</summary><div class="a">Nothing. Your mail lives with your provider, not with us. Cancelling Velo removes the client, not a single message.</div></details>
+      <details><summary>Is my mail used to train models?</summary><div class="a">No. Assisted replies are conditioned on your own sent mail within your own account, and that data is never pooled across accounts or used for general model training.</div></details>
+      <details><summary>Does it work offline?</summary><div class="a">Yes. Recent mail is cached locally, search runs on-device, and actions you take offline queue and sync the moment you reconnect.</div></details>
+      <details><summary>How long does it take to get fast?</summary><div class="a">Most people are faster than their old client inside a week. Velo ships with a two-minute onboarding that teaches the eight shortcuts that do ninety per cent of the work.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section" id="cta">
+  <div class="wrap">
+    <div class="cta-card rv stack">
+      <h2 class="h-lg">Get your mornings back</h2>
+      <p class="lede center">Fourteen days, the whole product, no card. If it hasn't changed how you work by day three, walk away.</p>
+      <div class="hero-cta"><a class="btn btn-primary btn-lg" href="#top">Start free <span class="kbd">↵</span></a><a class="btn btn-ghost btn-lg" href="#features">Take the tour</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3 2 20h20L12 3Z"/></svg></span>Velo</a>
+        <p style="margin-top:14px;font-size:14px;color:var(--fg-dim);max-width:34ch">The inbox that moves as fast as you think. Built in Australia.</p>
+      </div>
+      <div class="foot-col"><h4>Product</h4><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#speed">Speed</a><a href="#cta">Download</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="#top">About</a><a href="#top">Careers</a><a href="#top">Blog</a><a href="#top">Contact</a></div>
+      <div class="foot-col"><h4>Resources</h4><a href="#faq">Help centre</a><a href="#top">Shortcuts</a><a href="#top">Status</a><a href="#top">Changelog</a></div>
+      <div class="foot-col"><h4>Legal</h4><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Security</a><a href="#top">DPA</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Velo — demonstration template. Original design and copy.</span>
+      <span class="socials">
+        <a class="icon-btn" href="#top" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.5L21.8 21h-6l-4.7-6.1L5.7 21h-3l7-8L2.5 3h6.2l4.2 5.6L17.5 3Z"/></svg></a>
+        <a class="icon-btn" href="#top" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg></a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---- theme ---- */
+  var root = document.documentElement;
+  try{ var t = localStorage.getItem("velo-theme"); if(t) root.dataset.theme = t; }catch(e){}
+  document.getElementById("themeBtn").addEventListener("click", function(){
+    var next = root.dataset.theme === "light" ? "dark" : "light";
+    root.dataset.theme = next;
+    try{ localStorage.setItem("velo-theme", next); }catch(e){}
+  });
+
+  /* ---- sticky nav + mobile menu ---- */
+  var nav = document.getElementById("nav"), menu = document.getElementById("mobileMenu"), mBtn = document.getElementById("menuBtn");
+  addEventListener("scroll", function(){ nav.classList.toggle("is-stuck", scrollY > 24); }, {passive:true});
+  mBtn.addEventListener("click", function(){
+    var open = menu.classList.toggle("open");
+    mBtn.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  menu.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){ menu.classList.remove("open"); mBtn.setAttribute("aria-expanded","false"); document.body.style.overflow=""; }
+  });
+
+  /* ---- mail list ---- */
+  var MAIL = [
+    ["PR","Priya Raman","Q3 rollout — final sign-off","8:41",1,"#8b7cff,#4b3fd6"],
+    ["DW","Dana Whitlock","Re: pricing page copy","8:12",0,"#22d3ee,#0d94a8"],
+    ["MA","Marcus Ai","Design review moved to 2pm","7:55",0,"#f472b6,#c02d7c"],
+    ["SN","Sam Nguyen","Numbers for the board pack","7:30",0,"#8b7cff,#4b3fd6"],
+    ["LT","Lena Torres","Customer call notes — Thursday","Yest",0,"#34d399,#0d9488"],
+    ["JB","Jonah Barre","Contract redline attached","Yest",0,"#fbbf24,#d97706"],
+    ["KO","Kit Osei","Welcome to the team 🎉","Yest",0,"#22d3ee,#0d94a8"]
+  ];
+  document.getElementById("mockList").innerHTML = MAIL.map(function(m){
+    return '<div class="mail'+(m[4]?" sel":"")+'">'+
+      '<span class="av" style="background:linear-gradient(140deg,'+m[5]+')">'+m[0]+'</span>'+
+      '<span class="from">'+m[1]+'</span><span class="time">'+m[3]+'</span>'+
+      '<span class="subj">'+m[2]+'</span></div>';
+  }).join("");
+
+  /* ---- logo marquee (original word-marks) ---- */
+  var LOGOS = ["Northmark","Halyard","Cobalt Row","Everstone","Palisade","Tidewell","Arclight","Ferro&Co"];
+  document.getElementById("track").innerHTML = LOGOS.concat(LOGOS)
+    .map(function(l){ return '<span class="logo-word">'+l+'</span>'; }).join("");
+
+  /* ---- testimonials ---- */
+  var Q = [
+    ["I stopped dreading Monday mornings. Two hundred messages used to be a whole morning; now it's the length of a coffee.","Alina Petrov","Head of Operations, Northmark"],
+    ["The speed sounds like marketing until you use it. Then every other client feels like it's buffering.","Tom Okafor","Founder, Halyard"],
+    ["Split Inbox is the feature I'd pay for on its own. My team's mail never touches my important lane.","Rae Sandoval","VP Engineering, Cobalt Row"],
+    ["Onboarding took four minutes. I was faster than my old setup before lunch.","Hugh Bennett","Partner, Everstone"],
+    ["Assisted replies actually sound like me, which is the only reason I use them.","Mei Lin Chau","Chief of Staff, Palisade"],
+    ["We rolled it out to forty people and support tickets about email went to zero.","Dev Arora","IT Director, Tidewell"]
+  ];
+  var star = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3 6.4 6.9 1-5 4.9 1.2 7L12 18l-6.1 3.3 1.2-7-5-4.9 6.9-1L12 2Z"/></svg>';
+  document.getElementById("quotes").innerHTML = Q.map(function(q,i){
+    var init = q[1].split(" ").map(function(w){return w[0];}).join("").slice(0,2);
+    var g = ["#8b7cff,#4b3fd6","#22d3ee,#0d94a8","#f472b6,#c02d7c"][i%3];
+    return '<figure class="quote"><div class="stars">'+star.repeat(5)+'</div><p>“'+q[0]+'”</p>'+
+      '<footer><span class="av" style="background:linear-gradient(140deg,'+g+')">'+init+'</span>'+
+      '<span><b>'+q[1]+'</b><span>'+q[2]+'</span></span></footer></figure>';
+  }).join("");
+
+  /* ---- pricing toggle ---- */
+  var mB = document.getElementById("mBtn"), yB = document.getElementById("yBtn");
+  function setPeriod(yearly){
+    mB.setAttribute("aria-pressed", String(!yearly));
+    yB.setAttribute("aria-pressed", String(yearly));
+    document.querySelectorAll("[data-m]").forEach(function(el){
+      el.textContent = yearly ? el.dataset.y : el.dataset.m;
+    });
+  }
+  mB.addEventListener("click", function(){ setPeriod(false); });
+  yB.addEventListener("click", function(){ setPeriod(true); });
+
+  /* ---- scroll reveal ---- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var els = [].slice.call(en.target.parentElement.querySelectorAll(".rv"));
+      en.target.style.transitionDelay = Math.min(els.indexOf(en.target), 5) * 70 + "ms";
+      en.target.classList.add("in");
+      io.unobserve(en.target);
+    });
+  }, {rootMargin:"0px 0px -8% 0px", threshold:.08});
+  document.querySelectorAll(".rv").forEach(function(el){ rm ? el.classList.add("in") : io.observe(el); });
+
+  /* ---- hero mock settles flat once visible ---- */
+  var shell = document.getElementById("mockShell");
+  requestAnimationFrame(function(){ setTimeout(function(){ shell.classList.add("settled"); }, 420); });
+
+  /* ---- typing demos ---- */
+  function type(el, text, speed, after){
+    var i = 0;
+    (function step(){
+      el.textContent = text.slice(0, ++i);
+      if(i < text.length) setTimeout(step, speed);
+      else if(after) setTimeout(after, 1600);
+    })();
+  }
+  var typed = document.getElementById("typed"), ghost = document.getElementById("ghost");
+  if(rm){ typed.textContent = "snooze until tomorrow"; ghost.textContent = " I'll get the final pack to you by Friday."; }
+  else{
+    (function loop(){
+      typed.textContent = "";
+      type(typed, "snooze until tomorrow", 58, function(){ setTimeout(loop, 2400); });
+    })();
+    setTimeout(function(){ type(ghost, " I'll get the final pack to you by Friday.", 34); }, 900);
+  }
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
