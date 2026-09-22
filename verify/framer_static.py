@@ -3,7 +3,8 @@
 
 Usage:  python3 verify/framer_static.py site/linen-legends-framer.html
 Checks: inline scripts parse, no duplicate ids, every getElementById target exists,
-every referenced local asset exists. Exit 0 = PASS.
+every referenced local asset exists, every <style> block has balanced braces.
+Exit 0 = PASS.
 """
 import collections, os, re, subprocess, sys, tempfile
 
@@ -36,6 +37,16 @@ assets = sorted(r for r in set(re.findall(r'linen-legends-framer-assets/[\w.-]+'
 if assets:
     fail += 1
     print('FAIL missing assets', assets)
+
+for i, css in enumerate(re.findall(r'<style[^>]*>(.*?)</style>', h, re.S)):
+    body = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
+    depth = low = 0
+    for ch in body:
+        depth += (ch == '{') - (ch == '}')
+        low = min(low, depth)
+    if depth or low < 0:
+        fail += 1
+        print('FAIL style block', i, 'braces unbalanced by', depth)
 
 print('RESULT:', 'FAIL' if fail else 'PASS')
 sys.exit(1 if fail else 0)

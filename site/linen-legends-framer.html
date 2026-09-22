@@ -1107,6 +1107,8 @@ button { font-family: var(--f); cursor: pointer; }
   .bk-ttl h2 { font-size: 1.1rem; }
   .bk-tile { padding: .8rem .5rem; }
   .bk-tile svg { width: 28px; height: 28px; }
+}
+
 /* ══════════════════════════════════════
    POLISH PASS — one type scale, one card
    system, one header→content rhythm.
@@ -1163,6 +1165,101 @@ h1, h2, h3, h4 { text-wrap: balance; }
   .ben-card, .pr-card, .aud-card { padding: 1.35rem; }
   .px-card { padding: 1.25rem 1.3rem; }
   .svc-body { padding: 1.2rem 1.25rem 1.4rem; }
+}
+
+/* ══════════════════════════════════════
+   PROMISE TILES · COVERAGE CHECKER · CONTACT
+   (after the polish pass, so it wins ties)
+══════════════════════════════════════ */
+.pm-ledger { padding: 1.5rem; }
+.pm-tiles { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.12); border-radius: var(--r-lg); overflow: hidden; }
+.pm-tiles li { display: flex; flex-direction: column; gap: .3rem; padding: 1.25rem 1.2rem; background: var(--navy-d); }
+.pm-tiles b { font-size: 2.1rem; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--teal-xl); margin-bottom: .45rem; }
+.pm-tiles b.pm-ic { display: block; width: 2.1rem; height: 2.1rem; }
+.pm-tiles b.pm-ic svg { width: 100%; height: 100%; }
+.pm-tiles strong { font-size: .95rem; color: #fff; line-height: 1.3; }
+.pm-tiles span { font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.65); }
+.pm-terms { margin-top: 1rem; border-top: 1px solid rgba(255,255,255,.1); }
+.pm-terms summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 .25rem; font-weight: 700; font-size: .9rem; color: var(--teal-xl); }
+.pm-terms summary::-webkit-details-marker { display: none; }
+.pm-terms summary i { font-style: normal; font-size: 1.25rem; transition: transform var(--tr); }
+.pm-terms[open] summary i { transform: rotate(45deg); }
+.pm-terms-b { padding: .25rem 0; }
+.pm-terms-b h4 { font-size: .9rem; color: #fff; margin: .9rem 0 .25rem; }
+.pm-terms-b p, .pm-terms-b li { font-size: .84rem; line-height: 1.6; color: rgba(255,255,255,.72); }
+.pm-terms-b ul { padding-left: 1.1rem; }
+.pm-acl { padding-top: .85rem; }
+
+.cov-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: start; }
+.cov-intro .section-sub { margin: 0 0 1.5rem; }
+.cov-check { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 1.25rem; box-shadow: var(--shadow-md); }
+.cov-lbl { display: block; font-size: .8rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.cov-in { position: relative; }
+.cov-in svg { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--teal-d); pointer-events: none; }
+.cov-in input { width: 100%; padding: .95rem 1rem .95rem 2.8rem; border: 1.5px solid var(--line); border-radius: var(--r); font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper); transition: border-color var(--tr), box-shadow var(--tr), background var(--tr); }
+.cov-in input:focus { outline: none; border-color: var(--teal); background: var(--bg); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
+.cov-res { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.cov-res:not(:empty) { margin-top: .9rem; }
+.cov-res span { font-size: .9rem; color: var(--body); flex: 1 1 100%; }
+.cov-res.ok, .cov-res.no { padding: .9rem; border-radius: var(--r); }
+.cov-res.ok { background: var(--teal-w); }
+.cov-res.ok b { color: var(--teal-d); }
+.cov-res.no { background: #FFF4E5; }
+.cov-res.no b { color: #8A5300; }
+.cov-res .btn { flex: 1 1 auto; justify-content: center; }
+.cov-sug { padding: .45rem .8rem; border: 1px solid var(--teal-l); border-radius: 99px; background: var(--bg); color: var(--teal-d); font: inherit; font-size: .84rem; font-weight: 600; cursor: pointer; }
+.cov-lists { display: flex; flex-direction: column; gap: 1.5rem; }
+.cov-grp h3 { display: flex; align-items: baseline; justify-content: space-between; font-size: .95rem; color: var(--navy); padding-bottom: .6rem; margin-bottom: .75rem; border-bottom: 1px solid var(--line); }
+.cov-grp h3 small { font-size: .74rem; font-weight: 600; color: var(--mute); }
+.cov-lists .cov-wrap { justify-content: flex-start; max-width: none; margin: 0; gap: .4rem; }
+.cov-lists .cov-chip { padding: .38rem .75rem; font-size: .82rem; cursor: pointer; transition: border-color var(--tr), background var(--tr), color var(--tr); }
+.cov-lists .cov-chip:hover { border-color: var(--teal-l); }
+.cov-lists .cov-chip.hit { background: var(--teal); border-color: var(--teal); color: #fff; }
+.cov-lists .cov-chip.hit small { color: rgba(255,255,255,.8); }
+.cov-lists .cov-ask { align-self: flex-start; }
+
+.ct-list { display: flex; flex-direction: column; gap: .6rem; }
+.ct-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.1rem; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr); }
+.ct-row:hover { border-color: var(--teal-l); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.ct-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--teal-w); color: var(--teal-d); }
+.ct-ic svg { width: 20px; height: 20px; }
+.ct-tx strong { display: block; font-size: .95rem; color: var(--ink); }
+.ct-tx small { display: block; font-size: .82rem; color: var(--mute); margin-top: .1rem; }
+.ct-go svg { display: block; width: 18px; height: 18px; color: var(--mute); transition: transform var(--tr), color var(--tr); }
+.ct-row:hover .ct-go svg { transform: translateX(3px); color: var(--teal-d); }
+.ct-main { background: var(--navy); border-color: var(--navy); }
+.ct-main .ct-ic { background: rgba(255,255,255,.1); color: var(--teal-xl); }
+.ct-main .ct-tx strong { color: #fff; }
+.ct-main .ct-tx small { color: rgba(255,255,255,.7); }
+.ct-main .ct-go svg { color: var(--teal-xl); }
+.contact-form { padding: 2rem; }
+.contact-form > p { margin-bottom: 1.4rem; }
+.ct-flbl { display: block; font-size: .8rem; font-weight: 700; margin-bottom: .5rem; color: var(--ink); }
+.ct-topics { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ct-topic { padding: .5rem .85rem; border: 1.5px solid var(--line); border-radius: 99px; background: var(--bg); font: inherit; font-size: .84rem; font-weight: 600; color: var(--body); cursor: pointer; transition: border-color var(--tr), background var(--tr), color var(--tr); }
+.ct-topic:hover { border-color: var(--teal-l); }
+.ct-topic[aria-pressed="true"] { border-color: var(--teal); background: var(--teal-w); color: var(--teal-d); }
+.ct-sel { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.form-row { position: relative; }
+.form-submit { justify-content: center; }
+.form-row label small { font-weight: 500; color: var(--mute); }
+.form-row textarea { min-height: 100px; }
+@media (max-width: 900px) {
+  .pm-tiles { grid-template-columns: repeat(2, 1fr); }
+  .cov-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .pm-ledger { padding: 1rem; }
+  .pm-tiles li { padding: 1rem .9rem; }
+  .pm-tiles b { font-size: 1.65rem; margin-bottom: .3rem; }
+  .pm-tiles b.pm-ic { width: 1.65rem; height: 1.65rem; }
+  .pm-tiles strong { font-size: .86rem; }
+  .pm-tiles span { font-size: .74rem; }
+  .cov-check { padding: 1rem; border-radius: var(--r-lg); }
+  .ct-row { padding: .85rem .9rem; gap: .8rem; }
+  .ct-ic { width: 38px; height: 38px; }
+  .contact-form { padding: 1.25rem; border-radius: var(--r-lg); }
+  .ct-topic { font-size: .8rem; padding: .45rem .75rem; }
 }
 </style>
 </head>
@@ -1555,19 +1652,31 @@ h1, h2, h3, h4 { text-wrap: balance; }
     </div>
 
     <div class="pm-ledger" id="promise" data-reveal="up">
-      <div class="pm-row">
-        <div class="pm-big"><b>48h</b><small>to tell us</small></div>
-        <div><h3>Not right? Re-washed free.</h3><p>We collect and return the affected items at our cost. If a re-wash won&rsquo;t fix it, those items are refunded.</p></div>
-      </div>
-      <div class="pm-row">
-        <div class="pm-big"><b>$0</b><small>delivery fee</small></div>
-        <div><h3>Late? The delivery fee comes back.</h3><p>Miss your return date without warning you first and it&rsquo;s refunded automatically. You don&rsquo;t need to ask.</p></div>
-      </div>
-      <div class="pm-row">
-        <div class="pm-big"><b>5</b><small>business days</small></div>
-        <div><h3>Damaged or missing? A clear answer.</h3><p>Report within 7 days. We check the count and weight recorded at your door and reply with an outcome.</p></div>
-      </div>
-      <p class="pm-acl">This sits on top of your rights under the Australian Consumer Law and does not limit them.</p>
+      <ul class="pm-tiles">
+        <li><b>48h</b><strong>Not right? Re-washed free.</strong><span>Tell us within 48 hours of delivery.</span></li>
+        <li><b>$0</b><strong>Late? Delivery fee refunded.</strong><span>Automatically. You don&rsquo;t ask.</span></li>
+        <li><b>5 days</b><strong>Damage claims answered.</strong><span>Business days, from the count at your door.</span></li>
+        <li><b class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 20h14"/><path d="M4 9l3-5 3 5a3 3 0 01-6 0zM14 9l3-5 3 5a3 3 0 01-6 0z"/><path d="M7 4h10"/></svg></b><strong>Price confirmed first.</strong><span>Weighed at your door, before any washing.</span></li>
+      </ul>
+      <details class="pm-terms">
+        <summary>Read the full guarantee <i aria-hidden="true">+</i></summary>
+        <div class="pm-terms-b">
+          <h4>If the wash is not right</h4>
+          <p>Tell us within 48 hours of delivery and we re-wash the affected items at no charge, collected and returned at our cost. If a re-wash won&rsquo;t fix it, we refund the charge for those items.</p>
+          <h4>If we are late</h4>
+          <p>If we miss your agreed return date and haven&rsquo;t contacted you first to reschedule, the delivery fee for that order is refunded automatically.</p>
+          <h4>If something is damaged or missing</h4>
+          <p>Report it within 7 days of delivery. We investigate using the item count and weight recorded at collection and respond within 5 business days. Settlement is based on the item&rsquo;s current value, taking reasonable account of age and condition.</p>
+          <h4>Not covered</h4>
+          <ul>
+            <li>Items with a missing or illegible care label, or where following the label caused the damage</li>
+            <li>Pre-existing damage or wear not visible at collection</li>
+            <li>Colour bleed from items not flagged as at-risk at collection</li>
+            <li>Items left in pockets</li>
+          </ul>
+        </div>
+      </details>
+      <p class="pm-acl">This guarantee sits on top of your rights under the Australian Consumer Law and does not limit them. [Terms TBC before launch.]</p>
     </div>
 
     <div class="pm-sub" data-reveal="up">
@@ -1694,29 +1803,25 @@ h1, h2, h3, h4 { text-wrap: balance; }
 ════════════════════════════════════ -->
 <section id="locations" class="section" style="background:var(--paper)" aria-labelledby="loc-h2">
   <div class="container">
-    <div class="text-center" data-reveal="up">
-      <span class="section-eyebrow">Where We Collect</span>
-      <h2 class="section-title" id="loc-h2">Pickup &amp; Delivery Coverage</h2>
-      <p class="section-sub">Door-to-door collection and return across these Brisbane and Logan suburbs.</p>
-    </div>
-    <div class="cov-wrap" data-reveal="up" data-delay="1">
-      <span class="cov-chip">Beenleigh <small>4207</small></span>
-      <span class="cov-chip">Browns Plains <small>4118</small></span>
-      <span class="cov-chip">Camp Hill <small>4152</small></span>
-      <span class="cov-chip">Coorparoo <small>4151</small></span>
-      <span class="cov-chip">Cornubia <small>4130</small></span>
-      <span class="cov-chip">Greenslopes <small>4120</small></span>
-      <span class="cov-chip">Holland Park <small>4121</small></span>
-      <span class="cov-chip">Kuraby <small>4119</small></span>
-      <span class="cov-chip">Loganholme <small>4129</small></span>
-      <span class="cov-chip">Mansfield <small>4122</small></span>
-      <span class="cov-chip">Marsden <small>4132</small></span>
-      <span class="cov-chip">Meadowbrook <small>4131</small></span>
-      <span class="cov-chip">Shailer Park <small>4128</small></span>
-      <span class="cov-chip">Springwood <small>4127</small></span>
-      <span class="cov-chip">Sunnybank <small>4109</small></span>
-      <span class="cov-chip">Waterford <small>4133</small></span>
-      <button type="button" class="cov-chip cov-ask" data-enquire="Home Pickup &amp; Delivery">My suburb isn&rsquo;t listed &rarr;</button>
+    <div class="cov-grid">
+      <div class="cov-intro" data-reveal="up">
+        <span class="section-eyebrow">Where we collect</span>
+        <h2 class="section-title" id="loc-h2">Do we collect from your door?</h2>
+        <p class="section-sub">Type your suburb or postcode. If we&rsquo;re there, you can book straight away.</p>
+        <div class="cov-check">
+          <label for="covQ" class="cov-lbl">Suburb or postcode</label>
+          <div class="cov-in">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+            <input id="covQ" type="text" autocomplete="postal-code" placeholder="e.g. Springwood or 4127">
+          </div>
+          <div class="cov-res" id="covRes" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="cov-lists" data-reveal="up" data-delay="1">
+        <div class="cov-grp"><h3>Brisbane south <small>7 suburbs</small></h3><div class="cov-wrap"><span class="cov-chip" data-pc="4152">Camp Hill <small>4152</small></span><span class="cov-chip" data-pc="4151">Coorparoo <small>4151</small></span><span class="cov-chip" data-pc="4120">Greenslopes <small>4120</small></span><span class="cov-chip" data-pc="4121">Holland Park <small>4121</small></span><span class="cov-chip" data-pc="4119">Kuraby <small>4119</small></span><span class="cov-chip" data-pc="4122">Mansfield <small>4122</small></span><span class="cov-chip" data-pc="4109">Sunnybank <small>4109</small></span></div></div>
+        <div class="cov-grp"><h3>Logan <small>9 suburbs</small></h3><div class="cov-wrap"><span class="cov-chip" data-pc="4207">Beenleigh <small>4207</small></span><span class="cov-chip" data-pc="4118">Browns Plains <small>4118</small></span><span class="cov-chip" data-pc="4130">Cornubia <small>4130</small></span><span class="cov-chip" data-pc="4129">Loganholme <small>4129</small></span><span class="cov-chip" data-pc="4132">Marsden <small>4132</small></span><span class="cov-chip" data-pc="4131">Meadowbrook <small>4131</small></span><span class="cov-chip" data-pc="4128">Shailer Park <small>4128</small></span><span class="cov-chip" data-pc="4127">Springwood <small>4127</small></span><span class="cov-chip" data-pc="4133">Waterford <small>4133</small></span></div></div>
+        <button type="button" class="cov-chip cov-ask" data-enquire="Home Pickup &amp; Delivery">Not listed? Ask us to come to you &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1729,78 +1834,48 @@ h1, h2, h3, h4 { text-wrap: balance; }
     <div class="contact-grid">
 
       <div class="contact-left" data-reveal="left">
-        <span class="section-eyebrow">Get in Touch</span>
-        <h2 class="section-title" id="contact-h2">Get in Touch With Us</h2>
-        <p>
-          Reach out for bookings, enquiries, or support. We&rsquo;re here to help.
-        </p>
-
-        <div class="contact-methods">
-          <a href="mailto:" class="contact-card">
-            <div class="contact-card-icon">&#9993;</div>
-            <div>
-              <h4>Email Us</h4>
-              <p>[EMAIL TBC]</p>
-            </div>
-          </a>
-          <a href="tel:" class="contact-card">
-            <div class="contact-card-icon">&#9742;</div>
-            <div>
-              <h4>Call Us</h4>
-              <p>[PHONE TBC] &middot; [Hours TBC]</p>
-            </div>
-          </a>
-          <a href="#contact" class="contact-card" data-book>
-            <div class="contact-card-icon">&#128197;</div>
-            <div>
-              <h4>Schedule Pickup</h4>
-              <p>Fast &amp; easy laundry pickup booking</p>
-            </div>
-          </a>
+        <span class="section-eyebrow">Get in touch</span>
+        <h2 class="section-title" id="contact-h2">Talk to a real person, not a call centre.</h2>
+        <p>Most people want one of these. Pick the fastest route.</p>
+        <div class="ct-list">
+          <a href="#contact" data-book class="ct-row ct-main"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg></span><span class="ct-tx"><strong>Book a collection</strong><small>Pick a window. Takes about a minute.</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="#locations" class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><span class="ct-tx"><strong>Check my suburb</strong><small>16 suburbs across Brisbane south and Logan.</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="tel:" class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a1.5 1.5 0 01-1.6 1.5A16 16 0 015 5.1 1.5 1.5 0 016.5 3.5z"/></svg></span><span class="ct-tx"><strong>Call us</strong><small>[PHONE TBC] &middot; [Hours TBC]</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="mailto:" class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></span><span class="ct-tx"><strong>Email us</strong><small>[EMAIL TBC]</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
 
       <div class="contact-form" data-reveal="right">
-        <h3>Send Us a Message</h3>
-        <p>Use our contact form to reach out with questions, feedback, or booking enquiries.</p>
+        <h3>Send us a message</h3>
+        <p>We reply by email [response time TBC].</p>
         <form action="#" method="post" novalidate>
+          <div class="form-row">
+            <span class="ct-flbl" id="ctTopicLbl">What&rsquo;s it about?</span>
+            <div class="ct-topics" role="group" aria-labelledby="ctTopicLbl"><button type="button" class="ct-topic" data-topic="Home Pickup &amp; Delivery" aria-pressed="false">Home laundry</button><button type="button" class="ct-topic" data-topic="Commercial / Business" aria-pressed="false">Business account</button><button type="button" class="ct-topic" data-topic="Supported living / aged care" aria-pressed="false">Supported living</button><button type="button" class="ct-topic" data-topic="Dry Cleaning" aria-pressed="false">Dry cleaning</button><button type="button" class="ct-topic" data-topic="Become an operator" aria-pressed="false">Become an operator</button><button type="button" class="ct-topic" data-topic="Other" aria-pressed="false">Something else</button></div>
+            <select id="cf-service" name="service" class="ct-sel" aria-label="Service enquiry" tabindex="-1">
+              <option value="">Select a service&hellip;</option><option>Home Pickup &amp; Delivery</option><option>Commercial / Business</option><option>Supported living / aged care</option><option>Dry Cleaning</option><option>Premium Clean</option><option>Blankets, Rugs &amp; Sheets</option><option>Become an operator</option><option>Other</option>
+            </select>
+          </div>
           <div class="form-row-2">
             <div class="form-row">
-              <label for="cf-name">Full Name</label>
+              <label for="cf-name">Name</label>
               <input type="text" id="cf-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
             </div>
             <div class="form-row">
-              <label for="cf-email">Email Address</label>
+              <label for="cf-email">Email</label>
               <input type="email" id="cf-email" name="email" placeholder="jane@example.com" autocomplete="email" required>
             </div>
           </div>
           <div class="form-row">
-            <label for="cf-phone">Phone (optional)</label>
+            <label for="cf-phone">Mobile <small>(optional, if you&rsquo;d rather we call)</small></label>
             <input type="tel" id="cf-phone" name="phone" placeholder="04xx xxx xxx" autocomplete="tel">
           </div>
           <div class="form-row">
-            <label for="cf-service">Service Enquiry</label>
-            <select id="cf-service" name="service">
-              <option value="">Select a service&hellip;</option>
-              <option>Home Pickup &amp; Delivery</option>
-              <option>Premium Clean</option>
-              <option>Blankets, Rugs &amp; Sheets</option>
-              <option>Dry Cleaning</option>
-              <option>Commercial / Business</option>
-              <option>Supported living / aged care</option>
-              <option>Become an operator</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-row">
             <label for="cf-msg">Message</label>
-            <textarea id="cf-msg" name="message" placeholder="Tell us how we can help&hellip;" required></textarea>
+            <textarea id="cf-msg" name="message" placeholder="Your suburb, what you need washed, and how often&hellip;" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
-          <p class="form-note">
-            All prices are GST-inclusive (AUD). By submitting this form you agree to our
-            Privacy Policy.
-          </p>
+          <button type="submit" class="btn btn-primary form-submit">Send message</button>
+          <p class="form-note">All prices are GST-inclusive (AUD). By sending this you agree to our Privacy Policy.</p>
         </form>
       </div>
 
@@ -2445,6 +2520,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     const sel = $('cf-service'), ta = $('cf-msg');
     if (sel && ![...sel.options].some(o => o.text === topic)) sel.add(new Option(topic, topic));
     if (sel) sel.value = topic;
+    if (sel) sel.dispatchEvent(new Event('change'));
     if (ta && msg && !ta.value) ta.value = msg;
     $('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => ($('cf-name').value ? ta : $('cf-name')).focus({ preventScroll: true }), 600);
@@ -2585,6 +2661,68 @@ h1, h2, h3, h4 { text-wrap: balance; }
     window.addEventListener('resize', apply);
     window.addEventListener('load', () => { apply(); setTimeout(apply, 500); });
     apply();
+  });
+})();
+</script>
+
+
+<script>
+(function () {
+  'use strict';
+  /* contact topic chips drive the hidden service select */
+  const sel = document.getElementById('cf-service');
+  const chips = [...document.querySelectorAll('.ct-topic')];
+  const sync = () => chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.topic === sel.value)));
+  chips.forEach(c => c.addEventListener('click', () => {
+    if (![...sel.options].some(o => o.value === c.dataset.topic)) sel.add(new Option(c.dataset.topic, c.dataset.topic));
+    sel.value = sel.value === c.dataset.topic ? '' : c.dataset.topic;
+    sync();
+  }));
+  sel.addEventListener('change', sync);
+
+  /* suburb checker reads the coverage chips */
+  const list = [...document.querySelectorAll('.cov-chip[data-pc]')].map(c => ({ n: c.firstChild.textContent.trim(), pc: c.dataset.pc, el: c }));
+  const q = document.getElementById('covQ'), res = document.getElementById('covRes');
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function book(pc) {
+    const es = document.getElementById('estSub'), go = document.getElementById('estGo');
+    if (es && go) { es.value = pc; es.dispatchEvent(new Event('change')); go.click(); }
+  }
+  function show() {
+    const t = q.value.trim().toLowerCase();
+    list.forEach(s => s.el.classList.remove('hit'));
+    res.className = 'cov-res';
+    if (!t) { res.innerHTML = ''; return; }
+    const exact = list.find(s => s.pc === t || s.n.toLowerCase() === t);
+    const part = list.filter(s => s.pc.startsWith(t) || s.n.toLowerCase().startsWith(t));
+    const hit = exact || (part.length === 1 ? part[0] : null);
+    if (hit) {
+      hit.el.classList.add('hit');
+      res.className = 'cov-res ok';
+      res.innerHTML = '<span><b>Yes, we collect in ' + esc(hit.n) + '.</b> Collection and return are included.</span>'
+        + '<button type="button" class="btn btn-primary" data-cov-book="' + hit.pc + '">Book a collection</button>';
+    } else if (part.length) {
+      res.innerHTML = '<span>Did you mean:</span>' + part.slice(0, 4).map(s =>
+        '<button type="button" class="cov-sug" data-cov-pick="' + esc(s.n) + '">' + esc(s.n) + ' ' + s.pc + '</button>').join('');
+    } else if (t.length >= 3) {
+      res.className = 'cov-res no';
+      res.innerHTML = '<span><b>Not there yet.</b> Tell us where you are and we&rsquo;ll let you know when we reach you.</span>'
+        + '<button type="button" class="btn btn-outline-teal" data-cov-ask>Ask about my suburb</button>';
+    } else res.innerHTML = '';
+  }
+  q.addEventListener('input', show);
+  q.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); const b = res.querySelector('[data-cov-book]'); if (b) b.click(); } });
+  res.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.covBook) book(b.dataset.covBook);
+    else if (b.dataset.covPick) { q.value = b.dataset.covPick; show(); q.focus(); }
+    else if (b.hasAttribute('data-cov-ask')) document.querySelector('.cov-ask').click();
+  });
+  list.forEach(s => {
+    s.el.setAttribute('role', 'button'); s.el.tabIndex = 0;
+    const pick = () => { q.value = s.n; show(); };
+    s.el.addEventListener('click', pick);
+    s.el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
   });
 })();
 </script>
