@@ -1015,11 +1015,12 @@ button { font-family: var(--f); cursor: pointer; }
    MOBILE CINEMA DECK (services)
 ══════════════════════════════════════ */
 @media (max-width: 640px) {
-  .deck { position: relative; display: block !important; margin-top: 2.4rem; }
+  .deck { position: relative; display: block !important; margin-top: 2.4rem; padding: 20px 0; }
   .deck > * {
     position: absolute; left: 0; right: 0; top: 36px; margin: 0;
-    transition: transform .55s var(--ease), opacity .55s var(--ease) !important;
-    will-change: transform, opacity;
+    transition: transform .55s var(--ease), opacity .55s var(--ease), filter .55s var(--ease) !important;
+    will-change: transform, opacity, filter;
+    box-shadow: var(--shadow-lg);
   }
 }
 
@@ -2517,27 +2518,39 @@ button { font-family: var(--f); cursor: pointer; }
     let idx = 0, busy = false, paused = false, resumeT = 0, visible = false;
     const size = () => { track.style.height = (Math.max(...cards.map(c => c.offsetHeight)) + 36) + 'px'; };
     function layout() {
+      /* Symmetric stack: cards ahead (swipe up brings them forward) peek
+         above the front card; the one just seen (swipe down returns to
+         it) peeks below — real depth cues on both edges, not just one. */
       cards.forEach((c, i) => {
-        const k = (i - idx + n) % n, off = Math.min(k, 2);
-        c.style.zIndex = String(10 + n - k);
-        c.style.transform = k === 0 ? 'none' : 'translateY(' + (-16 * off) + 'px) scale(' + (1 - .055 * off) + ')';
-        c.style.opacity = k === 0 ? '1' : off === 1 ? '.45' : '.18';
-        c.style.pointerEvents = k === 0 ? '' : 'none';
-        c.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
+        const fwd = (i - idx + n) % n, back = (idx - i + n) % n;
+        let z, y, s, op, bl;
+        if (fwd === 0)      { z = 24; y = 0;   s = 1;    op = 1;   bl = 0; }
+        else if (fwd === 1) { z = 13; y = -16; s = .945; op = .5;  bl = 1.5; }
+        else if (fwd === 2) { z = 12; y = -30; s = .89;  op = .22; bl = 3; }
+        else if (back === 1) { z = 14; y = 18; s = .94;  op = .42; bl = 1.5; }
+        else                { z = 1;  y = 18;  s = .9;   op = 0;   bl = 3; }
+        c.style.zIndex = String(z);
+        c.style.transform = fwd === 0 ? 'none' : 'translateY(' + y + 'px) scale(' + s + ')';
+        c.style.opacity = String(op);
+        c.style.filter = bl ? 'blur(' + bl + 'px)' : '';
+        c.style.pointerEvents = fwd === 0 ? '' : 'none';
+        c.setAttribute('aria-hidden', fwd === 0 ? 'false' : 'true');
       });
       btns.forEach((b, i) => b.classList.toggle('on', i === idx));
     }
     function reset() {
       track.style.height = '';
-      cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; c.style.zIndex = ''; c.style.pointerEvents = ''; c.removeAttribute('aria-hidden'); });
+      cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; c.style.zIndex = ''; c.style.filter = ''; c.style.pointerEvents = ''; c.removeAttribute('aria-hidden'); });
     }
-    function go(next) {
+    function go(next, dir) {
       if (!mq.matches || busy) return;
+      dir = dir || 1;
       if (still.matches) { idx = (next + n) % n; layout(); return; }
       busy = true;
       const front = cards[idx];
-      front.style.transform = 'translateY(-46%) scale(.96)';
+      front.style.transform = 'translateY(' + (dir > 0 ? '-46%' : '46%') + ') scale(.96)';
       front.style.opacity = '0';
+      front.style.filter = 'blur(2px)';
       setTimeout(() => { idx = (next + n) % n; layout(); busy = false; }, 420);
     }
     const hold = () => { paused = true; clearTimeout(resumeT); resumeT = setTimeout(() => { paused = false; }, 6000); };
@@ -2547,7 +2560,7 @@ button { font-family: var(--f); cursor: pointer; }
       if (y0 == null) return;
       const dy = e.changedTouches[0].clientY - y0; y0 = null;
       if (Math.abs(scrollY - s0) > 12) return;
-      if (dy < -34) go(idx + 1); else if (dy > 34) go(idx - 1);
+      if (dy < -34) go(idx + 1, 1); else if (dy > 34) go(idx - 1, -1);
     }, { passive: true });
     btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.35 }).observe(track);
