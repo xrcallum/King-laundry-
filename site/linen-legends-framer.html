@@ -976,6 +976,31 @@ button { font-family: var(--f); cursor: pointer; }
   .est-card { padding: 1.4rem; }
   .pr-card, .aud-card { padding: 1.5rem; }
 }
+
+/* ══════════════════════════════════════
+   MOBILE CARD CAROUSELS
+══════════════════════════════════════ */
+.loc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+.how-inner > *, .est-grid > *, .contact-grid > *, .hero-grid > * { min-width: 0; }
+.how-cta { flex-wrap: wrap; }
+.mcar-dots { display: none; }
+@media (max-width: 640px) {
+  .how-cta .btn { flex: 1 1 100%; justify-content: center; }
+  .mcar {
+    display: flex !important; gap: 1rem;
+    overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scroll-padding-inline: 1.5rem;
+    margin-left: -1.5rem; margin-right: -1.5rem;
+    padding: .5rem 1.5rem 1rem;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .mcar::-webkit-scrollbar { display: none; }
+  .mcar > * { flex: 0 0 84%; scroll-snap-align: start; }
+  .mcar > *:hover { transform: none; }
+  .mcar-dots { display: flex; justify-content: center; gap: .45rem; margin-top: .4rem; }
+  .mcar-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 4px; background: var(--line); transition: width .3s ease, background var(--tr); }
+  .mcar-dots button.on { width: 22px; background: var(--teal); }
+}
 </style>
 </head>
 <body>
@@ -1153,7 +1178,7 @@ button { font-family: var(--f); cursor: pointer; }
       </p>
     </div>
 
-    <div class="svc-grid">
+    <div class="svc-grid mcar">
 
       <article class="svc-card" data-reveal="up" data-delay="1">
         <div class="svc-img">
@@ -1365,7 +1390,7 @@ button { font-family: var(--f); cursor: pointer; }
       </p>
     </div>
 
-    <div class="ben-grid">
+    <div class="ben-grid mcar">
       <div class="ben-card" data-reveal="up" data-delay="1">
         <div class="ben-icon-wrap">
           <img src="linen-legends-framer-assets/kjsq8zCfm2QRoSqxt8DrrfE39o.png" alt="" aria-hidden="true">
@@ -1429,7 +1454,7 @@ button { font-family: var(--f); cursor: pointer; }
 ════════════════════════════════════ -->
 <section id="promise" class="section" aria-label="Our promise">
   <div class="container">
-    <div class="pr-grid" style="margin-top:0">
+    <div class="pr-grid mcar" style="margin-top:0">
       <div class="pr-card" data-reveal="up" data-delay="1">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg>
         <h3>Your wash, only yours</h3>
@@ -1616,7 +1641,7 @@ button { font-family: var(--f); cursor: pointer; }
       <span class="section-eyebrow">Beyond the Household</span>
       <h2 class="section-title" id="who-h2">Who We Work With</h2>
     </div>
-    <div class="aud-grid">
+    <div class="aud-grid mcar">
       <div class="aud-card" data-reveal="up" data-delay="1">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg>
         <h3>Business &amp; commercial</h3>
@@ -1717,7 +1742,7 @@ button { font-family: var(--f); cursor: pointer; }
       <h2 class="section-title" id="loc-h2">Our Brisbane &amp; SEQ Locations</h2>
       <p class="section-sub">[Number and coverage of locations TBC.]</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem">
+    <div class="loc-grid mcar">
 
       <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
            class="loc-hover" data-reveal="up" data-delay="1">
@@ -2546,6 +2571,38 @@ button { font-family: var(--f); cursor: pointer; }
       else note.textContent = 'Your message could not be sent from this view. Nothing was saved.';
     }, true);
   }
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  const mq = window.matchMedia('(max-width: 640px)');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.mcar').forEach(track => {
+    const cards = [...track.children];
+    const dots = document.createElement('div');
+    dots.className = 'mcar-dots';
+    dots.innerHTML = cards.map((_, i) => '<button type="button" aria-label="Show card ' + (i + 1) + '"></button>').join('');
+    track.after(dots);
+    const btns = [...dots.children];
+    let idx = 0, paused = false, resumeT = 0, visible = false;
+    const go = i => {
+      idx = (i + cards.length) % cards.length;
+      track.scrollTo({ left: cards[idx].offsetLeft - cards[0].offsetLeft, behavior: still.matches ? 'auto' : 'smooth' });
+    };
+    const mark = () => btns.forEach((b, i) => b.classList.toggle('on', i === idx));
+    track.addEventListener('scroll', () => {
+      const x = track.scrollLeft, w = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+      idx = Math.min(cards.length - 1, Math.round(x / w)); mark();
+    }, { passive: true });
+    const hold = () => { paused = true; clearTimeout(resumeT); resumeT = setTimeout(() => { paused = false; }, 6000); };
+    ['pointerdown', 'touchstart', 'wheel'].forEach(ev => track.addEventListener(ev, hold, { passive: true }));
+    btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
+    setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3800);
+    mark();
+  });
 })();
 </script>
 
