@@ -1261,6 +1261,56 @@ h1, h2, h3, h4 { text-wrap: balance; }
   .contact-form { padding: 1.25rem; border-radius: var(--r-lg); }
   .ct-topic { font-size: .8rem; padding: .45rem .75rem; }
 }
+
+/* ══════════════════════════════════════
+   APPLE-STYLE ENQUIRY FORM (.ap-form)
+══════════════════════════════════════ */
+.ap-form{--ap-ink:#1d1d1f;--ap-mute:#86868b;--ap-line:#d2d2d7;--ap-fill:#f5f5f7;--ap-err:#e30000;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Inter,sans-serif;
+  background:#fff;border:0;border-radius:22px;padding:2.25rem 2rem 1.75rem;box-shadow:0 2px 6px rgba(0,0,0,.04),0 18px 48px rgba(0,0,0,.08)}
+.ap-form .ap-title{font-size:1.75rem;font-weight:600;letter-spacing:-.022em;line-height:1.14;color:var(--ap-ink);margin:0 0 .35rem}
+.ap-form .ap-sub{font-size:1.0625rem;line-height:1.47;color:var(--ap-mute);margin:0 0 1.75rem}
+.ap-form form{display:flex;flex-direction:column}
+.ap-topics-wrap{position:relative;margin-bottom:1.5rem}
+.ap-legend{display:block;font-size:.8125rem;font-weight:600;letter-spacing:-.01em;color:var(--ap-ink);margin-bottom:.65rem}
+.ap-form .ap-topics{display:flex;flex-wrap:wrap;gap:.5rem}
+.ap-form .ct-topic{appearance:none;border:0;background:var(--ap-fill);color:var(--ap-ink);font:inherit;font-size:.9375rem;font-weight:500;letter-spacing:-.01em;padding:.6rem 1rem;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1px transparent;transition:background .2s ease,box-shadow .2s ease,color .2s ease}
+.ap-form .ct-topic:hover{background:#ebebf0}
+.ap-form .ct-topic[aria-pressed="true"]{background:#fff;color:var(--teal-d,#1F7268);box-shadow:inset 0 0 0 2px var(--teal,#2A9D8F)}
+.ap-form .ct-topic:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--teal,#2A9D8F),0 0 0 4px rgba(42,157,143,.2)}
+/* floating-label fields */
+.ap-field{position:relative}
+.ap-field input,.ap-field textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:1.0625rem!important;letter-spacing:-.01em;color:var(--ap-ink);background:#fff;border:1px solid var(--ap-line);border-radius:12px;height:56px;padding:1.35rem 1rem .45rem;margin:0;outline:0;transition:border-color .2s ease,box-shadow .2s ease;-webkit-appearance:none}
+.ap-field textarea{height:auto;min-height:148px;padding-top:1.75rem;resize:vertical;line-height:1.45}
+.ap-field label{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.0625rem;color:var(--ap-mute);pointer-events:none;transform-origin:left top;transition:top .18s ease,transform .18s ease,font-size .18s ease,color .18s ease;white-space:nowrap}
+.ap-area label{top:1.15rem;transform:none}
+.ap-field input:focus+label,.ap-field input:not(:placeholder-shown)+label,
+.ap-field textarea:focus+label,.ap-field textarea:not(:placeholder-shown)+label{top:.5rem;transform:none;font-size:.75rem}
+.ap-field input:focus,.ap-field textarea:focus{border-color:var(--teal,#2A9D8F);box-shadow:0 0 0 4px rgba(42,157,143,.18)}
+.ap-field input:focus+label,.ap-field textarea:focus+label{color:var(--teal-d,#1F7268)}
+.ap-field input:user-invalid,.ap-field textarea:user-invalid{border-color:var(--ap-err);box-shadow:0 0 0 4px rgba(227,0,0,.1)}
+.ap-field input:user-invalid+label,.ap-field textarea:user-invalid+label{color:var(--ap-err)}
+/* grouped pair (iOS inset group) */
+.ap-group{margin-bottom:.9rem}
+.ap-group .ap-field input{border-radius:0}
+.ap-group .ap-field:first-child input{border-radius:12px 12px 0 0}
+.ap-group .ap-field:last-child input{border-radius:0 0 12px 12px;margin-top:-1px}
+.ap-group .ap-field input:focus{position:relative;z-index:1}
+.ap-solo{margin-top:.9rem}
+.ap-group+.ap-solo{margin-top:0}
+.ap-hint{font-size:.8125rem;line-height:1.4;color:var(--ap-mute);margin:.45rem 0 0 .25rem}
+.ap-form .ap-submit{margin-top:1.6rem;width:100%;height:52px;padding:0 1.25rem;border-radius:12px;font:inherit;font-size:1.0625rem;font-weight:500;letter-spacing:-.01em;justify-content:center;box-shadow:none}
+.ap-form .ap-submit:hover{transform:none;box-shadow:none;filter:brightness(1.06)}
+.ap-form .ap-submit:active{filter:brightness(.95)}
+.ap-form .ap-note,.ap-form .cf-status{font-size:.75rem;line-height:1.45;color:var(--ap-mute);text-align:center;margin:.9rem 0 0}
+.ap-form .cf-status{color:var(--ap-ink);font-size:.875rem}
+@media (max-width:640px){
+  .ap-form{padding:1.6rem 1.15rem 1.3rem;border-radius:18px}
+  .ap-form .ap-title{font-size:1.5rem}
+  .ap-form .ap-sub{font-size:.975rem;margin-bottom:1.4rem}
+  .ap-form .ct-topic{font-size:.875rem;padding:.55rem .9rem}
+}
+@media (prefers-reduced-motion:reduce){.ap-field label,.ap-form .ct-topic,.ap-field input,.ap-field textarea{transition:none}}
 </style>
 </head>
 <body>
@@ -1845,37 +1895,39 @@ h1, h2, h3, h4 { text-wrap: balance; }
         </div>
       </div>
 
-      <div class="contact-form" data-reveal="right">
-        <h3>Send us a message</h3>
-        <p>We reply by email [response time TBC].</p>
+      <div class="contact-form ap-form" data-reveal="right">
+        <h3 class="ap-title">Send us a message</h3>
+        <p class="ap-sub">We reply by email [response time TBC].</p>
         <form action="#" method="post" novalidate>
-          <div class="form-row">
-            <span class="ct-flbl" id="ctTopicLbl">What&rsquo;s it about?</span>
-            <div class="ct-topics" role="group" aria-labelledby="ctTopicLbl"><button type="button" class="ct-topic" data-topic="Home Pickup &amp; Delivery" aria-pressed="false">Home laundry</button><button type="button" class="ct-topic" data-topic="Commercial / Business" aria-pressed="false">Business account</button><button type="button" class="ct-topic" data-topic="Supported living / aged care" aria-pressed="false">Supported living</button><button type="button" class="ct-topic" data-topic="Dry Cleaning" aria-pressed="false">Dry cleaning</button><button type="button" class="ct-topic" data-topic="Become an operator" aria-pressed="false">Become an operator</button><button type="button" class="ct-topic" data-topic="Other" aria-pressed="false">Something else</button></div>
+          <div class="ap-topics-wrap">
+            <span class="ap-legend" id="ctTopicLbl">What&rsquo;s it about?</span>
+            <div class="ct-topics ap-topics" role="group" aria-labelledby="ctTopicLbl"><button type="button" class="ct-topic" data-topic="Home Pickup &amp; Delivery" aria-pressed="false">Home laundry</button><button type="button" class="ct-topic" data-topic="Commercial / Business" aria-pressed="false">Business account</button><button type="button" class="ct-topic" data-topic="Supported living / aged care" aria-pressed="false">Supported living</button><button type="button" class="ct-topic" data-topic="Dry Cleaning" aria-pressed="false">Dry cleaning</button><button type="button" class="ct-topic" data-topic="Become an operator" aria-pressed="false">Become an operator</button><button type="button" class="ct-topic" data-topic="Other" aria-pressed="false">Something else</button></div>
             <select id="cf-service" name="service" class="ct-sel" aria-label="Service enquiry" tabindex="-1">
               <option value="">Select a service&hellip;</option><option>Home Pickup &amp; Delivery</option><option>Commercial / Business</option><option>Supported living / aged care</option><option>Dry Cleaning</option><option>Premium Clean</option><option>Blankets, Rugs &amp; Sheets</option><option>Become an operator</option><option>Other</option>
             </select>
           </div>
-          <div class="form-row-2">
-            <div class="form-row">
+          <div class="ap-group">
+            <div class="ap-field">
+              <input type="text" id="cf-name" name="name" placeholder=" " autocomplete="name" required>
               <label for="cf-name">Name</label>
-              <input type="text" id="cf-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
             </div>
-            <div class="form-row">
+            <div class="ap-field">
+              <input type="email" id="cf-email" name="email" placeholder=" " autocomplete="email" required>
               <label for="cf-email">Email</label>
-              <input type="email" id="cf-email" name="email" placeholder="jane@example.com" autocomplete="email" required>
             </div>
           </div>
-          <div class="form-row">
-            <label for="cf-phone">Mobile <small>(optional, if you&rsquo;d rather we call)</small></label>
-            <input type="tel" id="cf-phone" name="phone" placeholder="04xx xxx xxx" autocomplete="tel">
+          <div class="ap-field ap-solo">
+            <input type="tel" id="cf-phone" name="phone" placeholder=" " autocomplete="tel">
+            <label for="cf-phone">Mobile (optional)</label>
           </div>
-          <div class="form-row">
+          <p class="ap-hint">Only if you&rsquo;d rather we call.</p>
+          <div class="ap-field ap-solo ap-area">
+            <textarea id="cf-msg" name="message" placeholder=" " required></textarea>
             <label for="cf-msg">Message</label>
-            <textarea id="cf-msg" name="message" placeholder="Your suburb, what you need washed, and how often&hellip;" required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Send message</button>
-          <p class="form-note">All prices are GST-inclusive (AUD). By sending this you agree to our Privacy Policy.</p>
+          <p class="ap-hint">Your suburb, what you need washed, and how often.</p>
+          <button type="submit" class="btn btn-primary form-submit ap-submit">Send message</button>
+          <p class="form-note ap-note">All prices are GST-inclusive (AUD). By sending this you agree to our Privacy Policy.</p>
         </form>
       </div>
 
