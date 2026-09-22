@@ -264,7 +264,7 @@ button { font-family: var(--f); cursor: pointer; }
   color: rgba(255,255,255,.75); font-size: 1.1rem;
   line-height: 1.7; max-width: 480px; margin-bottom: 2rem;
 }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 .hero-img-wrap {
   position: relative; border-radius: var(--r-xl);
   overflow: visible;
@@ -1107,6 +1107,62 @@ button { font-family: var(--f); cursor: pointer; }
   .bk-ttl h2 { font-size: 1.1rem; }
   .bk-tile { padding: .8rem .5rem; }
   .bk-tile svg { width: 28px; height: 28px; }
+/* ══════════════════════════════════════
+   POLISH PASS — one type scale, one card
+   system, one header→content rhythm.
+   Sits last so equal-specificity rules
+   above defer to it.
+══════════════════════════════════════ */
+h1, h2, h3, h4 { text-wrap: balance; }
+
+/* section headers: a single size per level, everywhere */
+.section-title,
+.why-hd .section-title,
+.how-text .section-title,
+.contact-left .section-title,
+.est-intro .section-title { font-size: clamp(1.65rem, 3vw, 2.4rem); line-height: 1.15; letter-spacing: -.022em; margin-bottom: 1rem; }
+.section-sub, .how-text .section-sub { font-size: 1.02rem; line-height: 1.65; margin-bottom: 2.5rem; }
+.section-eyebrow, .why-kick { font-size: .72rem; letter-spacing: .13em; }
+.why-kick { margin-bottom: .4rem; }
+
+/* header → content: one gap */
+.svc-grid, .ben-grid, .aud-grid, .faq-list, .cov-wrap { margin-top: 2.5rem; }
+.why-bento { margin-top: 2rem; }
+.why-sub { margin: 2.5rem 0 1.25rem; }
+.px-grid { margin-top: 0; }
+
+/* one card system: same padding, title, body, hover */
+.ben-card, .pr-card, .aud-card { padding: 1.5rem; }
+.svc-body { padding: 1.35rem 1.4rem 1.6rem; }
+.svc-body h3, .ben-card h3, .pr-card h3, .aud-card h3, .px-card h4, .step-text h3 { font-size: 1.05rem; line-height: 1.28; }
+.svc-body p, .ben-card p, .pr-card p, .aud-card p, .px-card p, .step-text p { font-size: .9rem; line-height: 1.6; }
+.px-card h4 { padding-right: 0; }
+.px-feat h4 { padding-right: 5.5rem; }
+.svc-card:hover, .ben-card:hover, .pr-card:hover, .aud-card:hover, .px-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.footer-col h4 { line-height: 1.3; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .mcar > *, .deck > * { transition: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+  .hero-float { animation: none; }
+}
+
+@media (max-width: 640px) {
+  #hero { min-height: 0; padding: 4.25rem 0 3.25rem; }
+  .hero-sub { font-size: 1rem; margin-bottom: 1.6rem; }
+  .section-title,
+  .why-hd .section-title,
+  .how-text .section-title,
+  .contact-left .section-title,
+  .est-intro .section-title { font-size: 1.6rem; line-height: 1.18; }
+  .section-sub, .how-text .section-sub { font-size: .95rem; margin-bottom: 2rem; }
+  .svc-grid, .ben-grid, .aud-grid, .faq-list, .cov-wrap { margin-top: 2rem; }
+  .why-bento { margin-top: 1.5rem; }
+  .why-sub { margin: 2rem 0 1rem; }
+  .why-sub .card-link { display: none; }
+  .ben-card, .pr-card, .aud-card { padding: 1.35rem; }
+  .px-card { padding: 1.25rem 1.3rem; }
+  .svc-body { padding: 1.2rem 1.25rem 1.4rem; }
 }
 </style>
 </head>
@@ -1964,7 +2020,7 @@ button { font-family: var(--f); cursor: pointer; }
 
 <!-- ════════════════════════════════════
      JAVASCRIPT
-════════════════════════════════════ --></style>
+════════════════════════════════════ -->
 
 <script>
 (function () {
