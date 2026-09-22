@@ -10,6 +10,7 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 |---|---|
 | `site/laundrylegends-site.html` | The complete website (marketing, customer app, ops backend) as one file. Renamed from `laundrykings-site.html` and rebranded LaundryKings → Laundrylegends on 19 September 2026; the live artefact needs republishing to match (see note below). |
 | `site/linenlegends-site.html` | **Linen Legends** marketing site, one file. A native rebuild of the Framer template at `laundryhub.framer.website` (FramerGeeks laundry template), reconstructed from the canvas screenshot of 22 September 2026 because the egress proxy blocks `framer.app` and `framer.website`. No Framer runtime, no template watermark. Copy, pricing and compliance text are sourced from `site/laundrylegends-site.html`; the file header lists every source. `verify/preflight.py` does **not** apply to it (that gate is hard-wired to the 39-section main artefact). |
+| `tools/import_framer.py` | Converts a Framer export or a browser "Save Page As" into one self-contained file in `site/`. Inlines local CSS, JS, fonts and images; strips the Framer badge and the FramerGeeks template promo layer; applies brand renames; reports unresolved assets, remaining remote hosts, duplicate IDs and missing AU compliance sentinels. Needed because this repo's automation cannot reach Framer: the egress allowlist excludes `framer.com`, `framer.app`, `framer.website` and `framerusercontent.com`. |
 | `verify/preflight.py` | Pre-publish checks. Run before every publish. |
 | `dossier/*.html`, `dossier/build.py` | Source and build script for the Complete Project Dossier. |
 | `dossier/LKG-GOV00-01_Complete Dossier_v2.pdf` | The built dossier, revision 2, 19 September 2026. |
@@ -22,6 +23,33 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 4. Commit with the artefact version in the message, e.g. `site: v4.3 Phase A foundation tokens`.
 5. Publish to the existing artefact URL with capabilities `{"db":{},"user":{}}`, favicon crown, contract 0.2.52. Never add `mcp`.
 6. Confirm on a phone.
+
+## Importing the Framer site
+
+The Framer project cannot be fetched by automation here. The session egress proxy
+runs an allowlist; `github.com` and the package registries are on it, Framer is not,
+and a policy denial must be reported rather than routed around. So the export is a
+manual step, done once.
+
+1. Get the bytes out of Framer, either way:
+   - Framer editor on desktop: project menu, then **Export**, and download the ZIP.
+   - Any browser on the published URL: **Save Page As, "Web Page, Complete"**. Keep
+     the `.html` and its assets folder together.
+2. Convert it:
+
+```
+python3 tools/import_framer.py <zip-or-folder-or-html> \
+    -o site/linenlegends-site.html \
+    --rename "Laundry Hub=Linen Legends"
+```
+
+3. Read the report before committing. It exits non-zero if any local asset failed to
+   resolve or an AU compliance sentinel is missing. Both mean the file is not ready
+   to publish.
+4. Check the remaining remote hosts. Anything still loading from
+   `framerusercontent.com` is a live dependency on Framer's CDN; vendor those assets
+   if the site must stand alone.
+
 
 ## Rebuild the dossier
 
