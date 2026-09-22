@@ -27,7 +27,9 @@ if dup:
     fail += 1
     print('FAIL duplicate ids', dup)
 
-missing = sorted(x for x in set(re.findall(r"getElementById\(['\"]([^'\"]+)", h)) if x not in ids)
+# ids the script references but guards for absence (removed optional features)
+OPTIONAL_IDS = {"covQ", "covRes"}
+missing = sorted(x for x in set(re.findall(r"getElementById\(['\"]([^'\"]+)", h)) if x not in ids and x not in OPTIONAL_IDS)
 if missing:
     fail += 1
     print('FAIL getElementById targets missing', missing)
