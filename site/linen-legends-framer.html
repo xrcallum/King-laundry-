@@ -1062,6 +1062,64 @@ button { font-family: var(--f); cursor: pointer; }
   .why-pay p { flex-basis: 100%; }
   .why-sub { margin: 1.75rem 0 .25rem; }
 }
+
+/* ── estimator v2 ── */
+@media (min-width: 901px) { .est-grid { align-items: start; } .est-intro { position: sticky; top: 110px; padding-top: 1rem; } }
+.est-card { padding: 1.75rem; }
+.est-h { display: flex; align-items: center; gap: .6rem; font-size: .86rem; font-weight: 800; color: var(--navy); margin: 1.35rem 0 .7rem; }
+.est-h:first-child { margin-top: 0; }
+.est-h span { width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-size: .7rem; }
+.est-subw { position: relative; }
+.est-subw select { width: 100%; padding: .8rem 2.4rem .8rem .95rem; border: 1.5px solid var(--line); border-radius: var(--r); font: inherit; font-size: .92rem; color: var(--ink); background: var(--paper); appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230C265F' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .95rem center; }
+.est-subw select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
+.est-cov { display: inline-flex; align-items: center; gap: .4rem; margin-top: .55rem; font-size: .78rem; font-weight: 700; padding: .3rem .7rem; border-radius: 99px; }
+.est-cov.ok { background: var(--teal-w); color: var(--teal-d); }
+.est-cov.no { background: #FFF4E5; color: #8A5300; }
+.est-svc { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.est-svc button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .2rem; padding: .8rem .75rem;
+  border: 1.5px solid var(--line); border-radius: var(--r); background: var(--bg); font: inherit; text-align: left; cursor: pointer;
+  transition: border-color var(--tr), background var(--tr), transform var(--tr);
+}
+.est-svc button:hover { border-color: var(--teal-l); transform: translateY(-1px); }
+.est-svc svg { width: 22px; height: 22px; color: var(--navy); margin-bottom: .25rem; }
+.est-svc b { font-size: .82rem; color: var(--ink); line-height: 1.25; }
+.est-svc small { font-size: .74rem; color: var(--mute); }
+.est-svc button[aria-checked="true"] { border-color: var(--teal); background: var(--teal-w); box-shadow: inset 0 0 0 1px var(--teal); }
+.est-svc button[aria-checked="true"] svg { color: var(--teal-d); }
+.est-qty { display: flex; align-items: center; gap: 1rem; }
+.est-qty input[type=range] { flex: 1; min-width: 0; accent-color: var(--teal); height: 24px; }
+.est-eq { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.est-eq span { font-size: .76rem; padding: .28rem .65rem; border-radius: 99px; background: var(--paper); border: 1px solid var(--line); color: var(--body); }
+.est-eq b { color: var(--navy); }
+.est-lin .bk-row span em { font-style: normal; font-size: .78rem; color: var(--mute); margin-left: .35rem; }
+.est-bag { margin-top: 1rem; padding: .8rem .95rem; border: 1px dashed var(--line); border-radius: var(--r); }
+.est-bag div { font-size: .86rem; }
+.est-rcpt { margin-top: 1.25rem; padding: .9rem 1rem; border-radius: var(--r); background: var(--paper); }
+.est-rcpt .bk-sum div { padding: .3rem 0; font-size: .84rem; }
+.est-meter { position: relative; height: 6px; border-radius: 99px; background: var(--line); margin: .85rem 0 .5rem; overflow: visible; }
+.est-meter i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: var(--teal); width: 0; transition: width .45s var(--ease); }
+.est-meter s { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--navy); border-radius: 1px; }
+.est-min { font-size: .76rem; color: var(--mute); line-height: 1.5; }
+.est-min b { color: var(--navy); }
+.est-tot { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: 1.25rem 0 1rem; }
+.est-tot small { display: block; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.est-tot strong { display: block; font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--navy); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.est-tot ul { list-style: none; text-align: right; font-size: .76rem; font-weight: 700; color: var(--teal-d); line-height: 1.6; }
+.est-go { width: 100%; justify-content: center; }
+.est-go em { font-style: normal; opacity: .8; font-weight: 600; }
+.est-note { font-size: .74rem; color: var(--mute); text-align: center; margin-top: .75rem; line-height: 1.5; }
+@media (max-width: 640px) {
+  .est-card { padding: 1.2rem; }
+  .est-svc { gap: .4rem; }
+  .est-svc button { padding: .65rem .55rem; }
+  .est-svc b { font-size: .76rem; }
+  .est-svc small { font-size: .68rem; }
+  .est-tot strong { font-size: 2.2rem; }
+  .est-tot ul { font-size: .7rem; }
+}
 </style>
 </head>
 <body>
@@ -1363,34 +1421,58 @@ button { font-family: var(--f); cursor: pointer; }
         </ul>
       </div>
       <div class="est-card" data-reveal="right">
-        <div class="bk-fld">
-          <label for="estSub">Your suburb</label>
-          <select id="estSub"><option value="">Select a suburb&hellip;</option></select>
+        <div class="est-h"><span>1</span>Where are we collecting?</div>
+        <div class="est-subw">
+          <select id="estSub" aria-label="Your suburb"><option value="">Select your suburb&hellip;</option></select>
+          <span class="est-cov" id="estCov" hidden></span>
         </div>
-        <div class="bk-fld">
-          <label for="estSvc">Service</label>
-          <select id="estSvc">
-            <option value="wf">Wash &amp; Fold</option>
-            <option value="premium">Premium Clean</option>
-            <option value="linen">Blankets, Rugs &amp; Sheets</option>
-          </select>
+
+        <div class="est-h"><span>2</span>What needs washing?</div>
+        <div class="est-svc" role="radiogroup" aria-label="Service">
+          <button type="button" role="radio" data-esvc="wf">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="2.5" width="18" height="19" rx="3"/><circle cx="12" cy="13.5" r="4.5"/><path d="M6.5 6h3"/></svg>
+            <b>Wash &amp; Fold</b><small><span data-px="load">$32</span>/load</small>
+          </button>
+          <button type="button" role="radio" data-esvc="premium">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6z"/><path d="M5 20.5h14"/></svg>
+            <b>Premium Clean</b><small><span data-px="premium">$15</span>/load</small>
+          </button>
+          <button type="button" role="radio" data-esvc="linen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0M8 4v12M14 4v12"/></svg>
+            <b>Bulky linen</b><small>from <span data-px="linenSheetSet">$24</span>/item</small>
+          </button>
         </div>
-        <div class="bk-fld" style="margin:0">
-          <label id="estLbl">Loads (approx. 5 kg each)</label>
-          <div class="bk-stp"><button type="button" data-est="-1" aria-label="Decrease">&minus;</button><output id="estA" aria-labelledby="estLbl">2</output><button type="button" data-est="1" aria-label="Increase">+</button></div>
+
+        <div class="est-h"><span>3</span>How much?</div>
+        <div id="estLoads">
+          <div class="est-qty">
+            <div class="bk-stp"><button type="button" data-est="-1" aria-label="Fewer loads">&minus;</button><output id="estA">2</output><button type="button" data-est="1" aria-label="More loads">+</button></div>
+            <input type="range" id="estRange" min="1" max="12" value="2" aria-label="Number of loads">
+          </div>
+          <div class="est-eq" id="estEq" aria-live="polite"></div>
         </div>
-        <div class="est-chips" id="estChips">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16l-1.5 9a2 2 0 01-2 1.7h-9a2 2 0 01-2-1.7z"/><path d="M8 10l4-6 4 6M9 14v3M15 14v3"/></svg>One load &asymp; a full kitchen basket</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3c0 2-1.5 3-4 3S8 5 8 3z"/></svg>&asymp; 25 t-shirts</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7h6zM19 7l-3 7h6z"/></svg>&asymp; 5 kg dry</span>
+        <div id="estLin" class="est-lin" hidden>
+          <div class="bk-row"><span>Sheet sets <em data-px="linenSheetSet">$24</em></span><div class="bk-stp"><button type="button" data-elin="ls,-1" aria-label="Fewer sheet sets">&minus;</button><output id="estLs">1</output><button type="button" data-elin="ls,1" aria-label="More sheet sets">+</button></div></div>
+          <div class="bk-row"><span>Blankets &amp; quilts <em data-px="linenBlanket">$32</em></span><div class="bk-stp"><button type="button" data-elin="lb,-1" aria-label="Fewer blankets">&minus;</button><output id="estLb">0</output><button type="button" data-elin="lb,1" aria-label="More blankets">+</button></div></div>
+          <div class="bk-row"><span>Rugs &amp; mats <em data-px="linenRug">$42</em></span><div class="bk-stp"><button type="button" data-elin="lr,-1" aria-label="Fewer rugs">&minus;</button><output id="estLr">0</output><button type="button" data-elin="lr,1" aria-label="More rugs">+</button></div></div>
         </div>
-        <div class="bk-sum est-sum" id="estSum"></div>
-        <div class="est-big">
+        <div class="bk-tgl est-bag">
+          <div id="estBagLbl">Add a reusable bag<small><span data-px="bag">$12</span> once, yours to keep</small></div>
+          <button type="button" class="bk-sw" id="estBag" role="switch" aria-checked="false" aria-labelledby="estBagLbl"></button>
+        </div>
+
+        <div class="est-rcpt">
+          <div class="bk-sum" id="estSum"></div>
+          <div class="est-meter" aria-hidden="true"><i id="estBar"></i><s id="estMark"></s></div>
+          <p class="est-min" id="estMin"></p>
+        </div>
+
+        <div class="est-tot">
           <div><small>Estimated total</small><strong id="estTot">$77.50</strong></div>
-          <em>Includes GST<br>Collection &amp; return included</em>
+          <ul><li id="estGst">incl. $7.05 GST</li><li id="estPer"></li><li>Collection &amp; return included</li></ul>
         </div>
-        <button type="button" class="btn btn-primary btn-lg" id="estGo">Request this collection</button>
-        <p class="est-note" id="estNote">Minimum order applies. Payment is taken after weighing, before return delivery.</p>
+        <button type="button" class="btn btn-primary btn-lg est-go" id="estGo">Request this collection</button>
+        <p class="est-note">Indicative. Your exact price is confirmed after weighing, before any work starts. Payment is taken before return delivery.</p>
       </div>
     </div>
   </div>
@@ -2073,11 +2155,16 @@ button { font-family: var(--f); cursor: pointer; }
 
         <div class="bk-card">
           <h3>Approximate quantity</h3>
-          <div class="bk-row"><span id="bkLblA">Loads (approx. 5&nbsp;kg each)</span>
+          <div class="bk-row" id="bkRowA"><span id="bkLblA">Loads (approx. 5&nbsp;kg each)</span>
             <div class="bk-stp"><button type="button" data-q="a,-1" aria-label="Decrease">&minus;</button><output id="bkA">2</output><button type="button" data-q="a,1" aria-label="Increase">+</button></div>
           </div>
           <div class="bk-row" id="bkRowB"><span>Loads needing Premium Clean</span>
             <div class="bk-stp"><button type="button" data-q="b,-1" aria-label="Fewer Premium Clean loads">&minus;</button><output id="bkB">0</output><button type="button" data-q="b,1" aria-label="More Premium Clean loads">+</button></div>
+          </div>
+          <div id="bkLin" style="display:none">
+            <div class="bk-row"><span>Sheet sets</span><div class="bk-stp"><button type="button" data-q="ls,-1" aria-label="Fewer sheet sets">&minus;</button><output id="bkLs">1</output><button type="button" data-q="ls,1" aria-label="More sheet sets">+</button></div></div>
+            <div class="bk-row"><span>Blankets &amp; quilts</span><div class="bk-stp"><button type="button" data-q="lb,-1" aria-label="Fewer blankets">&minus;</button><output id="bkLb">0</output><button type="button" data-q="lb,1" aria-label="More blankets">+</button></div></div>
+            <div class="bk-row"><span>Rugs &amp; mats</span><div class="bk-stp"><button type="button" data-q="lr,-1" aria-label="Fewer rugs">&minus;</button><output id="bkLr">0</output><button type="button" data-q="lr,1" aria-label="More rugs">+</button></div></div>
           </div>
           <p class="bk-fine">Final price is set after your items are weighed and counted at collection. This figure only helps us plan the run.</p>
         </div>
@@ -2394,26 +2481,31 @@ button { font-family: var(--f); cursor: pointer; }
     }
   })();
 
-  function estimate() {
+  function quote(s) {
     const lines = []; let sub = 0;
     const add = (l, n) => { lines.push([l, n]); sub += n; };
     const pl = (n, w) => n + ' × ' + w + (n > 1 ? 's' : '');
-    if (W.svc === 'wf') add(pl(W.a, 'wash & fold load'), W.a * PX.load);
-    if (W.svc === 'wfi') {
-      add(pl(W.a, 'wash & fold load'), W.a * PX.load);
-      const pc = Math.min(W.b, W.a); if (pc) add(pl(pc, 'Premium Clean load'), pc * PX.premium);
+    if (s.svc === 'wf') add(pl(s.a, 'wash & fold load'), s.a * PX.load);
+    if (s.svc === 'wfi') {
+      add(pl(s.a, 'wash & fold load'), s.a * PX.load);
+      const pc = Math.min(s.b, s.a); if (pc) add(pl(pc, 'Premium Clean load'), pc * PX.premium);
     }
-    if (W.svc === 'premium') add(pl(W.a, 'Premium Clean load'), W.a * PX.premium);
-    if (W.svc === 'linen') add(pl(W.a, 'blanket, rug or sheet set'), W.a * PX.linenSheetSet);
-    if (W.bag) add(pl(W.bagQty, 'reusable bag') + ' (yours to keep)', W.bagQty * PX.bag);
+    if (s.svc === 'premium') add(pl(s.a, 'Premium Clean load'), s.a * PX.premium);
+    if (s.svc === 'linen') {
+      if (s.ls) add(pl(s.ls, 'sheet set'), s.ls * PX.linenSheetSet);
+      if (s.lb) add(pl(s.lb, 'blanket or quilt'), s.lb * PX.linenBlanket);
+      if (s.lr) add(pl(s.lr, 'rug or mat'), s.lr * PX.linenRug);
+    }
+    if (s.bag) add(pl(s.bagQty, 'reusable bag') + ' (yours to keep)', s.bagQty * PX.bag);
     add('Collection & return', PX.delivery);
     const total = Math.max(PX.minimum, sub);
     if (total > sub + 0.001) lines.push(['Minimum order adjustment', total - sub]);
     return { lines, total };
   }
+  const estimate = () => quote(W);
 
   /* ── state + render ──────────────────────── */
-  const W = { step: 1, svc: 'wf', a: 2, b: 0, bag: 0, bagQty: 1, date: '', win: '', rec: false, ref: '' };
+  const W = { step: 1, svc: 'wf', a: 2, b: 0, ls: 1, lb: 0, lr: 0, bag: 0, bagQty: 1, date: '', win: '', rec: false, ref: '' };
   const TITLES = {
     1: ['Choose your service', 'Select what you need washed.'],
     2: ['Collection window', 'Pick a day and a three-hour window.'],
@@ -2438,6 +2530,9 @@ button { font-family: var(--f); cursor: pointer; }
     $('bkA').textContent = W.a;
     $('bkB').textContent = W.b;
     $('bkRowB').style.display = W.svc === 'wfi' ? '' : 'none';
+    $('bkRowA').style.display = W.svc === 'linen' ? 'none' : '';
+    $('bkLin').style.display = W.svc === 'linen' ? '' : 'none';
+    $('bkLs').textContent = W.ls; $('bkLb').textContent = W.lb; $('bkLr').textContent = W.lr;
     $('bkBagPx').textContent = money(PX.bag) + ' each, yours to keep';
     document.querySelectorAll('#bk [data-bag]').forEach(b => b.classList.toggle('on', +b.dataset.bag === W.bag));
     $('bkRowBag').style.display = W.bag ? '' : 'none';
@@ -2504,6 +2599,7 @@ button { font-family: var(--f); cursor: pointer; }
     const rec = {
       ref: REF(), status: 'requested', source: 'website', cleancloudSync: 'pending',
       svc: W.svc, svcName: svcName(W.svc), loads: W.a, premiumLoads: W.svc === 'wfi' ? Math.min(W.b, W.a) : 0,
+      linen: W.svc === 'linen' ? { sheetSets: W.ls, blankets: W.lb, rugs: W.lr } : null,
       bags: W.bag ? W.bagQty : 0,
       date: W.date, window: W.win, windowLabel: win.label || '',
       recurring: W.rec ? $('bkFreq').value : '',
@@ -2536,7 +2632,8 @@ button { font-family: var(--f); cursor: pointer; }
     if (W.step === 4) { Object.assign(W, { step: 1, win: '', rec: false }); $('bkAck').checked = false; }
     recall();
     if (preset) {
-      Object.assign(W, { step: 1, svc: preset.svc, a: preset.a });
+      ['svc', 'a', 'b', 'ls', 'lb', 'lr', 'bag', 'bagQty'].forEach(k => { if (preset[k] != null) W[k] = preset[k]; });
+      W.step = 1;
       if (preset.suburb) { $('bkSuburb').value = preset.suburb; $('bkPc').value = preset.pc; }
     }
     render();
@@ -2566,8 +2663,9 @@ button { font-family: var(--f); cursor: pointer; }
     else if (t.dataset.win) { W.win = t.dataset.win; render(); }
     else if (t.dataset.q) {
       const [k, dlt] = t.dataset.q.split(',');
-      W[k] = Math.max(k === 'b' ? 0 : 1, Math.min(40, W[k] + Number(dlt)));
+      W[k] = Math.max(['b', 'ls', 'lb', 'lr'].includes(k) ? 0 : 1, Math.min(40, W[k] + Number(dlt)));
       if (W.b > W.a) W.b = W.a;
+      if (W.ls + W.lb + W.lr === 0) W[k] = 1;
       render();
     }
   });
@@ -2587,35 +2685,70 @@ button { font-family: var(--f); cursor: pointer; }
   const SUBURBS = [['4207','Beenleigh'],['4118','Browns Plains'],['4152','Camp Hill'],['4151','Coorparoo'],['4130','Cornubia'],
     ['4120','Greenslopes'],['4121','Holland Park'],['4119','Kuraby'],['4129','Loganholme'],['4122','Mansfield'],['4132','Marsden'],
     ['4131','Meadowbrook'],['4128','Shailer Park'],['4127','Springwood'],['4109','Sunnybank'],['4133','Waterford']];
-  const E = { svc: 'wf', a: 2 };
-  const estSub = $('estSub'), estSvc = $('estSvc');
+  const E = { svc: 'wf', a: 2, b: 0, ls: 1, lb: 0, lr: 0, bag: 0, bagQty: 1 };
+  const estSub = $('estSub');
   estSub.insertAdjacentHTML('beforeend', SUBURBS.map(([pc, n]) => '<option value="' + pc + '">' + n + ' ' + pc + '</option>').join('')
     + '<option value="other">My suburb isn\'t listed</option>');
-  function renderEst() {
-    const unit = E.svc === 'linen' ? PX.linenSheetSet : E.svc === 'premium' ? PX.premium : PX.load;
-    const word = E.svc === 'linen' ? 'blanket, rug or sheet set' : E.svc === 'premium' ? 'Premium Clean load' : 'wash & fold load';
-    const sub = E.a * unit + PX.delivery, total = Math.max(PX.minimum, sub);
-    $('estLbl').textContent = E.svc === 'linen' ? 'Blankets, rugs or sheet sets' : 'Loads (approx. 5 kg each)';
-    $('estA').textContent = E.a;
-    $('estChips').style.display = E.svc === 'linen' ? 'none' : '';
-    $('estSum').innerHTML = '<div><span>' + E.a + ' × ' + esc(word) + (E.a > 1 ? 's' : '') + '</span><span>' + money(E.a * unit) + '</span></div>'
-      + '<div><span>Collection &amp; return</span><span>' + money(PX.delivery) + '</span></div>'
-      + (total > sub + 0.001 ? '<div><span>Minimum order adjustment</span><span>' + money(total - sub) + '</span></div>' : '')
-      + '<div class="tot"><span>Estimated total</span><span>' + money(total) + '</span></div>';
-    $('estTot').textContent = money(total);
-    $('estNote').textContent = total > sub + 0.001
-      ? 'Below the ' + money(PX.minimum) + ' minimum, so the minimum applies. Payment is taken after weighing, before return delivery.'
-      : 'Minimum order applies. Payment is taken after weighing, before return delivery.';
-    document.querySelectorAll('[data-px]').forEach(el => { if (PX[el.dataset.px] != null) el.textContent = money(PX[el.dataset.px]); });
-    $('estGo').textContent = estSub.value === 'other' ? 'Ask about my suburb' : 'Request this collection';
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let shown = null, tween = 0;
+  function countTo(el, to) {
+    const from = shown == null ? to : shown; shown = to;
+    cancelAnimationFrame(tween);
+    if (still.matches || from === to) { el.textContent = money(to); return; }
+    const t0 = performance.now();
+    const step = now => { const k = Math.min(1, (now - t0) / 380), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = money(Math.round((from + (to - from) * e) * 100) / 100); if (k < 1) tween = requestAnimationFrame(step); };
+    tween = requestAnimationFrame(step);
   }
-  estSvc.addEventListener('change', () => { E.svc = estSvc.value; renderEst(); });
-  estSub.addEventListener('change', renderEst);
+  function renderEst() {
+    document.querySelectorAll('[data-px]').forEach(el => { if (PX[el.dataset.px] != null) el.textContent = money(PX[el.dataset.px]); });
+    const linen = E.svc === 'linen';
+    document.querySelectorAll('[data-esvc]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.esvc === E.svc)));
+    $('estLoads').hidden = linen; $('estLin').hidden = !linen;
+    $('estA').textContent = E.a; $('estRange').value = Math.min(E.a, 12);
+    $('estLs').textContent = E.ls; $('estLb').textContent = E.lb; $('estLr').textContent = E.lr;
+    $('estEq').innerHTML = '<span><b>&asymp; ' + E.a * 5 + ' kg</b> dry</span><span><b>&asymp; ' + E.a * 25 + '</b> t-shirts</span><span><b>' + E.a + '</b> full kitchen basket' + (E.a > 1 ? 's' : '') + '</span>';
+    $('estBag').setAttribute('aria-checked', String(!!E.bag));
+
+    const q = quote(E);
+    const sub = q.lines.filter(l => l[0] !== 'Minimum order adjustment').reduce((s, l) => s + l[1], 0);
+    $('estSum').innerHTML = q.lines.map(([l, n]) => '<div><span>' + esc(l) + '</span><span>' + money(n) + '</span></div>').join('');
+    const full = Math.max(PX.minimum, sub) * 1.25;
+    $('estBar').style.width = Math.min(100, sub / full * 100) + '%';
+    $('estMark').style.left = (PX.minimum / full * 100) + '%';
+    if (sub < PX.minimum) {
+      const unit = linen ? PX.linenSheetSet : E.svc === 'premium' ? PX.premium : PX.load;
+      const extra = Math.max(PX.minimum, sub + unit) - PX.minimum;
+      $('estMin').innerHTML = 'The <b>' + money(PX.minimum) + '</b> minimum applies. One more ' + (linen ? 'sheet set' : 'load')
+        + ' would add only <b>' + money(extra) + '</b>.';
+    } else {
+      $('estMin').innerHTML = '&#10003; Above the <b>' + money(PX.minimum) + '</b> minimum order.';
+    }
+    countTo($('estTot'), q.total);
+    $('estGst').textContent = 'incl. ' + money(Math.round(q.total / 11 * 100) / 100) + ' GST';
+    const n = linen ? E.ls + E.lb + E.lr : E.a;
+    $('estPer').textContent = '≈ ' + money(Math.round(q.total / n * 100) / 100) + ' per ' + (linen ? 'item' : 'load') + ' all-in';
+
+    const cov = $('estCov'), v = estSub.value, hit = SUBURBS.find(s => s[0] === v);
+    cov.hidden = !v;
+    cov.className = 'est-cov ' + (hit ? 'ok' : 'no');
+    cov.textContent = hit ? '✓ We collect in ' + hit[1] : 'Not listed yet. Ask us and we’ll check.';
+    $('estGo').innerHTML = v === 'other' ? 'Ask about my suburb &rarr;' : 'Request this collection <em>&middot; ' + money(q.total) + '</em>';
+  }
+  document.querySelectorAll('[data-esvc]').forEach(b => b.addEventListener('click', () => { E.svc = b.dataset.esvc; renderEst(); }));
+  $('estRange').addEventListener('input', e => { E.a = +e.target.value; renderEst(); });
   document.querySelectorAll('[data-est]').forEach(b => b.addEventListener('click', () => { E.a = Math.max(1, Math.min(40, E.a + Number(b.dataset.est))); renderEst(); }));
+  document.querySelectorAll('[data-elin]').forEach(b => b.addEventListener('click', () => {
+    const [k, d] = b.dataset.elin.split(','); E[k] = Math.max(0, Math.min(40, E[k] + Number(d)));
+    if (E.ls + E.lb + E.lr === 0) E[k] = 1;
+    renderEst();
+  }));
+  $('estBag').addEventListener('click', () => { E.bag = E.bag ? 0 : 1; renderEst(); });
+  estSub.addEventListener('change', renderEst);
   $('estGo').addEventListener('click', () => {
     if (estSub.value === 'other') { enquire('Pick & Drop Service', 'Is pickup available in my suburb? '); return; }
     const hit = SUBURBS.find(s => s[0] === estSub.value);
-    open(null, { svc: E.svc, a: E.a, suburb: hit ? hit[1] : '', pc: hit ? hit[0] : '' });
+    open(null, Object.assign({}, E, { suburb: hit ? hit[1] : '', pc: hit ? hit[0] : '' }));
   });
   document.querySelectorAll('[data-book-svc]').forEach(b => b.addEventListener('click', () => open(null, { svc: b.dataset.bookSvc, a: b.dataset.bookSvc === 'linen' ? 1 : 2 })));
   renderEst();
