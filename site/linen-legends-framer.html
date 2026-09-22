@@ -298,36 +298,6 @@ button { font-family: var(--f); cursor: pointer; }
 }
 
 /* ══════════════════════════════════════
-   STATS STRIP
-══════════════════════════════════════ */
-#stats {
-  background: var(--navy);
-  padding: 3rem 0;
-}
-.stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 2rem; text-align: center;
-}
-.stat-num {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900; color: #fff;
-  letter-spacing: -.03em; line-height: 1;
-  margin-bottom: .35rem;
-}
-.stat-num span { color: var(--teal-l); }
-.stat-label {
-  font-size: .8rem; font-weight: 600;
-  color: rgba(255,255,255,.5);
-  text-transform: uppercase; letter-spacing: .1em;
-}
-.stats-divider {
-  width: 1px; background: rgba(255,255,255,.1);
-  align-self: center; height: 3rem;
-  display: none;
-}
-
-
-/* ══════════════════════════════════════
    SERVICES
 ══════════════════════════════════════ */
 #services { background: var(--bg); }
@@ -619,7 +589,6 @@ button { font-family: var(--f); cursor: pointer; }
   .offer-inner { grid-template-columns: 1fr; }
   .offer-img { display: none; }
   .contact-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
@@ -628,7 +597,6 @@ button { font-family: var(--f); cursor: pointer; }
   .nav-ham { display: flex; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .ben-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }
 }
@@ -1121,32 +1089,6 @@ button { font-family: var(--f); cursor: pointer; }
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
-     STATS STRIP
-════════════════════════════════════ -->
-<section id="stats" aria-label="Key statistics">
-  <div class="container">
-    <div class="stats-grid">
-      <div data-reveal="up" data-delay="1">
-        <div class="stat-num" data-count="16">0</div>
-        <div class="stat-label">Suburbs covered</div>
-      </div>
-      <div data-reveal="up" data-delay="2">
-        <div class="stat-num">3<span>hr</span></div>
-        <div class="stat-label">Collection windows</div>
-      </div>
-      <div data-reveal="up" data-delay="3">
-        <div class="stat-num"><span data-px="minimum">$73.50</span></div>
-        <div class="stat-label">Minimum order &middot; GST incl.</div>
-      </div>
-      <div data-reveal="up" data-delay="4">
-        <div class="stat-num">1</div>
-        <div class="stat-label">Household per wash cycle</div>
-      </div>
     </div>
   </div>
 </section>
@@ -2023,44 +1965,6 @@ button { font-family: var(--f); cursor: pointer; }
     revealEls.forEach(el => io.observe(el));
   } else {
     revealEls.forEach(el => el.classList.add('is-visible'));
-  }
-
-  /* ── 4. COUNTER ANIMATION ─────────────────── */
-  function animateCount(el, target, decimals) {
-    const start    = 0;
-    const duration = 1600;
-    const startTime = performance.now();
-    function tick(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased    = 1 - Math.pow(1 - progress, 3); // ease out cubic
-      const value    = start + (target - start) * eased;
-      el.textContent = decimals ? value.toFixed(1) : Math.round(value).toLocaleString();
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  const counters = document.querySelectorAll('[data-count]');
-  const decCounters = document.querySelectorAll('[data-count-dec]');
-  if ('IntersectionObserver' in window) {
-    const cio = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          if (el.dataset.count) {
-            animateCount(el, parseInt(el.dataset.count, 10), false);
-          } else if (el.dataset.countDec) {
-            animateCount(el, parseFloat(el.dataset.countDec), true);
-          }
-          cio.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(el => cio.observe(el));
-    decCounters.forEach(el => cio.observe(el));
-  } else {
-    counters.forEach(el => { el.textContent = parseInt(el.dataset.count, 10).toLocaleString(); });
-    decCounters.forEach(el => { el.textContent = parseFloat(el.dataset.countDec).toFixed(1); });
   }
 
   /* ── 6. FAQ ACCORDION (toggle icon via CSS) ─ */
