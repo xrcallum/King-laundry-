@@ -1064,6 +1064,7 @@ button { font-family: var(--f); cursor: pointer; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%230C265F' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right .95rem center; }
 .est-subw select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
+.est-cov[hidden] { display: none; }
 .est-cov { display: inline-flex; align-items: center; gap: .4rem; margin-top: .55rem; font-size: .78rem; font-weight: 700; padding: .3rem .7rem; border-radius: 99px; }
 .est-cov.ok { background: var(--teal-w); color: var(--teal-d); }
 .est-cov.no { background: #FFF4E5; color: #8A5300; }
@@ -1081,11 +1082,10 @@ button { font-family: var(--f); cursor: pointer; }
 .est-svc button[aria-checked="true"] svg { color: var(--teal-d); }
 .est-qty { display: flex; align-items: center; gap: 1rem; }
 .est-qty input[type=range] { flex: 1; min-width: 0; accent-color: var(--teal); height: 24px; }
-.est-eq { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
-.est-eq span { font-size: .76rem; padding: .28rem .65rem; border-radius: 99px; background: var(--paper); border: 1px solid var(--line); color: var(--body); }
+.est-eq { margin-top: .6rem; font-size: .8rem; color: var(--mute); }
 .est-eq b { color: var(--navy); }
 .est-lin .bk-row span em { font-style: normal; font-size: .78rem; color: var(--mute); margin-left: .35rem; }
-.est-bag { margin-top: 1rem; padding: .8rem .95rem; border: 1px dashed var(--line); border-radius: var(--r); }
+.est-bag { margin-top: .9rem; padding: .6rem .85rem; border: 1px solid var(--line); border-radius: var(--r); }
 .est-bag div { font-size: .86rem; }
 .est-rcpt { margin-top: 1.25rem; padding: .9rem 1rem; border-radius: var(--r); background: var(--paper); }
 .est-rcpt .bk-sum div { padding: .3rem 0; font-size: .84rem; }
@@ -1094,21 +1094,22 @@ button { font-family: var(--f); cursor: pointer; }
 .est-meter s { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--navy); border-radius: 1px; }
 .est-min { font-size: .76rem; color: var(--mute); line-height: 1.5; }
 .est-min b { color: var(--navy); }
-.est-tot { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: 1.25rem 0 1rem; }
-.est-tot small { display: block; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
-.est-tot strong { display: block; font-size: 2.7rem; font-weight: 900; line-height: 1; color: var(--navy); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-.est-tot ul { list-style: none; text-align: right; font-size: .76rem; font-weight: 700; color: var(--teal-d); line-height: 1.6; }
+.est-tot { margin: 1.1rem 0 .9rem; }
+.est-tot-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.est-tot small { font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.est-tot strong { font-size: 2.3rem; font-weight: 900; line-height: 1; color: var(--navy); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
+.est-tot-meta { font-size: .76rem; color: var(--mute); margin-top: .3rem; }
 .est-go { width: 100%; justify-content: center; }
-.est-go em { font-style: normal; opacity: .8; font-weight: 600; }
 .est-note { font-size: .74rem; color: var(--mute); text-align: center; margin-top: .75rem; line-height: 1.5; }
 @media (max-width: 640px) {
-  .est-card { padding: 1.2rem; }
+  .est-card { padding: 1.05rem; }
+  .est-h { margin: 1.05rem 0 .55rem; }
+  .est-rcpt { padding: .75rem .85rem; margin-top: 1rem; }
   .est-svc { gap: .4rem; }
   .est-svc button { padding: .65rem .55rem; }
   .est-svc b { font-size: .76rem; }
   .est-svc small { font-size: .68rem; }
-  .est-tot strong { font-size: 2.2rem; }
-  .est-tot ul { font-size: .7rem; }
+  .est-tot strong { font-size: 2rem; }
 }
 </style>
 </head>
@@ -1218,20 +1219,20 @@ button { font-family: var(--f); cursor: pointer; }
   <div class="container">
     <div class="stats-grid">
       <div data-reveal="up" data-delay="1">
-        <div class="stat-num">[&nbsp;&nbsp;]</div>
-        <div class="stat-label">Locations</div>
+        <div class="stat-num" data-count="16">0</div>
+        <div class="stat-label">Suburbs covered</div>
       </div>
       <div data-reveal="up" data-delay="2">
-        <div class="stat-num">[&nbsp;&nbsp;]</div>
-        <div class="stat-label">Customers Served</div>
+        <div class="stat-num">3<span>hr</span></div>
+        <div class="stat-label">Collection windows</div>
       </div>
       <div data-reveal="up" data-delay="3">
-        <div class="stat-num">[&nbsp;&nbsp;]</div>
-        <div class="stat-label">Star Rating</div>
+        <div class="stat-num"><span data-px="minimum">$73.50</span></div>
+        <div class="stat-label">Minimum order &middot; GST incl.</div>
       </div>
       <div data-reveal="up" data-delay="4">
-        <div class="stat-num">[&nbsp;&nbsp;]</div>
-        <div class="stat-label">Turnaround</div>
+        <div class="stat-num">1</div>
+        <div class="stat-label">Household per wash cycle</div>
       </div>
     </div>
   </div>
@@ -1449,8 +1450,8 @@ button { font-family: var(--f); cursor: pointer; }
         </div>
 
         <div class="est-tot">
-          <div><small>Estimated total</small><strong id="estTot">$77.50</strong></div>
-          <ul><li id="estGst">incl. $7.05 GST</li><li id="estPer"></li><li>Collection &amp; return included</li></ul>
+          <div class="est-tot-row"><small>Estimated total</small><strong id="estTot">$77.50</strong></div>
+          <p class="est-tot-meta"><span id="estGst">incl. $7.05 GST</span> &middot; <span id="estPer"></span> &middot; collection &amp; return included</p>
         </div>
         <button type="button" class="btn btn-primary btn-lg est-go" id="estGo">Request this collection</button>
         <p class="est-note">Indicative. Your exact price is confirmed after weighing, before any work starts. Payment is taken before return delivery.</p>
@@ -2687,7 +2688,7 @@ button { font-family: var(--f); cursor: pointer; }
     $('estLoads').hidden = linen; $('estLin').hidden = !linen;
     $('estA').textContent = E.a; $('estRange').value = Math.min(E.a, 12);
     $('estLs').textContent = E.ls; $('estLb').textContent = E.lb; $('estLr').textContent = E.lr;
-    $('estEq').innerHTML = '<span><b>&asymp; ' + E.a * 5 + ' kg</b> dry</span><span><b>&asymp; ' + E.a * 25 + '</b> t-shirts</span><span><b>' + E.a + '</b> full kitchen basket' + (E.a > 1 ? 's' : '') + '</span>';
+    $('estEq').innerHTML = '&asymp; <b>' + E.a * 5 + ' kg</b> dry &middot; &asymp; <b>' + E.a * 25 + '</b> t-shirts &middot; <b>' + E.a + '</b> kitchen basket' + (E.a > 1 ? 's' : '');
     $('estBag').setAttribute('aria-checked', String(!!E.bag));
 
     const q = quote(E);
@@ -2713,7 +2714,7 @@ button { font-family: var(--f); cursor: pointer; }
     cov.hidden = !v;
     cov.className = 'est-cov ' + (hit ? 'ok' : 'no');
     cov.textContent = hit ? '✓ We collect in ' + hit[1] : 'Not listed yet. Ask us and we’ll check.';
-    $('estGo').innerHTML = v === 'other' ? 'Ask about my suburb &rarr;' : 'Request this collection <em>&middot; ' + money(q.total) + '</em>';
+    $('estGo').textContent = v === 'other' ? 'Ask about my suburb' : 'Request this collection';
   }
   document.querySelectorAll('[data-esvc]').forEach(b => b.addEventListener('click', () => { E.svc = b.dataset.esvc; renderEst(); }));
   $('estRange').addEventListener('input', e => { E.a = +e.target.value; renderEst(); });
