@@ -930,6 +930,52 @@ button { font-family: var(--f); cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .bk-panel, .bk-scrim, .bk-step.on { transition: none; animation: none; }
 }
+
+/* ══════════════════════════════════════
+   PRICE ESTIMATOR · PROMISE · AUDIENCES
+══════════════════════════════════════ */
+#pricing { background: var(--paper); }
+.est-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.est-intro .section-title, .est-intro .section-sub { text-align: left; margin-left: 0; }
+.est-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; margin-top: 1.5rem; }
+.est-list li { display: flex; gap: .7rem; align-items: flex-start; font-size: .92rem; color: var(--body); }
+.est-list li::before { content: '\2713'; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--teal-w); color: var(--teal-d); display: grid; place-items: center; font-size: .72rem; font-weight: 800; }
+.est-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 2rem; box-shadow: var(--shadow-lg); }
+.est-card .bk-fld select { background: var(--paper); }
+.est-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.1rem 0 .2rem; }
+.est-chips span { display: inline-flex; align-items: center; gap: .4rem; padding: .4rem .85rem; border: 1px solid var(--line); border-radius: 99px; background: var(--paper); font-size: .82rem; color: var(--body); }
+.est-chips svg { width: 16px; height: 16px; color: var(--teal-d); }
+.est-sum { border-top: 1px solid var(--line); margin-top: 1.1rem; padding-top: .6rem; }
+.est-big { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: 1.1rem 0 1.2rem; flex-wrap: wrap; }
+.est-big small { display: block; font-size: .78rem; font-weight: 600; color: var(--mute); }
+.est-big strong { display: block; font-size: 2.6rem; font-weight: 900; color: var(--navy); letter-spacing: -.03em; line-height: 1; }
+.est-big em { font-style: normal; font-size: .8rem; font-weight: 700; color: var(--teal-d); text-align: right; line-height: 1.5; }
+.est-card .btn { width: 100%; justify-content: center; }
+.est-note { font-size: .8rem; color: var(--mute); text-align: center; margin-top: .8rem; }
+
+#promise { background: var(--bg); padding-top: 0; }
+.pr-grid, .aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+.pr-card, .aud-card {
+  display: flex; flex-direction: column; gap: .7rem; padding: 1.9rem;
+  border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--bg);
+  transition: box-shadow var(--tr), transform var(--tr), border-color var(--tr);
+}
+.pr-card:hover, .aud-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--teal-l); }
+.pr-card > svg, .aud-card > svg { width: 34px; height: 34px; color: var(--navy); margin-bottom: .3rem; }
+.pr-card h3, .aud-card h3 { font-size: 1.05rem; color: var(--navy); }
+.pr-card p, .aud-card p { font-size: .9rem; color: var(--body); flex: 1; }
+.card-link { display: inline-flex; align-items: center; gap: .5rem; font-weight: 700; font-size: .9rem; color: var(--teal-d); margin-top: .3rem; align-self: flex-start; }
+.card-link::after { content: '\2192'; font-size: 1.15rem; transition: transform var(--tr); }
+.card-link:hover::after { transform: translateX(4px); }
+#who { background: var(--paper); }
+@media (max-width: 900px) {
+  .est-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pr-grid, .aud-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .est-card { padding: 1.4rem; }
+  .pr-card, .aud-card { padding: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -944,6 +990,7 @@ button { font-family: var(--f); cursor: pointer; }
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><a href="#locations">Locations</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#faq">FAQs</a></li>
@@ -966,6 +1013,7 @@ button { font-family: var(--f); cursor: pointer; }
   <div class="mob-panel">
     <button class="mob-close" id="mob-close" aria-label="Close menu">&times;</button>
     <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
     <a href="#locations">Locations</a>
     <a href="#how">How It Works</a>
     <a href="#faq">FAQs</a>
@@ -1187,6 +1235,56 @@ button { font-family: var(--f); cursor: pointer; }
 </section>
 
 <!-- ════════════════════════════════════
+     PRICE ESTIMATOR
+════════════════════════════════════ -->
+<section id="pricing" class="section" aria-labelledby="pricing-h2">
+  <div class="container">
+    <div class="est-grid">
+      <div class="est-intro" data-reveal="left">
+        <span class="section-eyebrow">Instant Estimate</span>
+        <h2 class="section-title" id="pricing-h2">Know Your Price Before We Collect</h2>
+        <p class="section-sub">Pick your suburb and how much you have. The estimate includes GST and collection &amp; return.</p>
+        <ul class="est-list">
+          <li>Your exact price is confirmed after weighing, before any work starts.</li>
+          <li>Payment is taken after weighing, before return delivery.</li>
+          <li><span>Minimum order of <span data-px="minimum">$73.50</span> per collection.</span></li>
+        </ul>
+      </div>
+      <div class="est-card" data-reveal="right">
+        <div class="bk-fld">
+          <label for="estSub">Your suburb</label>
+          <select id="estSub"><option value="">Select a suburb&hellip;</option></select>
+        </div>
+        <div class="bk-fld">
+          <label for="estSvc">Service</label>
+          <select id="estSvc">
+            <option value="wf">Wash &amp; Fold</option>
+            <option value="premium">Premium Clean</option>
+            <option value="linen">Blankets, Rugs &amp; Sheets</option>
+          </select>
+        </div>
+        <div class="bk-fld" style="margin:0">
+          <label id="estLbl">Loads (approx. 5 kg each)</label>
+          <div class="bk-stp"><button type="button" data-est="-1" aria-label="Decrease">&minus;</button><output id="estA" aria-labelledby="estLbl">2</output><button type="button" data-est="1" aria-label="Increase">+</button></div>
+        </div>
+        <div class="est-chips" id="estChips">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16l-1.5 9a2 2 0 01-2 1.7h-9a2 2 0 01-2-1.7z"/><path d="M8 10l4-6 4 6M9 14v3M15 14v3"/></svg>One load &asymp; a full kitchen basket</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3c0 2-1.5 3-4 3S8 5 8 3z"/></svg>&asymp; 25 t-shirts</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7h6zM19 7l-3 7h6z"/></svg>&asymp; 5 kg dry</span>
+        </div>
+        <div class="bk-sum est-sum" id="estSum"></div>
+        <div class="est-big">
+          <div><small>Estimated total</small><strong id="estTot">$77.50</strong></div>
+          <em>Includes GST<br>Collection &amp; return included</em>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg" id="estGo">Request this collection</button>
+        <p class="est-note" id="estNote">Minimum order applies. Payment is taken after weighing, before return delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
      HOW IT WORKS
 ════════════════════════════════════ -->
 <section id="how" class="section" aria-labelledby="how-h2">
@@ -1321,6 +1419,34 @@ button { font-family: var(--f); cursor: pointer; }
           <h3>Hospital-grade capability</h3>
           <p>Aged-care and disability work follows AS/NZS 4146 [TBC]. Same care available on request for households.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     PROMISE
+════════════════════════════════════ -->
+<section id="promise" class="section" aria-label="Our promise">
+  <div class="container">
+    <div class="pr-grid" style="margin-top:0">
+      <div class="pr-card" data-reveal="up" data-delay="1">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg>
+        <h3>Your wash, only yours</h3>
+        <p>Processed on its own cycle. Never mixed with another household's items.</p>
+        <a href="#footer" class="card-link">Our guarantee</a>
+      </div>
+      <div class="pr-card" data-reveal="up" data-delay="2">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h10l6 6v17a1 1 0 01-1 1H9a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M19 4v6h6M12 17h9M12 22h9"/></svg>
+        <h3>Written guarantee</h3>
+        <p>If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p>
+        <a href="#footer" class="card-link">Read the terms</a>
+      </div>
+      <div class="pr-card" data-reveal="up" data-delay="3">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M19.5 11.5c-.8-1-2-1.5-3.5-1.5-2.2 0-3.7 1.2-3.7 2.9 0 4.1 7.6 2.2 7.6 6.3 0 1.8-1.6 2.8-3.9 2.8-1.7 0-3.1-.6-3.9-1.7M16 7.5v2.5M16 22v2.5"/></svg>
+        <h3>GST included, always</h3>
+        <p>Every price on this site includes GST. No checkout surprises, no call-out fees.</p>
+        <a href="#pricing" class="card-link">See pricing</a>
       </div>
     </div>
   </div>
@@ -1477,6 +1603,38 @@ button { font-family: var(--f); cursor: pointer; }
              alt="Fresh clean laundry" loading="lazy">
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     WHO WE WORK WITH
+════════════════════════════════════ -->
+<section id="who" class="section" aria-labelledby="who-h2">
+  <div class="container">
+    <div class="text-center" data-reveal="up">
+      <span class="section-eyebrow">Beyond the Household</span>
+      <h2 class="section-title" id="who-h2">Who We Work With</h2>
+    </div>
+    <div class="aud-grid">
+      <div class="aud-card" data-reveal="up" data-delay="1">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg>
+        <h3>Business &amp; commercial</h3>
+        <p>Short-stay properties, salons, gyms, caf&eacute;s and clubs. Scheduled collections, account billing, volume rates.</p>
+        <a href="#contact" class="card-link" data-enquire="Commercial / Business">Request a quote</a>
+      </div>
+      <div class="aud-card" data-reveal="up" data-delay="2">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-10-6.2-10-13a5.5 5.5 0 0110-3.2A5.5 5.5 0 0126 13c0 6.8-10 13-10 13z"/></svg>
+        <h3>Supported living &amp; aged care</h3>
+        <p>Regular laundry assistance for people living independently, and for the providers who support them.</p>
+        <a href="#contact" class="card-link" data-enquire="Supported living / aged care">See how it works</a>
+      </div>
+      <div class="aud-card" data-reveal="up" data-delay="3">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M7 27c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/></svg>
+        <h3>Become an operator</h3>
+        <p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p>
+        <a href="#contact" class="card-link" data-enquire="Become an operator">Operator information</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1692,6 +1850,8 @@ button { font-family: var(--f); cursor: pointer; }
               <option>Ironing Service</option>
               <option>Dry Cleaning</option>
               <option>Commercial / Business</option>
+              <option>Supported living / aged care</option>
+              <option>Become an operator</option>
               <option>Other</option>
             </select>
           </div>
@@ -2117,7 +2277,7 @@ button { font-family: var(--f); cursor: pointer; }
     try { DB = await claude.use('db'); } catch (e) { DB = null; }
     try { const u = await claude.use('user'); UID = u ? await u.id() : null; } catch (e) { UID = null; }
     if (DB) {
-      DB.doc('config/pricing').onSnapshot(s => { if (s.exists) { PX = Object.assign({}, PX, s.data()); render(); } }, () => {});
+      DB.doc('config/pricing').onSnapshot(s => { if (s.exists) { PX = Object.assign({}, PX, s.data()); render(); renderEst(); } }, () => {});
       DB.doc('config/booking').onSnapshot(s => { if (s.exists) { BK = Object.assign({}, BK, s.data()); render(); } }, () => {});
     }
   })();
@@ -2258,11 +2418,16 @@ button { font-family: var(--f); cursor: pointer; }
   /* ── open / close ────────────────────────── */
   const bk = $('bk');
   let lastFocus = null;
-  function open(e) {
+  function open(e, preset) {
     if (e) e.preventDefault();
     lastFocus = document.activeElement;
     if (W.step === 4) { Object.assign(W, { step: 1, win: '', rec: false }); $('bkAck').checked = false; }
-    recall(); render();
+    recall();
+    if (preset) {
+      Object.assign(W, { step: 1, svc: preset.svc, a: preset.a });
+      if (preset.suburb) { $('bkSuburb').value = preset.suburb; $('bkPc').value = preset.pc; }
+    }
+    render();
     bk.hidden = false;
     document.body.style.overflow = 'hidden';
     requestAnimationFrame(() => { bk.classList.add('open'); $('bkTitle').focus({ preventScroll: true }); });
@@ -2304,6 +2469,54 @@ button { font-family: var(--f); cursor: pointer; }
     else if (W.step === 3) submit();
     else close();
   });
+
+  /* ── price estimator ─────────────────────── */
+  /* Live suburbs carried over from the Laundry Legends app (LIVE_PC). */
+  const SUBURBS = [['4207','Beenleigh'],['4118','Browns Plains'],['4152','Camp Hill'],['4151','Coorparoo'],['4130','Cornubia'],
+    ['4120','Greenslopes'],['4121','Holland Park'],['4119','Kuraby'],['4129','Loganholme'],['4122','Mansfield'],['4132','Marsden'],
+    ['4131','Meadowbrook'],['4128','Shailer Park'],['4127','Springwood'],['4109','Sunnybank'],['4133','Waterford']];
+  const E = { svc: 'wf', a: 2 };
+  const estSub = $('estSub'), estSvc = $('estSvc');
+  estSub.insertAdjacentHTML('beforeend', SUBURBS.map(([pc, n]) => '<option value="' + pc + '">' + n + ' ' + pc + '</option>').join('')
+    + '<option value="other">My suburb isn\'t listed</option>');
+  function renderEst() {
+    const unit = E.svc === 'linen' ? PX.linenSheetSet : E.svc === 'premium' ? PX.premium : PX.load;
+    const word = E.svc === 'linen' ? 'blanket, rug or sheet set' : E.svc === 'premium' ? 'Premium Clean load' : 'wash & fold load';
+    const sub = E.a * unit + PX.delivery, total = Math.max(PX.minimum, sub);
+    $('estLbl').textContent = E.svc === 'linen' ? 'Blankets, rugs or sheet sets' : 'Loads (approx. 5 kg each)';
+    $('estA').textContent = E.a;
+    $('estChips').style.display = E.svc === 'linen' ? 'none' : '';
+    $('estSum').innerHTML = '<div><span>' + E.a + ' × ' + esc(word) + (E.a > 1 ? 's' : '') + '</span><span>' + money(E.a * unit) + '</span></div>'
+      + '<div><span>Collection &amp; return</span><span>' + money(PX.delivery) + '</span></div>'
+      + (total > sub + 0.001 ? '<div><span>Minimum order adjustment</span><span>' + money(total - sub) + '</span></div>' : '')
+      + '<div class="tot"><span>Estimated total</span><span>' + money(total) + '</span></div>';
+    $('estTot').textContent = money(total);
+    $('estNote').textContent = total > sub + 0.001
+      ? 'Below the ' + money(PX.minimum) + ' minimum, so the minimum applies. Payment is taken after weighing, before return delivery.'
+      : 'Minimum order applies. Payment is taken after weighing, before return delivery.';
+    document.querySelectorAll('[data-px="minimum"]').forEach(el => el.textContent = money(PX.minimum));
+    $('estGo').textContent = estSub.value === 'other' ? 'Ask about my suburb' : 'Request this collection';
+  }
+  estSvc.addEventListener('change', () => { E.svc = estSvc.value; renderEst(); });
+  estSub.addEventListener('change', renderEst);
+  document.querySelectorAll('[data-est]').forEach(b => b.addEventListener('click', () => { E.a = Math.max(1, Math.min(40, E.a + Number(b.dataset.est))); renderEst(); }));
+  $('estGo').addEventListener('click', () => {
+    if (estSub.value === 'other') { enquire('Pick & Drop Service', 'Is pickup available in my suburb? '); return; }
+    const hit = SUBURBS.find(s => s[0] === estSub.value);
+    open(null, { svc: E.svc, a: E.a, suburb: hit ? hit[1] : '', pc: hit ? hit[0] : '' });
+  });
+  renderEst();
+
+  /* ── enquiry shortcuts ───────────────────── */
+  function enquire(topic, msg) {
+    const sel = $('cf-service'), ta = $('cf-msg');
+    if (sel && ![...sel.options].some(o => o.text === topic)) sel.add(new Option(topic, topic));
+    if (sel) sel.value = topic;
+    if (ta && msg && !ta.value) ta.value = msg;
+    $('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => ($('cf-name').value ? ta : $('cf-name')).focus({ preventScroll: true }), 600);
+  }
+  document.querySelectorAll('[data-enquire]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); enquire(a.dataset.enquire); }));
 
   /* ── contact form → same backend ─────────── */
   const form = document.querySelector('.contact-form form');
