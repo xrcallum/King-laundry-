@@ -542,7 +542,7 @@ button { font-family: var(--f); cursor: pointer; }
 }
 #offer::before {
   content: ''; position: absolute; inset: 0;
-  background: url('linen-legends-framer-assets/yK99FKksn0SziSGfKcVUIcCibqU.jpg')
+  background: url('linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png')
     center / cover no-repeat;
   opacity: .1; mix-blend-mode: luminosity;
 }
@@ -1134,6 +1134,18 @@ button { font-family: var(--f); cursor: pointer; }
   .est-svc small { font-size: .68rem; }
   .est-tot strong { font-size: 2rem; }
 }
+
+/* ══════════════════════════════════════
+   MOBILE CINEMA DECK (services)
+══════════════════════════════════════ */
+@media (max-width: 640px) {
+  .deck { position: relative; display: block !important; margin-top: 2.4rem; }
+  .deck > * {
+    position: absolute; left: 0; right: 0; top: 36px; margin: 0;
+    transition: transform .55s var(--ease), opacity .55s var(--ease) !important;
+    will-change: transform, opacity;
+  }
+}
 </style>
 </head>
 <body>
@@ -1328,7 +1340,7 @@ button { font-family: var(--f); cursor: pointer; }
       </p>
     </div>
 
-<div class="svc-grid mcar">
+<div class="svc-grid deck">
 
       <article class="svc-card" data-reveal="up" data-delay="1">
         <div class="svc-img">
@@ -1392,8 +1404,8 @@ button { font-family: var(--f); cursor: pointer; }
 
       <article class="svc-card" data-reveal="up" data-delay="5">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/yK99FKksn0SziSGfKcVUIcCibqU.jpg"
-               alt="Commercial laundry volume" loading="lazy">
+          <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png"
+               alt="Folded commercial linen stacks" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
@@ -2827,6 +2839,64 @@ button { font-family: var(--f); cursor: pointer; }
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
     setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3000);
     mark();
+  });
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+  const mq = window.matchMedia('(max-width: 640px)');
+  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('.deck').forEach(track => {
+    const cards = [...track.children], n = cards.length;
+    const dots = document.createElement('div');
+    dots.className = 'mcar-dots';
+    dots.innerHTML = cards.map((_, i) => '<button type="button" aria-label="Show card ' + (i + 1) + '"></button>').join('');
+    track.after(dots);
+    const btns = [...dots.children];
+    let idx = 0, busy = false, paused = false, resumeT = 0, visible = false;
+    const size = () => { track.style.height = (Math.max(...cards.map(c => c.offsetHeight)) + 36) + 'px'; };
+    function layout() {
+      cards.forEach((c, i) => {
+        const k = (i - idx + n) % n, off = Math.min(k, 2);
+        c.style.zIndex = String(10 + n - k);
+        c.style.transform = k === 0 ? 'none' : 'translateY(' + (-16 * off) + 'px) scale(' + (1 - .055 * off) + ')';
+        c.style.opacity = k === 0 ? '1' : off === 1 ? '.45' : '.18';
+        c.style.pointerEvents = k === 0 ? '' : 'none';
+        c.setAttribute('aria-hidden', k === 0 ? 'false' : 'true');
+      });
+      btns.forEach((b, i) => b.classList.toggle('on', i === idx));
+    }
+    function reset() {
+      track.style.height = '';
+      cards.forEach(c => { c.style.transform = ''; c.style.opacity = ''; c.style.zIndex = ''; c.style.pointerEvents = ''; c.removeAttribute('aria-hidden'); });
+    }
+    function go(next) {
+      if (!mq.matches || busy) return;
+      if (still.matches) { idx = (next + n) % n; layout(); return; }
+      busy = true;
+      const front = cards[idx];
+      front.style.transform = 'translateY(-46%) scale(.96)';
+      front.style.opacity = '0';
+      setTimeout(() => { idx = (next + n) % n; layout(); busy = false; }, 420);
+    }
+    const hold = () => { paused = true; clearTimeout(resumeT); resumeT = setTimeout(() => { paused = false; }, 6000); };
+    let y0 = null, s0 = 0;
+    track.addEventListener('touchstart', e => { hold(); y0 = e.touches[0].clientY; s0 = scrollY; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      if (y0 == null) return;
+      const dy = e.changedTouches[0].clientY - y0; y0 = null;
+      if (Math.abs(scrollY - s0) > 12) return;
+      if (dy < -34) go(idx + 1); else if (dy > 34) go(idx - 1);
+    }, { passive: true });
+    btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.35 }).observe(track);
+    setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3000);
+    const apply = () => { if (mq.matches) { size(); layout(); } else reset(); };
+    window.addEventListener('resize', apply);
+    window.addEventListener('load', () => { apply(); setTimeout(apply, 500); });
+    apply();
   });
 })();
 </script>
