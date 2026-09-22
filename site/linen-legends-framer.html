@@ -50,14 +50,14 @@
    RESET & BASE
 ══════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   font-family: var(--f);
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -810,6 +810,126 @@ button { font-family: var(--f); cursor: pointer; }
 @media (max-width: 420px) {
   .svc-grid { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════
+   BOOKING PANEL
+══════════════════════════════════════ */
+.bk { position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; }
+.bk[hidden] { display: none; }
+.bk-scrim { position: absolute; inset: 0; background: rgba(7,26,69,.55); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); opacity: 0; transition: opacity .3s var(--ease); }
+.bk.open .bk-scrim { opacity: 1; }
+.bk-panel {
+  position: relative; display: flex; flex-direction: column;
+  width: min(600px, calc(100% - 32px)); max-height: min(860px, calc(100dvh - 48px));
+  background: var(--paper); border-radius: var(--r-xl); box-shadow: var(--shadow-xl);
+  transform: translateY(24px) scale(.98); opacity: 0;
+  transition: transform .4s var(--ease), opacity .3s var(--ease);
+}
+.bk.open .bk-panel { transform: none; opacity: 1; }
+.bk-head { padding: 1.25rem 1.5rem 1rem; border-bottom: 1px solid var(--line); background: var(--bg); border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.bk-top { display: flex; align-items: flex-start; gap: .85rem; }
+.bk-ib {
+  flex: none; width: 40px; height: 40px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--bg);
+  color: var(--navy); cursor: pointer; font-size: 1.1rem; font-family: var(--f);
+  transition: background var(--tr), border-color var(--tr);
+}
+.bk-ib:hover { background: var(--teal-w); border-color: var(--teal-l); }
+.bk-ib[aria-hidden="true"] { visibility: hidden; }
+.bk-ttl { flex: 1; min-width: 0; }
+.bk-ttl h2 { font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.2; outline: none; }
+.bk-ttl p { font-size: .88rem; color: var(--mute); margin-top: .15rem; }
+.bk-prog { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: 1rem; }
+.bk-prog span { height: 5px; border-radius: 99px; background: var(--line); transition: background .3s var(--ease); }
+.bk-prog span.on { background: var(--teal); }
+.bk-body { flex: 1; overflow-y: auto; padding: 1.25rem 1.5rem; overscroll-behavior: contain; }
+.bk-step { display: none; }
+.bk-step.on { display: block; animation: bkIn .35s var(--ease); }
+@keyframes bkIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.bk-lbl { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 0 0 .7rem; }
+.bk-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.1rem 1.15rem; margin-bottom: .85rem; }
+.bk-card h3 { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .6rem; }
+.bk-fine { font-size: .78rem; color: var(--mute); line-height: 1.55; margin-top: .6rem; }
+.bk-svc { display: grid; grid-template-columns: repeat(2,1fr); gap: .65rem; margin-bottom: .6rem; }
+.bk-tile {
+  display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center;
+  padding: 1.05rem .6rem; border: 2px solid var(--line); border-radius: var(--r-lg);
+  background: var(--bg); color: var(--navy); cursor: pointer; font-family: var(--f);
+  transition: border-color var(--tr), background var(--tr), transform var(--tr);
+}
+.bk-tile:hover { transform: translateY(-2px); border-color: var(--teal-l); }
+.bk-tile svg { width: 34px; height: 34px; margin-bottom: .2rem; }
+.bk-tile b { font-size: .88rem; font-weight: 700; color: var(--ink); }
+.bk-tile small { font-size: .78rem; color: var(--mute); }
+.bk-tile.on { border-color: var(--teal); background: var(--teal-w); color: var(--teal-d); }
+.bk-more { display: inline-block; font-size: .84rem; font-weight: 600; color: var(--teal-d); margin: .15rem 0 .9rem; }
+.bk-more:hover { text-decoration: underline; }
+.bk-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.bk-row + .bk-row { margin-top: .8rem; }
+.bk-row > span { font-size: .88rem; color: var(--body); }
+.bk-stp { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.bk-stp button { width: 40px; height: 40px; border: none; background: var(--bg); color: var(--navy); font-size: 1.15rem; cursor: pointer; font-family: var(--f); }
+.bk-stp button:hover { background: var(--teal-w); }
+.bk-stp output { min-width: 40px; text-align: center; font-weight: 700; color: var(--ink); }
+.bk-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
+.bk-opt {
+  display: flex; flex-direction: column; gap: .2rem; text-align: left; padding: .85rem .95rem;
+  border: 2px solid var(--line); border-radius: var(--r); background: var(--bg);
+  cursor: pointer; font-family: var(--f); transition: border-color var(--tr), background var(--tr);
+}
+.bk-opt strong { font-size: .88rem; color: var(--ink); }
+.bk-opt span { font-size: .78rem; color: var(--mute); }
+.bk-opt.on { border-color: var(--teal); background: var(--teal-w); }
+.bk-slot { display: flex; align-items: center; gap: 1rem; width: 100%; margin-bottom: .6rem; flex-direction: row; }
+.bk-day { flex: none; width: 54px; text-align: center; padding: .35rem 0; border-radius: var(--r); background: var(--teal-w); color: var(--teal-d); line-height: 1.15; }
+.bk-day s { display: block; text-decoration: none; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.bk-day b { display: block; font-size: 1.25rem; font-weight: 800; color: var(--navy); }
+.bk-opt.on .bk-day { background: var(--bg); }
+.bk-fld { margin-bottom: .75rem; }
+.bk-fld label { display: block; font-size: .8rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; }
+.bk-fld input, .bk-fld textarea, .bk-fld select {
+  width: 100%; padding: .7rem .85rem; border: 1.5px solid var(--line); border-radius: var(--r);
+  font: inherit; font-size: .9rem; color: var(--ink); background: var(--bg);
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+.bk-fld textarea { min-height: 76px; resize: vertical; }
+.bk-fld input:focus, .bk-fld textarea:focus, .bk-fld select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
+.bk-g3 { display: grid; grid-template-columns: 2fr 1fr; gap: .65rem; }
+.bk-tgl { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.bk-tgl div { font-size: .9rem; font-weight: 600; color: var(--ink); }
+.bk-tgl small { display: block; font-weight: 400; font-size: .78rem; color: var(--mute); margin-top: .1rem; }
+.bk-sw { flex: none; width: 46px; height: 26px; border-radius: 99px; border: none; background: var(--line); position: relative; cursor: pointer; transition: background var(--tr); }
+.bk-sw::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-sm); transition: transform var(--tr); }
+.bk-sw[aria-checked="true"] { background: var(--teal); }
+.bk-sw[aria-checked="true"]::after { transform: translateX(20px); }
+.bk-sum { font-size: .88rem; }
+.bk-sum div { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; color: var(--body); }
+.bk-sum div + div { border-top: 1px dashed var(--line); }
+.bk-sum .tot { font-weight: 800; color: var(--navy); font-size: .98rem; border-top: 1px solid var(--ink) !important; margin-top: .2rem; padding-top: .6rem; }
+.bk-cbx { display: flex; gap: .6rem; align-items: flex-start; font-size: .84rem; color: var(--body); margin-top: .75rem; cursor: pointer; line-height: 1.5; }
+.bk-cbx input { margin-top: .2rem; accent-color: var(--teal); width: 16px; height: 16px; flex: none; }
+.bk-msg { display: none; margin-top: .8rem; padding: .7rem .9rem; border-radius: var(--r); font-size: .84rem; font-weight: 600; }
+.bk-msg.err { display: block; background: #FDECEC; color: #9B2C2C; }
+.bk-msg.ok { display: block; background: var(--teal-w); color: var(--teal-d); }
+.bk-done { text-align: center; padding: 2rem 1rem; }
+.bk-done .ic { width: 64px; height: 64px; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: var(--teal-w); color: var(--teal); font-size: 1.8rem; font-weight: 800; }
+.bk-done h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: .4rem; }
+.bk-done p { color: var(--body); font-size: .92rem; }
+.bk-done .ref { display: inline-block; margin: .9rem 0 .2rem; padding: .35rem .8rem; border-radius: var(--r); background: var(--bg); border: 1px solid var(--line); font-weight: 800; color: var(--navy); letter-spacing: .04em; }
+.bk-bar { display: flex; gap: .65rem; padding: 1rem 1.5rem; border-top: 1px solid var(--line); background: var(--bg); border-radius: 0 0 var(--r-xl) var(--r-xl); }
+.bk-bar .btn { flex: 1; justify-content: center; }
+.bk-bar .btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+@media (max-width: 640px) {
+  .bk { align-items: stretch; }
+  .bk-panel { width: 100%; max-height: none; height: 100dvh; border-radius: 0; }
+  .bk-head, .bk-bar { border-radius: 0; }
+  .bk-head, .bk-body, .bk-bar { padding-left: 16px; padding-right: 16px; }
+  .bk-bar { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  .bk-g2, .bk-g3 { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bk-panel, .bk-scrim, .bk-step.on { transition: none; animation: none; }
+}
 </style>
 </head>
 <body>
@@ -832,7 +952,7 @@ button { font-family: var(--f); cursor: pointer; }
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a href="#contact" class="btn btn-nav">Book Pickup</a>
+      <a href="#contact" class="btn btn-nav" data-book>Book Pickup</a>
       <button class="nav-ham" id="ham-btn" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -852,7 +972,7 @@ button { font-family: var(--f); cursor: pointer; }
     <a href="#how">How It Works</a>
     <a href="#faq">FAQs</a>
     <a href="#contact">Contact</a>
-    <a href="#contact" class="btn btn-primary">Book a Pickup</a>
+    <a href="#contact" class="btn btn-primary" data-book>Book a Pickup</a>
   </div>
 </div>
 
@@ -879,7 +999,7 @@ button { font-family: var(--f); cursor: pointer; }
           a cosy lounge, and easy payment options. Fresh, clean clothes &mdash; made simple!
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg">Schedule a Pickup</a>
+          <a href="#contact" class="btn btn-primary btn-lg" data-book>Schedule a Pickup</a>
           <a href="#services" class="btn btn-outline-white btn-lg">Our Services</a>
         </div>
         <div class="hero-badges">
@@ -1126,7 +1246,7 @@ button { font-family: var(--f); cursor: pointer; }
         </div>
 
         <div class="how-cta">
-          <a href="#contact" class="btn btn-primary">Schedule a Pickup</a>
+          <a href="#contact" class="btn btn-primary" data-book>Schedule a Pickup</a>
           <a href="#services" class="btn btn-outline-teal">View All Services</a>
         </div>
       </div>
@@ -1536,7 +1656,7 @@ button { font-family: var(--f); cursor: pointer; }
               <p>[PHONE TBC] &middot; [Hours TBC]</p>
             </div>
           </a>
-          <a href="https://calendly.com/" class="contact-card" rel="noopener">
+          <a href="#contact" class="contact-card" data-book>
             <div class="contact-card-icon">&#128197;</div>
             <div>
               <h4>Schedule Pickup</h4>
@@ -1657,6 +1777,131 @@ button { font-family: var(--f); cursor: pointer; }
     </div>
   </div>
 </footer>
+
+<!-- ════════════════════════════════════
+     BOOKING PANEL
+════════════════════════════════════ -->
+<div class="bk" id="bk" role="dialog" aria-modal="true" aria-labelledby="bkTitle" hidden>
+  <div class="bk-scrim" data-bk-close></div>
+  <div class="bk-panel">
+    <div class="bk-head">
+      <div class="bk-top">
+        <button type="button" class="bk-ib" id="bkBack" aria-label="Back a step" aria-hidden="true">&#8249;</button>
+        <div class="bk-ttl"><h2 id="bkTitle" tabindex="-1">Choose your service</h2><p id="bkSub">Select what you need washed.</p></div>
+        <button type="button" class="bk-ib" data-bk-close aria-label="Close booking">&times;</button>
+      </div>
+      <div class="bk-prog" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+    </div>
+
+    <div class="bk-body" id="bkBody">
+
+      <!-- STEP 1 — SERVICE -->
+      <div class="bk-step on" data-step="1">
+        <p class="bk-lbl">Select required service</p>
+        <div class="bk-svc" id="bkSvc"></div>
+        <a href="#contact" class="bk-more" data-bk-close>Dry cleaning or commercial laundry? Send us an enquiry &rarr;</a>
+
+        <div class="bk-card">
+          <h3>Approximate quantity</h3>
+          <div class="bk-row"><span id="bkLblA">Loads (approx. 5&nbsp;kg each)</span>
+            <div class="bk-stp"><button type="button" data-q="a,-1" aria-label="Decrease">&minus;</button><output id="bkA">2</output><button type="button" data-q="a,1" aria-label="Increase">+</button></div>
+          </div>
+          <div class="bk-row" id="bkRowB"><span>Loads needing Premium Clean</span>
+            <div class="bk-stp"><button type="button" data-q="b,-1" aria-label="Fewer Premium Clean loads">&minus;</button><output id="bkB">0</output><button type="button" data-q="b,1" aria-label="More Premium Clean loads">+</button></div>
+          </div>
+          <p class="bk-fine">Final price is set after your items are weighed and counted at collection. This figure only helps us plan the run.</p>
+        </div>
+
+        <div class="bk-card">
+          <h3>Do you need a bag?</h3>
+          <div class="bk-g2">
+            <button type="button" class="bk-opt on" data-bag="0"><strong>I have my own</strong><span>Any bag or basket. No charge.</span></button>
+            <button type="button" class="bk-opt" data-bag="1"><strong>Send me a bag</strong><span id="bkBagPx">Reusable bag, yours to keep</span></button>
+          </div>
+          <div class="bk-row" id="bkRowBag" style="margin-top:.8rem"><span>How many bags</span>
+            <div class="bk-stp"><button type="button" data-q="bagQty,-1" aria-label="Fewer bags">&minus;</button><output id="bkBagQty">1</output><button type="button" data-q="bagQty,1" aria-label="More bags">+</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 — COLLECTION WINDOW -->
+      <div class="bk-step" data-step="2">
+        <div class="bk-card">
+          <div class="bk-fld" style="margin:0">
+            <label for="bkDate">Collection date</label>
+            <input type="date" id="bkDate">
+          </div>
+          <p class="bk-fine" id="bkDateLong"></p>
+        </div>
+        <p class="bk-lbl">Choose a collection window</p>
+        <div id="bkSlots"></div>
+        <p class="bk-fine">Collection windows are three hours wide. We confirm your booking and window before the day.</p>
+      </div>
+
+      <!-- STEP 3 — DETAILS + REVIEW -->
+      <div class="bk-step" data-step="3">
+        <div class="bk-card">
+          <h3>Your details</h3>
+          <div class="bk-g2">
+            <div class="bk-fld"><label for="bkName">Full name</label><input id="bkName" autocomplete="name" required></div>
+            <div class="bk-fld"><label for="bkPhone">Mobile</label><input id="bkPhone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx" required></div>
+          </div>
+          <div class="bk-fld"><label for="bkEmail">Email</label><input id="bkEmail" type="email" autocomplete="email" required></div>
+          <div class="bk-fld"><label for="bkLine1">Collection address</label><input id="bkLine1" autocomplete="address-line1" placeholder="Street address" required></div>
+          <div class="bk-g3">
+            <div class="bk-fld"><label for="bkSuburb">Suburb</label><input id="bkSuburb" autocomplete="address-level2" required></div>
+            <div class="bk-fld"><label for="bkPc">Postcode</label><input id="bkPc" inputmode="numeric" maxlength="4" autocomplete="postal-code" required></div>
+          </div>
+        </div>
+
+        <div class="bk-card">
+          <h3 id="bkRevSvc">Wash &amp; Fold</h3>
+          <p class="bk-fine" id="bkRevSlot" style="margin:0 0 .9rem"></p>
+          <div class="bk-tgl">
+            <div id="bkRecLbl">Make this a recurring collection<small id="bkRecSub">Same day and window each week.</small></div>
+            <button type="button" class="bk-sw" id="bkRec" role="switch" aria-checked="false" aria-labelledby="bkRecLbl"></button>
+          </div>
+          <div class="bk-fld" id="bkRecOpts" style="display:none;margin:.8rem 0 0">
+            <label for="bkFreq">Frequency</label>
+            <select id="bkFreq"><option value="weekly">Every week</option><option value="fortnightly">Every fortnight</option><option value="monthly">Every 4 weeks</option></select>
+          </div>
+        </div>
+
+        <div class="bk-card">
+          <div class="bk-fld"><label for="bkCare">Laundry care instructions</label><textarea id="bkCare" placeholder="Cold wash only, hang dry, fold shirts flat…"></textarea></div>
+          <div class="bk-fld" style="margin:0"><label for="bkDel">Collection &amp; delivery instructions</label><textarea id="bkDel" placeholder="Leave under the carport, gate code…"></textarea></div>
+          <p class="bk-fine">With no instructions, clean laundry is left in a safe place at the collection address.</p>
+        </div>
+
+        <div class="bk-card">
+          <h3>Estimate</h3>
+          <div class="bk-sum" id="bkSum"></div>
+          <p class="bk-fine" id="bkMinNote"></p>
+          <p class="bk-fine">Payment is taken after your items are weighed and counted, before your laundry is returned. Accepted payment methods: [TBC].</p>
+          <label class="bk-cbx"><input type="checkbox" id="bkAck"><span>I understand this is an estimate. The final price is confirmed after weighing, before any work starts.</span></label>
+          <div class="bk-msg" id="bkMsg" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- STEP 4 — DONE -->
+      <div class="bk-step" data-step="4">
+        <div class="bk-done">
+          <div class="ic" aria-hidden="true">&#10003;</div>
+          <h3>Booking requested</h3>
+          <div class="ref" id="bkRef"></div>
+          <p id="bkDoneTx"></p>
+          <p class="bk-fine">This is a request, not a confirmed booking. We confirm your window by SMS or email.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bk-bar" id="bkBar">
+      <button type="button" class="btn btn-outline-teal" id="bkPrev">Cancel</button>
+      <button type="button" class="btn btn-primary" id="bkNext">Continue &rarr;</button>
+    </div>
+  </div>
+</div>
 
 <!-- ════════════════════════════════════
      JAVASCRIPT
@@ -1827,25 +2072,269 @@ button { font-family: var(--f); cursor: pointer; }
 
   sections.forEach(s => linkIo.observe(s));
 
-  /* ── 8. FORM SUBMIT FEEDBACK ──────────────── */
-  const form = document.querySelector('.contact-form form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = form.querySelector('[type=submit]');
-      const orig = btn.textContent;
-      btn.textContent = 'Message Sent!';
-      btn.disabled = true;
-      btn.style.background = 'var(--teal-d)';
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.disabled = false;
-        btn.style.background = '';
-        form.reset();
-      }, 3000);
-    });
+})();
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Launch-assumption rates carried over from the Laundry Legends app (DEFAULT_PRICING).
+     Overridable live from db config/pricing. */
+  let PX = { load: 32, premium: 15, bag: 12, delivery: 13.5, minimum: 73.5, linenSheetSet: 24 };
+  let BK = {
+    leadDays: 1, horizonDays: 42,
+    windows: [
+      { id: 'am',  label: '9am – 12pm', note: 'Morning collection' },
+      { id: 'mid', label: '12pm – 3pm', note: 'Midday collection' },
+      { id: 'pm',  label: '4pm – 7pm',  note: 'Late afternoon collection' }
+    ]
+  };
+
+  const SVCS = [
+    { id: 'wf', name: 'Wash, Dry', sub: '& Fold', full: 'Wash & Fold',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="12" cy="13" r="5"/><line x1="5" y1="6" x2="8" y2="6"/><circle cx="11" cy="6" r="1" fill="currentColor"/></svg>' },
+    { id: 'linen', name: 'Blankets, Rugs', sub: '& Sheets', full: 'Blankets, Rugs & Sheets',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0"/><path d="M8 4v12M14 4v12"/></svg>' },
+    { id: 'wfi', name: 'Washing', sub: '& Premium', full: 'Wash, Fold & Premium',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 6H4L6 2z"/><rect x="3" y="8" width="18" height="14" rx="3"/><path d="M9 8V6M15 8V6"/><line x1="9" y1="15" x2="15" y2="15"/></svg>' },
+    { id: 'premium', name: 'Premium', sub: 'Clean', full: 'Premium Clean',
+      svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6L12 3z"/><path d="M5 20h14"/></svg>' }
+  ];
+  const svcName = id => (SVCS.find(s => s.id === id) || {}).full || 'Collection';
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const money = n => { const v = Number(n) || 0; return '$' + (Math.abs(v - Math.round(v)) < 0.005 ? String(Math.round(v)) : v.toFixed(2)); };
+  const isoDate = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  const fromIso = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
+  const longDate = s => fromIso(s).toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const uid4 = () => Math.random().toString(36).slice(2, 8);
+  const REF = () => 'LL-' + Date.now().toString(36).slice(-4).toUpperCase() + Math.random().toString(36).slice(2, 4).toUpperCase();
+  const v = id => ($(id).value || '').trim();
+
+  /* ── backend ─────────────────────────────── */
+  let DB = null, UID = null;
+  const ready = (async () => {
+    try { DB = await claude.use('db'); } catch (e) { DB = null; }
+    try { const u = await claude.use('user'); UID = u ? await u.id() : null; } catch (e) { UID = null; }
+    if (DB) {
+      DB.doc('config/pricing').onSnapshot(s => { if (s.exists) { PX = Object.assign({}, PX, s.data()); render(); } }, () => {});
+      DB.doc('config/booking').onSnapshot(s => { if (s.exists) { BK = Object.assign({}, BK, s.data()); render(); } }, () => {});
+    }
+  })();
+
+  function estimate() {
+    const lines = []; let sub = 0;
+    const add = (l, n) => { lines.push([l, n]); sub += n; };
+    const pl = (n, w) => n + ' × ' + w + (n > 1 ? 's' : '');
+    if (W.svc === 'wf') add(pl(W.a, 'wash & fold load'), W.a * PX.load);
+    if (W.svc === 'wfi') {
+      add(pl(W.a, 'wash & fold load'), W.a * PX.load);
+      const pc = Math.min(W.b, W.a); if (pc) add(pl(pc, 'Premium Clean load'), pc * PX.premium);
+    }
+    if (W.svc === 'premium') add(pl(W.a, 'Premium Clean load'), W.a * PX.premium);
+    if (W.svc === 'linen') add(pl(W.a, 'blanket, rug or sheet set'), W.a * PX.linenSheetSet);
+    if (W.bag) add(pl(W.bagQty, 'reusable bag') + ' (yours to keep)', W.bagQty * PX.bag);
+    add('Collection & return', PX.delivery);
+    const total = Math.max(PX.minimum, sub);
+    if (total > sub + 0.001) lines.push(['Minimum order adjustment', total - sub]);
+    return { lines, total };
   }
 
+  /* ── state + render ──────────────────────── */
+  const W = { step: 1, svc: 'wf', a: 2, b: 0, bag: 0, bagQty: 1, date: '', win: '', rec: false, ref: '' };
+  const TITLES = {
+    1: ['Choose your service', 'Select what you need washed.'],
+    2: ['Collection window', 'Pick a day and a three-hour window.'],
+    3: ['Review and confirm', 'Your details, instructions and estimate.'],
+    4: ['Booking requested', '']
+  };
+
+  function render() {
+    document.querySelectorAll('#bk [data-step]').forEach(s => s.classList.toggle('on', +s.dataset.step === W.step));
+    document.querySelectorAll('#bk .bk-prog span').forEach((s, i) => s.classList.toggle('on', i < Math.min(W.step, 3)));
+    $('bkTitle').textContent = TITLES[W.step][0];
+    $('bkSub').textContent = TITLES[W.step][1];
+    $('bkBack').setAttribute('aria-hidden', W.step > 1 && W.step < 4 ? 'false' : 'true');
+    $('bkPrev').style.display = W.step === 4 ? 'none' : '';
+    $('bkPrev').textContent = W.step === 1 ? 'Cancel' : 'Previous';
+    $('bkNext').innerHTML = W.step === 3 ? '&#10003; Confirm booking' : W.step === 4 ? 'Done' : 'Continue &rarr;';
+
+    $('bkSvc').innerHTML = SVCS.map(s =>
+      '<button type="button" class="bk-tile' + (W.svc === s.id ? ' on' : '') + '" data-svc="' + s.id + '" aria-pressed="' + (W.svc === s.id) + '">'
+      + s.svg + '<b>' + s.name + '</b><small>' + s.sub + '</small></button>').join('');
+    $('bkLblA').textContent = W.svc === 'linen' ? 'Blankets, rugs or sheet sets' : W.svc === 'premium' ? 'Loads for Premium Clean' : 'Loads (approx. 5 kg each)';
+    $('bkA').textContent = W.a;
+    $('bkB').textContent = W.b;
+    $('bkRowB').style.display = W.svc === 'wfi' ? '' : 'none';
+    $('bkBagPx').textContent = money(PX.bag) + ' each, yours to keep';
+    document.querySelectorAll('#bk [data-bag]').forEach(b => b.classList.toggle('on', +b.dataset.bag === W.bag));
+    $('bkRowBag').style.display = W.bag ? '' : 'none';
+    $('bkBagQty').textContent = W.bagQty;
+
+    const min = new Date(); min.setDate(min.getDate() + BK.leadDays);
+    const max = new Date(); max.setDate(max.getDate() + BK.horizonDays);
+    const di = $('bkDate');
+    di.min = isoDate(min); di.max = isoDate(max);
+    if (!W.date || fromIso(W.date) < min) W.date = isoDate(min);
+    di.value = W.date;
+    $('bkDateLong').textContent = longDate(W.date);
+    const d = fromIso(W.date);
+    const dn = d.toLocaleDateString('en-AU', { weekday: 'short' }), mn = d.toLocaleDateString('en-AU', { month: 'short' });
+    $('bkSlots').innerHTML = BK.windows.map(w =>
+      '<button type="button" class="bk-opt bk-slot' + (W.win === w.id ? ' on' : '') + '" data-win="' + esc(w.id) + '" aria-pressed="' + (W.win === w.id) + '">'
+      + '<div class="bk-day"><s>' + dn + '</s><b>' + d.getDate() + '</b><s>' + mn + '</s></div>'
+      + '<div><strong>' + esc(w.label) + '</strong><span style="display:block">' + esc(w.note) + '</span></div></button>').join('');
+
+    const win = BK.windows.find(w => w.id === W.win);
+    $('bkRevSvc').textContent = svcName(W.svc);
+    $('bkRevSlot').textContent = win ? longDate(W.date) + ' · ' + win.label : '';
+    $('bkRecSub').textContent = win
+      ? 'Repeat on ' + d.toLocaleDateString('en-AU', { weekday: 'long' }) + 's, ' + win.label + '.'
+      : 'Same day and window each week.';
+    $('bkRec').setAttribute('aria-checked', String(W.rec));
+    $('bkRecOpts').style.display = W.rec ? '' : 'none';
+    const est = estimate();
+    $('bkSum').innerHTML = est.lines.map(([l, n]) => '<div><span>' + esc(l) + '</span><span>' + money(n) + '</span></div>').join('')
+      + '<div class="tot"><span>Estimated total (incl. GST)</span><span>' + money(est.total) + '</span></div>';
+    $('bkMinNote').textContent = 'Minimum charge of ' + money(PX.minimum) + ' (incl. GST) per collection, including pickup and return.';
+  }
+
+  function say(ok, txt) { const m = $('bkMsg'); m.className = 'bk-msg ' + (ok ? 'ok' : 'err'); m.textContent = txt; }
+  function clearMsg() { $('bkMsg').className = 'bk-msg'; $('bkMsg').textContent = ''; }
+
+  function go(n) {
+    W.step = n; clearMsg(); render();
+    $('bkBody').scrollTop = 0;
+    $('bkTitle').focus({ preventScroll: true });
+  }
+
+  /* ── details memory (this browser only) ──── */
+  const MEMKEY = 'll-book-details';
+  const FIELDS = ['bkName', 'bkPhone', 'bkEmail', 'bkLine1', 'bkSuburb', 'bkPc', 'bkCare', 'bkDel'];
+  function recall() { try { const s = JSON.parse(localStorage.getItem(MEMKEY) || '{}'); FIELDS.forEach(f => { if (s[f] && !$(f).value) $(f).value = s[f]; }); } catch (e) {} }
+  function remember() { try { const s = {}; FIELDS.forEach(f => s[f] = v(f)); localStorage.setItem(MEMKEY, JSON.stringify(s)); } catch (e) {} }
+
+  async function submit() {
+    if (!v('bkName') || !v('bkPhone') || !v('bkEmail') || !v('bkLine1') || !v('bkSuburb')) return say(false, 'Please complete your name, mobile, email and collection address.');
+    if (!/^\S+@\S+\.\S+$/.test(v('bkEmail'))) return say(false, 'That email address does not look right.');
+    if (!/^\d{4}$/.test(v('bkPc'))) return say(false, 'Enter a four-digit postcode.');
+    if (!$('bkAck').checked) return say(false, 'Please tick to confirm you understand the price is an estimate.');
+
+    const btn = $('bkNext'); btn.disabled = true; btn.textContent = 'Sending…';
+    await ready;
+    if (!DB || !UID) {
+      btn.disabled = false; render();
+      return say(false, 'Online booking is not connected in this view, so nothing was sent. Please use the contact form below.');
+    }
+    const est = estimate();
+    const win = BK.windows.find(w => w.id === W.win) || {};
+    const id = 'b' + Date.now().toString(36) + uid4();
+    const rec = {
+      ref: REF(), status: 'requested', source: 'website', cleancloudSync: 'pending',
+      svc: W.svc, svcName: svcName(W.svc), loads: W.a, premiumLoads: W.svc === 'wfi' ? Math.min(W.b, W.a) : 0,
+      bags: W.bag ? W.bagQty : 0,
+      date: W.date, window: W.win, windowLabel: win.label || '',
+      recurring: W.rec ? $('bkFreq').value : '',
+      name: v('bkName'), phone: v('bkPhone'), email: v('bkEmail'),
+      line1: v('bkLine1'), suburb: v('bkSuburb'), postcode: v('bkPc'), state: 'QLD',
+      care: v('bkCare'), del: v('bkDel'),
+      estimate: est.total, estimateLines: est.lines.map(([l, n]) => ({ l, n })),
+      pricing: PX, createdAt: Date.now()
+    };
+    try {
+      await DB.doc('bookings/' + UID + '/requests/' + id).set(rec);
+    } catch (e) {
+      console.error('[booking]', e);
+      btn.disabled = false; render();
+      return say(false, 'Your booking could not be saved (' + (e && e.code || 'error') + '). Nothing was sent. Please try again or use the contact form.');
+    }
+    remember();
+    btn.disabled = false;
+    $('bkRef').textContent = rec.ref;
+    $('bkDoneTx').textContent = svcName(W.svc) + ' · ' + longDate(W.date) + ', ' + (win.label || '') + (W.rec ? ' · recurring ' + $('bkFreq').value : '');
+    go(4);
+  }
+
+  /* ── open / close ────────────────────────── */
+  const bk = $('bk');
+  let lastFocus = null;
+  function open(e) {
+    if (e) e.preventDefault();
+    lastFocus = document.activeElement;
+    if (W.step === 4) { Object.assign(W, { step: 1, win: '', rec: false }); $('bkAck').checked = false; }
+    recall(); render();
+    bk.hidden = false;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => { bk.classList.add('open'); $('bkTitle').focus({ preventScroll: true }); });
+  }
+  function close() {
+    bk.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { bk.hidden = true; }, 300);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+
+  document.querySelectorAll('[data-book]').forEach(a => a.addEventListener('click', e => {
+    const drawer = document.getElementById('mob-drawer');
+    if (drawer && drawer.classList.contains('open')) document.getElementById('mob-close').click();
+    open(e);
+  }));
+  bk.querySelectorAll('[data-bk-close]').forEach(el => el.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !bk.hidden) close(); });
+
+  bk.addEventListener('click', e => {
+    const t = e.target.closest('button'); if (!t || !bk.contains(t)) return;
+    if (t.dataset.svc) { W.svc = t.dataset.svc; render(); }
+    else if (t.dataset.bag != null) { W.bag = +t.dataset.bag; render(); }
+    else if (t.dataset.win) { W.win = t.dataset.win; render(); }
+    else if (t.dataset.q) {
+      const [k, dlt] = t.dataset.q.split(',');
+      W[k] = Math.max(k === 'b' ? 0 : 1, Math.min(40, W[k] + Number(dlt)));
+      if (W.b > W.a) W.b = W.a;
+      render();
+    }
+  });
+  $('bkDate').addEventListener('change', e => { if (e.target.value) { W.date = e.target.value; W.win = ''; render(); } });
+  $('bkRec').addEventListener('click', () => { W.rec = !W.rec; render(); });
+  $('bkBack').addEventListener('click', () => go(Math.max(1, W.step - 1)));
+  $('bkPrev').addEventListener('click', () => W.step === 1 ? close() : go(W.step - 1));
+  $('bkNext').addEventListener('click', () => {
+    if (W.step === 1) go(2);
+    else if (W.step === 2) { if (!W.win) { $('bkSlots').animate([{ transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'none' }], 240); return; } go(3); }
+    else if (W.step === 3) submit();
+    else close();
+  });
+
+  /* ── contact form → same backend ─────────── */
+  const form = document.querySelector('.contact-form form');
+  if (form) {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const btn = form.querySelector('[type=submit]');
+      let note = form.querySelector('.cf-status');
+      if (!note) { note = document.createElement('p'); note.className = 'cf-status form-note'; note.setAttribute('role', 'status'); btn.after(note); }
+      const f = n => (form.elements[n].value || '').trim();
+      if (!f('name') || !f('email') || !f('message')) { note.textContent = 'Please add your name, email and a message.'; return; }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      await ready;
+      let ok = false;
+      if (DB && UID) {
+        try {
+          await DB.doc('enquiries/' + UID + '/messages/' + 'e' + Date.now().toString(36) + uid4()).set({
+            name: f('name'), email: f('email'), phone: f('phone'), service: f('service'), message: f('message'),
+            status: 'new', source: 'website', createdAt: Date.now()
+          });
+          ok = true;
+        } catch (err) { console.error('[enquiry]', err); }
+      }
+      btn.disabled = false; btn.textContent = 'Send Message';
+      if (ok) { form.reset(); note.textContent = 'Thanks. Your message has been received and we will reply by email.'; }
+      else note.textContent = 'Your message could not be sent from this view. Nothing was saved.';
+    }, true);
+  }
 })();
 </script>
 
