@@ -471,121 +471,6 @@ button { font-family: var(--f); cursor: pointer; }
 .ben-card p { font-size: .875rem; color: var(--mute); line-height: 1.65; }
 
 /* ══════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════ */
-#testimonials { background: var(--paper); overflow: hidden; }
-.testimonials-header { text-align: center; }
-.test-track-wrap {
-  overflow: hidden; margin: 0 -1.5rem;
-  padding: 1rem 0 2rem; position: relative;
-}
-.test-track-wrap::before,
-.test-track-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 6rem; z-index: 2;
-  pointer-events: none;
-}
-.test-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--paper), transparent); }
-.test-track-wrap::after  { right: 0; background: linear-gradient(-90deg, var(--paper), transparent); }
-.test-track {
-  display: flex; gap: 1.5rem;
-  padding: 0 3rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.test-track::-webkit-scrollbar { display: none; }
-.test-card {
-  flex: 0 0 300px; background: #fff;
-  border-radius: var(--r-lg); padding: 1.75rem;
-  border: 1px solid var(--line);
-  scroll-snap-align: start;
-  transition: box-shadow var(--tr), transform var(--tr);
-  display: flex; flex-direction: column; gap: .75rem;
-}
-.test-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.test-stars { display: flex; gap: 2px; }
-.test-star { color: #FFD166; font-size: .9rem; }
-.test-card blockquote {
-  font-style: italic; color: var(--body);
-  font-size: .9rem; line-height: 1.7; flex: 1;
-}
-.test-author-row {
-  display: flex; align-items: center; gap: .75rem;
-  padding-top: .75rem; border-top: 1px solid var(--line);
-}
-.test-avatar {
-  width: 40px; height: 40px; border-radius: 50%;
-  overflow: hidden; flex-shrink: 0; background: var(--teal-w);
-}
-.test-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.test-name { font-weight: 700; font-size: .875rem; color: var(--ink); }
-.test-role { font-size: .78rem; color: var(--mute); }
-/* Auto-scroll dots */
-.test-dots {
-  display: flex; justify-content: center; gap: .5rem; margin-top: 1.5rem;
-}
-.test-dot {
-  width: 8px; height: 8px; border-radius: 4px;
-  background: var(--line); border: none; cursor: pointer;
-  transition: width .3s ease, background var(--tr);
-}
-.test-dot.active { width: 24px; background: var(--teal); }
-
-/* ══════════════════════════════════════
-   OFFER BANNER
-══════════════════════════════════════ */
-#offer {
-  background: linear-gradient(135deg, var(--teal-d) 0%, var(--teal) 60%, #3BBCAD 100%);
-  position: relative; overflow: hidden;
-  padding: 5rem 0;
-}
-#offer::before {
-  content: ''; position: absolute; inset: 0;
-  background: url('linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png')
-    center / cover no-repeat;
-  opacity: .1; mix-blend-mode: luminosity;
-}
-.offer-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: center;
-  position: relative; z-index: 1;
-}
-.offer-badge {
-  display: inline-flex; align-items: center; gap: .5rem;
-  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
-  color: #fff; font-size: .75rem; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase;
-  padding: .35rem .9rem; border-radius: 100px; margin-bottom: 1.1rem;
-}
-.offer-h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  color: #fff; margin-bottom: 1rem;
-}
-.offer-sub { color: rgba(255,255,255,.8); font-size: 1rem; margin-bottom: 2rem; }
-.offer-points {
-  display: flex; flex-direction: column; gap: .65rem; margin-bottom: 2.5rem;
-}
-.offer-point {
-  display: flex; align-items: flex-start; gap: .75rem;
-  color: rgba(255,255,255,.9); font-size: .9rem; font-weight: 500;
-}
-.offer-point-icon {
-  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(255,255,255,.2); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .7rem; font-weight: 800;
-}
-.offer-img {
-  border-radius: var(--r-xl); overflow: hidden;
-  box-shadow: 0 32px 80px rgba(0,0,0,.25);
-  transform: perspective(1000px) rotateY(-3deg);
-  transition: transform .4s var(--ease);
-}
-.offer-img:hover { transform: perspective(1000px) rotateY(0deg); }
-.offer-img img { width: 100%; height: 420px; object-fit: cover; }
-
-/* ══════════════════════════════════════
    FAQ
 ══════════════════════════════════════ */
 #faq { background: var(--bg); }
@@ -945,7 +830,6 @@ button { font-family: var(--f); cursor: pointer; }
 /* ══════════════════════════════════════
    MOBILE CARD CAROUSELS
 ══════════════════════════════════════ */
-.loc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
 .how-inner > *, .est-grid > *, .contact-grid > *, .hero-grid > * { min-width: 0; }
 .how-cta { flex-wrap: wrap; }
 .mcar-dots { display: none; }
@@ -966,6 +850,7 @@ button { font-family: var(--f); cursor: pointer; }
      overflow area, letting a drag shove the row half out of view. */
   .mcar { overflow-y: hidden; }
   .mcar > [data-reveal] { transform: none !important; }
+  .mcar { padding-right: calc(16% + 8px); padding-bottom: .75rem; }
   .mcar-dots { display: flex; justify-content: center; gap: .45rem; margin-top: .4rem; }
   .mcar-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 4px; background: var(--line); transition: width .3s ease, background var(--tr); }
   .mcar-dots button.on { width: 22px; background: var(--teal); }
@@ -1112,9 +997,6 @@ button { font-family: var(--f); cursor: pointer; }
 .est-bag div { font-size: .86rem; }
 .est-rcpt { margin-top: 1.25rem; padding: .9rem 1rem; border-radius: var(--r); background: var(--paper); }
 .est-rcpt .bk-sum div { padding: .3rem 0; font-size: .84rem; }
-.est-meter { position: relative; height: 6px; border-radius: 99px; background: var(--line); margin: .85rem 0 .5rem; overflow: visible; }
-.est-meter i { position: absolute; inset: 0 auto 0 0; border-radius: 99px; background: var(--teal); width: 0; transition: width .45s var(--ease); }
-.est-meter s { position: absolute; top: -3px; width: 2px; height: 12px; background: var(--navy); border-radius: 1px; }
 .est-min { font-size: .76rem; color: var(--mute); line-height: 1.5; }
 .est-min b { color: var(--navy); }
 .est-tot { margin: 1.1rem 0 .9rem; }
@@ -1146,6 +1028,12 @@ button { font-family: var(--f); cursor: pointer; }
     will-change: transform, opacity;
   }
 }
+
+/* ── coverage chips ── */
+.cov-wrap { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; max-width: 720px; margin: 0 auto; }
+.cov-chip { display: inline-flex; align-items: baseline; gap: .35rem; padding: .5rem .95rem; border-radius: 99px; background: var(--bg); border: 1px solid var(--line); font-size: .86rem; font-weight: 600; color: var(--ink); }
+.cov-chip small { font-size: .74rem; font-weight: 500; color: var(--mute); }
+.cov-ask { background: var(--teal-w); border-color: var(--teal-l); color: var(--teal-d); cursor: pointer; font-family: var(--f); }
 </style>
 </head>
 <body>
@@ -1480,7 +1368,6 @@ button { font-family: var(--f); cursor: pointer; }
 
         <div class="est-rcpt">
           <div class="bk-sum" id="estSum"></div>
-          <div class="est-meter" aria-hidden="true"><i id="estBar"></i><s id="estMark"></s></div>
           <p class="est-min" id="estMin"></p>
         </div>
 
@@ -1664,161 +1551,6 @@ button { font-family: var(--f); cursor: pointer; }
 </section>
 
 <!-- ════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════ -->
-<section id="testimonials" class="section" aria-labelledby="test-h2">
-  <div class="container">
-    <div class="testimonials-header" data-reveal="up">
-      <span class="section-eyebrow">Happy Customers</span>
-      <h2 class="section-title" id="test-h2">What Our Customers Say</h2>
-      <p class="section-sub">
-        At Linen Legends, we prioritise customer satisfaction.
-        [Real customer reviews to be added.]
-      </p>
-    </div>
-  </div>
-
-  <div class="test-track-wrap" data-reveal="up" data-delay="2">
-    <div class="test-track" id="test-track">
-
-      <article class="test-card">
-        <div class="test-stars">
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-        </div>
-        <blockquote>
-          [REAL CUSTOMER REVIEW REQUIRED &mdash; source from Google Business Profile,
-          Facebook, or written testimonial with the customer&rsquo;s written consent.]
-        </blockquote>
-        <div class="test-author-row">
-          <div class="test-avatar"></div>
-          <div>
-            <div class="test-name">[Customer name]</div>
-            <div class="test-role">[Suburb]</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="test-card">
-        <div class="test-stars">
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-        </div>
-        <blockquote>
-          [REAL CUSTOMER REVIEW REQUIRED &mdash; source from Google Business Profile,
-          Facebook, or written testimonial with the customer&rsquo;s written consent.]
-        </blockquote>
-        <div class="test-author-row">
-          <div class="test-avatar"></div>
-          <div>
-            <div class="test-name">[Customer name]</div>
-            <div class="test-role">[Suburb]</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="test-card">
-        <div class="test-stars">
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-        </div>
-        <blockquote>
-          [REAL CUSTOMER REVIEW REQUIRED &mdash; source from Google Business Profile,
-          Facebook, or written testimonial with the customer&rsquo;s written consent.]
-        </blockquote>
-        <div class="test-author-row">
-          <div class="test-avatar"></div>
-          <div>
-            <div class="test-name">[Customer name]</div>
-            <div class="test-role">[Suburb]</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="test-card">
-        <div class="test-stars">
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-          <span class="test-star">&#9734;</span>
-        </div>
-        <blockquote>
-          [REAL CUSTOMER REVIEW REQUIRED &mdash; source from Google Business Profile,
-          Facebook, or written testimonial with the customer&rsquo;s written consent.]
-        </blockquote>
-        <div class="test-author-row">
-          <div class="test-avatar"></div>
-          <div>
-            <div class="test-name">[Customer name]</div>
-            <div class="test-role">[Suburb]</div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="test-dots" id="test-dots" aria-label="Testimonial navigation">
-      <button class="test-dot active" data-index="0" aria-label="Testimonial 1"></button>
-      <button class="test-dot" data-index="1" aria-label="Testimonial 2"></button>
-      <button class="test-dot" data-index="2" aria-label="Testimonial 3"></button>
-      <button class="test-dot" data-index="3" aria-label="Testimonial 4"></button>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
-     OFFER BANNER
-════════════════════════════════════ -->
-<section id="offer" aria-labelledby="offer-h2">
-  <div class="container">
-    <div class="offer-inner">
-
-      <div data-reveal="left">
-        <span class="offer-badge">Special Offer</span>
-        <h2 class="offer-h2" id="offer-h2">Fresh Laundry, Big Savings!</h2>
-        <p class="offer-sub">
-          [Introductory offer TBC.] Professional cleaning, fast turnaround,
-          fresh clothes every time.
-        </p>
-        <div class="offer-points">
-          <div class="offer-point">
-            <div class="offer-point-icon">&#10003;</div>
-            <span><strong>Fast &amp; Efficient</strong> &mdash; Quick service without compromising quality.</span>
-          </div>
-          <div class="offer-point">
-            <div class="offer-point-icon">&#10003;</div>
-            <span><strong>Eco-Friendly Cleaning</strong> &mdash; Gentle on fabrics, safe for the planet.</span>
-          </div>
-          <div class="offer-point">
-            <div class="offer-point-icon">&#10003;</div>
-            <span><strong>Expert Care</strong> &mdash; Fresh, clean, and neatly folded every time.</span>
-          </div>
-        </div>
-        <a href="#contact" class="btn btn-white btn-lg">Claim Your Offer</a>
-      </div>
-
-      <div class="offer-img" data-reveal="right">
-        <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png"
-             alt="Fresh clean laundry" loading="lazy">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
      WHO WE WORK WITH
 ════════════════════════════════════ -->
 <section id="who" class="section" aria-labelledby="who-h2">
@@ -1924,72 +1656,28 @@ button { font-family: var(--f); cursor: pointer; }
 <section id="locations" class="section" style="background:var(--paper)" aria-labelledby="loc-h2">
   <div class="container">
     <div class="text-center" data-reveal="up">
-      <span class="section-eyebrow">Where We Are</span>
-      <h2 class="section-title" id="loc-h2">Our Brisbane &amp; SEQ Locations</h2>
-      <p class="section-sub">[Number and coverage of locations TBC.]</p>
+      <span class="section-eyebrow">Where We Collect</span>
+      <h2 class="section-title" id="loc-h2">Pickup &amp; Delivery Coverage</h2>
+      <p class="section-sub">Door-to-door collection and return across these Brisbane and Logan suburbs.</p>
     </div>
-    <div class="loc-grid mcar">
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="1">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">Brisbane CBD</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="2">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">South Brisbane</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="3">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">Logan Central</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="4">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">Sunnybank</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="5">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">Capalaba</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
-      <div style="background:#fff;padding:1.75rem;border-radius:var(--r-lg);border:1px solid var(--line);transition:box-shadow var(--tr),transform var(--tr)"
-           class="loc-hover" data-reveal="up" data-delay="6">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.85rem">
-          <div style="width:36px;height:36px;border-radius:50%;background:var(--teal-w);color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem">&#9679;</div>
-          <h3 style="font-size:1rem;margin:0">Chermside</h3>
-        </div>
-        <p style="font-size:.875rem;color:var(--mute);margin-bottom:.5rem">[Address TBC]</p>
-        <p style="font-size:.82rem;color:var(--mute)">[Trading hours TBC]</p>
-      </div>
-
+    <div class="cov-wrap" data-reveal="up" data-delay="1">
+      <span class="cov-chip">Beenleigh <small>4207</small></span>
+      <span class="cov-chip">Browns Plains <small>4118</small></span>
+      <span class="cov-chip">Camp Hill <small>4152</small></span>
+      <span class="cov-chip">Coorparoo <small>4151</small></span>
+      <span class="cov-chip">Cornubia <small>4130</small></span>
+      <span class="cov-chip">Greenslopes <small>4120</small></span>
+      <span class="cov-chip">Holland Park <small>4121</small></span>
+      <span class="cov-chip">Kuraby <small>4119</small></span>
+      <span class="cov-chip">Loganholme <small>4129</small></span>
+      <span class="cov-chip">Mansfield <small>4122</small></span>
+      <span class="cov-chip">Marsden <small>4132</small></span>
+      <span class="cov-chip">Meadowbrook <small>4131</small></span>
+      <span class="cov-chip">Shailer Park <small>4128</small></span>
+      <span class="cov-chip">Springwood <small>4127</small></span>
+      <span class="cov-chip">Sunnybank <small>4109</small></span>
+      <span class="cov-chip">Waterford <small>4133</small></span>
+      <button type="button" class="cov-chip cov-ask" data-enquire="Home Pickup &amp; Delivery">My suburb isn&rsquo;t listed &rarr;</button>
     </div>
   </div>
 </section>
@@ -2278,14 +1966,7 @@ button { font-family: var(--f); cursor: pointer; }
 
 <!-- ════════════════════════════════════
      JAVASCRIPT
-════════════════════════════════════ -->
-<style>
-  /* Location card hover (inline style on divs can't use pseudo) */
-  .loc-hover:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-4px);
-  }
-</style>
+════════════════════════════════════ --></style>
 
 <script>
 (function () {
@@ -2381,48 +2062,6 @@ button { font-family: var(--f); cursor: pointer; }
     counters.forEach(el => { el.textContent = parseInt(el.dataset.count, 10).toLocaleString(); });
     decCounters.forEach(el => { el.textContent = parseFloat(el.dataset.countDec).toFixed(1); });
   }
-
-  /* ── 5. TESTIMONIAL AUTO-SCROLL ──────────── */
-  const track = document.getElementById('test-track');
-  const dots  = document.querySelectorAll('.test-dot');
-  let activeIdx = 0;
-  let autoTimer;
-
-  let snapT;
-  function scrollToCard(idx) {
-    const cards = track.querySelectorAll('.test-card');
-    if (!cards[idx]) return;
-    const cardLeft   = cards[idx].offsetLeft;
-    const trackLeft  = track.offsetLeft;
-    const offset     = cardLeft - trackLeft - 48;
-    track.style.scrollSnapType = 'none';
-    clearTimeout(snapT);
-    snapT = setTimeout(() => { track.style.scrollSnapType = ''; }, 700);
-    track.scrollTo({ left: offset, behavior: 'smooth' });
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    activeIdx = idx;
-  }
-
-  function nextCard() {
-    const cards = track.querySelectorAll('.test-card');
-    const next = (activeIdx + 1) % cards.length;
-    scrollToCard(next);
-  }
-
-  autoTimer = setInterval(nextCard, 3000);
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      clearInterval(autoTimer);
-      scrollToCard(parseInt(dot.dataset.index, 10));
-      autoTimer = setInterval(nextCard, 3000);
-    });
-  });
-
-  track.addEventListener('touchstart', () => { track.style.scrollSnapType = ''; clearInterval(autoTimer); }, { passive: true });
-  track.addEventListener('touchend', () => {
-    autoTimer = setInterval(nextCard, 3000);
-  }, { passive: true });
 
   /* ── 6. FAQ ACCORDION (toggle icon via CSS) ─ */
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -2733,15 +2372,14 @@ button { font-family: var(--f); cursor: pointer; }
     const q = quote(E);
     const sub = q.lines.filter(l => l[0] !== 'Minimum order adjustment').reduce((s, l) => s + l[1], 0);
     $('estSum').innerHTML = q.lines.map(([l, n]) => '<div><span>' + esc(l) + '</span><span>' + money(n) + '</span></div>').join('');
-    const full = Math.max(PX.minimum, sub) * 1.25;
-    $('estBar').style.width = Math.min(100, sub / full * 100) + '%';
-    $('estMark').style.left = (PX.minimum / full * 100) + '%';
     if (sub < PX.minimum) {
       const unit = linen ? PX.linenSheetSet : E.svc === 'premium' ? PX.premium : PX.load;
       const extra = Math.max(PX.minimum, sub + unit) - PX.minimum;
+      $('estMin').style.marginTop = '.7rem';
       $('estMin').innerHTML = 'The <b>' + money(PX.minimum) + '</b> minimum applies. One more ' + (linen ? 'sheet set' : 'load')
         + ' would add only <b>' + money(extra) + '</b>.';
     } else {
+      $('estMin').style.marginTop = '.7rem';
       $('estMin').innerHTML = '&#10003; Above the <b>' + money(PX.minimum) + '</b> minimum order.';
     }
     countTo($('estTot'), q.total);
@@ -2846,7 +2484,7 @@ button { font-family: var(--f); cursor: pointer; }
     ['pointerdown', 'touchstart', 'wheel'].forEach(ev => track.addEventListener(ev, hold, { passive: true }));
     btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
-    setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3000);
+    if (track.classList.contains('px-grid')) setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3000);
     mark();
   });
 })();
