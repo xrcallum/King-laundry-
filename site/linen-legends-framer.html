@@ -367,25 +367,6 @@ button { font-family: var(--f); cursor: pointer; }
   display: none;
 }
 
-/* ══════════════════════════════════════
-   LOCATION FINDER
-══════════════════════════════════════ */
-#find { background: var(--paper); }
-.find-card {
-  background: #fff; border-radius: var(--r-xl);
-  padding: 3rem; display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem; align-items: center;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--line);
-}
-.find-text .section-title { font-size: clamp(1.5rem, 3vw, 2rem); text-align: left; }
-.find-text p { color: var(--mute); font-size: .95rem; margin-bottom: 1.75rem; }
-.find-map {
-  border-radius: var(--r-lg); overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-.find-map img { width: 100%; height: 300px; object-fit: cover; }
 
 /* ══════════════════════════════════════
    SERVICES
@@ -794,8 +775,6 @@ button { font-family: var(--f); cursor: pointer; }
   .contact-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .find-card { grid-template-columns: 1fr; }
-  .find-map { order: -1; }
 }
 @media (max-width: 640px) {
   :root { --s8: 3rem; --s6: 2rem; }
@@ -1008,11 +987,6 @@ button { font-family: var(--f); cursor: pointer; }
 @media (max-width: 640px) {
   .section-eyebrow { font-size: .64rem; letter-spacing: .1em; padding: .3rem .75rem; }
   .section-sub { font-size: .95rem; margin-bottom: 2rem; }
-  .find-card { padding: 1.1rem; gap: 1.1rem; border-radius: var(--r-lg); }
-  .find-map img { height: 180px; }
-  .find-text .section-title { font-size: 1.5rem; margin-bottom: .6rem; }
-  .find-text p { font-size: .9rem; line-height: 1.6; margin-bottom: 0; }
-  .find-text .btn { width: 100%; justify-content: center; margin-top: 1.1rem !important; }
   .how-img img { height: 220px; }
   .how-img-badge { bottom: 1rem; left: 1rem; padding: .55rem .9rem; font-size: .8rem; }
   .est-list { display: none; }
@@ -1020,6 +994,73 @@ button { font-family: var(--f); cursor: pointer; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
   .footer-brand { grid-column: 1 / -1; }
   .footer-col:last-child { grid-column: 1 / -1; }
+}
+
+/* ══════════════════════════════════════
+   WHY + WHAT YOU CAN BOOK
+══════════════════════════════════════ */
+#why { background: var(--paper); }
+.why-hd { max-width: 760px; }
+.why-hd .section-title { font-size: clamp(1.5rem, 3.2vw, 2.3rem); color: var(--navy); }
+.why-bento { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: 1.75rem; }
+.why-steps, .why-pay { border-radius: var(--r-lg); padding: 1.6rem 1.75rem; }
+.why-steps { background: var(--navy); color: #fff; }
+.why-num { font-size: .78rem; font-weight: 800; letter-spacing: .14em; color: rgba(255,255,255,.55); }
+.why-steps h3 { font-size: clamp(1.3rem, 2.4vw, 1.75rem); color: #fff; margin: .35rem 0 1.1rem; }
+.why-steps ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.why-steps li { display: flex; gap: .75rem; align-items: flex-start; }
+.why-steps li > span { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.12); display: grid; place-items: center; font-size: .8rem; font-weight: 800; }
+.why-steps strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
+.why-steps p { font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.7); }
+.why-pay { background: linear-gradient(135deg, var(--teal-d), var(--teal)); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; gap: .45rem; }
+.why-pay svg { width: 30px; height: 30px; margin-bottom: auto; opacity: .9; }
+.why-pay h3 { font-size: 1.25rem; color: #fff; margin-top: 1rem; }
+.why-pay p { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.85); }
+.why-sub { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 2.5rem 0 1rem; }
+.why-kick { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--teal-d); margin-bottom: .35rem; }
+.why-sub h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--navy); }
+.px-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.px-card {
+  position: relative; display: flex; flex-direction: column; gap: .45rem; text-align: left;
+  padding: 1.35rem 1.4rem; border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: var(--bg); font: inherit; color: inherit; cursor: pointer;
+  transition: box-shadow var(--tr), transform var(--tr), border-color var(--tr);
+}
+.px-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--teal-l); }
+.px-card h4 { font-size: 1.1rem; font-weight: 800; color: var(--navy); padding-right: 5.5rem; }
+.px-card p { font-size: .86rem; line-height: 1.55; color: var(--body); flex: 1; }
+.px-foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: .75rem; margin-top: .35rem; font-size: .85rem; color: var(--mute); font-weight: 600; }
+.px-foot b { font-size: 1.45rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; margin: 0 .1rem; }
+.px-foot i { font-style: normal; font-size: 1.2rem; color: var(--navy); transition: transform var(--tr); }
+.px-card:hover .px-foot i { transform: translateX(4px); }
+.px-q { color: var(--teal-d); font-weight: 700; }
+.px-badge { position: absolute; top: 1.1rem; right: 1.1rem; font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .65rem; border-radius: 99px; background: var(--teal); color: #fff; }
+.px-feat { background: var(--navy); border-color: var(--navy); }
+.px-feat h4, .px-feat .px-foot b, .px-feat .px-foot i { color: #fff; }
+.px-feat p { color: rgba(255,255,255,.75); }
+.px-feat .px-foot { border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.65); }
+.px-feat .px-badge { background: var(--teal-l); color: var(--navy-d); }
+@media (max-width: 900px) {
+  .why-bento { grid-template-columns: 1fr; }
+  .why-pay svg { margin-bottom: 0; }
+  .why-pay h3 { margin-top: .4rem; }
+}
+@media (max-width: 640px) {
+  .why-steps, .why-pay { padding: 1.25rem 1.2rem; }
+  .why-steps ol { grid-template-columns: 1fr; gap: .8rem; }
+  .why-sub { margin-top: 2rem; }
+  .px-grid { grid-template-columns: 1fr; gap: .75rem; }
+  .px-card { padding: 1.1rem 1.15rem; }
+  .why-hd .section-title { font-size: 1.35rem; line-height: 1.2; }
+  .why-bento { margin-top: 1.1rem; gap: .75rem; }
+  .why-steps h3 { font-size: 1.2rem; margin-bottom: .85rem; }
+  .why-steps ol { gap: .65rem; }
+  .why-steps p { font-size: .8rem; }
+  .why-pay { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; column-gap: .7rem; }
+  .why-pay svg { width: 24px; height: 24px; }
+  .why-pay h3 { margin: 0; font-size: 1.1rem; }
+  .why-pay p { flex-basis: 100%; }
+  .why-sub { margin: 1.75rem 0 .25rem; }
 }
 </style>
 </head>
@@ -1158,28 +1199,54 @@ button { font-family: var(--f); cursor: pointer; }
 </section>
 
 <!-- ════════════════════════════════════
-     LOCATION FINDER
+     WHY LINEN LEGENDS
 ════════════════════════════════════ -->
-<section id="find" class="section" aria-labelledby="find-h2">
+<section id="why" class="section" aria-labelledby="why-h2">
   <div class="container">
-    <div class="find-card">
-      <div class="find-text" data-reveal="left">
-        <span class="section-eyebrow">Affordable Cleaning Solutions</span>
-        <h2 class="section-title" id="find-h2">Find a Linen Legends Near You</h2>
-        <p>
-          We make doing laundry easy with modern machines, a comfortable space, and multiple
-          locations across Brisbane and South East Queensland. Whether you're washing a few items
-          or a full load, we have everything you need for a quick and hassle-free experience.
-        </p>
-        <a href="#locations" class="btn btn-primary" style="margin-top:1.75rem">
-          Find Your Nearest Location
-        </a>
-      </div>
-      <div class="find-map" data-reveal="right">
-        <img src="linen-legends-framer-assets/HYR4WprvCLbOQUTlPM4FheV80P4.png"
-             alt="Map showing Linen Legends locations across Brisbane and SEQ"
-             loading="lazy">
-      </div>
+    <div class="why-hd" data-reveal="up">
+      <span class="section-eyebrow">Why Linen Legends</span>
+      <h2 class="section-title" id="why-h2">Small, honest, and built to hand your washing back better than you sent it.</h2>
+    </div>
+
+    <div class="why-bento">
+      <article class="why-steps" data-reveal="up" data-delay="1">
+        <span class="why-num">01</span>
+        <h3>Three steps. Nothing to drop off.</h3>
+        <ol>
+          <li><span>1</span><div><strong>Book online</strong><p>Pick a window that suits, tell us where to find the bag.</p></div></li>
+          <li><span>2</span><div><strong>We weigh at your door</strong><p>Your exact price is confirmed before we start.</p></div></li>
+          <li><span>3</span><div><strong>Back the next day, folded</strong><p>Standard turnaround [TBC]. Longer for dry cleaning and bulky items.</p></div></li>
+        </ol>
+      </article>
+      <article class="why-pay" data-reveal="up" data-delay="2">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22h20M8 22V12l8-4 8 4v10M12 22v-6h8v6"/></svg>
+        <h3>Pay after weighing</h3>
+        <p>The scale runs at your door. You see the weight and the number before we drive away.</p>
+      </article>
+    </div>
+
+    <div class="why-sub" data-reveal="up">
+      <div><span class="why-kick">What you can book</span><h3>Priced online. Booked in a minute.</h3></div>
+      <a href="#services" class="card-link">See all services</a>
+    </div>
+
+    <div class="px-grid mcar">
+      <button type="button" class="px-card px-feat" data-book-svc="wf" data-reveal="up" data-delay="1">
+        <span class="px-badge">Start here</span>
+        <h4>Wash &amp; Fold</h4>
+        <p>Everyday washing, dried and folded. Lights and darks separated as standard.</p>
+        <span class="px-foot"><span>From <b data-px="load">$32</b>/load</span><i aria-hidden="true">&rarr;</i></span>
+      </button>
+      <button type="button" class="px-card" data-book-svc="linen" data-reveal="up" data-delay="2">
+        <h4>Blankets, Rugs &amp; Sheets</h4>
+        <p>Large-format items priced per piece. Sheet set <span data-px="linenSheetSet">$24</span> &middot; Blanket <span data-px="linenBlanket">$32</span> &middot; Rug <span data-px="linenRug">$42</span>.</p>
+        <span class="px-foot"><span>From <b data-px="linenSheetSet">$24</b>/item</span><i aria-hidden="true">&rarr;</i></span>
+      </button>
+      <a href="#contact" class="px-card" data-enquire="Other" data-reveal="up" data-delay="3">
+        <h4>Special jobs &mdash; quoted</h4>
+        <p>Dry cleaning, commercial linen, Airbnb changeovers, NDIS and supported-living work.</p>
+        <span class="px-foot"><span class="px-q">Get a quote</span><i aria-hidden="true">&rarr;</i></span>
+      </a>
     </div>
   </div>
 </section>
@@ -1947,7 +2014,7 @@ button { font-family: var(--f); cursor: pointer; }
 
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#find">Locations</a>
+        <a href="#locations">Locations</a>
         <a href="#how">How It Works</a>
         <a href="#benefits">About Us</a>
         <a href="#faq">FAQs</a>
@@ -2284,7 +2351,7 @@ button { font-family: var(--f); cursor: pointer; }
 
   /* Launch-assumption rates carried over from the Laundry Legends app (DEFAULT_PRICING).
      Overridable live from db config/pricing. */
-  let PX = { load: 32, premium: 15, bag: 12, delivery: 13.5, minimum: 73.5, linenSheetSet: 24 };
+  let PX = { load: 32, premium: 15, bag: 12, delivery: 13.5, minimum: 73.5, linenSheetSet: 24, linenBlanket: 32, linenRug: 42 };
   let BK = {
     leadDays: 1, horizonDays: 42,
     windows: [
@@ -2539,7 +2606,7 @@ button { font-family: var(--f); cursor: pointer; }
     $('estNote').textContent = total > sub + 0.001
       ? 'Below the ' + money(PX.minimum) + ' minimum, so the minimum applies. Payment is taken after weighing, before return delivery.'
       : 'Minimum order applies. Payment is taken after weighing, before return delivery.';
-    document.querySelectorAll('[data-px="minimum"]').forEach(el => el.textContent = money(PX.minimum));
+    document.querySelectorAll('[data-px]').forEach(el => { if (PX[el.dataset.px] != null) el.textContent = money(PX[el.dataset.px]); });
     $('estGo').textContent = estSub.value === 'other' ? 'Ask about my suburb' : 'Request this collection';
   }
   estSvc.addEventListener('change', () => { E.svc = estSvc.value; renderEst(); });
@@ -2550,6 +2617,7 @@ button { font-family: var(--f); cursor: pointer; }
     const hit = SUBURBS.find(s => s[0] === estSub.value);
     open(null, { svc: E.svc, a: E.a, suburb: hit ? hit[1] : '', pc: hit ? hit[0] : '' });
   });
+  document.querySelectorAll('[data-book-svc]').forEach(b => b.addEventListener('click', () => open(null, { svc: b.dataset.bookSvc, a: b.dataset.bookSvc === 'linen' ? 1 : 2 })));
   renderEst();
 
   /* ── enquiry shortcuts ───────────────────── */
