@@ -2969,278 +2969,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
 }
 
 
-/* ===== locations ===== */
-/* ══════════════════════════════════════════════════════════════
-   LOCATIONS — suburb coverage checker (prefix: s-cov-)
-   JS-owned hooks kept as-is: #covQ, #covRes, .cov-chip[data-pc],
-   .cov-ask[data-enquire], .hit
-══════════════════════════════════════════════════════════════ */
-
-.s-cov-container{position:relative}
-
-.s-cov-grid{
-  display:grid;
-  grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
-  gap:clamp(2.4rem,5vw,4.5rem);
-  align-items:start;
-}
-
-/* ---------- intro / checker column ---------- */
-.s-cov-intro{position:sticky;top:clamp(1rem,4vw,2rem)}
-
-.s-cov-eyebrow svg{width:14px;height:14px}
-
-.s-cov-title{margin-top:1.1rem}
-.s-cov-sub{margin-top:.9rem}
-
-.s-cov-check{
-  margin-top:2.1rem;
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--r-xl);
-  box-shadow:var(--sh-2);
-  padding:clamp(1.3rem,3vw,1.9rem);
-}
-
-.s-cov-lbl{
-  display:block;
-  font-size:var(--fs-small);
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:.01em;
-  margin-bottom:.6rem;
-}
-
-.s-cov-in{
-  position:relative;
-  display:flex;
-  align-items:center;
-  background:var(--bg);
-  border:1.5px solid var(--line-2);
-  border-radius:var(--r-lg);
-  transition:border-color var(--tr),box-shadow var(--tr),background var(--tr);
-}
-
-.s-cov-in:focus-within{
-  border-color:var(--teal);
-  background:var(--surface);
-  box-shadow:0 0 0 4px var(--teal-50);
-}
-
-.s-cov-in-icon{
-  width:22px;height:22px;
-  margin-left:1.05rem;
-  color:var(--muted);
-  flex:none;
-  transition:color var(--tr);
-}
-.s-cov-in:focus-within .s-cov-in-icon{color:var(--teal-700)}
-
-.s-cov-input{
-  width:100%;
-  border:0;
-  background:transparent;
-  outline:none;
-  font-family:var(--sans);
-  font-size:1.08rem;
-  font-weight:600;
-  color:var(--ink);
-  padding:1.05rem 1.1rem 1.05rem .8rem;
-  line-height:1.3;
-}
-.s-cov-input::placeholder{color:var(--muted);font-weight:500}
-
-.s-cov-res{
-  margin-top:.9rem;
-  min-height:3.1rem;
-  display:flex;
-  align-items:center;
-}
-.s-cov-res:empty{min-height:0;margin-top:0}
-
-/* result-state rendering: JS writes markup/text into #covRes.
-   Support both a plain text/HTML fill and JS-added state classes
-   (.hit / .miss / .cov-yes / .cov-no) so any wiring reads well. */
-.s-cov-res,
-.s-cov-res p{
-  margin:0;
-  font-size:.98rem;
-  font-weight:650;
-  line-height:1.5;
-}
-.s-cov-res{
-  width:100%;
-  padding:.85rem 1.05rem;
-  border-radius:var(--r);
-  background:var(--sand);
-  color:var(--body);
-  border:1px solid var(--line);
-}
-.s-cov-res:empty{padding:0;background:transparent;border:0}
-
-.s-cov-res.hit,
-.s-cov-res .hit,
-.s-cov-res.cov-yes{
-  background:var(--teal-50);
-  border-color:var(--teal-200);
-  color:var(--teal-700);
-}
-.s-cov-res.miss,
-.s-cov-res .miss,
-.s-cov-res.cov-no{
-  background:var(--gold-tint);
-  border-color:#EFD695;
-  color:#7A5308;
-}
-
-.s-cov-legend{
-  display:flex;
-  flex-wrap:wrap;
-  gap:1.1rem;
-  margin-top:1.4rem;
-}
-.s-cov-legend-item{
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-  font-size:.82rem;
-  font-weight:600;
-  color:var(--muted);
-}
-.s-cov-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--line-2);
-  flex:none;
-}
-.s-cov-dot--go{background:var(--teal)}
-
-/* ---------- suburb lists column ---------- */
-.s-cov-lists{display:flex;flex-direction:column;gap:1.7rem}
-
-.s-cov-grp{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--r-xl);
-  box-shadow:var(--sh-1);
-  padding:clamp(1.2rem,2.6vw,1.7rem);
-}
-
-.s-cov-grp-h{
-  display:flex;
-  align-items:baseline;
-  gap:.6rem;
-  font-family:var(--sans);
-  font-weight:700;
-  font-size:1.06rem;
-  color:var(--ink);
-  margin:0 0 1.05rem;
-}
-.s-cov-grp-count{
-  font-size:.78rem;
-  font-weight:650;
-  color:var(--teal-700);
-  background:var(--teal-50);
-  padding:.22rem .6rem;
-  border-radius:var(--pill);
-}
-
-.s-cov-wrap{display:flex;flex-wrap:wrap;gap:.6rem}
-
-/* chip: JS-owned class kept unprefixed, styled here */
-.cov-chip{
-  display:inline-flex;
-  align-items:baseline;
-  gap:.4rem;
-  font-family:var(--sans);
-  font-weight:650;
-  font-size:.92rem;
-  color:var(--ink);
-  background:var(--bg);
-  border:1.5px solid var(--line-2);
-  border-radius:var(--pill);
-  padding:.6rem 1.05rem;
-  cursor:pointer;
-  line-height:1;
-  transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr),background var(--tr),color var(--tr);
-  -webkit-tap-highlight-color:transparent;
-}
-.cov-chip small{
-  font-size:.8em;
-  font-weight:600;
-  color:var(--muted);
-  opacity:.85;
-}
-.cov-chip:hover{
-  border-color:var(--teal);
-  background:var(--surface);
-  color:var(--teal-700);
-  transform:translateY(-2px);
-  box-shadow:var(--sh-1);
-}
-.cov-chip:focus-visible{outline:2.5px solid var(--teal);outline-offset:2px}
-.cov-chip:active{transform:translateY(0)}
-
-/* .hit: JS toggles this onto a matched chip */
-.cov-chip.hit{
-  background:var(--teal);
-  border-color:var(--teal);
-  color:#fff;
-  box-shadow:var(--sh-teal);
-}
-.cov-chip.hit small{color:rgba(255,255,255,.85)}
-.cov-chip.hit:hover{transform:translateY(-2px);background:var(--teal-700);border-color:var(--teal-700)}
-
-/* ask / not-listed CTA */
-.cov-ask{
-  width:100%;
-  justify-content:center;
-  gap:.6rem;
-  font-size:.98rem;
-  font-weight:700;
-  color:var(--teal-700);
-  background:var(--teal-50);
-  border:1.5px dashed var(--teal-200);
-  padding:1.05rem 1.3rem;
-  border-radius:var(--r-lg);
-  margin-top:.3rem;
-}
-.cov-ask svg{width:16px;height:16px;flex:none;transition:transform var(--tr)}
-.cov-ask:hover{
-  background:var(--teal);
-  border-color:var(--teal);
-  border-style:solid;
-  color:#fff;
-  transform:none;
-  box-shadow:var(--sh-teal);
-}
-.cov-ask:hover svg{transform:translateX(3px)}
-.cov-ask:focus-visible{outline:2.5px solid var(--teal);outline-offset:3px}
-
-/* ---------- responsive ---------- */
-@media (max-width:991px){
-  .s-cov-grid{grid-template-columns:1fr;gap:2.6rem}
-  .s-cov-intro{position:static}
-}
-
-@media (max-width:767px){
-  .s-cov-check{padding:1.25rem}
-  .s-cov-grp{padding:1.15rem}
-  .s-cov-legend{gap:.9rem}
-}
-
-@media (max-width:479px){
-  .s-cov-input{font-size:1rem;padding:.95rem .9rem .95rem .7rem}
-  .s-cov-in-icon{margin-left:.85rem;width:20px;height:20px}
-  .cov-chip{font-size:.86rem;padding:.55rem .9rem}
-  .cov-ask{font-size:.92rem;padding:.95rem 1.1rem}
-  .s-cov-grp-h{flex-wrap:wrap;font-size:1rem}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .cov-chip,.cov-ask,.s-cov-in,.s-cov-in-icon{transition:none}
-}
-
-
 /* ===== contact ===== */
 /* ══════════════════════════════════════════════════════════════
    CONTACT — s-ct-*  (consumes 00_designsystem.css tokens/base classes)
@@ -3880,7 +3608,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#locations">Locations</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#faq">FAQs</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -3916,7 +3643,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
     <nav class="s-chrome-panel-links" aria-label="Mobile navigation">
       <a href="#services"><span>Services</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#pricing"><span>Pricing</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#locations"><span>Locations</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#how"><span>How It Works</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#faq"><span>FAQs</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#contact"><span>Contact</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -4663,72 +4389,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
   </div>
 </section>
 
-<section id="locations" class="ll-section ll-section--sand s-cov-section" aria-labelledby="loc-h2">
-  <div class="ll-container s-cov-container">
-    <div class="s-cov-grid">
-
-      <div class="s-cov-intro" data-reveal="up">
-        <span class="ll-eyebrow s-cov-eyebrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
-          Where we collect
-        </span>
-        <h2 class="ll-h2 s-cov-title" id="loc-h2">Do we collect from <em>your door</em>?</h2>
-        <p class="ll-lead s-cov-sub">Type your suburb or postcode. If we&rsquo;re there, you can book straight away.</p>
-
-        <div class="s-cov-check">
-          <label for="covQ" class="s-cov-lbl">Suburb or postcode</label>
-          <div class="s-cov-in">
-            <svg class="s-cov-in-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
-            <input id="covQ" class="s-cov-input" type="text" autocomplete="postal-code" placeholder="e.g. Springwood or 4127">
-          </div>
-          <div class="s-cov-res" id="covRes" aria-live="polite"></div>
-        </div>
-
-        <div class="s-cov-legend" aria-hidden="true">
-          <span class="s-cov-legend-item"><span class="s-cov-dot s-cov-dot--go"></span>We collect here</span>
-          <span class="s-cov-legend-item"><span class="s-cov-dot"></span>Tap any suburb to check</span>
-        </div>
-      </div>
-
-      <div class="s-cov-lists" data-reveal="up" data-delay="1">
-        <div class="s-cov-grp">
-          <h3 class="s-cov-grp-h">Brisbane south <small class="s-cov-grp-count">7 suburbs</small></h3>
-          <div class="s-cov-wrap">
-            <span class="cov-chip s-cov-chip" data-pc="4152">Camp Hill <small>4152</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4151">Coorparoo <small>4151</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4120">Greenslopes <small>4120</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4121">Holland Park <small>4121</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4119">Kuraby <small>4119</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4122">Mansfield <small>4122</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4109">Sunnybank <small>4109</small></span>
-          </div>
-        </div>
-
-        <div class="s-cov-grp">
-          <h3 class="s-cov-grp-h">Logan <small class="s-cov-grp-count">9 suburbs</small></h3>
-          <div class="s-cov-wrap">
-            <span class="cov-chip s-cov-chip" data-pc="4207">Beenleigh <small>4207</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4118">Browns Plains <small>4118</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4130">Cornubia <small>4130</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4129">Loganholme <small>4129</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4132">Marsden <small>4132</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4131">Meadowbrook <small>4131</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4128">Shailer Park <small>4128</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4127">Springwood <small>4127</small></span>
-            <span class="cov-chip s-cov-chip" data-pc="4133">Waterford <small>4133</small></span>
-          </div>
-        </div>
-
-        <button type="button" class="cov-chip cov-ask s-cov-ask" data-enquire="Home Pickup &amp; Delivery">
-          Not listed? Ask us to come to you
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <section id="contact" class="ll-section s-ct-section" aria-labelledby="contact-h2">
   <div class="ll-container">
     <div class="s-ct-grid">
@@ -4741,11 +4401,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
           <a href="#contact" data-book class="s-ct-row s-ct-row--main">
             <span class="s-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg></span>
             <span class="s-ct-tx"><strong>Book a collection</strong><small>Pick a window. Takes about a minute.</small></span>
-            <span class="s-ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
-          </a>
-          <a href="#locations" class="s-ct-row">
-            <span class="s-ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span>
-            <span class="s-ct-tx"><strong>Check my suburb</strong><small>16 suburbs across Brisbane south and Logan.</small></span>
             <span class="s-ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
           </a>
           <a href="tel:" class="s-ct-row">
@@ -4852,7 +4507,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
 
         <div class="s-chrome-foot-col">
           <h4>Company</h4>
-          <a href="#locations">Locations</a>
           <a href="#how">How It Works</a>
           <a href="#benefits">About Us</a>
           <a href="#faq">FAQs</a>
@@ -4863,7 +4517,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
           <h4>Contact</h4>
           <a href="tel:">[PHONE TBC]</a>
           <a href="mailto:">[EMAIL TBC]</a>
-          <a href="#locations">Locations</a>
         </div>
       </div>
     </div>
@@ -5620,6 +5273,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
   /* suburb checker reads the coverage chips */
   const list = [...document.querySelectorAll('.cov-chip[data-pc]')].map(c => ({ n: c.firstChild.textContent.trim(), pc: c.dataset.pc, el: c }));
   const q = document.getElementById('covQ'), res = document.getElementById('covRes');
+  if (q && res) {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   function book(pc) {
     const es = document.getElementById('estSub'), go = document.getElementById('estGo');
@@ -5661,6 +5315,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:var
     s.el.addEventListener('click', pick);
     s.el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
   });
+  } /* end if(q&&res) — coverage section removed */
 })();
 </script>
 
