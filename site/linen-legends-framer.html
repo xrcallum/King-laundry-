@@ -976,6 +976,10 @@ button { font-family: var(--f); cursor: pointer; }
   .mcar::-webkit-scrollbar { display: none; }
   .mcar > * { flex: 0 0 84%; scroll-snap-align: start; }
   .mcar > *:hover { transform: none; }
+  /* Reveal transforms on cards would give the scroller a vertical
+     overflow area, letting a drag shove the row half out of view. */
+  .mcar { overflow-y: hidden; }
+  .mcar > [data-reveal] { transform: none !important; }
   .mcar-dots { display: flex; justify-content: center; gap: .45rem; margin-top: .4rem; }
   .mcar-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 4px; background: var(--line); transition: width .3s ease, background var(--tr); }
   .mcar-dots button.on { width: 22px; background: var(--teal); }
