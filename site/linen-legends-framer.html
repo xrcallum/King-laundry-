@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linen Legends — Fast, Easy &amp; Reliable Laundry | Brisbane &amp; SEQ</title>
-<meta name="description" content="Linen Legends — pickup &amp; delivery, self-service, dry cleaning and ironing across Brisbane, Logan and South East Queensland. Book online today.">
+<meta name="description" content="Linen Legends — laundry pickup &amp; delivery, premium clean, bulky linen and dry cleaning across Brisbane, Logan and South East Queensland. Book online today.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Linen Legends — Fast, Easy &amp; Reliable Laundry">
-<meta property="og:description" content="Modern machines, free Wi-Fi, a cosy lounge, and easy payment options. Fresh, clean clothes — made simple!">
+<meta property="og:description" content="Laundry collected from your door, washed with care, and returned fresh and folded across Brisbane &amp; SEQ.">
 <meta property="og:image" content="linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -388,7 +388,9 @@ button { font-family: var(--f); cursor: pointer; }
   width: 40px; height: 40px; border-radius: 10px;
   background: var(--teal-w); padding: 8px; margin-bottom: .85rem;
 }
-.svc-icon img { width: 100%; height: 100%; object-fit: contain; }
+.svc-icon img, .svc-icon svg { width: 100%; height: 100%; object-fit: contain; }
+.svc-icon svg { color: var(--teal-d); }
+.svc-link { background: none; border: none; padding: 0; font-family: var(--f); margin-top: .8rem; }
 .svc-body h3 { font-size: .95rem; margin-bottom: .4rem; color: var(--ink); }
 .svc-body p { font-size: .82rem; color: var(--mute); line-height: 1.6; }
 
@@ -1170,8 +1172,8 @@ button { font-family: var(--f); cursor: pointer; }
           Fast, Easy &amp;<br><em>Reliable Laundry!</em>
         </h1>
         <p class="hero-sub">
-          Enjoy a hassle-free laundry experience with modern machines, free Wi-Fi,
-          a cosy lounge, and easy payment options. Fresh, clean clothes &mdash; made simple!
+          Laundry collected from your door, washed on its own cycle, and returned
+          fresh and folded &mdash; homes and businesses across Brisbane &amp; South East Queensland.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary btn-lg" data-book>Schedule a Pickup</a>
@@ -1297,85 +1299,85 @@ button { font-family: var(--f); cursor: pointer; }
       <span class="section-eyebrow">What We Offer</span>
       <h2 class="section-title" id="services-h2">Our Laundry Services</h2>
       <p class="section-sub">
-        We can customise your cleaning plan to suit your needs. Most clients choose from
-        our most popular services:
+        From weekly home collections to scheduled commercial runs &mdash; priced per load
+        or per item, collected and returned.
       </p>
     </div>
 
-    <div class="svc-grid mcar">
+<div class="svc-grid mcar">
 
       <article class="svc-card" data-reveal="up" data-delay="1">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.jpg"
-               alt="Self-service laundry machines" loading="lazy">
+          <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.jpg"
+               alt="Folded laundry ready for home delivery" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
-            <img src="linen-legends-framer-assets/6lycWb7iXrKVwRyYVFqLvdYAJA.png"
-                 alt="" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg>
           </div>
-          <h3>Self-Service Laundry</h3>
-          <p>Use modern, high-capacity washers and dryers for a quick and smooth laundry process.</p>
+          <h3>Home Pickup &amp; Delivery</h3>
+          <p>Everyday wash, dry &amp; fold collected from your door and returned neatly folded.</p>
+          <button type="button" class="card-link svc-link" data-book-svc="wf">Book a collection</button>
         </div>
       </article>
 
       <article class="svc-card" data-reveal="up" data-delay="2">
         <div class="svc-img">
           <img src="linen-legends-framer-assets/wgAiMcd2q4u0SyOo60S9q3zZD0.jpg"
-               alt="Laundry pickup and delivery" loading="lazy">
+               alt="Garment being hand-finished" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
-            <img src="linen-legends-framer-assets/9vg6wJHS30Kg2ZMkjc65oypQu0k.png"
-                 alt="" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.1 4.6 5 .6-3.7 3.4 1 4.9L12 14l-4.4 2.5 1-4.9L4.9 8.2l5-.6z"/><path d="M5 20.5h14"/></svg>
           </div>
-          <h3>Pick &amp; Drop Service</h3>
-          <p>Convenient doorstep pickup and delivery for clean, fresh clothes without the effort.</p>
+          <h3>Premium Clean</h3>
+          <p>Delicates and good clothes: hand-treated stains, air-dried, returned on hangers.</p>
+          <button type="button" class="card-link svc-link" data-book-svc="premium">Book a collection</button>
         </div>
       </article>
 
       <article class="svc-card" data-reveal="up" data-delay="3">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/yK99FKksn0SziSGfKcVUIcCibqU.jpg"
-               alt="Express laundry service" loading="lazy">
+          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.jpg"
+               alt="Clean linen on shelves" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
-            <img src="linen-legends-framer-assets/RRmtvn34qLgtSdbsyObV712jhs.png"
-                 alt="" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 16q1.5 2 3 0t3 0 3 0 3 0 3 0 3 0M8 4v12M14 4v12"/></svg>
           </div>
-          <h3>Laundry Express</h3>
-          <p>Fast and efficient wash-and-dry service for busy schedules and quick needs.</p>
+          <h3>Blankets, Rugs &amp; Sheets</h3>
+          <p>Doonas, blankets, rugs and sheet sets priced per item &mdash; too big for home machines.</p>
+          <button type="button" class="card-link svc-link" data-book-svc="linen">Book a collection</button>
         </div>
       </article>
 
       <article class="svc-card" data-reveal="up" data-delay="4">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/3EVrzy6d2Uw2onpzCMEXuyHuo.jpg"
-               alt="Professional ironing service" loading="lazy">
+          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.jpg"
+               alt="Suits and garments on a rack" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
-            <img src="linen-legends-framer-assets/VhEGNm6OESnmy2clkbcd24AbtM.png"
-                 alt="" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6a2 2 0 1 1 2-2M12 6v2M12 8L3 15.5h18L12 8z"/></svg>
           </div>
-          <h3>Ironing Service</h3>
-          <p>Get crisp, wrinkle-free clothes with professional ironing for a polished appearance.</p>
+          <h3>Dry Cleaning</h3>
+          <p>Suits, formal wear and delicate fabrics, quoted per garment before we collect.</p>
+          <button type="button" class="card-link svc-link" data-enquire="Dry Cleaning">Get a quote</button>
         </div>
       </article>
 
       <article class="svc-card" data-reveal="up" data-delay="5">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.jpg"
-               alt="Dry cleaning for delicate garments" loading="lazy">
+          <img src="linen-legends-framer-assets/yK99FKksn0SziSGfKcVUIcCibqU.jpg"
+               alt="Commercial laundry volume" loading="lazy">
         </div>
         <div class="svc-body">
           <div class="svc-icon">
-            <img src="linen-legends-framer-assets/VLp1apW3oYYtlb1GsCT7WQ57Qo.png"
-                 alt="" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7.5h.01M15 7.5h.01M9 12h.01M15 12h.01M9 16.5h.01M15 16.5h.01" stroke-width="2.4"/></svg>
           </div>
-          <h3>Dry Cleaning</h3>
-          <p>Specialised cleaning for delicate fabrics, suits, and premium garments with expert care.</p>
+          <h3>Commercial &amp; Business</h3>
+          <p>Short-stay turnovers, salons, gyms and caf&eacute;s &mdash; scheduled collections, account billing, volume rates.</p>
+          <button type="button" class="card-link svc-link" data-enquire="Commercial / Business">Request a quote</button>
         </div>
       </article>
 
@@ -1848,8 +1850,8 @@ button { font-family: var(--f); cursor: pointer; }
       <details class="faq-item">
         <summary>What types of laundry can you clean? <span class="faq-toggle">+</span></summary>
         <p class="faq-body">
-          We handle everyday wash &amp; fold, bedding, towels, ironing, dry cleaning for delicate
-          fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us!
+          We handle everyday wash &amp; fold, bedding, towels and bulky linen, dry cleaning for
+          delicate fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us!
         </p>
       </details>
 
@@ -2017,10 +2019,9 @@ button { font-family: var(--f); cursor: pointer; }
             <label for="cf-service">Service Enquiry</label>
             <select id="cf-service" name="service">
               <option value="">Select a service&hellip;</option>
-              <option>Pick &amp; Drop Service</option>
-              <option>Self-Service Laundry</option>
-              <option>Laundry Express</option>
-              <option>Ironing Service</option>
+              <option>Home Pickup &amp; Delivery</option>
+              <option>Premium Clean</option>
+              <option>Blankets, Rugs &amp; Sheets</option>
               <option>Dry Cleaning</option>
               <option>Commercial / Business</option>
               <option>Supported living / aged care</option>
@@ -2066,11 +2067,11 @@ button { font-family: var(--f); cursor: pointer; }
 
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#services">Self-Service Laundry</a>
-        <a href="#services">Pick &amp; Drop</a>
-        <a href="#services">Laundry Express</a>
-        <a href="#services">Ironing</a>
+        <a href="#services">Home Pickup &amp; Delivery</a>
+        <a href="#services">Premium Clean</a>
+        <a href="#services">Blankets, Rugs &amp; Sheets</a>
         <a href="#services">Dry Cleaning</a>
+        <a href="#services">Commercial &amp; Business</a>
       </div>
 
       <div class="footer-col">
@@ -2725,7 +2726,7 @@ button { font-family: var(--f); cursor: pointer; }
   $('estBag').addEventListener('click', () => { E.bag = E.bag ? 0 : 1; renderEst(); });
   estSub.addEventListener('change', renderEst);
   $('estGo').addEventListener('click', () => {
-    if (estSub.value === 'other') { enquire('Pick & Drop Service', 'Is pickup available in my suburb? '); return; }
+    if (estSub.value === 'other') { enquire('Home Pickup & Delivery', 'Is pickup available in my suburb? '); return; }
     const hit = SUBURBS.find(s => s[0] === estSub.value);
     open(null, Object.assign({}, E, { suburb: hit ? hit[1] : '', pc: hit ? hit[0] : '' }));
   });
