@@ -844,13 +844,18 @@ button { font-family: var(--f); cursor: pointer; }
     scrollbar-width: none; -webkit-overflow-scrolling: touch;
   }
   .mcar::-webkit-scrollbar { display: none; }
-  .mcar > * { flex: 0 0 84%; scroll-snap-align: start; }
+  /* Fixed, viewport-anchored sizing so card width never depends on
+     this container's own padding — a percentage width here would
+     shrink every card each time the trailing padding below grows. */
+  .mcar > * { flex: 0 0 auto; width: calc(100vw - 88px); scroll-snap-align: start; }
   .mcar > *:hover { transform: none; }
   /* Reveal transforms on cards would give the scroller a vertical
      overflow area, letting a drag shove the row half out of view. */
   .mcar { overflow-y: hidden; }
   .mcar > [data-reveal] { transform: none !important; }
-  .mcar { padding-right: calc(16% + 8px); padding-bottom: .75rem; }
+  /* Fixed trailing space (container width − card width − left gutter)
+     so the last card can always reach a flush, snapped position. */
+  .mcar { padding-right: 64px; padding-bottom: .75rem; }
   .mcar-dots { display: flex; justify-content: center; gap: .45rem; margin-top: .4rem; }
   .mcar-dots button { width: 8px; height: 8px; padding: 0; border: none; border-radius: 4px; background: var(--line); transition: width .3s ease, background var(--tr); }
   .mcar-dots button.on { width: 22px; background: var(--teal); }
