@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -997,6 +998,58 @@ button { font-family: var(--f); cursor: pointer; }
 .cov-chip { display: inline-flex; align-items: baseline; gap: .35rem; padding: .5rem .95rem; border-radius: 99px; background: var(--bg); border: 1px solid var(--line); font-size: .86rem; font-weight: 600; color: var(--ink); }
 .cov-chip small { font-size: .74rem; font-weight: 500; color: var(--mute); }
 .cov-ask { background: var(--teal-w); border-color: var(--teal-l); color: var(--teal-d); cursor: pointer; font-family: var(--f); }
+
+/* ══════════════════════════════════════
+   MOBILE SCALE — compact sizing ≤640px
+   (keep this block last in the stylesheet)
+══════════════════════════════════════ */
+@media (max-width: 640px) {
+  html { font-size: 14.5px; }
+  .container { padding: 0 16px; }
+  .mcar { margin-left: -16px; margin-right: -16px; padding-left: 16px; scroll-padding-inline: 16px; padding-right: 56px; }
+  .mcar > * { width: calc(100vw - 72px); }
+  /* stop iOS zooming into form fields */
+  input, select, textarea { font-size: 16px !important; }
+  .section-title { font-size: 1.5rem; line-height: 1.18; margin-bottom: .6rem; }
+  .how-text .section-title, .contact-left .section-title { font-size: 1.4rem; }
+  .section-sub { font-size: .9rem; line-height: 1.55; margin-bottom: 1.5rem; }
+  .section-eyebrow { margin-bottom: .6rem; }
+  .hero-h1 { font-size: 2rem; }
+  .hero-sub { font-size: .95rem; margin-bottom: 1.5rem; }
+  #hero { min-height: auto; padding: 3.5rem 0 3rem; }
+  .btn-lg { padding: .85rem 1.4rem; font-size: .92rem; }
+  #nav { padding: .65rem 0; }
+  /* estimator */
+  .est-grid { gap: 1.25rem; }
+  .est-card { padding: .95rem; border-radius: var(--r-lg); box-shadow: var(--shadow-md); }
+  .est-h { font-size: .8rem; margin: .9rem 0 .45rem; }
+  .est-h span { width: 19px; height: 19px; font-size: .64rem; }
+  .est-subw select { padding: .6rem 2.2rem .6rem .8rem; }
+  .est-svc button { padding: .55rem .5rem; gap: .1rem; }
+  .est-svc svg { width: 18px; height: 18px; margin-bottom: .1rem; }
+  .est-svc b { font-size: .74rem; }
+  .est-svc small { font-size: .66rem; }
+  .est-qty { gap: .75rem; }
+  .est-card .bk-stp button { width: 34px; height: 34px; font-size: 1rem; }
+  .est-card .bk-stp output { min-width: 30px; }
+  .est-eq { font-size: .74rem; margin-top: .45rem; }
+  .est-bag { margin-top: .7rem; padding: .5rem .7rem; }
+  .est-bag div { font-size: .8rem; }
+  .est-bag small { font-size: .72rem; }
+  .est-rcpt { padding: .6rem .75rem; margin-top: .8rem; }
+  .est-rcpt .bk-sum div { font-size: .8rem; padding: .22rem 0; }
+  .est-min { font-size: .72rem; }
+  .est-tot { margin: .8rem 0 .7rem; }
+  .est-tot small { font-size: .66rem; }
+  .est-tot strong { font-size: 1.7rem; }
+  .est-tot-meta { font-size: .7rem; line-height: 1.45; }
+  .est-go { padding: .8rem 1rem; font-size: .92rem; }
+  .est-note { font-size: .68rem; }
+  /* booking panel */
+  .bk-ttl h2 { font-size: 1.1rem; }
+  .bk-tile { padding: .8rem .5rem; }
+  .bk-tile svg { width: 28px; height: 28px; }
+}
 </style>
 </head>
 <body>
@@ -2479,3 +2532,5 @@ button { font-family: var(--f); cursor: pointer; }
 
 </body>
 </html>
+
+</body></html>
