@@ -891,8 +891,8 @@ button { font-family: var(--f); cursor: pointer; }
                radial-gradient(700px 380px at 0% 45%, rgba(12,38,95,.05), transparent 60%), var(--paper); }
 .why-hd { max-width: 760px; }
 .why-hd .section-title { font-size: clamp(1.5rem, 3.2vw, 2.3rem); color: var(--navy); }
-.why-bento { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: 1.75rem; }
-.why-steps, .why-pay { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 1.75rem 1.85rem; }
+.why-bento { margin-top: 1.75rem; }
+.why-steps { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 1.75rem 1.85rem; }
 .why-steps {
   color: #fff;
   background:
@@ -914,18 +914,6 @@ button { font-family: var(--f); cursor: pointer; }
 .why-steps li > span { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(72,196,181,.18); border: 1px solid rgba(72,196,181,.4); color: var(--teal-xl); display: grid; place-items: center; font-size: .8rem; font-weight: 800; }
 .why-steps strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
 .why-steps p { font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.7); }
-.why-pay {
-  color: #fff; display: flex; flex-direction: column; justify-content: flex-end; gap: .45rem;
-  background:
-    radial-gradient(400px 240px at 115% -25%, rgba(255,255,255,.22), transparent 62%),
-    radial-gradient(320px 220px at -20% 120%, rgba(7,26,69,.35), transparent 65%),
-    linear-gradient(150deg, var(--teal-d), var(--teal) 68%, #3BBCAD);
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 26px 60px -24px rgba(31,114,104,.6);
-}
-.why-pay svg { width: 30px; height: 30px; margin-bottom: auto; opacity: .9; }
-.why-pay h3 { font-size: 1.25rem; color: #fff; margin-top: 1rem; }
-.why-pay p { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.85); }
 .why-sub { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 2.5rem 0 1rem; }
 .why-kick { display: block; font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; color: var(--teal-d); margin-bottom: .35rem; }
 .why-sub h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--navy); }
@@ -951,26 +939,19 @@ button { font-family: var(--f); cursor: pointer; }
 .px-feat .px-foot { border-color: rgba(255,255,255,.15); color: rgba(255,255,255,.65); }
 .px-feat .px-badge { background: var(--teal-l); color: var(--navy-d); }
 @media (max-width: 900px) {
-  .why-bento { grid-template-columns: 1fr; }
-  .why-pay svg { margin-bottom: 0; }
-  .why-pay h3 { margin-top: .4rem; }
 }
 @media (max-width: 640px) {
-  .why-steps, .why-pay { padding: 1.35rem 1.25rem; border-radius: var(--r-lg); }
+  .why-steps { padding: 1.35rem 1.25rem; border-radius: var(--r-lg); }
   .why-steps::after { font-size: 5.5rem; bottom: -1.2rem; }
   .why-steps ol { grid-template-columns: 1fr; gap: .8rem; }
   .why-sub { margin-top: 2rem; }
   .px-grid { grid-template-columns: 1fr; gap: .75rem; }
   .px-card { padding: 1.1rem 1.15rem; }
   .why-hd .section-title { font-size: 1.35rem; line-height: 1.2; }
-  .why-bento { margin-top: 1.1rem; gap: .75rem; }
+  .why-bento { margin-top: 1.1rem; }
   .why-steps h3 { font-size: 1.2rem; margin-bottom: .85rem; }
   .why-steps ol { gap: .65rem; }
   .why-steps p { font-size: .8rem; }
-  .why-pay { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; column-gap: .7rem; }
-  .why-pay svg { width: 24px; height: 24px; }
-  .why-pay h3 { margin: 0; font-size: 1.1rem; }
-  .why-pay p { flex-basis: 100%; }
   .why-sub { margin: 1.75rem 0 .25rem; }
 }
 
@@ -1188,11 +1169,6 @@ button { font-family: var(--f); cursor: pointer; }
           <li><span>2</span><div><strong>We weigh at your door</strong><p>Your exact price is confirmed before we start.</p></div></li>
           <li><span>3</span><div><strong>Back the next day, folded</strong><p>Standard turnaround [TBC]. Longer for dry cleaning and bulky items.</p></div></li>
         </ol>
-      </article>
-      <article class="why-pay" data-reveal="up" data-delay="2">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22h20M8 22V12l8-4 8 4v10M12 22v-6h8v6"/></svg>
-        <h3>Pay after weighing</h3>
-        <p>The scale runs at your door. You see the weight and the number before we drive away.</p>
       </article>
     </div>
 
