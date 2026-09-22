@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linen Legends — Fast, Easy &amp; Reliable Laundry | Brisbane &amp; SEQ</title>
+<title>Linen Legends</title>
 <meta name="description" content="Linen Legends — laundry pickup &amp; delivery, premium clean, bulky linen and dry cleaning across Brisbane, Logan and South East Queensland. Book online today.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Linen Legends — Fast, Easy &amp; Reliable Laundry">
@@ -1310,6 +1310,33 @@ h1, h2, h3, h4 { text-wrap: balance; }
   .ap-form .ct-topic{font-size:.875rem;padding:.55rem .9rem}
 }
 @media (prefers-reduced-motion:reduce){.ap-field label,.ap-form .ct-topic,.ap-field input,.ap-field textarea{transition:none}}
+
+/* ══════════════════════════════════════
+   DESIGN POLISH (design-skill pass)
+══════════════════════════════════════ */
+/* content is visible at rest; reveal is a small lift, never hidden */
+[data-reveal]{opacity:1}
+[data-reveal="up"]{transform:translateY(12px)}
+[data-reveal="left"]{transform:translateX(-12px)}
+[data-reveal="right"]{transform:translateX(12px)}
+[data-reveal="scale"]{transform:scale(.985)}
+[data-reveal].is-visible{transform:none}
+/* hero sized to what it holds, not the viewport */
+#hero{min-height:0;padding:6.5rem 0 5.5rem}
+/* sticky nav clears the phone's status bar */
+#nav{top:env(safe-area-inset-top,0px)}
+/* decorative lone numeral removed */
+.why-steps::after{content:none}
+/* one clear keyboard focus state */
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+/* hover: only interactive things move; content cards just sharpen their edge */
+.svc-card:hover,.pm-grid li:hover{transform:none;box-shadow:var(--shadow-sm)}
+/* prices line up */
+.px-foot b,.est-tot strong,.bk-sum,.est-rcpt{font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  #hero{padding:3.75rem 0 3rem}
+  .px-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+}
 </style>
 </head>
 <body>
@@ -1367,7 +1394,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
       <!-- LEFT -->
       <div class="hero-content" data-reveal="up">
                 <h1 class="hero-h1" id="hero-h1">
-          Fast, Easy &amp;<br><em>Reliable Laundry!</em>
+          Fast, Easy &amp;<br><em>Reliable Laundry.</em>
         </h1>
         <p class="hero-sub">
           Laundry collected from your door, washed on its own cycle, and returned
@@ -1416,7 +1443,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
     <div class="why-bento">
       <article class="why-steps" data-reveal="up" data-delay="1">
-        <span class="why-num">01</span>
         <h3>Three steps. Nothing to drop off.</h3>
         <ol>
           <li><span>1</span><div><strong>Book online</strong><p>Pick a window that suits, tell us where to find the bag.</p></div></li>
@@ -1431,7 +1457,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
       <a href="#services" class="card-link">See all services</a>
     </div>
 
-    <div class="px-grid mcar">
+    <div class="px-grid">
       <button type="button" class="px-card px-feat" data-book-svc="wf" data-reveal="up" data-delay="1">
         <span class="px-badge">Start here</span>
         <h4>Wash &amp; Fold</h4>
@@ -1672,7 +1698,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
             <div class="step-num">4</div>
             <div class="step-text">
               <h3>Delivery to Your Doorstep</h3>
-              <p>Your fresh, clean clothes are delivered back to you — neatly folded and ready to wear!</p>
+              <p>Your fresh, clean clothes are delivered back to you — neatly folded and ready to wear.</p>
             </div>
           </div>
         </div>
@@ -1814,7 +1840,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
         <summary>What types of laundry can you clean? <span class="faq-toggle">+</span></summary>
         <p class="faq-body">
           We handle everyday wash &amp; fold, bedding, towels and bulky linen, dry cleaning for
-          delicate fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us!
+          delicate fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us.
         </p>
       </details>
 
