@@ -989,20 +989,42 @@ button { font-family: var(--f); cursor: pointer; }
 /* ══════════════════════════════════════
    WHY + WHAT YOU CAN BOOK
 ══════════════════════════════════════ */
-#why { background: var(--paper); }
+#why { background: radial-gradient(900px 460px at 85% -5%, rgba(42,157,143,.09), transparent 62%),
+               radial-gradient(700px 380px at 0% 45%, rgba(12,38,95,.05), transparent 60%), var(--paper); }
 .why-hd { max-width: 760px; }
 .why-hd .section-title { font-size: clamp(1.5rem, 3.2vw, 2.3rem); color: var(--navy); }
 .why-bento { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-top: 1.75rem; }
-.why-steps, .why-pay { border-radius: var(--r-lg); padding: 1.6rem 1.75rem; }
-.why-steps { background: var(--navy); color: #fff; }
+.why-steps, .why-pay { position: relative; overflow: hidden; border-radius: var(--r-xl); padding: 1.75rem 1.85rem; }
+.why-steps {
+  color: #fff;
+  background:
+    radial-gradient(560px 300px at 112% -22%, rgba(72,196,181,.30), transparent 64%),
+    radial-gradient(420px 260px at -15% 118%, rgba(26,58,138,.60), transparent 60%),
+    linear-gradient(150deg, var(--navy-d), var(--navy) 55%, #12306F);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 26px 60px -22px rgba(7,26,69,.5);
+}
+.why-steps::after {
+  content: '01'; position: absolute; right: .9rem; bottom: -1.6rem;
+  font-size: 7.5rem; font-weight: 900; letter-spacing: -.05em;
+  color: rgba(255,255,255,.05); pointer-events: none;
+}
 .why-num { font-size: .78rem; font-weight: 800; letter-spacing: .14em; color: rgba(255,255,255,.55); }
 .why-steps h3 { font-size: clamp(1.3rem, 2.4vw, 1.75rem); color: #fff; margin: .35rem 0 1.1rem; }
 .why-steps ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
 .why-steps li { display: flex; gap: .75rem; align-items: flex-start; }
-.why-steps li > span { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.12); display: grid; place-items: center; font-size: .8rem; font-weight: 800; }
+.why-steps li > span { flex: none; width: 30px; height: 30px; border-radius: 50%; background: rgba(72,196,181,.18); border: 1px solid rgba(72,196,181,.4); color: var(--teal-xl); display: grid; place-items: center; font-size: .8rem; font-weight: 800; }
 .why-steps strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
 .why-steps p { font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.7); }
-.why-pay { background: linear-gradient(135deg, var(--teal-d), var(--teal)); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; gap: .45rem; }
+.why-pay {
+  color: #fff; display: flex; flex-direction: column; justify-content: flex-end; gap: .45rem;
+  background:
+    radial-gradient(400px 240px at 115% -25%, rgba(255,255,255,.22), transparent 62%),
+    radial-gradient(320px 220px at -20% 120%, rgba(7,26,69,.35), transparent 65%),
+    linear-gradient(150deg, var(--teal-d), var(--teal) 68%, #3BBCAD);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 26px 60px -24px rgba(31,114,104,.6);
+}
 .why-pay svg { width: 30px; height: 30px; margin-bottom: auto; opacity: .9; }
 .why-pay h3 { font-size: 1.25rem; color: #fff; margin-top: 1rem; }
 .why-pay p { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.85); }
@@ -1036,7 +1058,8 @@ button { font-family: var(--f); cursor: pointer; }
   .why-pay h3 { margin-top: .4rem; }
 }
 @media (max-width: 640px) {
-  .why-steps, .why-pay { padding: 1.25rem 1.2rem; }
+  .why-steps, .why-pay { padding: 1.35rem 1.25rem; border-radius: var(--r-lg); }
+  .why-steps::after { font-size: 5.5rem; bottom: -1.2rem; }
   .why-steps ol { grid-template-columns: 1fr; gap: .8rem; }
   .why-sub { margin-top: 2rem; }
   .px-grid { grid-template-columns: 1fr; gap: .75rem; }
@@ -2370,19 +2393,19 @@ button { font-family: var(--f); cursor: pointer; }
     scrollToCard(next);
   }
 
-  autoTimer = setInterval(nextCard, 4000);
+  autoTimer = setInterval(nextCard, 3000);
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       clearInterval(autoTimer);
       scrollToCard(parseInt(dot.dataset.index, 10));
-      autoTimer = setInterval(nextCard, 4000);
+      autoTimer = setInterval(nextCard, 3000);
     });
   });
 
   track.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
   track.addEventListener('touchend', () => {
-    autoTimer = setInterval(nextCard, 4000);
+    autoTimer = setInterval(nextCard, 3000);
   }, { passive: true });
 
   /* ── 6. FAQ ACCORDION (toggle icon via CSS) ─ */
@@ -2802,7 +2825,7 @@ button { font-family: var(--f); cursor: pointer; }
     ['pointerdown', 'touchstart', 'wheel'].forEach(ev => track.addEventListener(ev, hold, { passive: true }));
     btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
-    setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3800);
+    setInterval(() => { if (mq.matches && visible && !paused && !still.matches && !document.hidden) go(idx + 1); }, 3000);
     mark();
   });
 })();
