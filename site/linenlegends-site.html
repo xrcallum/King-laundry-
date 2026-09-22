@@ -1,247 +1,183 @@
 <!DOCTYPE html>
 <!--
-  Linen Legends — single-file marketing site.
+  Linen Legends — rebuild of the FramerGeeks laundry template.
 
-  ORIGIN. Layout and section order are rebuilt from the Framer template published at
-  laundryhub.framer.website (FramerGeeks laundry template), which could not be fetched
-  directly: this session's egress proxy blocks framer.app and framer.website. The
-  structure below is reconstructed from the canvas screenshot supplied on 22 Sep 2026.
-  It is a native rebuild, not an export, so there is no Framer runtime, no template
-  watermark and no "Get Figma & Framer" promo layer.
+  STATUS: structural replica, not an export. This session cannot reach Framer;
+  the egress allowlist denies framer.com, framer.app, framer.website and
+  framerusercontent.com at CONNECT with a 403, and a policy denial must be
+  reported rather than routed around. Layout, section order and body copy are
+  transcribed verbatim from the canvas screenshot supplied 22 Sep 2026.
 
-  RENAMING THE BRAND. The brand name appears only as the literal "Linen Legends" and
-  the wordmark split "LINEN" / "LEGENDS". To rebrand in one pass:
-      sed -i 's/Linen Legends/<New Name>/g; s/>LINEN</><Word1></g; s/>LEGENDS</><Word2></g' \
-        site/linenlegends-site.html
-  Colours are CSS custom properties on :root — change them there, nowhere else.
+  REPLACE THIS FILE THE MOMENT THE EXPORT ARRIVES:
+      python3 tools/import_framer.py <zip|folder|html> \
+          -o site/linenlegends-site.html --rename "Laundry Hub=Linen Legends"
 
-  SOURCES FOR EVERY FIGURE AND CLAIM.
-    Pricing ($32 per load, $13.50 collection and return, $73.50 minimum, GST inclusive)
-      — site/laundrylegends-site.html, JSON-LD Offer block and og:description.
-    Coverage (Brisbane, Logan, South East Queensland) — same file, meta description.
-    AS/NZS 4146, NDIS, Australian Consumer Law, contractor/ABN statements
-      — same file, Service Guarantee, Supported Living and Operators pages.
-    Load size (approx. 5 kg), lights/darks counted separately, weigh-before-work
-      — same file, "How your price is calculated".
+  WHAT IS VERBATIM FROM THE TEMPLATE
+      Hero headline, hero paragraph, "Schedule A pickup",
+      "Affordable cleaning solutions", "FIND A LAUNDRY NEAR YOU SERVICE" and its
+      paragraph, "Find Your Nearest Location", "Services",
+      "OUR LAUNDRY SERVICES" and its lead-in, and the first three service cards
+      (Self-Service Laundry, Pick & Drop Service, Laundry Express).
 
-  DELIBERATELY NOT CARRIED OVER FROM THE TEMPLATE. The template ships a "4.9 stars,
-  1200+ reviews" cluster and stock testimonials. Publishing those for a real business
-  is misleading conduct under the Australian Consumer Law. They are replaced with
-  claims that are true on day one. Do not reinstate them without real review data.
+  WHAT COULD NOT BE READ FROM THE SCREENSHOT — marked TO CONFIRM in the markup
+      The hero eyebrow (truncated to "Modern Machine..."), the logo tagline
+      (truncated to "Refresh Your W..."), the nav items (hidden behind the
+      publish dialog), service cards 4 and 5 (below the fold), and everything
+      after the services grid.
 
-  TO CONFIRM BEFORE PUBLISH (marked TO CONFIRM in the markup):
-    - Registered company name and ABN (Max Jones)
-    - Phone number and enquiry email
-    - Whether "Linen Legends" sits under the same entity as Laundrylegends
+  WHAT IS DELIBERATELY NOT COPIED
+      The template's "4.9+ Rating / 1200+ Reviews" figures. Publishing invented
+      review counts for a trading business is misleading conduct under the
+      Australian Consumer Law. The component is kept so the layout matches;
+      the numbers are placeholders. Swap in real figures or delete the block.
+      The "50% OFF FLASH SALE / Get Figma & Framer / Access All Template /
+      Template by FramerGeeks" promo layer is omitted by design.
 
-  NOTE ON verify/preflight.py. That gate is hard-wired to the main artefact
-  (39 page sections, exactly one script block). It does not apply to this file.
+  Stock photography cannot be reproduced. Each photo is a labelled slot.
 -->
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Linen Legends — Laundry Pickup &amp; Delivery | Brisbane, Logan &amp; SEQ</title>
-<meta name="description" content="Linen Legends collects your laundry, washes it on its own cycle and brings it back. Wash and fold, large linen, dry cleaning and commercial laundry across Brisbane, Logan and South East Queensland. All prices include GST.">
-<meta name="theme-color" content="#23716B">
-<meta property="og:title" content="Laundry collected, washed and returned — Brisbane, Logan &amp; SEQ">
-<meta property="og:description" content="From your door, washed on its own cycle, folded, and brought back. From $32 a load, $13.50 collection and return. Price confirmed after weighing, before any work begins.">
-<meta property="og:type" content="website">
-<meta name="robots" content="index,follow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' rx='8' fill='%2323716B'/%3E%3Cpath d='M9 12h18v14a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2z' fill='%23fff'/%3E%3Ccircle cx='18' cy='20' r='4.6' fill='none' stroke='%2323716B' stroke-width='2'/%3E%3Ccircle cx='13' cy='9.5' r='1.5' fill='%23fff'/%3E%3Ccircle cx='18' cy='9.5' r='1.5' fill='%23fff'/%3E%3C/svg%3E">
+<title>Linen Legends — Fast, Easy &amp; Reliable Laundry</title>
+<meta name="description" content="Linen Legends. A hassle-free laundry experience with modern machines and doorstep pickup and delivery. All prices include GST.">
+<meta name="theme-color" content="#5BA69E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Crect width='36' height='36' rx='9' fill='%235BA69E'/%3E%3Crect x='9' y='8' width='18' height='20' rx='3' fill='%23fff'/%3E%3Ccircle cx='18' cy='20' r='5' fill='none' stroke='%235BA69E' stroke-width='2'/%3E%3Ccircle cx='13' cy='12' r='1.4' fill='%235BA69E'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Brand — teal carried across from the Framer template's accent. */
-  --brand:#2F8F87; --brand-d:#23716B; --brand-l:#48B3AA; --brand-w:#EAF6F4;
-  --ink:#10201E; --body:#465451; --mute:#6B7875; --line:#DCE4E2; --line2:#C3CFCC;
-  --bg:#FFFFFF; --bg2:#F5F8F7; --paper:#EFF4F3;
-  --ok:#0F7B4F; --ok-bg:#E6F6EE; --warn:#8A5A00; --warn-bg:#FFF6E0;
-
-  --fd:'Archivo',system-ui,sans-serif;
-  --fb:'Inter',system-ui,sans-serif;
-
-  --maxw:1180px; --px:clamp(1.1rem,4.5vw,2.75rem); --spy:clamp(3.25rem,7vw,5.5rem);
-
-  /* Type scale — 1.25 major third, matching the main artefact. */
-  --fs-micro:13px; --fs-body:16px; --fs-5:20px; --fs-4:25px;
-  --fs-3:31px; --fs-2:39px; --fs-1:49px; --fs-display:61px;
-  --fs-hero:clamp(2.4rem,5.4vw,3.8125rem);
-  --fs-h2:clamp(1.5625rem,3.2vw,2.4375rem);
-  --fs-h3:clamp(1.25rem,2.6vw,1.5625rem);
-
-  --r:8px; --r2:14px; --r3:22px; --r-pill:999px;
-  --sh1:0 1px 0 rgba(16,32,30,.08);
-  --e-hov:0 10px 24px -8px rgba(35,113,107,.22),0 2px 6px rgba(35,113,107,.10);
-  --e-card:0 1px 2px rgba(16,32,30,.05);
-  --ease:cubic-bezier(.22,.61,.36,1);
-  --tr:.18s var(--ease);
+  --teal:#5BA69E; --teal-d:#458C84; --teal-l:#7FBEB7; --teal-w:#EAF4F3;
+  --ink:#101214; --body:#5C6A68; --mute:#8B9997; --line:#E3E8E8;
+  --bg:#FFFFFF; --card:#F4F7F7;
+  --warn:#8A5A00; --warn-bg:#FFF6E0;
+  --f:'Archivo',system-ui,-apple-system,sans-serif;
+  --maxw:1140px; --px:clamp(1.1rem,4.5vw,2.5rem); --spy:clamp(3rem,6.5vw,5rem);
+  --r:10px; --r2:16px; --r3:24px; --pill:999px;
+  --ease:cubic-bezier(.22,.61,.36,1); --tr:.18s var(--ease);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
-  *{animation-duration:.01ms !important;transition-duration:.01ms !important}}
-body{margin:0;background:var(--bg);color:var(--body);
-  font-family:var(--fb);font-size:var(--fs-body);line-height:1.62;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,h4{font-family:var(--fd);color:var(--ink);margin:0;line-height:1.1;letter-spacing:-.02em}
-h1{font-size:var(--fs-hero);letter-spacing:-.04em}
-h2{font-size:var(--fs-h2);letter-spacing:-.03em}
-h3{font-size:var(--fs-h3);letter-spacing:-.01em}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--body);font-family:var(--f);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{margin:0;color:var(--ink);font-weight:800;line-height:1.05;
+  letter-spacing:-.02em;text-transform:uppercase}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);font-weight:900}
+h2{font-size:clamp(1.5rem,3.6vw,2.1rem)}
+h3{font-size:15px;letter-spacing:0}
 p{margin:0 0 1rem}
-a{color:var(--brand-d);text-decoration-thickness:1px;text-underline-offset:2px}
-img,svg{max-width:100%;height:auto;display:block}
-ul{margin:0 0 1rem;padding-left:1.15rem}
-li{margin:.35rem 0}
-:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:4px}
-
+a{color:var(--teal-d)}
+img,svg{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--teal-d);outline-offset:2px;border-radius:4px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--px)}
 section{padding-block:var(--spy)}
-.tint{background:var(--bg2)}
-.eyebrow{display:inline-block;font-family:var(--fd);font-weight:700;
-  font-size:var(--fs-micro);letter-spacing:.08em;text-transform:uppercase;
-  color:var(--brand-d);background:var(--brand-w);
-  padding:.4rem .8rem;border-radius:var(--r-pill);margin-bottom:1.1rem}
-.lede{font-size:var(--fs-5);color:var(--body);max-width:62ch}
-.centered{text-align:center}
-.centered .lede{margin-inline:auto}
-.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;
-  padding:.7rem 1.1rem;border-radius:0 0 var(--r) 0;z-index:100}
-.skip:focus{left:0}
+.skip{position:absolute;left:-9999px;background:var(--ink);color:#fff;padding:.7rem 1.1rem;z-index:99}
+.skip:focus{left:0;top:0}
+.confirm{color:var(--warn);background:var(--warn-bg);border-radius:4px;padding:0 .3rem;
+  font-size:12px;font-weight:600;text-transform:none;letter-spacing:0}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:.55rem;
-  font-family:var(--fd);font-weight:700;font-size:var(--fs-body);
-  padding:.85rem 1.45rem;border-radius:var(--r-pill);border:1.5px solid transparent;
-  cursor:pointer;text-decoration:none;transition:transform var(--tr),box-shadow var(--tr),background var(--tr)}
-.btn:hover{transform:translateY(-2px)}
-.btn-p{background:var(--brand);color:#fff;box-shadow:var(--e-hov)}
-.btn-p:hover{background:var(--brand-d)}
-.btn-s{background:#fff;color:var(--ink);border-color:var(--line2)}
-.btn-s:hover{border-color:var(--brand);color:var(--brand-d)}
-.btn-g{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.45)}
-.btn-g:hover{background:rgba(255,255,255,.24)}
-.btn svg{width:18px;height:18px;flex:none}
+/* Buttons — teal pill with a leading glyph, as the template has them. */
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--teal);color:#fff;
+  font-weight:700;font-size:14px;padding:.72rem 1.25rem;border-radius:var(--r);
+  text-decoration:none;border:0;cursor:pointer;transition:background var(--tr),transform var(--tr)}
+.btn:hover{background:var(--teal-d);transform:translateY(-1px)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-o{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-o:hover{background:var(--teal-w);border-color:var(--teal);color:var(--teal-d)}
 
 /* Header */
-header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);
-  backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--line);box-shadow:var(--sh1)}
-.bar{display:flex;align-items:center;gap:1.25rem;height:70px}
-.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:none}
-.brand .mk{width:38px;height:38px;border-radius:10px;background:var(--brand-d);flex:none}
-.brand .wm{font-family:var(--fd);font-weight:900;line-height:.94;
-  letter-spacing:-.02em;color:var(--ink);font-size:var(--fs-micro);text-transform:uppercase}
-.brand .wm span{display:block;font-size:var(--fs-5);letter-spacing:-.03em}
-nav.main{margin-left:auto;display:flex;gap:.35rem;align-items:center}
-nav.main a{font-family:var(--fd);font-weight:600;font-size:var(--fs-body);
-  color:var(--ink);text-decoration:none;padding:.5rem .75rem;border-radius:var(--r);transition:background var(--tr)}
-nav.main a:hover{background:var(--brand-w);color:var(--brand-d)}
-.navcta{margin-left:.5rem}
-.burger{margin-left:auto;display:none;width:44px;height:44px;border:1.5px solid var(--line2);
+header.site{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:1rem;height:68px}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;flex:none}
+.logo .mk{width:34px;height:34px;flex:none}
+.logo .tx{line-height:1.05;min-width:0}
+.logo .s{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo .n{font-weight:900;font-size:17px;letter-spacing:-.02em;color:var(--ink);text-transform:uppercase}
+.logo .s{font-size:9px;font-weight:600;color:var(--teal);letter-spacing:.02em}
+nav.main{margin-left:auto;display:flex;align-items:center;gap:.2rem}
+nav.main a{font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;
+  padding:.5rem .7rem;border-radius:var(--r);transition:background var(--tr)}
+nav.main a:hover{background:var(--teal-w);color:var(--teal-d)}
+nav.main .btn{margin-left:.5rem}
+.burger{margin-left:auto;display:none;width:42px;height:42px;border:1.5px solid var(--line);
   background:#fff;border-radius:var(--r);cursor:pointer;align-items:center;justify-content:center}
-.burger span{display:block;width:19px;height:2px;background:var(--ink);position:relative}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:19px;height:2px;background:var(--ink)}
-.burger span::before{top:-6px} .burger span::after{top:6px}
-@media (max-width:880px){
-  nav.main{position:fixed;inset:70px 0 auto;background:#fff;flex-direction:column;
-    align-items:stretch;gap:0;padding:.5rem var(--px) 1.25rem;border-bottom:1px solid var(--line);
-    box-shadow:0 18px 40px rgba(16,32,30,.12);display:none}
-  nav.main.open{display:flex}
-  nav.main a{padding:.85rem .25rem;border-bottom:1px solid var(--line);border-radius:0}
-  .navcta{margin:.9rem 0 0;justify-content:center}
+.burger i{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+.burger i::before,.burger i::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink)}
+.burger i::before{top:-6px}.burger i::after{top:6px}
+@media (max-width:900px){
   .burger{display:flex}
+  nav.main{position:fixed;inset:68px 0 auto;flex-direction:column;align-items:stretch;
+    background:#fff;padding:.4rem var(--px) 1.2rem;border-bottom:1px solid var(--line);
+    box-shadow:0 16px 36px rgba(16,18,20,.12);display:none}
+  nav.main.open{display:flex}
+  nav.main a{padding:.8rem .2rem;border-bottom:1px solid var(--line);border-radius:0}
+  nav.main .btn{margin:.9rem 0 0;justify-content:center}
 }
 
 /* Hero */
-.hero{padding-block:clamp(2.75rem,6vw,4.75rem) var(--spy);background:
-  radial-gradient(900px 420px at 88% -10%,var(--brand-w),transparent 70%),var(--bg)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-.hero h1 .accent{color:var(--brand)}
-.hero .lede{margin-top:1.25rem}
-.cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.9rem}
-.trust{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--line)}
-.trust b{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fd);font-weight:600;
-  font-size:var(--fs-micro);color:var(--ink);background:var(--bg2);
-  border:1px solid var(--line);border-radius:var(--r-pill);padding:.45rem .85rem}
-.trust b svg{width:15px;height:15px;color:var(--brand-d);flex:none}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-art{order:-1}}
+.hero{padding-block:clamp(2.25rem,5vw,3.75rem) var(--spy)}
+.hero-g{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.eyebrow{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:.9rem}
+.hero h1 .t{color:var(--teal);display:block}
+.hero p.lead{max-width:44ch;margin-top:1.15rem;font-size:15px}
+.hero .btn{margin-top:1.4rem}
+.social{display:flex;align-items:center;gap:.7rem;margin-top:1.6rem}
+.avs{display:flex}
+.avs span{width:34px;height:34px;border-radius:50%;border:2px solid #fff;background:var(--teal-l);
+  margin-left:-10px;display:block}
+.avs span:first-child{margin-left:0}
+.social .rt{font-size:13px;line-height:1.3}
+.social .rt b{display:block;font-weight:800;color:var(--ink)}
+.scroll{display:flex;align-items:center;gap:.5rem;justify-content:flex-end;
+  margin-top:1.5rem;font-size:12px;font-weight:600;color:var(--mute)}
+.scroll a{width:26px;height:26px;border-radius:50%;background:var(--card);
+  display:flex;align-items:center;justify-content:center;color:var(--ink)}
+@media (max-width:860px){.hero-g{grid-template-columns:1fr}.hero-art{order:-1}.scroll{display:none}}
 
-/* Coverage card */
-.cover{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r3);
-  padding:clamp(1.6rem,4vw,2.9rem);display:grid;grid-template-columns:1.15fr .85fr;
-  gap:clamp(1.5rem,4vw,3rem);align-items:center}
-@media (max-width:820px){.cover{grid-template-columns:1fr}}
+/* Photo slot */
+.ph{position:relative;background:var(--card);border-radius:var(--r2);overflow:hidden;
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)}
+.ph::after{content:attr(data-label);position:absolute;bottom:8px;left:8px;right:8px;
+  font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--mute);background:rgba(255,255,255,.88);border-radius:6px;padding:.3rem .45rem;text-align:center}
+.ph svg{width:44px;height:44px;color:var(--teal-l);opacity:.75}
+.ph.tall{aspect-ratio:1/1}
 
-/* Cards */
-.grid{display:grid;gap:1.15rem}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g2{grid-template-columns:repeat(2,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-@media (max-width:980px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.grid{grid-template-columns:1fr !important}}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--r2);
-  padding:1.5rem;box-shadow:var(--e-card);transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr)}
-.card:hover{transform:translateY(-3px);box-shadow:var(--e-hov);border-color:var(--brand-l)}
-.card h3{margin-bottom:.55rem}
-.card p:last-child{margin-bottom:0}
-.ico{width:46px;height:46px;border-radius:12px;background:var(--brand-w);color:var(--brand-d);
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.05rem}
-.ico svg{width:23px;height:23px}
-.step{position:relative;padding-left:3.4rem}
-.step .n{position:absolute;left:0;top:0;width:2.5rem;height:2.5rem;border-radius:50%;
-  background:var(--brand);color:#fff;font-family:var(--fd);font-weight:800;
-  display:flex;align-items:center;justify-content:center}
+/* Locations card */
+.loc{background:var(--card);border-radius:var(--r2);padding:clamp(1.4rem,3.5vw,2.4rem);
+  display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(1.25rem,3vw,2.5rem);align-items:center}
+.loc .kicker{font-size:14px;color:var(--body);margin-bottom:.45rem}
+.loc h2{margin-bottom:.9rem}
+.loc p{font-size:15px;max-width:52ch}
+@media (max-width:780px){.loc{grid-template-columns:1fr}}
 
-/* Pricing */
-.price{display:flex;align-items:baseline;gap:.4rem;margin:.9rem 0 .2rem}
-.price .amt{font-family:var(--fd);font-weight:900;font-size:var(--fs-2);
-  color:var(--ink);letter-spacing:-.03em;line-height:1}
-.price .per{font-size:var(--fs-micro);color:var(--mute)}
-.card.feat{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-w)}
-.tag{display:inline-block;font-family:var(--fd);font-weight:700;font-size:var(--fs-micro);
-  letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--brand);
-  border-radius:var(--r-pill);padding:.25rem .7rem;margin-bottom:.9rem}
-.note{background:var(--warn-bg);border-left:3px solid var(--warn);
-  border-radius:0 var(--r) var(--r) 0;padding:1rem 1.15rem;font-size:var(--fs-micro);color:var(--ink)}
-.note p:last-child{margin-bottom:0}
-dl.calc{margin:0;display:grid;gap:.9rem}
-dl.calc div{border-top:1px solid var(--line);padding-top:.9rem}
-dl.calc dt{font-family:var(--fd);font-weight:700;color:var(--ink)}
-dl.calc dd{margin:.2rem 0 0;font-size:var(--fs-micro)}
+/* Services */
+.badge{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:var(--pill);
+  padding:.34rem .9rem;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:1rem}
+.mid{text-align:center;max-width:56ch;margin:0 auto 2.25rem}
+.mid p{font-size:15px;margin-top:.9rem}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+@media (max-width:900px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.svc{grid-template-columns:1fr}}
+.sc{background:#fff;border:1px solid var(--line);border-radius:var(--r2);padding:.85rem;
+  transition:transform var(--tr),box-shadow var(--tr)}
+.sc:hover{transform:translateY(-3px);box-shadow:0 12px 28px -12px rgba(16,18,20,.18)}
+.sc h3{margin:.95rem .35rem .4rem}
+.sc p{margin:0 .35rem .5rem;font-size:13px;line-height:1.55}
 
-/* FAQ */
-details.faq{border:1px solid var(--line);border-radius:var(--r2);background:#fff;
-  padding:1.05rem 1.3rem;margin-bottom:.75rem}
-details.faq[open]{border-color:var(--brand-l);box-shadow:var(--e-card)}
-details.faq summary{font-family:var(--fd);font-weight:700;color:var(--ink);
-  cursor:pointer;list-style:none;display:flex;justify-content:space-between;
-  align-items:center;gap:1rem;font-size:var(--fs-5)}
-details.faq summary::-webkit-details-marker{display:none}
-details.faq summary::after{content:"+";font-size:var(--fs-4);color:var(--brand);
-  font-weight:700;line-height:1;flex:none}
-details.faq[open] summary::after{content:"\2013"}
-details.faq p{margin:.85rem 0 0;font-size:var(--fs-micro)}
-
-/* Band + footer */
-.band{background:var(--brand-d);color:#fff;border-radius:var(--r3);
-  padding:clamp(2rem,5vw,3.5rem);text-align:center}
-.band h2{color:#fff}
-.band p{color:#D6ECEA;max-width:56ch;margin-inline:auto}
-footer.site{background:var(--ink);color:#C3CFCC;padding-block:var(--spy) 2rem;margin-top:var(--spy)}
-footer.site h4{font-family:var(--fd);font-size:var(--fs-micro);letter-spacing:.08em;
-  text-transform:uppercase;color:#fff;margin-bottom:.9rem}
-footer.site a{color:#C3CFCC;text-decoration:none;display:block;padding:.28rem 0;font-size:var(--fs-micro)}
+/* Footer */
+footer.site{background:var(--ink);color:#A9B5B3;padding-block:var(--spy) 1.75rem;margin-top:var(--spy)}
+footer.site h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#fff;margin:0 0 .8rem}
+footer.site a{color:#A9B5B3;text-decoration:none;display:block;padding:.25rem 0;font-size:13px}
 footer.site a:hover{color:#fff;text-decoration:underline}
-.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2rem}
-@media (max-width:820px){.fgrid{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
-.fbrand .wm{color:#fff}
-.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:2.5rem;padding-top:1.5rem;
-  font-size:var(--fs-micro);color:var(--mute)}
-.legal a{display:inline;color:#C3CFCC}
-.confirm{color:var(--warn);font-weight:600}
+.fg{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:1.75rem}
+@media (max-width:800px){.fg{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.fg{grid-template-columns:1fr}}
+.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:2.25rem;padding-top:1.35rem;font-size:12px;color:#7D8A88}
+.legal a{display:inline;color:#A9B5B3}
 </style>
 </head>
 <body>
@@ -249,330 +185,166 @@ footer.site a:hover{color:#fff;text-decoration:underline}
 
 <header class="site">
   <div class="wrap bar">
-    <a class="brand" href="#top" aria-label="Linen Legends home">
+    <a class="logo" href="#top" aria-label="Linen Legends home">
       <svg class="mk" viewBox="0 0 36 36" role="img" aria-hidden="true">
-        <rect width="36" height="36" rx="10" fill="#23716B"/>
-        <path d="M9 13h18v13a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 9 26z" fill="#fff"/>
-        <circle cx="18" cy="20" r="4.4" fill="none" stroke="#23716B" stroke-width="2"/>
-        <circle cx="13" cy="10" r="1.5" fill="#fff"/><circle cx="18" cy="10" r="1.5" fill="#fff"/>
+        <rect width="36" height="36" rx="9" fill="#5BA69E"/>
+        <rect x="9" y="8" width="18" height="20" rx="3" fill="#fff"/>
+        <circle cx="18" cy="20" r="5" fill="none" stroke="#5BA69E" stroke-width="2"/>
+        <circle cx="13" cy="12" r="1.4" fill="#5BA69E"/>
       </svg>
-      <span class="wm">LINEN<span>LEGENDS</span></span>
+      <!-- Tagline truncated to "Refresh Your W..." in the screenshot. TO CONFIRM. -->
+      <span class="tx"><span class="n">Linen Legends</span>
+      <span class="s" title="TO CONFIRM: tagline truncated in the source screenshot">Refresh Your W&hellip;</span></span>
     </a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><i></i></button>
     <nav class="main" id="nav">
+      <!-- Nav items were hidden behind the publish dialog in the screenshot. -->
       <a href="#services">Services</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#coverage">Coverage</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-p navcta" href="#book">Schedule a pickup</a>
+      <a href="#locations">Locations</a>
+      <a href="#book">Contact</a>
+      <a class="btn" href="#book">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        Schedule A pickup</a>
     </nav>
   </div>
 </header>
 
-<main id="main">
-<a id="top"></a>
+<main id="main"><a id="top"></a>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
+  <div class="wrap hero-g">
     <div>
-      <span class="eyebrow">Doorstep collection across South East Queensland</span>
-      <h1>Fast, easy and reliable<br><span class="accent">laundry.</span></h1>
-      <p class="lede">We collect from your door, weigh it in front of you, wash it on its own
-      cycle, fold it and bring it back. No drop-off, no queue, no sorting through someone
-      else's washing.</p>
-      <div class="cta-row">
-        <a class="btn btn-p" href="#book">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-          Schedule a pickup</a>
-        <a class="btn btn-s" href="#pricing">See pricing</a>
-      </div>
-      <div class="trust">
-        <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Weighed before any work starts</b>
-        <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your load washed on its own</b>
-        <b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>All prices include GST</b>
+      <p class="eyebrow">Modern Machine<span class="confirm">TO CONFIRM: eyebrow truncated in screenshot</span></p>
+      <h1>Fast, Easy &amp; Reliable<span class="t">Laundry!</span></h1>
+      <p class="lead">Enjoy a hassle-free laundry experience with modern machines, free Wi-Fi,
+      a cozy lounge, and easy payment options. Fresh, clean clothes&mdash;made simple!</p>
+      <a class="btn" href="#book">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        Schedule A pickup</a>
+      <div class="social">
+        <span class="avs" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="rt"><b>Rating <span class="confirm">TO CONFIRM: real figure</span></b>
+        Reviews <span class="confirm">TO CONFIRM: real count</span></span>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true">
-      <svg viewBox="0 0 460 380" role="img">
-        <rect x="18" y="26" width="424" height="330" rx="26" fill="#EAF6F4"/>
-        <rect x="58" y="70" width="160" height="240" rx="18" fill="#fff" stroke="#C3CFCC" stroke-width="2"/>
-        <circle cx="138" cy="198" r="58" fill="#F5F8F7" stroke="#23716B" stroke-width="3"/>
-        <circle cx="138" cy="198" r="38" fill="#EAF6F4"/>
-        <path d="M104 198a34 34 0 0 1 68 0" fill="none" stroke="#48B3AA" stroke-width="5" stroke-linecap="round"/>
-        <circle cx="90" cy="100" r="7" fill="#2F8F87"/><circle cx="114" cy="100" r="7" fill="#C3CFCC"/>
-        <rect x="248" y="112" width="150" height="112" rx="16" fill="#fff" stroke="#C3CFCC" stroke-width="2"/>
-        <rect x="270" y="140" width="106" height="11" rx="5.5" fill="#DCE4E2"/>
-        <rect x="270" y="163" width="74" height="11" rx="5.5" fill="#DCE4E2"/>
-        <rect x="270" y="188" width="90" height="16" rx="8" fill="#2F8F87"/>
-        <rect x="248" y="248" width="150" height="62" rx="16" fill="#23716B"/>
-        <rect x="268" y="270" width="64" height="9" rx="4.5" fill="#8FD0C9"/>
-        <rect x="268" y="286" width="42" height="9" rx="4.5" fill="#5FB8AF"/>
+    <div class="hero-art">
+      <div class="ph tall" data-label="Photo slot — hero, laundromat interior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="13" r="5"/><circle cx="7.5" cy="7" r="1"/></svg>
+      </div>
+      <p class="scroll">Scroll Down <a href="#locations" aria-label="Scroll to next section">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a></p>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section id="locations" style="padding-top:0">
+  <div class="wrap">
+    <div class="loc">
+      <div>
+        <p class="kicker">Affordable cleaning solutions</p>
+        <h2>Find a laundry near you service</h2>
+        <p>We make doing laundry easy with modern machines, a comfortable space, and multiple
+        locations. Whether you're washing a few items or a big load, we've got everything you
+        need for a quick and hassle-free laundry experience.</p>
+        <a class="btn" href="#book">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          Find Your Nearest Location</a>
+      </div>
+      <svg viewBox="0 0 300 230" role="img" aria-label="Illustration of a service area map">
+        <path d="M44 150c-8-40 14-74 56-84s96-4 122 26 20 74-14 90-72 16-110 8-46-12-54-40z" fill="#EFE6D6"/>
+        <path d="M70 120h150M98 76v130M162 60v146" stroke="#fff" stroke-width="7" fill="none"/>
+        <rect x="112" y="132" width="26" height="17" rx="4" fill="#9FD0CA"/>
+        <rect x="182" y="96" width="30" height="18" rx="4" fill="#9FD0CA"/>
+        <rect x="74" y="150" width="20" height="14" rx="4" fill="#9FD0CA"/>
+        <circle cx="150" cy="124" r="16" fill="#fff"/><circle cx="150" cy="124" r="7" fill="#EFE6D6"/>
+        <path d="M196 30a21 21 0 0 1 21 21c0 16-21 36-21 36s-21-20-21-36a21 21 0 0 1 21-21z" fill="#3E9A93"/>
+        <circle cx="196" cy="51" r="8" fill="#fff"/>
       </svg>
     </div>
   </div>
 </section>
 
-<!-- COVERAGE -->
-<section id="coverage" class="wrap">
-  <div class="cover">
-    <div>
-      <span class="eyebrow">Where we collect</span>
-      <h2>Find out if we run your street.</h2>
-      <p>We collect across Brisbane, Logan and the wider South East Queensland corridor.
-      Each suburb is worked by the same operator every week, so the person who learns how
-      you like your washing done is the person who keeps doing it.</p>
-      <a class="btn btn-p" href="#book">Check your suburb</a>
-    </div>
-    <svg viewBox="0 0 300 220" role="img" aria-label="Illustration of a service coverage map">
-      <rect x="10" y="18" width="280" height="184" rx="20" fill="#fff" stroke="#C3CFCC" stroke-width="2"/>
-      <path d="M40 150c30-16 44 10 74-6s40-46 74-40 52 30 62 22" fill="none" stroke="#DCE4E2" stroke-width="10" stroke-linecap="round"/>
-      <path d="M32 96c36 8 58-22 92-12s46 44 82 34" fill="none" stroke="#EAF6F4" stroke-width="12" stroke-linecap="round"/>
-      <circle cx="104" cy="118" r="7" fill="#48B3AA"/><circle cx="178" cy="92" r="7" fill="#48B3AA"/>
-      <circle cx="222" cy="146" r="7" fill="#48B3AA"/>
-      <path d="M150 52a20 20 0 0 1 20 20c0 15-20 34-20 34s-20-19-20-34a20 20 0 0 1 20-20z" fill="#23716B"/>
-      <circle cx="150" cy="72" r="7.5" fill="#fff"/>
-    </svg>
-  </div>
-</section>
-
 <!-- SERVICES -->
-<section id="services" class="tint">
+<section id="services">
   <div class="wrap">
-    <div class="centered" style="margin-bottom:2.5rem">
-      <span class="eyebrow">Services</span>
-      <h2>Everything that goes in a machine, handled.</h2>
-      <p class="lede">Household washing through to commercial linen. Tell us what it is at
-      booking and we will tell you what it costs before we touch it.</p>
+    <div class="mid">
+      <span class="badge">Services</span>
+      <h2>Our laundry services</h2>
+      <p>While we can customize your cleaning plan to suit your needs, most clients schedule
+      regular cleaning services:</p>
     </div>
-    <div class="grid g3">
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4.2"/><circle cx="8" cy="7" r="1"/></svg></div>
-        <h3>Wash &amp; Fold</h3>
-        <p>The weekly basket. Washed, dried and folded. Lights and darks are washed
-        separately and count as two loads. One load is about 5 kg.</p>
+    <div class="svc">
+      <article class="sc">
+        <div class="ph" data-label="Photo slot — self-service laundry">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="13" r="5"/><circle cx="7.5" cy="7" r="1"/></svg></div>
+        <h3>Self&ndash;Service Laundry</h3>
+        <p>Use modern, high-capacity washers and dryers for a quick and smooth laundry process.</p>
       </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3"/></svg></div>
-        <h3>Blankets, Rugs &amp; Sheets</h3>
-        <p>Large linen that will not fit a domestic machine. Charged per item rather than by
-        weight, so a doona does not swallow your whole order.</p>
+      <article class="sc">
+        <div class="ph" data-label="Photo slot — pick and drop service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+        <h3>Pick &amp; Drop Service</h3>
+        <p>Convenient doorstep laundry pickup and delivery for clean, fresh clothes without effort.</p>
       </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Premium Clean</h3>
-        <p>A gentler process for items you would otherwise hand wash. Charged per load you
-        select, not per item. We do not offer ironing.</p>
+      <article class="sc">
+        <div class="ph" data-label="Photo slot — laundry express">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Laundry Express</h3>
+        <p>Fast and efficient wash-and-dry service for busy schedules and quick needs.</p>
       </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4h10l-1.5 5h-7z"/><path d="M12 9v4"/><path d="M5 21a7 7 0 0 1 14 0z"/></svg></div>
-        <h3>Dry Cleaning</h3>
-        <p>Suits, dresses, jackets and tailoring, priced per item and returned on hangers
-        with your regular collection.</p>
+      <article class="sc">
+        <div class="ph" data-label="Photo slot — service 4"></div>
+        <h3>Service four <span class="confirm">TO CONFIRM</span></h3>
+        <p>Below the fold in the screenshot, so the title and copy could not be read.</p>
       </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 10h3l2 3v4h-5z"/><circle cx="7.5" cy="19" r="1.8"/><circle cx="17.5" cy="19" r="1.8"/></svg></div>
-        <h3>Bulky Items</h3>
-        <p>Curtains, pet bedding, sleeping bags, work gear. Priced per item after we see it,
-        never guessed at over the phone.</p>
+      <article class="sc">
+        <div class="ph" data-label="Photo slot — service 5"></div>
+        <h3>Service five <span class="confirm">TO CONFIRM</span></h3>
+        <p>Below the fold in the screenshot, so the title and copy could not be read.</p>
       </article>
-      <article class="card">
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l7-4 7 4v13"/><path d="M17 21V11l4 2v8"/><path d="M8 21v-5h4v5"/></svg></div>
-        <h3>Commercial &amp; Linen</h3>
-        <p>Short-stay changeovers, salons, gyms, cafés and trades. Bulk rates with monthly
-        account billing and collections scheduled around your turnovers.</p>
-      </article>
-    </div>
-    <div class="note" style="margin-top:1.6rem">
-      <p><strong>Note on regulated linen.</strong> We do not currently hold accreditation to
-      process clinical or healthcare linen (AS/NZS 4146). If your business requires
-      accredited healthcare laundry, tell us at enquiry and we will say so plainly rather
-      than quote for work we cannot legally do.</p>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="wrap">
-    <div class="centered" style="margin-bottom:2.5rem">
-      <span class="eyebrow">How it works</span>
-      <h2>Three steps. Nothing to drop off.</h2>
-    </div>
-    <div class="grid g4">
-      <div class="step"><div class="n">1</div><h3>You put it out</h3>
-        <p>Book a collection window and leave your bag at the door. No need to be home.</p></div>
-      <div class="step"><div class="n">2</div><h3>Weighed at your door</h3>
-        <p>Your operator weighs and counts on the spot and confirms the final price before
-        starting. You pay after weighing, not before.</p></div>
-      <div class="step"><div class="n">3</div><h3>Washed on its own cycle</h3>
-        <p>Your load is never mixed with another household's. Your detergent, temperature
-        and folding preferences are saved and applied every time.</p></div>
-      <div class="step"><div class="n">4</div><h3>Back on your doormat</h3>
-        <p>Standard return is next day. Folded, sorted and bagged, back where it started.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="tint">
-  <div class="wrap">
-    <div class="centered" style="margin-bottom:2.5rem">
-      <span class="eyebrow">Pricing</span>
-      <h2>Priced online. Booked in a minute.</h2>
-      <p class="lede">All prices include GST and are shown in Australian dollars. Collection
-      and return are included in the delivery fee. No call-out charge, no fuel levy.</p>
-    </div>
-    <div class="grid g3">
-      <article class="card feat">
-        <span class="tag">Most booked</span>
-        <h3>Wash &amp; Fold</h3>
-        <div class="price"><span class="amt">$32</span><span class="per">per load, approx. 5 kg</span></div>
-        <p>Washed, dried and folded. Lights and darks count as two loads.</p>
-      </article>
-      <article class="card">
-        <h3>Collection &amp; return</h3>
-        <div class="price"><span class="amt">$13.50</span><span class="per">flat, both ways</span></div>
-        <p>One fee covering pickup and delivery. Not charged twice.</p>
-      </article>
-      <article class="card">
-        <h3>Minimum order</h3>
-        <div class="price"><span class="amt">$73.50</span><span class="per">per collection</span></div>
-        <p>Applies to one-off bookings only. Members on a recurring plan are not subject to it.</p>
-      </article>
-    </div>
-
-    <div class="grid g2" style="margin-top:2.25rem;align-items:start">
-      <div>
-        <h3 style="margin-bottom:1.1rem">How your price is calculated</h3>
-        <dl class="calc">
-          <div><dt>Loads</dt><dd>One load is approximately 5 kg. Lights and darks are washed separately and count as two loads.</dd></div>
-          <div><dt>Large linen</dt><dd>Blankets, rugs and sheet sets only, charged per item rather than by weight.</dd></div>
-          <div><dt>Premium Clean</dt><dd>Charged per load you select, not per item. We do not offer ironing.</dd></div>
-          <div><dt>Delivery</dt><dd>One flat fee covering both collection and return.</dd></div>
-          <div><dt>Confirmation</dt><dd>Your operator weighs and counts at collection and confirms the final price before starting work.</dd></div>
-        </dl>
-      </div>
-      <div class="note">
-        <p><strong>Pricing under review.</strong> The figures above are launch pricing and are
-        subject to change as the operator network and delivery costs settle. Any price change
-        is published here before it takes effect, and members on a recurring plan are notified
-        in writing before their next billing date.</p>
-        <p style="margin-top:.8rem">Per-item rates for dry cleaning, bulky items and large
-        linen are quoted at booking. <span class="confirm">TO CONFIRM: per-item rate card
-        before publish.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section id="why">
-  <div class="wrap">
-    <div class="centered" style="margin-bottom:2.5rem">
-      <span class="eyebrow">Why us</span>
-      <h2>Small, honest, and built to hand your washing back better than you sent it.</h2>
-    </div>
-    <div class="grid g3">
-      <article class="card"><h3>Pay after weighing</h3>
-        <p>Nothing is charged until your load is weighed and counted in front of you and the
-        price is confirmed. No estimate that quietly grows.</p></article>
-      <article class="card"><h3>Same operator each week</h3>
-        <p>Your suburb is run by one operator. Preferences are set once and applied every
-        collection without you repeating yourself.</p></article>
-      <article class="card"><h3>Screened operators</h3>
-        <p>Every operator completes identity and national police checks and holds their own
-        ABN as an independent contractor before taking a first collection.</p></article>
-      <article class="card"><h3>Standard next-day return</h3>
-        <p>Collected one day, back the next. If we are running late you hear it from us
-        first, not after you have chased.</p></article>
-      <article class="card"><h3>Supported living</h3>
-        <p>We can be engaged directly by self-managed and plan-managed NDIS participants. We
-        are not a registered NDIS provider, so we cannot invoice the NDIA directly for
-        agency-managed plans.</p></article>
-      <article class="card"><h3>Your rights are not limited</h3>
-        <p>Our services come with guarantees that cannot be excluded under the Australian
-        Consumer Law. Nothing on this site limits or replaces those rights.</p></article>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="tint">
-  <div class="wrap" style="max-width:820px">
-    <div class="centered" style="margin-bottom:2.25rem">
-      <span class="eyebrow">FAQ</span>
-      <h2>Frequently asked questions</h2>
-    </div>
-    <details class="faq" open><summary>Do I need to be home for collection?</summary>
-      <p>No. Leave your bag at the door inside your collection window. Your operator weighs
-      it there, confirms the price with you, and goes.</p></details>
-    <details class="faq"><summary>How is my washing kept separate?</summary>
-      <p>Each household's load runs on its own cycle. Your washing is not combined with
-      anyone else's at any point.</p></details>
-    <details class="faq"><summary>When do I pay?</summary>
-      <p>After weighing. Your operator weighs and counts at collection and confirms the final
-      price before any work begins.</p></details>
-    <details class="faq"><summary>Do you clean healthcare or clinical linen?</summary>
-      <p>Not currently. We do not hold AS/NZS 4146 accreditation, so we will not quote for
-      work that legally requires it. If you need accredited healthcare laundry we will tell
-      you so at enquiry.</p></details>
-    <details class="faq"><summary>Do you work with NDIS participants?</summary>
-      <p>We can be engaged directly by self-managed and plan-managed participants, or by a
-      support coordinator acting on a participant's behalf. We are not currently a registered
-      NDIS provider, so we cannot invoice the NDIA directly for agency-managed plans.</p></details>
-    <details class="faq"><summary>What if something is damaged or missing?</summary>
-      <p>Tell us and we will investigate and respond within five business days. Your rights
-      under the Australian Consumer Law are not limited by anything on this page.</p></details>
-    <details class="faq"><summary>Are your prices GST inclusive?</summary>
-      <p>Yes. Every price shown includes GST and is in Australian dollars.</p></details>
-  </div>
-</section>
-
-<!-- BOOK / CTA -->
+<!-- BEYOND THIS POINT THE SCREENSHOT ENDS -->
 <section id="book">
   <div class="wrap">
-    <div class="band">
-      <h2>Ready to get your weekend back?</h2>
-      <p>Tell us your suburb and what needs washing. We will confirm your collection window
-      and what it will cost before anything is picked up.</p>
-      <div class="cta-row" style="justify-content:center">
-        <a class="btn btn-g" href="#contact">Schedule a pickup</a>
-        <a class="btn btn-g" href="#pricing">See pricing</a>
+    <div class="loc" style="text-align:center;grid-template-columns:1fr">
+      <div>
+        <h2>Ready to book a pickup?</h2>
+        <p style="margin-inline:auto">Everything past the services grid was below the fold and
+        is not reproduced here. <span class="confirm">TO CONFIRM: remaining sections</span></p>
+        <a class="btn" href="#book" style="margin-top:.5rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          Schedule A pickup</a>
       </div>
     </div>
   </div>
 </section>
 </main>
 
-<footer class="site" id="contact">
+<footer class="site">
   <div class="wrap">
-    <div class="fgrid">
-      <div class="fbrand">
-        <span class="wm" style="font-family:var(--fd);font-weight:900;line-height:.94;
-          letter-spacing:-.02em;color:#fff;font-size:var(--fs-micro);text-transform:uppercase;display:block">
-          LINEN<span style="display:block;font-size:var(--fs-4);letter-spacing:-.03em">LEGENDS</span></span>
-        <p style="margin-top:.9rem;font-size:var(--fs-micro);max-width:34ch">Laundry collection
-        and delivery across Brisbane, Logan and South East Queensland.</p>
-        <p style="font-size:var(--fs-micro)"><span class="confirm">TO CONFIRM: phone number
-        and enquiry email.</span></p>
+    <div class="fg">
+      <div>
+        <span style="font-weight:900;font-size:19px;color:#fff;text-transform:uppercase;letter-spacing:-.02em">Linen Legends</span>
+        <p style="margin-top:.7rem;font-size:13px;max-width:32ch">Laundry pickup and delivery.
+        <span class="confirm">TO CONFIRM: phone, email, service area</span></p>
       </div>
-      <div><h4>Service</h4>
-        <a href="#services">Services</a><a href="#pricing">Pricing</a>
-        <a href="#coverage">Coverage &amp; suburbs</a><a href="#services">For business</a>
-        <a href="#why">Supported living</a></div>
-      <div><h4>Company</h4>
-        <a href="#why">About us</a><a href="#faq">FAQ</a>
-        <a href="#contact">Contact &amp; complaints</a></div>
-      <div><h4>Legal</h4>
-        <a href="#faq">Service guarantee</a><a href="#contact">Privacy policy</a>
-        <a href="#contact">Terms of service</a></div>
+      <div><h4>Services</h4><a href="#services">Self-Service Laundry</a>
+        <a href="#services">Pick &amp; Drop Service</a><a href="#services">Laundry Express</a></div>
+      <div><h4>Company</h4><a href="#locations">Locations</a><a href="#book">Contact</a></div>
+      <div><h4>Legal</h4><a href="#book">Privacy policy</a><a href="#book">Terms of service</a></div>
     </div>
+    <!-- AU compliance line. Required on a trading site; not present in the template. -->
     <p class="legal">&copy; <span id="yr">2026</span> Linen Legends
-    &middot; <span class="confirm">Company name and ABN to be published on registration</span>
-    &middot; All prices include GST and are in AUD
-    &middot; Australian owned and operated</p>
+      &middot; <span class="confirm">Company name and ABN to be published on registration</span>
+      &middot; All prices include GST and are shown in AUD
+      &middot; Services come with guarantees that cannot be excluded under the Australian Consumer Law
+      &middot; We do not hold AS/NZS 4146 accreditation and do not process clinical or healthcare linen
+      &middot; NDIS: we can be engaged by self-managed and plan-managed participants; we are not a registered NDIS provider</p>
   </div>
 </footer>
 
@@ -580,12 +352,12 @@ footer.site a:hover{color:#fff;text-decoration:underline}
 (function(){
   var b=document.getElementById('burger'), n=document.getElementById('nav');
   b.addEventListener('click',function(){
-    var open=n.classList.toggle('open');
-    b.setAttribute('aria-expanded',String(open));
-    b.setAttribute('aria-label',open?'Close menu':'Open menu');
+    var o=n.classList.toggle('open');
+    b.setAttribute('aria-expanded',String(o));
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
   });
   n.addEventListener('click',function(e){
-    if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false');}
+    if(e.target.closest('a')){n.classList.remove('open');b.setAttribute('aria-expanded','false');}
   });
   document.getElementById('yr').textContent=new Date().getFullYear();
 })();
