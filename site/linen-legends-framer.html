@@ -2388,12 +2388,16 @@ button { font-family: var(--f); cursor: pointer; }
   let activeIdx = 0;
   let autoTimer;
 
+  let snapT;
   function scrollToCard(idx) {
     const cards = track.querySelectorAll('.test-card');
     if (!cards[idx]) return;
     const cardLeft   = cards[idx].offsetLeft;
     const trackLeft  = track.offsetLeft;
     const offset     = cardLeft - trackLeft - 48;
+    track.style.scrollSnapType = 'none';
+    clearTimeout(snapT);
+    snapT = setTimeout(() => { track.style.scrollSnapType = ''; }, 700);
     track.scrollTo({ left: offset, behavior: 'smooth' });
     dots.forEach((d, i) => d.classList.toggle('active', i === idx));
     activeIdx = idx;
@@ -2415,7 +2419,7 @@ button { font-family: var(--f); cursor: pointer; }
     });
   });
 
-  track.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
+  track.addEventListener('touchstart', () => { track.style.scrollSnapType = ''; clearInterval(autoTimer); }, { passive: true });
   track.addEventListener('touchend', () => {
     autoTimer = setInterval(nextCard, 3000);
   }, { passive: true });
@@ -2823,17 +2827,22 @@ button { font-family: var(--f); cursor: pointer; }
     dots.innerHTML = cards.map((_, i) => '<button type="button" aria-label="Show card ' + (i + 1) + '"></button>').join('');
     track.after(dots);
     const btns = [...dots.children];
-    let idx = 0, paused = false, resumeT = 0, visible = false;
+    let idx = 0, paused = false, resumeT = 0, visible = false, snapT = 0;
     const go = i => {
       idx = (i + cards.length) % cards.length;
+      /* iOS snaps a long programmatic scroll back mid-flight, so the
+         wrap to card 1 never lands; lift the snap while we drive. */
+      track.style.scrollSnapType = 'none';
       track.scrollTo({ left: cards[idx].offsetLeft - cards[0].offsetLeft, behavior: still.matches ? 'auto' : 'smooth' });
+      clearTimeout(snapT);
+      snapT = setTimeout(() => { track.style.scrollSnapType = ''; }, 700);
     };
     const mark = () => btns.forEach((b, i) => b.classList.toggle('on', i === idx));
     track.addEventListener('scroll', () => {
       const x = track.scrollLeft, w = cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
       idx = Math.min(cards.length - 1, Math.round(x / w)); mark();
     }, { passive: true });
-    const hold = () => { paused = true; clearTimeout(resumeT); resumeT = setTimeout(() => { paused = false; }, 6000); };
+    const hold = () => { track.style.scrollSnapType = ''; paused = true; clearTimeout(resumeT); resumeT = setTimeout(() => { paused = false; }, 6000); };
     ['pointerdown', 'touchstart', 'wheel'].forEach(ev => track.addEventListener(ev, hold, { passive: true }));
     btns.forEach((b, i) => b.addEventListener('click', () => { hold(); go(i); }));
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }, { threshold: 0.5 }).observe(track);
