@@ -9,6 +9,7 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 | Path | What it is |
 |---|---|
 | `site/laundrylegends-site.html` | The complete website (marketing, customer app, ops backend) as one file. Renamed from `laundrykings-site.html` and rebranded LaundryKings → Laundrylegends on 19 September 2026; the live artefact needs republishing to match (see note below). |
+| `site/linenlegends-site.html` | **Linen Legends** marketing site, one file. A native rebuild of the Framer template at `laundryhub.framer.website` (FramerGeeks laundry template), reconstructed from the canvas screenshot of 22 September 2026 because the egress proxy blocks `framer.app` and `framer.website`. No Framer runtime, no template watermark. Copy, pricing and compliance text are sourced from `site/laundrylegends-site.html`; the file header lists every source. `verify/preflight.py` does **not** apply to it (that gate is hard-wired to the 39-section main artefact). |
 | `verify/preflight.py` | Pre-publish checks. Run before every publish. |
 | `dossier/*.html`, `dossier/build.py` | Source and build script for the Complete Project Dossier. |
 | `dossier/LKG-GOV00-01_Complete Dossier_v2.pdf` | The built dossier, revision 2, 19 September 2026. |
