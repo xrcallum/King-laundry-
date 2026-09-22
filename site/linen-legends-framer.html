@@ -651,60 +651,88 @@ button { font-family: var(--f); cursor: pointer; }
   transition: transform .4s var(--ease), opacity .3s var(--ease);
 }
 .bk.open .bk-panel { transform: none; opacity: 1; }
-.bk-head { padding: 1.25rem 1.5rem 1rem; border-bottom: 1px solid var(--line); background: var(--bg); border-radius: var(--r-xl) var(--r-xl) 0 0; }
-.bk-top { display: flex; align-items: flex-start; gap: .85rem; }
-.bk-ib {
-  flex: none; width: 40px; height: 40px; display: grid; place-items: center;
-  border: 1px solid var(--line); border-radius: var(--r); background: var(--bg);
-  color: var(--navy); cursor: pointer; font-size: 1.1rem; font-family: var(--f);
-  transition: background var(--tr), border-color var(--tr);
+.bk-head {
+  padding: 1.25rem 1.5rem 1.1rem; border-bottom: 1px solid var(--line); border-radius: var(--r-xl) var(--r-xl) 0 0;
+  background: linear-gradient(180deg, var(--teal-w) 0%, var(--bg) 130%);
 }
-.bk-ib:hover { background: var(--teal-w); border-color: var(--teal-l); }
+.bk-top { display: flex; align-items: center; gap: .75rem; }
+.bk-ib {
+  flex: none; width: 38px; height: 38px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 50%; background: var(--bg);
+  color: var(--navy); cursor: pointer; font-family: var(--f);
+  transition: background var(--tr), border-color var(--tr), box-shadow var(--tr);
+}
+.bk-ib svg { width: 17px; height: 17px; }
+.bk-ib:hover { background: var(--teal-w); border-color: var(--teal-l); box-shadow: var(--shadow-sm); }
 .bk-ib[aria-hidden="true"] { visibility: hidden; }
+.bk-hero-ic {
+  flex: none; width: 42px; height: 42px; border-radius: 13px;
+  background: linear-gradient(150deg, #fff, var(--teal-w)); border: 1px solid var(--teal-l);
+  color: var(--teal-d); display: grid; place-items: center; box-shadow: var(--shadow-sm);
+}
+.bk-hero-ic svg { width: 21px; height: 21px; }
 .bk-ttl { flex: 1; min-width: 0; }
-.bk-ttl h2 { font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.2; outline: none; }
-.bk-ttl p { font-size: .88rem; color: var(--mute); margin-top: .15rem; }
-.bk-prog { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: 1rem; }
-.bk-prog span { height: 5px; border-radius: 99px; background: var(--line); transition: background .3s var(--ease); }
-.bk-prog span.on { background: var(--teal); }
+.bk-ttl h2 { font-size: 1.3rem; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.2; outline: none; }
+.bk-ttl p { font-size: .85rem; color: var(--mute); margin-top: .15rem; }
+.bk-stepper { display: flex; align-items: flex-start; margin-top: 1.15rem; padding: 0 2px; }
+.bk-sp { display: flex; flex-direction: column; align-items: center; gap: .35rem; flex: none; width: 3.4rem; }
+.bk-sp-c {
+  width: 25px; height: 25px; border-radius: 50%; display: grid; place-items: center;
+  font-size: .72rem; font-weight: 800; background: var(--line); color: var(--mute);
+  transition: background .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.bk-sp small { font-size: .6rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--mute); transition: color .3s var(--ease); }
+.bk-sp.on .bk-sp-c { background: var(--teal); color: #fff; box-shadow: 0 0 0 4px var(--teal-w); }
+.bk-sp.on small { color: var(--teal-d); }
+.bk-sp.done .bk-sp-c { background: var(--navy); color: #fff; font-size: .8rem; }
+.bk-sp.done small { color: var(--navy); }
+.bk-sp-line { flex: 1; height: 2px; background: var(--line); border-radius: 2px; margin-top: 12px; transition: background .3s var(--ease); }
+.bk-sp-line.done { background: var(--navy); }
 .bk-body { flex: 1; overflow-y: auto; padding: 1.25rem 1.5rem; overscroll-behavior: contain; }
 .bk-step { display: none; }
 .bk-step.on { display: block; animation: bkIn .35s var(--ease); }
 @keyframes bkIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .bk-lbl { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 0 0 .7rem; }
-.bk-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.1rem 1.15rem; margin-bottom: .85rem; }
-.bk-card h3 { font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .6rem; }
+.bk-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.1rem 1.15rem; margin-bottom: .85rem; box-shadow: var(--shadow-sm); }
+.bk-card h3 { display: flex; align-items: center; gap: .55rem; font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .6rem; }
+.bk-card h3 svg { flex: none; width: 18px; height: 18px; color: var(--teal-d); }
 .bk-fine { font-size: .78rem; color: var(--mute); line-height: 1.55; margin-top: .6rem; }
 .bk-svc { display: grid; grid-template-columns: repeat(2,1fr); gap: .65rem; margin-bottom: .6rem; }
 .bk-tile {
-  display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center;
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: .35rem; text-align: center;
   padding: 1.05rem .6rem; border: 2px solid var(--line); border-radius: var(--r-lg);
   background: var(--bg); color: var(--navy); cursor: pointer; font-family: var(--f);
-  transition: border-color var(--tr), background var(--tr), transform var(--tr);
+  transition: border-color var(--tr), background var(--tr), transform var(--tr), box-shadow var(--tr);
 }
-.bk-tile:hover { transform: translateY(-2px); border-color: var(--teal-l); }
+.bk-tile:hover { transform: translateY(-2px); border-color: var(--teal-l); box-shadow: var(--shadow-sm); }
 .bk-tile svg { width: 34px; height: 34px; margin-bottom: .2rem; }
 .bk-tile b { font-size: .88rem; font-weight: 700; color: var(--ink); }
 .bk-tile small { font-size: .78rem; color: var(--mute); }
-.bk-tile.on { border-color: var(--teal); background: var(--teal-w); color: var(--teal-d); }
+.bk-tile.on { border-color: var(--teal); background: var(--teal-w); color: var(--teal-d); box-shadow: var(--shadow-sm); }
+.bk-tile.on::after, .bk-opt.on::after {
+  content: '\2713'; position: absolute; top: .55rem; right: .55rem; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--teal); color: #fff; font-size: .62rem; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(42,157,143,.4);
+}
 .bk-more { display: inline-block; font-size: .84rem; font-weight: 600; color: var(--teal-d); margin: .15rem 0 .9rem; }
 .bk-more:hover { text-decoration: underline; }
 .bk-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .bk-row + .bk-row { margin-top: .8rem; }
 .bk-row > span { font-size: .88rem; color: var(--body); }
-.bk-stp { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
-.bk-stp button { width: 40px; height: 40px; border: none; background: var(--bg); color: var(--navy); font-size: 1.15rem; cursor: pointer; font-family: var(--f); }
-.bk-stp button:hover { background: var(--teal-w); }
-.bk-stp output { min-width: 40px; text-align: center; font-weight: 700; color: var(--ink); }
+.bk-stp { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: var(--paper); }
+.bk-stp button { width: 38px; height: 38px; border: none; background: transparent; color: var(--navy); font-size: 1.15rem; cursor: pointer; font-family: var(--f); }
+.bk-stp button:hover { background: var(--teal-w); color: var(--teal-d); }
+.bk-stp output { min-width: 38px; text-align: center; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .bk-g2 { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; }
 .bk-opt {
-  display: flex; flex-direction: column; gap: .2rem; text-align: left; padding: .85rem .95rem;
+  position: relative; display: flex; flex-direction: column; gap: .2rem; text-align: left; padding: .85rem .95rem;
   border: 2px solid var(--line); border-radius: var(--r); background: var(--bg);
-  cursor: pointer; font-family: var(--f); transition: border-color var(--tr), background var(--tr);
+  cursor: pointer; font-family: var(--f); transition: border-color var(--tr), background var(--tr), box-shadow var(--tr);
 }
+.bk-opt:hover { box-shadow: var(--shadow-sm); }
 .bk-opt strong { font-size: .88rem; color: var(--ink); }
 .bk-opt span { font-size: .78rem; color: var(--mute); }
-.bk-opt.on { border-color: var(--teal); background: var(--teal-w); }
+.bk-opt.on { border-color: var(--teal); background: var(--teal-w); box-shadow: var(--shadow-sm); }
 .bk-slot { display: flex; align-items: center; gap: 1rem; width: 100%; margin-bottom: .6rem; flex-direction: row; }
 .bk-day { flex: none; width: 54px; text-align: center; padding: .35rem 0; border-radius: var(--r); background: var(--teal-w); color: var(--teal-d); line-height: 1.15; }
 .bk-day s { display: block; text-decoration: none; font-size: .66rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
@@ -714,10 +742,15 @@ button { font-family: var(--f); cursor: pointer; }
 .bk-fld label { display: block; font-size: .8rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; }
 .bk-fld input, .bk-fld textarea, .bk-fld select {
   width: 100%; padding: .7rem .85rem; border: 1.5px solid var(--line); border-radius: var(--r);
-  font: inherit; font-size: .9rem; color: var(--ink); background: var(--bg);
-  transition: border-color var(--tr), box-shadow var(--tr);
+  font: inherit; font-size: .9rem; color: var(--ink); background: var(--paper);
+  transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
 }
+.bk-inp-ic { position: relative; }
+.bk-inp-ic svg { position: absolute; left: .8rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--mute); pointer-events: none; transition: color var(--tr); }
+.bk-inp-ic input { padding-left: 2.5rem; }
+.bk-inp-ic:focus-within svg { color: var(--teal-d); }
 .bk-fld textarea { min-height: 76px; resize: vertical; }
+.bk-fld input:focus, .bk-fld textarea:focus, .bk-fld select:focus { background: var(--bg); }
 .bk-fld input:focus, .bk-fld textarea:focus, .bk-fld select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
 .bk-g3 { display: grid; grid-template-columns: 2fr 1fr; gap: .65rem; }
 .bk-tgl { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -1817,11 +1850,18 @@ button { font-family: var(--f); cursor: pointer; }
   <div class="bk-panel">
     <div class="bk-head">
       <div class="bk-top">
-        <button type="button" class="bk-ib" id="bkBack" aria-label="Back a step" aria-hidden="true">&#8249;</button>
+        <button type="button" class="bk-ib" id="bkBack" aria-label="Back a step" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="bk-hero-ic" id="bkHeroIc" aria-hidden="true"></div>
         <div class="bk-ttl"><h2 id="bkTitle" tabindex="-1">Choose your service</h2><p id="bkSub">Select what you need washed.</p></div>
-        <button type="button" class="bk-ib" data-bk-close aria-label="Close booking">&times;</button>
+        <button type="button" class="bk-ib" data-bk-close aria-label="Close booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
-      <div class="bk-prog" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+      <div class="bk-stepper" id="bkStepper" aria-hidden="true">
+        <div class="bk-sp" data-sp="1"><span class="bk-sp-c">1</span><small>Service</small></div>
+        <div class="bk-sp-line" data-spl="1"></div>
+        <div class="bk-sp" data-sp="2"><span class="bk-sp-c">2</span><small>Window</small></div>
+        <div class="bk-sp-line" data-spl="2"></div>
+        <div class="bk-sp" data-sp="3"><span class="bk-sp-c">3</span><small>Review</small></div>
+      </div>
     </div>
 
     <div class="bk-body" id="bkBody">
@@ -1833,7 +1873,7 @@ button { font-family: var(--f); cursor: pointer; }
         <a href="#contact" class="bk-more" data-bk-close>Dry cleaning or commercial laundry? Send us an enquiry &rarr;</a>
 
         <div class="bk-card">
-          <h3>Approximate quantity</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16l-1.5 9a2 2 0 01-2 1.7h-9a2 2 0 01-2-1.7z"/><path d="M8 10l4-6 4 6M9 14v3M15 14v3"/></svg>Approximate quantity</h3>
           <div class="bk-row" id="bkRowA"><span id="bkLblA">Loads (approx. 5&nbsp;kg each)</span>
             <div class="bk-stp"><button type="button" data-q="a,-1" aria-label="Decrease">&minus;</button><output id="bkA">2</output><button type="button" data-q="a,1" aria-label="Increase">+</button></div>
           </div>
@@ -1849,7 +1889,7 @@ button { font-family: var(--f); cursor: pointer; }
         </div>
 
         <div class="bk-card">
-          <h3>Do you need a bag?</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l1 12a2 2 0 01-2 2H7a2 2 0 01-2-2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>Do you need a bag?</h3>
           <div class="bk-g2">
             <button type="button" class="bk-opt on" data-bag="0"><strong>I have my own</strong><span>Any bag or basket. No charge.</span></button>
             <button type="button" class="bk-opt" data-bag="1"><strong>Send me a bag</strong><span id="bkBagPx">Reusable bag, yours to keep</span></button>
@@ -1877,13 +1917,21 @@ button { font-family: var(--f); cursor: pointer; }
       <!-- STEP 3 — DETAILS + REVIEW -->
       <div class="bk-step" data-step="3">
         <div class="bk-card">
-          <h3>Your details</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>Your details</h3>
           <div class="bk-g2">
-            <div class="bk-fld"><label for="bkName">Full name</label><input id="bkName" autocomplete="name" required></div>
-            <div class="bk-fld"><label for="bkPhone">Mobile</label><input id="bkPhone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx" required></div>
+            <div class="bk-fld"><label for="bkName">Full name</label><div class="bk-inp-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
+              <input id="bkName" autocomplete="name" required></div></div>
+            <div class="bk-fld"><label for="bkPhone">Mobile</label><div class="bk-inp-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a1.5 1.5 0 01-1.6 1.5A16 16 0 015 5.1 1.5 1.5 0 016.5 3.5z"/></svg>
+              <input id="bkPhone" type="tel" autocomplete="tel" placeholder="04xx xxx xxx" required></div></div>
           </div>
-          <div class="bk-fld"><label for="bkEmail">Email</label><input id="bkEmail" type="email" autocomplete="email" required></div>
-          <div class="bk-fld"><label for="bkLine1">Collection address</label><input id="bkLine1" autocomplete="address-line1" placeholder="Street address" required></div>
+          <div class="bk-fld"><label for="bkEmail">Email</label><div class="bk-inp-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>
+            <input id="bkEmail" type="email" autocomplete="email" required></div></div>
+          <div class="bk-fld"><label for="bkLine1">Collection address</label><div class="bk-inp-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+            <input id="bkLine1" autocomplete="address-line1" placeholder="Street address" required></div></div>
           <div class="bk-g3">
             <div class="bk-fld"><label for="bkSuburb">Suburb</label><input id="bkSuburb" autocomplete="address-level2" required></div>
             <div class="bk-fld"><label for="bkPc">Postcode</label><input id="bkPc" inputmode="numeric" maxlength="4" autocomplete="postal-code" required></div>
@@ -1910,7 +1958,7 @@ button { font-family: var(--f); cursor: pointer; }
         </div>
 
         <div class="bk-card">
-          <h3>Estimate</h3>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Estimate</h3>
           <div class="bk-sum" id="bkSum"></div>
           <p class="bk-fine" id="bkMinNote"></p>
           <p class="bk-fine">Payment is taken after your items are weighed and counted, before your laundry is returned. Accepted payment methods: [TBC].</p>
@@ -2146,10 +2194,23 @@ button { font-family: var(--f); cursor: pointer; }
     3: ['Review and confirm', 'Your details, instructions and estimate.'],
     4: ['Booking requested', '']
   };
+  const HERO_ICONS = {
+    1: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3.5"/><circle cx="12" cy="13" r="4.5"/><path d="M6 6.5h3"/></svg>',
+    2: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M12 13.5v3l2 1.3"/></svg>',
+    3: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3.5h8a1 1 0 011 1V4a2 2 0 01-2 2H9a2 2 0 01-2-2v-.5a1 1 0 011-1z"/><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M8.5 13l2 2 4.5-4.5"/></svg>',
+    4: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>'
+  };
 
   function render() {
     document.querySelectorAll('#bk [data-step]').forEach(s => s.classList.toggle('on', +s.dataset.step === W.step));
-    document.querySelectorAll('#bk .bk-prog span').forEach((s, i) => s.classList.toggle('on', i < Math.min(W.step, 3)));
+    document.querySelectorAll('#bk .bk-sp').forEach(s => {
+      const n = +s.dataset.sp;
+      s.classList.toggle('on', n === Math.min(W.step, 3));
+      s.classList.toggle('done', n < W.step);
+      s.querySelector('.bk-sp-c').innerHTML = n < W.step ? '&#10003;' : String(n);
+    });
+    document.querySelectorAll('#bk .bk-sp-line').forEach(l => l.classList.toggle('done', +l.dataset.spl < W.step));
+    $('bkHeroIc').innerHTML = HERO_ICONS[W.step];
     $('bkTitle').textContent = TITLES[W.step][0];
     $('bkSub').textContent = TITLES[W.step][1];
     $('bkBack').setAttribute('aria-hidden', W.step > 1 && W.step < 4 ? 'false' : 'true');
