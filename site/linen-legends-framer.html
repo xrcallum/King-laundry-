@@ -780,7 +780,7 @@ button { font-family: var(--f); cursor: pointer; }
 .est-card .btn { width: 100%; justify-content: center; }
 .est-note { font-size: .8rem; color: var(--mute); text-align: center; margin-top: .8rem; }
 
-#promise { background: var(--bg); padding-top: 0; }
+
 .pr-grid, .aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
 .pr-card, .aud-card {
   display: flex; flex-direction: column; gap: .7rem; padding: 1.9rem;
@@ -998,6 +998,64 @@ button { font-family: var(--f); cursor: pointer; }
 .cov-chip { display: inline-flex; align-items: baseline; gap: .35rem; padding: .5rem .95rem; border-radius: 99px; background: var(--bg); border: 1px solid var(--line); font-size: .86rem; font-weight: 600; color: var(--ink); }
 .cov-chip small { font-size: .74rem; font-weight: 500; color: var(--mute); }
 .cov-ask { background: var(--teal-w); border-color: var(--teal-l); color: var(--teal-d); cursor: pointer; font-family: var(--f); }
+
+
+/* ── promise ledger + who list (replaces the three card carousels) ── */
+#benefits .pm-hd { max-width: 720px; }
+#benefits .section-sub { margin: 0 0 2rem; }
+.pm-ledger { background: linear-gradient(150deg, var(--navy-d), var(--navy) 60%, #12306F); color: #fff; border-radius: var(--r-xl); padding: .5rem 1.75rem 1.25rem; box-shadow: 0 26px 60px -22px rgba(7,26,69,.5); scroll-margin-top: 90px; }
+.pm-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.5rem; align-items: center; padding: 1.35rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.pm-big b { display: block; font-size: 2.6rem; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--teal-xl); }
+.pm-big small { display: block; margin-top: .3rem; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.pm-row h3 { font-size: 1.05rem; color: #fff; margin-bottom: .25rem; }
+.pm-row p { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.72); }
+.pm-acl { font-size: .74rem; color: rgba(255,255,255,.5); padding-top: 1rem; }
+.pm-sub { margin: 3rem 0 1.25rem; }
+.pm-sub h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--navy); }
+.pm-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.pm-grid li { display: flex; gap: .85rem; align-items: flex-start; padding: 1.25rem; background: var(--bg); }
+.pm-grid svg { flex: none; width: 26px; height: 26px; color: var(--teal-d); margin-top: .1rem; }
+.pm-grid h4 { font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+.pm-grid p { font-size: .82rem; line-height: 1.5; color: var(--mute); }
+.pm-cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+.who-hd { max-width: 720px; }
+.aud-list { display: flex; flex-direction: column; gap: .85rem; margin-top: .5rem; }
+.aud-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1.25rem; align-items: center; padding: 1.35rem 1.5rem; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); transition: box-shadow var(--tr), border-color var(--tr), transform var(--tr); }
+.aud-row:hover { box-shadow: var(--shadow-md); border-color: var(--teal-l); transform: translateY(-2px); }
+.aud-ic { width: 52px; height: 52px; border-radius: 14px; background: var(--teal-w); color: var(--navy); display: grid; place-items: center; }
+.aud-ic svg { width: 26px; height: 26px; }
+.aud-tx strong { display: block; font-size: 1.05rem; color: var(--navy); }
+.aud-tx small { display: block; font-size: .88rem; color: var(--body); margin-top: .15rem; }
+.aud-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
+.aud-tags i { font-style: normal; font-size: .72rem; font-weight: 700; color: var(--teal-d); background: var(--teal-w); padding: .2rem .6rem; border-radius: 99px; }
+.aud-go { display: inline-flex; align-items: center; gap: .35rem; font-weight: 700; font-size: .9rem; color: var(--teal-d); white-space: nowrap; }
+.aud-chev { width: 18px; height: 18px; transition: transform var(--tr); }
+.aud-row:hover .aud-chev { transform: translateX(3px); }
+.op-band { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.5rem; padding: 1.5rem 1.75rem; border-radius: var(--r-lg); background: linear-gradient(120deg, var(--teal-d), var(--teal)); color: #fff; }
+.op-band .why-kick { color: rgba(255,255,255,.75); }
+.op-band h3 { font-size: 1.2rem; color: #fff; }
+.op-band p { font-size: .88rem; color: rgba(255,255,255,.85); margin-top: .2rem; }
+@media (max-width: 900px) { .pm-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .pm-ledger { padding: .25rem 1.1rem 1rem; border-radius: var(--r-lg); }
+  .pm-row { grid-template-columns: 4.6rem 1fr; gap: .9rem; padding: 1rem 0; align-items: start; }
+  .pm-big b { font-size: 1.9rem; }
+  .pm-big small { font-size: .56rem; letter-spacing: .06em; }
+  .pm-row h3 { font-size: .95rem; }
+  .pm-row p { font-size: .82rem; }
+  .pm-sub { margin: 2rem 0 .9rem; }
+  .pm-grid li { flex-direction: column; gap: .5rem; padding: 1rem .9rem; }
+  .pm-grid svg { width: 22px; height: 22px; }
+  .pm-grid h4 { font-size: .86rem; }
+  .pm-grid p { font-size: .76rem; }
+  .pm-cta .btn { flex: 1 1 100%; justify-content: center; }
+  .aud-row { grid-template-columns: auto 1fr; gap: .9rem; padding: 1.1rem; align-items: start; }
+  .aud-ic { width: 44px; height: 44px; border-radius: 12px; }
+  .aud-ic svg { width: 22px; height: 22px; }
+  .aud-go { grid-column: 2; font-size: .86rem; }
+  .op-band { flex-direction: column; align-items: stretch; padding: 1.25rem; }
+  .op-band .btn { justify-content: center; }
+}
 
 /* ══════════════════════════════════════
    MOBILE SCALE — compact sizing ≤640px
@@ -1434,98 +1492,43 @@ button { font-family: var(--f); cursor: pointer; }
 ════════════════════════════════════ -->
 <section id="benefits" class="section" aria-labelledby="benefits-h2">
   <div class="container">
-    <div class="benefits-header" data-reveal="up">
-      <span class="section-eyebrow">Why Linen Legends</span>
-      <h2 class="section-title" id="benefits-h2">Why Choose Linen Legends?</h2>
-      <p class="section-sub">
-        We streamline every step of the laundry process so you can focus on what matters.
-        Most clients schedule regular cleaning services.
-      </p>
+    <div class="pm-hd" data-reveal="up">
+      <span class="section-eyebrow">The Linen Legends promise</span>
+      <h2 class="section-title" id="benefits-h2">If we get it wrong, here&rsquo;s exactly what happens.</h2>
+      <p class="section-sub">Written down before you book, not argued about after. [TBC]</p>
     </div>
 
-    <div class="ben-grid mcar">
-      <div class="ben-card" data-reveal="up" data-delay="1">
-        <div class="ben-icon-wrap">
-          <img src="linen-legends-framer-assets/kjsq8zCfm2QRoSqxt8DrrfE39o.png" alt="" aria-hidden="true">
-        </div>
-        <div>
-          <h3>Time-Saving Solutions</h3>
-          <p>We streamline the laundry process to make your life easier and hassle-free — saving you hours every week.</p>
-        </div>
+    <div class="pm-ledger" id="promise" data-reveal="up">
+      <div class="pm-row">
+        <div class="pm-big"><b>48h</b><small>to tell us</small></div>
+        <div><h3>Not right? Re-washed free.</h3><p>We collect and return the affected items at our cost. If a re-wash won&rsquo;t fix it, those items are refunded.</p></div>
       </div>
-      <div class="ben-card" data-reveal="up" data-delay="2">
-        <div class="ben-icon-wrap">
-          <img src="linen-legends-framer-assets/bzOEt85pEFkCY8rKkgrEaYUmENg.png" alt="" aria-hidden="true">
-        </div>
-        <div>
-          <h3>Fast &amp; Efficient Machines</h3>
-          <p>High-capacity washers and dryers for quick, smooth, and hassle-free laundry — day or night.</p>
-        </div>
+      <div class="pm-row">
+        <div class="pm-big"><b>$0</b><small>delivery fee</small></div>
+        <div><h3>Late? The delivery fee comes back.</h3><p>Miss your return date without warning you first and it&rsquo;s refunded automatically. You don&rsquo;t need to ask.</p></div>
       </div>
-      <div class="ben-card" data-reveal="up" data-delay="3">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="9" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 9V6M22 9V6M6 15h20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Same operator, same preferences</h3>
-          <p>Legends Club [TBC] puts one operator on your household for the long haul &mdash; they learn your washing.</p>
-        </div>
+      <div class="pm-row">
+        <div class="pm-big"><b>5</b><small>business days</small></div>
+        <div><h3>Damaged or missing? A clear answer.</h3><p>Report within 7 days. We check the count and weight recorded at your door and reply with an outcome.</p></div>
       </div>
-      <div class="ben-card" data-reveal="up" data-delay="4">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 6-4 10-10 12-6-2-10-6-10-12V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 16l3 3 5-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <h3>Screened operators</h3>
-          <p>Identity and background checks before the first job. Every operator, every time. [TBC]</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="5">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8v8l5 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Standard next-day return</h3>
-          <p>Most jobs come back within 24 hours [TBC]. Long items say so at booking, no surprises.</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="6">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 14h8M12 18h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Hospital-grade capability</h3>
-          <p>Aged-care and disability work follows AS/NZS 4146 [TBC]. Same care available on request for households.</p>
-        </div>
-      </div>
+      <p class="pm-acl">This sits on top of your rights under the Australian Consumer Law and does not limit them.</p>
     </div>
-  </div>
-</section>
 
-<!-- ════════════════════════════════════
-     PROMISE
-════════════════════════════════════ -->
-<section id="promise" class="section" aria-label="Our promise">
-  <div class="container">
-    <div class="pr-grid mcar" style="margin-top:0">
-      <div class="pr-card" data-reveal="up" data-delay="1">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg>
-        <h3>Your wash, only yours</h3>
-        <p>Processed on its own cycle. Never mixed with another household's items.</p>
-        <a href="#footer" class="card-link">Our guarantee</a>
-      </div>
-      <div class="pr-card" data-reveal="up" data-delay="2">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h10l6 6v17a1 1 0 01-1 1H9a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M19 4v6h6M12 17h9M12 22h9"/></svg>
-        <h3>Written guarantee</h3>
-        <p>If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p>
-        <a href="#footer" class="card-link">Read the terms</a>
-      </div>
-      <div class="pr-card" data-reveal="up" data-delay="3">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M19.5 11.5c-.8-1-2-1.5-3.5-1.5-2.2 0-3.7 1.2-3.7 2.9 0 4.1 7.6 2.2 7.6 6.3 0 1.8-1.6 2.8-3.9 2.8-1.7 0-3.1-.6-3.9-1.7M16 7.5v2.5M16 22v2.5"/></svg>
-        <h3>GST included, always</h3>
-        <p>Every price on this site includes GST. No checkout surprises, no call-out fees.</p>
-        <a href="#pricing" class="card-link">See pricing</a>
-      </div>
+    <div class="pm-sub" data-reveal="up">
+      <span class="why-kick">Why households switch</span>
+      <h3>Built around your washing, not a warehouse.</h3>
+    </div>
+    <ul class="pm-grid">
+      <li data-reveal="up" data-delay="1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg><div><h4>Your wash, only yours</h4><p>Own cycle, own bag. Never mixed with another household.</p></div></li>
+      <li data-reveal="up" data-delay="2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M7 27c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/></svg><div><h4>Same operator</h4><p>One operator learns your preferences. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="3"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l10 4v7c0 6-4 10-10 12-6-2-10-6-10-12V8z"/><path d="M12 16l3 3 5-5"/></svg><div><h4>Screened operators</h4><p>ID and background checked before the first job. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="4"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l5 3"/></svg><div><h4>Next-day return</h4><p>Most jobs back within 24 hours. Longer items flagged at booking. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="5"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16"/><path d="M12 14h8M12 18h8"/></svg><div><h4>Hospital-grade on request</h4><p>Care-sector work follows AS/NZS 4146. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="6"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M19.5 11.5c-.8-1-2-1.5-3.5-1.5-2.2 0-3.7 1.2-3.7 2.9 0 4.1 7.6 2.2 7.6 6.3 0 1.8-1.6 2.8-3.9 2.8-1.7 0-3.1-.6-3.9-1.7M16 7.5v2.5M16 22v2.5"/></svg><div><h4>GST included</h4><p>Every price shown is the price you pay. No call-out fee.</p></div></li>
+    </ul>
+    <div class="pm-cta" data-reveal="up">
+      <a href="#pricing" class="btn btn-primary btn-lg">Check my price</a>
+      <a href="#faq" class="btn btn-outline-teal btn-lg">Read the FAQ</a>
     </div>
   </div>
 </section>
@@ -1535,29 +1538,29 @@ button { font-family: var(--f); cursor: pointer; }
 ════════════════════════════════════ -->
 <section id="who" class="section" aria-labelledby="who-h2">
   <div class="container">
-    <div class="text-center" data-reveal="up">
-      <span class="section-eyebrow">Beyond the Household</span>
-      <h2 class="section-title" id="who-h2">Who We Work With</h2>
+    <div class="who-hd" data-reveal="up">
+      <span class="section-eyebrow">Beyond the household</span>
+      <h2 class="section-title" id="who-h2">Laundry on a schedule, for people who rely on it.</h2>
     </div>
-    <div class="aud-grid mcar">
-      <div class="aud-card" data-reveal="up" data-delay="1">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg>
-        <h3>Business &amp; commercial</h3>
-        <p>Short-stay properties, salons, gyms, caf&eacute;s and clubs. Scheduled collections, account billing, volume rates.</p>
-        <a href="#contact" class="card-link" data-enquire="Commercial / Business">Request a quote</a>
+    <div class="aud-list">
+      <a href="#contact" class="aud-row" data-enquire="Commercial / Business" data-reveal="up" data-delay="1">
+        <span class="aud-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg></span>
+        <span class="aud-tx"><strong>Business &amp; commercial</strong><small>Scheduled collections, account billing, volume rates.</small><span class="aud-tags"><i>Short-stay</i><i>Salons</i><i>Gyms</i><i>Caf&eacute;s &amp; clubs</i></span></span>
+        <span class="aud-go">Request a quote <svg class="aud-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#contact" class="aud-row" data-enquire="Supported living / aged care" data-reveal="up" data-delay="2">
+        <span class="aud-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-10-6.2-10-13a5.5 5.5 0 0110-3.2A5.5 5.5 0 0126 13c0 6.8-10 13-10 13z"/></svg></span>
+        <span class="aud-tx"><strong>Supported living &amp; aged care</strong><small>Regular laundry help for people living independently, and the providers who support them.</small><span class="aud-tags"><i>Self- &amp; plan-managed</i><i>Coordinators</i><i>Providers</i></span></span>
+        <span class="aud-go">See how it works <svg class="aud-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="op-band" data-reveal="up">
+      <div>
+        <span class="why-kick">Become an operator</span>
+        <h3>Run a laundry round in your own suburb.</h3>
+        <p>Your own ABN, with our customers, booking system and brand behind you.</p>
       </div>
-      <div class="aud-card" data-reveal="up" data-delay="2">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-10-6.2-10-13a5.5 5.5 0 0110-3.2A5.5 5.5 0 0126 13c0 6.8-10 13-10 13z"/></svg>
-        <h3>Supported living &amp; aged care</h3>
-        <p>Regular laundry assistance for people living independently, and for the providers who support them.</p>
-        <a href="#contact" class="card-link" data-enquire="Supported living / aged care">See how it works</a>
-      </div>
-      <div class="aud-card" data-reveal="up" data-delay="3">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M7 27c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/></svg>
-        <h3>Become an operator</h3>
-        <p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p>
-        <a href="#contact" class="card-link" data-enquire="Become an operator">Operator information</a>
-      </div>
+      <a href="#contact" class="btn btn-white" data-enquire="Become an operator">Operator information</a>
     </div>
   </div>
 </section>
