@@ -8,7 +8,17 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Linen Legends — Fast, Easy &amp; Reliable Laundry">
 <meta property="og:description" content="Laundry collected from your door, washed with care, and returned fresh and folded across Brisbane &amp; SEQ.">
-<meta property="og:image" content="linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.png">
+<meta property="og:image" content="linen-legends-framer-assets/og-linen-legends.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Linen Legends">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B2340">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2340'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='800' fill='%2343B4A2' text-anchor='middle'%3ELL%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" fetchpriority="high">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Linen Legends","description":"Laundry pickup and delivery, premium clean, bulky linen and dry cleaning.","areaServed":[{"@type":"City","name":"Brisbane"},{"@type":"City","name":"Logan"},{"@type":"AdministrativeArea","name":"South East Queensland"}],"currenciesAccepted":"AUD"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
@@ -237,7 +247,7 @@ button { font-family: var(--f); cursor: pointer; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.png')
+  background: url('linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.webp')
     center / cover no-repeat;
   opacity: .1;
   will-change: transform;
@@ -1339,6 +1349,17 @@ h1, h2, h3, h4 { text-wrap: balance; }
 /* base size the page was designed at (previously supplied by the viewer wrapper) */
 body{font-size:14px}
 [hidden]:not([hidden=until-found i]){display:none!important}
+
+/* ── UPGRADE: mobile quick-book bar ── */
+.mbar{display:none}
+@media (max-width:767px){
+  .mbar{display:flex;align-items:center;gap:.75rem;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:150;padding:.5rem .5rem .5rem 1.1rem;border-radius:999px;background:rgba(11,35,64,.92);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 10px 30px rgba(11,35,64,.28);transform:translateY(160%);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+  .mbar.on{transform:none}
+  .mbar-link{color:#fff;font-weight:600;font-size:.9rem;text-decoration:none;flex:1}
+  .mbar-cta{padding:.7rem 1.15rem;font-size:.92rem;white-space:nowrap}
+  body.mbar-pad #footer{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.mbar{transition:none}}
 </style>
 </head>
 <body>
@@ -1410,9 +1431,9 @@ body{font-size:14px}
 
       <!-- RIGHT: hero image with floating cards -->
       <div class="hero-img-wrap" data-reveal="right" data-delay="2">
-        <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.jpg"
+        <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
              alt="Clean laundry folded and ready for delivery"
-             loading="eager">
+             loading="eager" fetchpriority="high">
         <div class="hero-float hero-float-1">
           <div class="dot"></div>
           <div>
@@ -1498,7 +1519,7 @@ body{font-size:14px}
 
       <article class="svc-card" data-reveal="up" data-delay="1">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.jpg"
+          <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
                alt="Folded laundry ready for home delivery" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1513,7 +1534,7 @@ body{font-size:14px}
 
       <article class="svc-card" data-reveal="up" data-delay="2">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/wgAiMcd2q4u0SyOo60S9q3zZD0.jpg"
+          <img src="linen-legends-framer-assets/wgAiMcd2q4u0SyOo60S9q3zZD0.webp" width="900" height="615" decoding="async"
                alt="Garment being hand-finished" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1528,7 +1549,7 @@ body{font-size:14px}
 
       <article class="svc-card" data-reveal="up" data-delay="3">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.jpg"
+          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.webp" width="400" height="400" decoding="async"
                alt="Clean linen on shelves" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1543,7 +1564,7 @@ body{font-size:14px}
 
       <article class="svc-card" data-reveal="up" data-delay="4">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.jpg"
+          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.webp" width="900" height="615" decoding="async"
                alt="Suits and garments on a rack" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1558,7 +1579,7 @@ body{font-size:14px}
 
       <article class="svc-card" data-reveal="up" data-delay="5">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png"
+          <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.webp" width="800" height="1059" decoding="async"
                alt="Folded commercial linen stacks" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1657,7 +1678,7 @@ body{font-size:14px}
 
       <!-- Image side -->
       <div class="how-img" data-reveal="left">
-        <img src="linen-legends-framer-assets/u8glprt7QGiaxegYOoVMN1LQxQ.png"
+        <img src="linen-legends-framer-assets/u8glprt7QGiaxegYOoVMN1LQxQ.webp" width="1100" height="833" decoding="async"
              alt="Linen Legends pickup and delivery process" loading="lazy">
         <div class="how-img-badge">
           <div>[Turnaround TBC]</div>
@@ -1934,6 +1955,11 @@ body{font-size:14px}
 <!-- ════════════════════════════════════
      FOOTER
 ════════════════════════════════════ -->
+<div class="mbar" id="mbar" aria-label="Quick booking">
+  <a href="#pricing" class="mbar-link">See prices</a>
+  <a href="#contact" class="btn btn-primary mbar-cta" data-book>Book a Pickup</a>
+</div>
+
 <footer id="footer" aria-label="Site footer">
   <div class="container">
     <div class="footer-grid">
@@ -2726,6 +2752,24 @@ body{font-size:14px}
   }));
   sel.addEventListener('change', sync);
 
+})();
+</script>
+
+
+<script>
+/* mobile quick-book bar: shows after the hero, hides near the contact form and while a dialog is open */
+(function(){
+  var bar=document.getElementById('mbar'); if(!bar) return;
+  var hero=document.getElementById('hero'), contact=document.getElementById('contact');
+  document.body.classList.add('mbar-pad');
+  var past=false, nearContact=false;
+  function sync(){ var bk=document.getElementById('bk'); var open=bk && !bk.hidden; bar.classList.toggle('on', past && !nearContact && !open); }
+  if('IntersectionObserver' in window){
+    if(hero) new IntersectionObserver(function(e){ past=!e[0].isIntersecting; sync(); }).observe(hero); else past=true;
+    if(contact) new IntersectionObserver(function(e){ nearContact=e[0].isIntersecting; sync(); },{rootMargin:'0px 0px -30% 0px'}).observe(contact);
+  } else { past=true; }
+  var bk=document.getElementById('bk'); if(bk && 'MutationObserver' in window) new MutationObserver(sync).observe(bk,{attributes:true,attributeFilter:['hidden']});
+  sync();
 })();
 </script>
 

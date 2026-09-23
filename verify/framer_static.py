@@ -13,7 +13,7 @@ h = open(path).read()
 base = os.path.dirname(path)
 fail = 0
 
-for i, s in enumerate(re.findall(r'<script(?![^>]*src)[^>]*>(.*?)</script>', h, re.S)):
+for i, s in enumerate(re.findall(r'<script(?![^>]*(?:src|type="application/ld\+json"))[^>]*>(.*?)</script>', h, re.S)):
     with tempfile.NamedTemporaryFile('w', suffix='.js', delete=False) as t:
         t.write(s)
     r = subprocess.run(['node', '--check', t.name], capture_output=True, text=True)
