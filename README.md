@@ -22,6 +22,19 @@ The live site is published as a Claude artefact; the PDF dossier is for reading,
 5. Publish to the existing artefact URL with capabilities `{"db":{},"user":{}}`, favicon crown, contract 0.2.52. Never add `mcp`.
 6. Confirm on a phone.
 
+## Linen Legends (Framer) page — auto-ship
+
+`site/linen-legends-framer.html` is the page live at https://claude.ai/artifact/7dAa3qVyaN8NV5pGXkbrQw.
+The build agent works on `claude/framer-site-import-linen-2wh926`. A ship agent (session "Linen Legends auto-ship updates") checks hourly and ships from `claude/linen-legends-auto-ship-afzpsw`:
+
+1. Fetch the build branch and read the live artifact's `index.html`.
+2. The live artifact wins when it is ahead of git: its page is committed so nothing published is ever lost from the record.
+3. `python3 verify/framer_static.py site/linen-legends-framer.html` and `NODE_PATH=/opt/node22/lib/node_modules node verify/framer-smoke.js site/linen-legends-framer.html` must both print `RESULT: PASS`, or nothing ships.
+4. PR into the default branch and merge.
+5. Republish the artifact only when the build branch has a change the live page doesn't — never overwrite a newer live version.
+
+Build agent: commit and push after each publish so git and the live page stay level.
+
 ## Rebuild the dossier
 
 ```

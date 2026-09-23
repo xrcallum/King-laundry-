@@ -3,12 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Linen Legends — Fast, Easy &amp; Reliable Laundry | Brisbane &amp; SEQ</title>
+<title>Linen Legends</title>
 <meta name="description" content="Linen Legends — laundry pickup &amp; delivery, premium clean, bulky linen and dry cleaning across Brisbane, Logan and South East Queensland. Book online today.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Linen Legends — Fast, Easy &amp; Reliable Laundry">
 <meta property="og:description" content="Laundry collected from your door, washed with care, and returned fresh and folded across Brisbane &amp; SEQ.">
-<meta property="og:image" content="linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.png">
+<meta property="og:image" content="linen-legends-framer-assets/og-linen-legends.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="Linen Legends">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B2340">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B2340'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='800' fill='%2343B4A2' text-anchor='middle'%3ELL%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" fetchpriority="high">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Linen Legends","description":"Laundry pickup and delivery, premium clean, bulky linen and dry cleaning.","areaServed":[{"@type":"City","name":"Brisbane"},{"@type":"City","name":"Logan"},{"@type":"AdministrativeArea","name":"South East Queensland"}],"currenciesAccepted":"AUD"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
@@ -237,7 +247,7 @@ button { font-family: var(--f); cursor: pointer; }
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.png')
+  background: url('linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.webp')
     center / cover no-repeat;
   opacity: .1;
   will-change: transform;
@@ -779,7 +789,7 @@ button { font-family: var(--f); cursor: pointer; }
 .est-card .btn { width: 100%; justify-content: center; }
 .est-note { font-size: .8rem; color: var(--mute); text-align: center; margin-top: .8rem; }
 
-#promise { background: var(--bg); padding-top: 0; }
+
 .pr-grid, .aud-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
 .pr-card, .aud-card {
   display: flex; flex-direction: column; gap: .7rem; padding: 1.9rem;
@@ -998,6 +1008,116 @@ button { font-family: var(--f); cursor: pointer; }
 .cov-chip small { font-size: .74rem; font-weight: 500; color: var(--mute); }
 .cov-ask { background: var(--teal-w); border-color: var(--teal-l); color: var(--teal-d); cursor: pointer; font-family: var(--f); }
 
+
+/* ── promise ledger + who list (replaces the three card carousels) ── */
+#benefits .pm-hd { max-width: 720px; }
+#benefits .section-sub { margin: 0 0 2rem; }
+.pm-ledger { background: linear-gradient(150deg, var(--navy-d), var(--navy) 60%, #12306F); color: #fff; border-radius: var(--r-xl); padding: .5rem 1.75rem 1.25rem; box-shadow: 0 26px 60px -22px rgba(7,26,69,.5); scroll-margin-top: 90px; }
+.pm-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.5rem; align-items: center; padding: 1.35rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.pm-big b { display: block; font-size: 2.6rem; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--teal-xl); }
+.pm-big small { display: block; margin-top: .3rem; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.pm-row h3 { font-size: 1.05rem; color: #fff; margin-bottom: .25rem; }
+.pm-row p { font-size: .88rem; line-height: 1.55; color: rgba(255,255,255,.72); }
+.pm-acl { font-size: .74rem; color: rgba(255,255,255,.5); padding-top: 1rem; }
+.pm-sub { margin: 3rem 0 1.25rem; }
+.pm-sub h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); color: var(--navy); }
+.pm-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.pm-grid li { display: flex; gap: .85rem; align-items: flex-start; padding: 1.25rem; background: var(--bg); }
+.pm-grid svg { flex: none; width: 26px; height: 26px; color: var(--teal-d); margin-top: .1rem; }
+.pm-grid h4 { font-size: .95rem; font-weight: 800; color: var(--navy); margin-bottom: .2rem; }
+.pm-grid p { font-size: .82rem; line-height: 1.5; color: var(--mute); }
+.pm-cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+.who-hd { max-width: 720px; }
+.aud-list { display: flex; flex-direction: column; gap: .85rem; margin-top: .5rem; }
+.aud-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1.25rem; align-items: center; padding: 1.35rem 1.5rem; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); transition: box-shadow var(--tr), border-color var(--tr), transform var(--tr); }
+.aud-row:hover { box-shadow: var(--shadow-md); border-color: var(--teal-l); transform: translateY(-2px); }
+.aud-ic { width: 52px; height: 52px; border-radius: 14px; background: var(--teal-w); color: var(--navy); display: grid; place-items: center; }
+.aud-ic svg { width: 26px; height: 26px; }
+.aud-tx strong { display: block; font-size: 1.05rem; color: var(--navy); }
+.aud-tx small { display: block; font-size: .88rem; color: var(--body); margin-top: .15rem; }
+.aud-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .6rem; }
+.aud-tags i { font-style: normal; font-size: .72rem; font-weight: 700; color: var(--teal-d); background: var(--teal-w); padding: .2rem .6rem; border-radius: 99px; }
+.aud-go { display: inline-flex; align-items: center; gap: .35rem; font-weight: 700; font-size: .9rem; color: var(--teal-d); white-space: nowrap; }
+.aud-chev { width: 18px; height: 18px; transition: transform var(--tr); }
+.aud-row:hover .aud-chev { transform: translateX(3px); }
+.op-band { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.5rem; padding: 1.5rem 1.75rem; border-radius: var(--r-lg); background: linear-gradient(120deg, var(--teal-d), var(--teal)); color: #fff; }
+.op-band .why-kick { color: rgba(255,255,255,.75); }
+.op-band h3 { font-size: 1.2rem; color: #fff; }
+.op-band p { font-size: .88rem; color: rgba(255,255,255,.85); margin-top: .2rem; }
+@media (max-width: 900px) { .pm-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .pm-ledger { padding: .25rem 1.1rem 1rem; border-radius: var(--r-lg); }
+  .pm-row { grid-template-columns: 4.6rem 1fr; gap: .9rem; padding: 1rem 0; align-items: start; }
+  .pm-big b { font-size: 1.9rem; }
+  .pm-big small { font-size: .56rem; letter-spacing: .06em; }
+  .pm-row h3 { font-size: .95rem; }
+  .pm-row p { font-size: .82rem; }
+  .pm-sub { margin: 2rem 0 .9rem; }
+  .pm-grid li { flex-direction: column; gap: .5rem; padding: 1rem .9rem; }
+  .pm-grid svg { width: 22px; height: 22px; }
+  .pm-grid h4 { font-size: .86rem; }
+  .pm-grid p { font-size: .76rem; }
+  .pm-cta .btn { flex: 1 1 100%; justify-content: center; }
+  .aud-row { grid-template-columns: auto 1fr; gap: .9rem; padding: 1.1rem; align-items: start; }
+  .aud-ic { width: 44px; height: 44px; border-radius: 12px; }
+  .aud-ic svg { width: 22px; height: 22px; }
+  .aud-go { grid-column: 2; font-size: .86rem; }
+  .op-band { flex-direction: column; align-items: stretch; padding: 1.25rem; }
+  .op-band .btn { justify-content: center; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE SCALE — compact sizing ≤640px
+   (keep this block last in the stylesheet)
+══════════════════════════════════════ */
+@media (max-width: 640px) {
+  html { font-size: 14.5px; }
+  .container { padding: 0 16px; }
+  .mcar { margin-left: -16px; margin-right: -16px; padding-left: 16px; scroll-padding-inline: 16px; padding-right: 56px; }
+  .mcar > * { width: calc(100vw - 72px); }
+  /* stop iOS zooming into form fields */
+  input, select, textarea { font-size: 16px !important; }
+  .section-title { font-size: 1.5rem; line-height: 1.18; margin-bottom: .6rem; }
+  .how-text .section-title, .contact-left .section-title { font-size: 1.4rem; }
+  .section-sub { font-size: .9rem; line-height: 1.55; margin-bottom: 1.5rem; }
+  .section-eyebrow { margin-bottom: .6rem; }
+  .hero-h1 { font-size: 2rem; }
+  .hero-sub { font-size: .95rem; margin-bottom: 1.5rem; }
+  #hero { min-height: auto; padding: 3.5rem 0 3rem; }
+  .btn-lg { padding: .85rem 1.4rem; font-size: .92rem; }
+  #nav { padding: .65rem 0; }
+  /* estimator */
+  .est-grid { gap: 1.25rem; }
+  .est-card { padding: .95rem; border-radius: var(--r-lg); box-shadow: var(--shadow-md); }
+  .est-h { font-size: .8rem; margin: .9rem 0 .45rem; }
+  .est-h span { width: 19px; height: 19px; font-size: .64rem; }
+  .est-subw select { padding: .6rem 2.2rem .6rem .8rem; }
+  .est-svc button { padding: .55rem .5rem; gap: .1rem; }
+  .est-svc svg { width: 18px; height: 18px; margin-bottom: .1rem; }
+  .est-svc b { font-size: .74rem; }
+  .est-svc small { font-size: .66rem; }
+  .est-qty { gap: .75rem; }
+  .est-card .bk-stp button { width: 34px; height: 34px; font-size: 1rem; }
+  .est-card .bk-stp output { min-width: 30px; }
+  .est-eq { font-size: .74rem; margin-top: .45rem; }
+  .est-bag { margin-top: .7rem; padding: .5rem .7rem; }
+  .est-bag div { font-size: .8rem; }
+  .est-bag small { font-size: .72rem; }
+  .est-rcpt { padding: .6rem .75rem; margin-top: .8rem; }
+  .est-rcpt .bk-sum div { font-size: .8rem; padding: .22rem 0; }
+  .est-min { font-size: .72rem; }
+  .est-tot { margin: .8rem 0 .7rem; }
+  .est-tot small { font-size: .66rem; }
+  .est-tot strong { font-size: 1.7rem; }
+  .est-tot-meta { font-size: .7rem; line-height: 1.45; }
+  .est-go { padding: .8rem 1rem; font-size: .92rem; }
+  .est-note { font-size: .68rem; }
+  /* booking panel */
+  .bk-ttl h2 { font-size: 1.1rem; }
+  .bk-tile { padding: .8rem .5rem; }
+  .bk-tile svg { width: 28px; height: 28px; }
+}
+
 /* ══════════════════════════════════════
    POLISH PASS — one type scale, one card
    system, one header→content rhythm.
@@ -1055,6 +1175,191 @@ h1, h2, h3, h4 { text-wrap: balance; }
   .px-card { padding: 1.25rem 1.3rem; }
   .svc-body { padding: 1.2rem 1.25rem 1.4rem; }
 }
+
+/* ══════════════════════════════════════
+   PROMISE TILES · COVERAGE CHECKER · CONTACT
+   (after the polish pass, so it wins ties)
+══════════════════════════════════════ */
+.pm-ledger { padding: 1.5rem; }
+.pm-tiles { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.12); border-radius: var(--r-lg); overflow: hidden; }
+.pm-tiles li { display: flex; flex-direction: column; gap: .3rem; padding: 1.25rem 1.2rem; background: var(--navy-d); }
+.pm-tiles b { font-size: 2.1rem; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--teal-xl); margin-bottom: .45rem; }
+.pm-tiles b.pm-ic { display: block; width: 2.1rem; height: 2.1rem; }
+.pm-tiles b.pm-ic svg { width: 100%; height: 100%; }
+.pm-tiles strong { font-size: .95rem; color: #fff; line-height: 1.3; }
+.pm-tiles span { font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.65); }
+.pm-terms { margin-top: 1rem; border-top: 1px solid rgba(255,255,255,.1); }
+.pm-terms summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 1rem 0 .25rem; font-weight: 700; font-size: .9rem; color: var(--teal-xl); }
+.pm-terms summary::-webkit-details-marker { display: none; }
+.pm-terms summary i { font-style: normal; font-size: 1.25rem; transition: transform var(--tr); }
+.pm-terms[open] summary i { transform: rotate(45deg); }
+.pm-terms-b { padding: .25rem 0; }
+.pm-terms-b h4 { font-size: .9rem; color: #fff; margin: .9rem 0 .25rem; }
+.pm-terms-b p, .pm-terms-b li { font-size: .84rem; line-height: 1.6; color: rgba(255,255,255,.72); }
+.pm-terms-b ul { padding-left: 1.1rem; }
+.pm-acl { padding-top: .85rem; }
+
+.cov-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: start; }
+.cov-intro .section-sub { margin: 0 0 1.5rem; }
+.cov-check { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 1.25rem; box-shadow: var(--shadow-md); }
+.cov-lbl { display: block; font-size: .8rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.cov-in { position: relative; }
+.cov-in svg { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--teal-d); pointer-events: none; }
+.cov-in input { width: 100%; padding: .95rem 1rem .95rem 2.8rem; border: 1.5px solid var(--line); border-radius: var(--r); font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper); transition: border-color var(--tr), box-shadow var(--tr), background var(--tr); }
+.cov-in input:focus { outline: none; border-color: var(--teal); background: var(--bg); box-shadow: 0 0 0 3px rgba(42,157,143,.15); }
+.cov-res { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.cov-res:not(:empty) { margin-top: .9rem; }
+.cov-res span { font-size: .9rem; color: var(--body); flex: 1 1 100%; }
+.cov-res.ok, .cov-res.no { padding: .9rem; border-radius: var(--r); }
+.cov-res.ok { background: var(--teal-w); }
+.cov-res.ok b { color: var(--teal-d); }
+.cov-res.no { background: #FFF4E5; }
+.cov-res.no b { color: #8A5300; }
+.cov-res .btn { flex: 1 1 auto; justify-content: center; }
+.cov-sug { padding: .45rem .8rem; border: 1px solid var(--teal-l); border-radius: 99px; background: var(--bg); color: var(--teal-d); font: inherit; font-size: .84rem; font-weight: 600; cursor: pointer; }
+.cov-lists { display: flex; flex-direction: column; gap: 1.5rem; }
+.cov-grp h3 { display: flex; align-items: baseline; justify-content: space-between; font-size: .95rem; color: var(--navy); padding-bottom: .6rem; margin-bottom: .75rem; border-bottom: 1px solid var(--line); }
+.cov-grp h3 small { font-size: .74rem; font-weight: 600; color: var(--mute); }
+.cov-lists .cov-wrap { justify-content: flex-start; max-width: none; margin: 0; gap: .4rem; }
+.cov-lists .cov-chip { padding: .38rem .75rem; font-size: .82rem; cursor: pointer; transition: border-color var(--tr), background var(--tr), color var(--tr); }
+.cov-lists .cov-chip:hover { border-color: var(--teal-l); }
+.cov-lists .cov-chip.hit { background: var(--teal); border-color: var(--teal); color: #fff; }
+.cov-lists .cov-chip.hit small { color: rgba(255,255,255,.8); }
+.cov-lists .cov-ask { align-self: flex-start; }
+
+.ct-list { display: flex; flex-direction: column; gap: .6rem; }
+.ct-row { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.1rem; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); transition: border-color var(--tr), box-shadow var(--tr), transform var(--tr); }
+.ct-row:hover { border-color: var(--teal-l); box-shadow: var(--shadow-sm); transform: translateY(-1px); }
+.ct-ic { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--teal-w); color: var(--teal-d); }
+.ct-ic svg { width: 20px; height: 20px; }
+.ct-tx strong { display: block; font-size: .95rem; color: var(--ink); }
+.ct-tx small { display: block; font-size: .82rem; color: var(--mute); margin-top: .1rem; }
+.ct-go svg { display: block; width: 18px; height: 18px; color: var(--mute); transition: transform var(--tr), color var(--tr); }
+.ct-row:hover .ct-go svg { transform: translateX(3px); color: var(--teal-d); }
+.ct-main { background: var(--navy); border-color: var(--navy); }
+.ct-main .ct-ic { background: rgba(255,255,255,.1); color: var(--teal-xl); }
+.ct-main .ct-tx strong { color: #fff; }
+.ct-main .ct-tx small { color: rgba(255,255,255,.7); }
+.ct-main .ct-go svg { color: var(--teal-xl); }
+.contact-form { padding: 2rem; }
+.contact-form > p { margin-bottom: 1.4rem; }
+.ct-flbl { display: block; font-size: .8rem; font-weight: 700; margin-bottom: .5rem; color: var(--ink); }
+.ct-topics { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ct-topic { padding: .5rem .85rem; border: 1.5px solid var(--line); border-radius: 99px; background: var(--bg); font: inherit; font-size: .84rem; font-weight: 600; color: var(--body); cursor: pointer; transition: border-color var(--tr), background var(--tr), color var(--tr); }
+.ct-topic:hover { border-color: var(--teal-l); }
+.ct-topic[aria-pressed="true"] { border-color: var(--teal); background: var(--teal-w); color: var(--teal-d); }
+.ct-sel { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.form-row { position: relative; }
+.form-submit { justify-content: center; }
+.form-row label small { font-weight: 500; color: var(--mute); }
+.form-row textarea { min-height: 100px; }
+@media (max-width: 900px) {
+  .pm-tiles { grid-template-columns: repeat(2, 1fr); }
+  .cov-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 640px) {
+  .pm-ledger { padding: 1rem; }
+  .pm-tiles li { padding: 1rem .9rem; }
+  .pm-tiles b { font-size: 1.65rem; margin-bottom: .3rem; }
+  .pm-tiles b.pm-ic { width: 1.65rem; height: 1.65rem; }
+  .pm-tiles strong { font-size: .86rem; }
+  .pm-tiles span { font-size: .74rem; }
+  .cov-check { padding: 1rem; border-radius: var(--r-lg); }
+  .ct-row { padding: .85rem .9rem; gap: .8rem; }
+  .ct-ic { width: 38px; height: 38px; }
+  .contact-form { padding: 1.25rem; border-radius: var(--r-lg); }
+  .ct-topic { font-size: .8rem; padding: .45rem .75rem; }
+}
+/* ══════════════════════════════════════
+   APPLE-STYLE ENQUIRY FORM (.ap-form)
+══════════════════════════════════════ */
+.ap-form{--ap-ink:#1d1d1f;--ap-mute:#86868b;--ap-line:#d2d2d7;--ap-fill:#f5f5f7;--ap-err:#e30000;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Inter,sans-serif;
+  background:#fff;border:0;border-radius:22px;padding:2.25rem 2rem 1.75rem;box-shadow:0 2px 6px rgba(0,0,0,.04),0 18px 48px rgba(0,0,0,.08)}
+.ap-form .ap-title{font-size:1.75rem;font-weight:600;letter-spacing:-.022em;line-height:1.14;color:var(--ap-ink);margin:0 0 .35rem}
+.ap-form .ap-sub{font-size:1.0625rem;line-height:1.47;color:var(--ap-mute);margin:0 0 1.75rem}
+.ap-form form{display:flex;flex-direction:column}
+.ap-topics-wrap{position:relative;margin-bottom:1.5rem}
+.ap-legend{display:block;font-size:.8125rem;font-weight:600;letter-spacing:-.01em;color:var(--ap-ink);margin-bottom:.65rem}
+.ap-form .ap-topics{display:flex;flex-wrap:wrap;gap:.5rem}
+.ap-form .ct-topic{appearance:none;border:0;background:var(--ap-fill);color:var(--ap-ink);font:inherit;font-size:.9375rem;font-weight:500;letter-spacing:-.01em;padding:.6rem 1rem;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1px transparent;transition:background .2s ease,box-shadow .2s ease,color .2s ease}
+.ap-form .ct-topic:hover{background:#ebebf0}
+.ap-form .ct-topic[aria-pressed="true"]{background:#fff;color:var(--teal-d,#1F7268);box-shadow:inset 0 0 0 2px var(--teal,#2A9D8F)}
+.ap-form .ct-topic:focus-visible{outline:0;box-shadow:inset 0 0 0 2px var(--teal,#2A9D8F),0 0 0 4px rgba(42,157,143,.2)}
+/* floating-label fields */
+.ap-field{position:relative}
+.ap-field input,.ap-field textarea{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:1.0625rem!important;letter-spacing:-.01em;color:var(--ap-ink);background:#fff;border:1px solid var(--ap-line);border-radius:12px;height:56px;padding:1.35rem 1rem .45rem;margin:0;outline:0;transition:border-color .2s ease,box-shadow .2s ease;-webkit-appearance:none}
+.ap-field textarea{height:auto;min-height:148px;padding-top:1.75rem;resize:vertical;line-height:1.45}
+.ap-field label{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.0625rem;color:var(--ap-mute);pointer-events:none;transform-origin:left top;transition:top .18s ease,transform .18s ease,font-size .18s ease,color .18s ease;white-space:nowrap}
+.ap-area label{top:1.15rem;transform:none}
+.ap-field input:focus+label,.ap-field input:not(:placeholder-shown)+label,
+.ap-field textarea:focus+label,.ap-field textarea:not(:placeholder-shown)+label{top:.5rem;transform:none;font-size:.75rem}
+.ap-field input:focus,.ap-field textarea:focus{border-color:var(--teal,#2A9D8F);box-shadow:0 0 0 4px rgba(42,157,143,.18)}
+.ap-field input:focus+label,.ap-field textarea:focus+label{color:var(--teal-d,#1F7268)}
+.ap-field input:user-invalid,.ap-field textarea:user-invalid{border-color:var(--ap-err);box-shadow:0 0 0 4px rgba(227,0,0,.1)}
+.ap-field input:user-invalid+label,.ap-field textarea:user-invalid+label{color:var(--ap-err)}
+/* grouped pair (iOS inset group) */
+.ap-group{margin-bottom:.9rem}
+.ap-group .ap-field input{border-radius:0}
+.ap-group .ap-field:first-child input{border-radius:12px 12px 0 0}
+.ap-group .ap-field:last-child input{border-radius:0 0 12px 12px;margin-top:-1px}
+.ap-group .ap-field input:focus{position:relative;z-index:1}
+.ap-solo{margin-top:.9rem}
+.ap-group+.ap-solo{margin-top:0}
+.ap-hint{font-size:.8125rem;line-height:1.4;color:var(--ap-mute);margin:.45rem 0 0 .25rem}
+.ap-form .ap-submit{margin-top:1.6rem;width:100%;height:52px;padding:0 1.25rem;border-radius:12px;font:inherit;font-size:1.0625rem;font-weight:500;letter-spacing:-.01em;justify-content:center;box-shadow:none}
+.ap-form .ap-submit:hover{transform:none;box-shadow:none;filter:brightness(1.06)}
+.ap-form .ap-submit:active{filter:brightness(.95)}
+.ap-form .ap-note,.ap-form .cf-status{font-size:.75rem;line-height:1.45;color:var(--ap-mute);text-align:center;margin:.9rem 0 0}
+.ap-form .cf-status{color:var(--ap-ink);font-size:.875rem}
+@media (max-width:640px){
+  .ap-form{padding:1.6rem 1.15rem 1.3rem;border-radius:18px}
+  .ap-form .ap-title{font-size:1.5rem}
+  .ap-form .ap-sub{font-size:.975rem;margin-bottom:1.4rem}
+  .ap-form .ct-topic{font-size:.875rem;padding:.55rem .9rem}
+}
+@media (prefers-reduced-motion:reduce){.ap-field label,.ap-form .ct-topic,.ap-field input,.ap-field textarea{transition:none}}
+
+/* ══════════════════════════════════════
+   DESIGN POLISH (design-skill pass)
+══════════════════════════════════════ */
+/* content is visible at rest; reveal is a small lift, never hidden */
+[data-reveal]{opacity:1}
+[data-reveal="up"]{transform:translateY(12px)}
+[data-reveal="left"]{transform:translateX(-12px)}
+[data-reveal="right"]{transform:translateX(12px)}
+[data-reveal="scale"]{transform:scale(.985)}
+[data-reveal].is-visible{transform:none}
+/* hero sized to what it holds, not the viewport */
+#hero{min-height:0;padding:6.5rem 0 5.5rem}
+/* sticky nav clears the phone's status bar */
+#nav{top:env(safe-area-inset-top,0px)}
+/* decorative lone numeral removed */
+.why-steps::after{content:none}
+/* one clear keyboard focus state */
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+/* hover: only interactive things move; content cards just sharpen their edge */
+.svc-card:hover,.pm-grid li:hover{transform:none;box-shadow:var(--shadow-sm)}
+/* prices line up */
+.px-foot b,.est-tot strong,.bk-sum,.est-rcpt{font-variant-numeric:tabular-nums}
+@media (max-width:640px){
+  #hero{padding:3.75rem 0 3rem}
+  .px-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+}
+/* base size the page was designed at (previously supplied by the viewer wrapper) */
+body{font-size:14px}
+[hidden]:not([hidden=until-found i]){display:none!important}
+
+/* ── UPGRADE: mobile quick-book bar ── */
+.mbar{display:none}
+@media (max-width:767px){
+  .mbar{display:flex;align-items:center;gap:.75rem;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:150;padding:.5rem .5rem .5rem 1.1rem;border-radius:999px;background:rgba(11,35,64,.92);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 10px 30px rgba(11,35,64,.28);transform:translateY(160%);transition:transform .35s cubic-bezier(.19,1,.22,1)}
+  .mbar.on{transform:none}
+  .mbar-link{color:#fff;font-weight:600;font-size:.9rem;text-decoration:none;flex:1}
+  .mbar-cta{padding:.7rem 1.15rem;font-size:.92rem;white-space:nowrap}
+  body.mbar-pad #footer{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px))}
+}
+@media (prefers-reduced-motion:reduce){.mbar{transition:none}}
 </style>
 </head>
 <body>
@@ -1070,7 +1375,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
     <ul class="nav-links" role="list">
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#locations">Locations</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#faq">FAQs</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1093,7 +1397,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
     <button class="mob-close" id="mob-close" aria-label="Close menu">&times;</button>
     <a href="#services">Services</a>
     <a href="#pricing">Pricing</a>
-    <a href="#locations">Locations</a>
     <a href="#how">How It Works</a>
     <a href="#faq">FAQs</a>
     <a href="#contact">Contact</a>
@@ -1114,7 +1417,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
       <!-- LEFT -->
       <div class="hero-content" data-reveal="up">
                 <h1 class="hero-h1" id="hero-h1">
-          Fast, Easy &amp;<br><em>Reliable Laundry!</em>
+          Fast, Easy &amp;<br><em>Reliable Laundry.</em>
         </h1>
         <p class="hero-sub">
           Laundry collected from your door, washed on its own cycle, and returned
@@ -1128,9 +1431,9 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <!-- RIGHT: hero image with floating cards -->
       <div class="hero-img-wrap" data-reveal="right" data-delay="2">
-        <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.jpg"
+        <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
              alt="Clean laundry folded and ready for delivery"
-             loading="eager">
+             loading="eager" fetchpriority="high">
         <div class="hero-float hero-float-1">
           <div class="dot"></div>
           <div>
@@ -1163,7 +1466,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
     <div class="why-bento">
       <article class="why-steps" data-reveal="up" data-delay="1">
-        <span class="why-num">01</span>
         <h3>Three steps. Nothing to drop off.</h3>
         <ol>
           <li><span>1</span><div><strong>Book online</strong><p>Pick a window that suits, tell us where to find the bag.</p></div></li>
@@ -1178,7 +1480,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
       <a href="#services" class="card-link">See all services</a>
     </div>
 
-    <div class="px-grid mcar">
+    <div class="px-grid">
       <button type="button" class="px-card px-feat" data-book-svc="wf" data-reveal="up" data-delay="1">
         <span class="px-badge">Start here</span>
         <h4>Wash &amp; Fold</h4>
@@ -1217,7 +1519,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <article class="svc-card" data-reveal="up" data-delay="1">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.jpg"
+          <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
                alt="Folded laundry ready for home delivery" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1232,7 +1534,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <article class="svc-card" data-reveal="up" data-delay="2">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/wgAiMcd2q4u0SyOo60S9q3zZD0.jpg"
+          <img src="linen-legends-framer-assets/wgAiMcd2q4u0SyOo60S9q3zZD0.webp" width="900" height="615" decoding="async"
                alt="Garment being hand-finished" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1247,7 +1549,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <article class="svc-card" data-reveal="up" data-delay="3">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.jpg"
+          <img src="linen-legends-framer-assets/J0RttLoBr5uVros6FciNdDRxoYE.webp" width="400" height="400" decoding="async"
                alt="Clean linen on shelves" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1262,7 +1564,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <article class="svc-card" data-reveal="up" data-delay="4">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.jpg"
+          <img src="linen-legends-framer-assets/FqMhgw7Akbwlshuk7cfETGQI.webp" width="900" height="615" decoding="async"
                alt="Suits and garments on a rack" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1277,7 +1579,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <article class="svc-card" data-reveal="up" data-delay="5">
         <div class="svc-img">
-          <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.png"
+          <img src="linen-legends-framer-assets/eibaZcQ3NT0wIZCdLe7ly758Zis.webp" width="800" height="1059" decoding="async"
                alt="Folded commercial linen stacks" loading="lazy">
         </div>
         <div class="svc-body">
@@ -1376,7 +1678,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <!-- Image side -->
       <div class="how-img" data-reveal="left">
-        <img src="linen-legends-framer-assets/u8glprt7QGiaxegYOoVMN1LQxQ.png"
+        <img src="linen-legends-framer-assets/u8glprt7QGiaxegYOoVMN1LQxQ.webp" width="1100" height="833" decoding="async"
              alt="Linen Legends pickup and delivery process" loading="lazy">
         <div class="how-img-badge">
           <div>[Turnaround TBC]</div>
@@ -1419,7 +1721,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
             <div class="step-num">4</div>
             <div class="step-text">
               <h3>Delivery to Your Doorstep</h3>
-              <p>Your fresh, clean clothes are delivered back to you — neatly folded and ready to wear!</p>
+              <p>Your fresh, clean clothes are delivered back to you — neatly folded and ready to wear.</p>
             </div>
           </div>
         </div>
@@ -1439,98 +1741,55 @@ h1, h2, h3, h4 { text-wrap: balance; }
 ════════════════════════════════════ -->
 <section id="benefits" class="section" aria-labelledby="benefits-h2">
   <div class="container">
-    <div class="benefits-header" data-reveal="up">
-      <span class="section-eyebrow">Why Linen Legends</span>
-      <h2 class="section-title" id="benefits-h2">Why Choose Linen Legends?</h2>
-      <p class="section-sub">
-        We streamline every step of the laundry process so you can focus on what matters.
-        Most clients schedule regular cleaning services.
-      </p>
+    <div class="pm-hd" data-reveal="up">
+      <span class="section-eyebrow">The Linen Legends promise</span>
+      <h2 class="section-title" id="benefits-h2">If we get it wrong, here&rsquo;s exactly what happens.</h2>
+      <p class="section-sub">Written down before you book, not argued about after. [TBC]</p>
     </div>
 
-    <div class="ben-grid mcar">
-      <div class="ben-card" data-reveal="up" data-delay="1">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="18" r="10" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 12v6l4 2.5M13 4h6M16 4v4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="pm-ledger" id="promise" data-reveal="up">
+      <ul class="pm-tiles">
+        <li><b>48h</b><strong>Not right? Re-washed free.</strong><span>Tell us within 48 hours of delivery.</span></li>
+        <li><b>$0</b><strong>Late? Delivery fee refunded.</strong><span>Automatically. You don&rsquo;t ask.</span></li>
+        <li><b>5 days</b><strong>Damage claims answered.</strong><span>Business days, from the count at your door.</span></li>
+        <li><b class="pm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 20h14"/><path d="M4 9l3-5 3 5a3 3 0 01-6 0zM14 9l3-5 3 5a3 3 0 01-6 0z"/><path d="M7 4h10"/></svg></b><strong>Price confirmed first.</strong><span>Weighed at your door, before any washing.</span></li>
+      </ul>
+      <details class="pm-terms">
+        <summary>Read the full guarantee <i aria-hidden="true">+</i></summary>
+        <div class="pm-terms-b">
+          <h4>If the wash is not right</h4>
+          <p>Tell us within 48 hours of delivery and we re-wash the affected items at no charge, collected and returned at our cost. If a re-wash won&rsquo;t fix it, we refund the charge for those items.</p>
+          <h4>If we are late</h4>
+          <p>If we miss your agreed return date and haven&rsquo;t contacted you first to reschedule, the delivery fee for that order is refunded automatically.</p>
+          <h4>If something is damaged or missing</h4>
+          <p>Report it within 7 days of delivery. We investigate using the item count and weight recorded at collection and respond within 5 business days. Settlement is based on the item&rsquo;s current value, taking reasonable account of age and condition.</p>
+          <h4>Not covered</h4>
+          <ul>
+            <li>Items with a missing or illegible care label, or where following the label caused the damage</li>
+            <li>Pre-existing damage or wear not visible at collection</li>
+            <li>Colour bleed from items not flagged as at-risk at collection</li>
+            <li>Items left in pockets</li>
+          </ul>
         </div>
-        <div>
-          <h3>Time-Saving Solutions</h3>
-          <p>We streamline the laundry process to make your life easier and hassle-free — saving you hours every week.</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="2">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="4" width="22" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="16" cy="18" r="6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12.5 19.5c2-1.6 5-1.6 7 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 8.5h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="22" cy="8.5" r="1.2" fill="currentColor"/></svg>
-        </div>
-        <div>
-          <h3>Fast &amp; Efficient Machines</h3>
-          <p>High-capacity washers and dryers for quick, smooth, and hassle-free laundry — day or night.</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="3">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="9" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 9V6M22 9V6M6 15h20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Same operator, same preferences</h3>
-          <p>Legends Club [TBC] puts one operator on your household for the long haul &mdash; they learn your washing.</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="4">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l10 4v7c0 6-4 10-10 12-6-2-10-6-10-12V8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 16l3 3 5-5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div>
-          <h3>Screened operators</h3>
-          <p>Identity and background checks before the first job. Every operator, every time. [TBC]</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="5">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 8v8l5 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Standard next-day return</h3>
-          <p>Most jobs come back within 24 hours [TBC]. Long items say so at booking, no surprises.</p>
-        </div>
-      </div>
-      <div class="ben-card" data-reveal="up" data-delay="6">
-        <div class="ben-icon-wrap">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 14h8M12 18h8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        </div>
-        <div>
-          <h3>Hospital-grade capability</h3>
-          <p>Aged-care and disability work follows AS/NZS 4146 [TBC]. Same care available on request for households.</p>
-        </div>
-      </div>
+      </details>
+      <p class="pm-acl">This guarantee sits on top of your rights under the Australian Consumer Law and does not limit them. [Terms TBC before launch.]</p>
     </div>
-  </div>
-</section>
 
-<!-- ════════════════════════════════════
-     PROMISE
-════════════════════════════════════ -->
-<section id="promise" class="section" aria-label="Our promise">
-  <div class="container">
-    <div class="pr-grid mcar" style="margin-top:0">
-      <div class="pr-card" data-reveal="up" data-delay="1">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg>
-        <h3>Your wash, only yours</h3>
-        <p>Processed on its own cycle. Never mixed with another household's items.</p>
-        <a href="#footer" class="card-link">Our guarantee</a>
-      </div>
-      <div class="pr-card" data-reveal="up" data-delay="2">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h10l6 6v17a1 1 0 01-1 1H9a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M19 4v6h6M12 17h9M12 22h9"/></svg>
-        <h3>Written guarantee</h3>
-        <p>If we get it wrong, we re-do it or we refund it. In writing, no arguments.</p>
-        <a href="#footer" class="card-link">Read the terms</a>
-      </div>
-      <div class="pr-card" data-reveal="up" data-delay="3">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M19.5 11.5c-.8-1-2-1.5-3.5-1.5-2.2 0-3.7 1.2-3.7 2.9 0 4.1 7.6 2.2 7.6 6.3 0 1.8-1.6 2.8-3.9 2.8-1.7 0-3.1-.6-3.9-1.7M16 7.5v2.5M16 22v2.5"/></svg>
-        <h3>GST included, always</h3>
-        <p>Every price on this site includes GST. No checkout surprises, no call-out fees.</p>
-        <a href="#pricing" class="card-link">See pricing</a>
-      </div>
+    <div class="pm-sub" data-reveal="up">
+      <span class="why-kick">Why households switch</span>
+      <h3>Built around your washing, not a warehouse.</h3>
+    </div>
+    <ul class="pm-grid">
+      <li data-reveal="up" data-delay="1"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="20" height="13" rx="2.5"/><path d="M10.5 14V10a5.5 5.5 0 0111 0v4"/></svg><div><h4>Your wash, only yours</h4><p>Own cycle, own bag. Never mixed with another household.</p></div></li>
+      <li data-reveal="up" data-delay="2"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M7 27c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/></svg><div><h4>Same operator</h4><p>One operator learns your preferences. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="3"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l10 4v7c0 6-4 10-10 12-6-2-10-6-10-12V8z"/><path d="M12 16l3 3 5-5"/></svg><div><h4>Screened operators</h4><p>ID and background checked before the first job. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="4"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l5 3"/></svg><div><h4>Next-day return</h4><p>Most jobs back within 24 hours. Longer items flagged at booking. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="5"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24V10a4 4 0 014-4h8a4 4 0 014 4v14M8 24h16"/><path d="M12 14h8M12 18h8"/></svg><div><h4>Hospital-grade on request</h4><p>Care-sector work follows AS/NZS 4146. [TBC]</p></div></li>
+      <li data-reveal="up" data-delay="6"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M19.5 11.5c-.8-1-2-1.5-3.5-1.5-2.2 0-3.7 1.2-3.7 2.9 0 4.1 7.6 2.2 7.6 6.3 0 1.8-1.6 2.8-3.9 2.8-1.7 0-3.1-.6-3.9-1.7M16 7.5v2.5M16 22v2.5"/></svg><div><h4>GST included</h4><p>Every price shown is the price you pay. No call-out fee.</p></div></li>
+    </ul>
+    <div class="pm-cta" data-reveal="up">
+      <a href="#pricing" class="btn btn-primary btn-lg">Check my price</a>
+      <a href="#faq" class="btn btn-outline-teal btn-lg">Read the FAQ</a>
     </div>
   </div>
 </section>
@@ -1540,29 +1799,29 @@ h1, h2, h3, h4 { text-wrap: balance; }
 ════════════════════════════════════ -->
 <section id="who" class="section" aria-labelledby="who-h2">
   <div class="container">
-    <div class="text-center" data-reveal="up">
-      <span class="section-eyebrow">Beyond the Household</span>
-      <h2 class="section-title" id="who-h2">Who We Work With</h2>
+    <div class="who-hd" data-reveal="up">
+      <span class="section-eyebrow">Beyond the household</span>
+      <h2 class="section-title" id="who-h2">Laundry on a schedule, for people who rely on it.</h2>
     </div>
-    <div class="aud-grid mcar">
-      <div class="aud-card" data-reveal="up" data-delay="1">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg>
-        <h3>Business &amp; commercial</h3>
-        <p>Short-stay properties, salons, gyms, caf&eacute;s and clubs. Scheduled collections, account billing, volume rates.</p>
-        <a href="#contact" class="card-link" data-enquire="Commercial / Business">Request a quote</a>
+    <div class="aud-list">
+      <a href="#contact" class="aud-row" data-enquire="Commercial / Business" data-reveal="up" data-delay="1">
+        <span class="aud-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="4" width="18" height="24" rx="2"/><path d="M12 10h.01M20 10h.01M12 15h.01M20 15h.01M12 20h.01M20 20h.01" stroke-width="2.6"/></svg></span>
+        <span class="aud-tx"><strong>Business &amp; commercial</strong><small>Scheduled collections, account billing, volume rates.</small><span class="aud-tags"><i>Short-stay</i><i>Salons</i><i>Gyms</i><i>Caf&eacute;s &amp; clubs</i></span></span>
+        <span class="aud-go">Request a quote <svg class="aud-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#contact" class="aud-row" data-enquire="Supported living / aged care" data-reveal="up" data-delay="2">
+        <span class="aud-ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-10-6.2-10-13a5.5 5.5 0 0110-3.2A5.5 5.5 0 0126 13c0 6.8-10 13-10 13z"/></svg></span>
+        <span class="aud-tx"><strong>Supported living &amp; aged care</strong><small>Regular laundry help for people living independently, and the providers who support them.</small><span class="aud-tags"><i>Self- &amp; plan-managed</i><i>Coordinators</i><i>Providers</i></span></span>
+        <span class="aud-go">See how it works <svg class="aud-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+    <div class="op-band" data-reveal="up">
+      <div>
+        <span class="why-kick">Become an operator</span>
+        <h3>Run a laundry round in your own suburb.</h3>
+        <p>Your own ABN, with our customers, booking system and brand behind you.</p>
       </div>
-      <div class="aud-card" data-reveal="up" data-delay="2">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 26s-10-6.2-10-13a5.5 5.5 0 0110-3.2A5.5 5.5 0 0126 13c0 6.8-10 13-10 13z"/></svg>
-        <h3>Supported living &amp; aged care</h3>
-        <p>Regular laundry assistance for people living independently, and for the providers who support them.</p>
-        <a href="#contact" class="card-link" data-enquire="Supported living / aged care">See how it works</a>
-      </div>
-      <div class="aud-card" data-reveal="up" data-delay="3">
-        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="11" r="5"/><path d="M7 27c0-5 4-8.5 9-8.5s9 3.5 9 8.5"/></svg>
-        <h3>Become an operator</h3>
-        <p>Run a round in your own suburb, under your own ABN, with our customers and systems behind you.</p>
-        <a href="#contact" class="card-link" data-enquire="Become an operator">Operator information</a>
-      </div>
+      <a href="#contact" class="btn btn-white" data-enquire="Become an operator">Operator information</a>
     </div>
   </div>
 </section>
@@ -1604,7 +1863,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
         <summary>What types of laundry can you clean? <span class="faq-toggle">+</span></summary>
         <p class="faq-body">
           We handle everyday wash &amp; fold, bedding, towels and bulky linen, dry cleaning for
-          delicate fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us!
+          delicate fabrics and suits, and commercial laundry for businesses. If you&rsquo;re unsure, just ask us.
         </p>
       </details>
 
@@ -1636,38 +1895,6 @@ h1, h2, h3, h4 { text-wrap: balance; }
 </section>
 
 <!-- ════════════════════════════════════
-     LOCATIONS GRID
-════════════════════════════════════ -->
-<section id="locations" class="section" style="background:var(--paper)" aria-labelledby="loc-h2">
-  <div class="container">
-    <div class="text-center" data-reveal="up">
-      <span class="section-eyebrow">Where We Collect</span>
-      <h2 class="section-title" id="loc-h2">Pickup &amp; Delivery Coverage</h2>
-      <p class="section-sub">Door-to-door collection and return across these Brisbane and Logan suburbs.</p>
-    </div>
-    <div class="cov-wrap" data-reveal="up" data-delay="1">
-      <span class="cov-chip">Beenleigh <small>4207</small></span>
-      <span class="cov-chip">Browns Plains <small>4118</small></span>
-      <span class="cov-chip">Camp Hill <small>4152</small></span>
-      <span class="cov-chip">Coorparoo <small>4151</small></span>
-      <span class="cov-chip">Cornubia <small>4130</small></span>
-      <span class="cov-chip">Greenslopes <small>4120</small></span>
-      <span class="cov-chip">Holland Park <small>4121</small></span>
-      <span class="cov-chip">Kuraby <small>4119</small></span>
-      <span class="cov-chip">Loganholme <small>4129</small></span>
-      <span class="cov-chip">Mansfield <small>4122</small></span>
-      <span class="cov-chip">Marsden <small>4132</small></span>
-      <span class="cov-chip">Meadowbrook <small>4131</small></span>
-      <span class="cov-chip">Shailer Park <small>4128</small></span>
-      <span class="cov-chip">Springwood <small>4127</small></span>
-      <span class="cov-chip">Sunnybank <small>4109</small></span>
-      <span class="cov-chip">Waterford <small>4133</small></span>
-      <button type="button" class="cov-chip cov-ask" data-enquire="Home Pickup &amp; Delivery">My suburb isn&rsquo;t listed &rarr;</button>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════
      CONTACT
 ════════════════════════════════════ -->
 <section id="contact" class="section" aria-labelledby="contact-h2">
@@ -1675,78 +1902,49 @@ h1, h2, h3, h4 { text-wrap: balance; }
     <div class="contact-grid">
 
       <div class="contact-left" data-reveal="left">
-        <span class="section-eyebrow">Get in Touch</span>
-        <h2 class="section-title" id="contact-h2">Get in Touch With Us</h2>
-        <p>
-          Reach out for bookings, enquiries, or support. We&rsquo;re here to help.
-        </p>
-
-        <div class="contact-methods">
-          <a href="mailto:" class="contact-card">
-            <div class="contact-card-icon">&#9993;</div>
-            <div>
-              <h4>Email Us</h4>
-              <p>[EMAIL TBC]</p>
-            </div>
-          </a>
-          <a href="tel:" class="contact-card">
-            <div class="contact-card-icon">&#9742;</div>
-            <div>
-              <h4>Call Us</h4>
-              <p>[PHONE TBC] &middot; [Hours TBC]</p>
-            </div>
-          </a>
-          <a href="#contact" class="contact-card" data-book>
-            <div class="contact-card-icon">&#128197;</div>
-            <div>
-              <h4>Schedule Pickup</h4>
-              <p>Fast &amp; easy laundry pickup booking</p>
-            </div>
-          </a>
+        <span class="section-eyebrow">Get in touch</span>
+        <h2 class="section-title" id="contact-h2">Talk to a real person, not a call centre.</h2>
+        <p>Most people want one of these. Pick the fastest route.</p>
+        <div class="ct-list">
+          <a href="#contact" data-book class="ct-row ct-main"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg></span><span class="ct-tx"><strong>Book a collection</strong><small>Pick a window. Takes about a minute.</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="tel:" class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5v3a1.5 1.5 0 01-1.6 1.5A16 16 0 015 5.1 1.5 1.5 0 016.5 3.5z"/></svg></span><span class="ct-tx"><strong>Call us</strong><small>[PHONE TBC] &middot; [Hours TBC]</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
+          <a href="mailto:" class="ct-row"><span class="ct-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg></span><span class="ct-tx"><strong>Email us</strong><small>[EMAIL TBC]</small></span><span class="ct-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
 
-      <div class="contact-form" data-reveal="right">
-        <h3>Send Us a Message</h3>
-        <p>Use our contact form to reach out with questions, feedback, or booking enquiries.</p>
+      <div class="contact-form ap-form" data-reveal="right">
+        <h3 class="ap-title">Send us a message</h3>
+        <p class="ap-sub">We reply by email [response time TBC].</p>
         <form action="#" method="post" novalidate>
-          <div class="form-row-2">
-            <div class="form-row">
-              <label for="cf-name">Full Name</label>
-              <input type="text" id="cf-name" name="name" placeholder="Jane Smith" autocomplete="name" required>
-            </div>
-            <div class="form-row">
-              <label for="cf-email">Email Address</label>
-              <input type="email" id="cf-email" name="email" placeholder="jane@example.com" autocomplete="email" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <label for="cf-phone">Phone (optional)</label>
-            <input type="tel" id="cf-phone" name="phone" placeholder="04xx xxx xxx" autocomplete="tel">
-          </div>
-          <div class="form-row">
-            <label for="cf-service">Service Enquiry</label>
-            <select id="cf-service" name="service">
-              <option value="">Select a service&hellip;</option>
-              <option>Home Pickup &amp; Delivery</option>
-              <option>Premium Clean</option>
-              <option>Blankets, Rugs &amp; Sheets</option>
-              <option>Dry Cleaning</option>
-              <option>Commercial / Business</option>
-              <option>Supported living / aged care</option>
-              <option>Become an operator</option>
-              <option>Other</option>
+          <div class="ap-topics-wrap">
+            <span class="ap-legend" id="ctTopicLbl">What&rsquo;s it about?</span>
+            <div class="ct-topics ap-topics" role="group" aria-labelledby="ctTopicLbl"><button type="button" class="ct-topic" data-topic="Home Pickup &amp; Delivery" aria-pressed="false">Home laundry</button><button type="button" class="ct-topic" data-topic="Commercial / Business" aria-pressed="false">Business account</button><button type="button" class="ct-topic" data-topic="Supported living / aged care" aria-pressed="false">Supported living</button><button type="button" class="ct-topic" data-topic="Dry Cleaning" aria-pressed="false">Dry cleaning</button><button type="button" class="ct-topic" data-topic="Become an operator" aria-pressed="false">Become an operator</button><button type="button" class="ct-topic" data-topic="Other" aria-pressed="false">Something else</button></div>
+            <select id="cf-service" name="service" class="ct-sel" aria-label="Service enquiry" tabindex="-1">
+              <option value="">Select a service&hellip;</option><option>Home Pickup &amp; Delivery</option><option>Commercial / Business</option><option>Supported living / aged care</option><option>Dry Cleaning</option><option>Premium Clean</option><option>Blankets, Rugs &amp; Sheets</option><option>Become an operator</option><option>Other</option>
             </select>
           </div>
-          <div class="form-row">
-            <label for="cf-msg">Message</label>
-            <textarea id="cf-msg" name="message" placeholder="Tell us how we can help&hellip;" required></textarea>
+          <div class="ap-group">
+            <div class="ap-field">
+              <input type="text" id="cf-name" name="name" placeholder=" " autocomplete="name" required>
+              <label for="cf-name">Name</label>
+            </div>
+            <div class="ap-field">
+              <input type="email" id="cf-email" name="email" placeholder=" " autocomplete="email" required>
+              <label for="cf-email">Email</label>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
-          <p class="form-note">
-            All prices are GST-inclusive (AUD). By submitting this form you agree to our
-            Privacy Policy.
-          </p>
+          <div class="ap-field ap-solo">
+            <input type="tel" id="cf-phone" name="phone" placeholder=" " autocomplete="tel">
+            <label for="cf-phone">Mobile (optional)</label>
+          </div>
+          <p class="ap-hint">Only if you&rsquo;d rather we call.</p>
+          <div class="ap-field ap-solo ap-area">
+            <textarea id="cf-msg" name="message" placeholder=" " required></textarea>
+            <label for="cf-msg">Message</label>
+          </div>
+          <p class="ap-hint">Your suburb, what you need washed, and how often.</p>
+          <button type="submit" class="btn btn-primary form-submit ap-submit">Send message</button>
+          <p class="form-note ap-note">All prices are GST-inclusive (AUD). By sending this you agree to our Privacy Policy.</p>
         </form>
       </div>
 
@@ -1757,6 +1955,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
 <!-- ════════════════════════════════════
      FOOTER
 ════════════════════════════════════ -->
+<div class="mbar" id="mbar" aria-label="Quick booking">
+  <a href="#pricing" class="mbar-link">See prices</a>
+  <a href="#contact" class="btn btn-primary mbar-cta" data-book>Book a Pickup</a>
+</div>
+
 <footer id="footer" aria-label="Site footer">
   <div class="container">
     <div class="footer-grid">
@@ -1785,8 +1988,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#locations">Locations</a>
-        <a href="#how">How It Works</a>
+            <a href="#how">How It Works</a>
         <a href="#benefits">About Us</a>
         <a href="#faq">FAQs</a>
         <a href="#contact">Contact</a>
@@ -1796,8 +1998,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
         <h4>Contact</h4>
         <a href="tel:">[PHONE TBC]</a>
         <a href="mailto:">[EMAIL TBC]</a>
-        <a href="#locations">Locations</a>
-      </div>
+          </div>
 
     </div>
 
@@ -2391,6 +2592,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
     const sel = $('cf-service'), ta = $('cf-msg');
     if (sel && ![...sel.options].some(o => o.text === topic)) sel.add(new Option(topic, topic));
     if (sel) sel.value = topic;
+    if (sel) sel.dispatchEvent(new Event('change'));
     if (ta && msg && !ta.value) ta.value = msg;
     $('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
     setTimeout(() => ($('cf-name').value ? ta : $('cf-name')).focus({ preventScroll: true }), 600);
@@ -2532,6 +2734,42 @@ h1, h2, h3, h4 { text-wrap: balance; }
     window.addEventListener('load', () => { apply(); setTimeout(apply, 500); });
     apply();
   });
+})();
+</script>
+
+
+<script>
+(function () {
+  'use strict';
+  /* contact topic chips drive the hidden service select */
+  const sel = document.getElementById('cf-service');
+  const chips = [...document.querySelectorAll('.ct-topic')];
+  const sync = () => chips.forEach(c => c.setAttribute('aria-pressed', String(c.dataset.topic === sel.value)));
+  chips.forEach(c => c.addEventListener('click', () => {
+    if (![...sel.options].some(o => o.value === c.dataset.topic)) sel.add(new Option(c.dataset.topic, c.dataset.topic));
+    sel.value = sel.value === c.dataset.topic ? '' : c.dataset.topic;
+    sync();
+  }));
+  sel.addEventListener('change', sync);
+
+})();
+</script>
+
+
+<script>
+/* mobile quick-book bar: shows after the hero, hides near the contact form and while a dialog is open */
+(function(){
+  var bar=document.getElementById('mbar'); if(!bar) return;
+  var hero=document.getElementById('hero'), contact=document.getElementById('contact');
+  document.body.classList.add('mbar-pad');
+  var past=false, nearContact=false;
+  function sync(){ var bk=document.getElementById('bk'); var open=bk && !bk.hidden; bar.classList.toggle('on', past && !nearContact && !open); }
+  if('IntersectionObserver' in window){
+    if(hero) new IntersectionObserver(function(e){ past=!e[0].isIntersecting; sync(); }).observe(hero); else past=true;
+    if(contact) new IntersectionObserver(function(e){ nearContact=e[0].isIntersecting; sync(); },{rootMargin:'0px 0px -30% 0px'}).observe(contact);
+  } else { past=true; }
+  var bk=document.getElementById('bk'); if(bk && 'MutationObserver' in window) new MutationObserver(sync).observe(bk,{attributes:true,attributeFilter:['hidden']});
+  sync();
 })();
 </script>
 

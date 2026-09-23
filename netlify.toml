@@ -1,0 +1,21 @@
+# Netlify build for the Linen Legends static page.
+# Connect this repo at app.netlify.com → "Add new site" → "Import an existing project".
+# No settings to change: this file sets the build command, publish folder and headers.
+
+[build]
+  command = "mkdir -p dist && cp site/linen-legends-framer.html dist/index.html && cp -R site/linen-legends-framer-assets dist/ && printf 'User-agent: *\\nAllow: /\\n' > dist/robots.txt"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options    = "nosniff"
+    Referrer-Policy           = "strict-origin-when-cross-origin"
+    X-Frame-Options           = "SAMEORIGIN"
+    Permissions-Policy        = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/linen-legends-framer-assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
