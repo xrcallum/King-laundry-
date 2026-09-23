@@ -236,76 +236,6 @@ button { font-family: var(--f); cursor: pointer; }
 .mob-panel a:hover { color: var(--teal); }
 .mob-panel .btn { margin-top: 1.5rem; width: 100%; justify-content: center; }
 
-/* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-#hero {
-  position: relative; overflow: hidden;
-  min-height: 92vh; display: flex; align-items: center;
-  background: linear-gradient(135deg, #071A45 0%, #0C265F 45%, #1A5F58 100%);
-  padding: 5rem 0 4rem;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background: url('linen-legends-framer-assets/TmNjKNpQI4R3PjY754xJuFX7mE.webp')
-    center / cover no-repeat;
-  opacity: .1;
-  will-change: transform;
-}
-.hero-glow {
-  position: absolute; width: 600px; height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(42,157,143,.25) 0%, transparent 70%);
-  top: -100px; right: -100px; pointer-events: none;
-}
-.hero-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: center;
-  position: relative; z-index: 1;
-}
-.hero-h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
-  font-weight: 900; line-height: 1.08;
-  color: #fff; margin-bottom: 1.25rem;
-}
-.hero-h1 em { color: var(--teal-xl); font-style: normal; }
-.hero-sub {
-  color: rgba(255,255,255,.75); font-size: 1.1rem;
-  line-height: 1.7; max-width: 480px; margin-bottom: 2rem;
-}
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-img-wrap {
-  position: relative; border-radius: var(--r-xl);
-  overflow: visible;
-}
-.hero-img-wrap img {
-  border-radius: var(--r-xl);
-  width: 100%; height: 520px; object-fit: cover;
-  box-shadow: var(--shadow-xl);
-}
-/* Floating cards on hero image */
-.hero-float {
-  position: absolute;
-  background: #fff; border-radius: 14px;
-  padding: .85rem 1.15rem;
-  box-shadow: var(--shadow-lg);
-  display: flex; align-items: center; gap: .75rem;
-  font-size: .82rem; font-weight: 700; color: var(--ink);
-  white-space: nowrap;
-  animation: floatBob 3.5s ease-in-out infinite;
-}
-.hero-float-1 { bottom: 2.5rem; left: -2rem; animation-delay: 0s; }
-.hero-float-2 { top: 2rem; right: -1.5rem; animation-delay: 1.5s; }
-.hero-float .dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--teal); flex-shrink: 0;
-}
-.hero-float .dot.gold { background: #FFD166; }
-.hero-float small { display: block; font-weight: 400; color: var(--mute); font-size: .72rem; }
-@keyframes floatBob {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
-}
 
 /* ══════════════════════════════════════
    SERVICES
@@ -591,8 +521,6 @@ button { font-family: var(--f); cursor: pointer; }
 }
 @media (max-width: 900px) {
   :root { --s8: 4rem; }
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-img-wrap { display: none; }
   .how-inner { grid-template-columns: 1fr; }
   .how-img { order: -1; }
   .how-img img { height: 320px; }
@@ -816,7 +744,7 @@ button { font-family: var(--f); cursor: pointer; }
 /* ══════════════════════════════════════
    MOBILE CARD CAROUSELS
 ══════════════════════════════════════ */
-.how-inner > *, .est-grid > *, .contact-grid > *, .hero-grid > * { min-width: 0; }
+.how-inner > *, .est-grid > *, .contact-grid > * { min-width: 0; }
 .how-cta { flex-wrap: wrap; }
 .mcar-dots { display: none; }
 @media (max-width: 640px) {
@@ -1081,8 +1009,6 @@ button { font-family: var(--f); cursor: pointer; }
   .how-text .section-title, .contact-left .section-title { font-size: 1.4rem; }
   .section-sub { font-size: .9rem; line-height: 1.55; margin-bottom: 1.5rem; }
   .section-eyebrow { margin-bottom: .6rem; }
-  .hero-h1 { font-size: 2rem; }
-  .hero-sub { font-size: .95rem; margin-bottom: 1.5rem; }
   #hero { min-height: auto; padding: 3.5rem 0 3rem; }
   .btn-lg { padding: .85rem 1.4rem; font-size: .92rem; }
   #nav { padding: .65rem 0; }
@@ -1155,12 +1081,10 @@ h1, h2, h3, h4 { text-wrap: balance; }
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], .mcar > *, .deck > * { transition: none !important; }
   [data-reveal] { opacity: 1; transform: none; }
-  .hero-float { animation: none; }
 }
 
 @media (max-width: 640px) {
   #hero { min-height: 0; padding: 4.25rem 0 3.25rem; }
-  .hero-sub { font-size: 1rem; margin-bottom: 1.6rem; }
   .section-title,
   .why-hd .section-title,
   .how-text .section-title,
@@ -1360,6 +1284,20 @@ body{font-size:14px}
   body.mbar-pad #footer{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){.mbar{transition:none}}
+
+/* ── HERO: centred type, photo grows to full width on scroll ── */
+#hero.hx{display:block;min-height:0;background:#fff;text-align:center;padding:clamp(3.25rem,8vw,6.5rem) 0 0;overflow:clip}
+.hx-copy{max-width:900px;margin:0 auto;padding:0 20px}
+.hx-kicker{font-size:.82rem;font-weight:600;letter-spacing:.01em;color:var(--teal-d);margin:0 0 1rem}
+.hx-h1{font-size:clamp(2.7rem,7.4vw,5.75rem);font-weight:800;line-height:1.02;letter-spacing:-.04em;color:#0B2340;margin:0 0 1.1rem}
+.hx-h1 span{color:var(--teal)}
+.hx-sub{font-size:clamp(1.08rem,1.9vw,1.4rem);line-height:1.45;color:#5B6478;max-width:32ch;margin:0 auto 2rem}
+.hx-cta{display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.hx-btn{border-radius:999px}
+.hx-link{font-size:1.05rem;font-weight:600;color:var(--teal-d)}
+.hx-link:hover{text-decoration:underline;text-underline-offset:3px}
+.hx-media{--p:0;--gut:clamp(16px,4vw,56px);margin-top:clamp(2.5rem,6vw,4.5rem)}
+.hx-media img{width:100%;height:clamp(300px,58vw,780px);object-fit:cover;object-position:center 45%;clip-path:inset(0 calc((1 - var(--p)) * var(--gut)) round calc((1 - var(--p)) * 28px))}
 </style>
 </head>
 <body>
@@ -1407,50 +1345,20 @@ body{font-size:14px}
 <!-- ════════════════════════════════════
      HERO
 ════════════════════════════════════ -->
-<section id="hero" aria-labelledby="hero-h1">
-  <div class="hero-bg" id="hero-parallax" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
-
-  <div class="container">
-    <div class="hero-grid">
-
-      <!-- LEFT -->
-      <div class="hero-content" data-reveal="up">
-                <h1 class="hero-h1" id="hero-h1">
-          Fast, Easy &amp;<br><em>Reliable Laundry.</em>
-        </h1>
-        <p class="hero-sub">
-          Laundry collected from your door, washed on its own cycle, and returned
-          fresh and folded &mdash; homes and businesses across Brisbane &amp; South East Queensland.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg" data-book>Schedule a Pickup</a>
-          <a href="#services" class="btn btn-outline-white btn-lg">Our Services</a>
-        </div>
-              </div>
-
-      <!-- RIGHT: hero image with floating cards -->
-      <div class="hero-img-wrap" data-reveal="right" data-delay="2">
-        <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
-             alt="Clean laundry folded and ready for delivery"
-             loading="eager" fetchpriority="high">
-        <div class="hero-float hero-float-1">
-          <div class="dot"></div>
-          <div>
-            <div>[Pickup window TBC]</div>
-            <small>[Hours TBC]</small>
-          </div>
-        </div>
-        <div class="hero-float hero-float-2">
-          <div class="dot gold"></div>
-          <div>
-            <div>[Turnaround TBC]</div>
-            <small>[Express option TBC]</small>
-          </div>
-        </div>
-      </div>
-
+<section id="hero" class="hx" aria-labelledby="hero-h1">
+  <div class="hx-copy">
+    <p class="hx-kicker">Brisbane &amp; South East Queensland</p>
+    <h1 class="hx-h1" id="hero-h1">Fast, Easy &amp;<br><span>Reliable Laundry.</span></h1>
+    <p class="hx-sub">Collected from your door. Returned fresh and folded.</p>
+    <div class="hx-cta">
+      <a href="#contact" class="btn btn-primary btn-lg hx-btn" data-book>Schedule a Pickup</a>
+      <a href="#pricing" class="hx-link">See pricing <span aria-hidden="true">&rsaquo;</span></a>
     </div>
+  </div>
+  <div class="hx-media" id="hx-media">
+    <img src="linen-legends-framer-assets/vvmmP1YFmfvJ9YaUBFIKhNeV2s.webp" width="1400" height="957" decoding="async"
+         alt="Laundry being folded by hand, ready for delivery"
+         loading="eager" fetchpriority="high">
   </div>
 </section>
 
@@ -2201,13 +2109,20 @@ body{font-size:14px}
   mBack.addEventListener('click', closeDrawer);
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
-  /* ── 2. HERO PARALLAX ─────────────────────── */
-  const parallaxEl = document.getElementById('hero-parallax');
-  if (parallaxEl) {
+  /* ── 2. HERO PHOTO GROWS TO FULL WIDTH ON SCROLL ─────── */
+  const hxMedia = document.getElementById('hx-media');
+  if (hxMedia && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let queued = false;
+    const grow = () => {
+      queued = false;
+      const span = Math.max(200, hxMedia.offsetTop * 0.85);
+      const p = Math.min(1, Math.max(0, window.scrollY / span));
+      hxMedia.style.setProperty('--p', p.toFixed(3));
+    };
     window.addEventListener('scroll', () => {
-      const y = window.scrollY;
-      parallaxEl.style.transform = `translateY(${y * 0.35}px)`;
+      if (!queued) { queued = true; requestAnimationFrame(grow); }
     }, { passive: true });
+    grow();
   }
 
   /* ── 3. SCROLL REVEAL ─────────────────────── */
